@@ -1,12 +1,15 @@
 package edu.northwestern.at.utils.corpuslinguistics;
 
-/*	Please see the license information in the header below. */
+/*  Please see the license information in the header below. */
 
 /**
  * This code is based on an implementation by Ed Parrish, which was
  * obtained from:
  *
  *    http://www.cse.ucsc.edu/~eparrish/toolbox/search.html
+ *
+ *  Licensed under an Apache license in the
+ *  org.apache.commons.codec.language package.
  */
 
 public class DoubleMetaphone
@@ -201,7 +204,7 @@ public class DoubleMetaphone
                     addCode('B', 'P');
                     break;
 
-                case 'Ç':
+                case '\u00c7':
                     add('S');
                     current++;
                     // Note: no doublecheck
@@ -591,7 +594,7 @@ public class DoubleMetaphone
                     addCode('N', 'N');
                     break;
 
-                case 'Ñ':
+                case '\u00d1':
                     current++;
                     add('N');
                     break;
