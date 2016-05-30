@@ -1,0 +1,5 @@
+String formatIntegerWithCommas( int i )
+{
+	return Formatters.formatIntegerWithCommas( i );
+}
+

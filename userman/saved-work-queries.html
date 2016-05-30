@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Saved Bibliographic Queries</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-word-queries.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Saved Word Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="sets-introduction.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Work and Word Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Saved Bibliographic Queries</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#creating">
+       Creating a saved bibliographic query
+       </a>
+       </li>
+   <li><a href="#cqlbiblio">Bibliographic query syntax</a>
+       </li>
+   <li><a href="#editing">Editing a saved bibliographic query</a>
+       </li>
+   <li><a href="#deleting">Deleting a saved bibliographic query</a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+A saved bibliographic query allows you save a query template
+you can use to create <a href="word-sets.html">work sets</a>.  For example,
+you may want to gather together all the works published in specific
+range of years.  You can create
+a query that specifies "retrieve works published between 1600 and 1610",
+save that query, and use it to create work sets using different
+collections of source works.  You specify the query using a
+WordHoard specific internal corpus query language.
+</p>
+
+<h3><a name="creating" id="creating">
+Creating a saved bibliographic query</a>
+</h3>
+
+<p>
+To create, edit, or delete a saved bibliographic query you must first
+<a href="login.html">login</a> so that the Sets menu
+becomes available.  Not all installations of WordHoard allow you to
+login.  You will not be able to create saved bibliographic queries
+on such systems.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/newworkquerymenu.jpg"
+     alt="New bibliographic query menu"></img>
+</p>
+
+<p>
+Select "Sets, Query, New Bibliographic Query" to bring up the
+dialog for creating a bibliographic query.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createsavedworkquery.jpg"
+     alt="Create saved bibliographic query dialog"></img>
+</p>
+
+<ul>
+<li><p>
+    You must enter a <em>title</em> for the saved bibliographic query.
+    The title is a required field.  Each of your saved bibliographic
+    queries must have a distinct title.  Someone else may use the same
+    title for a query.  The differing login names distinguish
+    otherwise identically titled queries.
+    We'll use "Works published from 1600 through 1610"
+    as the title of our saved bibliographic query.
+    </p>
+    </li>
+
+<li><p>
+    You may enter an optional extended <em>description</em> of the query.
+    </p>
+    </li>
+
+<li><p>
+    You may enter an optional <em>web page URL</em> where more
+    information about the query may be found.  It is up to you
+    to create that web page.
+    </p>
+    </li>
+
+<li><p>
+    A saved bibliographic query may be public or private.  A public query
+    may be viewed and used by anyone.  A private query may only
+    be viewed and used by the creator, and only when the
+    creator is logged in.  Saved bibliographic queries are private
+    by default.  Select the check box before <em>Public</em> to make
+    the query public.
+    </p>
+    </li>
+
+<li><p>
+    Specify the <em>query</em> text.
+    We enter <strong>pye(1600):pyl(1610)</strong>
+    which requests works whose earliest possible publication date is 1600
+    and whose latest possible publication date is 1610.
+    The syntax of the
+    <a href="#cqlbiblio">WordHoard bibliographic query language</a>
+    appears below.
+    </p>
+    </li>
+</ul>
+
+<p>
+Press the "Create" button to create the query.  WordHoard will report
+if the creation succeeded or failed.
+</p>
+
+<h3><a name="cqlbiblio" id="cqlbiblio">Bibliographic Query Syntax</a></h3>
+
+<p>
+The general form of a bibliographic query term is:
+</p>
+
+<blockquote>
+<p>
+[!]termname({text})
+</p>
+</blockquote>
+
+<p>
+<strong>!</strong>means "do not match the text defined by this term."
+By default, the text will be matched.
+</p>
+
+<p>
+<strong>termname</strong> is the term name.
+Example: <em>aun</em> means author name.
+</p>
+
+<p>
+<strong>text</strong> is the term text.  If enclosed in braces, it
+is assumed to be a
+<a href="saved-word-queries.html#regexp">regular expression</a>.
+You need not enclose the term text in quotes unless the text
+contains blanks or special characters.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul>
+<li><strong>aun("William Shakespeare")</strong> means match the
+    author William Shakespeare.</li>
+<li><strong>cot(Shakespeare)</strong> means match the corpus title
+    "Shakespeare".</li>
+<li><strong>wkt("Hamlet, Prince of Denmark")</strong> means match the
+    work Hamlet, Prince of Denmark.  You must specify the full title
+    or use a
+    <a href="saved-word-queries.html#regexp">regular expression</a>
+    to match only a portion of the title.</li>
+<li><strong>wkt({^Hamlet})</strong> means match all works starting with
+    "Hamlet".</li>
+<li>If you prefer to match short work titles, use <strong>wkst</strong>
+    instead of <strong>wkt</strong>.  For example,
+    <strong>wkst("Hamlet")</strong> matches the short work title
+    "Hamlet".</li>
+</ul>
+
+<p>
+You may combine terms to form a <em>term set</em> by separating
+individual terms by a colon (":").
+In our sample query above, <strong>pye(1600):pyl(1610)</strong>
+contains two query terms, <strong>pye(1600)</strong> matching works
+published in 1600 or after, and <strong>pyl(1610)</strong>
+matching works published before and including 1610.
+The combined terms form a term set to match works
+published from 1600 through 1610 inclusive.
+</p>
+
+<p>
+Here is a complete list of the available bibliographic query terms.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <th>Term name</th>
+      <th>Definition</th>
+      <th>Parameter values</th>
+   </tr>
+   <tr>
+      <td>aun</td>
+      <td>Author name</td>
+      <td>Author's full name, e.g., "William Shakespeare".
+          </td>
+   </tr>
+   <tr>
+      <td>cot</td>
+      <td>Corpus title</td>
+      <td>The corpus title, e.g., "Shakespeare".</td>
+   </tr>
+   <tr>
+       <td>cog</td>
+       <td>The permanent corpus tag.</td>
+       <td>The corpus tag, e.g., "sha" for Shakespeare.</td>
+   </tr>
+   <tr>
+      <td>wkt</td>
+      <td>Work title.</td>
+      <td>Full work title, e.g., "Hamlet, Prince of Denmark".</td>
+   </tr>
+   <tr>
+      <td>wkst</td>
+      <td>Short work title.</td>
+      <td>Short work title, e.g., "Hamlet".</td>
+   </tr>
+   <tr>
+      <td>wpt</td>
+      <td>Work part title.</td>
+      <td>Full work part title, e.g., "Prologue".</td>
+   </tr>
+   <tr>
+      <td>wpst</td>
+      <td>Short work part title.</td>
+      <td>Short work part title, e.g., "Prologue".</td>
+   </tr>
+   <tr>
+      <td>wkg</td>
+      <td>Permanent work tag.</td>
+      <td>Work tag, e.g., "sha-ham" for Hamlet.</td>
+   </tr>
+   <tr>
+      <td>wpg</td>
+      <td>Permanent work part tag.</td>
+      <td>Work tag, e.g., "sha-ham-1-3" for Act I, Scene III of Hamlet.</td>
+   </tr>
+   <tr>
+      <td>pye</td>
+      <td>Earliest publication year.</td>
+      <td>Earliest possible publication year for work,
+          e.g., pye(1600) specifies 1600 as the year.
+          </td>
+   </tr>
+   <tr>
+      <td>pyl</td>
+      <td>Latest publication year.</td>
+      <td>Latest possible publication year for work,
+          e.g., pyl(1610) specifies 1610 as the year.
+          </td>
+   </tr>
+</table>
+
+<p>
+You may combine bibiographic query terms with
+<a href="saved-word-queries.html#cqlwords">word query terms</a>
+to search for works or work parts containing specific words.
+For example, you can create a bibliographic search which selects
+works in Shakespeare containing a character named
+"Sir John Falstaff" by specifying
+the query text as
+<strong>cot("Shakespeare"):spk("Sir John Falstaff")</strong>.
+To search for "Falstaff" anywhere in the name we could a
+<a href="saved-word-queries.html#regexp">regular expression</a>
+and write the query as
+<strong>cot("Shakespeare"):spk({.*Falstaff.*})</strong>.
+</p>
+
+<h3><a name="editing" id="editing">Editing a saved bibliographic query</a></h3>
+
+<p>
+You can edit bibliographic queries by selecting
+"Sets, Query, Edit Bibliographic Query" from the menu.
+The edit bibliographic query dialog appears.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/editsavedworkquery1.jpg"
+     alt="Edit saved bibliographic query"></img>
+</p>
+<div class="space" />
+
+<p>
+The top panel of the dialog lists the bibliographic queries which you are allowed
+to edit.  You can only edit public or private bibliographic queries which you
+have created.  You cannot edit bibliographic queries belonging to others.
+Select the bibliographic query you wish to edit.  The remaining fields in the dialog
+change to reflect the current values in the selected bibliographic query.
+For example, select our "Works published from 1600 through 1610"
+bibliographic query.  The title, description, web page, public flag,
+and query text for that bibliographic query now appear in the dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/editsavedworkquery2.jpg"
+     alt="Edit saved bibliographic query"></img>
+</p>
+<div class="space" />
+
+<p>
+You can change the title, description, web page URL, public flag,
+and query text by entering new values.
+Press the "Update" button to save any changes you make.
+</p>
+
+<h3><a name="deleting" id="deleting">Deleting a saved bibliographic query</a></h3>
+
+<p>
+You may delete one or more of the saved bibliographic queries you have created by
+selecting "Sets, Query, Delete Word Query" from the menu.
+The Delete Word Queries dialog appears with the names of your
+saved bibliographic queries. If you have not created any saved bibliographic queries,
+WordHoard displays a message to that effect instead.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/deletesavedworkquery.jpg"
+     alt="Delete saved bibliographic queries dialog"></img>
+</p>
+<div class="space" />
+
+<p>
+Select the check box next to each bibliographic query you want to delete so
+that a check mark appears in the box.
+In the sample dialog above the only saved bibliographic query available for
+deletion is "Works published from 1600 through 1610".
+We have selected that query for deletion by toggling the check box next
+to it.
+Press the Delete button to delete the selected queries.
+</p>
+
+<p>
+Please be careful.  Once you delete a query, it cannot be recovered.
+You will need to recreate the query if you want to use it again.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-word-queries.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Saved Word Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="sets-introduction.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Work and Word Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

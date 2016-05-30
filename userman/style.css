@@ -1,0 +1,86 @@
+body
+{
+	margin-left: 15%;
+	margin-right: 15%;
+	background: white;
+	color: black;
+}
+li.space { margin-top: 1em; }
+div.space { margin-top: 30px; }
+td.middle1pct { width: 1%; text-align: left; }
+td.middle32pct { width: 32%; text-align: left; }
+td.width25pct { width: 25%; text-align: left; }
+td.width35pct { width: 35%; text-align: left; }
+td.width40pct { width: 40%; text-align: left; }
+td.width50pct { width: 50%; text-align: left; }
+td.leftalign { text-align: left; }
+.center { text-align: center; }
+table.center { margin-left: auto ; margin-right: auto; }
+.border1 { border: 1px; border-style: solid; }
+
+.indentedgray
+{
+	border: 1px;
+	border-style: solid;
+	margin-left: 30px;
+	margin-right: 30px;
+//	background-color: #A0A0A0;
+	background-color: lightgray;
+	color: black;
+}
+
+div.indentedgray
+{
+    padding : 0em 1em 0em 1em;
+}
+
+p.padded{ margin-left: 5px ; margin-right: 5px }
+
+.source
+{
+    margin: 0em 1em 0em 1em;
+    padding: 0em 1em 0em 1em;
+    border: 2px solid #bbbbbb;
+    white-space: pre;
+}
+
+ol.lcalpha
+{
+    list-style-type : lower-alpha;
+}
+
+p.pagebreakbefore
+{
+    page-break-before : always;
+}
+
+.color0000FF
+{
+	color: #0000FF;
+}
+
+.color444444
+{
+	color: #444444;
+}
+
+.color4444FF
+{
+	color: #4444FF;
+}
+
+.color2040A0
+{
+	color: #2040A0;
+}
+
+.color008000
+{
+	color: #008000;
+}
+
+.colorFF0000
+{
+	color: #FF0000;
+}
+

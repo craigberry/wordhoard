@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<WordHoardSites>
+	
+	<site id="localhost">
+		<database>
+			<url>jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<username>wordhoard</username>
+			<password>wordhoard</password>
+		</database>
+		<server>//localhost:1100/WordHoard</server>
+	</site>
+	
+</WordHoardSites>
+

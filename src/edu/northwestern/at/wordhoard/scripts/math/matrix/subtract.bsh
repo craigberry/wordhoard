@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix add( Matrix a , Matrix b )
+{
+	return Matrices.add( a , b );
+}
+
+Matrix add( Matrix a , double value )
+{
+	return Matrices.add( a , value );
+}
+

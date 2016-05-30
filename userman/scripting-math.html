@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Mathematical Functions</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-intro.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Scripting</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-utility.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Utility Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Mathematical functions</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#arithmetic">
+       Arithmetic functions
+       </a>
+       </li>
+   <li><a href="#rootfinding">
+       Root finding
+       </a>
+       </li>
+   <li><a href="#statistical">
+       Statistical functions
+       </a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+WordHoard's script language provides a number of mathematical methods.
+These include functions for <a href="#arithmetic">arithmetic</a>
+operations, <a href="#rootfinding">finding the root of a function</a>, and
+<a href="#statistical">statistical distribution functions</a>.
+</p>
+
+<h3><a name="arithmetic" id="arithmetic">Arithmetic functions</a></h3>
+
+<p>
+WordHoard scripting provides many commonly used arithmetic functions.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <td class="width35pct">result = abs( x );</td>
+      <td>Returns the absolute value of x.<br />
+          Example: abs( -10 ) = 10 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = acos( x );</td>
+      <td>Returns the arc cosine of x in the
+             range 0 through pi.<br />
+             Example: acos( 0.5 ) = 1.0471975511965979 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = acosh( x );</td>
+      <td>Returns the hyperbolic arc cosine of x.<br />
+          Example: acos( 100 ) = 5.298292365610485 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = areEqual( x , y );</td>
+      <td>Returns true if x and y are equal to within
+          machine tolerance, false if not.<br />
+          Examples: areEqual( 0.0 , 1.0D-12 ) is false.<br />
+          areEqual( 0.0 , 1.0d-18 ) is true.
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = areEqual( x , y , tolerance );</td>
+      <td>Returns true if x and y are equal to within the
+          specified tolerance, false if not.<br />
+          Examples: areEqual( 0.0 , 1.0D-5 , 1.0D-6 ) is false.<br />
+          areEqual( 0.0 , 1.0d-9 , 1.0D-6 ) is true.
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = asin( x );</td>
+      <td>Returns the arc sine of x in the range
+             -pi/2 through pi/2.<br />
+             Example: asin( 0.5 ) = 0.5235987755982989 .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = asinh( x );</td>
+      <td>Returns the hyperbolic arcsine of x.<br />
+              Example: asinh( 0.5 ) = 0.48121182505960347 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = atan( x );</td>
+      <td>Returns the arc tangent of x in the range
+             -pi/2 through pi/2.<br />
+             Example: atan( 1.0 ) = 0.7853981633974483 .
+             You can determine a good value for pi by computing
+             4.0 * atan( 1.0 ) = 3.141592653589793 .  You can
+             also use Math.PI .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = atan2( y , x );</td>
+      <td>Returns the four quadrant
+             arc tangent  of y/x in the range -pi to pi .<br />
+             Example: atan2( .3 , .2 ) = 0.982793723247329 .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = atanh( x );</td>
+      <td>Returns the hyperbolic arc tangent of x.<br />
+             Example: atanh( 0.5 ) = 0.5493061443340549 .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = binomial( n , k );</td>
+      <td>Returns the binomial coefficient (n;k) whicj is the
+             number of ways to select k unordered outcomes
+             from n possibilities.<br />
+             Example: binomial( 5 , 2 ) = 10.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = ceil( x );</td>
+      <td>Returns the integral double value closest to negative infinity
+             that is greater than or equal to x .<br />
+             Example: ceil( 9.6 ) = 10.0 .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = cos( x );</td>
+      <td>Returns the cosine of x.<br />
+             Example: cos( 1.0 ) = 0.5403023058681398 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = cosh( x );</td>
+      <td>Returns the hyperbolic cosine of x.<br />
+             Example: cosh( 1.0 ) = 1.543080634815244 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = cot( x );</td>
+      <td>Returns the cotangent of x.<br />
+             Example: cot( 1.0 ) = 0.6420926159343306 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = exp( x );</td>
+      <td>Returns Euler's number <em>e</em> raised to the power x.<br />
+             Example: exp( 1.0 ) = 2.7182818284590455 .
+             which is Euler's number.  You can also use Math.E to get
+             the value of Euler's number.
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = factorial( x );</td>
+      <td>Returns the factorial of x.<br />
+             Example: factorial( 5 ) = 120.0  .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = floor( x );</td>
+      <td>Returns the integral double value closest to negative infinity
+             that is less than or equal to x .<br />
+             Example: ceil( 9.6 ) = 9.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = hypot( x , y );</td>
+      <td>Returns sqrt(x*x +y*y) without intermediate overflow or underflow.
+             <br />
+             Example: hypot( 3 , 5 ) = 5.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = IEEEremainder( x , y );</td>
+      <td>Computes the remainder (modulo) operation on the two arguments
+             as prescribed by the IEEE 754 standard.<br />
+             Example: IEEEremainder( 10 , 3 ) = 1.0 .
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = isNegativeZero( x );</td>
+      <td>Returns true if <em>x</em> is
+             negative zero.
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = log( x );</td>
+      <td>Returns the natural logarithm (base e) of <em>x</em>.<br />
+              Example: log( 10 ) = 2.302585092994046 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = log10( x );</td>
+      <td>Returns the base 10 logarithm of <em>x</em>.<br />
+              Example: log10( 100 ) = 2.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = log2( x );</td>
+      <td>Returns the base 2 logarithm of <em>x</em>.<br />
+              Example: log2( 4 ) = 2.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = max( x , y );</td>
+      <td>Returns the greater of <em>x</em> and <em>y</em>.
+             <br />
+             Example: max( 2 , 10 ) = 10.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = min( x , y );</td>
+      <td>Returns the lesser of <em>x</em> and <em>y</em>.
+             <br />
+             Example: min( 2 , 10 ) = 2.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = pow( x , y );</td>
+      <td>Returns the value of <em>x</em> raised to the power of <em>y</em>.
+              <br />
+              Example: pow( 2 , 6 ) = 64.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = random();</td>
+      <td> Returns a pseudouniform random number with a positive sign, greater than
+              or equal to 0.0 and less than 1.0 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = rint( x );</td>
+      <td>Returns the integral double value that is closest in value to the argument.<br />
+             Examples: rint( 9.6 ) = 10.0 .<br />
+             rint( 9.4 ) = 9.0 .
+       </td>
+   </tr>
+
+   <tr>
+      <td>result = round( x );</td>
+      <td>Returns the integral double value that is closest in value to the argument.<br />
+             Examples: round( 9.6 ) = 10.0 .<br />
+             round( 9.4 ) = 9.0 .
+       </td>
+   </tr>
+
+   <tr>
+      <td>result = safeLog( x );</td>
+      <td>Returns the natural logarithm (base e) of <em>x</em> when
+             <em>x</em> is positive, and zero when <em>x</em> is zero.
+             Negative values of <em>x</em> return NaN, the standard
+             IEEE "not a number" value.<br />
+              Examples: safeLog( 10 ) = 2.302585092994046 .<br />
+              safeLog( 0 ) = 0 .
+              safeLog( -1 ) = NaN .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = sign( x , y );</td>
+      <td>Returns the value of <em>x</em> with the sign of
+             <em>y</em> .<br />
+             Examples: sign( 0.5 , 1 ) = 0.5 .<br />
+             sign( 0.5 , -1 ) = -0.5 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = sin( x );</td>
+      <td>Returns the sine of <em>x</em>.<br />
+             Example: sin( 1.0 ) = 0.8414709848078965 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = sinh( x );</td>
+      <td>Returns the hyperbolic sine of <em>x</em>.<br />
+             Example: sinh( 1.0 ) = 1.1752011936438014 .
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = sqrt( x );</td>
+      <td>Returns the square root of <em>x</em>.<br />
+              Example: sqrt( 2.0 ) = 1.4142135623730951 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = tan( x );</td>
+      <td>Returns the tangent of <em>x</em>.<br />
+             Example: tan( 1.0 ) = 1.5574077246549023 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = tanh( x );</td>
+      <td>Returns the hyperbolic tangent of <em>x</em>.<br />
+             Example: tanh( 1.0 ) = 0.7615941559557649 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = toDegrees( x );</td>
+      <td>Converts an angle <em>x</em> measured in radians
+             to an approximately equivalent angle measured in degrees.
+             <br />
+             Example: toDegrees( 1.5707963267948966 ) = 90.0;
+             </td>
+   </tr>
+
+   <tr>
+      <td>result = toRadians( x );</td>
+      <td>Converts an angle <em>x</em> measured in degrees
+              to an approximately equivalent angle measured in radians.
+              <br />
+              Example: toRadians( 90 ) = 1.5707963267948966 .
+              </td>
+   </tr>
+
+   <tr>
+      <td>result = trunc( x );</td>
+      <td>Returns the nearest integral double value
+             that is less than or equal to x .<br />
+             Example: trunc( 9.6 ) = 9.0 .
+      </td>
+   </tr>
+</table>
+
+<h3><a name="rootfinding" id="rootfinding">Root finding</a></h3>
+
+<p>
+WordHoard provides Brent's method for finding the zero of a function with
+a single root.  This method is handy when you want to calculate
+various types of arithmetic or probability distributions
+not already provided by WordHoard.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <th class="width40pct">Method</th>
+      <th>Description</th>
+   </tr>
+   <tr>
+      <td valign="top">
+      root = findroot( lowerBound, upperBound, MonadicFunction function );
+      </td>
+      <td>
+      Finds the zero of a function with a single root (or an
+      arbitrary root if the function has more than one). The
+      <em>lowerBound</em> is the minimum value for the root,
+      the <em>upperBound</em> is
+      the maximum value for the root, and
+      <em>MonadicFunction function</em>
+      defines the function whose root we want.
+      </td>
+   </tr>
+</table>
+
+<p>
+The MonadicFunction interface requires you to define a single method
+called <em>f</em> to compute the value of the function whose
+root you want, given the passed value of <em>x</em>.  The value
+of <em>x</em> is the current approximation to the root of the function.
+The method <em>f</em> should return 0 when the approximant <em>x</em>
+matches a root.
+</p>
+
+<p>
+The sample script below defines a function to calculate the square root
+of a given numeric value as "f(x) = x * x - value" where <em>value</em> is
+the number whose square root you want.  We'll try to find the
+square root of ten as an example.
+The script prints the square root value obtained by searching for
+the root as well as the difference between that value and the one calculated
+by the WordHoard "sqrt" function.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color444444">// Value whose square root we want.</span>
+
+<span class="color2040A0">value</span> <span class="color4444FF">=</span> <span class="colorFF0000">10.0</span><span class="color4444FF">;</span>
+
+<span class="color444444">// Square root must be between 0 and the value itself.</span>
+
+<span class="color2040A0">xlo</span> <span class="color4444FF">=</span> <span class="colorFF0000">0.0</span><span class="color4444FF">;</span>
+<span class="color2040A0">xhi</span> <span class="color4444FF">=</span> <span class="color2040A0">value</span><span class="color4444FF">;</span>
+
+<span class="color444444">// Find the square root by searching for the root of</span>
+<span class="color444444">// the function f(x) = x * x - value.  The MonadicFunction</span>
+<span class="color444444">// interface defines this function.</span>
+
+<span class="color2040A0">root</span> <span class="color4444FF">=</span>
+   <span class="color2040A0">findroot</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">xlo</span> , <span class="color2040A0">xhi</span> ,
+      <strong>new</strong> <span class="color2040A0">MonadicFunction</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span>
+      <span class="color4444FF"><strong>{</strong></span>
+         <strong>public</strong> <strong>double</strong> <span class="color2040A0">f</span><span class="color4444FF"><strong>(</strong></span> <strong>double</strong> <span class="color2040A0">x</span> <span class="color4444FF"><strong>)</strong></span>
+         <span class="color4444FF"><strong>{</strong></span>
+            <strong>return</strong> <span class="color2040A0">x</span> <span class="color4444FF">*</span> <span class="color2040A0">x</span> <span class="color4444FF">-</span> <span class="color2040A0">value</span><span class="color4444FF">;</span>
+         <span class="color4444FF"><strong>}</strong></span>
+      <span class="color4444FF"><strong>}</strong></span>
+   <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color444444">// Display square root found by root search.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Square root of &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">value</span> <span class="color4444FF">+</span> <span class="color008000">&quot; is &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">root</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color444444">// Display difference between root and value returned by &quot;sqrt&quot; function.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Found root - sqrt(value) is &quot;</span> <span class="color4444FF">+</span> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">root</span> <span class="color4444FF">-</span> <span class="color2040A0">sqrt</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">value</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Running this script produces the following output:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-5.jpg"
+     alt="findroot script output"></img>
+</p>
+
+<h3><a name="statistical" id="statistical">Statistical functions</a></h3>
+
+<p>
+WordHoard scripting provides methods for computing probabilities and
+percentage points for common statistical distributions.  The methods used
+are generally accurate to at least ten decimal digits of precision.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <td class="width40pct">result = chiinverse( p , df );</td>
+      <td>Returns the cumulative percentage point of the
+          chi-square distribution with <em>df</em> degrees of freedom
+          for the cumulative significance level <em>p</em>.<br />
+          Example: chiiverse( 0.89 , 10 ) = 5.0175884255504055 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = finverse( p , dfn , dfd );</td>
+      <td>Returns the percentage point of the
+          central F distribution with numerator degrees of freedom <em>dfn</em>,
+          denominator degrees of freedom <em>dfd</em>, and point probability
+          level <em>p</em>.<br />
+          Example: finverse( 0.05 , 2, 10 ) = 4.102821015130399 .
+.      </td>
+   </tr>
+
+   <tr>
+      <td>result = normalinv( p );</td>
+      <td>Returns the cumulative percentage point of the
+          normal distribution for two-tailed significance level <em>p</em>.
+          <br />
+          Example: normalinv( 0.975 ) = 1.9599639845400536 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = sigchi(chi , df );</td>
+      <td>Returns the probability for the chi-square
+             distribution for the
+             value <em>chi</em> with degrees of freedom
+             <em>df</em>.
+             <br />
+             Example: sigchi( 5.0 , 10 ) = 0.8911780189141512 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = sigf( f , dfn , dfd );</td>
+      <td>Returns the probability for Fisher's F distribution for the
+             value <em>f</em> with numerator degrees of freedom
+             <em>dfn</em> and denominator degrees of freedom
+             <em>dfd</em>.
+             <br />
+             Example: sigf( 4.103 , 2 , 10 ) = 0.049995084647059464 .
+     </td>
+   </tr>
+
+   <tr>
+      <td>result = signormal( z );</td>
+      <td>Returns the cumulative two-tailed significance level of the normal
+          distribution for percentage point <em>z</em>.  You may double
+          this for a one-tailed test.<br />
+          Example: signormal( 1.96 ) = 0.9750021048517796.
+          </td>
+   </tr>
+
+   <tr>
+      <td>result = sigt( t , df );</td>
+      <td>Returns the point probability for Student's t distribution for the
+             percentage point <em>t</em> with degrees of freedom
+             <em>df</em>.
+             <br />
+             Example: sigt( 3.0 , 10 ) = 0.013343655022569595 .
+      </td>
+   </tr>
+
+   <tr>
+      <td>result = tinverse( p , df );</td>
+      <td>Returns the percentage point of Student's t distribution for the
+             point probability <em>p</em> with degrees of freedom
+             <em>df</em>.
+             <br />
+             Example: tinverse(  0.01 , 10 ) = 3.169272672616949 .
+      </td>
+   </tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-intro.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Scripting</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-utility.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Utility Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

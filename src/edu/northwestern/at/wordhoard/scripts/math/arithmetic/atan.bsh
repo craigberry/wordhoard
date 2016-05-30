@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	atan( double a )
+{
+	return Math.atan( a );
+}
+

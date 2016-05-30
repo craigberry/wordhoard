@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	asin( double a )
+{
+	return Math.asin( a );
+}
+

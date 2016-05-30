@@ -1,0 +1,21 @@
+WHQuery saveWordQuery
+(
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	String queryText
+)
+{
+	return
+		WHQueryUtils.addQuery
+		(
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			WHQuery.WORKPARTQUERY ,
+			queryText
+		);
+}
+

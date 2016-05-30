@@ -1,0 +1,8 @@
+import java.util.*;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.CountMapUtils;
+
+Map convertKeysToStrings( Map source )
+{
+	return CountMapUtils.convertKeysToStrings( source );
+}
+

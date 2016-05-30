@@ -1,0 +1,5 @@
+Work[] performWorkQuery( String queryString )
+{
+		return CQLQueryUtils.getWorksViaQuery( queryString );
+}
+

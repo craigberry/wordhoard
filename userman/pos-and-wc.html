@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Parts of Speech and Word Classes</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="lemma-info.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Getting Information about Lemmas</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="translations.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translations, Transliterations and Transcriptions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Parts of Speech and Word Classes</h2>
+
+<p>WordHoard uses a morphology tagset named "NUPOS". To get information about the word class and part of speech tags in NUPOS, use the commands in the "Windows" menu:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/wc-pos-commands.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>The word classes are shown in full below.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/word-classes.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Each word class belongs to one of 18 major word classes, which for the most part should be  self-explanatory. Some of them are used only for English language texts, and some of them are used only for Greek language texts.</p>
+
+<div class="space" />
+<table class="center" border="1" cellpadding="5">
+	<tr>
+		<th>Major Word Class</th>
+		<th>English</th>
+		<th>Greek</th>
+	</tr>
+	<tr>
+		<td>adjective</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>adv/conj/pcl/prep</td>
+		<td>x</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>adverb</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>conjunction</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>determiner</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>foreign word</td>
+		<td>x</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>interjection</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>negative</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>noun</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>numeral</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>particle</td>
+		<td></td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>preposition</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>pronoun</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>punctuation</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>symbol</td>
+		<td>x</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>undetermined</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>verb</td>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<td>wh-word</td>
+		<td>x</td>
+		<td></td>
+	</tr>
+</table>
+<div class="space" />
+
+<p>We do not currently use the "punctuation" major word class in WordHoard. This class is reserved for possible future use to mark up punctuation in texts.</p>
+
+<p>The "undetermined" major word class is only used during development. In a production deployment of WordHoard, it is unused.</p>
+
+<p>These major word classes are subdivided into a slightly finer categorization by "word class". There are 43 word classes in NUPOS. As with the major word classes, some word classes are used only for English, some are used only for Greek, and some are currently unused.</p>
+
+<p>Note that each word class has a very short string which provides a name for the word class, and that each word class belongs to one and only one of the major word classes.</p>
+
+<p>For example, for the major word class "verb", there are four word classes "cop" (copula), "va" (auxiliary verb), "vm" (modal verb), and "v" (verb). So in NUPOS there are four kinds of verbs. "cop" is only used in Greek, "va" and "vm" are only used in English, and "v" is used in both languages.</p>
+
+<p>The parts of speech window shows a table in the following format:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/pos.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>By default, all the parts of speech are shown in the table, first the English ones and then the Greek ones. To show only the English ones or only the Greek ones, use the "Show" popup menu. To order the parts of speech by the values of one of the categories, use the "Order by" popup menu.</p>
+
+<p>For example, the following pictures shows the Greek parts of speech ordered by voice:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/gpos.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Unlike the word classes, in NUPOS the English and Greek parts of speech are separate. Each part of speech is used by English or by Greek, but no part of speech is used by both languages. The English parts of speech have short alphabetic names. The Greek parts of speech have short numeric names derived from the category values.</p>
+
+<p>NUPOS has a fine-grained part of speech tagset, much finer-grained than the word classes and major word classes. There are 192 total English parts of speech and 521 total Greek parts of speech in the current version of NUPOS.</p>
+
+<p>For English. each part of speech belongs to one and only one word class, so the English part of speech tagset represents a finer grained subdivision of the word class tagset, in the same way that the word class tagset represents a finer grained subdivision of the major word class tagset.</p>
+
+<p>For Greek, the parts of speech do not belong to any particular word class, so the Greek part of speech tagset is not a subdivision of the word class tagset.</p>
+
+<p>To continue the example of English verbs, in NUPOS each of the verb word classes contains a number of parts of speech:</p>
+
+<ul>
+<li>word class va (auxiliary verb): 20 parts of speech</li>
+<li>word class vm (modal verb): 14 parts of speech</li>
+<li>word class v (verb): 27 parts of speech</li>
+</ul>
+
+<p>For both English and Greek, each part of speech is characterized by, and is largely defined by, how it is used in various grammatical categories. These categories and their possible values should be mostly self-explanatory to those familiar with English and Greek grammar.</p>
+
+<ul>
+<li>Syntax (used as): See below.</li>
+<li>Tense: pres, imperf, fut, aor, perf, plup, futperf, past or empty</li>
+<li>Mood: ind, subj, opt, impt, inf, ppl or empty</li>
+<li>Case: nom, gen, dat, acc, voc, adv, loc, obj, subj or empty</li>
+<li>Person: 1st, 2nd, 3rd, or empty</li>
+<li>Number: sg, dual, pl, or empty</li>
+<li>Degree: comp, sup, or empty</li>
+<li>Negative: no, nor, not, or empty</li>
+</ul>
+
+<p>The following categories are not used in Greek: Syntax, Degree, and Negative.</p>
+
+<p>The following categories are not used in English: Voice and Gender.</p>
+
+<p>As an example, the NUPOS English part of speech "vmd2" is used for modal verbs used in the second person singular past tense. It has the following attributes in addition to its name "vmd2":</p>
+
+<ul>
+<li>word class = vm (modal verb)</li>
+<li>syntax = vm</li>
+<li>tense = past</li>
+<li>mood = empty</li>
+<li>case = empty</li>
+<li>person = 2nd</li>
+<li>number = sg</li>
+<li>degree = empty</li>
+<li>negative = empty</li>
+</ul>
+
+<p>An example of this part of speech occurs in Act 5, Scene 1 of <i>Hamlet</i>, where Gertrude says "I hoped thou shouldst have been my Hamlet's wife;" In this passage, the word "shouldst" is tagged with the lemma "shall (vm)" and the part of speech "vmd2". By virtue of this tagging, we know all of the following facts about this word:</p>
+
+<ul>
+<li>It is an instance of the headword "shall".</li>
+<li>It is a verb.</li>
+<li>It is a modal verb.</li>
+<li>It has NUPOS part of speech "vmd2".</li>
+<li>It is in the past tense.</li>
+<li>It is in the second person.</li>
+<li>It is singular.</li>
+</ul>
+      
+<p>The "syntax" attribute is used to specify how the part of speech is used. For example, the part of speech "av-j" is used for adjectives that are used as adverbs. The "syntax" attribute of this part of speech is "av". An example of this part of speech occurs in Act 1, Scene 1 of <i>Hamlet</i>, where Bernardo says "Long live the king!" The word "Long" in this passage in used as an adverb modifying the verb "live" and has the NUPOS part of speech "av-j". Contrast this with the word "long" in Act 3, Scene 1, where Hamlet says "That makes calamity of so long life;". In this passage, the word "long" is tagged with the part of speech "j", the part of speech for "normal" uses of adjectives. Both of the parts of speech "av-j" and "j" have the word class "j" and major word class "adjective", but "av-j" has the syntax attribute "av", while "j" has the syntax attribute "j".</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="lemma-info.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Getting Information about Lemmas</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="translations.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translations, Transliterations and Transcriptions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

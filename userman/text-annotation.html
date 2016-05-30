@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Annotation XML Files</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-tran.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work-sets.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Work Sets XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Annotation XML Files</h2>
+
+<p>Annotation XML files define static annotations. Our Iliad Scholia and the E. K. annotations for Spenser's <cite>Shepheardes Calender</cite> are currently the only NU static annotations.</p>
+
+<p>The directory <code>annotations</code> contains the standard NU annotations. You can add additional annotation definition files for your own works if you wish.</p>
+
+<p>As an example, the Iliad Scholia annotation file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardAnnotations corpus="ege" work="IL" category="Iliad Scholia"&gt;
+    &lt;annotation&gt;
+        &lt;start line="IL.1.1"/&gt;
+        &lt;end line="IL.1.1"/&gt;
+        &lt;p&gt;
+        &lt;hi rend="bold"&gt;1&lt;/hi&gt;
+        a.
+        &lt;hi rend="sperrtext"&gt;Μῆνιν ἄειδε:&lt;/hi&gt;
+        ζητοῦσι, διὰ τί ἀπὸ τῆς μήνιδος
+        ἤρξατο, οὕτω δυσφήμου ὀνόματος. διὰ δύο ταῦτα,
+        πρῶτον μέν, ἵν' ἐκ τοῦ πάθους †ἀποκαταρρεύσῃ† τὸ
+        τοιοῦτο μόριον τῆς ψυχῆς καὶ προσεκτικωτέρους τοὺς
+        ἀκροατὰς ἐπὶ τοῦ μεγέθους ποιήσῃ καὶ προεθίσῃ φέρειν
+        γενναίως ἡμᾶς τὰ πάθη, μέλλων πολέμους ἀπαγγέλλειν·
+        δεύτερον δέ, ἵνα τὰ ἐγκώμια τῶν Ἑλλήνων πιθανώτερα
+        ποιήσῃ. ἐπεὶ δὲ ἔμελλε νικῶντας ἀποφαίνειν τοὺς
+        Ἕλληνας, εἰκότως †οὐ κατατρέχει ἀξιοπιστότερον† ἐκ
+        τοῦ μὴ πάντα χαρίζεσθαι τῷ ἐκείνων ἐπαίνῳ. | ἤρξατο
+        μὲν ἀπὸ μήνιδος, ἐπείπερ αὕτη τοῖς πρακτικοῖς
+        ὑπόθεσις γέγονεν· ἄλλως τε καὶ τραγῳδίαις τραγικὸν
+        ἐξεῦρε προοίμιον· καὶ γὰρ προσεκτικοὺς ἡμᾶς ἡ τῶν
+        ἀτυχημάτων διήγησις ἐργάζεται, καὶ ὡς ἄριστος ἰατρὸς
+        πρῶτον ἀναστέλλων τὰ νοσήματα τῆς ψυχῆς ὕστερον τὴν
+        ἴασιν ἐπάγει. Ἑλληνικὸν δὲ τὸ πρὸς τέλει τὰς ἡδονὰς
+        ἐπάγειν. |  ἰστέον δέ· ὥσπερ ἐπὶ συκῆς πρῶτον μέν
+        ἐστιν ὄλυνθος, εἶτα φήληξ σῦκον ἰσχάς, οὕτω πρῶτον
+        ὀργή, θυμὸς χόλος κότος μῆνις. ὅμως ὁ ποιητὴς ὡς
+        συνωνύμοις ὀνόμασιν ἐπὶ Ἀχιλλέως χρῆται· „ἠὲ χόλον
+        παύσειεν ἐρητύσειέ τε θυμόν“ (Α 192)· „οὐδ' ὄθομαι
+        κοτέοντος“ (Α 181)· „αὐτὰρ ὁ μήνιε νηυσὶ παρήμενος“
+        (Α 488).
+        &lt;hi rend="bold"&gt;AT&lt;/hi&gt;
+        &lt;seg type="marginalia"&gt;
+        &lt;hi rend="italic"&gt; d&lt;/hi&gt;
+        |&lt;hi rend="italic"&gt; ex.&lt;/hi&gt;
+        |&lt;hi rend="italic"&gt; ex.&lt;/hi&gt;
+        &lt;/seg&gt;
+        &lt;/p&gt;
+    &lt;/annotation&gt;
+...
+    &lt;annotation&gt;
+        &lt;start line="IL.24.804"/&gt;
+        &lt;end line="IL.24.804"/&gt;
+        &lt;p&gt;
+        &lt;hi rend="bold"&gt;804&lt;/hi&gt; b.
+        {ὣς οἵ γ' ἀμφίεπον}
+        &lt;hi rend="sperrtext"&gt; τάφον:&lt;/hi&gt;
+        Ἀττικοὶ τὸ περίδειπνον
+        &lt;hi rend="sperrtext"&gt;τάφον&lt;/hi&gt;
+        λέγουσι, Πολύϊδος (p. l. g. iii p. 632 bgk.) δὲ τὸ
+        μνημεῖον.
+        &lt;hi rend="bold"&gt;T&lt;/hi&gt;
+        &lt;seg type="marginalia"&gt;
+        &lt;hi rend="italic"&gt;ex.&lt;/hi&gt;
+        &lt;/seg&gt;
+        &lt;/p&gt;
+    &lt;/annotation&gt;
+&lt;/WordHoardAnnotations&gt;
+</pre></blockquote>
+
+<p>Annotation XML files have the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardAnnotations</code>. The root element.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>corpus</code> = the corpus id. Required.</li>
+	<li><code>work</code> = the work id. Required.</li>
+	<li><code>category</code> = the annotation category name. Required.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>annotation</code> (0..n). Annotations.</li>
+	</ul>
+</li>
+
+<li class="space"><code>annotation</code>. An annotation.
+	<p>Children:</p>
+	<ul>
+	<li><code>start</code> (1). The starting location in the text.</li>
+	<li><code>end</code> (1). The ending location in the text.</li>
+	<li><code>p</code> (0..n). Paragraphs of annotation text.</li>
+	</ul>
+</li>
+
+<li class="space"><code>start</code>. Starting location.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>line</code>. The id of the starting line.</li>
+	<li><code>word</code>. The id of the starting word.</li>
+	<li><code>offset</code>. Character offset in the line or word.</li>
+	</ul>
+	<p>At least one of the <code>line</code> or <code>word</code> attributes must be specified. If both are present, the <code>line</code> attribute is used and the <code>word</code> attribute is ignored. The <code>offset</code> attribute is optional. It specifies a character offset within the line or word. If it is not present, the start of the line or word is used.</p>
+</li>
+
+<li class="space"><code>end</code>. Ending location.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>line</code>. The id of the ending line.</li>
+	<li><code>word</code>. The id of the ending word.</li>
+	<li><code>offset</code>. Character offset in the line or word.</li>
+	</ul>
+	<p>At least one of the <code>line</code> or <code>word</code> attributes must be specified. If both are present, the <code>line</code> attribute is used and the <code>word</code> attribute is ignored. The <code>offset</code> attribute is optional. It specifies a character offset within the line or word. If it is not present, the end of the line or word is used.</p>
+</li>
+
+<li class="space"><code>p</code>. A paragraph of annotation text.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>rend="style"</code>. Optional. The default style is <code>normal</code>. </li>
+	<li><code>align="alignment"</code>. Optional. The default alignment is <code>left</code>.</li>
+	<li><code>indent</code> = Opional additional left margin indentation in pixels.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>hi</code> (0..n). Changes style. See <a href="text-work.html">Work XML Files</a>.</li>
+	<li><code>title</code> (0..n). Changes style to italics. See <a href="text-work.html">Work XML Files</a>.</li>
+	<li><code>seg type="marginalia"</code> (0..n). Marginalia.</li>
+	</ul>
+</li>
+
+<li class="space"><code>seg type="marginalia"</code>. Marginalia.
+	<p>Children: Same as in <code>p</code> elements, except that nested marginalia are not permitted.</p>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-tran.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work-sets.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Work Sets XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

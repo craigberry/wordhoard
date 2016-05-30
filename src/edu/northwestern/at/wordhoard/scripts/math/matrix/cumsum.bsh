@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix cumsum( Matrix m )
+{
+	return Matrices.cumsum( m );
+}

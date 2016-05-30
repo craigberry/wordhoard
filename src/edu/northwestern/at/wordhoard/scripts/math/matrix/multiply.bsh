@@ -1,0 +1,13 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix multiply( Matrix a , Matrix b )
+{
+	return Matrices.multiply( a , b );
+}
+
+Matrix multiply( Matrix m , double value )
+{
+	return Matrices.multiply( m , value );
+}
+
+

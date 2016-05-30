@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Displaying Word Form Lists</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="calc-window.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Calculator Window</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparewords.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Word Form Counts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2><a name="displayingwordformlists" id="displayingwordformlists">
+Displaying Word Form Lists</a>
+</h2>
+
+<p>
+You can create a word form list or <em>lexicon</em> to list all the
+word forms in a specified analysis text.
+To create the word form list, select "Create word form list" from the
+"Analysis" menu.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createwordlist.jpg" alt="Create word form list dialog" />
+</p>
+<div class="space" />
+
+<p>
+Select the word form for which to display a lexicon from the
+drop-down list.  You may choose:
+</p>
+
+<ul>
+   <li>Case and diacritical insensitive spelling.</li>
+   <li>Case and diacritical insensitive lemma.</li>
+   <li>Word class.</li>
+   <li>Speaker gender.</li>
+   <li>Speaker mortality.</li>
+   <li>Verse (whether a word appears in poetry or prose).</li>
+   <li>Metrical shape (Greek works only).</li>
+</ul>
+
+<p>
+We have chosen "Spelling" as the word form of interest in the sample
+dialog above.
+</p>
+
+<p>
+Next, select the analysis text from the drop-down list.  You may choose
+any available work, work set, word set, or corpus.  We have chosen
+Shakespeare's play "Hamlet" in the sample dialog
+above.  Press the "OK" button to produce a lexicon of the spellings
+in Hamlet.
+</p>
+
+<p>
+The resulting output table displays the rows sorted in
+descending order by word count.  For spellings and lemmata, each row
+displays the word form with a second column displaying its word classes.
+A spelling may have more than one word class if it is a contraction or other
+compound word form.
+</p>
+
+<p>
+The output table contains a column for major word class when you select
+spelling, lemma, or word class as the word form.
+The major word class column does not appear for the other word forms.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createwordlistoutput.jpg" alt="Spellings in Hamlet" />
+</p>
+<div class="space" />
+
+<p>
+A quick glance at the spellings in Hamlet shows no big surprises.  There
+are 4,877 distinct spellings (ignoring case and diacritical marks)
+among the 29,530 total words in Hamlet.  The
+most frequent words "the," "and," "to," "of," "you," and "I" could be expected
+to be among the most frequent in modern texts as well.  As we'll see later,
+looking at the relative counts between two texts is usually more
+informative.
+</p>
+
+<p>
+You may want to see the words which occur most frequently for each
+major word class.  Click on the column header for major word class.
+The output now appears sorted in ascending order by major word class,
+and then by descending word frequency within each major word class.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createwordlistoutput3.jpg" alt="Spellings in Hamlet by major word class"/>
+</p>
+<div class="space" />
+
+<p>
+To see some examples of words with more than
+one word class, click the header for the "Spelling" column to sort the words
+in ascending alphanumeric order.  This brings a number of contracted
+word forms beginning with an apostrophe to the top of the display.  Most of
+these are rarely used in modern English but were common in
+Shakespeare's time.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createwordlistoutput2.jpg" alt="Some contracted spellings in Hamlet" />
+</p>
+<div class="space" />
+
+<p>
+The spelling <strong>'twas</strong> is a contraction for "it was."
+The spelling "it" has the word class "pn" for personal pronoun,
+while "was" has the word class "va" for auxiliary verb.  The corresponding
+major word classes are pronoun for "it" and verb for "was."
+The spelling <strong>'twill</strong>, a contraction for "it will", has the
+same two major word classes, but the verb "will" has the word class
+"vm" for modal verb.
+</p>
+
+<p>
+Let's look at the counts broken down by gender.  Select
+create word list from the Analysis menu and choose "Speaker Gender"
+instead of "Spelling" as the word form.  Press OK to generate the
+following output.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createwordlistoutput4.jpg" alt="Words by gender in Hamlet" />
+</p>
+<div class="space" />
+
+<p>
+Males speak almost eleven times as many words in Hamlet as females.
+Again, this leads us to wonder if this ratio is significantly different
+from Shakespeare as a whole, or from the other Shakespearean tragedies.
+We can use the <a href="analysis-comparewords.html">compare words</a>
+items in the Analysis menu to answer this question.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="calc-window.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Calculator Window</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparewords.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Word Form Counts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

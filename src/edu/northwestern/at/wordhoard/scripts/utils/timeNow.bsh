@@ -1,0 +1,4 @@
+long timeNow()
+{
+	return System.currentTimeMillis();
+}

@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix mincol( Matrix m )
+{
+	return Matrices.minCol( m );
+}

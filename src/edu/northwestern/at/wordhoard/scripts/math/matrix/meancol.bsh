@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix meancol( Matrix m )
+{
+	return Matrices.meanCol( m );
+}

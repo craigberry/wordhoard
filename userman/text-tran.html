@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Translation XML Files</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-benson.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Benson Gloss XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-annotation.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Translation XML Files</h2>
+
+<p>Translation XML files define translations of works. Our Early Greek Epic corpus is currently the only NU corpus with translations.</p>
+
+<p>The directory <code>translations</code> contains the standard NU translations. You can add additional translations for your own works if you wish.</p>
+
+<p>As an example, the English translation file for <i>The Iliad</i> is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardTranslation corpus="ege" work="IL" type="English"&gt;
+    &lt;p id="IL.1.1"&gt;SING, goddess, the anger of Peleus' son Achilleus&lt;/p&gt;
+    &lt;p id="IL.1.2"&gt;and its devastation, which put pains thousandfold upon the Achaians,&lt;/p&gt;
+    ...
+    &lt;p id="IL.24.803"&gt;feast within the house of Priam, king under God's hand.&lt;/p&gt;
+    &lt;p id="IL.24.804"&gt;Such was their burial of Hektor, breaker of horses.&lt;/p&gt;
+&lt;/WordHoardTranslation&gt;
+</pre></blockquote>
+
+<p>Translation XML files have the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardTranslation</code>. The root element.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>corpus</code> = the corpus id. Required.</li>
+	<li><code>work</code> = the work id. Required.</li>
+	<li><code>type</code> = the translation id. Required.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>p</code> (0..n). Translations for individual lines and paragraphs.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>p</code>. A translation for an individual line or paragraph.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code> = The id of the line or paragraph in the primary text for which this is the translation. Required.</li>
+	<li><code>rend="style"</code>. Optional. The default style is <code>normal</code>. </li>
+	<li><code>align="alignment"</code>. Optional. The default alignment is <code>left</code>.</li>
+	<li><code>indent</code> = Opional additional left margin indentation in pixels.</li>
+	</ul>
+	<p>Children: Same as in work definition files (<code>hi</code> and <code>title</code>).</p>
+</li>
+	
+</ul>
+
+<p>Translation lines and paragraphs are rendered immediately following their corresponding primary lines and paragraphs, in a smaller font size, in gray, and indented an additional 20 pixels.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-benson.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Benson Gloss XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-annotation.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

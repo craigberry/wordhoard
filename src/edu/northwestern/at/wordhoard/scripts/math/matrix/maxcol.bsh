@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix maxcol( Matrix m )
+{
+	return Matrices.maxCol( m );
+}

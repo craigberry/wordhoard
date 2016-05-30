@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix diag( Matrix m )
+{
+	return Matrices.diag( m );
+}

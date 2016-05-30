@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix nullspace( Matrix m )
+{
+	return Matrices.nullSpace( m );
+}

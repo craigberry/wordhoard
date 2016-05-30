@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double chiinverse( double p , double df )
+{
+	return Sig.chisquareInverse( p , df );
+}
+
+double chiinverse( double p , int df )
+{
+	return Sig.chisquareInverse( p , df );
+}
+

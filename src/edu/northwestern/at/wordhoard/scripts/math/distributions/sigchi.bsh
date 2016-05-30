@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double sigchi( double chisquare , double df )
+{
+	return Sig.chisquare( chisquare , df );
+}
+
+double sigchi( double chisquare , int df )
+{
+	return Sig.chisquare( chisquare , df );
+}
+

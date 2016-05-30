@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix horzcat( Matrix a , Matrix b )
+{
+	return Matrices.horzcat( a , b );
+}
+

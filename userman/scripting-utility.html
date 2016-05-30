@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Utility Functions</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-math.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Mathematical Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-example.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Scripting Example</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<h2>Utility functions</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#formatting">
+       Formatting
+       </a>
+       </li>
+   <li><a href="#phoneticencoding">
+       Phonetic encoding
+       </a>
+       </li>
+   <li><a href="#tableoutput">
+       Table output
+       </a>
+       </li>
+   <li><a href="#textfileio">
+       Text file input and output
+       </a>
+       </li>
+   <li><a href="#stemming">
+       Word stemming
+       </a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+WordHoard's scripting language includes access to many of the
+WordHoard built-in utility classes and methods.  These include methods for
+<a href="#formatting">formatting</a> strings and numbers for display,
+and <a href="#phoneticencoding">phonetic encoding</a>,
+and <a href="stemming">word stemming</a>.
+</p>
+
+<h3>
+<a name="formatting" id="formatting">Formatting numbers and strings</a>
+</h3>
+
+<p>
+WordHoard provides methods for formatting individual numbers for
+display.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <td class="width50pct">
+      formatIntegerWithCommas( int i );</td>
+      <td>Formats an integer <em>i</em> with the default thousands
+          grouping character
+          (a comma in the United States).<br />
+          Example: s = formatIntegerWithCommas( 1234567 );<br />
+          returns s = "1,234,567" in many locales.
+          </td>
+   </tr>
+   <tr>
+      <td class="width50pct">
+      formatLongWithCommas( long l );</td>
+      <td>Formats a long integer <em>l</em> with the default
+          thousands grouping
+          character (a comma in the United States).<br />
+          Example: s = formatLongWithCommas( 1234567 );<br />
+          returns s = "1,234,567" in many locales.
+          </td>
+   </tr>
+   <tr>
+      <td class="width50pct">
+      formatFloat( float f , int d );</td>
+      <td>Formats a floating point number <em>f</em>
+          with the specified number <em>d</em> of decimal places.
+          The default thousands grouping character is used for the portion
+          of the number (if any) that appears before the radix point.
+          <br />
+          Example: s = formatFloat( 1450.879f , 2 );<br />
+          returns "1,450.88" in many locales.
+          </td>
+   </tr>
+   <tr>
+      <td class="width50pct">
+      formatDouble( double x , int d );</td>
+      <td>Formats a double precision floating point number <em>x</em>
+          with the specified number <em>d</em> of decimal places.
+          The default thousands grouping character is used for the portion
+          of the number (if any) that appears before the radix point.
+          <br />
+          Example: s = formatDouble( 1450.879D , 2 );<br />
+          returns "1,450.88" in many locales.
+          </td>
+   </tr>
+</table>
+
+<p>
+WordHoard also provides a C-like sprintf facility for formatting arrays of
+objects.  WordHoard is currently intended to run under Java 1.4
+releases as well as later releases, so WordHoard does not use
+the sprintf formatting facilities introduced in Java 1.5 .
+Alan Jacobs of Sun Microsystems authored the PrintfFormat class
+used by WordHoard.  The <a href="#tableoutput">createTable</a>
+script method uses
+PrintfFormat format descriptors for the elements stored in the table.
+</p>
+
+<p>
+As an example, assume we have a Java object
+array the first element of which is a string, the second an
+integer, and the third a double precision floating point number.
+We can format the object array using PrintfFormat as follows.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">// Create object array to hold three values to format.</span>
+
+<span class="color2040A0">stuffToFormat</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">Object</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">3</span> <span class="color4444FF"><strong>]</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Add a string, an integer, and a double to the object array.</span>
+
+<span class="color2040A0">stuffToFormat</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">=</span> <span class="color008000">&quot;Hello WordHoard World!&quot;</span><span class="color4444FF">;</span>
+<span class="color2040A0">stuffToFormat</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">1</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">=</span> <span class="colorFF0000">10000</span><span class="color4444FF">;</span>
+<span class="color2040A0">stuffToFormat</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">2</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">=</span> <span class="colorFF0000">12345.6789</span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Create a PrintfFormat object to format the entries in</span>
+        <span class="color444444">// stuffToFormat.  We format the string as-is followed by a</span>
+        <span class="color444444">// blank.  We format the integer into a ten-column wide field,</span>
+        <span class="color444444">// and add the thousands grouping symbol (typically a comma) every three</span>
+        <span class="color444444">// digits.  We format the floating point value in a twelve-column</span>
+        <span class="color444444">// wide field with three decimal places and thousands grouping symbols</span>
+        <span class="color444444">// every three digits.</span>
+
+<span class="color2040A0">format</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">PrintfFormat</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;%s %'10d %'12.3f&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Format the entries in stuffToFormat using the format we created.</span>
+
+<span class="color2040A0">formattedString</span> <span class="color4444FF">=</span> <span class="color2040A0">format</span>.<span class="color2040A0">sprintf</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">stuffToFormat</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Display the formatted entries.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">formattedString</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The result is:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+Hello WordHoard World!     10,000   12,345.679
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The <a href="javadoc/">javadoc</a> for PrintfFormat details all the
+different formatting options.  The table below lists the most
+commonly used format characters.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <td>%d</td>
+      <td>Format item as a decimal integer.</td>
+   </tr>
+   <tr>
+      <td>%e</td>
+      <td>Format item as a floating point number with exponential notation.
+          </td>
+   </tr>
+   <tr>
+      <td>%f</td>
+      <td>Format item as a floating-point number with a decimal point
+          but no exponent.
+          </td>
+   </tr>
+   <tr>
+      <td>%g</td>
+      <td>Format item as a floating point number using either the
+          %f or %e format, whichever appears to be better.
+          </td>
+   </tr>
+   <tr>
+      <td>%o</td>
+      <td>Format item as an octal integer.</td>
+   </tr>
+   <tr>
+      <td>%s</td>
+      <td>Format a string or a single character as a string.</td>
+   </tr>
+   <tr>
+      <td>%x</td>
+      <td>Format item as a hexadecimal integer.</td>
+   </tr>
+   <tr>
+      <td>%%</td>
+      <td>Output the '%' character.</td>
+   </tr>
+</table>
+
+<p>
+You can add a minimum field width and, for floating point numbers,
+the number of decimal places.  For example, "%10i" requests an
+integer be formatted in a field at least ten columns wide.
+"%12.3f" requests a floating point value be formatted in a
+field at least twelve columns wide with three decimal digits
+following the radix point.  A single quote "'" before the
+field width requests thousands grouping before the
+radix point, using the default thousands grouping character.
+</p>
+
+<p>
+Specifing a negative field width such as "%-10i" left-justifies
+the formatted value within the output field.
+Usually the formatted value appears right-justified.
+A leading 0 in the field width such as "%010i" adds
+leading zeros to fill blank spaces at the left
+of the converted number.
+A leading '+' before the field width such as "%+10i"
+adds a leading plus sign to the output for positive values.
+</p>
+
+
+<h3>
+<a name="phoneticencoding" id="phoneticencoding">Phonetic Encoding</a>
+</h3>
+
+<p>
+Soundex encodes words using a simple model based upon the
+approximate sound of the word as pronounced in American English.
+The Soundex encoding is a four character
+string in which the first character is an uppercase letter and the
+remaining characters are digits.  Soundex was originally
+intended only for encoding proper last names, but occasionally
+finds other uses as well.  The Soundex algorithm was devised and
+patented by Margaret K. Odell and Robert C. Russell in 1918.
+</p>
+
+<p>
+The obtain the Soundex encoding of a string in WordHoard, use the
+<em>soundex</em> method.   For example, to obtain the Soundex
+encoding for the name Burns, use:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">soundexEncoding</span> <span class="color4444FF">=</span><span class="color2040A0"> soundex(</span> <span class="color008000">&quot;Burns&quot;</span><span class="color2040A0"> );</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The resulting soundex value for Burns is <strong>B652</strong>.
+</p>
+
+<p>
+The Double Metaphone algorithm is another phonetic coding algorithm
+which encodes English words -- and foreign words heard frequently
+in the United States -- into a string consisting of twelve
+consonant sounds.  The double metaphone values can be
+used to group words with similar sounds and handle various types of
+spelling correction.  Double Metaphone improves over the earlier
+Metaphone algorithm by returning two possible encodings should a word
+appear to have two feasible pronunciations, such as a foreign word.
+Double Metaphone was designed primarily for use with proper names,
+but it has proved useful in more general contexts as well.
+The Double Metaphone algorithm was proposed by Lawrence Philips.
+</p>
+
+<p>
+The simplest way to use Double Metaphone in a WordHoard script is to
+invoke the <em>doubleMetaphone( String s )</em> method.
+For example:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">metaphoneEncoding</span> <span class="color4444FF">=</span> <span class="color2040A0">doubleMetaphone</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;happy&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The value of <em>metaphoneEncoding</em> is the primary metaphone
+encoding, which in this case is the two-letter string <strong>HP</strong>.
+If you want to retrieve both the primary and alternate metaphone strings,
+instantiate a DoubleMetaphone object and use the following methods
+to retrieve the primary and alternate encodings.  You should also
+use this approach if you intend to find the double metaphone encodings
+for a large number of strings.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">// Create a Double Metaphone encoder.</span>
+
+<span class="color2040A0">metaphone</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">DoubleMetaphone</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Encode the string &quot;smith&quot;.  This returns the primary encoding.</span>
+
+<span class="color2040A0">encoding</span> <span class="color4444FF">=</span> <span class="color2040A0">metaphone</span>.<span class="color2040A0">encode</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;smith&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Explicitly retrieve the primary encoding.</span>
+
+<span class="color2040A0">primaryEncoding</span> <span class="color4444FF">=</span> <span class="color2040A0">metaphone</span>.<span class="color2040A0">getPrimary</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Get the alternate encoding.</span>
+
+<span class="color2040A0">alternateEncoding</span> <span class="color4444FF">=</span> <span class="color2040A0">metaphone</span>.<span class="color2040A0">getAlternate</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Print the encodings.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Primary encoding for smith   : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">primaryEncoding</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Alternate encoding for smith : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">alternateEncoding</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Executing these script statements yields the output below.
+For "smith" the primary encoding is <strong>SM0</strong>, while
+the alternate encoding is <strong>XMT</strong>.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+Primary encoding for smith   : SM0
+Alternate encoding for smith : XMT
+</pre>
+</td>
+</tr>
+</table>
+
+<h3>
+<a name="tableoutput" id="tableoutput">Table output</a>
+</h3>
+
+<p>
+You can create a standard WordHoard output table to display
+results from your script using the <em>createTable</em> script method.
+Several of the <a href="scripting-examples.html">scripting examples</a>
+use <em>createTable</em> in conjunction with
+<a href="scripting-intro.html#scriptoutputtowindow">addResults</a>
+to display results in a new WordHoard window.
+</p>
+
+<p>
+To use <em>createTable</em> you must store each row of table data you wish
+to display in a <em>SortedTableModelRow</em> object.  You create
+such an object as follows:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">rowData</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">SortedTableModelRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">Object</span><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span> <span class="color2040A0">data</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Each entry in the <em>data</em> array must implement the standard Java
+<em>Comparable</em> interface, which allows Java to sort the values
+properly.  Most common data value types implement Comparable:
+String, Double, Integer, Long, etc.  The value of <em>row[ 0 ]</em>
+must uniquely identify the row.  If the values in another column
+uniquely identify the row, use:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">rowData</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">SortedTableModelRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">Object</span><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span> <span class="color2040A0">data</span> , <strong>int</strong> <span class="color2040A0">uniqueIDColumn</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The <em>uniqueIDColumn</em> value specifies the column which uniquely identifies
+the row data.
+</p>
+
+<p>
+You may also use a separate value to identify each row uniquely.  Use:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">rowData</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">SortedTableModelRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">Object</span><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span> <span class="color2040A0">data</span> , <span class="color2040A0">Object</span> <span class="color2040A0">uniqueIDValue</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The <em>uniqueIDValue</em> value uniquely identifies the row.
+</p>
+
+<p>
+If your data consists of a unique row label (String) as the first column,
+and an array of double values, you may use a
+<em>FrequencyAnalysisDataRow</em> object, which is a specialized version
+of a <em>SortedTableModelRow</em>.
+You create a <em>FrequencyAnalysisDataRow</em> as follows:
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color2040A0">rowData</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">FrequencyAnalysisDataRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">String</span> <span class="color2040A0">rowLabel</span> , <strong>double</strong><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span> <span class="color2040A0">data</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+where <em>rowLabel</em> is a string identifying the row of data
+and <em>data</em> is an array of double precision floating point numbers.
+Collect all of the <em>FrequencyAnalysisDataRow</em> objects in
+a standard Java <em>ArrayList</em>.  The following example creates
+three rows of data and adds them to an <em>ArrayList</em>.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">//  Create an ArrayList to hold the data rows.</span>
+
+<span class="color2040A0">dataList</span>    <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">ArrayList</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  Create three rows of data and add them</span>
+        <span class="color444444">//  to the data list.  We will add a number</span>
+        <span class="color444444">//  and its square as two data values.</span>
+
+
+<span class="color2040A0">data</span>        <span class="color4444FF">=</span> <strong>new</strong> <strong>double</strong><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">2</span> <span class="color4444FF"><strong>]</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  First data row ...</span>
+
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="colorFF0000">2</span><span class="color4444FF">;</span>
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">1</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">*</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">dataList</span>.<span class="color2040A0">add</span><span class="color4444FF"><strong>(</strong></span> <strong>new</strong> <span class="color2040A0">FrequencyAnalysisDataRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;One&quot;</span> , <span class="color2040A0">data</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  Second data row ...</span>
+
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="colorFF0000">5</span><span class="color4444FF">;</span>
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">1</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">*</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">dataList</span>.<span class="color2040A0">add</span><span class="color4444FF"><strong>(</strong></span> <strong>new</strong> <span class="color2040A0">FrequencyAnalysisDataRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Two&quot;</span> , <span class="color2040A0">data</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  Third data row ...</span>
+
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="colorFF0000">10</span><span class="color4444FF">;</span>
+<span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">1</span> <span class="color4444FF"><strong>]</strong></span>   <span class="color4444FF">=</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span> <span class="color4444FF">*</span> <span class="color2040A0">data</span><span class="color4444FF"><strong>[</strong></span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>]</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">dataList</span>.<span class="color2040A0">add</span><span class="color4444FF"><strong>(</strong></span> <strong>new</strong> <span class="color2040A0">FrequencyAnalysisDataRow</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Three&quot;</span> , <span class="color2040A0">data</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+We can now create a table to display these three rows of data
+using the <em>createTable</em> method.  The resulting table is
+an extended version of a standard Java Swing JTable called an XTable.
+Please see the <a href="javadoc/">javadoc</a> for XTable for more details.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+                                <span class="color444444">//  Create output table.</span>
+<span class="color2040A0">table</span> <span class="color4444FF">=</span>
+    <span class="color2040A0">createTable</span>
+    <span class="color4444FF"><strong>(</strong></span>
+                                <span class="color444444">//  Title for table.</span>
+                                <span class="color444444">//  Used for printing purposes.</span>
+        <span class="color008000">&quot;My table&quot;</span> ,
+                                <span class="color444444">//  Table column titles.</span>
+        <strong>new</strong> <span class="color2040A0">String</span><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span>
+        <span class="color4444FF"><strong>{</strong></span>
+            <span class="color008000">&quot;Label&quot;</span> ,
+            <span class="color008000">&quot;x&quot;</span> ,
+            <span class="color008000">&quot;x squared&quot;</span>
+        <span class="color4444FF"><strong>}</strong></span> ,
+                                <span class="color444444">//  Column formats are given as</span>
+                                <span class="color444444">//  &quot;printf&quot;-like specifications.</span>
+                                <span class="color444444">//</span>
+                                <span class="color444444">//  &quot;%s&quot; formats a string as is.</span>
+                                <span class="color444444">//</span>
+                                <span class="color444444">//  %26.0f formats a floating point</span>
+                                <span class="color444444">//  number in a field 26 characters wide</span>
+                                <span class="color444444">//  with no decimal places.</span>
+                                <span class="color444444">//</span>
+                                <span class="color444444">//  The &quot;'&quot; before the 26 says we want</span>
+                                <span class="color444444">//  the numbers displayed with a</span>
+                                <span class="color444444">//  thousands grouping character</span>
+                                <span class="color444444">//  (in the U.S., this is a comma).</span>
+        <strong>new</strong> <span class="color2040A0">String</span><span class="color4444FF"><strong>[</strong></span><span class="color4444FF"><strong>]</strong></span>
+        <span class="color4444FF"><strong>{</strong></span>
+            <span class="color008000">&quot;%s&quot;</span> ,
+            <span class="color008000">&quot;%'26.0f&quot;</span> ,
+            <span class="color008000">&quot;%'26.0f&quot;</span>
+        <span class="color4444FF"><strong>}</strong></span> ,
+                                <span class="color444444">//  ArrayList containing results</span>
+                                <span class="color444444">//  we created above.</span>
+        <span class="color2040A0">dataList</span> ,
+                                <span class="color444444">//  Sort results by this column.</span>
+                                <span class="color444444">//  Column indices start at 0.</span>
+                                <span class="color444444">//  Column 0 is the row labels column.</span>
+                                <span class="color444444">//  Column 1 is the &quot;x&quot; values.</span>
+                                <span class="color444444">//  Column 2 is the &quot;x squared&quot; values.</span>
+                                <span class="color444444">//  We sort by the value of &quot;x&quot;.</span>
+                                <span class="color444444">//  To leave the columns unsorted,</span>
+                                <span class="color444444">//  set to -1.</span>
+        <span class="colorFF0000">1</span> ,
+                                <span class="color444444">//  Sort in ascending order.  Set to</span>
+                                <span class="color444444">//  false to sort in descending order.</span>
+        <strong>true</strong>
+    <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Create a new WordHoard window</span>
+                                <span class="color444444">//  to display the table.</span>
+
+    <span class="color2040A0">addResults</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;My window title&quot;</span> , <span class="color008000">&quot;My header&quot;</span> , <span class="color2040A0">table</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+The resulting WordHoard window looks like this.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/sampletableoutput.jpg"
+     alt="Sample table output"></img>
+</p>
+<div class="space" />
+
+<p>
+You can print this table by selecting "Print" from the "File" menu.
+You can save the table output to a file by selecting "Save as" from the
+File menu.  You can use the "Select all" and "Copy" commands to copy the
+table cells to the system clipboard for export to other
+programs.
+</p>
+
+<h3>
+<a name="textfileio" id="textfileio">Text file input and output</a>
+</h3>
+
+<p>
+WordHoard scripting provides methods for reading the contents of a
+text file into a string and writing the contents of a string to a file.
+You can use standard Java I/O facilities to perform these operations
+as well.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <td class="width40pct">result = readTextFile( fileName , encoding );</td>
+      <td>Reads the content of the text file named <em>fileName</em>,
+          encoded in the <em>encoding</em> character set, as a Java string
+          and returns it as the result.
+          Should any error occur while attempting to read the file,
+          the standard IOException condition is raised.
+          You should check for this condition and handle it appropriately.
+          You should select the proper encoding based upon the contents
+          of the file.  If you specify the empty string as the encoding,
+          a default encoding is used which may be inappropriate.
+          </td>
+   </tr>
+   <tr>
+      <td>writeTextFile( fileName , append, contents, encoding );</td>
+      <td>Writes the content of the string <em>contents</em> to
+          the text file named <em>fileName</em>,
+          encoded in the <em>encoding</em> character set.
+          Set <em>append</em> to true to append the contents to the
+          existing data in the file.  Set <em>append</em> to false
+          to overwrite the existing contents.
+          Should any error occur while attempting to read the file,
+          the standard IOException condition is raised.
+          You should check for this condition and handle it appropriately.
+          Most of the time you should choose "UTF8" as the encoding
+          since that is how WordHoard stores its own data.
+          </td>
+   </tr>
+</table>
+
+<p>
+The following example creates five lines of text, writes
+them to a file, reads them back into a string, and prints them.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">//  Get the end of line character(s) for the current system.</span>
+        <span class="color444444">//  Typically this is an Ascii line feed for Unix systems</span>
+        <span class="color444444">//  and an Ascii line feed, Ascii carriage return pair for</span>
+        <span class="color444444">//  Windows system.  Java will generally read a text file</span>
+        <span class="color444444">//  properly even if the end of line characters in the file</span>
+        <span class="color444444">//  do not match those for the current system.</span>
+
+<span class="color2040A0">String</span> <span class="color2040A0">eolChars</span> <span class="color4444FF">=</span> <span class="color2040A0">System</span>.<span class="color2040A0">getProperty</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;line.separator&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  Create a few lines of text.  We accumulate them in</span>
+        <span class="color444444">//  a StringBuffer since this is more efficient than</span>
+        <span class="color444444">//  using a String.</span>
+
+<span class="color2040A0">StringBuffer</span> <span class="color2040A0">sb</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">StringBuffer</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;To be, or not to be: that is the question:&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">eolChars</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Whether 'tis nobler in the mind to suffer&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">eolChars</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;The slings and arrows of outrageous fortune,&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">eolChars</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Or to take arms against a sea of troubles,&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">eolChars</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;And by opposing end them?&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">sb</span>.<span class="color2040A0">append</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">eolChars</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">//  Write the lines to a text file.  We enclose the use of</span>
+        <span class="color444444">//  writeTextFile in a &quot;try&quot; block in order to capture</span>
+        <span class="color444444">//  any errors which may occur when writing the file.  The</span>
+        <span class="color444444">//  variable &quot;ok&quot; remembers if the write operation succeeded</span>
+        <span class="color444444">//  or not.</span>
+
+<span class="color2040A0">ok</span>  <span class="color4444FF">=</span> <strong>true</strong><span class="color4444FF">;</span>
+
+<strong>try</strong>
+<span class="color4444FF"><strong>{</strong></span>
+    <span class="color2040A0">writeTextFile</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;/soliloquoy.txt&quot;</span> , <strong>false</strong> , <span class="color2040A0">sb</span>.<span class="color2040A0">toString</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> , <span class="color008000">&quot;utf8&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+<strong>catch</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">IOExceptione</span> <span class="color2040A0">e</span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+        <span class="color444444">//  When the write fails, we set &quot;ok&quot; to false and</span>
+        <span class="color444444">//  print the reason for the failure.</span>
+
+    <span class="color2040A0">ok</span>  <span class="color4444FF">=</span> <strong>false</strong><span class="color4444FF">;</span>
+    <span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Could not write output file: &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">e</span>.<span class="color2040A0">getString</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+
+        <span class="color444444">//  If the write operation succeeded, read the the text</span>
+        <span class="color444444">//  we just wrote into a string, and print the string.</span>
+        <span class="color444444">//  If the read fails, we print an error message.</span>
+
+<strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">ok</span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+    <strong>try</strong>
+    <span class="color4444FF"><strong>{</strong></span>
+        <span class="color2040A0">s</span>   <span class="color4444FF">=</span> <span class="color2040A0">readTextFile</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;/soliloquoy.txt&quot;</span> , <span class="color008000">&quot;utf8&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">s</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+    <span class="color4444FF"><strong>}</strong></span>
+    <strong>catch</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">Exception</span> <span class="color2040A0">e</span> <span class="color4444FF"><strong>)</strong></span>
+    <span class="color4444FF"><strong>{</strong></span>
+        <span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Could not read file: &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">e</span>.<span class="color2040A0">getString</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+    <span class="color4444FF"><strong>}</strong></span>
+<span class="color4444FF"><strong>}</strong></span>
+</pre>
+</td>
+</tr>
+</table>
+
+<h3>
+<a name="stemming" id="stemming">Word stemming</a>
+</h3>
+
+<p>
+A <strong>stemmer</strong> determines a stem form of a given inflected
+word form.  For most purposes, the stem need not be a valid morphological
+root of the word, but related words should map to the same stem.
+For example, the words "talk", "talking", and "talked"
+should all map to the same stem, "talk."
+</p>
+
+<p>
+WordHoard provides implementations of two popular stemmers for English:
+the Porter Stemmer, written by Martin Porter, and the Lancaster stemmer,
+written by Chris D. Pace and colleagues.
+</p>
+
+<p>
+To use the Porter stemmer in a script, instantiate a PorterStemmer object
+and call the <em>stem</em> method with the word whose stem you want
+as an argument.  We will try the stemmer on several variants
+of the word "talk."
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">// Create a Porter Stemmer.</span>
+
+<span class="color2040A0">stemmer</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">PorterStemmer</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Get the stem for a number of words related to &quot;talk&quot;.</span>
+
+<span class="color2040A0">stem1</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talk&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem2</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talking&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem3</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talked&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem4</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talker&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Output the stems.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talk     : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem1</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talking  : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem2</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talked   : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem3</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talker   : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem4</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Executing these script statements yields the output below.
+The values for stem1 through stem3 are all the same: <strong>talk</strong>.
+The stem for "talker" is <strong>talker</strong> instead of <strong>talk</strong>.
+While perhaps surprising, this is correct according to Porter's
+stemming algorithm.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+Stem for talk     : talk
+Stem for talking  : talk
+Stem for talked   : talk
+Stem for talker   : talker
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+To use the Lancaster stemmer in a script, instantiate a
+LancasterStemmer object and call the <em>stem</em> method with the word
+whose stem you want as an argument.  Again we use the stemmer on variants
+of the word "talk."
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+        <span class="color444444">// Create a Lancaster Stemmer.</span>
+
+<span class="color2040A0">stemmer</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">LancasterStemmer</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Get the stem for a number of words related to &quot;talk&quot;.</span>
+
+<span class="color2040A0">stem1</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talk&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem2</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talking&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem3</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talked&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">stem4</span>   <span class="color4444FF">=</span> <span class="color2040A0">stemmer</span>.<span class="color2040A0">stem</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;talker&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+        <span class="color444444">// Output the stems.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talk     : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem1</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talking  : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem2</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talked   : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem3</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Stem for talker   : &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">stem4</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Executing these script statements yields the output below.
+The values for stem1 through stem3 are all the same: <strong>talk</strong>.
+Note that the stem for "talker" is <strong>talk</strong> which differs
+from the value returned by Porter's stemming algorithm.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+Stem for talk     : talk
+Stem for talking  : talk
+Stem for talked   : talk
+Stem for talker   : talk
+</pre>
+</td>
+</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-math.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Mathematical Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-example.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Scripting Example</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

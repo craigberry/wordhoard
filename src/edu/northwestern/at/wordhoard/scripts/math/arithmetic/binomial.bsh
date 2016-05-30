@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double binomial( double n , long k )
+{
+	return ArithUtils.binomial( n , k );
+}
+
+double binomial( long n , long k )
+{
+	return ArithUtils.binomial( n , k );
+}
+

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Work Sets XML File</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-annotation.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="martin-data.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Martin Mueller's Tagging Data</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Work Sets XML File</h2>
+
+<p>The file <code>work-sets.xml</code> defines all of the built-in (pre-defined) system work sets. The standard NU file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardWorkSets&gt;
+   &lt;addChildren title="Canterbury Tales: %t" id="cha-can"&gt;
+      &lt;exclude id="cha-can-title"/&gt;
+   &lt;/addChildren&gt;
+   &lt;addChildren title="Faerie Queene: %t" id="spe-faq"&gt;
+      &lt;exclude id="spe-faq-title"/&gt;
+      &lt;exclude id="spe-faq-ded"/&gt;
+   &lt;/addChildren&gt;
+   &lt;addCorpus title="Spenser: Shorter Poems" id="spe"&gt;
+      &lt;exclude id="spe-faq"/&gt;
+   &lt;/addCorpus&gt;
+   &lt;addCorpus title="Spenser: Shorter Poems (excluding SC)" id="spe"&gt;
+      &lt;exclude id="spe-faq"/&gt;
+      &lt;exclude id="spe-sc"/&gt;
+   &lt;/addCorpus&gt;
+   &lt;addTconViewCategories title="Shakespeare %t" id="sha" tconViewTitle="By Genre"/&gt;
+   &lt;addAuthors title="Author: %t"/&gt;
+&lt;/WordHoardWorkSets&gt;
+</pre></blockquote>
+
+<p>The work sets definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardWorkSets</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>addWorkParts</code> (0..n). Adds a work set defined by a list of works and/or work parts.</li>
+	<li><code>addChildren</code> (0..n). Adds a work set for each child of a work or work part.</li>
+	<li><code>addCorpus</code> (0..n). Adds a work set for each work in a corpus.</li>
+	<li><code>addTconViewCategories</code> (0..n). Adds a work set for each category in a table of contents view.</li>
+	<li><code>addAuthors</code> (0..n). Adds a work set for each author.</li>
+	<li><code>addPeriods</code> (0..n). Adds work sets for time periods.</li>
+	</ul>
+</li>
+
+<li class="space"><code>addWorkParts</code>. Adds a work set defined by a list of works and/or work parts.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>include</code> (0..n). Work or work part to be included in the work set.</li>
+	</ul>
+	<p>As an example, here's a definition of a work set titled "Hamlet and Othello":</p>
+	<blockquote><pre>
+&lt;addWorkParts title="Hamlet and Othello"&gt;
+   &lt;include id="sha-ham"/&gt;
+   &lt;include id="sha-oth"/&gt;
+&lt;/addWorkParts&gt;
+	</pre></blockquote>
+</li>
+
+<li class="space"><code>addChildren</code>. Adds a work set for each child of a work or work part.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title pattern. The placehoder <code>"%t"</code> in the pattern is replaced by the short title of the child.</li>
+	<li><code>id</code>. Required parent work part id.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>exclude</code> (0..n). Child work part to be excluded from the work set.</li>
+	</ul>
+</li>
+
+<li class="space"><code>addCorpus</code>. Adds a work set for each work in a corpus.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title pattern. The placehoder <code>"%t"</code> in the pattern is replaced by the short title of the work.</li>
+	<li><code>id</code>. Required corpus id.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>exclude</code> (0..n). Work to be excluded from the work set.</li>
+	</ul>
+</li>
+
+<li class="space"><code>addTconViewCategories</code>. Adds a work set for each category in a table of contents view.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title pattern. The placehoder <code>"%t"</code> in the pattern is replaced by the title of the table of contents category.</li>
+	<li><code>id</code>. Required corpus id.</li>
+	<li><code>tconViewTitle</code>. Required title of the table of contents view.</li>
+	</ul>
+</li>
+
+<li class="space"><code>addAuthors</code>. Adds a work set for each author.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title pattern. The placehoder <code>"%t"</code> in the pattern is replaced by the author name.</li>
+	</ul>
+</li>
+
+<li class="space"><code>addPeriods</code>. Adds work sets for time periods.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required work set title pattern. The placehoder <code>"%t"</code> in the pattern is replaced by the year range for the time period.</li>
+	<li><code>id</code>. Optional corpus id. If this attribute is specified, only works in the specified corpus are included. If this attribute is missing, all works are included.</li>
+	<li><code>start</code>. Required start year.</li>
+	<li><code>end</code>. Required end year.</li>
+	<li><code>increment</code>. Required year increment. This is the size of each period.</li>
+	</ul>
+	<p>For example:</p>
+	<blockquote><pre>
+&lt;addPeriods title="Period: %t" start="1580" end="1640" increment="20"/&gt;
+	</pre></blockquote>
+	<p>Adds the following work sets:</p>
+	<blockquote><pre>
+Period: 1579 or earlier
+Period: 1580-1599
+Period: 1600-1619
+Period: 1620-1639
+Period: 1640 or later
+	</pre></blockquote>
+	
+
+</li>
+
+<li class="space"><code>include</code>. Work or work part to be included in a work set.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required id of the work or work part to be included.</li>
+	</ul>
+</li>
+
+<li class="space"><code>exclude</code>. Work or work part to be excluded from a work set.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required id of the work or work part to be excluded.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-annotation.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="martin-data.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Martin Mueller's Tagging Data</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

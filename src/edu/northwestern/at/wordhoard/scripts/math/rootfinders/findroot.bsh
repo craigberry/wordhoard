@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.rootfinders.*;
+
+double findroot( double x0 , double x1 , MonadicFunction f )
+{
+	return Brent.
+	brent( x0 , x1 , f );
+}

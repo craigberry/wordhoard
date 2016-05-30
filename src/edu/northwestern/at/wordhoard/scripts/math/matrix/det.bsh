@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+double det( Matrix m )
+{
+	return Matrices.det( m );
+}
+
+

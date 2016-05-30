@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double hypot( double a, double b )
+{
+	return ArithUtils.hypot( a , b );
+}
+

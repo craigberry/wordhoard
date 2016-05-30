@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WordHoardWorkSets>
+	<addChildren title="Canterbury Tales: %t" id="cha-can">
+		<exclude id="cha-can-title"/>
+	</addChildren>
+	<addChildren title="Faerie Queene: %t" id="spe-faq">
+		<exclude id="spe-faq-title"/>
+		<exclude id="spe-faq-ded"/>
+	</addChildren>
+	<addCorpus title="Spenser: Shorter Poems" id="spe">
+		<exclude id="spe-faq"/>
+	</addCorpus>
+	<addCorpus title="Spenser: Shorter Poems (excluding SC)" id="spe">
+		<exclude id="spe-faq"/>
+		<exclude id="spe-sc"/>
+	</addCorpus>
+	<addTconViewCategories title="Shakespeare %t" id="sha" tconViewTitle="By Genre"/>
+	<addAuthors title="Author: %t"/>
+</WordHoardWorkSets>

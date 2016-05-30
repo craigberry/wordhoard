@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	toDegrees( double angrad )
+{
+	return Math.toDegrees( angrad );
+}
+

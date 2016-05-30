@@ -1,0 +1,17 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+int sign( int n )
+{
+	return ArithUtils.sign( n );
+}
+
+int sign( double d )
+{
+	return ArithUtils.sign( d );
+}
+
+double sign( double x , double y )
+{
+	return ArithUtils.sign( x , y );
+}
+

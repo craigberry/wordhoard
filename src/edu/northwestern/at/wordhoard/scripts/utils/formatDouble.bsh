@@ -1,0 +1,5 @@
+String formatDouble( double f , int d )
+{
+	return Formatters.formatDouble( f , d );
+}
+

@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double atanh( double x )
+{
+	return ArithUtils.atanh( x );
+}
+

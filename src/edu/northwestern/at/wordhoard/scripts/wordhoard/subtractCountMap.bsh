@@ -1,0 +1,8 @@
+import java.util.*;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.CountMapUtils;
+
+void subtractCountMap( Map destination , Map source )
+{
+	CountMapUtils.subtractCountMap( destination , source );
+}
+

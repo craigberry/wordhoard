@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	acos( double a )
+{
+	return Math.acos( a );
+}
+

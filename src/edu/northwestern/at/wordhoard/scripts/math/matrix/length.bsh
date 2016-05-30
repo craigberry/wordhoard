@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix length( Matrix m )
+{
+	return Matrices.length( m );
+}

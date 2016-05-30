@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix rand( int rows , int columns )
+{
+	return Matrices.rand( rows , columns );
+}
+

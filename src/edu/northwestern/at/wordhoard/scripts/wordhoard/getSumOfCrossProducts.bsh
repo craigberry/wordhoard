@@ -1,0 +1,8 @@
+import java.util.*;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.CountMapUtils;
+
+double getSumOfCrossProducts( Map countMap1 , Map countMap2 )
+{
+	return CountMapUtils.getSumOfCrossProducts( countMap1 , countMap2 );
+}
+

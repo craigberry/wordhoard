@@ -1,0 +1,23 @@
+import java.lang.Math;
+
+double 	min( double a , double b )
+{
+	return Math.min( a , b );
+}
+
+float 	min( float a , float b )
+{
+	return Math.min( a , b );
+}
+
+int 	min( int a , int b )
+{
+	return Math.min( a , b );
+}
+
+long 	min( long a , long b )
+{
+	return Math.min( a , b );
+}
+
+

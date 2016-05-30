@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	tan( double a )
+{
+	return Math.tan( a );
+}
+

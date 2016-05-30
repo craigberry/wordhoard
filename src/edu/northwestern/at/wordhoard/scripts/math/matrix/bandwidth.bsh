@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+int[] bandwidth( Matrix m )
+{
+	return Matrices.bandwidth( m );
+}
+
+

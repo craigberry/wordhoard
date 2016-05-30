@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Comparing Collocates</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates and Multiword Units</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparingtexts.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Texts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Comparing Collocates</h2>
+
+<p>
+You may want to compare the use of collocates in different
+texts.  For example, you may want to check if the use of
+collocates of the lemma "think (v)" in Hamlet differs from their use
+in Shakespeare's tragedies as a whole.
+To do this, select "Compare Collocates" from the Analysis menu.
+The resulting dialog is the same as that for
+<a href="analysis-collocates.html">"Find Collocates"</a> with the addition
+of a dropdown box for selecting the reference text.
+We select Hamlet as the analysis text and the work set Shakespeare Tragedies
+as the reference text.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparecollocates.jpg" alt="Compare collocates dialog" />
+</p>
+<div class="space" />
+
+<p>
+The output table resembles that produced by the
+<a href="analysis-comparewords.html">compare words</a> facility.
+The difference is that the reported counts are the collocate counts,
+not the individual word counts.  The same log-likelihood statistic is
+computed except using collocate counts instead of word counts.
+The interpretation remains the same as when comparing word counts.
+</p>
+
+<p>
+For our example, only the collocate "it" achieves marginally
+significant overuse in Hamlet compared with the tragedies as a whole.
+In Hamlet, "think" and "it" appear together about twice as often as
+they do in the tragedies considered as a whole.  None of the other
+collocates is significantly over or underused.  If you rerun the analysis
+and enable the "Adjust chi-square for number of comparisons" option, even
+"it" will not be deemed significant.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparecollocatesoutput.jpg"
+     alt="Compare collocates output" />
+</p>
+<div class="space" />
+
+<p>
+You may display the results in a
+<a href="analysis-comparewords.html#tagcloud">tag cloud</a>.
+The tag cloud displays the collocates in different font sizes.
+The larger the font, the large the collocate's log-likelihood value.
+To create a tag cloud from the comparison output results, select the
+"Cloud" button at the bottom of the output table.  Selecting
+the "Compress log-likelihood value range in tag clouds" option
+prevents dominant collocates from crowding out the display of less
+important collocates.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparecollocatesoutputcloud.jpg"
+     alt="Compare collocates output tag cloud " />
+</p>
+<div class="space" />
+
+<p>
+See the description of <a href="analysis-comparewords.html#tagcloud">
+tag clouds</a> in the comparing many words analysis for more details
+on tag clouds and the scaling used by WordHoard for log-likelihood values
+in tag clouds.
+</p>
+
+<p>
+Since the Tragedies work set includes Hamlet, you may want to
+<a href="work-sets.html">create a new work set</a>
+that includes all the tragedies except for Hamlet.  You can then
+compare the use of the collocates of the lemma "think (v)"
+in Hamlet with their use in all the other tragedies excluding Hamlet.
+(Note that your local version of WordHoard may not allow you to login
+or create work sets.)
+</p>
+
+<p>
+To create the new work set, start by
+<a href="login.html">logging in</a>.  After logging in,
+choose "Work/New Work Set/Using Work Parts in Text" from the "Sets"
+menu to bring up
+a dialog which allows you to create a new work from the works and
+work parts in an existing work set.
+Set the title as you prefer and specify the existing work set
+"Shakespeare Tragedies" as the source of the work parts.  Here we
+call the new work set "Shakespeare Tragedies Except Hamlet."  Press the
+"Create" button to create the work set, which will contains the
+exact same works and work parts as the "Shakespeare Tragedies" work set.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createworksetfromtext.jpg"
+     alt="Create work set from existing work set dialog" />
+</p>
+<div class="space" />
+
+<p>
+Next we need to edit the work set we just created to remove Hamlet.
+Choose "Work/Edit Work Set" and select the work set you just created
+from the list of editable work sets at the top of the dialog.  Now you
+can edit the work set you just selected by modifying the remaining
+dialog entries.  The bottom dialog entry lists the works and work parts
+contained in the work set.  You will see that all the tragedies of
+Shakespeare are checked.  Scroll down and uncheck "Hamlet" to remove it
+from the work set.  Press the "update" button to save the modified work set.
+Our work set now contains all the Shakespeare tragedies except for Hamlet.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/edittragediesworkset.jpg"
+     alt="Edit work set for tragedies excepting Hamlet" />
+</p>
+<div class="space" />
+
+<p>
+We can rerun our analysis selecting the "Shakespeare Tragedies
+Except Hamlet" work set as the reference text.
+Again, only "it" appears to be marginally overused in Hamlet.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparecollocatesoutput2.jpg"
+     alt="Compare collocates output two" />
+</p>
+<div class="space" />
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates and Multiword Units</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparingtexts.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Texts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

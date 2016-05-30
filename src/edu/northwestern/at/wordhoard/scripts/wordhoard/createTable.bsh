@@ -1,0 +1,117 @@
+import java.util.*;
+import edu.northwestern.at.wordhoard.swing.calculator.*;
+
+XTable createTable
+(
+	String title ,
+	String[] columnNames ,
+	String[] columnFormats ,
+	ArrayList data ,
+	int initialSortColumn ,
+	boolean sortAscending
+)
+{
+				//	Create sorted table model to
+				//	hold result data.
+
+	WordHoardSortedTableModel resultsModel	=
+		new WordHoardSortedTableModel
+		(
+			columnNames ,
+			initialSortColumn ,
+			sortAscending
+		);
+
+				//	Add data to table model.
+
+	resultsModel.setData( data );
+
+				//	Set comparator.
+
+	resultsModel.setWordHoardComparator();
+
+				//	Create table to display
+				//	results.
+
+	resultsTable	= new XTable( resultsModel );
+
+	resultsTable.setTitle( title );
+
+				//	Get a font manager.
+
+	FontManager fontManager	= new FontManager();
+
+				//	Get font for table entries.
+
+	Font tableFont		=
+		fontManager.getFont(
+			FrequencyAnalysisRunnerBase.getTableFontSize() );
+
+				//	Set table appearance.
+
+	resultsTable.setShowGrid( true );
+	resultsTable.setGridColor( Color.lightGray );
+	resultsTable.setHeaderBackground( Color.lightGray );
+	resultsTable.setFont( tableFont );
+	resultsTable.setStriped( true );
+	resultsTable.setStripeEmptyRows( true );
+
+                                //	Set up results table for drag and drop.
+/*
+	resultsTable.setTransferHandler( new WordTransferHandler() );
+        resultsTable.setDragEnabled( true );
+
+	TableDragMouseHandler mh	= new TableDragMouseHandler();
+
+	resultsTable.addMouseListener( mh );
+	resultsTable.addMouseMotionListener( mh );
+*/
+				//	Set column sizes from largest
+				//	values.
+
+	String[] longValues	= columnNames;
+
+	for ( int i = 0 ; i < resultsModel.getRowCount() ; i++ )
+	{
+		for ( int j = 0 ; j < resultsModel.getColumnCount() ; j++ )
+		{
+			Object o	= resultsModel.getValueAt( i , j );
+
+			if ( o != null )
+			{
+				String s	= o.toString();
+
+				if ( s.length() > longValues[ j ].length() )
+				{
+					longValues[ j ]	= s;
+				}
+			}
+		}
+	}
+
+	resultsModel.setView
+	(
+		resultsTable ,
+		null ,
+		longValues ,
+		false ,
+		true
+	);
+				//	Set the column renderers.
+
+	if ( columnFormats != null )
+	{
+		for ( int i = 1 ; i < columnFormats.length ; i++ )
+		{
+			resultsTable.setColumnRenderer
+			(
+				i ,
+				new PrintfFormatTableCellRenderer(
+					columnFormats[ i ] )
+			);
+		}
+        }
+
+	return resultsTable;
+}
+

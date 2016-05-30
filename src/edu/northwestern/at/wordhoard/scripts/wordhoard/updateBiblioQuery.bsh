@@ -1,0 +1,23 @@
+WHQuery updateBiblioQuery
+(
+	WHQuery query ,
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	String queryText
+)
+{
+	return
+		WHQueryUtils.updateQuery
+		(
+			query ,
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			WHQuery.WORKPARTQUERY ,
+			queryText
+		);
+}
+

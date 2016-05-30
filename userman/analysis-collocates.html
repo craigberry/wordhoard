@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Finding Collocates</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<div class="navpanel">
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-trackwordovertime.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Tracking Word Form Use Over Time</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-multiwordunits.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Multiword Units</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+</div>
+
+<h2>Finding Collocates</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#findcollocates">
+       Find collocates dialog
+       </a>
+       </li>
+   <li><a href="#findcollocatesoutput">
+       Find collocates output and measures of association
+       </a>
+       </li>
+   <li><a href="#tagcloud">
+       Visualizing collocate measures using a tag cloud
+       </a>
+       </li>
+   <li><a href="#contexts">
+       Collocate contexts
+       </a>
+       </li>
+   <li><a href="colloreferences">
+       References
+       </a>
+       </li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+The Latin maxim <em>noscitur a soclis</em> (one knows them
+by their associates) applies to words as well as people.  Often
+we want to know not only how often a word form appears in a text,
+but also how frequently two or more specific word forms
+appear near each other in a text.  Words which appear in proximity
+more frequently than expected are called
+<strong>collocates</strong>.
+</p>
+
+<p>
+Some collocates appear in <strong>rigid</strong> or
+<strong>frozen</strong> forms.  Examples include
+titles such as <em>King of England</em> and
+<em>President of the United States</em>,
+adverbial phrases such as <em>in general</em>, and verbal phrases
+such as <em>freeze up</em>.  You may be interested in
+the frozen forms an author uses.  You may be interested in
+collocates which are not frozen forms and
+which are unique to a specific author or a specific work.  You can
+use the same WordHoard facilities to pursue either type of investigation.
+The WordHoard <a href="analysis-multiwordunits.html">Find Multiword Units</a>
+analysis is more helpful if you are primarily interested in uncovering
+multiword phrases and frozen forms.  If you want to compare the relative
+frequency of collocates for a word in two different texts, see
+<a href="analysis-comparingcollocates.html">Comparing Collocates</a>.
+</p>
+
+<p>
+To locate collocates we need to define three quantities.
+</p>
+
+<ol>
+<li>The <em>neighborhood</em> of a word in a text which defines the
+    size of the word span to the left and right in which to search for potential
+    collocates.</li>
+<li>The <em>reference frequency</em> of the potential collocates.</li>
+<li>The statistical method for <em>comparing</em> the observed
+    and reference frequencies.</li>
+</ol>
+
+<p>
+In WordHoard you start by choosing a specific spelling or lemma for
+which you want to find collocates.  We call this the
+<strong>focus word</strong> or the <strong>node</strong>.
+You define the search neighborhood
+for collocates by specifying a span of words to the left and right
+of the focus word within which to search for collocates.  Different words
+tend to require spans of different size.  In English, short spans
+usually work well.
+</p>
+
+<p>
+WordHoard provides five different commonly used statistical measures
+for assessing which words in the neighborhood of the focus word
+are possible collocates.  The measures compare the observed
+frequency of the potential collocate in the neighborhood of the focus
+word with the frequency of the potential collocate in the entire text,
+which WordHoard uses as the reference frequency.
+</p>
+
+<h3><a name="findcollocates" id="findcollocates">
+Find collocates dialog
+</a></h3>
+
+<p>
+In the following we search for collocates of the verb "think" in
+Shakespeare's "Hamlet".  To find the collocates, select
+"Find Collocates" from the Analysis menu.
+WordHoard displays the following dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatesdialog.jpg"
+     alt="Find Collocates Dialog"></img>
+</p>
+<div class="space" />
+
+<p>
+The dialog fields are as follows.
+</p>
+
+<ul>
+   <li><p>
+       <em>Word</em> is the chosen focus word whose collocates we seek.
+       In this example we select the word "think (v)", e.g.,
+       "think" used as a verb.
+       </p>
+       </li>
+   <li><p>
+       <em>Word Form</em> specifies the type of word form to find.
+        You may specify lemma or spelling.
+        We select lemma for our analysis.  Choosing the lemma allows
+        us to ignore spelling differences that might otherwise mask
+        the recognition of a collocate because it appears in several
+        different word forms, e.g., as a singular or plural noun, or
+        in different verb tenses.  If you are interested primarily
+        in frozen forms, you probably want to choose spelling instead.
+       </p>
+       </li>
+   <li><p>
+       <em>Left span</em> specifies how many words to the left of the
+       focus word in the text WordHoard should look for collocates.
+       </p>
+       </li>
+   <li><p>
+       <em>Right span</em> specifies how many words to the right of the
+       focus word in the text WordHoard should look for collocates.
+       </p>
+       </li>
+   <li><p>
+       <em>Cutoff</em> specifies the mininum number of times a word
+       must appear in the neighborhood of the focus word to be considered
+       a collocate.
+       </p>
+       </li>
+   <li><p>
+       <em>Analysis Text</em> provides the text in which to search for
+       collocates of the selected word.  We select Shakespeare's play
+       "Hamlet" as the analysis text.
+       </p>
+       </li>
+   <li><p>
+       <em>Mark significant log-likelihood values</em> appends asterisks
+       to each significant log-likelihood value.  When the significance
+       values are not being adjusted (see the next option below), the
+       asterisks indicate the following levels of significance.
+       </p>
+
+       <table border="1" width="40%">
+          <tr>
+             <td>****</td>
+             <td>Significant at 0.0001 level</td>
+          </tr>
+          <tr>
+             <td>***</td>
+             <td>Significant at 0.001 level</td>
+          </tr>
+          <tr>
+             <td>**</td>
+             <td>Significant at 0.01 level</td>
+          </tr>
+          <tr>
+             <td>*</td>
+             <td>Significant at 0.05 level</td>
+          </tr>
+       </table>
+       <p>
+       We enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Adjust chi-square for number of comparisons</em> adjusts the
+       breakpoints for assessing the significance of the log-likelihood
+       statistics as described in the section
+       <a href="analysis-comparewords.html#adjustingsiglevels">
+       Adjusting significance levels for many comparisons</a>.
+       We do not enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Show word classes for all words</em> asks WordHoard to
+       display the word class for spellings and lemmata in the output.
+       If you do not enable this option, WordHoard displays only the
+       spelling or lemma text.  We do not enable this option.
+       </p>
+       </li>
+</ul>
+
+<h3><a name="findcollocatesoutput" id="findcollocatesoutput">
+Find collocates output and measures of association
+</a></h3>
+
+<p>
+WordHoard presents the output of the collocate analysis in a table with
+eight columns.  The first column contains the potential collocates of
+"think (v)".  This includes all the words which appeared at least
+"cutoff" number of times in the chosen span of words to the left and
+right of the focus word.
+</p>
+
+<p>
+The second column shows the number of times the potential collocate occurs
+near "think (v)" within the specified span.
+</p>
+
+<p>
+The third column presents the total number of times the
+potential collocate appears in the analysis text.  That is the reference
+frequency for the collocate.
+</p>
+
+<p>
+The next five columns present measures of
+association for the potential collocate.  We discuss those below.
+</p>
+
+<p>
+The header of the output table provides the frequency
+for the focus word.  In this case, "think (v)" appears 56 times in Hamlet.
+There are 168 words which appear within the chosen span of 1 word to the
+right and 1 word to the left of "think (v)" anywhere in Hamlet.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatesoutput.jpg"
+     alt="Find Collocates Output"></img>
+</p>
+<div class="space" />
+
+<p>
+WordHoard provides five commonly used measures of association for
+assessing how well two words adhere.
+In each case, the higher the value of the measure of association,
+the more likely the words are to be collocates.  You can sort the
+collocates on any one of the association measure values by holding
+down the shift key and clicking the column header for the measure.
+By default WordHoard sorts the collocates by descending log-likelihood
+value.
+</p>
+
+<p>
+All of the measures depend upon an estimate of the probability of
+occurrence for each word and for the two words together.  WordHoard uses the
+<em>maximum likelihood estimate</em> for the probability, which is
+just the frequency of occurrence divided by the total number of words
+in the text -- either the number of spellings or the number of lemmata,
+depending upon which type of word form we chose to analyze.
+</p>
+
+<p>
+The calculations for all the association measures are based upon the
+following contingency table.  Here <strong>w1</strong> is the focus
+word and <strong>w2</strong> is the potential collocate.
+</p>
+
+<blockquote>
+<table border="0">
+<tr>
+
+<td class="width50pct">
+<table border="0" class="lightgray" cellpadding="4">
+<tr class="darkgray">
+<td>
+&nbsp;
+</td>
+<td>w<sub><small>2</small></sub>
+</td>
+<td>~w<sub><small>2</small></sub>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="darkgray">
+w<sub><small>1</small></sub>
+</td>
+<td>O<sub><small>11</small></sub></td>
+<td>O<sub><small>12</small></sub></td>
+<td>R<sub><small>1</small></sub></td>
+</tr>
+<tr>
+<td class="darkgray">
+~w<sub><small>1</small></sub>
+</td>
+<td>O<sub><small>21</small></sub></td>
+<td>O<sub><small>22</small></sub></td>
+<td>R<sub><small>2</small></sub></td>
+</tr>
+<tr>
+<td class="darkgray">
+&nbsp;
+</td>
+<td>C<sub><small>1</small></sub></td>
+<td>C<sub><small>2</small></sub></td>
+<td>N</td>
+</tr>
+</table>
+</td>
+
+<td class="width50pct" valign="top">
+<table border="0" class="lightgray" cellpadding="4">
+<tr class="darkgray">
+<td>
+&nbsp;
+</td>
+<td>
+w<sub><small>2</small></sub>
+</td>
+<td>
+~w<sub><small>2</small></sub>
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td class="darkgray">
+w<sub><small>1</small></sub>
+</td>
+<td>E<sub><small>11</small></sub> = R<sub><small>1</small></sub>C<sub><small>1</small></sub>/N</td>
+<td>E<sub><small>12</small></sub> = R<sub><small>1</small></sub>C<sub><small>2</small></sub>/N</td>
+</tr>
+<tr><td class="darkgray">
+~w<sub><small>1</small></sub>
+</td>
+<td>E<sub><small>21</small></sub> = R<sub><small>2</small></sub>C<sub><small>1</small></sub>/N</td>
+<td>E<sub><small>22</small></sub> = R<sub><small>2</small></sub>C<sub><small>2</small></sub>/N</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</blockquote>
+
+<ul>
+<li>o<sub><small>ij</small></sub> are the observed counts.
+    <ul>
+    <li>o<sub><small>11</small></sub> counts the number of times
+        the focus word and potential collocate occur near each other
+        in the selected span.
+        </li>
+    <li>o<sub><small>12</small></sub> counts the number of times
+        the focus word appears but not near the potential collocate.
+        </li>
+    <li>o<sub><small>21</small></sub> counts the number of times the
+          the potential collocate appears but not near the focus word.
+        </li>
+    <li>o<sub><small>22</small></sub> counts the number of words other
+        than the focus word and the potential collocate.
+        </li>
+    </ul>
+    </li>
+<li>R<sub><small>1</small></sub> and R<sub><small>2</small></sub> are the
+    row sums.</li>
+<li>C<sub><small>1</small></sub> and C<sub><small>2</small></sub>
+    are the column sums.</li>
+<li>N is the total number of words (either spellings or lemmata)
+    in the text.</li>
+<li>E<sub><small>ij</small></sub> are the expected counts under the
+    hypothesis of independence -- that is, that the words are
+    not collocates.</li>
+</ul>
+
+<p>
+Here is the contingency table for the
+potential collocate "it" derived from the WordHoard output above.
+Entries in the left-hand table which appear in plain text come directly
+from the WordHoard output.  Entries in italics are computed using the
+marginal constraints.  The expected values under independence are
+computed from the formulae provided above.  Internally WordHoard constructs
+these contingency table entries in order to compute the association measures.
+</p>
+
+<blockquote>
+<table border="0">
+<tr>
+
+<td class="width50pct">
+<table border="0" class="lightgray" cellpadding="4">
+<tr class="darkgray">
+<td>
+&nbsp;
+</td>
+<td>
+it
+</td>
+<td>
+~it
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="darkgray">
+think
+</td>
+<td>14</td>
+<td><em>42</em></td>
+<td>56</td>
+</tr>
+<tr>
+<td class="darkgray">
+~think
+</td>
+<td><em>582</em></td>
+<td><em>29249</em></td>
+<td><em>29831</em></td>
+</tr>
+<tr>
+<td class="darkgray">
+&nbsp;
+</td>
+<td>596</td>
+<td><em>29291</em></td>
+<td>29887</td>
+</tr>
+</table>
+</td>
+
+<td class="width50pct" valign="top">
+<table border="0" class="lightgray" cellpadding="4">
+<tr class="darkgray">
+<td>
+&nbsp;
+</td>
+<td>
+it
+</td>
+<td>
+~it
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td class="darkgray">
+think
+</td>
+<td>E<sub><small>11</small></sub> = 1.11674</td>
+<td>E<sub><small>12</small></sub> = 54.88326</td>
+</tr>
+<tr><td class="darkgray">
+~think
+</td>
+<td>E<sub><small>21</small></sub> = 594.88326</td>
+<td>E<sub><small>22</small></sub> = 29236.11674</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</blockquote>
+
+<p>
+Based upon the entries in this contingency table we can define the
+five association measures presented by WordHoard as follows.
+</p>
+
+<ul>
+   <li><p>
+       <strong>Dice Coefficient</strong>
+       </p>
+       <p>
+       Dice coefficient = ( 2 * O<sub><small>11</small></sub> ) /
+       ( R<sub><small>1</small></sub> + C<sub><small>1</small></sub> )
+       </p>
+
+       <p>
+       For our example, the Dice coefficient for "it" is computed as:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td>
+       Dice coefficient
+       </td>
+       <td>= ( 2 * 14 ) / ( 56 + 596 )</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 28 / 652</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 0.0429</td>
+       </tr>
+       </table>
+
+       <p>
+       The Dice coefficient takes values from 0 through 1.  The value
+       increases as the frequency of the co-occurrences of the focus word
+       and potential collocate increases relative to the counts
+       of the focus word and potential collocate individually.
+       A Dice score of zero means the words never appear together,
+       while a Dice score of one means the words always appear together.
+       Mathematically the Dice score is the harmonic mean of the
+       conditional probabilities P(w1 | w2) and P(w2 | w1).
+       P(w1 | w2) is the conditional probability that the second word in
+       the bigram appears given the first word.
+       P(w2 | w1) is the conditional probability that the first word
+       in the bigram appears given the second word.
+       </p>
+
+       <p>
+       For our example, the top five scoring words (lemmata) are
+       <em>not, it, on, you, shall</em>.
+       </p>
+
+       </li>
+
+   <li><p>
+       <strong>Phi-squared</strong> (&phi;<sup><small>2</small></sup>)
+       </p>
+
+       <p>
+       &phi;<sup><small>2</small></sup> = 2 * ( O<sub><small>11</small></sub> -
+       E<sub><small>11</small></sub> ) /
+       ( E<sub><small>11</small></sub> * N )
+       </p>
+
+       <p>
+       For our example, the &phi;<sup><small>2</small></sup> value for "it"
+       is computed as:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td>
+       &phi;<sup><small>2</small></sup>
+       </td>
+       <td>= 2 * ( 14 - 1.11674 ) / ( 1.11674 * 29887 )
+       </td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 165.978 / 33376.01</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 0.0050</td>
+       </tr>
+       </table>
+
+       <p>
+       &phi;<sup><small>2</small></sup> takes values from 0 through 1.
+       &phi;<sup><small>2</small></sup> is the Pearson
+       chi-square value of association divided by the number of
+       words.  In other words, you can recover the Pearson chi-square
+       value for the contingency table from &phi;<sup><small>2</small></sup>.
+       WordHoard displays the log-likelihood chi-square value in
+       preference to Pearson's chi-square because the log-likelihood
+       value is more reliable for literary studies.
+       </p>
+
+       <p>
+       For our example, the top five scoring words (lemmata)
+       using &phi;<sup><small>2</small></sup> are
+       <em>it, not, I, you, on</em>.
+       </p>
+       </li>
+
+   <li><p>
+       <strong>Log-likelihood</strong>
+       </p>
+
+       <p>
+       The log-likelihood ratio statistic G<sup>2</sup>
+       measures the discrepancy of the the observed word frequencies
+       from the values which we would expect to see if the word frequencies
+       (by percentage) were the same in the neighborhood of the collocate
+       and the entire text.  The larger the discrepancy, the larger the
+       value of G<sup>2</sup>, and the more statistically significant
+       the difference between the frequency of the potential collocate's
+       appearance in the neighborhood of the focus word from the
+       collocate's appearance in the text as a whole.
+       </p>
+
+       <table border="0">
+       <tr>
+       <td valign="top">
+       Log-likelihood&nbsp;=
+       </td>
+       <td>
+       2 *
+          (O<sub><small>11</small></sub> *
+             ln(O<sub><small>11</small></sub>/E<sub><small>11</small></sub>) +
+          O<sub><small>12</small></sub> *
+             ln(O<sub><small>12</small></sub>/E<sub><small>12</small></sub>) +
+          O<sub><small>21</small></sub> *
+             ln(O<sub><small>21</small></sub>/E<sub><small>21</small></sub>) +
+          O<sub><small>22</small></sub> *
+             ln(O<sub><small>22</small></sub>/E<sub><small>22</small></sub>))
+       </td>
+       </tr>
+       </table>
+
+       <p>
+       For our example, the log-likelihood value for "it" is computed as:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td valign="top" align="right">
+       Log-likelihood&nbsp;=
+       </td>
+       <td>2 * ( 14 * ln( 14 / 1.11674 ) + 42 * ln( 42 / 54.88326 ) +
+       582 * ln( 582 / 594.88326 ) + 29249 * ln( 29249 / 29236.11674 ) )
+       </td>
+       </tr>
+       <tr>
+       <td valign="top" align="right">=</td>
+       <td>2 * ( 14 * 2.52864 - 42 * 0.267539 - 582 * 0.021895 + 29249 * 0.004406 )
+       </td>
+       </tr>
+       <tr>
+       <td valign="top" align="right">=</td>
+       <td>48.62</td>
+       </tr>
+       </table>
+
+       <p>
+       WordHoard ignores any zero observed count value in computing the
+       log-likelihood value.
+       </p>
+
+       <p>
+       For our example, the top five scoring words (lemmata) are
+       <em>it, I, not, you, on</em>.
+       </p>
+
+       </li>
+
+   <li><p>
+       <strong>Specific Mutual Information</strong>
+       compares the probability of finding the two words
+       w<sub><small>1</small></sub> and w<sub><small>2</small></sub>
+       in proximity to the expected probability that the two words appear
+       independently of each other in the text.
+       </p>
+
+       <p>
+       Mutual Information = log<sub>2</sub>( O<sub><small>11</small></sub> /
+       E<sub><small>11</small></sub> )
+       </p>
+
+       <p>
+       For our example, the mutual information value for "it" is computed as:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td>
+       Mutual information
+       </td>
+       <td>= log<sub>2</sub>( 14 / 1.11674 )
+       </td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= log<sub>2</sub>( 12.53649 )</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 3.6481</td>
+       </tr>
+       </table>
+
+       <p>
+       When the specific mutual information score is zero the two words
+       are not collocates.  When the score is greater than zero, the
+       two words may be collocates.  How do we determine which values
+       indicate a collocate relationship exists or not?
+       One commonly applied rule of thumb is that a Specific Mutual Information
+       score greater than 1.585 indicates the two words are possible collocates.
+       Since 1.585 is the log<sub>2</sub> of 3, a score greater than 1.585
+       indicates the observed ratio occurs at least three times more than expected
+       by chance. For our example, the top five scoring words (lemmata) are
+       <em>on, not, it, or, shall</em>.
+       </p>
+
+       <p>
+       Another approach is to compute the <em>salience</em> of the
+       word pair by multiplying the mutual information score by
+       the log<sub><small>2</small></sub> of the co-occurrence count:
+       </p>
+
+       <p>
+       Salience = log<sub>2</sub>( O<sub><small>11</small></sub> ) *
+       Mutual Information score
+       </p>
+
+       <p>
+       For example, the salience for "it" is given by:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td>
+       Salience for "it"
+       </td>
+       <td>= log<sub>2</sub>( 14 ) * 3.6481
+       </td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 3.8074 * 3.6481 </td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 13.89</td>
+       </tr>
+       </table>
+
+       <p>
+       Frequent word pairs will take on a higher salience value.  For our
+       example, the words sorted in descending order by salience are:
+       </p>
+
+       <blockquote>
+       <table border="0">
+       <tr><td>Word</td><td>Salience</td></tr>
+       <tr><td>it</td><td>13.89</td></tr>
+       <tr><td>not</td><td>12.43</td></tr>
+       <tr><td>i</td><td>11.09</td></tr>
+       <tr><td>you</td><td>10.73</td></tr>
+       <tr><td>on</td><td>8.03</td></tr>
+       <tr><td>thou</td><td>6.01</td></tr>
+       <tr><td>shall</td><td>5.01</td></tr>
+       <tr><td>so</td><td>4.84</td></tr>
+       <tr><td>of</td><td>4.63</td></tr>
+       <tr><td>what</td><td>4.56</td></tr>
+       <tr><td>they</td><td>4.45</td></tr>
+       <tr><td>or</td><td>3.23</td></tr>
+       <tr><td>and</td><td>2.50</td></tr>
+       <tr><td>to</td><td>1.79</td></tr>
+       <tr><td>do</td><td>1.72</td></tr>
+       <tr><td>be</td><td>-005</td></tr>
+       </table>
+       </blockquote>
+
+       <p>
+       Mutual information tends to weight rare events more highly than common
+       events.  That may be useful in detecting unusual frozen forms.
+       The derived salience values are less sensitive to rare events.
+       </p>
+       </li>
+
+   <li><p>
+       <strong>Symmetric Conditional Probability</strong>
+       </p>
+
+       <p>
+       The Symmetric Conditional Probability is the product of
+       the two conditional probabilities P(w1 | w2) and P(w2 | w1).
+       P(w1 | w2) is the conditional probability that the second word in
+       the bigram appears given the first word.
+       P(w2 | w1) is the conditional probability that the first word
+       in the bigram appears given the second word.
+       Symnmetric Conditional Probability takes values from 0 through 1.
+       The closer the value is to 1, the more likely the two words are
+       to be collocates.
+       </p>
+
+       <p>
+       Symmetric Conditional Probability =
+       O<sub><small>11</small></sub><sup>2</sup> /
+       ( R<sub><small>1</small></sub> * C<sub><small>1</small></sub> )
+       </p>
+
+       <p>
+       For our example, the symmetric conditional probability coefficient
+       for "it" is computed as:
+       </p>
+
+       <table border="0">
+       <tr>
+       <td>
+       Symmetric conditional probability
+       </td>
+       <td>= (14 * 14) / ( 56 * 596 )</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 196 / 33376</td>
+       </tr>
+       <tr>
+       <td>&nbsp;</td>
+       <td>= 0.0059</td>
+       </tr>
+       </table>
+
+       <p>
+       For our example, the top five scoring words (lemmata) are
+       <em>it, not, i, you, on</em>.
+       </p>
+
+       </li>
+</ul>
+
+<p>
+The different measures produce different rankings of the
+degree to which each potential collocate adheres with the focus word.
+Which measure is best for literary research?  There doesn't seem to be a
+concensus yet among the experts.  More research is needed to come up
+with recommendations.
+</p>
+
+<p>
+While WordHoard reports five measures of association for collocates,
+over eighty such measures have been proposed.  The
+<a href="#pecina2005">paper by Pavel Pecina</a> covers most of them.
+If you don't see your favorite measure in WordHoard, you can use
+WordHoard's <a href="scripting-intro.html">scripting facilities</a>
+to implement your own.
+</p>
+
+<p>
+In our example, the top five most highly ranked words on each measure
+are mostly the same.  None of them looks particularly unusual at
+first glance.  We may be able to find out more by looking at the
+<a href="#contexts">contexts</a> in which the words appear in Hamlet.
+</p>
+
+<h3><a name="tagcloud" id="tagcloud">
+Visualizing collocate measures using a tag cloud
+</a></h3>
+
+<p>
+As an alternative to looking at this dense table of numbers, WordHoard
+allows you to display the collocate results in a <strong>tag cloud</strong>.
+A tag cloud displays words or phrases in different font sizes.  To create
+a tag cloud from the collocate output results,
+select the measure of association for the tag cloud
+using the "Cloud Association Measure" drop down list.
+We will use the log-likelihood values.
+Then select the "Cloud" button to generate the cloud.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatesoutputcloud.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+The larger the text for a collocate, the higher its association
+measure value.
+This allows you assess at a glance the relative importance of the collocate.
+WordHoard assigns a font size of 100 points
+to the word with the largest (scaled) association measure value.  Words whose
+font size ends up smaller than 3 points are not displayed in the tag cloud.
+</p>
+
+<p>
+The words comprising a collocation are separated by a small raised square
+in the tag cloud output.  The collocate pairs are separated by spaces.
+</p>
+
+<p>
+Notice we selected the checkbox "Compress log-likelihood value range in
+tag clouds" at the bottom of the tabular output.  Selecting that
+option scales the log-likelihood values before generating the tag cloud
+using those values to determine the size of the text for each
+corresponding word.   WordHoard uses a transformation based upon
+the inverse hyperbolic sine of the log-likelihood values.  This
+helps to prevent exceptionally large log-likelihood values from
+dominating the tag cloud display.  WordHoard does not scale measures
+other than log-likelihood.
+</p>
+
+<p>
+Different association measures can result in different tag clouds.
+For instance, if we select Symmetric Conditional Probability as the
+association measure, we get the following tag cloud.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatesoutputcloud2.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+The lemma "it" still dominates, but "not" and "I" have switched places.
+</p>
+
+<h3><a name="contexts" id="contexts">
+Collocate contexts
+</a></h3>
+
+<p>
+WordHoard allows you to view the contexts in which a collocate appears
+in the analysis text.  For example, to view the contexts in which
+"it" appears as a neighbor of "think (v)", highlight the first row in the
+output table.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatesoutput3.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+The "Context" button is now available.  Select the
+"context" button to see the contexts in which the collocate "it"
+appears near "think" in Hamlet.  The context words are displayed
+in their lemma form since we chose to find collocates based upon
+the lemma form of "think."  From this we see that all the
+occurrences of "think" and "it" together in Hamlet are of the
+form "think it" or "think on it".
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatescontext.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+If you double-click on a context line, you will be taken to the
+full text for that context.  For example, double-click on the
+first line and the text of Hamlet opens in a new window with the
+occurence of "think" from the selected context highlighted.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findcollocatescontexttext.jpg"
+     alt="Context for collocate"></img>
+</p>
+
+<h4><a id="colloreferences" name="colloreferences">
+    References</a></h4>
+
+<p>
+Pavel Pecina surveys over eighty different measures of association
+for collocates in:
+</p>
+
+<ul>
+<li>
+<a name="pecina2005" id="pecina2005"></a>
+Pecina, Pavel. 2005. An Extensive Empirical Study of Collocation
+Extraction Methods. In
+<em>Proceedings of the 43th Annual Meeting of the Association for
+Computational Linguistics (ACL 2005)</em>, Student Research Workshop,
+Ann Arbor, Michigan, June.
+</li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-trackwordovertime.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Tracking Word Form Use Over Time</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-multiwordunits.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Multiword Units</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

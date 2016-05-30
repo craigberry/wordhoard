@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix prodcol( Matrix m )
+{
+	return Matrices.prodCol( m );
+}

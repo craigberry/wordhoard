@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Comparing Word Form Counts</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-createwordlists.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Displaying Word Form Lists</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-trackwordovertime.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Tracking Word Form Use Over Time</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Comparing Word Form Counts</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#loglike">Log-likelihood for comparing texts</a>
+       </li>
+   <li><a href="#adjustingsiglevels">Adjusting significance levels for many comparisons</a>
+       </li>
+   <li><a href="#manywords">
+       Comparing counts for many word forms
+       </a>
+       </li>
+   <li><a href="#tagcloud">
+       Visualizing differences using a tag cloud
+       </a>
+       </li>
+   <li><a href="#oneword">
+       Comparing counts for a single word form
+       </a>
+       </li>
+   <li><a href="#references">
+       References
+       </a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+</p>
+
+<p>
+Comparisons tell you whether there is more of this here or less of that
+there.  Knowing that individual word forms in one text
+occur more or less often than in another text may help characterize some generic
+differences between those texts.
+Statistics on how often the words occur add rigor and provide a framework for
+judging whether the observed differences are likely or unlikely to have
+occurred by chance, and so deserve futher attention and interpretation.
+</p>
+
+<h3><a name="loglike" id="loglike">Log-likelihood for comparing texts</a></h3>
+
+<p>
+WordHoard allows you to compare the frequencies of word form occurrences in two texts and obtain
+a statistical measure of the significance of the differences.
+WordHoard uses the <em>log-likelihood ratio G<sup>2</sup></em> as a measure
+of difference.  To compute G<sup>2</sup>,
+WordHoard constructs a two-by-two <em>contingency
+table</em> of frequencies for each word.
+</p>
+
+<table border="1" width="80%" class="lightgray">
+<tr class="darkgray">
+<td>
+</td>
+<td>Analysis Text
+</td>
+<td>Reference Text
+</td>
+<td>Total</td></tr>
+<tr>
+<td class="darkgray">
+Count of word form
+</td>
+<td>a</td>
+<td>b</td>
+<td>a+b</td>
+</tr>
+<tr><td class="darkgray">Count of other word forms</td>
+<td>c-a</td>
+<td>d-b</td>
+<td>c+d-a-b</td>
+</tr>
+
+<tr>
+<td class="darkgray">
+Total
+</td>
+<td>c</td>
+<td>d</td>
+<td>c+d</td>
+</tr>
+</table>
+
+<p>
+The value of "a" is the number of times the word occurs in the
+analysis text.  The value of "b" is the number of times the word occurs
+in the reference text.  The value of "c" is the total number of words in
+the analysis text. The value of "d" is the total number of words in the
+reference text.
+</p>
+
+<p>
+Given this contingency table, WordHoard calculates the
+<em>log-likelihood ratio statistic G<sup>2</sup></em>
+to assess the size and significance of the difference of a word's frequency
+of use in the two texts.  The log-likelihood ratio measures the
+discrepancy of the the observed word frequencies from the values
+which we would expect to see if the word frequencies (by percentage)
+were the same in the two texts.  The larger the discrepancy, the larger
+the value of G<sup>2</sup>, and the more statistically significant the
+difference between the word frequencies in the texts.  Simply put, the
+log-likelihood value tells us how much more likely it is that the
+frequencies are different than that they are the same.
+</p>
+
+<div class="indentedgray">
+<p>
+The log-likelihood value is computed as the sum over all terms of
+the form "O * ln(O/E)" where "O" is the observed value of a contingency
+table entry, "E" is the expected value under a model of homogeneity for
+frequencies for the two texts, and "ln" is the natural log.  If the
+observed value is zero, we ignore that table entry in computing the total.
+WordHoard calculates the log-likelihood value G<sup>2</sup> for each
+two-by-two contingency table as follows.
+</p>
+
+<p>
+<code>
+E1 = c*(a+b)/(c+d)<br />
+E2 = d*(a+b)/(c+d)<br />
+G<sup>2</sup> = 2*((a*ln(a/E1)) + (b*ln(b/E2)))
+</code>
+</p>
+</div>
+
+<p>
+To determine the statistical significance of G<sup>2</sup>, we refer
+the G<sup>2</sup> value to the chi-square distribution with one degree of freedom.
+The significance value tells you how often a G<sup>2</sup> as large as the one
+WordHoard computed could occur by chance.  For example, a log-likelihood value of 6.63
+should occur by chance only about one in a hundred times.  This means the
+significance of a G<sup>2</sup> value of 6.63 is 0.01 .
+</p>
+
+<p>
+Here are the breakpoint (percentage point) values for G<sup>2</sup> for
+commonly used levels of significance.
+</p>
+
+       <table border="1" width="40%">
+          <tr>
+             <td>G<sup>2</sup></td>
+             <td>Significance</td>
+          </tr>
+          <tr>
+             <td>15.13</td>
+             <td>p &lt; 0.0001</td>
+          </tr>
+          <tr>
+             <td>10.83</td>
+             <td>p &lt; 0.001</td>
+          </tr>
+          <tr>
+             <td>6.63</td>
+             <td>p &lt; 0.01</td>
+          </tr>
+          <tr>
+             <td>3.84</td>
+             <td>p &lt; 0.05</td>
+          </tr>
+       </table>
+
+
+<h3><a name="adjustingsiglevels" id="adjustingsiglevels">
+    Adjusting significance levels for many comparisons
+    </a>
+    </h3>
+
+<p>
+When you compute many log-likelihood ratio values some will
+appear significant by chance alone.  For example, if we compute one thousand
+log-likelihood values, we can expect about ten of them to exceed the
+breakpoint value of 6.63 by chance.
+This may lead us to accept a frequency difference as significant when it is really
+just a chance fluctuation.
+</p>
+
+<p>
+One way to deal with this problem is to "up the ante"
+by adjusting the breakpoint values for the number of comparisons.
+WordHoard allows this as an option.  The method used
+by WordHoard is called the <em>Sidak correction</em>.  It is very conservative,
+particularly as the total number of comparisons increases.
+</p>
+
+<div class="indentedgray">
+<p>
+The Sidak correction computes an adjusted significance level "alpha" as follows.
+</p>
+
+<p>
+<code>
+adjusted alpha = 1 - (1 - alpha)<sup>1/k</sup><br />
+</code>
+</p>
+
+<p>
+where "alpha" is the nominal significance level and "k" the number of comparisons.
+</p>
+
+<p>
+For example, let's say there are k=1,000 comparisons and alpha=0.01 .  The
+nominal breakpoint for achieving a 0.01 level of significance is 6.63 .  The Sidak
+adjusted level is 1 - (1 - 0.05)<sup>1/1000</sup> or 0.000051 .  This is
+roughly the same as dividing the nominal significance level by the number of
+comparisons.  The corresponding adjusted breakpoint for G<sup>2</sup> is 16.4 .
+</p>
+
+
+</div>
+
+<h3><a name="manywords" id="manywords">
+    Comparing counts for many word forms</a></h3>
+
+<p>
+As an example, let's see how comparing word form frequencies reveals
+some properties of Shakespeare's play "Othello, the Moor of Venice."
+The comparison we select will highlight lemmata that are disproportionately
+common or rare in Othello with respect to Shakespeare's
+tragedies as a whole.
+To compare the lemmata counts, select
+"Compare Many Word Forms" from the Analysis menu.
+WordHoard displays the following dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparemanywordforms.jpg"
+     alt="Compare many word forms"></img>
+</p>
+<div class="space" />
+
+<p>
+The dialog fields are as follows.
+</p>
+
+<ul>
+   <li><p>
+       <em>Word Form</em> specifies the type of word form to compare.
+        You may specify lemma, spelling, word class,
+        speaker gender, speaker mortality, verse, or metrical shape.
+        Some word types are only applicable to specific corpora.
+        For example, metrical shape only applies to certain works
+        in the Early Greek Epic corpus. We select lemma for our analysis.
+       </p>
+       </li>
+   <li><p>
+       <em>Analysis Text</em> provides the first work or set of works
+       to be compared.  This may be a corpus, work, work set, or word set.
+       We select Shakespeare's play "Othello".
+       </p>
+       </li>
+   <li><p>
+       <em>Reference Text</em> provides the second set of works
+       with which the word form frequencies in the analysis set will
+       be compared.
+       This must be different from the analysis text.
+       We select the work set "Shakespeare's Tragedies"
+       as the reference text.
+       </p>
+       </li>
+   <li><p>
+       <em>Minimum count</em> specifies the minimum number of times
+       a word form must appear in the combined analysis and reference texts
+       to be displayed in the output.  Five is the default minimum count,
+       which is what we select.
+       </p>
+       </li>
+   <li><p>
+       <em>Minimum works</em> specifies the minimum number of works
+       in which a word form must appear in the combined analysis and
+       reference texts to be displayed in the output.
+       The default minimum works count is one, and that is what we select.
+       </p>
+       </li>
+   <li><p>
+       <em>Report percents as</em> specifies how WordHoard should
+       report frequency percents in the output.
+       </p>
+       <ul>
+          <li><p><em>Percents</em> reports the percents as is.
+              </p>
+              </li>
+          <li><p><em>Parts per ten thousand</em> reports the percents
+              as fractional parts per ten thousand.
+              This default mode of presentation, traditional in
+              the humanities, expresses the
+              percent values as frequencies in a normalized
+              document size of ten thousand words.
+              </p>
+              </li>
+          <li><p><em>Rounded parts per million</em> reports the percents
+              as rounded parts per million.  This is similar to
+              parts per ten thousand, except that the values are based
+              on a normalized document size of one million words,
+              and are rounded to the nearest whole number.
+              </p>
+              </li>
+       </ul>
+       <p>
+       We select "Parts per ten thousand".
+       </p>
+       </li>
+   <li><p>
+       <em>Mark significant log-likelihood values</em> appends asterisks
+       to each significant log-likelihood value.  When the significance
+       values are not being adjusted (see the next option below), the
+       asterisks indicate the following levels of significance.
+       </p>
+
+       <table border="1" width="40%">
+          <tr>
+             <td>****</td>
+             <td>Significant at 0.0001 level</td>
+          </tr>
+          <tr>
+             <td>***</td>
+             <td>Significant at 0.001 level</td>
+          </tr>
+          <tr>
+             <td>**</td>
+             <td>Significant at 0.01 level</td>
+          </tr>
+          <tr>
+             <td>*</td>
+             <td>Significant at 0.05 level</td>
+          </tr>
+       </table>
+       <p>
+       We enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Adjust chi-square for number of comparisons</em> adjusts the
+       breakpoints for assessing the significance of the log-likelihood
+       statistics as described in the section
+       <a href="#adjustingsiglevels">Adjusting significance levels for
+       many comparisons</a> above.  We do not enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter out proper names</em> suppresses the display
+       of statistics for proper names.  Usually when you
+       compare texts you are not interested in seeing differences
+       in the counts for proper names.  We enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Show word classes for all words</em> asks WordHoard to
+       display the word class for spellings and lemmata in the output.
+       If you do not enable this option, WordHoard displays only the
+       spelling or lemma text.  We do not enable this option.
+       </p>
+       </li>
+</ul>
+
+<p>
+The output of the comparison analysis using our selected dialog settings follows.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparemanywordformsoutput.jpg"
+     alt="Compare many word forms output for lemmata"></img>
+</p>
+<div class="space" />
+
+<p>
+The header tells which texts are being compared
+and the total number of word forms in each.  Othello contains 3,006 distinct
+lemmata and 26,312 in all.  The Shakespeare tragedies contain 9,725
+distinct lemmata and 230,787 in all.
+</p>
+
+<p>
+The comparison output contains seven columns, initially sorted in descending
+order by log-likelihood value.  This allows you to see right away which word
+forms show the greatest difference in relative frequency between the
+analysis and reference texts.
+</p>
+
+<ul>
+   <li><p>
+       The first column contains the word form text.
+       In our example, the first column shows the lemma.
+       </p>
+       </li>
+
+   <li><p>
+       The next column contains the word class for spellings
+       and lemmata when the "Show word classes for all words" option
+       is enabled in the compare many words dialog.  Since we did
+       not select that option, the word class column does not appear.
+       </p>
+       </li>
+   <li><p>
+       The next column contains a "+" is the word form is overused in
+       the analysis text with respect to the reference text, a "-" id
+       the word form is underused, and a blank if the word form use is
+       the same in both texts.
+       </p>
+       </li>
+   <li><p>
+       The next column contains the G<sup>2</sup> log-likelihood value.
+       Trailing asterisks indicate significant values of
+       G<sup>2</sup> when the "Mark significant
+       log-likelihood values" option is enabled.  We enabled that
+       option, so the asterisks appear.
+       </p>
+       </li>
+   <li><p>
+       The next column shows the (possibly normalized) percent of
+       occurrence of the word form in the analysis text.  The sample
+       output expresses this percent as parts per ten thousand.
+       </p>
+       </li>
+   <li><p>
+       The next column shows the (possibly normalized) percent of
+       occurrence of the word form in the reference text.  The sample
+       output expresses this percent as parts per ten thousand.
+       </p>
+       </li>
+   <li><p>
+       The next column shows the actual number of times the word
+       form occurred in the analysis text.
+       </p>
+       </li>
+   <li><p>
+       The last column shows the actual number of times the word
+       form occurred in the reference text.
+       </p>
+       </li>
+</ul>
+
+<p>
+The analysis indicates that "she," "moor", "i," "we", "lieutenant,"
+"handkerchief," "our", "willow," "it," "honest," "do," "her", "oh",
+"think", "wife", "general", "signior", "heaven", "thy", and "devil"
+are the twenty lemmata most over or
+underused in Othello as compared with the tragedies as a whole.  "She"
+and "wife" probably reflect the importance of Desdemona.  "Willow"
+reflects the famous Willow Song of Desdemona.
+"Moor" and "general" reflect Othello.
+"Lieutenant" and "handkerchief" reflect the machinations of Iago.
+"I" gets much more use in Othello
+than the tragedies as a whole, presumably because of the amount of
+interior dialog, while "we" gets less.
+"Honest" reflects Othello's preoccupation with Desdemona's faithfulness
+and the honesty of his subordinates.  If you continue down the list of
+words others pop out such as "jealous", "reputation" and "confess".
+</p>
+
+<p>
+This example demonstrates just how much looking at simple
+word frequency differences can illuminate the text of a work.
+</p>
+
+<h3><a name="tagcloud" id="tagcloud">
+Visualizing differences using a tag cloud
+</a></h3>
+
+<p>
+As an alternative to looking at this dense table of numbers, WordHoard
+allows you to display the comparison results in a <strong>tag cloud</strong>.
+A tag cloud displays words or phrases in different font sizes.  To create
+a tag cloud from the comparison output results, select the "Cloud" button
+at the bottom of the output table.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparemanywordformsoutputcloud.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+The larger the text for a word, the higher its log-likelihood value.
+This allows you assess at a glance the relative importance of the
+overuse or underuse of a lemma.  Words displayed in black are overused
+in the analysis text (here Othello), while words displayed in gray are
+underused in the analysis text.  WordHoard assigns a font size of 100 points
+to the word with the largest (scaled) log-likelihood value.  Words whose
+font size ends up smaller than 3 points are not displayed in the tag cloud.
+</p>
+
+<p>
+Notice we selected the checkbox "Compress log-likelihood value range in
+tag clouds" at the bottom of the tabular output.  Selecting that
+option scales the log-likelihood values before generating the tag cloud
+using those values to determine the size of the text for each
+corresponding word.   WordHoard uses a transformation based upon
+the inverse hyperbolic sine of the log-likelihood values.  This
+helps to prevent exceptionally large log-likelihood values from
+dominating the tag cloud display.
+</p>
+
+<div class="indentedgray">
+<p>
+The scaling transformation is defined as
+</p>
+
+<blockquote>
+<p>
+<code>
+scaled log-likelihood value = 2.0 ^ asinh( log-likelihood )
+</code>
+</p>
+</blockquote>
+
+<p>
+The inverse hyperbolic since has the useful properties of being nearly
+linear near zero and exponential for large values, with a smooth
+transition between.
+</p>
+</div>
+
+<p>
+Even when scaled the first few words may dominate the tag cloud display
+so that less important words appear in very small font sizes.  You may
+click on a word in the tag cloud to remove it from the display.  If you
+click on the words with the largest font size, the font sizes for the
+remaining words will be rescaled and the tag cloud redrawn.  For example,
+clicking on the words "she" and "we" in our tag cloud above removes those
+words from the cloud and results in a revised display.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparemanywordformsoutputcloud2.jpg"
+     alt="Tag cloud for lemma comparison"></img>
+</p>
+<div class="space" />
+
+<p>
+Note that "moor" is now the largest word and that the font sizes for
+subsequent words have also been scaled up.
+</p>
+
+<p>
+By default WordHoard includes all the words in the output table in
+the tag cloud.  If you wish to display a subset of the words,
+you may select the table rows corresponding to the words of interest,
+and then select the "Cloud" button.  Only the words you select will
+appear in the tag cloud.
+</p>
+
+<p>
+You may use the "Save As" command on the "File" menu to save the
+tag cloud to a file.  You may choose to save the file in HTML format
+so that you can view it with a web browser; as an image file in JPEG or
+PNG format; or as plain text (in which case the relative text sizes
+will not be visible).
+</p>
+
+<p>
+Let's rerun the analysis choosing speaker gender as the word form for
+comparison.  Here is the output.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparemanywordformsoutput2.jpg"
+     alt="Compare many word forms output for speaker gender"></img>
+</p>
+<div class="space" />
+
+<p>
+Women get more speaking time in Othello than in the tragedies as a whole.
+This presumably reflects the importance of Desdemona in Othello.
+As a result, men get less speaking time in Othello than in the tragedies
+as a whole.
+</p>
+
+<h3><a name="oneword" id="oneword">
+    Comparing counts for a single word form</a></h3>
+
+<p>
+If you are interested in looking at differences for specific word forms
+you can choose "Compare Single Word Form" from the Analysis menu.
+This displays a dialog similar to that for comparing many word forms
+but allows you to specify the word form of interest.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparesinglewordform.jpg"
+     alt="Compare single word form"></img>
+</p>
+<div class="space" />
+
+<p>
+Let's see if there is a difference in frequency for the lemma
+"think (v)" in Othello as compared with the Shakespeare Tragedies
+as a whole.  Press the OK button to show the results.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/comparesinglewordformoutput.jpg"
+     alt="Compare single word form output for Othello"></img>
+</p>
+<div class="space" />
+
+<p>
+The log-likelihood value of 24.9 shows that the lemma "think (v)"
+is used significantly more often in Othello than in the tragedies
+as a whole.  In fact, "think (v)" is used almost twice as much in
+Othello as the tragedies as a whole (32.68 parts per 10,000 for
+Othello as compared with 17.29 parts per 10,000 in the tragedies).
+This is not surprising since interior dialog plays such a large part
+in Othello.
+</p>
+
+<p>
+The output for "think (v)" is the same as we received when comparing
+all the words of Othello with the tragedies.  Oftentimes it is worth
+the small amount of extra computing time to perform the full comparison
+analysis on all the words even if you are interested in just a few.
+You may uncover a result that surprises you.
+</p>
+
+<h3><a name="references" id="references">
+    References</a></h3>
+
+<p>
+Ted Dunning's paper discusses the use of the log-likelihood test
+for general textual analysis.
+</p>
+
+<ul>
+<li>
+Dunning, Ted. 1993. Accurate Methods for the Statistics of Surprise
+and Coincidence.  <em>Computational Linguistics</em>,
+Volume 19, number 1, pp. 61-74.
+</li>
+</ul>
+
+<p>
+Rayson and Garside discuss the use of the log-likelihood test
+for comparing corpora.
+</p>
+
+<ul>
+<li>
+Rayson, P. and Garside, R. 2000.
+Comparing corpora using frequency profiling.
+In <em>Proceedings of the workshop on Comparing Corpora</em>,
+held in conjunction with the 38th annual meeting of the
+Association for Computational Linguistics (ACL 2000).
+1-8 October 2000, Hong Kong.
+</li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-createwordlists.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Displaying Word Form Lists</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-trackwordovertime.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Tracking Word Form Use Over Time</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+
+

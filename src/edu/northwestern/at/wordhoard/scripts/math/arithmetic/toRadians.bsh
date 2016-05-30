@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	toRadians( double degrad )
+{
+	return Math.toRadians( degrad );
+}
+

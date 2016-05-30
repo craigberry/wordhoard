@@ -1,0 +1,5 @@
+boolean deleteWordSet( WordSet wordSet )
+{
+	return WordSetUtils.deleteWordSet( wordSet );
+}
+

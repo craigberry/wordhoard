@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.Factorial;
+
+double factorial( int n )
+{
+	return Factorial.factorial( n );
+}
+
+double logFactorial( int n )
+{
+	return Factorial.logfactorial( n );
+}
+

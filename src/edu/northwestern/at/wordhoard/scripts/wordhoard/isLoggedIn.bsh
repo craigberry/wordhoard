@@ -1,0 +1,7 @@
+import edu.northwestern.at.wordhoard.swing.WordHoardSettings;
+
+boolean isLoggedIn()
+{
+	return WordHoardSettings.isLoggedIn();
+}
+

@@ -1,0 +1,79 @@
+import java.util.*;
+import edu.northwestern.at.wordhoard.swing.calculator.*;
+
+void addResults( String title , String header , JComponent results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		header ,
+		results
+	);
+}
+
+void addResults( String title , String header , String results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		header ,
+		results
+	);
+}
+
+void addResults( String title , String header , StringBuffer results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		header ,
+		results
+	);
+}
+
+void addResults( String title , String header , StringWriter results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		header ,
+		results
+	);
+}
+
+void addResults( String title , JComponent results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		results
+	);
+}
+
+void addResults( String title , String results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		results
+	);
+}
+
+void addResults( String title , StringBuffer results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		results
+	);
+}
+
+void addResults( String title , StringWriter results )
+{
+	WordHoardCalculatorWindow.getCalculatorWindow().addResults
+	(
+		title ,
+		results
+	);
+}
+

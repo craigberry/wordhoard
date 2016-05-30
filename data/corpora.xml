@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WordHoardCorpora>
+	<corpus id="ege" charset="greek" posType="greek">
+		<title>Early Greek Epic</title>
+		<taggingData>
+			<lemma/>
+			<pos/>
+			<wordClass/>
+			<spelling/>
+			<speaker/>
+			<gender/>
+			<mortality/>
+			<prosodic/>
+			<metricalShape/>
+		</taggingData>
+		<translations>
+			<translation id="English"/>
+			<translation id="German"/>
+			<translation id="Roman Transliteration"/>
+			<translation id="Metrical Transcription"/>
+			<description>There are several translations, transliterations and other information available for the Early Greek Epic corpus.
+
+English translations are available for all of the works except for The Odyssey and Shield of Herakles.
+
+German translations are available for The Iliad and The Odyssey.
+
+Roman transliterations and metrical transcriptions are available for all of the works.
+
+Select the items you wish to see when you view the works.
+			</description>
+		</translations>
+		<tconview type="list">
+			<work id="ege-IL"/>
+			<work id="ege-OD"/>
+			<work id="ege-TH"/>
+			<work id="ege-WD"/>
+			<work id="ege-SH"/>
+			<work id="ege-HH"/>
+		</tconview>
+	</corpus>
+	<corpus id="cha" charset="roman" posType="english">
+		<title>Chaucer</title>
+		<taggingData>
+			<lemma/>
+			<pos/>
+			<wordClass/>
+			<spelling/>
+			<prosodic/>
+		</taggingData>
+		<tconview type="list">
+			<work id="cha-can"/>
+			<work id="cha-bod"/>
+			<work id="cha-hof"/>
+			<work id="cha-aaa"/>
+			<work id="cha-pof"/>
+			<work id="cha-boe"/>
+			<work id="cha-tro"/>
+			<work id="cha-lgw"/>
+			<work id="cha-poe"/>
+			<work id="cha-ast"/>
+			<work id="cha-ror"/>
+		</tconview>
+	</corpus>
+	<corpus id="spe" charset="roman" posType="english">
+		<title>Spenser</title>
+		<taggingData>
+			<lemma/>
+			<pos/>
+			<wordClass/>
+			<spelling/>
+			<prosodic/>
+			<pubDates/>
+		</taggingData>
+		<tconview type="list">
+			<work id="spe-faq"/>
+			<work id="spe-sc"/>
+			<work id="spe-daph"/>
+			<work id="spe-colcl"/>
+			<work id="spe-asclor"/>
+			<work id="spe-fh"/>
+			<work id="spe-theatre"/>
+			<work id="spe-com"/>
+			<work id="spe-amepith"/>
+			<work id="spe-proth"/>
+			<work id="spe-comson"/>
+			<work id="spe-frag"/>
+		</tconview>
+	</corpus>
+	<corpus id="sha" charset="roman" posType="english">
+		<title>Shakespeare</title>
+		<taggingData>
+			<lemma/>
+			<pos/>
+			<wordClass/>
+			<spelling/>
+			<speaker/>
+			<gender/>
+			<mortality/>
+			<prosodic/>
+			<pubDates/>
+		</taggingData>
+		<tconview type="category" title="By Genre">
+			<category title="Comedies">
+				<work id="sha-com"/>
+				<work id="sha-tam"/>
+				<work id="sha-tgv"/>
+				<work id="sha-lll"/>
+				<work id="sha-mnd"/>
+				<work id="sha-mev"/>
+				<work id="sha-mww"/>
+				<work id="sha-man"/>
+				<work id="sha-ayl"/>
+				<work id="sha-twn"/>
+				<work id="sha-tro"/>
+				<work id="sha-aww"/>
+				<work id="sha-mem"/>
+			</category>
+			<category title="Histories">
+				<work id="sha-1h6"/>
+				<work id="sha-2h6"/>
+				<work id="sha-3h6"/>
+				<work id="sha-ri3"/>
+				<work id="sha-kij"/>
+				<work id="sha-ri2"/>
+				<work id="sha-1h4"/>
+				<work id="sha-2h4"/>
+				<work id="sha-he5"/>
+				<work id="sha-he8"/>
+			</category>
+			<category title="Tragedies">
+				<work id="sha-tit"/>
+				<work id="sha-roj"/>
+				<work id="sha-juc"/>
+				<work id="sha-ham"/>
+				<work id="sha-oth"/>
+				<work id="sha-kil"/>
+				<work id="sha-mac"/>
+				<work id="sha-ant"/>
+				<work id="sha-cor"/>
+				<work id="sha-tim"/>
+			</category>
+			<category title="Romances">
+				<work id="sha-per"/>
+				<work id="sha-cym"/>
+				<work id="sha-win"/>
+				<work id="sha-tem"/>
+			</category>
+			<category title="Poems">
+				<work id="sha-ven"/>
+				<work id="sha-son"/>
+				<work id="sha-lov"/>
+				<work id="sha-pht"/>
+				<work id="sha-rap"/>
+			</category>
+		</tconview>
+		<tconview type="byDate" title="By Date"/>
+	</corpus>
+</WordHoardCorpora>

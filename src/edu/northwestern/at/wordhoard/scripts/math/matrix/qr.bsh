@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix[] qr( Matrix m )
+{
+	return Matrices.qr( m );
+}
+

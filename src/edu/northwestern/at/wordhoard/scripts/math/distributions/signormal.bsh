@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double signormal( double z )
+{
+	return Sig.normal( z );
+}
+

@@ -1,0 +1,180 @@
+<project name="WordHoard" default="bin" basedir=".">
+
+	<property name="wordhoard" value="edu/northwestern/at/wordhoard"/>
+	<property name="model" value ="edu/northwestern/at/wordhoard/model"/>
+	<property name="swing" value ="edu/northwestern/at/wordhoard/swing"/>
+	<property name="tools" value ="edu/northwestern/at/wordhoard/tools"/>
+	<property name="server" value ="edu/northwestern/at/wordhoard/server"/>
+	<property name="server-model" value ="edu/northwestern/at/wordhoard/server/model"/>
+	<property name="scripts" value="edu/northwestern/at/wordhoard/scripts"/>
+	<property name="utils" value="edu/northwestern/at/utils"/>
+	<property name="smoothwindows"
+		value ="edu/northwestern/at/utils/swing/plaf/smoothwindows"/>
+
+	<property name="build.compiler" value="modern"/>
+
+	<path id="classpath">
+		<pathelement path="bin"/>
+		<fileset dir="lib">
+			<include name="*.jar"/>
+			<include name="*.zip"/>
+		</fileset>
+ 	</path>
+
+	<target name="clean">
+		<delete dir="bin"/>
+		<delete dir="javadoc"/>
+	</target>
+
+	<target name="init">
+		<mkdir dir="bin"/>
+		<mkdir dir="javadoc"/>
+  		<copy file="misc/log4j.properties" todir="bin"/>
+  		<copy file="misc/ehcache.xml" todir="bin"/>
+  		<copy file="misc/hibernate.properties" todir="bin"/>
+		<copy todir="bin/${scripts}/">
+    		<fileset dir="src/${scripts}" includes="**/*.bsh"/>
+  		</copy>
+		<copy todir="bin/${wordhoard}/resources">
+    		<fileset dir="src/${wordhoard}/resources"/>
+  		</copy>
+		<copy todir="bin/${swing}/resources">
+    		<fileset dir="src/${swing}/resources"/>
+  		</copy>
+		<copy todir="bin/${swing}/calculator/resources">
+    		<fileset dir="src/${swing}/calculator/resources"/>
+  		</copy>
+		<copy todir="bin/${swing}/calculator/help">
+    		<fileset dir="src/${swing}/calculator/help"/>
+  		</copy>
+		<copy todir="bin/${utils}/swing/notepad/resources">
+    		<fileset dir="src/${utils}/swing/notepad/resources"/>
+  		</copy>
+		<copy todir="bin/${smoothwindows}/icons/">
+    		<fileset dir="src/${smoothwindows}/icons/"/>
+  		</copy>
+		<copy todir="bin/${utils}/swing/resources">
+    		<fileset dir="src/${utils}/swing/resources"/>
+  		</copy>
+		<copy todir="bin/${utils}/swing/icons/resources">
+    		<fileset dir="src/${utils}/swing/icons/resources"/>
+  		</copy>
+		<copy todir="bin/${utils}/swing/styledtext/resources">
+    		<fileset dir="src/${utils}/swing/styledtext/resources"/>
+  		</copy>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="bin" classpathref="classpath"
+			source="1.4" target="1.4" debug="on" deprecation="on"/>
+	</target>
+
+	<target name="hibernate" depends="compile">
+		<taskdef name="hibernatedoclet"
+			classname="xdoclet.modules.hibernate.HibernateDocletTask">
+				<classpath>
+					<fileset dir="lib/xdoclet">
+						<include name="*.jar"/>
+					</fileset>
+				</classpath>
+		</taskdef>
+		<hibernatedoclet destdir="bin">
+			<fileset dir="src">
+				<include name="**/model/*.java"/>
+				<include name="**/model/annotations/*.java"/>
+				<include name="**/model/bibtool/*.java"/>
+				<include name="**/model/counts/*.java"/>
+				<include name="**/model/grouping/*.java"/>
+				<include name="**/model/morphology/*.java"/>
+				<include name="**/model/querytool/*.java"/>
+				<include name="**/model/search/*.java"/>
+				<include name="**/model/speakers/*.java"/>
+				<include name="**/model/text/*.java"/>
+				<include name="**/model/userdata/*.java"/>
+				<include name="**/model/wrappers/*.java"/>
+				<include name="**/model/tconview/*.java"/>
+				<include name="**/server/model/*.java"/>
+			</fileset>
+			<hibernate version="3.0"/>
+		</hibernatedoclet>
+	</target>
+
+	<target name="rmic" depends="compile">
+		<rmic base="bin" stubversion="1.2">
+			<include name="${server}/*Impl.class"/>
+		</rmic>
+	</target>
+
+	<target name="bin" depends="hibernate,rmic"/>
+
+	<target name="full" depends="clean,bin"/>
+
+	<target name="doc" depends="init">
+		<javadoc sourcepath="src" destdir="javadoc"
+				packagenames="edu.northwestern.at.*"
+				windowtitle="WordHoard"
+				classpathref="classpath"
+				overview="misc/overview.html"
+				excludepackagenames="edu.northwestern.at.utils.taglets.*"
+				package="true"
+				maxmemory="500m">
+			<doctitle><![CDATA[<h2>WordHoard</h2>]]></doctitle>
+			<tag name="hibernate.class" description="hibernate.class" enabled="false"/>
+			<tag name="hibernate.subclass" description="hibernate.subclass" enabled="false"/>
+			<tag name="hibernate.discriminator" description="hibernate.discriminator"
+				enabled="false"/>
+			<tag name="hibernate.id" description="hibernate.id" enabled="false"/>
+			<tag name="hibernate.property" description="hibernate.property" enabled="false"/>
+			<tag name="hibernate.column" description="hibernate.column" enabled="false"/>
+			<tag name="hibernate.many-to-one" description="hibernate.many-to-one" enabled="false"/>
+			<tag name="hibernate.list" description="hibernate.list" enabled="false"/>
+			<tag name="hibernate.map" description="hibernate.map" enabled="false"/>
+			<tag name="hibernate.bag" description="hibernate.bag" enabled="false"/>
+			<tag name="hibernate.set" description="hibernate.bag" enabled="false"/>
+			<tag name="hibernate.collection-key" description="hibernate.collection-key"
+				enabled="false"/>
+			<tag name="hibernate.collection-element" description="hibernate.collection-element"
+				enabled="false"/>
+			<tag name="hibernate.collection-index" description="hibernate.collection-index"
+				enabled="false"/>
+			<tag name="hibernate.collection-many-to-many"
+				description="hibernate.collection-many-to-many"
+				enabled="false"/>
+			<tag name="hibernate.collection-one-to-many"
+				description="hibernate.collection-one-to-many"
+				enabled="false"/>
+			<tag name="hibernate.component" description="hibernate.component" enabled="false"/>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionCacheTaglet">
+        			<path refid="classpath"/>
+      			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionIndexTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionKeyTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionManyToManyTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionOneToManyTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.CollectionElementTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.ManyToManyTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.ManyToOneTaglet">
+				<path refid="classpath"/>
+			</taglet>
+			<taglet name="edu.northwestern.at.utils.taglets.ComponentTaglet">
+				<path refid="classpath"/>
+			</taglet>
+		</javadoc>
+	</target>
+
+</project>
+
+
+

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Tracking Word Form Use Over Time</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparewords.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Word Form Counts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Tracking Word Form Use Over Time</h2>
+
+<p>
+It is often instructive to follow the changes in an author's
+word form selection over time.  WordHoard allows you to
+investigate such changes by selecting "Track Word Form Over Time"
+from the Analysis menu.  WordHoard displays a dialog which allows you
+to select a specific word form and display the frequency
+of its use for each year in which an author has published at least
+one work.  As an example, we will look for changes in how often
+Shakespeare used the lemma "honour (n)" in all his works.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/trackwordovertime.jpg"
+     alt="Track word over time dialog" />
+</p>
+<div class="space" />
+
+<p>
+The dialog fields are as follows.
+</p>
+
+<ul>
+   <li><p>
+       <em>Word</em> is the word text whose counts we want to track over
+       time.
+       </p>
+       </li>
+   <li><p>
+       <em>Word Form</em> specifies the type of word form which
+        "Word" is.  You may select
+       any word form type, but Spelling, Lemma, and Word Class
+       are the most common choices and generally make the most sense.
+       </p>
+       </li>
+   <li><p>
+       <em>Analysis Text</em> provides the set of works in which
+       the word of interest occurs.  The dates for each work
+       provide the time line for tracking word frequencies over time.
+       The analysis text must be a Corpus or Work Set, and should
+       contain more than one work with an associated publication date.
+       The Early Greek Epic corpus does not have publication dates
+       for the works, so you cannot sensibly track word use over time in
+       this corpus.
+       </p>
+       </li>
+   <li><p>
+       <em>Frequency Normalization</em> specifies how the raw word counts
+       (frequencies) should be normalized for presentation.
+       </p>
+
+       <ul>
+          <li><p>
+              <em>No normalization</em> leaves the raw counts unaltered.
+              This may be useful if you intend to export the results to
+              another program for further analysis.
+              </p>
+              </li>
+          <li><p>
+              <em>Normalize to counts per ten thousand words</em>
+              reports the counts as if each work were exactly
+              ten thousand words long.  This is a traditional count
+              normalization method in the humanities.  This allows
+              the counts in works of different length to be compared
+              in a meaningful fashion.
+              </p>
+              </li>
+          <li><p>
+              <em>Normalize to average word count in reference works</em>
+              reports the counts as if each work had the same number of
+              words, computed as the simple arithmetic average (mean)
+              of all the works in the reference text.  This may be
+              useful if the reference text is a complete corpus and
+              the analysis text is contained in that corpus.
+              </p>
+              </li>
+          <li><p>
+              <em>Normalize to parts per million</em> reports
+              counts as if each work were one million words long.  This
+              produces values which can be more meaningfully rounded
+              to integer values.
+              </p>
+              </li>
+       </ul>
+       </li>
+
+   <li><p>
+       <em>Round Normalized Frequencies</em>, when checked,
+       requests that the normalized word frequencies for each year
+       be rounded to the nearest whole number.  Select this option
+       if you prefer not to see decimal places in the normalized counts.
+       </p>
+       </li>
+</ul>
+
+<p>
+Pressing then "OK" button with our sample settings yields the
+following results.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/trackwordovertimeoutput.jpg"
+     alt="Track word over time output" />
+</p>
+<div class="space" />
+
+<p>
+The yearly output appears in six columns.
+</p>
+
+<ul>
+   <li><p>
+       <em>Year</em> is the year in which one or more works were published.
+       The exact publication year for some works may not be known -- only
+       a range of years.  For example, "A Lover's Comaplaint" was
+       published sometime between 1599 and 1609.
+       WordHoard uses the earliest possible publication year
+       when computing the word frequencies.  For "A Lover's Complaint",
+       WordHoard chooses 1599 as the publication year.
+       </p>
+       </li>
+   <li><p>
+       <em>Works</em> is the number of works published in the year.
+       In our example, 6 works were published in 1592.
+       </p>
+       </li>
+   <li><p>
+       <em>Selected count</em> is the number of times the selected
+       word text appears in all works in this year.  For our example,
+       "honour (n)" appears 65 times in the 6 works in 1592.
+       </p>
+       </li>
+   <li><p>
+       <em>Total count</em> is the total number of words in all
+       works in this year.  The 6 works in 1592 contain a
+       total of 110,319 lemma occurrences.
+       </p>
+       </li>
+   <li><p>
+       <em>Mean count</em> is the average number of times the selected
+       word text appears in this year.  It is computed as
+       the selected count divided by the works count.  In our example,
+       there were six works by Shakespeare published in 1592.
+       The lemma "honour (n)" appears 65 times in those six works.
+       The average number of times the word appears in a work is
+       therefore 65 / 6 = 10.8 rounded to one
+       decimal place.  This is the mean count value displayed in
+       the table.
+       </p>
+       </li>
+   <li><p>
+       <em>Normalized count</em> is the mean count normalized
+       using the specified frequency normalization method.
+       We selected normalizing the counts in terms of occurrences
+       per 10,000 words.  To compute this, form the ratio
+       ( nc / 10,000 ) = ( 65 / 110,319 ) and solve
+       for "nc" to get 5.9 to two decimal places.
+       This rounds up to 6 since we requested the normalized
+       frequencies be rounded.
+       </p>
+       </li>
+</ul>
+
+<p>
+The normalized counts are generally higher for later years,
+demonstrating Shakespeare's increased use of "honour (n)" in his later
+works.  To make this clearer, we can chart the normalized counts
+by pressing the "chart" button below the results table.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/trackwordovertimechart.jpg"
+     alt="Track word over time chart" />
+</p>
+<div class="space" />
+
+<p>
+This vertical bar chart offers a clear visual indication that Shakespeare's
+use of "honour (n)" remained relatively constant from 1589 to 1601, but
+increased after that time.  Peak usage occurred in 1602, 1604, and 1612.
+An appropriate followup analysis would involve close examination of
+the works published in those years.  You can find the publication dates
+at the main <a href="table-of-contents.html">table of contents</a> window.
+Select the "Shakespeare" tab and then the "Date" option button.
+</p>
+
+<p>
+You may save the chart image to a file by selecting "Save As..." from
+the "File" menu.  You have a choice of jpeg, png, or svg format.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparewords.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Word Form Counts</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

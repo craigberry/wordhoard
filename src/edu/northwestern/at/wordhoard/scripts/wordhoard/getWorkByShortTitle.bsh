@@ -1,0 +1,8 @@
+import edu.northwestern.at.wordhoard.model.Work;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
+
+Work getWorkByShortTitle( String shortWorkName )
+{
+	return WorkUtils.getWorkByShortTitle( shortWorkName );
+}
+

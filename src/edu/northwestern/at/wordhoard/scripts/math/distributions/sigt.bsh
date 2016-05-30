@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double sigt( double t , double df )
+{
+	return Sig.t( t , df );
+}
+
+double sigt( double t , int df )
+{
+	return Sig.t( t , df );
+}
+

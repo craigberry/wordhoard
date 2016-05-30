@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	ceil( double a )
+{
+	return Math.ceil( a );
+}
+

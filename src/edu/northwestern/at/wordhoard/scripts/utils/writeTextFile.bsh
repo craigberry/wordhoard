@@ -1,0 +1,50 @@
+import java.io.*;
+import edu.northwestern.at.utils.FileUtils.*;
+
+void writeTextFile
+(
+	File file ,
+	boolean append ,
+	String contents ,
+	String encoding
+)
+	throws IOException
+{
+	return FileUtils.writeTextFile( file , append , contents , encoding );
+}
+
+void writeTextFile
+(
+	File file ,
+	boolean append ,
+	String contents
+)
+	throws IOException
+{
+	FileUtils.writeTextFile( file , append , contents );
+}
+
+void writeTextFile
+(
+	String fileName ,
+	boolean append ,
+	String contents ,
+	String encoding
+)
+	throws IOException
+{
+	FileUtils.writeTextFile( fileName , append , contents , encoding );
+}
+
+void writeTextFile
+(
+	String fileName ,
+	boolean append ,
+	String contents
+)
+	throws IOException
+{
+	FileUtils.writeTextFile( fileName , append , contents );
+}
+
+

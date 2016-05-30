@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+int rank( Matrix m )
+{
+	return Matrices.rank( m );
+}
+
+

@@ -1,0 +1,30 @@
+Word[][] performPhraseQuery( String queryString )
+{
+	return CQLQueryUtils.getPhrasesViaQuery( queryString );
+}
+
+Word[][] performPhraseQuery( String queryString , CanCountWords canCountWords )
+{
+	return
+		CQLQueryUtils.getPhrasesViaQuery
+		(
+			queryString ,
+			new WordCounter( canCountWords ).getWorkParts()
+		);
+}
+
+Word[][] performPhraseQuery( WHQuery query )
+{
+	return CQLQueryUtils.getPhrasesViaQuery( query.getQueryText() );
+}
+
+Word[][] performPhraseQuery( WHQuery query , CanCountWords canCountWords )
+{
+	return
+		CQLQueryUtils.getPhrasesViaQuery
+		(
+			query.getQueryText() ,
+			new WordCounter( canCountWords ).getWorkParts()
+		);
+}
+

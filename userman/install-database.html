@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Installing the Database</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="dev-docs.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Documents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="hibernatechanges.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Hibernate changes</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Installing the Database</h2>
+
+<p>You must move the <code>wordhoard</code> directory into your MySQL data directory to install the database.</p>
+
+<p>First shut down MySQL. Then become superuser. Move the <code>wordhoard</code> directory into your MySQL data directory. Change the owner and group of the directory and all the files inside it to match your other MySQL data directories and files. Get out of superuser mode. Restart MySQL.</p>
+
+<blockquote><pre><code>
+% mysql-stop
+% su
+Password:
+# mv wordhoard $MYSQL_DATA
+# cd $MYSQL_DATA
+# chown -R mysql wordhoard
+# chgrp -R wheel wordhoard
+# &lt;ctrl&gt;d
+% mysql-start
+</code></pre></blockquote>
+
+<p>The username <code>mysql</code> and group <code>wheel</code> are the values used on our system. They might be different on your system, so adjust the example above accordingly.</p>
+
+<p>Don't worry about endian issues. We've successfully moved the database from a big-endian PowerPC Mac to a little-endian Intel Windows box using this technique.</p>
+
+<p>Run the MySQL command line client. Test the database to make certain you installed it correctly.</p>
+
+<blockquote><pre><code>
+% mysql
+mysql> use wordhoard;
+mysql> show tables;
++-----------------------------+
+| Tables_in_wordhoard         |
++-----------------------------+
+| annotation                  |
+| annotationcategory          |
+| author                      |
+| authors_works               |
+| bensonlemma                 |
+| bensonlempos                |
+| bensonpos                   |
+| corpus                      |
+| corpus_tconviews            |
+| lemma                       |
+| lemmacorpuscounts           |
+| lemmaworkcounts             |
+| lempos                      |
+| line                        |
+| metricalshape               |
+| phrase                      |
+| phrase_wordtags             |
+| phraseset_phrases           |
+| phrasesetphrasecount        |
+| phrasesettotalwordformcount |
+| pos                         |
+| query                       |
+| speaker                     |
+| speech                      |
+| speech_speakers             |
+| tconcategory                |
+| tconcategory_worktags       |
+| tconview                    |
+| tconview_categories         |
+| tconview_worktags           |
+| textwrapper                 |
+| totalwordformcount          |
+| word                        |
+| wordclass                   |
+| wordcount                   |
+| wordformcounts              |
+| wordpart                    |
+| wordset                     |
+| wordset_wordtags            |
+| wordset_workparttags        |
+| wordset_worktags            |
+| wordsettotalwordformcount   |
+| wordsetwordcount            |
+| workpart                    |
+| workpart_children           |
+| workpart_translations       |
+| workset                     |
+| workset_workparttags        |
++-----------------------------+
+48 rows in set (0.01 sec)
+
+mysql> describe corpus;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| id                | bigint(20)   | NO   | PRI |         |       |
+| tag               | varchar(255) | YES  | MUL | NULL    |       |
+| title             | varchar(255) | YES  |     | NULL    |       |
+| charset           | tinyint(4)   | YES  |     | NULL    |       |
+| posType           | tinyint(4)   | YES  |     | NULL    |       |
+| taggingData_flags | bigint(20)   | YES  |     | NULL    |       |
+| numWorkParts      | int(11)      | YES  |     | NULL    |       |
+| numLines          | int(11)      | YES  |     | NULL    |       |
+| numWords          | int(11)      | YES  |     | NULL    |       |
+| maxWordPathLength | int(11)      | YES  |     | NULL    |       |
+| translations      | varchar(255) | YES  |     | NULL    |       |
+| tranDescription   | text         | YES  |     | NULL    |       |
+| ordinal           | int(11)      | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+13 rows in set (0.03 sec)
+
+mysql> select id, tag, title from corpus;
++----+------+------------------+
+| id | tag  | title            |
++----+------+------------------+
+|  0 | ege  | Early Greek Epic |
+|  1 | cha  | Chaucer          |
+|  2 | spe  | Spenser          |
+|  3 | sha  | Shakespeare      |
++----+------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*) from word;
++----------+
+| count(*) |
++----------+
+|  1793099 |
++----------+
+1 row in set (0.48 sec)
+
+mysql> quit
+</code></pre></blockquote>
+
+<p>The next step is to create the MySQL grants that WordHoard requires. To do this, run the <code>mysql-client-grants</code> script:</p>
+
+<blockquote><pre><code>
+% scripts/mysql-client-grants.csh
+</code></pre></blockquote>
+
+<p>This script grants the <code>select</code> privilege on the <code>wordhoard</code> database to the account with username <code>wordhoard</code> and password <code>wordhoard</code>, from any host on the Internet. This makes the <code>wordhoard</code> database world readable, but not writable.</p>
+
+<p>The last step is to set some configuration parameters for MySQL. In particular, WordHoard requires a larger value for the <code>max_allowed_packet</code> system variable than the default value of 1M. We use the MySQL <code>my.cnf</code> configuration file to set this variable to 16M:</p>
+
+<blockquote><pre><code>
+% mysql-stop
+% su
+Password:
+# cd /usr/local/mysql
+# cat >my.cnf
+[mysqld]
+max_allowed_packet=16M
+# &lt;ctrl&gt;d
+# chown mysql my.cnf
+# chgrp wheel my.cnf
+# &lt;ctrl&gt;d
+% mysql-start
+% mysql
+mysql> select @@max_allowed_packet;
++----------------------+
+| @@max_allowed_packet |
++----------------------+
+|             16776192 |
++----------------------+
+1 row in set (0.07 sec)
+
+mysql> quit
+</code></pre></blockquote>
+
+<p>The path <code>/usr/local/mysql</code>, username <code>mysql</code>, and group <code>wheel</code> may be different on your system. Adjust the example above accordingly.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="dev-docs.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Documents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="hibernatechanges.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Hibernate changes</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

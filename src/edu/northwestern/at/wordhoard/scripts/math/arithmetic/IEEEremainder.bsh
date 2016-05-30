@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double IEEEremainder( double f1 , double f2 )
+{
+	return Math.IEEEremainder( f1 , f2 );
+}
+

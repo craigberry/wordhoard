@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix breadth( Matrix m )
+{
+	return Matrices.breadth( m );
+}

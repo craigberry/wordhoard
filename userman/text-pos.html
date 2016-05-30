@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Parts of Speech XML Files</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-word-class.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Word Classes XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Work XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Parts of Speech XML File</h2>
+
+<p>The file <code>pos.xml</code> defines the parts of speech. The standard NU file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardPos&gt;
+   &lt;pos id="("
+      syntax="pu"
+      tense=""
+      mood=""
+      voice=""
+      case=""
+      gender=""
+      person=""
+      number=""
+      degree=""
+      negative=""
+      language="english"
+      wordClass="pu"/&gt;
+   ...
+   &lt;pos id="zz"
+      syntax="zz"
+      tense=""
+      mood=""
+      voice=""
+      case=""
+      gender=""
+      person=""
+      number=""
+      degree=""
+      negative=""
+      language="english"
+      wordClass="zz"/&gt;
+&lt;/WordHoardPos&gt;
+</pre></blockquote>
+
+<p>The parts of speech definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardPos</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>pos</code> (0..n). Part of speech definitions.</li>
+	</ul>
+</li>
+
+<li class="space"><code>pos</code>. Part of speech definition.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required part of speech id.</li>
+	<li><code>syntax</code>. Optional syntax.</li>
+	<li><code>tense</code>. Optional tense.</li>
+	<li><code>mood</code>. Optional mood.</li>
+	<li><code>voice</code>. Optional voice.</li>
+	<li><code>case</code>. Optional case.</li>
+	<li><code>gender</code>. Optional gender.</li>
+	<li><code>person</code>. Optional person.</li>
+	<li><code>number</code>. Optional number.</li>
+	<li><code>degree</code>. Optional degree.</li>
+	<li><code>negative</code>. Optional negative.</li>
+	<li><code>language</code>. Language: "english" or "greek".</li>
+	<li><code>wordClass</code>. Optional word class id.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..1). Description.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-word-class.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Word Classes XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Work XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

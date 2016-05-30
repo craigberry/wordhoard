@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix sumelem( Matrix m )
+{
+	return Matrices.sumElem( m );
+}

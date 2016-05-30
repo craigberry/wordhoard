@@ -1,0 +1,17 @@
+double[] compareCounts
+(
+	int sampleCount ,
+	int refCount ,
+	int sampleSize ,
+	int refSize
+)
+{
+	return Frequency.logLikelihoodFrequencyComparison
+	(
+		sampleCount ,
+		refCount ,
+		sampleSize ,
+		refSize
+	);
+}
+

@@ -1,0 +1,5 @@
+int editDistance( String s1 , String s2 )
+{
+	return LevensteinDistance.editDistance( s1 , s2 );
+}
+

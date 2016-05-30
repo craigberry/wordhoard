@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double 	cos( double a )
+{
+	return Math.cos( a );
+}
+

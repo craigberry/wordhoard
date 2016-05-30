@@ -1,0 +1,5 @@
+boolean deleteWordQuery( Query wordQuery )
+{
+	return QueryUtils.deleteQuery( wordQuery , WHQuery.WORDQUERY );
+}
+

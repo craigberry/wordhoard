@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double finverse( double p , double dfn , double dfd )
+{
+	return Sig.fInverse( p , dfn , dfd );
+}
+
+double finverse( double p , int dfn , int dfd )
+{
+	return Sig.fInverse( p , dfn , dfd );
+}
+

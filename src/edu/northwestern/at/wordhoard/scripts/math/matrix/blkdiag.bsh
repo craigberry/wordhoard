@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix blkdiag( ArrayList matrices )
+{
+	return Matrices.blkdiag( matrices );
+}
+
+

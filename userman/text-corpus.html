@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Corpora XML File</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-intro.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Text Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-author.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Authors XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Corpora XML File</h2>
+
+<p>The file <code>corpora.xml</code> defines all the corpora and their attributes.</p>
+
+<p>The best way to learn the details of the corpora definition file is to study the standard NU file along with the formal specification given below. Open the standard NU <a href="other-files/corpora.xml"><code>corpora.xml</code></a> file in your favorite text editor or XML editor. Position the window next to your browser window. As you read the descriptions for the individual elements below, look at how each element is used in the standard NU file.</p>
+
+<p>The corpora definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardCorpora</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>corpus</code> (0..n). Corpus definitions. The tabs with the corpus names at the top of the table of contents window appear in the same order as the <code>corpus</code> children.</li>
+	</ul>
+</li>
+
+<li class="space"><code>corpus</code>. Corpus definition.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required. The corpus id.</li>
+	<li><code>charset</code> = <code>roman</code> or <code>greek</code>. The character set used by the corpus. Required.</li>
+	<li><code>posType</code> = <code>english</code> or <code>greek</code>. The part of speech taxonomy used by the corpus. Required.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>title</code> (1). Title.</li>
+	<li><code>taggingData</code> (1). The tagging data categories supported by the corpus.</li>
+	<li><code>translations</code> (0..1). Translations supported by the corpus, if any.</li>
+	<li><code>tconview</code> (0..n). Table of contents views. If no views are defined, the default is a list of works sorted in alphabetical order by work id.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>title</code>. Title.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The corpus title.</li>
+	</ul>
+</li>
+
+<li class="space"><code>taggingData</code>. WordHoard tagging data categories.
+	<p>Children:</p>
+	<ul>
+	<li><code>lemma</code> (0..1). Present if the corpus supports lemma 
+		tagging.</li>
+	<li><code>pos</code> (0..1). Present if the corpus supports part of speech tagging.</li>
+	<li><code>wordClass</code> (0..1). Present if the corpus supports word class tagging.</li>
+	<li><code>spelling</code> (0..1). Present if the corpus supports spelling tagging.</li>
+	<li><code>speaker</code> (0..1). Present if the corpus supports speaker tagging.</li>
+	<li><code>gender</code> (0..1). Present if the corpus supports speaker gender tagging.</li>
+	<li><code>mortality</code> (0..1). Present if the corpus supports speaker mortality tagging.</li>
+	<li><code>prosodic</code> (0..1). Present if the corpus supports prosodic tagging.</li>
+	<li><code>metricalShape</code> (0..1). Present if the corpus supports metrical shape tagging.</li>
+	<li><code>pubDates</code> (0..1). Present if the corpus supports publication date tagging.</li>
+	</ul>
+	<p>All of these children themselves have no children. They are typically specified as empty elements. E.g., <code>&lt;lemma/&gt;</code>.</p>
+</li>
+	
+<li class="space"><code>translations</code>. Translations supported by the corpus.
+	<p>Children:</p>
+	<ul>
+	<li><code>translation</code> (1..n). A supported translation.</li>
+	<li><code>description</code> (0..1). A description of the translations.</li>
+	</ul>
+	<p>Translations are rendered in work windows in the same order they are listed in this element.</p>
+</li>
+	
+<li class="space"><code>translation</code>. A translation supported by the corpus.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required. The name (id) of the translation. E.g., "English" or "German".</li>
+	</ul>
+</li>
+	
+<li class="space"><code>description</code>. A description of the translations. This description appears in the "Translations, Transcriptions, Etc." dialog.
+	<p>Children:</p>
+	<ul>
+	<li>TEXT. The description.</li>
+	</ul>
+</li>
+
+<li class="space"><code>tconview</code>. A table of contents view. More than one view can be defined, in which case radio buttons appear at the top of the table of contents window to select them. For example, the Shakespeare corpus has two views named "By Genre" and "By Date".
+	<p>Attributes:</p>
+	<ul>
+	<li><code>type</code>. Required. The type of the view. There are five view types:
+		<ul>
+		<li class="space"><code>byTag</code>. The view is a list of all the works in the corpus sorted in increasing alphabetical order by work id. This is the default view if no views are specified in the <code>corpora.xml</code> file.</li>
+		<li class="space"><code>byDate</code>. The view is a list of all the works in the corpus sorted in increasing numerical order by the first year of the publication year range. By date views display the publication year range in parentheses following the work titles.</li>
+		<li class="space"><code>list</code>. The view is a list of all the works in the corpus in the order specified by the <code>work</code> children.</li>
+		<li class="space"><code>category</code>. The view is a list of categories in the order specified by the <code>category</code> children. Each category in turn contains a list of works. For example, the Shakespeare "By Genre" view is a category view.</li>
+		<li class="space"><code>byAuthor</code>. The view is a list of authors in increasing alphabetical order. Each author contains a list of works
+		by the author in increasing numerical order by the first year of the
+		publication year range.</li>
+		</ul>
+	</li>
+	<li class="space"><code>title</code>. Required if there is more than one table of contents view. Optional and ignored if there is only one view. This attribute specifies the title of the radio button at the top of the table of contents window that is used to select this view.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>work</code>. For views with <code>type="list"</code> the <code>work</code> children specify the works in order for the view.</li>
+	<li><code>category</code>. For views with <code>type="category"</code> the <code>category</code> children specify the categories in order for the view.</li>
+	</ul>
+</li>
+
+<li class="space"><code>work</code>. A work for a table of contents view.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required. The id of the work. E.g., <code>sha-ham</code> for Hamlet.</li>
+	</ul>
+</li>
+
+<li class="space"><code>category</code>. A category for a table of contents view.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>title</code>. Required. The category title as it should appear in the table of contents view.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>work</code>. The works for the category, in order.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-intro.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Text Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-author.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Authors XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

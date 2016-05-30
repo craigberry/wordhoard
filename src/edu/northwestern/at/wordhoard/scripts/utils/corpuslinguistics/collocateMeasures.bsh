@@ -1,0 +1,16 @@
+double[] collocateMeasures
+(
+	int sampleCount ,
+	int refCount ,
+	int sampleSize ,
+	int refSize
+)
+{
+	return Collocation.association
+	(
+		sampleCount ,
+		refCount ,
+		sampleSize ,
+		refSize
+    );
+}

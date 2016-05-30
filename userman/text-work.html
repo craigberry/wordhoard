@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Work XML Files</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-pos.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Parts of Speech XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-spelling.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Standard Spelling XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Work XML Files</h2>
+
+<p>Work XML files define the structure, text, tagging data, and visual rendering of the individual works. WordHoard uses a subset of the <a href="http://www.tei-c.org/">Text Encoding Initiative (TEI)</a> standard together with extensions which specify information specific to WordHoard.</p>
+
+<p>The file <code>WordHoardText.xsd</code> in the <code>misc</code> directory is a schema which can be used to validate work files.</p>
+
+<p>The best way to learn the details of WordHoard's XML format for works is to study examples along with the formal specification given below. Download the following sample files. Open them with your favorite text editor or XML editor. Position the windows next to your browser window. As you read the descriptions of the individual elements below, look at how each element is used in the examples.</p>
+
+<blockquote><p>
+<a href="other-files/ham.xml"><code>ham.xml</code></a>: Shakespeare's <i>Hamlet</i>.<br />
+<a href="other-files/faq.xml"><code>faq.xml</code></a>: Spenser's <i>The Fairie Queene</i>.<br />
+<a href="other-files/IL.xml"><code>IL.xml</code></a>: Homers's <i>The Iliad</i>.
+</p></blockquote>
+
+<p><i>Hamlet</i> illustrates most of the elements and attributes. <i>The Fairie Queene</i> illustrates stanza numbering, Spenser indentation, and the <code>hi</code> element. <i>The Iliad</i> illustrates unrendered cast of character pages, unrendered speeches, original language speaker names, and Greek text.</p>
+
+<p>WordHoard supports styled text. The <code>rend="style"</code> attribute is used to set styles. The <code>style</code> value may be any of the following:</p>
+
+<ul>
+<li><code>bold</code>. Boldface.</li>
+<li><code>italic</code>. Italics.</li>
+<li><code>extended</code>. Extended style, with extra space between characters.</li>
+<li><code>sperrtext</code>. Same as <code>extended</code>.</li>
+<li><code>underline</code>. Underline.</li>
+<li><code>overline</code>. Overline.</li>
+<li><code>macron</code>. Same as <code>overline</code>.</li>
+<li><code>superscript</code>. Superscript.</li>
+<li><code>subscript</code>. Subscript.</li>
+<li><code>monospaced</code>. Monospaced font.</li>
+<li><code>normal</code>. Normal text with none of the above styles.</li>
+<li><code>roman</code>. Same as <code>normal</code>.</li>
+<li><code>plain</code>. Same as <code>normal</code>.</li>
+</ul>
+
+<p>In the main body of text for our current corpora, we use only the <code>normal</code>, <code>bold</code> and <code>italic</code> styles. The Iliad Scholia also use the <code>sperrtext</code>, <code>macron</code>, <code>superscript</code>, and <code>monospaced</code> styles.</p>
+
+<p>Text lines can also be left-justified, centered, or right-justified using the <code>align="alignment"</code> attribute. The <code>alignment</code> value may be either of the following:</p>
+
+<ul>
+<li><code>left</code>. Left-justified.</li>
+<li><code>center</code>. Centered.</li>
+<li><code>right</code>. Right-justified.</li>
+</ul>
+
+<p>Text lines can be indented using the <code>indent="nnn"</code> attribute. The indentation <code>"nnn"</code> is measured in pixels. If <code>align="center"</code> or <code>align="right"</code> is specified, however, the <code>indent</code> attribute is ignored.</p>
+
+<p>A WordHoard XML input file for a work has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardText</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>wordHoardHeader</code> (1). WordHoard header.</li>
+	<li><code>teiHeader</code> (1). TEI header.</li>
+	<li><code>text</code> (1). The work parts and their text.</li>
+	</ul>
+</li>
+
+<li class="space"><code>WordHoardText/wordHoardHeader</code>. WordHoard header for the work.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>corpus</code> = the corpus id. Required. This id must match a corpus id defined in the corpus XML file. Multiple ids may be listed separated by vertical bars, in which case the first one matched is used. E.g., "sha|emd".</li>
+	<li><code>work</code> = the work id. Required.</li>
+	<li><code>prosodic="prose" or "verse"</code>. Optional. Establishes a default prosodic attribute for the tagged words in the work.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>pubDate</code> (0..1). The publication date. Omit this child if the publication date is unknown (e.g., in the Early Greek Epic corpus).</li>
+	<li><code>taggingData</code> (1). The tagging data categories supported by the work.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>pubDate</code>. Publication date.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The publication date, in the form <code>"year"</code> for a single year or <code>"year-year"</code> for a range of years.</li>
+	</ul>
+</li>
+
+<li class="space"><code>taggingData</code>. WordHoard tagging data categories.
+	<p>Children:</p>
+	<ul>
+	<li><code>lemma</code> (0..1). Present if the work supports lemma 
+		tagging.</li>
+	<li><code>pos</code> (0..1). Present if the work supports part of speech tagging.</li>
+	<li><code>wordClass</code> (0..1). Present if the work supports word class tagging.</li>
+	<li><code>spelling</code> (0..1). Present if the work supports spelling tagging.</li>
+	<li><code>speaker</code> (0..1). Present if the work supports speaker tagging.</li>
+	<li><code>gender</code> (0..1). Present if the work supports speaker gender tagging.</li>
+	<li><code>mortality</code> (0..1). Present if the work supports speaker mortality tagging.</li>
+	<li><code>prosodic</code> (0..1). Present if the work supports prosodic tagging.</li>
+	<li><code>metricalShape</code> (0..1). Present if the work supports metrical shape tagging.</li>
+	<li><code>pubDates</code> (0..1). Present if the work supports publication date tagging.</li>
+	</ul>
+	<p>All of these children themselves have no children. They are typically specified as empty elements. E.g., <code>&lt;lemma/&gt;</code>.</p>
+</li>
+
+<li class="space"><code>teiHeader</code>. TEI header.
+	<p>Children:</p>
+	<ul>
+	<li><code>fileDesc</code> (1). File description.</li>
+	</ul>
+</li>
+
+<li class="space"><code>fileDesc</code>. File description.
+	<p>Children:</p>
+	<ul>
+	<li><code>titleStmt</code> (1). Title statement.</li>
+	<li><code>publicationStmt</code> (0..1). Publication statement.</li>
+	</ul>
+</li>
+
+<li class="space"><code>titleStmt</code>. Title statement.
+	<p>Children:</p>
+	<ul>
+	<li><code>title</code> (1). The work's full title. Rendered at the top of the title page, centered, bold, and in a large font size.</li>
+	<li><code>shortTitle</code> (0..1). The work's short title. If a short title is not specified, the short title is set to be the same as the full title. Short titles are used in concordances and other contexts.</li>
+	<li><code>author</code> (1..n). The work's author(s). Rendered one per line on the title page following the title, centered, bold, in a normal font size, with a blank line separating the title and author(s). Each author name must match an author name in the author XML file.</li>
+	<li><code>respStmt</code> (0..n). Responsibility statements.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>titleStmt/title</code>. Full work title.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The full work title. If this title is longer than 50 characters, it is truncated to 50 characters.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>titleStmt/shortTitle</code>. Short work title. If this
+	title is longer than 50 characters, it is truncated to 50 characters.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The short work title.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>titleStmt/author</code>. An author.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's name.</li>
+	</ul>
+</li>
+
+<li class="space"><code>respStmt</code>. Responsibility statement.
+	<p>Children:</p>
+	<ul>
+	<li><code>name</code> (1). Name(s) of people. E.g., "Craig A. Berry".</li>
+	<li><code>resp</code> (1). Responsibility. E.g., "editor".</li>
+	</ul>
+	<p>Responsibility statements are rendered on the title page after the title and authors, centered and in a small font size, with a blank line above and below.</p>
+</li>
+	
+<li class="space"><code>respStmt/name</code>. Name(s) of people.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The names.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>respStmt/resp</code>. Responsibility.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). Responsibility.</li>
+	</ul>
+</li>
+
+<li class="space"><code>publicationStmt</code>. Publication statement.
+	<p>Children:</p>
+	<ul>
+	<li><code>p</code> (0..n). Untagged lines and paragraphs of styled text.</li>
+	</ul>
+	<p>Publication statements are rendered on the title page after the title, author, and responsibility statements, centered and in a small font size, with a blank line above and below each paragraph.</p>
+</li>
+
+<li class="space"><code>text</code>. The work parts and their text.
+	<p>Children:</p>
+	<ul>
+	<li><code>front</code> (0..1). Front matter work parts.</li>
+	<li><code>body</code> (0..1). Body work parts.</li>
+	</ul>
+</li>
+
+<li class="space"><code>front</code>. Front matter work parts.
+	<p>Children:</p>
+	<ul>
+	<li><code>div</code> (0..n). Work parts.</li>
+	</ul>
+</li>
+
+<li class="space"><code>body</code>. Body work parts.
+	<p>Children:</p>
+	<ul>
+	<li><code>div</code> (0..n). Work parts.</li>
+	</ul>
+</li>
+
+<li class="space"><code>div</code>. A work part.
+	<p>Each <code>div</code> element defines one node of the work part tree. The work part tree is defined in order as follows:</p>
+	<ul>
+	<li>The title page.</li>
+	<li>The <code>div</code> descendants of <code>WordHoardText/text/front</code></li>
+	<li>The <code>div</code> descendants of <code>WordHoardText/text/body</code></li>
+	</ul>
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required. The id of the work part. This id is combined with the corpus id and the work id to form the unique work part reference tag. The work part tag is <code>corpusId-workId-wordPartId</code>. E.g., <code>sha-ham-1-2</code> for Act 1, Scene 2 of Hamlet.</li>
+	<li><code>type="castList"</code>. Optional. Front matter <code>div</code> children with <code>type="castList"</code> are treated specially. Any <code>castItem</code> descendants of such <code>div</code> elements are used to define speakers and their tagging attributes (gender and mortality).</li>
+	<li><code>numberingStyle="stanza"</code>. Optional. If present, stanza numbering is used for the work part. The default is line numbering.</li>
+	<li><code>indent</code> = Optional left margin indentation in pixels. WordHoard's default left margin for text is quite close to the left edge of work windows. This works well for scenes in Shakespeare plays, where speeches are rendered with the speaker names flush with the left margin and the bodies of the speeches indented. For other work parts where all or most of the text is flush with the left margin, a larger margin is more attractive. We use a value of <code>indent="20"</code> for this kind of text.</li>
+	<li><code>rend="none"</code>. Optional. If <code>type="castList"</code> and <code>rend="none"</code>, the <code>div</code> element is used to define speakers, but it is not used to create a work part or generate a cast of characters page. We use this in the Early Greek Epic corpus to "invisibly" define speakers.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>wordHoardHeader</code> (1). WordHoard header for the work part.</li>
+	<li><code>lg</code> (0..n). Line groups.</li>
+	<li><code>sp</code> (0..n). Speeches.</li>
+	<li><code>wordHoardTaggedLine</code> (0..n). Tagged lines and paragraphs.</li>
+	<li><code>p</code> (0..n). Untagged lines and paragraphs.</li>
+	<li><code>head</code> (0..n). Headings.</li>
+	<li><code>stage</code> (0..n). Stage directions.</li>
+	<li><code>castList</code> (0..n). Cast lists.</li>
+	<li><code>div</code> (0..n). Child work parts.</li>
+	</ul>
+</li>
+
+<li class="space"><code>div/wordHoardHeader</code>. WordHoard header for a work part.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>prosodic="prose" or "verse"</code>. Optional. Establishes a default prosodic attribute for the tagged words in the work part.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>title</code> (1). Work part short title. This title is used in WordHoard's table of contents window and in other contexts. E.g., "Scene 3".</li>
+	<li><code>fullTitle</code> (0..1). Work part full title. If missing, the full title is constructed as a comma-separated list of the titles of the ancestor parts and this part's title. E.g., "Act 2, Scene 3". WordHoard uses full part titles in work window popup menus and other contexts.</li>
+	<li><code>pathTag</code> (0..1). Work part path tag. Paths composed of part tags are used in concordance windows to identify locations. The path to a work part is constructed by concatenating the work id with the path tags of all the ancestor parts and the work part, separated by periods. For example, the path tag for <i>Hamlet</i> is <code>ham</code>, the path tag for Act 1 is <code>1</code>, and the path tag for Act 2 is <code>2</code>. The path to Act 1, Scene 2 of <i>Hamlet</i> is <code>ham.1.2</code>. If a match is found in line 39 of this scene, it is identified in the concordance window with the path <code>ham.1.2.39</code>. If the path tag is not specified, it is omitted when constructing paths.</li>
+	<li><code>taggingData</code> (1). Enumerates the tagging data categories supported by the work part.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>div/wordHoardHeader/title</code>. Work part title.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The title of the work part. If this title is longer than 50 characters, it is truncated to 50 characters.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>div/wordHoardHeader/fullTitle</code>. Work part full title.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The full title of the work part. If this title is longer than 50 characters, it is truncated to 50 characters.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>div/wordHoardHeader/pathTag</code>. Work part path tag.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The path tag for the work part.</li>
+	</ul>
+</li>
+
+<li class="space"><code>lg</code>. A line group.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>type="stanza"</code>. Optional. If specified, the line group is rendered with a blank line preceding and following the group.</li>
+	<li><code>n</code> = optional stanza number. This attribute should be specified if <code>type="stanza"</code> is specified.</li>
+	<li><code>rend="spenser-indentation"</code>. Optional. If present, and if <code>type="stanza"</code> is also specified, the line group is rendered in the Spenser style: All but the first and last lines of the group are indented.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>wordHoardTaggedLine</code> (0..n). Tagged lines or paragraphs of text.</li>
+	<li><code>p</code> (0..n). Untagged lines or paragraphs of text.</li>
+	<li><code>head</code> (0..n). Headings.</li>
+	<li><code>stage</code> (0..n). Stage directions.</li>
+	<li><code>lg</code> (0..n). Nested line groups.</li>
+	</ul>
+</li>
+
+<li class="space"><code>sp</code>. A speech.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>who</code>. Required. The id(s) of the speaker(s). For multiple speakers, the speaker id's are separated by spaces. These id(s) must match the id(s) defined in the <code>role</code> elements in the cast list.</li>
+	<li><code>rend="none"</code> or <code>rend="indent"</code>. Optional. If missing, the speech is rendered as in Shakespeare: a blank line, the speaker name(s) left-justified, a blank line, then the lines of the speech indented. If <code>rend="none"</code> is specified, the speech is rendered "invisibly" as in the Early Greek Epic corpus: no blank lines or speaker names, and the lines of the speech left-justified. If <code>rend="indent"</code> is specified, no speaker name is rendered, but the lines of the speech are indented (used for a few speeches in Shakespeare which have no rendered speaker names).</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>speaker</code> (0..1). If there is no <code>rend</code> attribute, this child is required. If there is a <code>rend</code> attribute, this child must not be present.</li>
+	<li><code>wordHoardTaggedLine</code> (0..n). Tagged lines or paragraphs of text.</li>
+	<li><code>p</code> (0..n). Untagged lines or paragraphs of text.</li>
+	<li><code>head</code> (0..n). Headings.</li>
+	<li><code>stage</code> (0..n). Stage directions.</li>
+	<li><code>lg</code> (0..n). Line groups.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>speaker</code>. Speaker name(s).
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The speaker name(s) for rendering.</li>
+	</ul>
+</li>
+
+<li class="space"><code>wordHoardTaggedLine</code>. A line or wrapped paragraph of tagged styled text. With tagged text, all of the text is specified by child elements. Child text nodes are ignored.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Optional. An id for the line. Required if the line has a line number.</li>
+	<li><code>n</code>. Optional. The line number. With line numbering, this is an integer used to determine whether the line label is displayed in work panels with the "number every fifth line" option. The line label is displayed if and only if the line number is divisible by 5. With stanza numbering, this is the number of the line within the stanza.</li>
+	<li><code>label</code>. Optional. The line label. Specifies the label displayed in the right margin for line numbering. If it is missing the following rules are used:
+		<ul>
+		<li>With line numbering, the <code>n</code> attribute is used.</li>
+		<li>With stanza numbering, if the line is not inside a stanza, the <code>n</code> attribute is used.</li>
+		<li>With stanza numbering, if the line is inside a stanza, <code>s.n</code> is used, where <code>s</code> is the stanza number and <code>n</code> is the line number.</li>
+		</ul>
+	</li>
+	<li><code>prosodic="prose" or "verse"</code>. Optional. Establishes a default prosodic attribute for the tagged words in the line.</li>
+	<li><code>rend="style"</code>. Optional. The default style is <code>normal</code>.</li>
+	<li><code>align="alignment"</code>. Optional. The default alignment is <code>left</code>.</li>
+	<li><code>indent</code> = Optional additional left margin indentation in pixels.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>w</code> (0..n). Tagged words.</li>
+	<li><code>punc</code> (0..n). Punctuation and spacing.</li>
+	<li><code>hi</code> (0..n). Change style.</li>
+	<li><code>title</code> (0..n). Change style to italics.</li>
+	<li><code>stage</code> (0..n). Stage directions.</li>
+	</ul>
+	<p>As an example, here's how the first line of <i>Romeo and Juliet</i> is tagged in the <code>roj.xml</code> work definition file:</p>
+<blockquote><pre><code>
+&lt;wordHoardTaggedLine id="sha-roj100001" n="1"&gt;
+   &lt;w id="sha-roj10000101"
+      lemma="two (nu)"
+      pos="crd"                            &gt;Two&lt;/w&gt;
+   &lt;punc                                   &gt; &lt;/punc&gt;
+   &lt;w id="sha-roj10000102"
+      lemma="household (n)"
+      pos="n2"                             &gt;households&lt;/w&gt;
+   &lt;punc                                   &gt;, &lt;/punc&gt;
+   &lt;w id="sha-roj10000103"
+      lemma="both (da)"
+      pos="av-da"                          &gt;both&lt;/w&gt;
+   &lt;punc                                   &gt; &lt;/punc&gt;
+   &lt;w id="sha-roj10000104"
+      lemma="alike (av)"
+      pos="av"                             &gt;alike&lt;/w&gt;
+   &lt;punc                                   &gt; &lt;/punc&gt;
+   &lt;w id="sha-roj10000105"
+      lemma="in (acp)"
+      pos="p-acp"                          &gt;in&lt;/w&gt;
+   &lt;punc                                   &gt; &lt;/punc&gt;
+   &lt;w id="sha-roj10000106"
+      lemma="dignity (n)"
+      pos="n1"                             &gt;dignity&lt;/w&gt;
+   &lt;punc                                   &gt;,&lt;/punc&gt;
+&lt;/wordHoardTaggedLine&gt;
+</code></pre></blockquote>
+	<p>Note how the <code>w</code> children (tagged words) alternate with the <code>punc</code> children (untagged punctuation). Also note how the XML has been formatted so that you can read the text vertically on the right: "Two households, both alike in dignity,".</p>
+</li>
+	
+<li class="space"><code>p</code>. A line or wrapped paragraph of untagged styled text. With untagged text, text is specified by child text nodes and styles are specified by child <code>hi</code> and <code>title</code> elements.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Optional. An id for the line.</li>
+	<li><code>n</code>. Optional. The line number. This attribute works the same way as in tagged lines. </li>
+	<li><code>label</code>. Optional. The line label. This attribute works the same way as in tagged lines. </li>
+	<li><code>rend="style"</code>. Optional. The default style is <code>normal</code>. </li>
+	<li><code>align="alignment"</code>. Optional. The default alignment is <code>left</code>.</li>
+	<li><code>indent</code> = Optional additional left margin indentation in pixels.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..n). Runs of text with the same style.</li>
+	<li><code>hi</code> (0..n). Change style.</li>
+	<li><code>title</code> (0..n). Change style to italics.</li>
+	</ul>
+	<p>An empty <code>p</code> element can be used to render a blank line: <code>&lt;p/&gt;</code>.</p>
+</li>
+
+<li class="space"><code>head</code>. A heading. 
+	<p>Headings are rendered with a blank line above and below, and by default they are rendered centered and in boldface. Otherwise this element is identical to the <code>p</code> element, with the same attributes and children.</p>
+</li>
+
+<li class="space"><code>w</code>. A tagged word.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required. The unique id for the word, or <code>"untagged"</code> if the word is not tagged.</li>
+	<li><code>lemma</code>. Optional. The word's lemma(s). See below.</li>
+	<li><code>pos</code>. Optional. The word's part(s) of speech. See below.</li>
+	<li><code>prosodic="prose" or "verse"</code>. Optional. The prosodic attribute for the word.</li>
+	<li><code>metricalShape</code>. Optional. The metrical shape of the word.</li>
+	<li><code>bensonGloss</code>. Optional, used only for Chaucer. The id of the Benson gloss for the word. This id must match a lemPos id defined in the Benson glosses XML file.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The text of the word.</li>
+	</ul>
+	<p>For untagged words with <code>id="untagged"</code> the other attributes are ignored and are normally not specified. The word is included in the display of the text, but is not tagged with any data.</p>
+	<p>The <code>lemma</code> and <code>pos</code> attributes specify the word's morphological tagging data.</p>
+	<p>The lemma must be in one of the following formats:</p>
+	<ul>
+	<li><code>spelling (wc)</code></li>
+	<li><code>spelling (wc) (hom)</code></li>
+	</ul>
+	<p>Where:</p>
+	<ul>
+	<li><code>spelling</code> = The spelling of the lemma.</li>
+	<li><code>wc</code> = The lemma's word class. This id must match the id of a word class defined in the word class XML file.</li>
+	<li><code>hom</code> = An optional homonym number.</li>
+	</ul>
+	<p>Examples:</p> 
+<blockquote><pre>
+love (n)
+lie (v) (1)
+lie (v) (2)
+</pre></blockquote>
+	<p>The part of speech must match the id of a part of speech defined in the part of speech XML file.</p>
+	<p>For compound words, the <code>lemma</code> and <code>pos</code> attributes list multiple lemmas and parts of speech separated by the vertical bar character (<code>|</code>). For example, the first word of Hamlet is the contraction "Who's". This word is tagged as follows:</p>
+<blockquote><pre><code>
+&lt;w id="sha-ham10100101"
+   lemma="who (crq)|be (va)"
+   pos="q-crq|vaz"                      &gt;Who's&lt;/w&gt;
+</code></pre></blockquote>
+	<p>The first part of this word is the interrogative pronoun "who." The second part is the primary verb "be," used in the third person singular, present tense.</p>
+</li>
+
+<li class="space"><code>punc</code>. Punctuation and spacing.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The punctuation, including space characters.</li>
+	</ul>
+</li>
+
+<li class="space"><code>hi</code>. Changes style. These elements may be nested to any depth.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>rend="style"</code>. Required.</li>
+	</ul>
+	<p>Children (inside <code>wordHoardTaggedLine</code> elements):</p>
+	<ul>
+	<li><code>w</code> (0..n). Tagged words.</li>
+	<li><code>punc</code> (0..n). Punctuation and spacing.</li> 
+	<li><code>hi</code> (0..n). Change style.</li>
+	<li><code>title</code> (0..n). Change style to italics.</li>
+	<li><code>stage</code> (0..n). Stage directions.</li>
+	</ul>
+	<p>Children (inside <code>p</code> elements):</p>
+	<ul>
+	<li><code>TEXT</code> (0..n). Runs of text with the same style.</li>
+	<li><code>hi</code> (0..n). Change style.</li>
+	<li><code>title</code> (0..n). Change style to italics.</li>
+	</ul>
+</li>
+
+<li class="space"><code>title</code>. Changes to italic style. This element is equivalent to <code>&lt;hi rend="italic"&gt;</code>. 
+</li>
+
+<li class="space"><code>stage</code>. A stage direction.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The stage direction.</li>
+	</ul>
+	<p>Stage directions are rendered in italics, centered, with a blank line above and below.</p>
+</li>
+
+<li class="space"><code>castList</code>. A cast list.
+	<p>Children:</p>
+	<ul>
+	<li><code>castItem</code> (0..n). Cast items.</li>
+	<li><code>castGroup</code> (0..n). Cast groups.</li>
+	</ul>
+</li>
+
+<li class="space"><code>castItem</code>. A cast item.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>type="role" or "list"</code>. Required.</li>
+	<li><code>rend="none"</code>. Do not render this cast item on the cast of characters page. Optional. This option is useful if you need to define tagging data for a speaker, but do not want the speaker to appear on the cast of characters page.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>role</code> (0..n). Names of the characters. If the type of the <code>castItem</code> element is <code>role</code>, only one <code>role</code> child is permitted. If the type is <code>list</code>, multiple <code>role</code> children are permitted.</li>
+	<li><code>roleDesc</code> (0..1). Description of the character's role.</li>
+	</ul>
+	<p>Cast items are rendered in one of several ways:</p>
+		<ul>
+		<li>If both the name and the description are missing, nothing is rendered.</li>
+		<li>If both the name and descriptions are present, the name of the character is rendered in plain text, followed by a comma and a space, followed by the description in italics.</li>
+		<li>If the name is present but the description is missing, the name of the character is rendered in plain text.</li>
+		<li>If the name is missing but the description is present, the description is rendered in plain text.</li>
+		<li>If the type is <code>list</code> and there is more than one <code>role</code> child, only the description is rendered, in plain text.</li>
+		</ul>
+</li>
+
+<li class="space"><code>role</code>. A character.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Optional. The id of the character. This id is referenced by <code>who</code> attributes of <code>speech</code> elements. The id is required if it is referenced in any speech, otherwise it is optional.</li>
+	<li><code>gender="male", "female", or "uncertainMixedOrUnknown"</code>. Required if the work supports speaker gender tagging and this speaker is referenced by a speech.</li>
+	<li><code>mortality="mortal", "immortalOrSupernatural", or "unknownOrOther"</code>. Required if the work supports speaker mortality tagging and this speaker is referenced by a speech.</li>
+	<li><code>originalName</code> = Optional name of the character in the original language of the work. We use this attribute in the Early Greek Epic corpus, where the <code>TEXT</code> child is the character's name in English, and the <code>originalName</code> attribute is the character's name in Greek.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). Required. The name of the character for rendering.</li>
+	</ul>
+</li>
+
+<li class="space"><code>roleDesc</code>. Role description.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The role description.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>castGroup</code>. A cast group.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>rend="none"</code>. Do not render this cast group on the cast of characters page. Optional. This option is useful if you need to define tagging data for a group of speakers, but do not want them to appear on the cast of characters page.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>title</code> (1). The title of the cast group.</li>
+	<li><code>castItem</code> (1..n). The members of the cast group.</li>
+	</ul>
+	<p>The title is rendered left-justified, with the members of the cast group rendered following the title and indented, one per line.</p>
+</li>
+
+<li class="space"><code>castGroup/title</code>. A cast group title.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The cast group title.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-pos.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Parts of Speech XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-spelling.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Standard Spelling XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

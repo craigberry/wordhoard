@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double sigf( double t , double dfn , double dfd )
+{
+	return Sig.f( t , dfn , dfd );
+}
+
+double sigf( double t , int dfn , int dfd )
+{
+	return Sig.f( t , dfn , dfd );
+}
+

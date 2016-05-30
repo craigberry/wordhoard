@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+boolean areEqual( double a, double b )
+{
+	return ArithUtils.areEqual( a , b );
+}
+
+boolean areEqual( double a, double b , double tolerance )
+{
+	return ArithUtils.areEqual( a , b , tolerance );
+}
+

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Introduction to Analysis Methods</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="export-import-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Exporting and Importing Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="calc-window.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Calculator Window</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>
+Introduction to Analysis Methods
+</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#texts">
+       Analysis and reference texts
+       </a>
+       </li>
+   <li><a href="#savingoutput">
+       Saving the analysis output
+       </a>
+       </li>
+   <li><a href="#columnorder">
+       Changing the output column sort order
+       </a>
+       </li>
+   <li><a href="#references">
+       References
+       </a>
+       </li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3>
+<a name="introduction" id="introduction">
+Introduction
+</a>
+</h3>
+
+<p>
+Corpus Linguistics can be characterized as the study of linguistic
+phenomena through large collections of machine-readable texts called
+<strong>corpora</strong>.  Corpora are often enhanced
+with tagging information for each word such as the
+part of speech, the lemma (root word), speaker gender, and so on.
+Some of the interesting linguistic phenomena we can examine in
+a tagged corpus include:
+</p>
+
+<ul>
+   <li>word form frequencies and distributions;</li>
+   <li>syntactic analysis;</li>
+   <li>multiword units and co-occurring word forms;</li>
+   <li>character, word, clause, sentence, and paragraph lengths and
+       distributions;</li>
+   <li>semantic content.</li>
+</ul>
+
+<p>
+Many interesting linguistic features are revealed by simply counting and
+comparing the number of occurrences of the word forms such as
+spelling, lemmata, parts of speech, or speaker gender.  We can compare
+these word forms among different corpora or subsets of a corpus using
+statistical methods.  WordHoard provides a basic slate of statistical
+methods for analyzing word form counts through the Analysis menu.
+You can create
+<a href="analysis-createwordlists.html">word form lists</a>, find
+<a href="analysis-collocates.html">collocates and statistically
+interesting multi-word units</a>,
+compare
+<a href="analysis-comparewords.html">single or
+multiple word forms</a> between
+two text collections,
+<a href="analysis-trackwordovertime.html">track word usage over time</a>,
+and <a href="analysis-comparingtexts.html">compare texts for similarity</a>.
+In addition to these built-in analyses, you can create
+your own using the
+<a href="scripting-intro.html">WordHoard script facility.</a>
+</p>
+
+<h3><a name="texts" id="texts">Analysis and reference texts</a></h3>
+
+<p>
+The first step in using an analysis procedure in WordHoard is
+to specify an <em>analysis text</em> and in some cases, a
+<em>reference text</em>.
+The analysis text provides the focal point.  The reference text
+provides the text for comparisons or overall word form counts.
+You uncover properties of the analysis text by comparing it with the
+reference text.
+</p>
+
+<p>
+Most of the WordHoard analysis methods allow you to select a corpus, work,
+work set, or word set for both the analysis text and the reference text.
+Usually the analysis text is different from the reference text.
+The reference text may include the analysis text as a member.
+</p>
+
+<p>
+For illustrative purposes, we will use Shakespeare's Hamlet as the
+analysis text and the Shakespeare corpus as the reference text.  In this
+case, the reference text (all of Shakespeare) contains the analysis text
+(Hamlet) as a member.
+</p>
+
+<h3><a name="savingoutput" id="savingoutput">
+    Saving the analysis output</a></h3>
+
+<p>
+WordHoard displays the results of an analysis in tabular form.  You can
+use the "Edit" menu to copy all or selected portions of the results to the
+system clipboard.  This allows you to paste the results into a report or
+another program for further analysis.  You can also save the results
+to a file using the "Save As" command on the "File" menu.  You
+have a choice of three output formats for saving the results.
+</p>
+
+<ol>
+   <li><p>CSV saves the results a comma-separated series of values.
+       WordHoad writes each row of result values to a separate line
+       in the output file.</p>
+       </li>
+   <li><p>TAB saves the results as a tab-separate series of values.
+       (The tab is Ascii character 9.)
+       As with CSV, WordHoard writes each row of output values
+       to a separate line in the output file.</p>
+       </li>
+   <li><p>HTML saves the results as an XHTML formatted table
+       suitable for inclusion in a longer (X)HTML document.
+       WordHoard only creates the table formatting markup.
+       You will need to add the remainder of the (X)HTML markup
+       to create a complete HTML document.</p>
+       </li>
+</ol>
+
+<h3><a name="columnorder" id="columnorder">
+    Changing the output column sort order</a></h3>
+
+<p>
+The analysis output tables may sorted by the contents of a column.
+The sort column is marked by an up triangle
+<img src="images/up-triangle.gif" alt="" />, indicating the values
+appear in ascending order, or a down triangle
+<img src="images/down-triangle.gif" alt="" />,
+indicating the values appear in descending order.  You may select
+a new column for sorting in ascending by clicking on the header
+for a column.  To sort in descending order, hold down the shift key while
+clicking on the column header.
+</p>
+
+<p>
+Technical statistical or computational discussions appear
+in gray boxes.  You may skip these discussions if you prefer.
+</p>
+
+<h3><a name="references" id="references">
+    References</a></h3>
+
+<p>
+The following texts provide good coverage of most topics concerning
+the statistical analysis of texts.
+</p>
+
+<ul>
+<li>
+Manning, Christopher and Hinrich Sch&uuml;tze. 1999.
+<em>Foundations of Statistical Natural Language Processing.</em>
+Cambridge: MIT Press.
+</li>
+<li>
+Oakes, Micheal P. 1998.  <em>Statistics for Corpus Linguistics.</em>
+Edinburg University Press.
+</li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="export-import-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Exporting and Importing Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="calc-window.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Calculator Window</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

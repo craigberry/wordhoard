@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Working with Very Common and Very Rare Words</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="metadata.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Metadata and the Query Potential of the Digital Surrogate</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="corpora.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora and Tagging Data</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Working with Very Common and Very Rare Words</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+	<ul>
+		
+	  <li><a href="commonrare.html#commonrare">Working with Very Common or Rare Words</a></li>
+	  <li><a href="commonrare.html#loglikelihood">Using Log Likelihood Ratios to Compare Texts</a></li>
+	  <li><a href="commonrare.html#sharedrare">Shared Rare Vocabulary</a></li>
+	  
+	</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+ 
+<h3><a name="commonrare" />Working with Very Common or Rare Words</h3> 
+
+  <p>WordHoard includes a number of statistical routines that are commonly used in Natural Language Processing.  They are explained in greater detail in their own sections. I conclude this overview of WordHoard by highlighting two capabilities of WordHoard that operate on phenomena at opposite ends of the frequency spectrum: very common and very rare words.</p>
+  <p>Regardless of genre or purpose, all texts share the fact that they consist of a few words that are repeated a lot and a large number of words that occur once or rarely.  The character of a text, then, is to some extent shaped by what kinds of rare words appear in it and by the mix of common words that are used a lot more or a lot less than in other texts. WordHoard has some ingenious procedures that let you look for certain kinds of rare words as well as identify very common words whose overuse or underuse may be an interesting feature of a given text. These procedures do not of themselves produce interesting results.  But they will often generate productive data for  further inquiry. </p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="loglikelihood" />Using Log Likelihood Ratios to Compare Texts</h3>
+  
+  <p>Could it helpfully guide our reading of <i>Julius Caesar</i> if we had a precise answer to the question what common words are used relatively more or less often in that play than in Shakespeare's tragedies as a whole? This is a particular version of a more general query where you compare phenomena in Set A, which consists of one or more texts, with Set B, which likewise consists of one or more texts.  Set A is called the Analysis Work(s) and Set B the Reference Work(s).  The terminology is arbitrary, but you are interested in identifying distinctive features of something by comparing it with a relevant other. You would not expect differences between a play of Shakespeare and a year's run of the <i>Wall Street Journal</i> to yield much insight, unless you were interested in, say, how sixteenth-century syntax differed from  contemporary syntax. But striking differences between usage in one Shakespearean tragedy and  the corpus of all the tragedies might draw attention to something important. </p>
+  
+  <p>You do this comparison by following the steps in the procedure called Compare Many Wordforms in the Analysis menu of WordHoard. In this procedure, the computer compares the frequencies of all the words in <i>Julius Caesar</i> (subject to some filtering) with all the words in the tragedies. The comparison rests on a gigantic "as if." It treats the words in the tragedies as if they were so many colored marbles in a jar. It looks at the words in <i>Julius Caesar</i> as another set of colored marbles and seeks to determine the probability that the marbles in the Julius Caesar Jar could have been drawn at random from the Shakespearean Tragedy Jar.</p>
+  <p>This is a gigantic "as if" because there is not the slightest reason to assume that writing is anything like drawing words at random from some box or jar. But there is nonetheless some utility to the "as if." We are all creatures of habit, and we may expect writers to share some habits and have some personal habits of their own. To the extent that a writer's habits are relatively constant, you may think of them as default random distribution and measure deviations from it. Some of these deviations will have perfectly obvious explanations. For instance, from a statistical perspective, the names 'Brutus', 'Rome', 'Caesar' are astronomically more frequent in <i>Julius Caesar</i> than in Shakespearean tragedy at large. But what else would you expect? Other deviations might be in various ways interesting.</p>
+  
+  <p>The mathematics involved in this peculiar "as if" are fairly complex, but you need not understand them in detail to make intelligent use of the result. That result is expressed as a log likelihood ratio, which, if you really want to know, corresponds to chi square values for one degree of freedom. But the important thing is to have a sense of the odds associated with particular log likelihood ratios. The following table shows that logarithmic progressions are deceptive to the non-mathematical eye: apparently small increases in number stand for huge decreases in probability. The asterisk column refers to the use of asterisks in the log likelihood result sets to mark ranges of increasingly low probability. More is less.</p>
+  
+    <table class="center" border="1">
+      <tr>
+        <td>Log likelihood ratio</td>
+        <td>Asterisks</td>
+        <td>Percentage</td>
+        <td>Odds</td>
+      </tr>
+      <tr>
+        <td>3.84</td>
+        <td>*</td>
+        <td>5%</td>
+        <td>1 in 20</td></tr>
+      <tr>
+        <td>6.63</td>
+        <td>**</td>
+        <td>1%</td>
+        <td>1 in 100</td></tr>
+      <tr>
+        <td>7.9</td>
+        <td>**</td>
+        <td>0.5%</td>
+        <td>1 in 200</td>
+      </tr>
+      <tr><td>10.83</td>
+        <td>***</td>
+        <td>0.1%</td>
+        <td>1 in 1,000</td>
+      </tr>
+      <tr>
+        <td>15.15</td>
+        <td>****</td>
+        <td>0.01%</td>
+        <td>1 in 10,000</td>
+      </tr>
+      <tr>
+        <td>19.5</td>
+        <td>****</td>
+        <td>0.001%</td>
+        <td>1 in 100,000</td>
+      </tr>
+      <tr>
+        <td>23.9</td>
+        <td>****</td>
+        <td>0.0001%</td>
+        <td>1 in a million</td>
+      </tr>
+      <tr>
+        <td>37.3</td>
+        <td>****</td>
+        <td>0.0000001</td>
+        <td>1 in a billion</td></tr>
+    </table>
+  
+  <p>It is equally true that you should not overestimate the significance of vanishingly small probabilities. Language is full of rare events, and of the many rare events that could happen quite a few will.</p>
+  
+  <p>If you run a log likelihood comparison  on parts of speech in <i>Julius Caesar</i> and all tragedies, you notice that names are far more common, nouns and adjectives considerably less common, and interjection somewhat less common.  While the fact that Roman names are common in <i>Julius Caesar</i> is without any interest, one can make something of the fact that naming is a disproportionately common event: it is a nice way of drawing attention to a certain feature of Romanness.  A lemma-based comparison shows that 'she' is much less common, while 'man', 'to-day', 'do', 'mighty', 'countryman', 'street', 'honourable', 'run', and 'every' are considerably more common than in the tragedies at large. </p>
+  <p>It turns out that each of these words points to some major concern of the play. Thus you might want to think of the log likelihood ratio as a self-indexing feature that draws a provisional survey to be refined by subsequent interpretation. It is interesting to observe how much of the information in this initial overview is communicated by the relative frequencies of very ordinary words. In the discourse of Italian opera the word 'tintura' is often used to refer to the distinctive colouring of a particular score. Similarly, a text may have a distinctive quality that lives in the peculiar fabric of common words in that play. These are subtle effects, but you can get at them with surprising precision by measuring common words that are disproportionately common or rare.</p>
+  <p>You should never expect that such measurements will produce entirely new insights. In fact, a statistically based result that contradicts or lies outside the judgment of experienced readers is <i>ipso facto</i> suspect. Good readers have always been subtle, if informal, statisticians, and an effect that has escaped generations of readers is hard to reconcile with the idea of an author who knows what s/he is doing. On the other hand, frequency-based inquiries may be an excellent way of demonstrating in detail how an effect is built. At a minimum, a list of over- and under-used words in a particular text will often mark the terrain of useful inquiry. </p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="sharedrare" />Shared Rare Vocabulary</h3>
+  
+  <p>About a third of the distinct words in a given text occur only once in it. In the plays of Shakespeare, it is a reasonable question whether the overlap of rare words in one play and another points to interesting associations between those plays. If you are intrigued by some thematic or structural relationship between one play and another, can you find lexical evidence to trace that relationship in finer or firmer detail?  How do you find such words? It is not hard to look for all the words in <i>Hamlet</i> that occur only once or twice in the corpus. But how do you find words that occur only in <i>Hamlet</i> and <i>Othello</i>? There are about 3,000 words that occur less than five times in <i>Hamlet</i> and 2,400 words that occur less than five times in <i>Othello</i>. How do you find the 36 words that occur in both plays and at most in one other play? WordHoard has a very elegant procedure for generating such lists &mdash; it is described in the section on the Find Lemmata tool. It turns out that about one in 20 of such words establishes an interesting link between one play and another. The words in themselves tend to be quite ordinary: 'pat', 'moonshine', 'platform', 'adage', 'grapple', 'crowner', 'torchbearer', and so forth. But ordinary as they are, they reveal strong evidence of the associative power of memory, and WordHoard here operates as a tool for quite focused datamining.  </p>
+  
+<div class="space" />
+<hr />
+<div class="space" />  
+  
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="metadata.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Metadata and the Query Potential of the Digital Surrogate</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="corpora.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora and Tagging Data</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+<div class="space" />
+</body>
+</html>

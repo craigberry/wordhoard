@@ -1,0 +1,44 @@
+boolean updateWorkSet
+(
+	WorkSet workSet ,
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	WorkPart[] workParts
+)
+{
+	return
+		WorkSetUtils.updateWorkSet
+		(
+			workSet ,
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			workParts
+		);
+}
+
+boolean updateWorkSet
+(
+	WorkSet workSet ,
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	Work[] works
+)
+{
+	return
+		WorkSetUtils.updateWorkSet
+		(
+			workSet ,
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			works
+		);
+}
+

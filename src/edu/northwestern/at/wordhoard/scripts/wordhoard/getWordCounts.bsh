@@ -1,0 +1,72 @@
+import edu.northwestern.at.wordhoard.model.Corpus;
+import edu.northwestern.at.wordhoard.model.Work;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.CorpusUtils;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.WordCountUtils;
+
+Map getWordCounts( Work work , int wordForm )
+{
+	return WordCountUtils.getWordCounts( work , wordForm );
+}
+
+Map getWordCounts( WorkPart workPart , int wordForm )
+{
+	return WordCountUtils.getWordCounts( workPart , wordForm );
+}
+
+Map getWordCounts( Work[] works , int wordForm )
+{
+	Map result	= null;
+
+	Map[] results	=
+		WordCountUtils.getWordCounts( works , wordForm );
+
+	if ( results != null )
+	{
+		result	= results[ 0 ];
+	}
+
+	return result;
+}
+
+Map getWordCounts( WorkPart[] workParts , int wordForm )
+{
+	Map result	= null;
+
+	Map[] results	=
+		WordCountUtils.getWordCounts( workparts , wordForm );
+
+	if ( results != null )
+	{
+		result	= results[ 0 ];
+	}
+
+	return result;
+}
+
+Map getWordCounts( Corpus corpus , int wordForm )
+{
+	return getWordCounts(
+		CorpusUtils.getWorks( corpus ) , wordForm );
+}
+
+Map getWordCounts( WorkSet workSet , int wordForm )
+{
+	Map result	= null;
+
+	Map[] results	=
+		WordCountUtils.getWordCounts(
+			WorkSetUtils.getWorkParts( workSet ) , wordForm );
+
+	if ( results != null )
+	{
+		result	= results[ 0 ];
+	}
+
+	return result;
+}
+
+Map getWordCounts( WordSet wordSet , int wordForm )
+{
+	return WordSetUtils.getWordCounts( wordSet , wordForm );
+}
+

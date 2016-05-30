@@ -1,0 +1,5 @@
+WorkPart[] performWorkPartQuery( String queryString )
+{
+	return CQLQueryUtils.getWorkPartsViaQuery( queryString );
+}
+

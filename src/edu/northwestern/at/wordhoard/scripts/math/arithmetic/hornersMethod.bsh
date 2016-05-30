@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.Polynomial;
+
+double hornersMethod( double polycoefs[] , double x )
+{
+	return Polynomial.hornersMethod( polycoefs , x );
+}
+

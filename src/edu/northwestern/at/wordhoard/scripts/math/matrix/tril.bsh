@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix tril( Matrix m , int offset )
+{
+	return Matrices.tril( m , offset );
+}

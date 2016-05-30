@@ -1,0 +1,17 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix divide( Matrix a , Matrix b )
+{
+	return Matrices.divide( a , b );
+}
+
+Matrix divide( Matrix a , double value )
+{
+	return Matrices.divide( a , value );
+}
+
+Matrix divide( double value , Matrix a )
+{
+	return Matrices.divide( value , a );
+}
+

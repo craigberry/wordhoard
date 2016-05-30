@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double tinverse( double p , double df )
+{
+	return Sig.tInverse( p , df );
+}
+
+double tinverse( double p , int df )
+{
+	return Sig.tInverse( p , df );
+}
+

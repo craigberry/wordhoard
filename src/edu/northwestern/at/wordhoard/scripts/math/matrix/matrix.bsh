@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix matrix( int rows , int columns )
+{
+	return MatrixFactory.createMatrix( rows , columns );
+}
+
+Matrix matrix( int rows , int columns , double value )
+{
+	return MatrixFactory.createMatrix( rows , columns , value );
+}
+

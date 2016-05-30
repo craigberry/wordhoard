@@ -1,0 +1,4 @@
+String doubleMetaphone( String s )
+{
+	return DoubleMetaphone.sencode( s );
+}

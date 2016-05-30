@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Building the Source Code</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="hibernatechanges.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Hibernate changes</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-model.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Static Object Model</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Building the Source Code</h2>
+
+<p>We use <a href="http://ant.apache.org/">Ant</a> to build the source code. The file <code>build.xml</code> contains the definitions of all the Ant targets. Open this file now and take a look at it. It's a reasonably standard kind of Ant build file. The targets are:</p>
+
+<ul>
+
+<li><code>clean</code>. This target deletes the <code>bin</code> directory, which is used to hold all of the compiled Java class files and various other resource and data files. It also deletes the <code>javadoc</code> directory, which is used to hold the generated javadoc.</li>
+
+<li class="space"><code>init</code>. This target creates new empty <code>bin</code> and <code>javadoc</code> directories if they don't already exist, then copies a large number of resources and other files from the <code>properties</code> and <code>src</code> directories into the <code>bin</code> directory, if they haven't already been copied or there are newer versions in the source directories.</li>
+
+<li class="space"><code>compile</code> (depends on <code>init</code>). This target compiles all of the new or changed Java source code files in the <code>src</code> directory and places the compiled class files in the <code>bin</code> directory.</li>
+
+<li class="space"><code>hibernate</code> (depends on <code>compile</code>). This target runs the Hibernate XDoclet to extract Hibernate declarations from the persistent object model Java source code files. The declarations are used to create <code>*.hbm.xml</code> files in the <code>bin</code> directory. Hibernate uses these XML files at run-time to define the mapping from our object model to the MySQL database.</li>
+
+<li class="space"><code>rmic</code> (depends on <code>compile</code>). This target runs the Java rmic compiler to generate stubs for the remote classes in the server.</li>
+
+<li class="space"><code>bin</code> (depends on <code>hibernate</code> and <code>rmic</code>). This is the default target. It copies new or changed resource and data files, compiles new or changed source code files, and runs the <code>hibernate</code> and <code>rmic</code> targets.</li>
+
+<li class="space"><code>full</code> (depends on <code>clean</code> and <code>bin</code>). The full build target. It runs the <code>clean</code> target first, then recopies and recompiles everything and runs the <code>hibernate</code> and <code>rmic</code> targets.</li>
+
+<li class="space"><code>doc</code> (depends on <code>init</code>). Builds the javadoc. In the WordHoard development team at Northwestern, we have a policy that all classes and methods must have complete and error-free javadoc.</li>
+
+</ul>
+
+<p>At this point you want to do a full build. We use our alias <code>b</code> to run Ant:</p>
+
+<blockquote><pre><code>
+% b full
+</code></pre></blockquote>
+
+<p>You should now have a fully compiled copy of WordHoard in your <code>bin</code> directory, which is in your classpath.</p>
+
+<p>The next step is to create the server database <code>wordhoardserver</code>. Use the <code>create-server-database</code> script to do this:</p>
+
+<blockquote><pre><code>
+% scripts/create-server-database.csh
+</code></pre></blockquote>
+
+<p>Use the MySQL command line client to make sure the database was created correctly:</p>
+
+<blockquote><pre><code>
+% mysql
+mysql> use wordhoardserver;
+mysql> show tables;
++---------------------------+
+| Tables_in_wordhoardserver |
++---------------------------+
+| account                   |
+| userannotation            |
++---------------------------+
+2 rows in set (0.00 sec)
+
+mysql> quit
+</code></pre></blockquote>
+
+<p>Run the <code>mysql-server-grants</code> script:</p>
+
+<blockquote><pre><code>
+% scripts/mysql-server-grants.csh
+</code></pre></blockquote>
+
+<p>This script grants all privileges on the <code>wordhoardserver</code> database to the account with username <code>wordhoardserver</code> and password <code>wordhoardserver</code>, but restricts access to <code>localhost</code>. This makes the <code>wordhoardserver</code> database private, readable and writable only by programs running on the same host (e.g., the WordHoard server program).</p>
+
+<p>Use the <code>start</code> alias to start the WordHoard server in the background. Wait for the "WordHoard server started." message to appear:</p>
+
+<blockquote><pre><code>
+% start
+[1] 14366
+WordHoard server started.
+</code></pre></blockquote>
+
+<p>Use the <code>r</code> alias to run the WordHoard client:</p>
+
+<blockquote><pre><code>
+% r
+</code></pre></blockquote>
+
+<p>Try playing around with the program to make sure it works. Read some text. Get info on a word. Do a search.</p>
+
+<p>Login using the username "admin" and password "admin". Open the "Manage Accounts" window. You will see that there is a single account defined, "admin", with account management privileges. Try creating another account with username "fred", name "Fred Flintsone", and password "mary", to make certain the server works.</p>
+
+<p>Quit WordHoard.</p>
+
+<p>Try making a trivial change to the WordHoard source. Open the following resource file:</p>
+
+<blockquote><pre><code>
+src/edu/northwestern/at/wordhoard/resources/wh.properties
+</code></pre></blockquote>
+
+<p>Change the version number of the program near the top of the file (in two places) and save the modified file.</p>
+
+<p>Test your change by running Ant to build the default <code>bin</code> target:</p>
+
+<blockquote><pre><code>
+% b
+% r
+</code></pre></blockquote>
+
+<p>Open WordHoard's about box. You should see your new version number.</p>
+
+<p>Check the server log file. You should see several log entries for server startup, the two times you ran the client, and a message when you logged in as "admin":</p>
+
+<blockquote><pre><code>
+% more server/data/log
+2005-12-15 14:46:05,312 INFO  - Server started, version 1.0fc5
+2005-12-15 14:48:28,671 INFO  - Session=0: &lt;null&gt;, Session begin: 129.105.110.29
+2005-12-15 14:48:39,851 INFO  - Session=0: admin, Login
+2005-12-15 14:48:52,540 INFO  - Session=0: admin, Session end: 129.105.110.29
+2005-12-15 15:31:49,742 INFO  - Session=1: &lt;null&gt;, Session begin: 129.105.110.29
+2005-12-15 15:41:28,055 INFO  - Session=1: &lt;null&gt;, Session end: 129.105.110.29
+</code></pre></blockquote>
+
+<p>Check the server database account table to make sure your "fred" account was created correctly, and the password "mary" was properly encrypted before being stored on the database:</p>
+
+<blockquote><pre><code>
+% mysql
+mysql> use wordhoardserver;
+mysql> select * from account;
++----+----------+---------------+-----------------+-----------+-------------------+
+| id | username | password      | name            | nuAccount | canManageAccounts |
++----+----------+---------------+-----------------+-----------+-------------------+
+|  1 | admin    | adpexzg3FUZAk | Administrator   |           |                  |
+|  2 | fred     | maO6ZbdtofDIg | Fred Flintstone |           |                   |
++----+----------+---------------+-----------------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> quit
+</code></pre></blockquote>
+
+<p>Stop the server:</p>
+
+<blockquote><pre><code>
+% stop
+WordHoard server stopped
+</code></pre></blockquote>
+
+<p>If all these tests worked, you are ready to start writing and testing your own WordHoard code.</p>
+
+<p>At some point (maybe now would be a good time), you will want to change the password on the "admin" account, and perhaps delete the "fred" account you used for testing, and probably change the version number back to what it was before you changed it to do your test.</p>
+
+<p>Note that if you are not working on server code or on parts of the client that require logging in, you do not need to run the server when you are developing and testing your code.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="hibernatechanges.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Hibernate changes</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-model.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Static Object Model</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

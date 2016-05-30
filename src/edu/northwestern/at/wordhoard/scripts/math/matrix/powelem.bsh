@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix powelem( Matrix m , double power )
+{
+	return Matrices.powElem( m , power );
+}
+
+Matrix powelem( Matrix m , Matrix p )
+{
+	return Matrices.powElem( m , p );
+}
+

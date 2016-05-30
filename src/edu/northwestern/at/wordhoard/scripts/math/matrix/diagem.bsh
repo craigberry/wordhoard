@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix diagem( Matrix m , int offset )
+{
+	return Matrices.diagEm( m , offset );
+}

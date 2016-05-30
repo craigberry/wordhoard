@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Searching for Words</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scholia.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Iliad Scholia and E. K. Annotations</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="concordance.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Concordances</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Searching for Words</h2>
+
+<p>In earlier chapters we described how to do simple searches by clicking buttons in the <a href="word-info.html">word information</a> and <a href="lemma-info.html">lemma information</a> windows.</p>
+
+<p>To do more complicated searches, or to do searches at any time even when a word or lemma information window is not present, use the "Find Words" command in the "Find" menu (Command-F):</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-1.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, we are searching the Shakespeare corpus for all occurrences of the noun "tyranny."</p>
+
+<p>Each row specifies a single search criterion. When you click the "Find" button, WordHoard queries the database to find the word occurrences which match all of the criteria you have specified. The results are presented in a <a href="concordance.html">concordance window</a>, which is described in detail in the next chapter.</p>
+
+<p>To add a criterion, click one of the plus buttons on the left. This inserts a new criterion row immediately following the row containing the plus button you clicked.</p>
+
+<p>To remove a criterion, click the minus button in the row you wish to remove.</p>
+
+<p>Use the popup menu in the middle to change the type of the criterion:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/criteria-popup.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, we are changing the type of the criterion from "Corpus" to "Major word class." After releasing the mouse button, the dialog appears as follows:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-2.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Notice that the control on the right has changed from a corpus selection popup menu to a major word class popup menu. Each criterion type has its own control or field on the right that you use to specify the value of the criterion. In some cases, multiple controls and/or fields appear on the right. For example, for the "Publication year" criterion, there are two fields you use to enter a range of years:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-3.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Some criteria have even more controls for various options:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-4.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p><b>Example 1</b>. Find all occurrences of the verb "love" in Shakespeare which are spoken by female characters in verse in comedies published between 1600 and 1605. This example uses six search criteria:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-5.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>This search finds 46 words, 17 in <i>Twelfth Night</i> (1601-1602), 18 in <i>All's Well That Ends Well</i> (1602-1603), 8 in <i>Troilus and Cressida</i> (1601-1602) and 3 in <i>Measure for Measure</i> (1604).</p>
+
+<p>In this example, the first "Corpus" criterion is superfluous but harmless, because the "Work set" criterion already narrows the search to a subset of the Shakespeare corpus.</p>
+
+<p><b>Example 2</b>. Find all 448 occurrences of Latin words in Shakespeare and group them by lemma to see that five of these occurrences are the Latin word "imprimis," and then look them up in the text of the three plays in which the word appears. We only need two criteria for the search part of this problem:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-6.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, when you click the "Find" button, the following alert appears:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-7.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>This alert is advisory. It appears when, in WordHoard's best judgement, you may be asking for something you didn't really intend. In this case, we know what we are doing, because we don't expect there to be all that many Latin words in Shakespeare, so we click "Continue".</p>
+
+<p>The rest of this problem, grouping the results by lemma, is done using grouping options in the <a href="concordance.html">concordance window</a>, which is the subject of the next chapter. We will continue this example at the end of that chapter.</p>
+
+<p><b>Example 3</b>. Find all occurrences of the noun "question" spoken by the character "Hamlet." We use four criteria for this search. We use a "Corpus" criterion to narrow the search to just the Shakespeare corpus, and we use a "Work" criterion to further narrow the search to just the play <i>Hamlet</i>. We could have left out these two criteria, and searched all the works in all the corpora, but adding the two extra criteria makes the search go faster.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-8.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Notice that in this example we only typed the first four characters "ques" of the lemma name. When we click the "Find" button, the following dialog appears asking us to select among the lemmas which start with "ques":</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-9.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>To complete our search, we click our desired lemma "question (n)" to select it (or we press the down arrow key twice to move the selection down to our desired lemma), then click the "OK" button (or press Return).</p>
+
+<p>This feature is called "lemma completion." You can also click the "Complete" button in the lemma criterion row to complete a partial lemma, but this is not necessary.</p>
+
+<p>The lemma completion feature is case and diacritical insensitive. This is particularly useful when typing Greek lemmas, because you don't have to worry about typing accent or breathing marks.</p>
+
+<p><b>Example 4</b>. Find all occurrences of words in Book 3 of Homer's <i>Iliad</i> which have a specified metrical shape and are spoken by an immortal or supernatural character. We use five criteria:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-10.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Note that when you want to specify a work criterion, you must first specify a corpus criterion. When you want to specify a work part criterion, you must first specify both a corpus and a work criterion. In this example, we first specified the corpus (Early Greek Epic), then the work (<i>The Iliad</i>), then the part (Book 3). We then added the metrical shape and speaker mortality criteria to complete the definition of our query.</p>
+
+<p><b>Example 5</b>. Count up  the different ways Chaucer spells the adjective "young" in <i>The Canterbury Tales</i>. This query uses three criteria:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-11.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>The rest of this problem, counting up the spellings, is done by using grouping options in the <a href="concordance.html">concordance window</a>, which is the subject of the next chapter. We will continue this example at the end of that chapter.</p>
+
+<p><b>Example 6</b>. Find all occurrences of words in Shakespeare that start with the letters "pardon".</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/find-words-12.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, we use the match-any wild card character "*" in the search string "pardon*". The "*" matches any sequence of zero or more characters. The search locates 333 words with 12 different spellings: "pardon" (both the noun and the verb), "pardoned", "pardons", etc.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scholia.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Iliad Scholia and E. K. Annotations</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="concordance.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Concordances</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

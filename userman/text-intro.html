@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Introduction for Text Developers</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="deploy.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Deployment</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-corpus.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Introduction for Text Developers</h2>
+
+<p>WordHoard's texts and tagging data are defined in XML files in the <code>data</code> directory, which is organized as follows:</p>
+
+<ul>
+<li><code>corpora.xml</code>: Defines the corpora.</li>
+<li><code>authors.xml</code>: Defines the authors.</li>
+<li><code>word-classes.xml</code>: Defines the word classes.</li>
+<li><code>pos.xml</code>: Defines the parts of speech.</li>
+<li><code>works</code>: Work definition files.
+	<ul>
+	<li><code>cha</code>: Chaucer work definition files.
+		<ul>
+		<li><code>aaa.xml</code>: Work definition file for <i>Anelida and Arcite</i>.</li>
+		<li>... more Chaucer work definition files.</li>
+		</ul>
+	</li>
+	</ul>
+	<ul>
+	<li><code>ege</code>: Early Greek Epic work definition files.
+		<ul>
+		<li><code>HH.xml</code>: Work definition file for <i>Homeric Hymns</i>.</li>
+		<li>... more Early Greek Epic work definition files.</li>
+		</ul>
+	</li>
+	</ul>
+	<ul>
+	<li><code>sha</code>: Shakespeare work definition files.
+		<ul>
+		<li><code>1h4.xml</code>: Work definition file for <i>The First Part of King Henry the Fourth</i>.</li>
+		<li>... More Shakespeare work definition files.</li>
+		</ul>
+	</li>
+	</ul>
+	<ul>
+	<li><code>spe</code>: Spenser work definition files.
+		<ul>
+		<li><code>faq.xml</code>: Work definition file for <i>The Faerie Queene</i>.</li>
+		<li>... more Spenser work definition files.</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><code>spellings</code>: Standard spelling definition files.
+	<ul>
+	<li><code>nu-spellings.xml</code>: Standard spelling definitions for the three NU English language corpora.</li>
+	</ul>
+</li>
+<li><code>benson-glosses.xml</code>: Professor Larry Benson's Chaucer glosses definition file.</li>
+<li><code>translations</code>: Translation files.
+	<ul>
+	<li><code>ege</code>: Early Greek Epic translation files.
+		<ul>
+		<li><code>english</code>: English translations.
+			<ul>
+			<li><code>HH.xml</code>: English translation of <i>Homeric Hymns</i>.</li>
+			<li>... more Early Greek Epic English translations.</li>
+			</ul>
+		</li>
+		<li><code>german</code>: German translations.
+			<ul>
+			<li><code>IL.xml</code>: German translation of <i>The Iliad</i>.</li>
+			<li>... more Early Greek Epic German translations.</li>
+			</ul>
+		</li>
+		<li><code>metrical</code>: Metrical transcriptions.
+			<ul>
+			<li><code>HH.xml</code>: Metrical transcription of <i>Homeric Hymns</i>.</li>
+			<li>... more Early Greek Epic metrical transcriptions.</li>
+			</ul>
+		</li>
+		<li><code>roman</code>: Roman transliterations.
+			<ul>
+			<li><code>HH.xml</code>: Roman transliteration of <i>Homeric Hymns</i>.</li>
+			<li>... more Early Greek Epic Roman transliterations.</li>
+			</ul>
+		</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+<li><code>annotations</code>: Static annotation files.
+	<ul>
+	<li><code>ek.xml</code>: The E. K. annotations for Spenser's <cite>Shepheardes Calender</cite>.</li>
+	<li><code>iliad-scholia.xml</code>: The Iliad Scholia.</li>
+	</ul>
+</li>
+<li><code>work-sets.xml</code>: Defines the system work sets.
+</li>
+</ul>
+
+<p>All of WordHoard's XML files use the Unicode character set with UTF-8 encoding.</p>
+
+<p>To add a new corpus, edit the <code>corpora.xml</code> file and create a new subdirectory of the <code>works</code> directory to hold the works in the corpus.</p>
+
+<p>To add a new author, edit the <code>authors.xml</code> file.</p>
+
+<p>To add a new work, create the XML definition file for the work and place it in the subdirectory of <code>works</code> for its corpus. Edit the <code>corpora.xml</code> file to add the work to the table of contents view(s) for its corpus.</p>
+
+<p>We use the convention that corpus ids are used to name subdirectories of the <code>works</code> directory, and work ids are used to name the work definition files. For example, <code>sha</code> is the id for the Shakespeare corpus, and <code>ham</code> is the id for <i>Hamlet</i>, so the work definition file for <i>Hamlet</i> is located at <code>works/sha/ham.xml</code>.</p>
+
+<p>When you make any changes to the raw data files, you must rebuild the static object model. Use the <code>full-build</code> alias:</p>
+
+<blockquote><pre>
+% full-build
+</pre></blockquote>
+
+<p>This alias runs the script at <code>scripts/full-build.csh</code>. This script takes a long time to run. We usually do full builds late at night, when we are done with our other work for the day.</p>
+
+<p>The script first creates a new empty <code>wordhoard</code> database. It then runs a series of build tools which read the raw data XML files and fully populate the tables in the <code>wordhoard</code> database.</p>
+
+<p>The <code>full-build</code> script calls the following helper scripts in order:</p>
+
+<ol>
+<li><code>create-client-database.csh (cdb)</code></li>
+<li><code>build-corpora.csh (bco)</code></li>
+<li><code>build-authors.csh (bau)</code></li>
+<li><code>build-word-classes.csh (bwc)</code></li>
+<li><code>build-pos.csh (bpo)</code></li>
+<li><code>build-benson-glosses.csh (bbg)</code></li>
+<li><code>build-all-works.csh (baw)</code></li>
+<li><code>build-annotations (ban)</code></li>
+<li><code>build-all-translations (bat)</code></li>
+<li><code>calculate-counts.csh (cc)</code></li>
+<li><code>build-work-sets.csh (bws)</code></li>
+<li><code>analyze-tables.csh (atb)</code></li>
+</ol>
+
+<p>Steps 7 and 10 (<code>build-all-works</code> and <code>calculate-counts</code>) take a long time. The other steps are fast.</p>
+
+<p>The short names in parentheses are aliases that can be used to run each helper script individually. The helpers must be run in order.</p>
+
+<p>The <code>full-build</code> script generates a detailed report on <code>stdout</code>, which the alias redirects to the file <code>misc/full-build.txt</code>. The report contains error messages in the form <code>"##### Message"</code>.</p>
+
+<p>When we do a full build, we often open a second terminal window and execute the following command to monitor the progress of the build:</p>
+
+<blockquote><pre>
+% tail -f misc/full-build.txt
+</pre></blockquote>
+
+<p>The alias <code>bini</code> runs helpers 1 through 6 and is useful during development to quickly generate a new database with no works:</p>
+
+<blockquote><pre>
+alias bini "cdb;bco;bau;bwc;bpo;bbg"
+</pre></blockquote>
+
+<p>When we work on new texts, make changes to old texts or tagging data, or work on structural changes to the object model, we almost always work with a stripped down database. For example, a database with just one Shakespeare play may be quite adequate to test some new feature or change to the text or tagging data for the play. Building such a small subset of the database is much quicker and easier than trying to work with the full production version.</p>
+
+<p>For example, the following commands create a test database containing just <i>Romeo and Juliet</i>:</p>
+
+<blockquote><pre><code>
+% bini
+% bw sha roj
+% cc
+</code></pre></blockquote>
+
+<p>The <code>bw</code> alias in this example runs the <code>build-work</code> script, which builds a single work.</p>
+
+<p>Sometimes, depending on what you're working on, you can get by without running <code>calculate-counts (cc)</code>.</p>
+
+<p>When you are done testing some new feature with such a stripped down database, you can do a full build while you are sleeping to go back to the full production database with all the corpora and works.</p>
+
+<p>When you are working on text rendering issues, use the <code>debug</code> parameter with the <code>bw</code> alias. For example:</p>
+
+<blockquote><pre><code>
+% bw sha roj debug
+</code></pre></blockquote>
+
+<p>This example builds or rebuilds <i>Romeo and Juilet</i> and then runs the WordHoard client and opens the work display window for the new version of the text. In addition, tagging data is not saved in the database, which makes the build run much faster.</p>
+
+<p>It is much faster to start with a database that contains no works, then build all of them at once using <code>build-all-works (baw)</code>, than it is to build the works one at a time using <code>build-work (bw)</code>. This is what the <code>full-build</code> script does.</p>
+
+<p><b>A Note on Terminology</b></p>
+
+<p>The XML files contain <code>id</code> attributes which assign short string identifiers to WordHoard objects (corpora, works, word classes, parts of speech, lemmas, words, etc.). In the source code for WordHoard, in the MySQL databases, and in the rest of this manual, we use the term "tag" for this concept, to avoid an unfortunate conflict with Hibernate's use of the term "id." It's important not to confuse these concepts.</p>
+
+<p>For example:</p>
+
+<blockquote><pre>
+% mysql
+mysql> use wordhoard;
+mysql> describe corpus;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| id                | bigint(20)   | NO   | PRI | NULL    | auto_increment |
+| tag               | varchar(255) | YES  | MUL | NULL    |                |
+| title             | varchar(255) | YES  |     | NULL    |                |
+| charset           | tinyint(4)   | YES  |     | NULL    |                |
+| posType           | tinyint(4)   | YES  |     | NULL    |                |
+| taggingData_flags | bigint(20)   | YES  |     | NULL    |                |
+| numWorkParts      | int(11)      | YES  |     | NULL    |                |
+| numLines          | int(11)      | YES  |     | NULL    |                |
+| numWords          | int(11)      | YES  |     | NULL    |                |
+| maxWordPathLength | int(11)      | YES  |     | NULL    |                |
+| translations      | varchar(255) | YES  |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+11 rows in set (0.04 sec)
+mysql> select id, tag, title from corpus;
++----+------+------------------+
+| id | tag  | title            |
++----+------+------------------+
+|  1 | ege  | Early Greek Epic |
+|  2 | cha  | Chaucer          |
+|  3 | spe  | Spenser          |
+|  4 | sha  | Shakespeare      |
++----+------+------------------+
+4 rows in set (0.00 sec)
+</pre></blockquote>
+
+<p>The <code>corpus</code> table contains a column named <code>id</code> of type <code>bigint(20)</code> which is the unique Hibernate id for the corpus object. It also contains a column named <code>tag</code> of type <code>varchar(255)</code> which is the human-readable identifier for the corpus object. It is the <code>tag</code> column which corresponds to the XML <code>id</code> attribute on the <code>corpus</code> elements in the <code>corpora.xml</code> definition file.</p>
+
+<p>In this section of the user manual we mostly use the term "id," since we are discussing the XML files. Do not confuse this with the Hibernate id.</p>
+
+<p><b>Temporary Files</b></p>
+
+<p>The various build scripts and programs use a number of temporary files. These files are created inside a subdirectory named <code>temp</code> of the WordHoard development directory.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="deploy.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Deployment</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-corpus.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

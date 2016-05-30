@@ -1,0 +1,163 @@
+###	Setup file for WordHoard development.
+#
+#	To work on WordHoard, change to your WordHoard development directory, then
+#	source this setup file.
+
+#	Define environment variables.
+
+setenv MYSQL_ROOT_USERNAME root
+setenv MYSQL_ROOT_PASSWORD my-password
+setenv MYSQL_BIN /usr/local/mysql/bin
+setenv MYSQL_DATA /usr/local/mysql/data
+setenv ANT_HOME /Users/jln/Documents/java/ant
+setenv ANT_OPTS -Xmx500m
+setenv CODEBASE http://wordhoard.northwestern.edu/client/
+setenv HOMEPAGE http://wordhoard.northwestern.edu
+
+#	Define the Java classpath.
+
+setenv CLASSPATH bin
+foreach jarfile (lib/*.jar)
+	setenv CLASSPATH ${CLASSPATH}:$jarfile
+end
+
+#	Useful MySQL aliases.
+
+alias mysql-start "sudo -b $MYSQL_BIN/safe_mysqld --user=mysql"
+alias mysql-stop "$MYSQL_BIN/mysqladmin -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD shutdown"
+alias mysql "$MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD"
+
+alias mysql-welles /usr/local/mysql/bin/mysql -h welles.library.northwestern.edu \
+   -P 3307 -u root -pmy-password
+
+#	A "b" alias for Ant (for "build").
+
+alias b "$ANT_HOME/bin/ant"
+
+#	Aliases to start and stop the WordHoard server.
+
+alias start "java -Xmx500m edu/northwestern/at/wordhoard/server/Server start server/data &"
+alias stop "java edu/northwestern/at/wordhoard/server/Server stop server/data"
+
+#	Aliases to run the WordHoard client.
+
+alias r "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
+   file:misc/localhost.xml"
+alias rr "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
+   file:misc/sites.xml"
+alias rscribe "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
+   file:misc/scribe.xml"
+
+#	Aliases to run the build scripts.
+
+alias full-build "scripts/full-build.csh >misc/full-build.txt"
+alias cdb "scripts/create-client-database.csh"
+alias bco "scripts/build-corpora.csh"
+alias bau "scripts/build-authors.csh"
+alias bwc "scripts/build-word-classes.csh"
+alias bpo "scripts/build-pos.csh"
+alias bbg "scripts/build-benson-glosses.csh"
+alias bini "cdb;bco;bau;bwc;bpo;bbg"
+alias baw "scripts/build-all-works.csh"
+alias bw "scripts/build-work.csh"
+alias ban "scripts/build-annotations.csh"
+alias bat "scripts/build-all-translations.csh"
+alias bt "scripts/build-translation.csh"
+alias cc "scripts/calculate-counts.csh"
+alias bws "scripts/build-work-sets.csh"
+alias atb "scripts/analyze-tables.csh"
+
+alias bws-welles java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWorkSets \
+   data/work-sets.xml \
+   welles.library.northwestern.edu:3307/wordhoard \
+   root \
+   my-password
+
+#	Deployment aliases.
+
+alias russell-vars "source scripts/russell-vars"
+alias make-other-files "scripts/make-other-files.csh"
+alias tar-raw-data "scripts/tar-raw-data.csh"
+alias create-client-jar "scripts/create-client-jar.csh"
+alias create-server-jar "scripts/create-server-jar.csh"
+
+#	Aliases to apply Martin's updates.
+
+alias create-martin-database "scripts/create-martin-database.csh"
+alias import-all "scripts/import-all.csh"
+alias martin-update "scripts/martin-update.csh >martin/report.txt"
+
+#	Aliases for working with NCF/Stein and Monk.
+
+alias cm "scripts/convert-morph.csh"
+alias scribe "ssh scribe.at.northwestern.edu"
+alias put-MorphAdorner "scp -r MorphAdorner scribe.at.northwestern.edu:wordhoard"
+alias put-scripts "scp -r scripts scribe.at.northwestern.edu:wordhoard"
+alias put-bin "scp -r bin scribe.at.northwestern.edu:wordhoard"
+alias put-data "scp -r data scribe.at.northwestern.edu:wordhoard"
+
+#	Aliases for working with EMD.
+
+alias cm-emd "java -Xmx2g edu.northwestern.at.wordhoard.tools.cm.ConvertMorph MorphAdorner/emd MorphAdorner/emd-rules.xml MorphAdorner/data >MorphAdorner/cm-report.txt"
+alias build-emd "scripts/full-build.csh MorphAdorner/data emdtest >MorphAdorner/report.txt"
+alias r-emdtest "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
+   file:misc/emdtest.xml"
+
+#	Aliases for other scripts.
+
+alias csdb "scripts/create-server-database.csh"
+alias mysql-grants "scripts/mysql-grants.csh"
+
+#	Other aliases, mostly miscellaneous junk.
+
+alias noir-wordhoard "ssh wordhoard@noir.at.northwestern.edu"
+alias welles-whoard "ssh whoard@welles.library.northwestern.edu"
+
+alias cld "java -Xmx500m edu.northwestern.at.wordhoard.tools.CloneData \\
+	data /Volumes/LaCie500/data 2"
+
+alias tf "scripts/test-filter.csh"
+alias rf "scripts/run-filter.csh"
+alias rfa "scripts/run-filter-all.csh"
+
+alias style-test "java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWork \\
+data/testing/style-test.xml debug"
+
+alias bwf "java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWork"
+
+alias r4 "java4 -Xmx500m edu/northwestern/at/wordhoard/swing/WordHoard"
+alias start4 "java4 -Xmx500m edu/northwestern/at/wordhoard/server/Server start server/data &"
+
+alias mysql-russell "$MYSQL_BIN/mysql \\
+-h russell.at.northwestern.edu -u wordhoard -pwordhoard"
+
+alias schema-test "java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
+--format bin/edu/northwestern/at/wordhoard/model/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/annotations/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/bibtool/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/counts/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/grouping/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/morphology/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/querytool/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/search/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/speakers/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/text/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/userdata/*.hbm.xml \\
+bin/edu/northwestern/at/wordhoard/model/wrappers/*.hbm.xml"
+
+alias server-schema-test "java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
+--format bin/edu/northwestern/at/wordhoard/server/model/*.hbm.xml"
+
+alias dw "java -Xmx200m edu/northwestern/at/wordhoard/tools/DeleteWork \!*"
+
+alias cxml "java edu/northwestern/at/utils/tools/CatalogXML \!*"
+alias probsDemo "java edu/northwestern/at/wordhoard/tools/HibernateProblemsDemo"
+
+alias csd "java edu/northwestern/at/wordhoard/tools/CharSetDisplay"
+
+alias gcu "java -Xmx500m edu/northwestern/at/wordhoard/tools/GetCharsUsed"
+alias st "java edu/northwestern/at/wordhoard/tools/StyleTest"
+
+alias scholia-sed "sed -f data/IliadScholia/sed-commands.txt \\
+data/IliadScholia/IliadScholia-orig.xml \\
+>data/IliadScholia/IliadScholia.xml"

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Corpora and Tagging Data</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="commonrare.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Working with Very Common and Very Rare Words</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="getting-started.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Getting Started</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Corpora and Tagging Data</h2>
+
+<p>The main public WordHoard site contains the following four corpora:</p>
+
+<ul>
+
+<li><b>Early Greek Epic</b>. This corpus includes Homer, Hesiod, and the Homeric Hymns in the original Greek, with English and/or German translations for all texts but <i>Shield of Herakles</i>.</li>
+
+<li class="space"><b>Chaucer</b>. We have all the works of Chaucer, including all of <cite>The Canterbury Tales</cite>.</li>
+
+<li class="space"><b>Spenser</b>. We have all of the poetical works of Spenser, including <cite>The Faerie Queene</cite>.</li>
+
+<li class="space"><b>Shakespeare</b>. We have all the works of Shakespeare, including all of his plays and poems.</li>
+
+</ul>
+
+<p>WordHoard supports the following categories of tagging data:</p>
+
+<ul>
+
+<li><b>Morphological</b>
+
+<p>Morphological tagging includes full lemmatization with parts of speech,
+word classes, and spellings. Every word is tagged with its lemma, part of
+speech, word class, major word class, and spelling.</p>
+
+<p>Lemmas distinguish between word classes, with the word class indicated
+in parentheses following the lemma name. For example, the verb "love (v)"
+is a separate lemma from the noun "love (n)".</p>
+
+<p>WordHoard understands homonyms, which are disambiguated by adding
+additional homonym numbers in parentheses following the lemma name. For
+example, there are two verbs "lie." The first one means "to recline," and
+is indicated in WordHoard by "lie (v) (1)". The second one means "to tell a
+falsehood," and is indicated in WordHoard by "lie (v) (2)".
+Texts residing in corpora other than the WordHoard defaults may not
+have homonyms distinguished.
+</p>
+
+<p>For Shakespeare, the morphological tagging deals properly with
+contractions. For example, the first word of <i>Hamlet</i> "who's" is
+tagged as having two word parts, each with its own lemma and part of
+speech. A search for the pronoun "who" finds this word occurrence, as does
+a search for the primary verb "be." The other corpora may not have
+this kind of intelligent tagging. They treat contractions and other
+compound words as having a single part, with a single lemma and part of
+speech.</p>
+
+</li>
+
+<li class="space"><b>Narrative</b>
+
+<p>Each word is tagged with a flag that tells whether the word appears in narration or in a speech. For words in speeches in Shakespeare and the Early Greek Epic corpus, we also have tags for the speaker name, speaker gender, and speaker mortality.</p>
+
+	<ul>
+	<li class="space">By convention, words that appear in narration are
+		considered to have been "spoken by the narrator or poet."
+	</li>
+	<li class="space">There are three gender values: 
+		<ul>
+		<li class="space">Male.</li>
+		<li>Female.</li>
+		<li>Uncertain, mixed or unknown.</li>
+		</ul>
+	</li>
+	<li class="space">There are three mortality values: 
+		<ul>
+		<li class="space">Mortal.</li>
+		<li>Immortal or supernatural.</li>
+		<li>Unknown or other.</li>
+		</ul>
+	</li>
+	</ul>
+	
+</li>
+
+<li class="space"><b>Prosodic</b>
+
+<p>Each word is tagged with a flag that tells whether the word appears in prose or verse.</p>
+
+</li>
+
+<li class="space"><b>Metrical</b>
+
+<p>Each word in the Early Greek Epic corpus is tagged with its metrical shape.</p>
+
+</li>
+
+<li class="space"><b>Dates</b>
+
+<p>When known, each work is tagged with its publication date or date range, and each author is tagged with birth/death dates and earliest/latest publication dates.</p>
+
+</li>
+
+<li class="space"><b>Benson Glosses</b>
+
+<p>The Chaucer corpus is tagged with Professor Larry Benson's word glosses (definitions) and with his lemmatization and part of speech taxonomies (in addition to our own). The Benson glosses are only displayed. They cannot be used as criteria for searches or calculations.</p>
+
+</li>
+
+</ul>
+
+<p>All of the corpora include the basic morphological tagging data. The other tagging categories are optional. Some of the corpora support them, and some do not.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="commonrare.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Working with Very Common and Very Rare Words</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="getting-started.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Getting Started</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

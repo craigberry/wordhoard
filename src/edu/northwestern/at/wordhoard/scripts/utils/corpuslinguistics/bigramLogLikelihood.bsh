@@ -1,0 +1,10 @@
+double bigramLogLikelihood
+(	double c1 ,
+	double c2 ,
+	double c12 ,
+	double n
+)
+{
+	return BigramLogLikelihood.calculateLikelihood( c1, c2, c12, n );
+}
+

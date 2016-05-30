@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix sumcol( Matrix m )
+{
+	return Matrices.sumCol( m );
+}

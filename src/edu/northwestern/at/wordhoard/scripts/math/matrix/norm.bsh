@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+double norm( Matrix m )
+{
+	return Matrices.norm( m );
+}
+
+

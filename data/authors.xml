@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WordHoardAuthors>
+	<author>
+		<name>Homer</name>
+	</author>
+	<author>
+		<name>Hesiod</name>
+	</author>
+	<author>
+		<name>pseudo-Hesiod</name>
+	</author>
+	<author>
+		<name>anonymous</name>
+	</author>
+	<author>
+		<name>Geoffrey Chaucer</name>
+		<birthYear>1340</birthYear>
+		<deathYear>1400</deathYear>
+		<earliestWorkYear>1368</earliestWorkYear>
+		<latestWorkYear>1400</latestWorkYear>
+	</author>
+	<author>
+		<name>Edmund Spenser</name>
+		<birthYear>1552</birthYear>
+		<deathYear>1599</deathYear>
+		<earliestWorkYear>1569</earliestWorkYear>
+		<latestWorkYear>1599</latestWorkYear>
+	</author>
+	<author>
+		<name>William Shakespeare</name>
+		<birthYear>1564</birthYear>
+		<deathYear>1616</deathYear>
+		<earliestWorkYear>1589</earliestWorkYear>
+		<latestWorkYear>1612</latestWorkYear>
+	</author>
+</WordHoardAuthors>

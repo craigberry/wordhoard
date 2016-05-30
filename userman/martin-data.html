@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Martin Mueller's Tagging Data</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Work Sets XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Martin Mueller's Tagging Data</h2>
+
+<p>This chapter is for Northwestern University developers only.</p>
+
+<p>Professor Martin Mueller uses a Microsoft Access database to maintain the morphological tagging data for WordHoard's four primary corpora (Shakespeare, Chaucer, Spenser, and Early Greek Epic). His database is currently located on the host <code>ariadne.at.northwestern.edu</code>, in the following location:</p>
+
+<blockquote><pre><code>
+E:\Users\shared\NUPOS\NUPOS.mdb
+</code></pre></blockquote>
+
+<p>Only the Northwestern WordHoard developers have access to the Ariadne host.</p>
+
+<p>When Martin makes changes to his tagging data, we must rebuild the raw data XML files and rebuild the static object model with his new data. To do this, we export the tables we need from his database to plain text files, copy the files over to our development machine, and import them into a MySQL database named <code>martin</code>. Then we run a script which updates the XML definition files with his new tagging data, and we do a full build of the primary <code>wordhoard</code> database.</p>
+
+<p>Edit the properties file <code>properties/martin.properties</code> to set the values of your MySQL root username and password.</p>
+
+<p>Create a subdirectory of your WordHoard development directory named <code>martin</code>.</p>
+
+<p>To create a new empty <code>martin</code> database, use the <code>create-martin-database</code> alias:</p>
+
+<blockquote><pre><code>
+% create-martin-database
+</code></pre></blockquote>
+
+<p>You only need to create the <code>martin</code> database once, unless the database structure changes (which it might).</p>
+
+<p>We have saved export operations in Access on Ariadne to export the tables we need from the database. To get a new version of his data, open the database in Access and run the following saved export operations:</p>
+
+<blockquote><pre><code>
+NUPOS_WordClass -> NUPOS_WordClass.txt
+NUPOS_EnglishGreek -> NUPOS_EnglishGreek.txt
+NUPOSTrainingData -> NUPOSTrainingData.txt
+NUPOS_GreekData -> NUPOS_GreekData.txt
+</code></pre></blockquote>
+
+<p>The exported plain text files are written to the directory <code>E:\Users\shared\Exports</code>. Copy all of the files in this directory over the network into the <code>martin</code> directory on your development machine.</p>
+
+<p>Note: It is very important that Access export operations use the UTF8 code page.</p>
+
+<p>To import Martin's data into the MySQL <code>martin</code> database, use the <code>import-all</code> alias:</p>
+
+<blockquote><pre><code>
+% import-all
+</code></pre></blockquote>
+
+<p>To update the XML data files, use the <code>martin-update</code> alias:</p>
+
+<blockquote><pre><code>
+% martin-update
+</code></pre></blockquote>
+
+<p>This alias runs the <code>martin-update</code> script and redirects <code>stdout</code> to the report file <code>martin/report.txt</code>. The report contains error messages that start with <code>"#####"</code>.</p>
+
+<p>The <code>martin-update</code> script writes new versions of the two files <code>word-classes.xml</code> and <code>pos.xml</code>. It also reads the work XML files for the four NU corpora and updates the attributes in them for the morphological tagging data (lemma and part of speech).</p>
+
+<p>Finally, to rebuild the static object model with Martin's new data, use the <code>full-build</code> alias:</p>
+
+<blockquote><pre><code>
+% full-build
+</code></pre></blockquote>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Work Sets XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix vertcat( Matrix a , Matrix b )
+{
+	return Matrices.vertcat( a , b );
+}
+

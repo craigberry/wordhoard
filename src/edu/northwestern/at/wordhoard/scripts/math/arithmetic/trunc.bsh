@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double trunc( double x )
+{
+	return ArithUtils.trunc( x );
+}
+
+

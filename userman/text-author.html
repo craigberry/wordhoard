@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Authors XML File</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-corpus.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-word-class.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Word Classes XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Authors XML File</h2>
+
+<p>The file <code>authors.xml</code> defines all the authors and their attributes and tagging data. The standard NU file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardAuthors&gt;
+    &lt;author&gt;
+        &lt;name&gt;Homer&lt;/name&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;Hesiod&lt;/name&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;pseudo-Hesiod&lt;/name&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;anonymous&lt;/name&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;Geoffrey Chaucer&lt;/name&gt;
+        &lt;birthYear&gt;1340&lt;/birthYear&gt;
+        &lt;deathYear&gt;1400&lt;/deathYear&gt;
+        &lt;earliestWorkYear&gt;1368&lt;/earliestWorkYear&gt;
+        &lt;latestWorkYear&gt;1400&lt;/latestWorkYear&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;Edmund Spenser&lt;/name&gt;
+        &lt;birthYear&gt;1552&lt;/birthYear&gt;
+        &lt;deathYear&gt;1599&lt;/deathYear&gt;
+        &lt;earliestWorkYear&gt;1579&lt;/earliestWorkYear&gt;
+        &lt;latestWorkYear&gt;1596&lt;/latestWorkYear&gt;
+    &lt;/author&gt;
+    &lt;author&gt;
+        &lt;name&gt;William Shakespeare&lt;/name&gt;
+        &lt;birthYear&gt;1564&lt;/birthYear&gt;
+        &lt;deathYear&gt;1616&lt;/deathYear&gt;
+        &lt;earliestWorkYear&gt;1589&lt;/earliestWorkYear&gt;
+        &lt;latestWorkYear&gt;1612&lt;/latestWorkYear&gt;
+    &lt;/author&gt;
+&lt;/WordHoardAuthors&gt;
+</pre></blockquote>
+
+<p>The authors definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardAuthors</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>author</code> (0..n). Author definitions.</li>
+	</ul>
+</li>
+
+<li class="space"><code>author</code>. Author definition.
+	<p>Children:</p>
+	<ul>
+	<li><code>name</code> (1). Name.</li>
+	<li><code>birthYear</code> (0..1). Birth year, if known.</li>
+	<li><code>death</code> (0..1). Death year, if known.</li>
+	<li><code>earliestWorkYear</code> (0..1). Earliest work year, if known.</li>
+	<li><code>latestWorkYear</code> (0..1). Latest work year, if known.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>name</code>. Name.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's name.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>birthYear</code>. Birth year.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's birth year.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>deathYear</code>. Death year.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's death year.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>earliestWorkYear</code>. Earliest work year.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's earliest work year.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>latestWorkYear</code>. Latest work year.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The author's latest work year.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-corpus.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Corpora XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-word-class.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Word Classes XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

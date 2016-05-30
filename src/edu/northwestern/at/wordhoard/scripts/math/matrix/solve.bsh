@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix solve( Matrix a , Matrix b )
+{
+	return Matrices.solve( a , b );
+}
+

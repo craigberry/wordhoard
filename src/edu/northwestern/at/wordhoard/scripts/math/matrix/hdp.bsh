@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix hdp( Matrix a , Matrix b )
+{
+	return Matrices.hdp( a , b );
+}
+

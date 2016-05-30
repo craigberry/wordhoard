@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix ones( int rows , int columns )
+{
+	return Matrices.ones( rows , columns );
+}
+
+Matrix ones( int size )
+{
+	return Matrices.ones( size );
+}
+

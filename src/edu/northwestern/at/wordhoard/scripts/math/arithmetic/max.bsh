@@ -1,0 +1,23 @@
+import java.lang.Math;
+
+double 	max( double a , double b )
+{
+	return Math.max( a , b );
+}
+
+float 	max( float a , float b )
+{
+	return Math.max( a , b );
+}
+
+int 	max( int a , int b )
+{
+	return Math.max( a , b );
+}
+
+long 	max( long a , long b )
+{
+	return Math.max( a , b );
+}
+
+

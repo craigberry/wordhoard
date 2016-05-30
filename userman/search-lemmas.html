@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Searching for Lemmas</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="concordance.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Concordances</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="search-works.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Searching for Works</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Searching for Lemmas</h2>
+
+<p>In <a href="search-works.html">Searching for Words</a> we described how to search for words by specifying various criteria. 
+"Find Lemmata" works similarly but is different in the following ways:</p>
+
+<ol>
+<li>Its results are lemmata (dictionary headwords) rather than word occurrences. This can reduce greatly the size of the result set.</li>
+<li>It accepts multiple values for each constraint.</li>
+<li>It uses drag-and-drop to accept constraints from other windows in the application.</li>
+<li>It does not have "Find Words" smart pruning of options as constraints are selected.</li>
+</ol>
+
+<p>The "Find Lemmata" command is found in the "Find" menu (Command-Y). Its window consists of five parts:</p>
+
+<p>The <b>"Search" button</b> at the top is used to execute a search once you've assembled the desired criteria.</p>
+
+<p>The <b>Criteria popup</b> is like that found in <a href="search-words.html">Searching for Words</a>. The difference is that here you select 
+the desired criteria from the popup list, enter or select its value, and then lastly hit the plus sign to add it to the query. This will add the 
+criterion to the <b>query panel</b> below, grouping like criteria together. In this way as many values for a criterion can be entered as desired. 
+Criteria can be deleted from the <b>query panel</b> by selecting them and hitting the <b>delete</b> key.
+Multiple <b>query panels</b> may be opened at one time and criteria dragged and dropped between them.</p>
+
+<p>The <b>Query panel</b> is where you build a query by accumulating search criteria. 
+In addition to adding criteria with the <b>Criteria popup</b>, you can add criteria by dragging items 
+from other windows in the application. As we've seen, the <a href="concordance.html">concordance window</a> 
+can group results by several criteria. 
+These groupings can be dragged into the query panel to form search criteria. For example, you might group your concordance by 
+Publication Date, decide some of those date ranges are of interest, and drag them into the query panel. Those date ranges then become criteria
+limiting search results to lemmata published within them. 
+Criteria can similarly be added by dragging items from the <a href="lexicon.html">Lexicon</a> windows, the 
+<a href="pos-and-wc.html">Parts of Speech and Word Class</a> windows, 
+the <a href="table-of-contents.html">Table of Contents</a> window, and from analysis results produced by the Calculator.</p>
+
+<p>The <b>Result filter and sorter</b> operate as in the  <a href="lexicon.html">Lexicon</a> windows. 
+To filter search results to show only the ones for a particular major word class, use the "Show" popup menu. 
+To specify an ordering for the search results, use the "Order by" popup menu.</p>
+
+<p>The <b>Results panel</b> operates like the <a href="lexicon.html">Lexicon</a> windows displaying lemmata with major word class, 
+total count in all corpora, and document frequency. 
+Double-clicking items in the panel will invoke the <a href="concordance.html">concordance window</a> for the selected lemmata. 
+As we've already seen, the <a href="concordance.html">concordance window</a> displays each word occurrence in context and allows us to group 
+results by a variety of criteria. Multiple selection is supported, so we can view as many or as few lemmata in context as needed.</p>
+
+<p>The query logic is as follows: values for most criteria are "ORed" together. That is, if <i>any</i> of the values for the criterion are true 
+for a lemma, that criterion is true for the lemma. Some criteria allow you to change how their values are combined. "Work", "Document Frequency", and "Collection Frequency"
+allow you to toggle that rule between <i>any</i>, <i>all</i>, and <i>none</i>.
+<i>Any</i> indicates the criterion is true for a lemma if it is true for any of the items in the list. 
+<i>All</i> indicates that the criterion is true for a lemma if it is true for all the items in the list.
+<i>None</i> means that only lemmata for which none of the values of the criterion are true will satisfy that criterion. You can toggle between these various combination rules for a criterion by clicking on its name while holding down the <i>control</i> key.
+
+Different criteria are then "ANDed" together. That is, the different criteria in a query must all be 
+true for a lemma to match. In the example below we will find lemmata satisfying two criteria: 1) They are found in both <i>Hamlet</i> and <i>Othello</i>, 2) they are found in fewer than four Shakespeare works.</p>
+
+<div class="space" /> 
+<p class="center"> 
+<img src="images/find-lemmata-1.jpg" alt="" /> 
+</p> 
+<div class="space" />
+
+<p><b>Example 1</b>. Find lemmata common to <i>Hamlet</i> and <i>Othello</i> but rare in the rest of Shakespeare.</p>
+
+<p>We drag <i>Hamlet</i> and <i>Othello</i> from the <a href="table-of-contents.html">Table of Contents</a> window into the query panel of 
+the Lemma Search window. They group together as <b>Work</b> criteria. We "control-click" on <b>Work</b> to toggle between <i>any, all,</i> 
+and <i>none</i>. We select <i>all</i> because the lemmata we're looking for must be found in <b>both</b> <i>Hamlet</i> and <i>Othello</i>.</p>
+
+
+<p>Since we're interested in words that are rare elsewhere in Shakespeare, we want to add a document frequency constraint.</p>
+
+<div class="space" /> 
+<p class="center"> 
+<img src="images/find-lemmata-2.jpg" alt="" /> 
+</p> 
+<div class="space" />
+
+<p>We next select "Document freq" from the popup list of available criteria and set its value to "less than or equal to 3 in Shakespeare". 
+This means we want lemmata that are found in no more than 3 works in Shakespeare. 
+We could have set this equal to 2, which would give us <b>only</b> lemmata that are found in both <i>Hamlet</i> and <i>Othello</i>. 
+By setting the constraint a little greater than the number of works we've explicitly indicated, we relax it enough to find words that 
+meet the general criteria of "rare elsewhere", but open the door to other works that cluster around words common to <i>Hamlet</i> and <i>Othello</i>.
+</p>
+
+<p>With this search we find 36 lemmata. To take a closer look at how and where these are used, 
+we invoke the <a href="concordance.html">concordance window</a>. 
+We do so by double-clicking on any lemmata in the result set. 
+Multiple selection is supported, so we can view as many or as few as we like. 
+When we sort by count, we see that all the lemmata except <i>therewith</i> and <i>pole</i> are very low frequency words (less than 10 counts each). 
+Since the remaining are of low frequency, there is nothing to discourage us from viewing them all. 
+We select all lemmata except <i>therewith</i> and <i>pole</i> and double-click to open them in the <a href="concordance.html">concordance window</a>.
+</p>
+
+<div class="space" /> 
+<p class="center"> 
+<img src="images/find-lemmata-3.jpg" alt="" /> 
+</p> 
+<div class="space" />
+
+
+<p>Results of a lemma search can be saved in a <a href="word-sets.html">Word Set</a> for further analysis in the Calculator. You will need an account on a WordHoard server
+to do this. Logged in users can use the "Save as Word Set..." item in the File menu to create a Word Set from Lemma Search criteria.</p>
+<!-- We group by work and sort by count descending. This shows us the works containing the most occurrences of our lemmata. The top three stand way out above the others in count. The first two are <i>Hamlet</i> and <i>Othello</i>. The third is Spenser's <i>The Faerie Queene</i>. Does this suggest that those three works have something significant in common?
+-->
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="concordance.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Concordances</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="search-works.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Searching for Works</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

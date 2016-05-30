@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix dotprod( Matrix a , Matrix b )
+{
+	return Matrices.dotprod( a , b );
+}
+
+

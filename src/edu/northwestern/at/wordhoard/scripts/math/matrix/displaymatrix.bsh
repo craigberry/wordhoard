@@ -1,0 +1,43 @@
+import edu.northwestern.at.utils.math.matrix.*;
+import edu.northwestern.at.utils.swing.SwingUtils;
+
+Component displaymatrix( Matrix m )
+{
+	return MatrixDisplay.displayMatrix( m );
+}
+
+Component displaymatrix( Matrix m , String title )
+{
+	return MatrixDisplay.displayMatrix( m , title );
+}
+
+Component displaymatrix( Matrix m , String title , String formatString )
+{
+	return MatrixDisplay.displayMatrix( m , title , formatString );
+}
+
+Component displayMatrix
+(
+	Matrix matrix ,
+	String title ,
+	String[] rowNames ,
+	String[] columnNames
+)
+{
+	return MatrixDisplay.displayMatrix(
+		m , title , rowNames , columnNames );
+}
+
+Component displayMatrix
+(
+	Matrix matrix ,
+	String title ,
+	String[] rowNames ,
+	String[] columnNames ,
+	String formatString
+)
+{
+	return MatrixDisplay.displayMatrix(
+		m , title , rowNames , columnNames , formatString );
+}
+

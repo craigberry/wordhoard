@@ -1,0 +1,35 @@
+<body>
+
+Multilingual styled text model.
+
+<p>This package implements a model for multilingual styled text with support for word wrapping, translations, and text location tracking.
+
+<p><b>Notes on locations and coordinate systems</b>
+
+<p>In the persistent object model, the text for work parts and their translations are stored in separate {@link edu.northwestern.at.wordhoard.model.text.Text Text} objects and are not word wrapped. {@link edu.northwestern.at.wordhoard.model.text.TextLocation Locations} of {@link edu.northwestern.at.wordhoard.model.Word words} are stored using the "base" coordinate system of this model. For example, if a word has location line index 53 and character offsets 18-24, this refers to characters 18 to 24 in unwrapped line index 53 in the primary text for the work part which contains the word.
+
+<p>{@link edu.northwestern.at.wordhoard.model.text.TranslatedText Translated} and {@link edu.northwestern.at.wordhoard.model.text.WrappedText wrapped} text objects are used in the client to merge together primary text lines with translated text lines and then word wrap the result to the right margin. Locations in such a "derived" text object are different from the corresponding locations in the "base" primary text object.
+
+<p>For example, consider a wrapped text object constructed from a translated text object which in turn is constructed from a primary text object and its translation text objects. Line 128 offset 12 in the wrapped text may correspond to line 103 offset 72 in the unwrapped text, which may in turn correspond to line 51 offset 72 in the primary text.
+
+<p>All text objects must know how to convert back and forth between their "derived" text coordinate system and the underlying "base" coordinate system of the primary text object from which they were (ultimately) constructed.
+
+<p>These coordinate system conversions are performed by the pair of methods {@link edu.northwestern.at.wordhoard.model.text.Text#derivedToBase derivedToBase} and {@link edu.northwestern.at.wordhoard.model.text.Text#baseToDerived baseToDerived}. The base class {@link edu.northwestern.at.wordhoard.model.text.Text Text} defines these methods and implements them as do-nothing methods - the input locations are returned unchanged. The derived classes {@link edu.northwestern.at.wordhoard.model.text.TranslatedText TranslatedText} and {@link edu.northwestern.at.wordhoard.model.text.WrappedText WrappedText} override these methods to perform the appropriate conversions.
+
+<p>To continue the example above:
+
+<pre><code>
+   TextLocation derivedLoc = new TextLocation(128,12);
+   System.out.println(derivedLoc);
+   TextLocation baseLoc = wrappedText.derivedToBase(derivedLoc);
+   System.out.println(baseLoc);
+</code></pre>
+
+prints:
+
+<pre><code>
+   (128,12)
+   (51,72)
+</code></pre>
+ 
+</body>

@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix multiply( Matrix a , Matrix b )
+{
+	return Matrices.multiplyEBE( a , b );
+}
+

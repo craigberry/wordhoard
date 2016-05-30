@@ -1,0 +1,22 @@
+WordSet saveWordSet
+(
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	Word[] words
+)
+{
+	return
+		WordSetUtils.addWordSet
+		(
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			"" ,
+			words ,
+			null
+		);
+}
+

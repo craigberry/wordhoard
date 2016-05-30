@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double rint( double a )
+{
+	return Math.rint( a );
+}
+

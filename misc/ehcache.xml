@@ -1,0 +1,44 @@
+<ehcache>
+
+	<diskStore path="java.io.tmpdir"/>
+
+	<defaultCache
+		maxElementsInMemory="20000"
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="300"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.TotalWordFormCount"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.Word"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.WordCount"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.WordSet"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.WordSetTotalWordFormCount"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+	<cache name="edu.northwestern.at.wordhoard.model.WordSetWordCount"
+		eternal="false"
+		overflowToDisk="false"
+	/>
+
+</ehcache>
+

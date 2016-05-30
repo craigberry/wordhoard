@@ -1,0 +1,32 @@
+import java.io.*;
+import edu.northwestern.at.utils.FileUtils.*;
+
+String readTextFile
+(
+	java.io.File file ,
+	String encoding
+)
+	throws IOException
+{
+	return FileUtils.readTextFile( file , encoding );
+}
+
+String readTextFile( java.io.File file )
+	throws IOException
+{
+	return FileUtils.readTextFile( file );
+}
+
+String readTextFile( String fileName , String encoding )
+	throws IOException
+{
+	return FileUtils.readTextFile( fileName , encoding );
+}
+
+String readTextFile( String fileName )
+	throws IOException
+{
+	return FileUtils.readTextFile( fileName );
+}
+
+

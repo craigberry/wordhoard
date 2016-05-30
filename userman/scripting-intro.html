@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Introduction to Scripting</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="annotations.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotations</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-math.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Mathematical Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Introduction to Scripting</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#scriptsecurity">Script security</a>
+       </li>
+   <li><a href="#runningscriptcommands">
+       Running script commands in the WordHoard Calculator window
+       </a>
+       </li>
+   <li><a href="#creatingascriptfile">
+       Creating and running a script from a file
+       </a>
+       </li>
+   <li><a href="#scriptoutput">Routing script output to a WordHoard
+       window
+       </a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+WordHoard uses the <a href="http://www.beanshell.org">BeanShell</a>
+scripting language as a base.  BeanShell is an interpreter for a dialect of
+the Java programming language.  As the BeanShell documentation notes,
+"BeanShell executes standard Java statements
+and expressions but also extends Java into the scripting domain with
+common scripting language conventions and syntax."  For example,
+BeanShell allows loose type declarations.  BeanShell also offers
+many of the Java 1.5 language extensions even when you are running
+WordHoard in a Java 1.4 runtime environment.
+</p>
+
+<p>
+In addition to the large set of
+script functions provided by BeanShell, WordHoard scripting adds
+<a href="scripting-math.html">mathematical methods</a> and
+<a href="scripting-utility.html">utility methods</a>.
+You may access data in the WordHoard database using the built-in
+WordHoard object model (see the <a href="javadoc/">javadoc</a> for
+details).
+These scripting facilities allow you to author analytic procedures
+to extend the functionality of WordHoard.
+</p>
+
+<p>
+If you are not familiar with Java, Sun offers a useful
+<a href="http://java.sun.com/docs/books/tutorial/">set of tutorials.
+</a>
+</p>
+
+<p>
+While it is possible to use AWT or Swing objects and methods
+in WordHoard scripts, we advise against this
+unless you are an experienced Java AWT/Swing programmer.
+Each WordHoard script runs on its own thread, requiring careful
+synchronization with the AWT event thread when you use AWT/Swing
+methods.  If you don't know what that means, you should not try to use
+AWT or Swing in scripts.  WordHoard does provide a couple of
+Swing-based utility methods (e.g.,
+<a href="#scriptoutputtowindow">addResults</a>,
+<a href="scripting-utility.html#tableoutput">createTable</a>).  These
+methods handle thread synchronization for you.
+</p>
+
+<h3><a name="scriptsecurity" id="scriptsecurity">
+Script security
+</a></h3>
+
+<p>
+Please be careful when you use scripts.
+A script has access to anything on your computer for which
+you have the requisite access privileges.  It is possible to write a
+script to delete or modify important system files, for example.  You
+should not run scripts written by people you don't know without
+carefully examining such scripts for possible deleterious actions.
+</p>
+
+<h3><a name="runningscriptcommands" id="runningscriptcommands">
+Running script commands in the WordHoard Calculator window
+</a></h3>
+
+<p>
+You may enter script commands directly into the input pane of the
+<a href="calc-window.html">WordHoard calculator window</a>.
+This is a handy way to perform short arithmetic calculations.
+To display the Calculator window, select "WordHoard Calculator"
+from the Windows menu.  For example, to calculate and print the
+square root of ten you could write:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-1.jpg"
+     alt="Executing script commands in Calculator window"></img>
+</p>
+
+<p>
+The output resulting from the "print" command also appears in the
+Calculator input pane.  You'll see how to route output to a new
+WordHoard window later on.  You can print the Calculator window
+output by selecting "Print" from the "File" menu.  You can save the
+output to a file by selecting "Save as" from the File menu.
+You can use the "Select all" and "Copy" commands to copy the
+Calculator output to the system clipboard for export to other
+programs.  You can clear the Calculator output by selecting "Clear"
+from the "Edit" menu.
+</p>
+
+<h3><a name="creatingascriptfile" id="creatingascriptfile">
+Creating and running a script from a file
+</a></h3>
+
+<p>
+Entering script commands one at a time in the Calculator window
+best suited to short calculations.  For more complicated scripts,
+you can create a text file containing multiple script commands
+using your favorite text editor.  Save the script text
+as a plain text file with a ".bsh" extension.  To execute your
+script, select the "Run a script" item from the "File" menu.
+WordHoard will prompt you for the location of the script file and
+attempt to execute the script file you select.  The output of
+"print" commands still appears in the WordHoard Calculator input
+pane, just as if you have typed the script commands individually.
+</p>
+
+<p>
+You may also use the built-in WordHoard text editor by selecting
+the "Editor" entry from the "File" menu.  This brings up an editor window
+allowing for very simple text editing operations, sufficient for
+writing a script.  You may select the "Run" menu item in the
+Editor window to run the script text without saving it to a file first.
+That allows you to iteratively develop a script without the hassles
+of saving the file for every change you make.  As an example,
+open a WordHoard Editor window and enter the same script command
+used above to print the square root of ten.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-editing-1.jpg"
+     alt="Editing a script"></img>
+</p>
+
+<p>
+Select "Run" from the Editor menu.  You'll see the same output in the
+Calculator window as appeared when you entered the script command
+directly at the Calculator input prompt.
+</p>
+
+<p>
+Now clear the Calculator window output by selecting "Clear" from
+the "Edit" menu.  Let's extend the one-line script to find the
+square root of ten to find the square roots of each of the integers
+from one through ten.  The script commands for this are:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-editing-2.jpg"
+     alt="Editing a script"></img>
+</p>
+
+<p>
+Selecting "Run" from the Editor menu produces the following output
+in the Calculator window:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-2.jpg"
+     alt="Script output in Calculator window"></img>
+</p>
+
+<h3><a name="scriptoutputtowindow" id="scriptoutputtowindow">
+Routing script output to a WordHoard window
+</a></h3>
+
+<p>
+The sample script above uses the <em>print</em> method to display
+its output in the Calculator window.  You can route the output to a
+new WordHoard window instead by using the <em>addResults</em> method.
+The <em>addResults</em> method takes three arguments:
+</p>
+
+<ol>
+   <li>The title for the new WordHoard window.</li>
+   <li>The subtitle to appear at the top of the output panel.</li>
+   <li>The output contents.  This can be a string with lines of
+       text, or a more complicated object such as a Java Swing table.
+       </li>
+</ol>
+
+<p>
+For this example, we use "Square roots" as the WordHoard window title and
+"Square roots of integers from one through ten" as the subtitle.
+We accumulate the output results in one long string using the
+standard Java StringBuffer class.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-editing-3.jpg"
+     alt="Displaying script output in a WordHoard window"></img>
+</p>
+<p>
+
+Selecting "Run" from the Editor menu creates a new WordHoard window
+with the results:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-3.jpg"
+     alt="Script output in WordHoard window"></img>
+</p>
+
+<p>
+How do you decide between displaying script output in the WordHoard
+Calculator window, and displaying script output in a new WordHoard
+window?  If the output is short, and just plain text, using <em>print</em>
+to show the output in the WordHoard calculator pane is reasonable.
+If the output is long, or you want to display the output as other
+than plain text (e.g., in a Swing table), use addResults to display
+the output in a separate WordHoard window.  For a long-running script,
+you may want to use <em>print</em> to display progress
+messages in the WordHoard Calculator window, and route the actual
+script output to a new WordHoard window.
+</p>
+
+<h3><a name="scriptoutputtofile" id="scriptoutputtofile">
+Routing script output to a file
+</a></h3>
+
+<p>
+You can also use standard Java commands to write the output to a file.
+Let's modify the script above to do that.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-editing-4.jpg"
+     alt="Writing script output to a file"></img>
+</p>
+<p>
+
+Selecting "Run" from the Editor menu creates a new WordHoard window
+with the results:
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-4.jpg"
+     alt="Script output to a file"></img>
+</p>
+
+<p>
+You can now open the file "/myresults.txt" with a text editor, such as
+the WordHoard editor.  You'll see the same results as appeared when you
+wrote the output to the WordHoard Calculator pane.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-file-output-1.jpg"
+     alt="Script output to a file"></img>
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="annotations.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Annotations</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-math.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Mathematical Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix zeros( int rows , int columns )
+{
+	return Matrices.zeros( rows , columns );
+}
+
+Matrix zeros( int size )
+{
+	return Matrices.zeros( size );
+}
+

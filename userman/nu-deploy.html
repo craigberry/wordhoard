@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - NU Deployment Notes</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>NU Deployment Notes</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+	<ul>
+	<li class="space"><a href="nu-deploy.html#intro">Introduction</a></li>
+	<li><a href="nu-deploy.html#welles">The main site on Welles</a></li>
+	<li><a href="nu-deploy.html#noir">The EMD site on Noir</a></li>
+	<li><a href="nu-deploy.html#deploy">Deploying a New Release to Both Welles and Noir</a></li>
+	</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="intro" />Introduction</h3>
+
+<p>This section is for NU developers only. It should be used together with the generic deployment documention in the section titled <a href="deploy.html">Deployment</a>.</p>
+
+<p>At NU we deploy two instances of WordHoard:</p>
+
+<ul>
+
+<li>The main public site on Welles (<code>wordhoard.northwestern.edu = welles.library.northwestern.edu</code>).
+
+<p>This site contains Early Greek Epic and the works of Shakespeare, Spenser and Chaucer. It is open to the world.</p>
+</li>
+
+<li class="space">The EMD site on Noir (<code>noir.at.northwestern.edu</code>).
+
+<p>	This site contains approximately 318 Early Modern English plays including all the plays of Shakespeare (but not the poems). It is accessible only at Northwestern University and at other institutions that are subscribers to the Text Creation Partnership (TCP).</p>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="welles" />The main site on Welles</h3>
+
+<p>Welles hosts the main public WordHoard site, plus the WordHoard client distribution, the sites file, and the user manual.</p>
+
+<p>Welles is a SunOS host. The system administrator is Thomas Howell (<code>t-howell@northwestern.edu</code>).</p>
+
+<p>To maintain the version of WordHoard on Welles, log on using the <code>whoard</code> account.</p>
+
+<p>Use <code>sftp</code> to transfer files.</p>
+
+<p>MySQL information:</p>
+
+<ul>
+<li>Home directory = <code>/usr/local/mysql</code></li>
+<li>Data directory = <code>/app/mysql/whoard</code></li>
+<li>Port number = <code>3307</code></li>
+<li>Data file owner = <code>whoard</code></li>
+<li>Data file group = <code>whoard</code></li>
+<li>Config file = <code>/etc/mywhoard.cnf</code></li>
+</ul>
+
+<p>The following useful aliases and scripts are available for working with the MySQL databases:</p>
+
+<ul>
+<li><code>mysql-start</code>: Starts MySQL.</li>
+<li><code>mysql-stop</code>: Stops MySQL.</li>
+<li><code>mysql</code>: Runs the MySQL command line client.</li>
+</ul>
+
+<p>The database names are <code>wordhoard</code> and <code>wordhoardserver</code>.</p>
+
+<p>The server directory is located at <code>~whoard/server</code>.</p>
+
+<p>WordHoard server settings:</p>
+
+<ul>
+<li>RMI registry port = <code>1099</code></li>
+<li>RMI port = <code>1098</code></li>
+</ul>
+
+<p>The web directory for WordHoard is located at <code>/w3/wordhoard</code>.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="noir" />The EMD site on Noir</h3>
+
+<p>Noir hosts the EMD site database and server.</p>
+
+<p>Noir is a GNU Linux host. The system administrator is Jim Lindsay (<code>j-lindsay@northwestern.edu</code>)</p>
+
+<p>To maintain the Noir site, log on using the <code>wordhoard</code> account.</p>
+
+<p>Use <code>sftp</code> to transfer files to Noir.</p>
+
+<p>MySQL information:</p>
+
+<ul>
+<li>Home directory = <code>/usr/local/mysql5</code></li>
+<li>Data directory = <code>/var/lib/mysql5</code></li>
+<li>Port number = <code>3306</code></li>
+<li>Data file owner = <code>mysql</code></li>
+<li>Data file group = <code>mysql</code></li>
+<li>Config file = <code>/usr/local/mysql5/my.cnf</code></li>
+</ul>
+
+<p>Use the <code>sudo</code> command to maintain the MySQL data files in <code>/var/lib/mysql5</code>:</p>
+
+<blockquote><pre><code>
+> sudo su
+Password:
+# cd /var/lib/mysql5
+# ... (manage the MySQL data files)
+# &lt;ctrl&gt;d
+>
+</code></pre></blockquote>
+
+<p>The following useful aliases are available for working with the MySQL databases:</p>
+
+<ul>
+<li><code>mysql-start</code>: Starts MySQL.</li>
+<li><code>mysql-stop</code>: Stops MySQL.</li>
+<li><code>mysql</code>: Runs the MySQL command line client.</li>
+</ul>
+
+<p>Information for the EMD site:</p>
+
+<ul>
+<li>Server directory: <code>~wordhoard/emd-server</code></li>
+<li>Database name: <code>emd</code></li>
+<li>Server database name: <code>emdserver</code></li>
+<li>RMI port number: <code>1100</code></li>
+</ul>
+
+<p>The access control restrictions for the EMD site are implemented using MySQL database grants. See the script <code>~wordhoard/emd-server/emd-grants.sql</code>.</p>
+
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="deploy" />Deploying a New Release to Both Welles and Noir</h3>
+
+<p>Use this checklist when deploying a new NU release. These instructions are for deploying WordHoard from John Norstad's Mac and from John's <code>jln</code> account on the Scribe host to both Welles and Noir.</p>
+
+<p><b>Step 1 - Prepare the deployment files on John's Mac and move them to Welles and Noir.</b></p>
+
+<p>Make certain the version number is set correctly in both the source code and in the user manual. In the source code, edit the properties file at <code>edu/northwestern/at/wordhoard/resources/wh.properties</code>. There are two lines near the top of this file which must be changed. In the user manual, edit the version number and the release date near the top of the file <code>index.html</code>.</p>
+
+<p>Add release notes for the new version to the user manual file <code>version-history.html</code>.</p>
+
+<p>Run the WDG HTML validator to make sure all the user manual files are strict HTML. Use the notes in the file at <code>~jln/Documents/WordHoard/validate-userman-html.txt</code>.</p>
+
+<p>Rebuild the source code and the javadoc:</p>
+
+<blockquote><pre><code>
+% b full
+% b doc
+</code></pre></blockquote>
+
+<p>Archive the source code for this release. Copy the <code>src</code> directory to <code>~jln/Documents/WordHoard/Archived release source coce</code>.</p>
+
+<p>Rebuild the static database:</p>
+
+<blockquote><pre><code>
+% full-build
+</code></pre></blockquote>
+
+<p>Zip the static database:</p>
+
+<blockquote><pre><code>
+> mysql-stop
+> su
+Password:
+# cd /usr/local/mysql/data
+# zip -r wordhoard wordhoard
+# chown jln:staff wordhoard.zip
+# mv wordhoard.zip ~jln/Documents/WordHoard/dev/
+# &lt;ctrl&gt;d
+% mysql-start
+</code></pre></blockquote>
+
+<p>Zip the "secret source":</p>
+<blockquote><pre><code>
+% zip -r secret-src src
+</code></pre></blockquote>
+
+<p>Create the server jar file:</p>
+<blockquote><pre><code>
+% scripts/create-server-jar.csh
+</code></pre></blockquote>
+
+<p>Create the client jar file:</p>
+<blockquote><pre><code>
+% scripts/create-client-jar.csh 
+Enter store password for keystore:
+Enter key password for alias nujarsigner:
+</code></pre></blockquote>
+
+<p>Zip the user manual:</p>
+<blockquote><pre><code>
+% zip -r userman userman
+</code></pre></blockquote>
+
+<p>Zip the javadoc:</p>
+<blockquote><pre><code>
+% zip -r javadoc javadoc
+</code></pre></blockquote>
+
+<p>Make the "other files" zip archive for the user manual:</p>
+<blockquote><pre><code>
+% scripts/make-other-files.csh
+</code></pre></blockquote>
+
+<p>Zip the raw data files:</p>
+<blockquote><pre><code>
+% zip -r data data
+</code></pre></blockquote>
+
+<p>Move the prepared files to Welles:</p>
+
+<blockquote><pre><code>
+% sftp whoard@welles.library.northwestern.edu
+Password: 
+sftp> put *.zip
+sftp> put wordhoardserver.jar
+sftp> lcd client
+sftp> put wordhoard.jar
+sftp> quit
+</code></pre></blockquote>
+
+<p>Move the prepared files to Noir:</p>
+
+<blockquote><pre><code>
+% sftp wordhoard@noir.at.northwestern.edu
+Password: 
+sftp> put wordhoardserver.jar
+sftp> quit
+</code></pre></blockquote>
+
+<p>Clean up:</p>
+
+<blockquote><pre><code>
+% rm *.zip
+% rm wordhoardserver.jar
+</code></pre></blockquote>
+
+<p><b>Step 2 - Prepare the new static databases on Scribe and move them to Welles and Noir.</b></p>
+
+<p>Copy the <code>bin</code>, <code>scripts</code> and <code>data</code> directories from John's Mac to Scribe:</p>
+
+<blockquote><pre><code>
+% put-bin
+Password:
+% put-scripts
+Password:
+% put-data
+Password:
+</code></pre></blockquote>
+
+<p>Log on to Scribe and use the <code>wordhoard</code> alias to switch to the <code>wordhoard</code> directory and source the <code>setup</code> file. Delete the old <code>data-main</code> directory and replace it by the copy of the <code>data</code> directory:</p>
+
+<blockquote><pre><code>
+% ssh scribe.at.northwestern.edu
+Password:
+% wordhoard
+% rm -rf data-main
+% mv data data-main
+</code></pre></blockquote>
+
+<p>Prepare the source data files in the directories:</p>
+
+<ul>
+<li><code>data-main</code></li>
+<li><code>data-emd</code></li>
+</ul>
+
+<p>The <code>data-main</code> directory on Scribe is an exact copy of the <code>data</code> directory on John's Mac. For the Shakespeare texts, the <code>data-emd/works/sha</code> directory contains soft links ponting to the plays (but not the poems) in the <code>data-main/works/sha</code> directory. The <code>word-classes.xml</code> and <code>pos.xml</code> files are also soft links.</p>
+
+<p>Rebuild the two databases:</p>
+
+<blockquote><pre><code>
+% full-build-main
+% full-build-emd
+</code></pre></blockquote>
+
+<p>The two MySQL databases are named <code>wordhoard_main</code> and <code>wordhoard_emd</code>.</p>
+
+<p>Each script writes a report to the <code>misc</code> directory.</p>
+
+<p>Copy the databases from Scribe to Welles and Noir:</p>
+
+<blockquote><pre><code>
+% mysql-stop
+Password:
+% sudo su
+# cd /stg/data/mysql
+% scp -r wordhoard_main whoard@welles.library.northwestern.edu:
+Password: 
+% scp -r wordhoard_emd wordhoard@noir.at.northwestern.edu:
+Password: 
+# &lt;ctrl-d&gt;
+% mysql-start
+</code></pre></blockquote>
+
+<p><b>Step 3 - Deploy on Welles</b></p>
+
+<p>Deploy the database and server jar file.</p>
+
+<blockquote><pre><code>
+% ssh whoard@welles.library.northwestern.edu
+Password: 
+> server/bin/stop
+> mysql-stop
+> server/bin/deploy
+> mv wordhoardserver.jar server/lib
+> mysql-start
+> server/bin/start
+</code></pre></blockquote>
+
+<p>Deploy the client jar file:</p>
+
+<blockquote><pre><code>
+> mv wordhoard.jar /w3/wordhoard/client
+</code></pre></blockquote>
+
+<p>Deploy the user manual:</p>
+
+<blockquote><pre><code>
+> mv *.zip /w3/wordhoard
+> cd /w3/wordhoard
+> unzip userman.zip
+> rm userman.zip
+> mv javadoc.zip userman
+> mv other-files.zip userman
+> mv wordhoard.zip userman/data-files
+> mv data.zip userman/data-files
+> cd userman
+> unzip javadoc.zip
+> unzip other-files.zip
+> rm *.zip
+</code></pre></blockquote>
+
+<p><b>Step 4 - Deploy on Noir</b></p>
+
+<p>Deploy the database and server jar file.</p>
+
+<blockquote><pre><code>
+> ssh wordhoard@noir.at.northwestern.edu
+Password:
+> emd-server/bin/stop
+> mysql-stop
+> sudo su
+Password:
+# emd-server/bin/deploy
+# mv wordhoardserver.jar emd-server/lib
+# &lt;ctrl&gt;d
+% mysql-start
+% emd-server/bin/start
+</code></pre></blockquote>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

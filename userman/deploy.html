@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Deployment</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-model.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Static Object Model</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Text Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Deployment</h2>
+
+<div class="space" />
+
+<h3>Table of Contents</h3>
+
+	<ul>
+	<li class="space"><a href="deploy.html#intro">Introduction</a></li>
+	<li><a href="deploy.html#static">Deploying the Static Database</a></li>
+	<li><a href="deploy.html#dynamic">Deploying the Dynamic Database</a></li>
+	<li><a href="deploy.html#server">Deploying the Server</a></li>
+	<li><a href="deploy.html#sites">Deploying the Sites File</a></li>
+	<li><a href="deploy.html#cert">Certificates</a></li>
+	<li><a href="deploy.html#client">Deploying the Client</a></li>
+	<li><a href="deploy.html#userman">Deploying the User Manual</a></li>
+	<li><a href="deploy.html#libs">Managing Third-Party Libraries</a></li>
+	</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="intro" />Introduction</h3>
+
+<p>When you deploy an instance of the WordHoard system, you must deploy six different parts of the system:</p>
+
+<ul>
+<li>The large static database used by the client and the server.</li>
+<li>The small dynamic database used by the server.</li>
+<li>The server.</li>
+<li>The sites file.</li>
+<li>The client, for downloading by users via Web Start.</li>
+<li>The user manual.</li>
+</ul>
+
+<p>Each of these parts is largely independent of the other parts, and in fact each part may be deployed on a different server host.</p>
+
+<p>The first three items, the static and dynamic databases and the server, are called a "WordHoard site". There may be more than one deployed site. The sites file enumerates all the deployed sites.</p>
+
+<p>In this chapter, we use the "Russell" server at Northwestern University as an example. This is the host at <code>russell.at.northwestern.edu</code>. It is a Mac OS X system one of the NU developers uses to deploy development versions of software projects for local testing by colleagues and faculty partners. We use Russell to deploy all five parts of the WordHoard system for testing.</p>
+
+<p>There are many pesky system administration details to keep track of when you create and maintain a deployed WordHoard system, so this chapter is quite long. We provide several shell scripts to help you generate the many files and directories needed for deployment and to perform other deployment tasks. All of these scripts are described in detail in the sections which follow. Some of them are run on your development host, and some of them are run on your deployment host or hosts.</p>
+
+<p>All of the instructions and scripts described in this chapter are for deployment to a UNIX server or servers. While it is possible to deploy WordHoard on a Windows server, we do not provide any instructions or assistance for doing that.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="static" />Deploying the Static Database</h3>
+
+<p>The server to which you deploy the static database must be running a copy of <a href="http://www.mysql.com/">MySQL</a> version 5.0 or later.</p>
+
+<p>To install the static database on the server for the first time, use the same steps you followed when you installed it on your development host for the first time. See the chapter <a href="install-database.html">Installing the Database</a> for details. There are three main steps:</p>
+
+<ol>
+<li>Install the database files.</li>
+<li>Create the grants.</li>
+<li>Set MySQL configuration parameters.</li>
+</ol>
+
+<p><b>Step 1. Install the database files.</b></p>
+
+<p>If you are installing the standard NU version of the static database, it is easiest to use the prebuilt <a href="data-files/wordhoard.zip">zip archive</a> that is part of our standard distribution. Download the archive directly to your server host, unzip it, and follow the instructions in the <a href="install-database.html">Installing the Database</a> chapter to move the files into your MySQL data directory.</p>
+
+<p>If you wish to install your own version of the static database, zip it up on your development host, transfer the archive to your server host, unzip it, and then follow the same instructions to move the files into your MySQL data directory. For example:</p>
+
+<p>On your development host:</p>
+
+<blockquote><pre><code>
+% mysql-stop
+% su
+Password:
+# cd $MYSQL_DATA
+# zip -r wordhoard wordhoard
+
+   Use ftp, sftp, or whatever other method is convenient to copy
+   wordhoard.zip to your server.
+
+# rm wordhoard.zip
+# &lt;ctrl&gt;d
+% mysql-start
+</code></pre></blockquote>
+
+<p>Save the archive file <code>wordhoard.zip</code> on your server host. Don't delete it yet. You will need it later when you <a href="#userman">deploy the user manual</a>.</p>
+
+<p><b>Step 2. Create the grants.</b></p>
+
+<p>The easiest way to create the MySQL grants on your server is to use the <code>mysql-client-grants</code> script. Copy the script file <code>scripts/mysql-client-grants.csh</code> from your development host to your server host, then run it on your server host. The script uses three environment variables that you must set to the proper values for your server's MySQL environment. For example:</p>
+
+<p>On your server host, in the directory containing the script you copied:</p>
+
+<blockquote><pre><code>
+% setenv MYSQL_ROOT_USERNAME root
+% setenv MYSQL_ROOT_PASSWORD my-password
+% setenv MYSQL_BIN /usr/local/mysql/bin
+% ./mysql-client-grants.csh
+</code></pre></blockquote>
+
+<p><b>Step 3. Set MySQL configuration parameters.</b></p>
+
+<p>Follow the instructions in the <a href="install-database.html">Installing the Database</a> chapter to set the MySQL configuration parameters on your server.</p>
+
+<p>You should also configure your server host to automatically start MySQL on server startup.</p>
+
+<p><b>Step 4. Test the installation.</b></p>
+
+<p>On your server host:</p>
+
+<blockquote><pre><code>
+% mysql
+mysql> use wordhoard;
+mysql> show tables;
++-----------------------------+
+| Tables_in_wordhoard         |
++-----------------------------+
+| annotation                  |
+| annotationcategory          |
+  ... etc.
+| workset                     |
+| workset_workparttags        |
++-----------------------------+
+48 rows in set (0.01 sec)
+
+mysql> show grants for wordhoard;
++--------------------------------------------------------+
+| Grants for wordhoard@%                                 |
++--------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'wordhoard'@'%' IDENTIFIED BY
+    PASSWORD '*DD055982B03DB62CC130046066CE54FEE23EA734' |
+| GRANT SELECT ON `wordhoard`.* TO 'wordhoard'@'%'       |
++--------------------------------------------------------+
+16 rows in set (0.00 sec)
+
+mysql> show grants for wordhoardserver@localhost;
++--------------------------------------------------------+
+| Grants for wordhoardserver@localhost                   |
++--------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'wordhoardserver'@'localhost' 
+    IDENTIFIED BY PASSWORD 
+    '*6A53706A4E45F99E396199F264AA4A606D29F6AB'          |
+| GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, 
+    REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, 
+    LOCK TABLES ON `wordhoard`.* TO 
+    'wordhoardserver'@'localhost'                        |
++--------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> select @@max_allowed_packet;
++----------------------+
+| @@max_allowed_packet |
++----------------------+
+|             16776192 |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> quit
+</code></pre></blockquote>
+
+<p><b>Installing a new version of the static database.</b></p>
+
+<p>If you change any of the text or tagging data, or if you make any other changes to the structure or contents of the static database, you must deploy a new version of the database to your server.</p>
+
+<p>This is a bit tricky because the static client database contains several tables for saved user data (e.g., saved work and word sets and user annotations). When you install a new version of the static database, you must not replace these tables, or you will destroy saved user data.</p>
+
+<p>To help work around this problem, we have two scripts named <code>save-user-tables</code> and <code>restore-user-tables</code>. The first one saves the user tables in a directory named <code>user-tables</code>. The second one restores them from that directory and removes the directory. We recommend that you copy these two scripts to a convenient location on your server. The following example uses the scripts to deploy a new version of the static database.</p>
+
+<p>On your server host, in the directory containing the two scripts and the unzipped "wordhoard" directory containing the new database files:</p>
+
+<blockquote><pre><code>
+% mysql-stop
+% setenv MYSQL_DATA /usr/local/mysql/data
+% su
+Password:
+# ./save-user-tables.csh
+# rm -rf $MYSQL_DATA/wordhoard
+# mv wordhoard $MYSQL_DATA
+# chown -R mysql $MYSQL_DATA/wordhoard
+# chgrp -R wheel $MYSQL_DATA/wordhoard
+# ./restore-user-tables.csh
+# &lt;ctrl&gt;d
+% mysql-start
+</code></pre></blockquote>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="dynamic" />Deploying the Dynamic Database</h3>
+
+<p>The server to which you deploy the dynamic database must be running a copy of <a href="http://www.mysql.com/">MySQL</a> version 5.0 or later.</p>
+
+<p>For your convenience, we provide a prebuilt <a href="data-files/wordhoardserver.zip">zip archive</a> of the <code>wordhoardserver</code> database. Download this archive to your server host, unzip it, and use the usual technique to install it into the MySQL data directory. For example:</p>
+
+<blockquote><pre><code>
+% mysql-stop
+% su
+Password:
+# setenv MYSQL_DATA /usr/local/mysql/data
+# mv wordhoardserver $MYSQL_DATA
+# chown -R mysql $MYSQL_DATA/wordhoardserver
+# chgrp -R wheel $MYSQL_DATA/wordhoardserver
+# &lt;ctrl&gt;d
+% mysql-start
+</code></pre></blockquote>
+
+<p>Use the <code>mysql-server-grants</code> script to create the grants for the <code>woardhoardserver</code> database. Copy the script file <code>scripts/mysql-server-grants.csh</code> from your development host to your server host, then run it on your server host. For example:</p>
+
+<p>On your server host, in the directory containing the script you copied:</p>
+
+<blockquote><pre><code>
+% setenv MYSQL_ROOT_USERNAME root
+% setenv MYSQL_ROOT_PASSWORD my-password
+% setenv MYSQL_BIN /usr/local/mysql/bin
+% ./mysql-server-grants.csh
+</code></pre></blockquote>
+
+<p>Test the installation:</p>
+
+<blockquote><pre><code>
+% mysql
+mysql> use wordhoardserver;
+mysql> show tables;
++---------------------------+
+| Tables_in_wordhoardserver |
++---------------------------+
+| account                   |
+| userannotation            |
++---------------------------+
+2 rows in set (0.00 sec)
+
+mysql> show grants for wordhoardserver@localhost;
++-----------------------------------------------------------------------+
+| Grants for wordhoardserver@localhost                                  |
++-----------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'wordhoardserver'@'localhost' 
+    IDENTIFIED BY PASSWORD '*6A53706A4E45F99E396199F264AA4A606D29F6AB'  |
+| GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, 
+    INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES 
+    ON `wordhoardserver`.* TO 'wordhoardserver'@'localhost'             |
++-----------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> quit
+
+</code></pre></blockquote>
+
+<p>You should configure your server host to automatically start MySQL on server startup.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="server" />Deploying the Server</h3>
+
+<p>The host you use to deploy the WordHoard server must be running the <a href="http://java.sun.com/j2se/index.jsp">Java</a> runtime environment 1.4 or later.</p>
+
+<p>Before you use the following steps to deploy the server, you probably want to do a full build of the source code to make certain everything has been compiled correctly into your <code>bin</code> directory:</p>
+
+<blockquote><pre><code>
+% b full
+</code></pre></blockquote>
+
+<p><b>Step 1. Create the <code>server</code> directory.</b></p>
+
+<p>Create a new directory named <code>server</code> in any convenient location on your server host. This directory will contain all the other WordHoard server files. Make the following three subdirectories:</p>
+
+<ul>
+<li><code>lib</code>. Contains all the third-party library jar files and the jar file for the WordHoard server proper.</li>
+<li class="space"><code>data</code>. Contains the configuration and log files.</li>
+<li class="space"><code>bin</code>. Contains scripts to start and stop the server.</li>
+</ul>
+
+<p><b>Step 2. Populate the <code>lib</code> directory.</b></p>
+
+<p>To populate the <code>lib</code> directory, start by copying all of the third-party library jar files from the <code>lib</code> directory on your development host into the <code>lib</code> directory on your server host. Then create the <code>wordhoardserver.jar</code> file on your development host as follows:</p>
+
+<blockquote><pre><code>
+% scripts/create-server-jar.csh
+</code></pre></blockquote>
+
+<p>Copy <code>wordhoardserver.jar</code> from your development host into the <code>lib</code> directory on your server host.</p>
+
+<p><b>Step 3. Populate the <code>data</code> directory.</b></p>
+
+<p>The <code>data</code> directory contains the following files:</p>
+
+<ul>
+<li><code>wordhoard.config</code>. The WordHoard server configuration file.</li>
+<li class="space"><code>log.config</code>. The server log configuration file.</li>
+<li class="space">Log files produced by the server.</li>
+</ul>
+
+<p>Start by creating the <code>wordhoard.config</code> file. This file contains  configuration parameters for the WordHoard server. The standard settings are:</p>
+
+<blockquote><pre><code>
+database-url jdbc:mysql://localhost/wordhoardserver?
+   characterEncoding=UTF-8
+database-username wordhoardserver
+database-password wordhoardserver
+userdata-database-url jdbc:mysql://localhost/wordhoard?
+   characterEncoding=UTF-8
+userdata-database-username wordhoardserver
+userdata-database-password wordhoardserver
+rmiregistry-port 1100
+rmi-port 0
+</code></pre></blockquote>
+
+<p>These settings will most likely work fine on your server, but you can change them if you want to. You can find a copy of this file in <code>misc/server-wordhoard.config</code>. If you wish, you can copy this file from your development host into the <code>data</code> directory on your server host, and rename it <code>wordhoard.config</code>. Note that in the example above we displayed the long lines for <code>database-url</code> and <code>userdate-database-url</code> split over two lines. This was done to make the example readable. There are not actually new lines in the file.</p>
+
+<p>The WordHoard server uses both databases. The first group of three parameters <code>database-url</code>, <code>database-username</code>, and <code>database-password</code> are for the dynamic server database which contains the account objects. The second group of three parameters <code>userdata-database-url</code>, <code>userdata-database-username</code>, and <code>userdata-database-password</code> are for the static client database which contains saved user word sets, work sets, queries, and user annotations.</p>
+
+<p>There are two port numbers for RMI.</p>
+
+<p><code>rmiregistry-port</code> is the port number used by the RMI registry. The WordHoard server creates and exports an RMI registry on the local host that accepts requests on this port number. The WordHoard client connects to this port number to get the server bootstrap object. Note that the WordHoard server creates its own private instance of an RMI registry running within its own process. It does not use a separate <code>rmiregistry</code> process that is shared with other applications. If you have other applications on your server host that use RMI, you may have to change the default port number 1100 to some unused port number for use by the WordHoard server to avoid conflicts with other applications that are using port 1100.</p>
+
+<p><code>rmi-port</code> is the port number used by the WordHoard server remote objects. A value of 0 for <code>rmi-port</code> tells the system to select an unused port number. If your server has a firewall which blocks ports, you will need to specify a fixed port number (e.g., 1101), and configure your firewall to permit traffic on that port number.</p>
+
+<p>We use <a href="http://logging.apache.org/log4j/docs/">Log4J</a> for server logging. The <code>log.config</code> file configures Log4J. We provide a default configuration in <code>misc/server-log.config</code> which rolls the log file every night at midnight. Copy this file from your development host into the <code>data</code> directory on your server host, and rename it <code>log.config</code>. You can use this sample as is, or make whatever changes you wish. See the Log4J documentation for details.</p>
+
+<p>The WordHoard server writes its log files in the <code>data</code> directory. A message is written to the log every time someone runs the client, quits the client, logs in, or logs out. Any unexpected errors that happen in the client are also logged, with full stack traces. This is an indispensable debugging aid, since you do not have to rely on the users to send you accurate bug reports. We recommend checking the logs on a regular basis. On Russell we do this daily.</p>
+
+<p><b>Step 4. Populate the <code>bin</code> directory.</b></p>
+
+<p>The <code>bin</code> directory is a convenient location for helper scripts. We use a pair of scripts located in this directory to start and stop the server. Copies of these scripts are located in <code>scripts/server-start.csh</code> and <code>scripts/server-stop.csh</code>.</p>
+
+<p>The <code>server-start</code> script starts the WordHoard server in the background:</p>
+
+<blockquote><pre><code>
+#!/bin/csh
+cd /Users/wordhoard/server
+java -Xmx200m -jar lib/wordhoardserver.jar start data &amp;
+</code></pre></blockquote>
+
+<p>The <code>server-stop</code> script stops the server:</p>
+
+<blockquote><pre><code>
+#!/bin/csh
+cd /Users/wordhoard/server
+java -jar lib/wordhoardserver.jar stop data
+</code></pre></blockquote>
+
+<p>Note the path <code>/Users/wordhoard/server</code> in these scripts. This should be the path to your <code>server</code> directory on your server host. The sample files contain the proper path for our Russell server. The value on your system will be different, so you must make the appropriate changes to these two files.</p>
+
+<p>You should configure your server host to automatically run the <code>server-start</code> script on server startup.</p>
+
+<p><b>Step 5. Test the installation and start the server.</b></p>
+
+<p>On your server host in your <code>server</code> directory:</p>
+
+<blockquote><pre><code>
+% bin/server-start.csh
+WordHoard server started
+% cat data/log
+2005-12-19 12:30:34,883 INFO  - Server started, version 1.0fc2
+% bin/server-stop.csh
+WordHoard server stopped
+% cat data/log
+2005-12-19 12:30:34,883 INFO  - Server started, version 1.0fc2
+2005-12-19 12:30:36,116 INFO  - Server stopped
+% bin/server-start.csh
+WordHoard server started
+</code></pre></blockquote>
+
+<p>Leave the server running, assuming that you intend to finish the deployment shortly and go into production.</p>
+
+<p><b>Step 6. Remember to change the admin password.</b></p>
+
+<p>The empty <code>wordhoardserver</code> database you installed in step 1 contains no accounts (the <code>account</code> table is empty). The first time you ran the server in step 6, it created an initial administrator account with username "admin" and password "admin". As soon as you get everything deployed, you should use the WordHoard client to log in and change the password on this account. </p>
+
+<p><b>Installing a new version of the server.</b></p>
+
+<p>To install a new version of the server, first run the <code>create-server-jar</code> script on your development host to create the new version of the <code>wordhoardserver.jar</code> file:</p> 
+
+<blockquote><pre><code>
+% scripts/create-server-jar.csh
+</code></pre></blockquote>
+
+<p>On the server host, change to your server directory and stop the WordHoard server:</p>
+
+<blockquote><pre><code>
+% cd /Users/wordhoard/server
+% bin/server-stop.csh
+</code></pre></blockquote>
+
+<p>Copy the new <code>wordhoardserver.jar</code> file from your development host to your server host, replacing the old copy in the <code>server/lib</code> directory, and then restart the server:</p>
+
+<blockquote><pre><code>
+% bin/server-start.csh
+</code></pre></blockquote>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="sites" />Deploying the Sites File</h3>
+
+<p>The sites file, usually named <code>sites.xml</code>, enumerates all the known WordHoard sites. When a user runs the WordHoard client, it fetches this file from a web server. If there is more than one known site listed in the file, a site selection menu is presented.</p>
+
+<p>For example, the following <code>sites.xml</code> file describes the example site we deployed to the <code>russell</code> server in the steps above.</p>
+
+<blockquote><pre><code>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;WordHoardSites&gt;
+    
+    &lt;site id="main"&gt;
+        &lt;name&gt;Main Public Site&lt;/name&gt;
+        &lt;description&gt;
+            This site contains the early Greek epics and the works of 
+            Shakespeare, Spenser and Chaucer. It is open to the world.
+        &lt;/description&gt;
+        &lt;database&gt;
+            &lt;url&gt;jdbc:mysql://russell.at.northwestern.edu/wordhoard?characterEncoding=UTF-8&amp;amp;useCompression=true&lt;/url&gt;
+            &lt;username&gt;wordhoard&lt;/username&gt;
+            &lt;password&gt;wordhoard&lt;/password&gt;
+        &lt;/database&gt;
+        &lt;server&gt;//russell.at.northwestern.edu:1100/WordHoard&lt;/server&gt;
+    &lt;/site&gt;
+    
+&lt;/WordHoardSites&gt;
+</code></pre></blockquote>
+
+<p>In this example, there is only one site listed. In this case, the WordHoard client connects directly to the site and does not present a site selection dialog.</p>
+
+<p>Prepare your version of this file and deploy it to any convenient web server, typically the same web server that you are going to use to deploy the client and the user manual.</p>
+
+<p>The is one <code>site</code> element for each WordHoard site. Each site must have a unique id.</p>
+
+<p>The <code>name</code> and <code>description</code> elements are used to construct the site selection dialog.</p>
+
+<p>The <code>database</code> element provides the connection information for the static database for the site: the JDBC URL, the username, and the password.</p>
+
+<p>The <code>server</code> element provides the Java RMI URL of the WordHoard server for the site, without the leading schema name.</p>
+
+<p>The file <code>misc/sites.xml</code> is the sites file that we use at Northwestern University for our WordHoard deployment.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="cert" />Certificates</h3>
+
+<p>In the next section we will discuss deploying the client for users to download via Web Start. Web Start requires that all of the jar files be digitally signed using a certificate.</p>
+
+<p>For obvious reasons, we do not distribute our NU certificate in the public distribution of WordHoard for you to use to sign your modified versions of the program. You will have to use your own certificate.</p>
+
+<p>If you are not familiar with Java's security tools, we recommend that you read Sun's descriptions of the Java <a href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/keytool.html"><code>keytool</code></a> and <a href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/jarsigner.html"><code>jarsigner</code></a> tools.</p>
+
+<p>For developing and testing, you can use a self-signed certificate. Use <code>keytool</code> to create one. This tool manages a keystore (database) of private keys and their associated certificates. For example:</p>
+
+<blockquote><pre><code>
+% mkdir private
+% keytool -genkey -keystore private/test-keystore -alias test
+Enter keystore password:  testxx
+What is your first and last name?
+  [Unknown]:  Rocket J Squirrel
+What is the name of your organizational unit?
+  [Unknown]:  Department of Philosophy
+What is the name of your organization?
+  [Unknown]:  Wassamatta U
+What is the name of your City or Locality?
+  [Unknown]:  Frostbite Falls
+What is the name of your State or Province?
+  [Unknown]:  Minnesota
+What is the two-letter country code for this unit?
+  [Unknown]:  US
+Is CN=Rocket J Squirrel, OU=Department of Philosophy, 
+   O=Wassamatta U, L=Frostbite Falls, ST=Minnesota, C=US correct?
+  [no]:  yes
+
+Enter key password for &lt;test&gt;
+        (RETURN if same as keystore password):  
+% 
+</code></pre></blockquote>
+
+<p>In this example, our keystore is located at <code>private/test-keystore</code>. The keystore password is <code>testxx</code>. The keystore contains a single "alias" named <code>test</code> for our test certificate, also with password <code>testxx</code>.</p>
+
+<p>For production use, you will want to obtain an official jar signing certificate from a certificate granting authority.</p>
+
+<p>When a user downloads and runs WordHoard for the first time, Web Start presents a security alert that displays the information from your certificate. If you use a self-signed certificate, the alert contains dire language that recommends that the user not run the program. Using an official certificate results in an alert that is much less alarming, and reassures the user that they are obtaining the software from a reputable source.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="client" />Deploying the Client</h3>
+
+<p>The WordHoard client software can be distributed on any web server host. It is deployed on the web server as a directory named <code>client</code> which contains the following files:</p>
+
+<ul>
+
+<li><code>wordhoard.jnlp</code>. The Web Start deployment descriptor file. <code>"jnlp"</code> stands for "Java network launch protocol," which is the protocol used by Web Start.</li>
+
+<li class="space"><code>icon.gif</code>. The WordHoard icon.</li>
+
+<li class="space"><code>wordhoard.jar</code>. The main WordHoard jar file, which must be digitally signed using the certificate created in the previous section.</li>
+
+<li class="space">Third-party jar files used by WordHoard, which also must be digitally signed, using the same certificate that was used to sign the main WordHoard jar file.</li>
+
+</ul>
+
+<p>You will do most of the work preparing your client deployment on your development system.</p>
+
+<p><b>Step 1. Edit the <code>wh.properties</code> file.</b></p>
+
+<p>Open the following source code file:</p>
+
+<blockquote><pre><code>
+src/edu/northwestern/at/wordhoard/properties/wh.properties
+</code></pre></blockquote>
+
+<p>Near the beginning of file you will find a section titled "Web site addresses":</p>
+
+<blockquote><pre><code>
+# Web site addresses.
+
+programWebSite=http://russell.at.northwestern.edu/~wordhoard
+SitesURL=http://russell.at.northwestern.edu/~wordhoard/sites.xml
+</code></pre></blockquote>
+
+<p>Edit these two web site addresses. <code>programWebSite</code> is the address of the user manual you will deploy later. <code>SitesURL</code> is the address of the sites file you deployed earlier.</p>
+
+<p><b>Step 2. Do a full build.</b></p>
+
+<p>Do a full build of the source code:</p>
+
+<blockquote><pre><code>
+% b full
+</code></pre></blockquote>
+
+<p><b>Step 3. Create the client directory.</b></p>
+
+<p>Check your settings for the CODEBASE and HOMPAGE environment variables:</p>
+
+<blockquote><pre><code>
+% echo $CODEBASE
+http://russell.at.northwestern.edu/~wordhoard/client/
+% echo $HOMEPAGE
+http://russell.at.northwestern.edu/~wordhoard
+</code></pre></blockquote>
+
+<p>These two variables specify the URL of your deployed client directory and user manual respectively. If they are not correct, edit your <code>setup</code> file and resource it (<code>source setup</code>). Then run the following script to create your <code>client</code> directory:</p>
+
+<blockquote><pre><code>
+% scripts/create-client-dir.csh
+Enter store password for keystore:
+testxx
+Enter key password for alias test:
+testxx
+</code></pre></blockquote>
+
+<p>This script creates your client directory. It creates the <code>wordhoard.jnlp</code> file in the client directory. It copies the icon file <code>icon.gif</code> from the <code>misc</code> directory into the client directory. It creates and signs the <code>wordhoard.jar</code> file. It copies all of the third-party library jar files from the <code>lib</code> directory into the client directory, then signs the copies using the certificate you created in the previous section.</p>
+
+<p><b>Step 4. Check your web server settings.</b></p>
+
+<p>Your web server must be configured to map the file name suffix <code>jnlp</code> to the MIME type <code>application/x-java-jnlp-file</code>. Most of the newer web servers we use these days are configured this way by default. Check to make certain, and add this mapping to your server's configuration if necessary.</p>
+
+<p><b>Step 5. Deploy the client.</b></p>
+
+<p>Create a directory named <code>client</code> in the proper location on your web server. Copy all of the files from the <code>client</code> directory on your development host to the <code>client</code> directory on your web server host.</p>
+
+<p><b>Deploying a new version of the client</b></p>
+
+<p>To deplay a new version of the client, create a new signed WordHoard jar file:</p>
+
+<blockquote><pre><code>
+% scripts/create-client-jar.csh
+Enter store password for keystore:
+testxx
+Enter key password for alias test:
+testxx
+</code></pre></blockquote>
+
+<p>Copy the new <code>wordhoard.jar</code> file to your web server, replacing the old copy of the file. The next time a user runs their copy of the client, Web Start will download your new jar file automatically.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="userman" />Deploying the User Manual</h3>
+
+<p>The user manual (the one you are reading now) can be deployed to any web server. For example, on Russell, we organize the files and directories on the web server as follows:</p>
+
+<blockquote><pre><code>
+% pwd
+/Users/wordhoard/Sites
+% ls
+client       index.html     sites.xml       userman
+</code></pre></blockquote>
+
+<p>The <code>sites.xml</code> file is the sites file described earlier.</p>
+
+<p>The <code>index.html</code> file contains:</p>
+
+<blockquote><pre><code>
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Refresh" content="0; 
+URL=http://russell.at.northwestern.edu/~wordhoard/userman/index.html"&gt;
+&lt;/head&gt;
+&lt;/html&gt;
+</code></pre></blockquote>
+
+<p>On Russell, a Mac OS X system running the Apache web server, the URL for our web site is:</p>
+
+<blockquote><pre><code>
+http://russell.at.northwestern.edu/~wordhoard
+</code></pre></blockquote>
+
+<p>This URL maps to the file <code>/Users/wordhoard/Sites/index.html</code>. This main <code>index.html</code> file in turn redirects the web browser to the URL:</p>
+
+<blockquote><pre><code>
+http://russell.at.northwestern.edu/~wordhoard/userman/index.html
+</code></pre></blockquote>
+
+<p>This URL is the table of contents page for this manual.</p>
+
+<p>We recommend that you use the same web server for deploying both the user manual and the client, with the user manual directory named <code>userman</code> and the client directory named <code>client</code> siblings in the file system, as in the example from Russell above.</p>
+
+<p>The reason the two directories should be siblings is because the user manual contains two references (links) to the <code>wordhoard.jnlp</code> file in the <code>client</code> directory. The two links are both titled "Download and Run WordHoard". One is located at the top of the <a href="index.html">table of contents</a> page, and the other one is located in the middle of the <a href="getting-started.html#run">Getting Started</a> chapter. Both of these links are coded in the HTML source as follows:</p>
+
+<blockquote><pre><code>
+&lt;a href=../client/wordhoard.jnlp&gt;Download and Run WordHoard&lt;/a&gt;
+</code></pre></blockquote>
+
+<p>If the <code>userman</code> and <code>client</code> directories are not siblings, these links will both break.</p>
+
+<p>If you deploy the user manual and the client on different servers, or on the same server but not in sibling directories, you must take care to change the two links from the user manual to the client.</p>
+
+<p>On your web server, the <code>userman</code> directory contains the HTML files for the manual, plus five subdirectories:</p>
+
+<ul>
+
+<li><code>images</code>. All the screen shots and other images for the manual.</li>
+
+<li class="space"><code>thirdparty</code>. Third party licensing statements.</li>
+
+<li class="space"><code>javadoc</code>. The full javadoc for WordHoard.</li>
+
+<li class="space"><code>data-files</code>. Data zip archive files for developers.
+
+	<ul>
+	<li class="space"><code>data.zip</code></li>
+	<li><code>wordhoard.zip</code></li>
+	<li><code>wordhoardserver.zip</code></li>
+	</ul>
+</li>
+
+<li class="space"><code>other-files</code>. Non-data zip archive files and other files for developers.</li>
+
+</ul>
+
+<p>On your development system, the HTML source for the user manual is located in the <code>userman</code> directory. This directory includes the <code>images</code> and <code>thirdparty</code> subdirectories, but not the other three subdirectories.</p>
+
+<p><b>Step 1. Copy the <code>userman</code> directory to the web server.</b></p>
+
+<p>Copy the entire <code>userman</code> directory from your development host to your web server.</p>
+
+<p><b>Step 2. Create the <code>javadoc</code> subdirectory.</b></p>
+
+<p>Build the javadoc on your development system:</p>
+
+<blockquote><pre><code>
+% b doc
+</code></pre></blockquote>
+
+<p>Copy the <code>javadoc</code> directory from your development host to your web server, and place the copy inside the <code>userman</code> directory.</p>
+
+<p><b>Step 3. Create the <code>other-files</code> subdirectory.</b></p>
+
+<blockquote><pre><code>
+% scripts/make-other-files.csh
+</code></pre></blockquote>
+
+<p>This script makes the <code>other-files</code> directory. Copy it from your development host to your web server, and place the copy inside the <code>userman</code> directory.</p>
+
+<p><b>Step 4. Create the <code>data-files</code> subdirectory.</b></p>
+
+<p>On your web server, create a subdirectory named <code>data-files</code> inside your <code>userman</code> directory.</p>
+
+<p>Move the archive file <code>wordhoard.zip</code> you saved when you installed the static database at the beginning of this chapter into the <code>data-files</code> subdirectory.</p>
+
+<p>Run the following script on your development system to make a zip archive of the <code>data</code> directory:</p>
+
+<blockquote><pre><code>
+% scripts/zip-raw-data.csh
+</code></pre></blockquote>
+
+<p>Copy the <code>data.zip</code> file from your development host to your web server, and place the copy inside the <code>data-files</code> subdirectory.</p>
+
+<p>On your web server, download a copy of the server database <a href="data-files/wordhoardserver.zip">zip archive</a> as the file named <code>wordhoardserver.zip</code> and place it inside the <code>data-files</code> subdirectory.</p>
+
+<p><b>Test the installation</b>.</p>
+
+<p>Go to your new user manual web site address. Browse around in the manual to make certain all the chapters are intact, the screen shots are there, etc. Try downloading one of the developer zip archives. Click the "Download and Run WordHoard" link on the table of contents page. Verify that Web Start properly downloads the jar files and launches WordHoard. Log in using the "admin" account to verify that the server is working. This would be a good time to change the admin password.</p>
+
+<p><b>Maintaining the user manual</b></p>
+
+<p>You need to update your deployed user manual whenever you make changes to the HTML source or to the screen shots, of course.</p>
+
+<p>Keep in mind that the user manual is also used to distribute files and the javadoc to developers. Whenever you deploy a new version of the system, you usually need to repeat steps 2 and 3 above to deploy the new javadoc and small files. If you made any changes to the raw data files or to the static database, you also need to repeat the appropriate parts of step 4.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="libs" />Managing Third-Party Libraries</h3>
+
+<p>As you do development work on WordHoard, you may find that on occasion you need to modify the collection of third-party libraries used by the system. You may add a new library, upgrade to a new release of an old library, or get rid of an old library. These libraries are all located in the <code>lib</code> directory on your development system.</p>
+
+<p>During development, all you have to do is place the new libraries in your <code>lib</code> directory and source your <code>setup</code> script:</p>
+
+<blockquote><pre><code>
+% source setup
+</code></pre></blockquote>
+
+<p>The setup script redefines your classpath to include the new libraries.</p>
+
+<p>In a WordHoard deployment, however, there are several places where you need to remember to make changes if you have modified the collection of third-party libraries in the <code>lib</code> directory. Use the following checklist to properly update the rest of the system at your next deployment:</p>
+
+<ul>
+
+<li>Deployed instances of the WordHoard server contain a copy of all the library files in the the subdirectory <code>server/lib</code>. When you deploy, you must update this subdirectory to contain a copy of the new collection of library files.</li>
+
+<li class="space">Deployed instances of the WordHoard server also contain the main server jar file <code>wordhoardserver.jar</code>, which in turn contains a manifest that lists all of the third-party jar files. When you deploy, you must rebuild wordhoardserver.jar:
+
+<blockquote><pre><code>
+% scripts/create-server-jar.csh
+</code></pre></blockquote>
+
+<p>The script scans your <code>lib</code> directory to rebuild the proper manifest.</p>
+
+<p>Copy the new <code>wordhoardserver.jar</code> file from your development system to the <code>server/lib</code> subdirectory on your server.</p>
+
+</li>
+
+<li class="space">Deployed instances of the WordHoard client contain signed copies of all the library files in the <code>client</code> directory. When you add or update library files, you must make new signed copies for deployment. Use the <code>sign-jar</code> script to do this. For example, suppose you add a new library file named <code>Goodies.jar</code> to your collection, and you want to update the <code>client</code> directory so that it contains a signed copy of this jar file for deployment.
+
+<blockquote><pre><code>
+% scripts/sign-jar.csh Goodies.jar
+</code></pre></blockquote>
+
+<p>Copy the new signed library file <code>client/Goodies.jar</code> from your development system to the <code>client</code> directory on your web server.</p>
+
+</li>
+
+<li class="space">The <code>wordhoard.jnlp</code> file for the deployed client contains a list of all the signed jar files. If you modify the collection of libraries, you must generate a new jnlp file:
+
+<blockquote><pre><code>
+% scripts/create-jnlp-file.csh
+</code></pre></blockquote>
+
+<p>Copy the new jnlp file <code>client/wordhoard.jnlp</code> from your development system to the <code>client</code> directory on your web server.</p>
+
+</li>
+
+</ul>
+
+<p>For best results, avoid needlessly resigning old libraries or deploying new copies of the same jar files to web servers. If you do this, the next time a user runs WordHoard, he will have to wait while the "new" versions of the libraries are downloaded. Sign library jar files and deploy them only when they are actually new or changed. The same principle applies to generating and deploying new <code>jnlp</code> files. Do this only when necessary.</p>
+
+<p>Note that we include all of the third-party library files in the deployments of both the client and the server, even though some of them are only needed for development, and of the remainder only subsets are needed by the client and server respectively. We could have and perhaps should have taken the trouble to modify our scripts to filter out libraries that are not needed in the different contexts. We have not bothered doing this.</p>
+
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-model.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Static Object Model</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Text Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

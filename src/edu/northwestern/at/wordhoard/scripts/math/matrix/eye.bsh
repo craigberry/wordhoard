@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix eye( int rows , int cols )
+{
+	return Matrices.eye( rows , cols );
+}

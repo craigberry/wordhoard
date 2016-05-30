@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix cumprod( Matrix m )
+{
+	return Matrices.cumprod( m );
+}

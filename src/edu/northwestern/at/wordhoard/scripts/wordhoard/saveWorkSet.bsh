@@ -1,0 +1,42 @@
+WorkSet saveWorkSet
+(
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	WorkPart[] workParts
+)
+{
+	return
+		WorkSetUtils.addWorkSet
+		(
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			"" ,
+			workParts
+		);
+}
+
+WorkSet saveWorkSet
+(
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	Work[] works
+)
+{
+	return
+		WorkSetUtils.addWorkSet
+		(
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			"" ,
+			works
+		);
+}
+

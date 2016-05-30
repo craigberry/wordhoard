@@ -1,0 +1,17 @@
+import java.math.*;
+
+double exp( double x )
+{
+	return Math.exp( x );
+}
+
+double exp( int i )
+{
+	return Math.exp( (double)i );
+}
+
+double exp( long l )
+{
+	return Math.exp( (double)l );
+}
+

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Saved Word Queries</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-queries-introduction.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Saved Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-work-queries.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Saved Bibliographic Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Saved Word Queries</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#creating">
+       Creating a saved word query
+       </a>
+       </li>
+   <li><a href="#cqlwords">Word query syntax</a>
+       </li>
+   <li><a href="#regexp">Regular expressions</a>
+       </li>
+   <li><a href="#editing">Editing a saved word query</a>
+       </li>
+   <li><a href="#deleting">Deleting a saved word query</a>
+       </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+A saved word query allows you save a query template to use in
+creating <a href="word-sets.html">word sets</a>.  For example,
+you may want to gather all the words spoken by immortal or
+supernatural females in a specified set of works.  You can create
+a query that specifies "retrieve words that are spoken by
+immortal or supernatural females", save that query, and use it
+to create word sets using different collections of source works.
+You specify the query using a WordHoard specific
+internal corpus query language.
+</p>
+
+<h3><a name="creating" id="creating">Creating a saved word query</a></h3>
+
+<p>
+To create, edit, or delete a saved word query you must first
+<a href="login.html">login</a> so that the Sets menu
+becomes available.  Not all installations of WordHoard allow you to
+login.  You will not be able to create saved word queries on such systems.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/newwordquerymenu.jpg"
+     alt="New word query menu"></img>
+</p>
+
+<p>
+Select "Sets, Query, New Word Query" to bring up the create word query
+dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/createsavedwordquery.jpg"
+     alt="Create saved word query dialog"></img>
+</p>
+
+<ul>
+<li><p>
+    You must enter a <em>title</em> for the saved word query.
+    The title is a required field.  Each of your saved word queries
+    must have a distinct title.  Someone else may use the same title
+    for a query.  The different account name will distinguish
+    the otherwise identically named queries.
+    We'll use "Words spoken by supernatural or immortal females"
+    as the title of our saved word query.
+    </p>
+    </li>
+
+<li><p>
+    You may enter an optional <em>description</em> of the query.
+    </p>
+    </li>
+
+<li><p>
+    You may enter an optional <em>web page URL</em> where more
+    information about the query may be found.  It is up to you
+    to create that web page.
+    </p>
+    </li>
+
+<li><p>
+    A saved word query may be public or private.  A public saved
+    word query may be
+    viewed and used by any WordHoard user.  A private query may
+    be viewed and used only by the creator, and only when the
+    creator is logged in.  Saved word queries are private by default.
+    Select the check box before <em>Public</em> to make the query public.
+    </p>
+    </li>
+
+<li><p>
+    Specify the <em>query</em> text.  We specify we want the words
+    spoken by females (<strong>spg("F")</strong>)
+    who are immortal or supernatural
+    (<strong>spm("I")</strong>).  The syntax of the
+    <a href="#cqlwords">WordHoard word query language</a> appears below.
+    </p>
+    </li>
+</ul>
+
+<p>
+Press the "Create" button to create the query.  WordHoard will report
+if the creation succeeded or failed.
+</p>
+
+<h3><a name="cqlwords" id="cqlwords">Word Query Syntax</a></h3>
+
+<p>
+The general form of a word query term is:
+</p>
+
+<blockquote>
+<p>
+[!]termname({text})
+</p>
+</blockquote>
+
+<p>
+<strong>!</strong>means "do not match the text defined by this term."
+By default, the text will be matched.
+</p>
+
+<p>
+<strong>termname</strong> is the term name.
+Example: <strong>spe</strong> means spelling.
+</p>
+
+<p>
+<strong>text</strong> is the term text.  If enclosed in braces, it
+is assumed to be a <a href="#regexp">regular expression</a>.
+The term text need not be
+enclosed in quotes unless it contains blanks or special characters.
+</p>
+
+<p>
+Examples:
+</p>
+
+<ul>
+<li><strong>spe(think)</strong> means match the spelling "think".</li>
+<li><strong>lem("think (v)")</strong> means match the lemma "think (v)".</li>
+<li><strong>mwc(verb)</strong> means match a verb.</li>
+<li><strong>!spe({^bu})</strong> means match all words except those
+    starting with "bu".</li>
+</ul>
+
+<p>
+You may combine terms to form a <em>term set</em> by separating
+the terms by colons.
+In our sample query above, <strong>spg("F"):spm("I")</strong>
+contains two query terms, <strong>spg("F")</strong> matching words
+spoken by females and <strong>spm("I")</strong> matching words spoken
+by supernatural or immortal beings.  The combined terms form a
+term set to match both individual query terms simultaneously.
+</p>
+
+<p>
+Here is a complete list of the available word query terms.
+</p>
+
+<table border="1" cellpadding="5">
+   <tr>
+      <th>Term name</th>
+      <th>Definition</th>
+      <th>Parameter values</th>
+   </tr>
+   <tr>
+      <td>spe</td>
+      <td>Spelling</td>
+      <td>Spelling text.  This must include the trailing word class
+          in parentheses, e.g., "honour (n)".  You may also specify
+          an empty text to match any word, e.g., "spe()".
+          </td>
+   </tr>
+
+   <tr>
+      <td>lem</td>
+      <td>Lemma</td>
+      <td>Lemma text.  This must include the trailing word class
+          in parentheses, e.g., "honour (n)".
+          </td>
+   </tr>
+
+   <tr>
+      <td>pos</td>
+      <td>Part of speech</td>
+      <td>See the table presented by the "Parts of Speech" command in the
+          WordHoard program for a list of valid values.</td>
+   </tr>
+
+   <tr>
+      <td>wc</td>
+      <td>Word class</td>
+      <td>See the Word Classes table at
+          <a href="pos-and-wc.html">parts of speech and word classes</a>
+          for a list of valid values.</td>
+   </tr>
+
+   <tr>
+      <td>mwc</td>
+      <td>Major word class</td>
+      <td>See the Word Classes table at
+          <a href="pos-and-wc.html">parts of speech and word classes</a>
+          for a list of valid values.</td>
+   </tr>
+
+   <tr>
+      <td>spg</td>
+      <td>Speaker gender</td>
+      <td>"M" for male, "F" for female, "U" for unknown or unspecified.</td>
+   </tr>
+
+   <tr>
+      <td>spk</td>
+      <td>Speaker name</td>
+      <td>Name of the speaker, e.g., "Hamlet"</td>
+   </tr>
+
+   <tr>
+      <td>ver</td>
+      <td>Word appears in verse</td>
+      <td>"Y" for verse, "N" for prose, "U" for unknown or unspecified.</td>
+   </tr>
+
+   <tr>
+      <td>met</td>
+      <td>Metrical shape</td>
+      <td>A metrical shape value.</td>
+   </tr>
+
+   <tr>
+      <td>spm</td>
+      <td>Speaker mortality</td>
+      <td>"I" for immortal or supernatural, "M" for mortal, "U" for
+          unspecified or unknown.</td>
+   </tr>
+
+   <tr>
+      <td>nar</td>
+      <td>Narrative or Speech</td>
+      <td>"Y" for narrative, "N" for speech.  Note that not all
+          WordHoard corpora distinguish narrative from speech.
+          </td>
+   </tr>
+</table>
+
+<h3><a name="regexp" id="regexp">Regular expressions</a></h3>
+
+<p>
+You can use <em>regular expressions</em> instead of
+plain text strings in query terms.  A regular expression defines a pattern
+to match characters in a string.  The simplest regular expressions are
+letters and digits which match themselves.  These may be combined with
+a variety of operators to produce very flexible and sometimes very cryptic
+search patterns.
+</p>
+
+<p>
+Anchor operators "anchor" a match to the beginning or end of a string.
+The caret character <strong>^</strong> anchors a search to the
+beginning of a string.  The dollar sign <strong>$</strong> anchors a
+search to the end of a string.  For example,
+"^bu" matches a string starting with "bu", while "bu$" matches a string
+ending with "bu".
+</p>
+
+<p>
+Repetition operators match zero or more occurrences of a character
+or string.  Some commonly used repetition operators include:
+</p>
+
+<ul>
+   <li>The period <strong>.</strong> matches any single character.
+       </li>
+   <li>The question mark <strong>?</strong> marks the preceding item
+       as optional and to be matched at most once.
+       </li>
+   <li>The asterisk <strong>*</strong> allows the preceding item to be
+       matched zero or more times.  The combination <strong>.*</strong>
+       matches zero or more characters and can be used to look for a
+       string located anywhere in another string.  For example,
+       <strong>.*Falstaff.*</strong> matches the string
+       <strong>Falstaff</strong> anywhere in a string.</li>
+</ul>
+
+<p>
+You may concatenate regular expressions to match sequences of characters.
+For example, <strong>a.b.c</strong> matches any string with "a" in the
+first position, "b" in the third position, and "c" in the fifth position.
+The second and fourth characters can be any characters.
+</p>
+
+<p>
+You may separate two or more regular expressions using the vertical bar
+<strong>|</strong>.  This allows you to match a string
+which matches any of the subexpressions.  For example,
+<strong>John|Fred</strong> matches either of the strings "John" or
+"Fred".
+</p>
+
+<p>
+A bracketed expression contains characters enclosed by the bracket
+characters <strong>[</strong> and <strong>]</strong>.
+The bracketed expression matches any single character within the brackets.
+If you specify the caret <strong>^</strong> as the first character in the
+brackets, the expression matches any character which is not contained
+within the brackets.  For example, <strong>[abc]</strong>
+matches any of the letters a, b, or c, while <strong>[^abc]</strong>
+matches any character except for a, b, and c.  You may also use the hyphen
+<strong>-</strong> to specify a range of characters, according to the
+collating sequence for the characters.  For example,
+<strong>[a-z]</strong> acts identically
+to <strong>[abcdefghijklmnopqrstuvwxyz]</strong>.
+</p>
+
+<p>
+Regular expressions are case-insensitive when used in WordHoard
+saved queries.  This means <strong>.*falstaff.*</strong>,
+<strong>.*Falstaff.*</strong> and <strong>.*FALSTAFF.*</strong> all
+return the same strings.
+</p>
+
+<h3><a name="editing" id="editing">Editing a saved word query</a></h3>
+
+<p>
+You can edit word queries by selecting
+"Sets, Query, Edit Word Query" from the menu.
+The edit word query dialog appears.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/editsavedwordquery1.jpg"
+     alt="Edit word query dialog"></img>
+</p>
+<div class="space" />
+
+<p>
+The top panel of the dialog lists the word queries which you are allowed
+to edit.  You can only edit public or private word queries which you
+have created.  You cannot edit word queries belonging to others.
+Select the word query you wish to edit.  The remaining fields in the dialog
+change to reflect the current values in the selected word query.
+For example, select our "Words spoken by immortal or supernatural females"
+word query.  The title, description, web page, public flag, and query text
+for that word query now appear in the dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/editsavedwordquery2.jpg"
+     alt="Edit words spoken by female immortal speakers query"></img>
+</p>
+<div class="space" />
+
+<p>
+You can change the title, description, web page URL, public flag,
+and query text by entering new values.
+Press the "Update" button to save any changes you make.
+</p>
+
+<h3><a name="deleting" id="deleting">Deleting a saved word query</a></h3>
+
+<p>
+You may delete one or more of the saved word queries you have created by
+selecting "Sets, Query, Delete Word Query" from the menu.
+The Delete Word Queries dialog appears with the names of your
+saved word queries. If you have not created any saved word queries,
+WordHoard displays a message to that effect instead.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/deletesavedwordquery.jpg"
+     alt="Delete saved word queries dialog"></img>
+</p>
+<div class="space" />
+
+<p>
+Select the check box next to each word query you want to delete so
+that a check mark appears in the box.
+In the sample dialog above the only saved word query available for
+deletion is "Words spoken by supernatural or immortal females."
+We have selected that query for deletion by toggling the check box next
+to it.
+Press the Delete button to delete the selected queries.
+</p>
+
+<p>
+Please be careful.  Once you delete a query, it cannot be recovered.
+You will need to recreate the query if you want to use it again.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-queries-introduction.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Saved Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="saved-work-queries.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Saved Bibliographic Queries</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

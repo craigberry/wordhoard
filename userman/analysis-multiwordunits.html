@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Finding Multiword Units</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<div class="navpanel">
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparingcollocates.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+</div>
+
+<h2>Finding Multiword Units</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#pseudobigram">Pseudo-bigrams</a></li>
+   <li><a href="#localmaxs">The localmaxs algorithm</a></li>
+   <li><a href="#justesonfilter">Justeson and Katz Filter</a></li>
+   <li><a href="#findmwusdialog">Find multiword units dialog</a></li>
+   <li><a href="#findmwusoutput">Sample output</a></li>
+   <li><a href="#tagcloud">
+       Visualizing multiword units using a tag cloud</a></li>
+   <li><a href="#usingjusteson">
+       Using the Justeson and Katz Filter</a></li>
+   <li><a href="#mwureferences">References</a></li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+WordHoard defines a <em>multiword unit</em> as a special type of
+collocate in which the component words comprise a
+meaningful phrase.  For example, "Knight of the Round Table" is a meaningful
+multiword unit or phrase.
+WordHoard uses the notion of a <a href="#pseudobigram">pseudo-bigram</a>
+to generalize the computation of bigram (two word) statistical measures to
+phrases (n-grams) longer than two words, and to allow comparisons of these
+measures for phrases with different word counts.  WordHoard applies the
+<a href="#localmaxs">localmaxs</a> algorithm of
+<a href="#silva">Silva et al.</a> to the pseudo-bigrams
+to identify potential compositional phrases that "stand out"
+in a text.  WordHoard can also filter two and three word phrases using the
+word class filters suggested by <a href="#justeson">Justeson and Katz</a>.
+</p>
+
+<h4><a id="pseudobigram" name="pseudobigram">Pseudo-bigrams</a></h4>
+
+<p>
+We can look at any multiword phrase as a "pseudo-bigram"
+having a left part and a right part.
+The Fair Dispersion Point Normalization offered by
+<a href="#silva">Silva et al.</a>
+transforms any phrase of any size into a
+"pseudo-bigram" which reflects the "glue" among the individual
+words in the original phrase.
+Loosely speaking, the Fair Dispersion Point Normalization splits the
+phrase at each possible position, computes a bigram association measure
+for each split, and uses the arithmetic average (mean) of the
+individual association measure values as the association
+measure value for the entire phrase.
+</p>
+
+<p>
+For example, the phrase "Knight of the Round Table" can be split into
+a bigram in four different ways:
+</p>
+
+<blockquote>
+<table border="0" cellpadding="5">
+<tr>
+<th align="left">Left part</th>
+<th align="left">Right part</th>
+</tr>
+<tr>
+<td>Knight</td><td>of the Round Table</td>
+</tr>
+<tr>
+<td>Knight of</td><td>the Round Table</td>
+</tr>
+<tr>
+<td>Knight of the</td><td>Round Table</td>
+</tr>
+<tr>
+<td>Knight of the Round</td><td>Table</td>
+</tr>
+</table>
+</blockquote>
+
+<p>
+If we treat each "half" of the split phrase as a single word, we can
+compute a bigram association measure value for that split.
+Taking the arithetic mean of the four association measure values gives the
+Fair Dispersion Point Normalization Value.
+</p>
+
+<p>
+The paper by <a href="#silva">Silva et al.</a> derives the
+Fair Dispersion Point Normalization formulae for the association measures
+implemented by WordHoard.  These are generalizations of the
+five bigram association measures WordHoard provides for
+<a href="analysis-collocates.html">finding two-word collocates</a>.
+</p>
+
+<h4><a id="localmaxs" name="localmaxs">The localmaxs algorithm</a></h4>
+
+<p>
+The localmaxs algorithm accepts a text as input
+and generates multiword units from that text.  For each phrase,
+the algorithm looks at all subphrases which are one word shorter contained
+within that phrase as well as all superphrases which are one word longer
+that contain the phrase.  When the
+phrase's association measure achieves its maximum value compared to
+those for all the subphrases or superphrases, the phrase is considered
+a probable multiword unit (compositional phrase).
+</p>
+
+<table border="1" width="80%" class="lightgray" cellpadding="5">
+<tr>
+<td>
+<p>
+More precisely, the localmaxs algorithm is as follows.
+</p>
+<ul>
+<li>Let <em>assoc</em> be an association measure.</li>
+<li>Let <em>W</em> be a phrase.</li>
+<li>Let <em>length()</em> be a function returning the number of words in
+    a phrase.</li>
+<li>Let <em>subW</em> be the set of all subphrases contained in W
+    of size ( length(W) - 1).</li>
+<li>Let <em>superW</em> be the set of all superphrases in the text
+    of size (length(W) + 1) which contain W as a subphrase.
+    </li>
+</ul>
+
+<p>
+Then for all <em>x</em> phrases in <em>subW</em>, and
+for all <em>y</em> phrases in <em>superW</em>, <em>W</em> is a multiword
+unit if:
+</p>
+
+<ul>
+<li>(length(W) = 2) and (assoc(W) > assoc(y)), or
+    </li>
+<li>(length(W) > 2) and
+    (assoc(W) >= assoc(x)) and (assoc(W) > assoc(y))
+    </li>
+</ul>
+</td>
+</tr>
+</table>
+
+<h4><a id="justesonfilter" name="justesonfilter">
+Justeson and Katz Filter</a></h4>
+
+<p>
+<a href="#justeson">Justeson and Katz</a> suggested a part of speech
+based filter for bigrams (two word phrases) and trigrams (three word phrases)
+which eliminates those which are not likely to be compositional phrases.
+These patterns are useful in identifying frozen forms and potential
+named entities.
+</p>
+
+<p>
+<a id="justesonbigramfilter" name="justesonbigramfilter"></a>
+The bigram patterns are:
+</p>
+
+<blockquote>
+<table border="0">
+<tr><td><code>Adjective, Noun</code></td></tr>
+<tr><td><code>Noun, Noun</code></td></tr>
+</table>
+</blockquote>
+
+<p>
+<a id="justesontrigramfilter" name="justesontrigramfilter"></a>
+The trigram patterns are:
+</p>
+
+<blockquote>
+<table border="0">
+<tr><td><code>Adjective, Adjective, Noun</code></td></tr>
+<tr><td><code>Adjective, Noun, Noun</code></td></tr>
+<tr><td><code>Noun, Adjective, Noun</code></td></tr>
+<tr><td><code>Noun, Noun, Noun</code></td></tr>
+<tr><td><code>Noun, Preposition, Noun</code></td></tr>
+<tr><td><code>Noun, Conjunction, Noun*</code></td></tr>
+</table>
+</blockquote>
+
+<p>
+*WordHoard adds the "Noun, Conjunction, Noun" pattern for trigrams to
+those proposed by Justeson and Katz.
+</p>
+
+<h4><a id="findmwusdialog" name="findmwusdialog">
+    The Find Multiword Units dialog</a></h4>
+
+<p>
+To perform a Find Multiword Units analysis, select
+"Find Multiword Units" from the analysis menu.  WordHoard
+displays the following dialog.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwudialog.jpg"
+     alt="Find Multiword Units Dialog"></img>
+</p>
+<div class="space" />
+
+<p>
+The dialog fields are as follows.
+</p>
+
+<ul>
+   <li><p>
+       <em>Word Form</em> specifies the type of word form to find.
+        You may specify lemma or spelling.
+        We select spelling because we want to
+        look for phrases expressed in their original spelling.
+        Choosing lemma is a good idea if you want
+        to ignore spelling differences that might otherwise mask
+        the recognition of a phrase because its words appear in several
+        different forms.
+       </p>
+       </li>
+   <li><p>
+       <em>Analysis Text</em> provides the text in which to search for
+       multiword units.  We select Shakespeare's play "Hamlet" as the
+       analysis text.
+       </p>
+       </li>
+   <li><p>
+       <em>Minimum multiword unit length</em> specifies the minimum
+       length phrase to extract.  A value of 2 is the default and
+       is a good choice for English text.
+       </p>
+       </li>
+   <li><p>
+       <em>Maximum multiword unit length</em> specifies the maximum
+       length phrase to extract.  A value of 5 is the default and
+       is a reasonable choice to start with for English text.
+       </p>
+       </li>
+   <li><p>
+       <em>Show word classes for all words</em> asks WordHoard to
+       display the word class for spellings and lemmata in the output.
+       If you do not enable this option, WordHoard displays only the
+       spelling or lemma text.  We do not enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Ignore case and diacritical marks</em> causes WordHoard
+       to ignore upper/lower case as well as diacritical marks when
+       comparing words.
+       Ignoring diacritical marks is mostly important for non-English
+       texts.
+       </p>
+       </li>
+   <li><p>
+       <em>Mark significant log-likelihood values</em> appends asterisks
+       to each significant log-likelihood value.  When the significance
+       values are not being adjusted (see the next option below), the
+       asterisks indicate the following levels of significance.
+       </p>
+
+       <table border="1" width="40%">
+          <tr>
+             <td>****</td>
+             <td>Significant at 0.0001 level</td>
+          </tr>
+          <tr>
+             <td>***</td>
+             <td>Significant at 0.001 level</td>
+          </tr>
+          <tr>
+             <td>**</td>
+             <td>Significant at 0.01 level</td>
+          </tr>
+          <tr>
+             <td>*</td>
+             <td>Significant at 0.05 level</td>
+          </tr>
+       </table>
+       <p>
+       We enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Adjust chi-square for number of comparisons</em> adjusts the
+       breakpoints for assessing the significance of the log-likelihood
+       statistics as described in the section
+       <a href="analysis-comparewords.html#adjustingsiglevels">
+       Adjusting significance levels for many comparisons</a>.
+       We do not enable this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter multiword units which occur only once</em> removes
+       phrases which only occur once in the analysis text.  We select
+       this option.  This saves a great deal of computing time and
+       memory space.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter bigrams by word class</em> applies the
+       <a href="#justesonbigramfilter">Justeson and Katz bigram filter</a>
+       to the extracted multiword units.  We do not
+       select this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter trigrams by word class</em>  applies the
+       <a href="#justesontrigramfilter">Justeson and Katz trigram filter</a>
+       to the extracted multiword units.  We do not
+       select this option.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter multiword units containing verbs</em> removes
+       multiword units containing verbs from the output.  We do not
+       select this option.  This is a useful option to select when
+       looking for potential named entities.
+       </p>
+       </li>
+   <li><p>
+       <em>Filter using localmaxs</em> enables multiword selection
+       using the <a href="#localmaxs">localmaxs algorithm</a>.  We select
+       this option.  This requires significant computing time and
+       memory resources but is quite effective in isolating compositional
+       phrases.  If you do not select this option, all of the phrases
+       from the specified minimum length through the maximum length will
+       be deemed multiword units.  Some of those may be removed
+       if you select the bigram, trigram or verb filters above.
+       </p>
+       </li>
+   <li><p>
+       <em>Association measure</em> specifies the one to use when
+       applying the localmaxs algorithm.  We select symmetric conditional
+       probability since <a href="#silva">Silva et al.</a> found this
+       to be the best at identifying genuine compositional phrases
+       in their studies.
+       </p>
+       </li>
+</ul>
+
+<h4><a id="findmwusoutput" name="findmwusoutput">
+    Sample output from a find multiword units analysis</a></h4>
+
+<p>
+WordHoard presents the output of the find multiword units analysis
+in a table with eight columns.  The first column contains the
+text of each potential multiword unit.
+</p>
+
+<p>
+The second column displays the length (number of words) in the
+multiword unit.
+</p>
+
+<p>
+The third column displays the number of times the multiword unit
+occurs in the analysis text.
+</p>
+
+<p>
+The next five columns present measures of
+association for the multiword unit.  For phrases containing
+two words (bigrams), these are exactly the same as the association
+measures for a simple <a href="analysis-collocates.html">Find Collocates</a>
+analysis.  For phrases containing more than two words, these are the
+measures generated from transforming the phrase to a pseudo-bigram and
+applying the Fair Dispersion Point Normalization.
+</p>
+
+<p>
+The header of the output table indicates the total number of multiword units
+extracted as well as how many of these passed through any filters selected
+in the analysis dialog, including the localmaxs algorithm.
+In this case 103,984 candidate phrases were extracted from Hamlet.
+Of these only 156 were selected as multiword units by the localmaxs
+algorithm using Symmetric Conditional Probability as the association
+measure.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwuoutput1.jpg"
+     alt="Find Multiword Units Output"></img>
+</p>
+<div class="space" />
+
+<p>
+The top scoring phrase using symmetric conditional probability is
+"barbary horses."  As it happens, the word "barbary" appears only
+twice in Hamlet -- both times as the left neighbor of "horses."
+You can use the "Find Words" facility in WordHoard to see the contexts.
+</p>
+
+<p>
+Many of the multiword units are clearly genuine compositional phrases.
+Some are reasonably unique to Hamlet, e.g., "Rosencrantz and Guildenstern"
+and "welcome to Elsinore."
+Some you might expect to find in other works, e.g., "pit of clay"
+and "white as snow."  Some of the multiword units, particularly the
+lower-scoring ones, do not appear to be compositional phrases.  If we
+scroll down to the bottom of the output table we see phrases such as
+"substance of" and "the sea and."  But on the whole, the localmaxs
+algorithm has selected many more compositional phrases than
+non-compositional phrases.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwuoutput2.jpg"
+     alt="Find Multiword Units Output"></img>
+</p>
+<div class="space" />
+
+<h3><a name="tagcloud" id="tagcloud">
+Visualizing multiword units using a tag cloud
+</a></h3>
+
+<p>
+As an alternative to looking at this dense table of numbers, WordHoard
+allows you to display the extracted multiword unit results in a
+<strong>tag cloud</strong>.
+A tag cloud displays words or phrases in different font sizes.  To create
+a tag cloud from the multiword unit results,
+select the measure of association for the tag cloud
+using the "Cloud Association Measure" drop down list.
+We will use the symmetric conditional probability values.
+Then select the "Cloud" button to generate the cloud.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwutagcloud1.jpg"
+     alt="Tag cloud for multiword units"></img>
+</p>
+<div class="space" />
+
+<p>
+The larger the text for a phrase, the higher its association
+measure value.
+This allows you assess at a glance the relative importance of the
+phrase.
+WordHoard assigns a font size of 100 points
+to the phrase with the largest (scaled) association measure value.
+Phrases whose
+font size ends up smaller than 3 points are not displayed in the tag cloud.
+Selecting a different association measure will usually produce
+a different tag cloud.
+</p>
+
+<p>
+The words comprising a phrase are separated by a small raised square
+in the tag cloud output.  Entire phrases are separated by spaces.
+</p>
+
+<p>
+As with other tag clouds in WordHoard, you may click on a phrase to
+remove it from the display and resize the remaining phrases.
+</p>
+
+<h4><a id="usingjusteson" name="usingjusteson">
+    Using the Justeson and Katz Filter</a></h4>
+
+<p>
+Let's instruct WordHoard to filter the extracted multiword units
+using the Justeson and Katz part of speech based filter.  To do this
+we select the following additional options in the Find Multiword Units
+dialog:
+</p>
+
+<ul>
+<li>Filter bigrams by word class</li>
+<li>Filter trigrams by word class</li>
+</ul>
+
+<p>
+We also select the option to filter multiword units containing verbs.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwudialog2.jpg"
+     alt="Find Multiword Units Dialog with Justeson and Katz Options Selected"></img>
+</p>
+<div class="space" />
+
+<p>
+The resulting table of multiword phrases is much shorter.  Only 39
+phrases passed all the filters.  Most are clearly compositional
+phrases with a few exceptions such as "except my life except."
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/findmwuoutput3.jpg"
+     alt="Filtered Find Multiword Units Output"></img>
+</p>
+<div class="space" />
+
+<h4><a id="mwureferences" name="mwureferences">
+    References</a></h4>
+
+<p>
+Pseudo-bigrams and the localmaxs algorithm are discussed in:
+</p>
+
+<ul>
+<li>
+<a id="silva" name="silva"></a>
+Silva, Joaquim Ferreira da, and Gabriel Pereira Lopes. 1999.
+A Local Maxima Method and a Fair Dispersion Normalization for
+Extraction of Multi-word Units from Corpora.
+In <em>Proceedings of the 6th Meeting on the Mathematics of Language</em>,
+Orlando, July 23-25.
+</li>
+</ul>
+
+<p>
+Justeson and Katz present their part of speech based filter in:
+</p>
+
+<ul>
+<li>
+<a id="justeson" name="justeson"></a>
+Justeson, John S., and Slava M. Katz. 1995. Technical terminology:
+some linguistic properties and an algorithm for identification in text.
+<em>Natural Language Engineering</em> 1:9-27.
+</li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-collocates.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Finding Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-comparingcollocates.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Comparing Collocates</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

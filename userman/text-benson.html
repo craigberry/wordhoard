@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Benson Gloss XML File</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-spelling.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Standard Spelling XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-tran.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Benson Gloss XML File</h2>
+
+<p>The file <code>benson-glosses.xml</code> defines Professor Larry Benson's glosses for the Chaucer corpus. The standard NU file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardBensonGlosses&gt;
+    &lt;bensonPartsOfSpeech&gt;
+        &lt;pos id="0" tag="?"&gt;?&lt;/pos&gt;
+        &lt;pos id="1" tag="abbrev"&gt;abbreviation&lt;/pos&gt;
+        ...
+        &lt;pos id="169" tag="for"&gt;for in 'for to'&lt;/pos&gt;
+        &lt;pos id="171" tag="adv#of"&gt;adverbial use of 'of'&lt;/pos&gt;
+    &lt;/bensonPartsOfSpeech&gt;
+    &lt;bensonLemmas&gt;
+        &lt;lemma id="1" homonym="0"&gt;
+            &lt;word&gt;+&lt;/word&gt;
+            &lt;wordClass&gt;plussign&lt;/wordClass&gt;
+            &lt;definition&gt;&lt;/definition&gt;
+            &lt;comment&gt;&lt;/comment&gt;
+            &lt;oedLemma&gt;&lt;/oedLemma&gt;
+        &lt;/lemma&gt;
+        &lt;lemma id="2" homonym="0"&gt;
+            &lt;word&gt;--&lt;/word&gt;
+            &lt;wordClass&gt;dash&lt;/wordClass&gt;
+            &lt;definition&gt;&lt;/definition&gt;
+            &lt;comment&gt;&lt;/comment&gt;
+            &lt;oedLemma&gt;&lt;/oedLemma&gt;
+        &lt;/lemma&gt;
+        ...
+        &lt;lemma id="10702" homonym="0"&gt;
+            &lt;word&gt;zodiak&lt;/word&gt;
+            &lt;wordClass&gt;n&lt;/wordClass&gt;
+            &lt;definition&gt;zodiac,&lt;/definition&gt;
+            &lt;comment&gt;s.v. zodiac sb. (a.) OED.&lt;/comment&gt;
+            &lt;oedLemma&gt;zodiac&lt;/oedLemma&gt;
+        &lt;/lemma&gt;
+        &lt;lemma id="11001" homonym="1"&gt;
+            &lt;word&gt;Dite&lt;/word&gt;
+            &lt;wordClass&gt;n&lt;/wordClass&gt;
+            &lt;definition&gt;Dictys Cretensis, historian of the Trojan War,&lt;/definition&gt;
+            &lt;comment&gt;proper n.; not in MED.&lt;/comment&gt;
+            &lt;oedLemma&gt;&lt;/oedLemma&gt;
+        &lt;/lemma&gt;
+    &lt;/bensonLemmas&gt;
+    &lt;bensonLemPos&gt;
+        &lt;lemPos id="1" lemma="1" pos="97"/&gt;
+        &lt;lemPos id="2" lemma="4" pos="88"/&gt;
+        ...
+        &lt;lemPos id="17607" lemma="10702" pos="68"/&gt;
+        &lt;lemPos id="17608" lemma="11001" pos="74"/&gt;
+    &lt;/bensonLemPos&gt;
+&lt;/WordHoardBensonGlosses&gt;
+</pre></blockquote>
+
+<p>The Benson gloss definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardBensonGlosses</code>. The root element.
+	<p>Children:</p>
+	<ul>
+	<li><code>bensonPartsOfSpeech</code> (1). Benson's parts of speech.</li>
+	<li><code>bensonLemmas</code> (1). Benson's lemmas.</li>
+	<li><code>bensonLemPos</code> (1). Benson's lemma and part of speech combinations.</li>
+	</ul>
+</li>
+
+<li class="space"><code>bensonPartsOfSpeech</code>. Benson's parts of speech.
+	<p>Children:</p>
+	<ul>
+	<li><code>pos</code> (0..n). Parts of speech.</li>
+	</ul>
+</li>
+
+<li class="space"><code>pos</code>. A part of speech.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required unique numeric id.</li>
+	<li><code>tag</code>. Required tag.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..1). Optional description.</li>
+	</ul>
+</li>
+
+<li class="space"><code>bensonLemmas</code>. Benson's lemmas.
+	<p>Children:</p>
+	<ul>
+	<li><code>lemma</code> (0..n). Lemmas.</li>
+	</ul>
+</li>
+
+<li class="space"><code>lemma</code>. A lemma.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required unique numeric id.</li>
+	<li><code>homonym</code>. An optional homonym number.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>word</code> (1). The lemma word.</li>
+	<li><code>wordClass</code> (1). The word class.</li>
+	<li><code>definition</code> (0..1). The definition.</li>
+	<li><code>comment</code> (0..1). A comment.</li>
+	<li><code>oedLemma</code> (0..1). The OED lemma.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>word</code>. A lemma word.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The lemma word.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>wordClass</code>. A word class.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The word class.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>definition</code>. A definition.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..1). The definition.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>comment</code>. A comment.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..1). The comment.</li>
+	</ul>
+</li>
+	
+<li class="space"><code>oedLemma</code>. An OED lemma.
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (0..1). The OED lemma.</li>
+	</ul>
+</li>
+
+<li class="space"><code>bensonLemPos</code>. Benson's lemma and part of speech combinations.
+	<p>Children:</p>
+	<ul>
+	<li><code>lemPos</code> (0..n). Lemma and part of speech combinations.</li>
+	</ul>
+</li>
+
+<li class="space"><code>lemPos</code>. A lemma and part of speech combination.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>id</code>. Required unique numeric id.</li>
+	<li><code>lemma</code>. Required lemma id.</li>
+	<li><code>pos</code>. Required part of speech id.</li>
+	</ul>
+</li>
+
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-spelling.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Standard Spelling XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-tran.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Translation XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

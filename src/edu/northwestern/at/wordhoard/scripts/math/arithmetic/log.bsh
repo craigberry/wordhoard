@@ -1,0 +1,7 @@
+import java.lang.Math;
+
+double log( double a )
+{
+	return Math.log( a );
+}
+

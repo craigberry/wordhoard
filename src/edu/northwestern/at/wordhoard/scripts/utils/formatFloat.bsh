@@ -1,0 +1,5 @@
+String formatFloat( float f , int d )
+{
+	return Formatters.formatFloat( f , d );
+}
+

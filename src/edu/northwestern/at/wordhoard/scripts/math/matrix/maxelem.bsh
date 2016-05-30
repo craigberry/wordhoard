@@ -1,0 +1,6 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix maxelem( Matrix m )
+{
+	return Matrices.maxElem( m );
+}

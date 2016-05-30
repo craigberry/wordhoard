@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Standard Spelling XML Files</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Work XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-benson.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Benson Gloss XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Standard Spelling XML Files</h2>
+
+<p><b>IMPORTANT NOTE</b>: We removed the standard spelling feature in version 1.1.6 of WordHoard. There were a number of problems with our notion of "standard spelling", enough so that we judged this feature to be less than useful. The documentation that follows describes how the feature used to work, but should be ignored, at least for now. In the current version, the file <code>spellings/nu-spellings.XML</code> described below is present, but it is empty.</p>
+
+<p>Standard spelling XML files define standard spellings for lemma and part of speech combinations. They are optional. Standard spellings are displayed in the information window for words but are currently otherwise unused by WordHoard.</p>
+
+<p>The directory <code>spellings</code> contains the standard spelling definition files. The file <code>spellings/nu-spellings.XML</code> contains the standard spelling definition file for the three NU English language corpora.</p>
+
+<p>You can add additional standard spelling files to the <code>spellings</code> directory if you wish.</p>
+
+<p>The NU standard spellings file is:</p>
+
+<blockquote><pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WordHoardStandardSpellings charset="roman" posType="english"&gt;
+    &lt;standardSpelling lemma="a (chr)" pos="chr"&gt;a&lt;/standardSpelling&gt;
+    &lt;standardSpelling lemma="a (at)" pos="at"&gt;a&lt;/standardSpelling&gt;
+    ...
+    &lt;standardSpelling lemma="abject (aj)" pos="aj"&gt;abject&lt;/standardSpelling&gt;
+    &lt;standardSpelling lemma="abject (aj)" pos="aj-ly-av"&gt;abjectly&lt;/standardSpelling&gt;
+    &lt;standardSpelling lemma="abject (aj)" pos="aj-pl-n"&gt;abjects&lt;/standardSpelling&gt;
+    ...
+    &lt;standardSpelling lemma="thou (pnp)" pos="pnp-2sg.ge"&gt;thou&lt;/standardSpelling&gt;
+    &lt;standardSpelling lemma="thou (pnp)" pos="pnp-2sg.ge-dt"&gt;thou&lt;/standardSpelling&gt;
+&lt;/WordHoardStandardSpellings&gt;
+</pre></blockquote>
+
+<p>A standard spellings definition file has the following elements:</p>
+
+<ul>
+
+<li><code>WordHoardStandardSpellings</code>. The root element.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>charset</code> = <code>roman</code> or <code>greek</code>. The character set used by this set of standard spellings. Required.</li>
+	<li><code>posType</code> = <code>english</code> or <code>greek</code>. The part of speech taxonomy used by this set of standard spellings. Required.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>standardSpelling</code> (0..n). Standard spelling definitions.</li>
+	</ul>
+</li>
+
+<li class="space"><code>standardSpelling</code>. A standard spelling definition.
+	<p>Attributes:</p>
+	<ul>
+	<li><code>lemma</code> = The lemma id. Required.</li>
+	<li><code>pos</code> = The part of speech id. Required.</li>
+	</ul>
+	<p>Children:</p>
+	<ul>
+	<li><code>TEXT</code> (1). The standard spelling of this lemma and part of speech combination.</li>
+	</ul>
+</li>
+	
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-work.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Work XML Files</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="text-benson.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>The Benson Gloss XML File</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

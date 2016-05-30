@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix transpose( Matrix m )
+{
+	return Matrices.transpose( m );
+}
+

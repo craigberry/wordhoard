@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - The Mac vs. Windows Wars</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>The Mac vs. Windows Wars</h2>
+
+<p><i>A snarky essay on the trials and tribulations of cross-platform
+software development that is sure to offend all, to be considered as
+something of a documentation Easter Egg, presented as an afterthought for
+your amusement by the humble WordHoard development team, complete with
+well-considered but at best half-baked end-of-project musings on
+philosophy, computing, and visions of the past and future.</i></p>
+
+<p>Most computer users have a strong bias for the system they use every
+day. Everyone loves to argue about the relative merits of the Apple
+Macintosh versus Microsoft Windows PCs. WordHoard is an equal-opportunity
+annoyer in this regard. Everyone will find something they don't like about
+the program, often because we do something the same way it is done on "that
+evil other kind of system." In this section we discuss some of these
+issues, and try to explain in a humorous way why we did some of those
+things that you will likely find so annoying.</p>
+
+<p>Mac users will accuse the WordHoard developers of being stupid Windows
+bigots. Windows users will accuse them of being stupid Mac bigots. Both are
+right. One of the primary developers is indeed a stupid Mac bigot, and
+another one is indeed a stupid Windows bigot. The miracle is that they
+manage to work together and get along with each other at all and aren't
+quite totally stupid.</p>
+
+<p>As with all cross-platform programs, we had to make compromises in
+WordHoard which will satisfy neither camp. In many cases, if you must blame
+someone for some feature you don't like, try blaming Sun Microsystems. They
+invented Java, after all, and we have to live with the limitations of their
+Swing human interface components, warts and all.</p>
+
+<p>For Windows lovers: Our use of the term "Command" for the menu keyboard
+shortcut key in this manual is a conscious and well-reasoned decision in
+favor of Mac bigotry. If we used "Control," Mac users would get confused,
+because there is a "Control" key on Mac keyboards. Using "Control/Command"
+would be confusing and too verbose. Repeating the difference between the
+systems in detail every time we want to talk about a shortcut key would be
+absurd. Producing two versions of this manual, one for Windows users and
+one for Mac users, would be way too much work. Look at it this way if it
+makes you feel better: We do this because Mac users are dumber than you
+are, and they need hand-holding and talking down to more than you do.</p>
+
+<p>For both Mac and Windows lovers: Yes, we use lots and lots and lots of
+different kinds of windows, and after using our program for five minutes,
+you'll find that they are littered all over your screen in a big messy
+pile, just like a scholar's desk that starts out nice and clean in the
+morning, but is soon filled to overflowing with open books and scraps of
+paper. Some people of both religious persuasions see this as no
+improvement, and  consider window proliferation to be a nasty trait common
+to awful old-fashioned Macintosh programs. We love all of our WordHoard
+windows, which are like our children, and we think that while they are
+imperfect, they are nevertheless a more than reasonable way to tackle the
+difficult problem of putting a good human interface on our program. Unlike
+some visionaries, we don't think that the rusty old desktop metaphor is a
+total dead end, even though neither you nor Steve Jobs may agree with us.</p>
+
+<p>For Mac lovers: We would prefer to put the menu bar at the top of the
+screen, not at the top of each window, as Mac users expect. Believe us,
+this galls us no end (it's not Windows bigotry). In fact, the gracious and
+well-intentioned Windows bigot on the team wasted many precious days trying
+to make this work right on the Mac, much to the amusement of the team's Mac
+bigot, who knew better than to even try (based on past experience).
+Unfortunately, this is not currently possible due to a bug in Apple's
+implementation of Web Start.</p>
+
+<p>For both Windows and Mac lovers: Let us tell you the saga of the dialog
+button wars. In dialogs, Windows users expect little-endian (*) button
+order, with the default button, whatever it may be ("OK", "Cancel", or
+whatever), always on the far right, as God and Bill Gates intended. Mac
+users expect big-endian (*) button order, with the "OK" or "doit" button
+always on the far right, whether it is the default button or not, and with
+the "Cancel" button always on the left, as God and Steve Jobs intended.
+During development of the program, the Mac and Windows developers kept
+changing the rules, since they were both OS bigots, with each one a firm
+believer in his own system's one true way of ordering buttons. The result
+was quite a mess, which changed frequently, with nobody able to guess where
+the "Cancel" and "OK" buttons might end up from one day to the next, or
+from one dialog to the next. Finally a truce was declared, and they agreed
+to use OS specific code, to place the buttons the way Mac users expect them
+on the Mac, and the way Windows users expect them on Windows, with a
+coin-flip deciding the fate of UNIX users (they get the Mac arrangement).
+We realize that this decision may offend and confuse OS hermaphrodites who
+actually have the nerve to use both kinds of systems, or are more likely
+forced by circumstances to have to use both kinds of systems, since they
+will find their buttons jumping around on them when they switch back and
+forth. In addition, the screen shots in this manual are often wrong for
+half our readers. Did we make the right decision? You be the judge.</p>
+
+<p>For lovers of the World Wide Web: We love the web too. We couldn't live
+without it. It's one of those truly life-changing technological revolutions
+that comes along only once in a generation or so. But if you think
+WordHoard should have been developed as a web-based application based on
+fill-in-forms, HTML page flipping, javascript, and dynamic HTML, with over
+engineered back-end architectures like business logic tiers, enterprise
+Java beans, and application servers, like some cheap online banking or
+airline reservation system, well, we choose to disagree. We've written our
+share of those kinds of programs, and for anything more complicated than
+doing your taxes, online shopping or submitting an HR form, they are nearly
+always horrible. Those who think that this is the future of all kinds of
+computing, and that everything can and should be forced into this
+architecture, are just plain wrong, in our humble opinion. We much prefer
+the simplicity, elegance, and power of plain old Java objects, made
+persistent using relatively thin and transparent tools like Hibernate, and
+made visible via a traditional direct manipulation graphical human
+interface. The fewer layers between us as developers and our users and
+between us as developers and our object model, the better, because it
+results directly in fewer barriers between the human beings using our
+program and the information they are viewing and manipulating. Your web
+browser is a wonderful tool, and it may in theory be a universal Turing
+machine, but it is not the right tool for solving the problems WordHoard is
+trying to solve. (It is, however, a fine tool for presenting this user
+manual to you!)</p>
+
+<p>A note for UNIX lovers, just to make certain we offend you too, even
+though you are such a small minority that you're barely worth the effort,
+and this is going to be rather cheap because it's so easy: You are used to
+persecution, and most likely could care less about the issues discussed
+above, because all of your programs already have random human interfaces,
+and none of them have readable user documentation. You have bigger fish to
+fry, like getting the program to work at all on your box. We hope our
+program works on your box, but we're not willing to produce a command-line
+version of it just for you, so don't bother suggesting it. We've tried to
+make it work on your box, and we've actually managed to get it to run
+ourselves on one version of Linux. We have not, however, tested it on all
+of the many flavors of UNIX, so it probably won't work perfectly on your
+particular dialect. If it doesn't, you're welcome to dive into the 170,000
+lines of source code and try to figure out what's wrong. Be aware, though,
+that whatever problem you're experiencing is more likely due to the
+misconfiguration of some incredibly obtuse X-Windows setting, or fonts that
+are too brain-dead to understand Greek letters or accent marks, or some
+other typical UNIX hassle. You did remember to install the right version of
+Java for your box, didn't you? You're used to this kind of aggravation, so
+this should not be a big problem for you. If you didn't actually enjoy
+spending nearly all of your time on this kind of trouble-shooting, you'd be
+using a Mac anyway.</p>
+
+<p>A note for the WordHoard developers, who perhaps love themselves too
+much: If this last rambling diatribe on UNIX seems harsh, we must confess
+that the WordHoard developers use UNIX every day to do their work, and
+couldn't do their work without it, and are actually quite fond of it. See
+the <a href="dev-intro.html">Developer Notes</a> for proof that software
+development tools really haven't advanced all that much since the 1970's,
+or perhaps for proof that the WordHoard developers are closet Luddites, or
+old dogs who are too fond of the tricks they learned as puppies, who refuse
+to use anything more advanced than plain text editors, terminal windows,
+and makefiles on XML steroids. How's that for irony?</p>
+
+<p>We should perhaps apologize for the too cute by half humor of this
+addendum, which is not at all typical of the rest of our fine manual, which
+is otherwise serious and professional and duly soporific. We will not
+apologize, however, because the only sane way to deal with these issues is
+with a sense of humor.</p>
+
+<p>(*) One final insult (actually, three), in a footnote no less: For all
+you literary geeks who can't count, "endian" is a reference to the way bits
+are ordered in different computer architectures. For all you computer geeks
+who can't read, "endian" is a reference to Jonathan Swift's <i>Gulliver's
+Travels</i>. For the rest of you who can do neither - what are you doing
+here again? Our allusion is intended to have both meanings. Mac OS (for the
+moment) runs on Motorola PowerPC chips, which have a big-endian
+architecture. Windows OS runs on Intel chips, which have a little-endian
+architecture. The Mac vs. Windows wars are at the same time reminiscent of,
+and as ridiculous as, the theological disputes between the big-endians and
+the little-endians in <i>Gulliver's Travels</i>, as is well-illustrated by
+our saga of the dialog button wars.</p>
+
+<p>This all makes us wonder about a bigger question: Is the war between the
+Sciences and the Humanities described in C. P. Snow's <i>The Two
+Cultures</i> as silly as the Mac vs. Windows war, as we believe it is? Or
+is our little program doomed because it is designed for the intersection of
+the set of all literary geeks and the set of all computer geeks, which may
+be too small to matter? But this cosmic question must remain the subject of
+a different addendum to this manual, which shall remain unwritten, and you
+can thank us for that small favor.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

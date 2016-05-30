@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<WordHoardSites>
+	
+	<site id="main">
+		<name>Main Public Site</name>
+		<description>
+			This site contains Early Greek Epic and the works of Shakespeare, 
+			Spenser and Chaucer. It is open to the world.
+		</description>
+		<database>
+			<url>jdbc:mysql://welles.library.northwestern.edu:3307/wordhoard?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<username>wordhoard</username>
+			<password>wordhoard</password>
+		</database>
+		<server>//welles.library.northwestern.edu:1099/WordHoard</server>
+	</site>
+	
+	<site id="ncf">
+		<name>Nineteenth Century Fiction Site</name>
+		<description>
+			This site contains 250 British novels from 1780 to 1900, plus the works of 
+			Shakespeare, Spenser and Chaucer. It is accessible only at Northwestern University.
+		</description>
+		<database>
+			<url>jdbc:mysql://noir.at.northwestern.edu/ncf?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<username>wordhoard</username>
+			<password>wordhoard</password>
+		</database>
+		<server>//noir.at.northwestern.edu:1163/WordHoard</server>
+	</site>
+	
+	<site id="emd">
+		<name>Early Modern English Drama Site</name>
+		<description>
+			This site contains approximately 330 Early Modern English plays, including all of
+			Shakespeare. It also includes the works of Chaucer and Spenser. It is accessible 
+			only at Northwestern University and at other institutions that are subscribers to
+			the Text Creation Partnership (TCP).
+		</description>
+		<database>
+			<url>jdbc:mysql://noir.at.northwestern.edu/emd?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<username>wordhoard</username>
+			<password>wordhoard</password>
+		</database>
+		<server>//noir.at.northwestern.edu:1100/WordHoard</server>
+	</site>
+	
+</WordHoardSites>
+

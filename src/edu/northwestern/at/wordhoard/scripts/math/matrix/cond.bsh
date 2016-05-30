@@ -1,0 +1,8 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+double cond( Matrix m )
+{
+	return Matrices.cond( m );
+}
+
+

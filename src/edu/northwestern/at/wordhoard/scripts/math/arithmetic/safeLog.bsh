@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double safeLog( double x )
+{
+	return ArithUtils.safeLog( x );
+}
+

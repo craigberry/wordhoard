@@ -1,0 +1,5 @@
+boolean deleteBiblioQuery( Query biblioQuery )
+{
+	return QueryUtils.deleteQuery( biblioQuery , WHQuery.WORKPARTQUERY );
+}
+

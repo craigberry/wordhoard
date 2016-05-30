@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Getting Information about Words</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="work-window.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Displaying and Reading Works</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="lexicon.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Lexicons</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Getting Information about Words</h2>
+
+<p>To get a brief summary of a word's morphology, double-click it to select it. The summary is displayed in the footer area of the work display window, at the very bottom.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/footer-info.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, we have selected the word "need'st" in a Shakespeare sonnet. In the footer, we see that this word is an instance of the lemma "need," with part of speech "vv2" (verb, 2nd person singular, present tense).</p>
+
+<p>In the Chaucer corpus, the footer info displays Professor Larry Benson's lemma, part of speech, and definition for the word. For example:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/chaucer-footer-info.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>In this example, we see that the selected word "soote" is an adjective meaning "fragrant, sweet, pleasing."</p>
+
+<p>You can display the same brief descriptions as tool tips. Hold down the Control key while you move the mouse over the word and pause. After a brief delay, the description appears as a tool tip immediately beneath the word.</p>
+
+<p>To get full information for a word, select it and then press Return or use the "Get Info" command in the "File" menu (Command-I). In the following example, we first select the word "beget" in a speech from <i>The Life and Death of King John</i>.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/king-john.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>We now press Return or use the "Get Info" command to display the full information window for the word:</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/word-info1.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>The "Summary" tab of the Get Info window shows all of the available morphology information for the word, basic frequency information for the word, and presents three buttons that you can click to find similar words.</p>
+
+<ul>
+<li><b>Lemma</b>. Click this button to find all other occurrences of the same lemma in the corpus.</li>
+<li class="space"><b>Word Form</b>. Click this button to find all the other words in the corpus which have the same lemma and part of speech as this word.</li>
+<li class="space"><b>Spelling</b>. Click this button to find all the other words in the corpus which have the same lemma, part of speech, and spelling as this word.</li>
+</ul>
+
+<p>In each case, the search results are displayed in a new concordance window. See the chapter on <a href="concordance.html">Concordances</a> for details on this window.</p>
+
+<p>The "Word Forms" tab of the Get Info window presents a table showing all of the different parts of speech and spellings of the lemma that are used in the corpus, with frequency counts. The table is sorted in decreasing order by frequency.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/word-info2.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>To find all the other words in the corpus which have the same lemma and a specific part of speech, double-click the part of speech name in the left column of the table. To find all the other words in the corpus which have the same lemma and a specific part of speech with a specific spelling, double-click the spelling in the right column of the table.</p>
+
+<p>The "More" tab of the Get Info window presents all available additional tagging data for the word and details on the location of the word.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/word-info3.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>Note the "path" in this example, <code>kij.1.1.80</code>. Paths are used as a conventional shorthand notation for the locations of lines. In this example, the path <code>kij.1.1.80</code> means <i>King John</i>, Act 1, Scene 1, Line 80. Paths like this one are also used in concordance windows.</p>
+
+<p>Also note the "tag" in this example, <code>sha-kij10108006</code>. Every word has a unique tag. Tags can be useful when you want to communicate the precise location of a word with no chance of confusion or ambiguity.</p>
+
+<p>For example, suppose you want to have a discussion about this word in our example with a colleague. You could send him an email message with your thoughts about the word and include the tag <code>sha-kij10108006</code> in your message. When your colleague receives your message, he can run WordHoard and use the "Go To Word" command in the "Find" menu (Command-G) to go directly to this word of interest.</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/go-to-word.jpg" alt="" />
+</p>
+<div class="space" />
+
+<p>A useful trick in this example would be to copy the tag from the email message and paste it directly into the "Go To" dialog shown above.</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="work-window.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Displaying and Reading Works</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="lexicon.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Lexicons</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>

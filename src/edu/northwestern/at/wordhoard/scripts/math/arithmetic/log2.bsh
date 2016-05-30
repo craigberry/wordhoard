@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double log2( double x )
+{
+	return ArithUtils.log2( x );
+}
+

@@ -1,0 +1,5 @@
+boolean deleteWorkSet( WorkSet workSet )
+{
+	return WorkSetUtils.deleteWorkSet( workSet );
+}
+

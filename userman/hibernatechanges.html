@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Hibernate Changes</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="install-database.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Installing the Database</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-source.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Source Code</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Hibernate Changes</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#rlikechanges">Regular expression support in queries</a>
+       </li>
+   <li><a href="#longinlists">Long "in" lists in queries</a>
+       </li>
+   <li><a href="#rebuildinghibernate">Rebuilding the Hibernate jar file</a>
+       </li>
+</ul>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="regexpsupport" id="regexpsupport">
+Regular expression support in queries</a></h3>
+
+<div class="space"></div>
+
+<p>
+Some of the query functions of WordHoard allow you to use
+<a href="saved-word-queries.html#regexp">regular expressions</a> which are
+supported by MySQL but not by Hibernate.  We added support for regular
+expressions in Hibernate queries by changing Hibernate's query grammar
+to recognize the MySQL "rlike" operator, and some Hibernate source
+files to match.
+The steps below apply to Hibernate v3.1.1 through v3.2.0 ga.  The
+steps for later releases of Hibernate will (hopefully) be similar.
+</p>
+
+<p>
+Note: these changes have already been applied to the hibernate.jar
+file we distribute with WordHoard.  You only need to make these changes
+if you choose to use a different version of Hibernate than the one
+we supply.
+</p>
+
+<p>
+The Hibernate query grammar files are located in the grammar subdirectory
+of the Hibernate release.  The files are named <strong>hql-sql.g</strong>,
+<strong>hql.g</strong>, and <strong>sql-gen.g</strong>.  All three files
+need modification to support regular expressions.  The basic idea is to
+copy the existing specifications for the "LIKE" operator to add the
+"RLIKE" operator.  In addition two source code files,
+<strong>HqlParser.java</strong> and <strong>SqlASTFactory.java</strong>
+also require modification.
+</p>
+
+<h4>Changes to hql-sql.g</h4>
+
+<p>
+Add the following lines to the comparisonExpr section in hql-sql.g:
+</p>
+
+<pre>
+	| #(RLIKE expr expr ( #(ESCAPE expr) )? )
+	| #(NOT_RLIKE expr expr ( #(ESCAPE expr) )? )
+</pre>
+
+<h4>Changes to hql.g</h4>
+
+<p>
+Add the following line to the "tokens" section in hql.g:
+</p>
+
+<pre>
+	RLIKE="rlike";
+</pre>
+
+<p>
+Add the following line to the synthetic token types list:
+</p>
+
+<pre>
+	NOT_RLIKE;
+</pre>
+
+<p>
+Change the comment line in the "// expressions" section:
+</p>
+
+<pre>
+	//                   LIKE, NOT LIKE, BETWEEN, NOT BETWEEN, IN, NOT IN
+</pre>
+
+<p>
+to read:
+</p>
+
+<pre>
+	//                   LIKE, NOT LIKE, BETWEEN, NOT BETWEEN, IN, NOT IN,
+	//			RLIKE, NOT_RLIKE
+</pre>
+
+<p>
+Change the following line appearing in the negatedExpression! section:
+</p>
+
+<pre>
+	//## OP: EQ | LT | GT | LE | GE | NE | SQL_NE | LIKE;
+</pre>
+
+<p>
+to read:
+</p>
+
+<pre>
+	//## OP: EQ | LT | GT | LE | GE | NE | SQL_NE | LIKE | RLIKE;
+</pre>
+
+<p>
+Change the lines before relationalExpression which read:
+</p>
+
+<pre>
+	// level 4 - LT, GT, LE, GE, LIKE, NOT LIKE, BETWEEN, NOT BETWEEN
+	// NOTE: The NOT prefix for LIKE and BETWEEN will be represented in the
+</pre>
+
+<p>
+to read:
+</p>
+
+<pre>
+	// level 4 - LT, GT, LE, GE, LIKE, NOT LIKE, BETWEEN, NOT BETWEEN, RLIKE, NOT RLIKE
+	// NOTE: The NOT prefix for LIKE, RLIKE, and BETWEEN will be represented in the
+</pre>
+
+<p>
+Add the lines:
+</p>
+
+<pre>
+	| (r:RLIKE^ {
+		#r.setType( (n == null) ? RLIKE : NOT_RLIKE);
+		#r.setText( (n == null) ? "rlike" : "not rlike");
+	}
+	concatenation rlikeEscape)
+</pre>
+
+<p>
+before the line in the relationalExpression section which reads:
+</p>
+
+<pre>
+			| (MEMBER! OF! p:path! {
+</pre>
+
+<p>
+Add the following lines:
+</p>
+
+<pre>
+	rlikeEscape
+		: (ESCAPE^ concatenation)?
+		;
+</pre>
+
+<p>
+following the "likeEscape" block.
+</p>
+
+<h4>Changes to sql-gen.g</h4>
+
+<p>
+Add the following lines to the exoticComparisonExpression section of sql-gen.g:
+</p>
+
+<pre>
+	| #(RLIKE expr { out(" rlike "); } expr rlikeEscape )
+	| #(NOT_RLIKE expr { out(" not rlike "); } expr rlikeEscape)
+</pre>
+
+<p>
+Add the following lines following the "likeEscape" section:
+</p>
+
+<pre>
+	rlikeEscape
+		: ( #(ESCAPE { out(" escape "); } expr) )?
+		;
+</pre>
+
+<h4>Changes to HqlParser.java</h4>
+
+<p>
+Edit the file:
+</p>
+
+<pre>
+	src\org\hibernate\hql\ast\HqlParser.java
+</pre>
+
+<p>
+and add the following lines to the Switch statement in the negateNode method:
+</p>
+
+<pre>
+	case RLIKE:
+		x.setType( NOT_RLIKE );
+		x.setText( "{not}" + x.getText() );
+		return x;	// (NOT (RLIKE a b) ) => (NOT_RLIKE a b)
+	case NOT_RLIKE:
+		x.setType( RLIKE );
+		x.setText( "{not}" + x.getText() );
+		return x;	// (NOT (NOT_RLIKE a b) ) => (RLIKE a b)
+</pre>
+
+<h4>Changes to SqlASTFactory.java</h4>
+
+<p>
+Edit the file:
+</p>
+
+<pre>
+	src\org\hibernate\hql\ast\SqlASTFactory.java
+</pre>
+
+<p>
+and add the following lines after the CASE NOT_LIKE switch
+selector in method getASTNodeType:
+</p>
+
+<pre>
+	case RLIKE:
+	case NOT_RLIKE:
+</pre>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="longinlists" id="longinlists">
+Long "in" lists in queries</a></h3>
+
+<p>
+In Hibernate 320ga a long "in" list in a query can result in a stack
+overflow error during the parsing stage.  For example, an HQL query element
+like
+</p>
+
+<pre>
+	where x in (:x)
+</pre>
+
+<p>
+or a manually constructed
+</p>
+
+<pre>
+	where x in (1,2,3 .....)
+</pre>
+
+<p>
+can generate a stack overflow if the number of elements referenced by x
+exceeds a number dependent upon the amount of available stack space. For
+many JVMs, the limit is between 9,000 and 10,000 assuming a relatively
+empty stack at the point of query execution.  WordHoard occasionally
+uses lists several times this size.
+</p>
+
+<p>
+The stack overflow occurs in the Hibernate class
+<strong>org.hibernate.hql.ast.util.NodeTraverser</strong> which
+uses a recursive algorithm to walk a parse tree. Long "in" lists generate a
+subtree of depth about equal to the number of elements in the list. A
+sufficiently long list results in a stack overflow when NodeTraverser's
+internal method visitDepthFirst calls itself too many times.
+</p>
+
+<p>
+The solution is to replace the recursive tree walking strategy with an
+iterative one that does not use up stack space.  Our suggested replacement
+code follows.  This has fixed the problem for WordHoard.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color0000FF"><strong>package org.hibernate.hql.ast.util;</strong></span>
+
+<span class="color0000FF"><strong>import antlr.collections.AST;</strong></span>
+<span class="color0000FF"><strong>import java.util.Map;</strong></span>
+<span class="color0000FF"><strong>import java.util.HashMap;</strong></span>
+
+<span class="color444444"><i>/**
+ * A visitor for traversing an AST tree.
+ *
+ * @author Steve Ebersole
+ * @author Philip R. &quot;Pib&quot; Burns.   Replaced recursion in tree traversal
+ *  with iteration.
+ */</i></span>
+
+<strong>public</strong> <strong>class</strong> <span class="color2040A0">NodeTraverser</span> <span class="color4444FF"><strong>{</strong></span>
+    <strong>public</strong> <strong>static</strong> <strong>interface</strong> <span class="color2040A0">VisitationStrategy</span> <span class="color4444FF"><strong>{</strong></span>
+        <strong>public</strong> <strong>void</strong> <span class="color2040A0">visit</span><span class="color4444FF"><strong>(</strong></span><span class="color2040A0">AST</span> <span class="color2040A0">node</span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+    <span class="color4444FF"><strong>}</strong></span>
+
+    <strong>private</strong> <strong>final</strong> <span class="color2040A0">VisitationStrategy</span> <span class="color2040A0">strategy</span><span class="color4444FF">;</span>
+
+    <strong>public</strong> <span class="color2040A0">NodeTraverser</span><span class="color4444FF"><strong>(</strong></span><span class="color2040A0">VisitationStrategy</span> <span class="color2040A0">strategy</span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>{</strong></span>
+        <strong>this</strong>.<span class="color2040A0">strategy</span> <span class="color4444FF">=</span> <span class="color2040A0">strategy</span><span class="color4444FF">;</span>
+    <span class="color4444FF"><strong>}</strong></span>
+
+    <span class="color444444"><i>/** Traverse the AST tree depth first.
+     *
+     *  @param ast Root node of subtree to traverse.
+     *
+     *  &lt;p&gt;
+     *  Note that the AST passed in is not visited itself.  Visitation
+     *  starts with its children.
+     *  &lt;/p&gt;
+     *
+     *  &lt;p&gt;
+     *  This method originally called a recursive method visitDepthFirst
+     *  which performed a recursive traversal of the tree rooted at the
+     *  node specified by the ast parameter.  The original code looked
+     *  like this:
+     *  &lt;/p&gt;
+     *  &lt;code&gt;
+     *  &lt;pre&gt;
+     *  private void visitDepthFirst(AST ast) {
+     *      if ( ast == null ) {
+     *          return;
+     *      }
+     *      strategy.visit( ast );
+     *      visitDepthFirst( ast.getFirstChild() );
+     *      visitDepthFirst( ast.getNextSibling() );
+     *  }
+     *  &lt;/pre&gt;
+     *  &lt;/code&gt;
+     *  &lt;/p&gt;
+     *
+     *  &lt;p&gt;
+     *  The current code for traverseDepthFirst uses iteration to
+     *  walk the tree.  This corrects stack overflow problems for
+     *  constructs such as &quot;x in (:x)&quot; where &quot;:x&quot; specifies a large number
+     *  of items.
+     *  &lt;/p&gt;
+     */</i></span>
+
+    <strong>public</strong> <strong>void</strong> <span class="color2040A0">traverseDepthFirst</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">AST</span> <span class="color2040A0">ast</span> <span class="color4444FF"><strong>)</strong></span>
+    <span class="color4444FF"><strong>{</strong></span>
+                                <span class="color444444">//  Root AST node cannot be null or</span>
+                                <span class="color444444">//  traversal of its subtree is impossible.</span>
+        <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">ast</span> <span class="color4444FF">=</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+        <span class="color4444FF"><strong>{</strong></span>
+            <strong>throw</strong> <strong>new</strong> <span class="color2040A0">IllegalArgumentException</span><span class="color4444FF"><strong>(</strong></span>
+                <span class="color008000">&quot;node to traverse cannot be null!&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+        <span class="color4444FF"><strong>}</strong></span>
+                                <span class="color444444">//  Map to hold parents of each</span>
+                                <span class="color444444">//  AST node.  Unfortunately the AST</span>
+                                <span class="color444444">//  interface does not provide a method</span>
+                                <span class="color444444">//  for finding the parent of a node, so</span>
+                                <span class="color444444">//  we use the Map to save them.</span>
+
+        <span class="color2040A0">Map</span> <span class="color2040A0">parentNodes</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">HashMap</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Start tree traversal with first child</span>
+                                <span class="color444444">//  of the specified root AST node.</span>
+
+        <span class="color2040A0">AST</span> <span class="color2040A0">currentNode</span> <span class="color4444FF">=</span> <span class="color2040A0">ast</span>.<span class="color2040A0">getFirstChild</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Remember parent of first child.</span>
+
+        <span class="color2040A0">parentNodes</span>.<span class="color2040A0">put</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> , <span class="color2040A0">ast</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Iterate through nodes, simulating</span>
+                                <span class="color444444">//  recursive tree traversal, and add them</span>
+                                <span class="color444444">//  to queue in proper order for later</span>
+                                <span class="color444444">//  linear traversal.  This &quot;flattens&quot; the</span>
+                                <span class="color444444">//  into a linear list of nodes which can</span>
+                                <span class="color444444">//  be visited non-recursively.</span>
+
+        <strong>while</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> <span class="color4444FF">!</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+        <span class="color4444FF"><strong>{</strong></span>
+                                <span class="color444444">//  Visit the current node.</span>
+
+            <span class="color2040A0">strategy</span>.<span class="color2040A0">visit</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Move down to current node's first child</span>
+                                <span class="color444444">//  if it exists.</span>
+
+            <span class="color2040A0">AST</span> <span class="color2040A0">childNode</span>   <span class="color4444FF">=</span> <span class="color2040A0">currentNode</span>.<span class="color2040A0">getFirstChild</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  If the child is not null, make it</span>
+                                <span class="color444444">//  the current node.</span>
+
+            <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">childNode</span> <span class="color4444FF">!</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+            <span class="color4444FF"><strong>{</strong></span>
+                                <span class="color444444">//  Remember parent of the child.</span>
+
+                <span class="color2040A0">parentNodes</span>.<span class="color2040A0">put</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">childNode</span> , <span class="color2040A0">currentNode</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Make child the current node.</span>
+
+                <span class="color2040A0">currentNode</span> <span class="color4444FF">=</span> <span class="color2040A0">childNode</span><span class="color4444FF">;</span>
+
+                <strong>continue</strong><span class="color4444FF">;</span>
+            <span class="color4444FF"><strong>}</strong></span>
+
+            <strong>while</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> <span class="color4444FF">!</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+            <span class="color4444FF"><strong>{</strong></span>
+                                <span class="color444444">//  Move to next sibling if any.</span>
+
+                <span class="color2040A0">AST</span> <span class="color2040A0">siblingNode</span> <span class="color4444FF">=</span> <span class="color2040A0">currentNode</span>.<span class="color2040A0">getNextSibling</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">siblingNode</span> <span class="color4444FF">!</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+                <span class="color4444FF"><strong>{</strong></span>
+                                <span class="color444444">//  Get current node's parent.</span>
+                                <span class="color444444">//  This is also the parent of the</span>
+                                <span class="color444444">//  sibling node.</span>
+
+                    <span class="color2040A0">AST</span> <span class="color2040A0">parentNode</span>  <span class="color4444FF">=</span> <span class="color4444FF"><strong>(</strong></span><span class="color2040A0">AST</span><span class="color4444FF"><strong>)</strong></span><span class="color2040A0">parentNodes</span>.<span class="color2040A0">get</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Remember parent of sibling.</span>
+
+                    <span class="color2040A0">parentNodes</span>.<span class="color2040A0">put</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">siblingNode</span> , <span class="color2040A0">parentNode</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                                <span class="color444444">//  Make sibling the current node.</span>
+
+                    <span class="color2040A0">currentNode</span>     <span class="color4444FF">=</span> <span class="color2040A0">siblingNode</span><span class="color4444FF">;</span>
+
+                    <strong>break</strong><span class="color4444FF">;</span>
+                <span class="color4444FF"><strong>}</strong></span>
+                                <span class="color444444">//  Move up to parent if no sibling.</span>
+                                <span class="color444444">//  If parent is root node, we're done.</span>
+
+                <span class="color2040A0">currentNode</span> <span class="color4444FF">=</span> <span class="color4444FF"><strong>(</strong></span><span class="color2040A0">AST</span><span class="color4444FF"><strong>)</strong></span><span class="color2040A0">parentNodes</span>.<span class="color2040A0">get</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">currentNode</span>.<span class="color2040A0">equals</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">ast</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span>
+                <span class="color4444FF"><strong>{</strong></span>
+                    <span class="color2040A0">currentNode</span> <span class="color4444FF">=</span> <strong>null</strong><span class="color4444FF">;</span>
+                <span class="color4444FF"><strong>}</strong></span>
+            <span class="color4444FF"><strong>}</strong></span>
+        <span class="color4444FF"><strong>}</strong></span>
+    <span class="color4444FF"><strong>}</strong></span>
+<span class="color4444FF"><strong>}</strong></span>
+</pre>
+</td>
+</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h3><a name="rebuildinghibernate" id="rebuildinghibernate">
+Rebuilding the Hibernate jar file</a></h3>
+
+<p>
+Once you have made the above changes, rebuild the Hibernate jar file
+using the Ant target "jar" which appears in the root directory
+of the Hibernate release files.  On Windows you can type
+</p>
+
+<pre>
+	build.bat jar
+</pre>
+
+<p>
+at a command prompt.  On most Unix systems you can type
+</p>
+
+<pre>
+	./build jar
+</pre>
+
+<p>
+at a command prompt, assuming you have Ant properly installed.
+This generates updated query
+source files for Hibernate, recompiles all of Hibernate, and
+places the updated hibernate3.jar file in a version specific directory.
+For the current release, Hibernate 3.2, the generated jars are placed in
+the "build" subdirectory of the main Hibernate release directory.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="install-database.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Installing the Database</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="build-source.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Building the Source Code</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

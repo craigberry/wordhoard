@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.distributions.*;
+
+double normalinv( double p )
+{
+	return Sig.normalInverse( p );
+}
+

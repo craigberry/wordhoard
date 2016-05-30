@@ -1,0 +1,45 @@
+boolean updateWordSet
+(
+	WordSet wordSet ,
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic
+)
+{
+	return
+		WordSetUtils.updateWordSet
+		(
+			wordSet ,
+			title ,
+			description ,
+			webPageURL ,
+			isPublic
+		);
+}
+
+boolean updateWordSet
+(
+	WordSet wordSet ,
+	String title ,
+	String description ,
+	String webPageURL ,
+	boolean isPublic ,
+	Word[] words
+)
+{
+	deleteWordSet( wordSet );
+
+	return
+		WordSetUtils.addWordSet
+		(
+			title ,
+			description ,
+			webPageURL ,
+			isPublic ,
+			"" ,
+			words ,
+			null
+		);
+}
+

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Script Example: How many words are unique to each Shakespeare work?</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-utility.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Utility Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="dev-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Script Example: How many words are unique to each Shakespeare work?</h2>
+
+<p>
+Does Shakespeare use mostly the same vocabulary in each of his works,
+or does he use different vocabulary?  We can answer this question
+by finding out how many words appear uniquely in a single work
+in Shakespeare.
+The percent of words which appear in just one work compared to the
+total number of distinct words in Shakespeare tells us how varied
+is Shakespeare's vocabulary across all his works.
+</p>
+
+<p>
+The following script automates the search for work-specific unique words
+as follows.  The steps are:
+</p>
+
+<ol>
+<li>
+Compile a list of all the unique words
+(as either spellings or lemmata) and their counts for each
+individual work in Shakespeare.
+Start by retrieving the Shakespeare corpus using "getCorpus",
+and then the list of works in the Shakespeare corpus using
+"getWorks".   Given a work, the "getWordCounts" method
+retrieved the distinct words and counts for that work
+as a Java TreeMap object.
+</li>
+
+<li>
+Compile the combined list of words and counts across all of
+Shakespeare's works by merging the individual lists of words
+and counts using the "addCountMap" method.
+</li>
+
+<li>
+For each of Shakespeare's works, find the words which appear only
+in that work -- e.g., are unique to that work.
+Do this by subtracting the words and counts for
+an individual work from the total counts across all works.  A word
+with a resulting count of zero appears only in the selected work.
+</li>
+</ol>
+
+<p>
+When compiling the list of unique words, we should probably ignore
+words that are proper names.  We do this by ignoring words
+whose word class is "np".  We also ignore case and diacritical marks.
+</p>
+
+<table border="1" cellpadding="5">
+<tr>
+<td>
+<pre>
+<span class="color444444"><i>/** Check if spelling or lemma is a proper name.
+ *
+ *  @param  word    The spelling or lemma to check.
+ *                  The string takes the form &quot;word (wordclasses)&quot;
+ *                  where &quot;wordclasses&quot; is a list of hypen-
+ *                  separated wordclass markers.  The word class
+ *                  for a proper name is &quot;np&quot;.
+ *
+ *  @return         true if the word is a proper name. e.g.,
+ *                  its word class list contains &quot;np&quot;.
+ */</i></span>
+
+<strong>boolean</strong> <span class="color2040A0">isProperName</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">String</span> <span class="color2040A0">word</span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+    <strong>boolean</strong> <span class="color2040A0">result</span>  <span class="color4444FF">=</span> <strong>false</strong><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Extract the word classes which appear in</span>
+                <span class="color444444">//  parentheses after the characters in the word.</span>
+                <span class="color444444">//  Spellings may have a compound word class</span>
+                <span class="color444444">//  when they are composed to two or more lemmata</span>
+                <span class="color444444">//  (e.g., for contractions).  We use a built-in</span>
+                <span class="color444444">//  WordHoard utility method to extract the</span>
+                <span class="color444444">//  word class tags.</span>
+
+    <span class="color2040A0">wordClasses</span> <span class="color4444FF">=</span>
+        <span class="color2040A0">WordUtils</span>.<span class="color2040A0">extractWordClassTags</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">word</span>.<span class="color2040A0">toString</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Check if any of the word classes is &quot;np.&quot;</span>
+                <span class="color444444">//  We exit the loop as soon as we find an &quot;np&quot;</span>
+                <span class="color444444">//  word class.</span>
+
+    <strong>for</strong> <span class="color4444FF"><strong>(</strong></span> <strong>int</strong> <span class="color2040A0">i</span> <span class="color4444FF">=</span> <span class="colorFF0000">0</span> <span class="color4444FF">;</span> <span class="color2040A0">i</span> <span class="color4444FF">&lt;</span> <span class="color2040A0">wordClasses</span>.<span class="color2040A0">length</span> <span class="color4444FF">;</span> <span class="color2040A0">i</span><span class="color4444FF">+</span><span class="color4444FF">+</span> <span class="color4444FF"><strong>)</strong></span>
+    <span class="color4444FF"><strong>{</strong></span>
+        <span class="color2040A0">result</span>  <span class="color4444FF">=</span> <span class="color2040A0">result</span> <span class="color4444FF">|</span><span class="color4444FF">|</span> <span class="color2040A0">wordClasses</span><span class="color4444FF"><strong>[</strong></span> <span class="color2040A0">i</span> <span class="color4444FF"><strong>]</strong></span>.<span class="color2040A0">equals</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;np&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+        <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">result</span> <span class="color4444FF"><strong>)</strong></span> <strong>break</strong><span class="color4444FF">;</span>
+    <span class="color4444FF"><strong>}</strong></span>
+
+    <strong>return</strong> <span class="color2040A0">result</span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+                <span class="color444444">//  ----- Main part of script begins here. -----</span>
+
+                <span class="color444444">//  Display something so we know the script is starting.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Analysis started.&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  The corpus to analyze.</span>
+
+<span class="color2040A0">corpusName</span>  <span class="color4444FF">=</span> <span class="color008000">&quot;Shakespeare&quot;</span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Counts for distinct words in corpus.</span>
+
+<span class="color2040A0">corpusWordCounts</span>    <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">TreeMap</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Map with work as key and</span>
+                <span class="color444444">//  distinct words (as WordHoard Spelling objects)</span>
+                <span class="color444444">//  and associated counts in work as value.</span>
+
+<span class="color2040A0">workMap</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">TreeMap</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Set to true to ignore words that are</span>
+                <span class="color444444">//  proper names (word class=&quot;np&quot;).</span>
+
+<span class="color2040A0">ignoreProperNames</span>   <span class="color4444FF">=</span> <strong>true</strong><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Choose whether to count case and diacritical</span>
+                <span class="color444444">//  insensitive spellings or case and</span>
+                <span class="color444444">//  diacritical insensitive lemmata.</span>
+                <span class="color444444">//  = 0: spellings</span>
+                <span class="color444444">//  = 1: lemmata</span>
+
+<span class="color2040A0">wordType</span>    <span class="color4444FF">=</span> <span class="colorFF0000">0</span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Get the specified corpus.</span>
+
+<span class="color2040A0">corpus</span>  <span class="color4444FF">=</span> <span class="color2040A0">getCorpus</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpusName</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpus</span> <span class="color4444FF">=</span><span class="color4444FF">=</span> <strong>null</strong> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+    <span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Corpus '&quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">corpusName</span> <span class="color4444FF">+</span> <span class="color008000">&quot;' not found.&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+    <span class="color2040A0">exit</span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+                <span class="color444444">//  Get the works in the specified</span>
+                <span class="color444444">//  corpus.</span>
+
+<span class="color2040A0">corpusWorks</span> <span class="color4444FF">=</span> <span class="color2040A0">corpus</span>.<span class="color2040A0">getWorks</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Retrieve distinct words for</span>
+                <span class="color444444">//  each work in corpus.</span>
+                <span class="color444444">//  Use these to accumulate</span>
+                <span class="color444444">//  list of distinct words in corpus.</span>
+
+<strong>for</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">Work</span> <span class="color2040A0">work</span> <span class="color4444FF">:</span> <span class="color2040A0">corpusWorks</span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+                <span class="color444444">//  Get spelling or lemmata strings</span>
+                <span class="color444444">//  and associated counts for each word in</span>
+                <span class="color444444">//  the work.</span>
+
+    <span class="color2040A0">workWordCounts</span>  <span class="color4444FF">=</span> <span class="color2040A0">getWordCounts</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">work</span> , <span class="color2040A0">wordType</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Optionally ignore words that are proper names.</span>
+
+    <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">ignoreProperNames</span> <span class="color4444FF"><strong>)</strong></span>
+    <span class="color4444FF"><strong>{</strong></span>
+                <span class="color444444">//  Create an iterator over the the words.</span>
+                <span class="color444444">//  We use an explicit iterator because we want to</span>
+                <span class="color444444">//  be able to delete words whose word class list</span>
+                <span class="color444444">//  includes &quot;np&quot; for proper names.  We use the</span>
+                <span class="color444444">//  standard Java &quot;iterator.remove()&quot; method to do this.</span>
+
+        <strong>for</strong> <span class="color4444FF"><strong>(</strong></span>   <span class="color2040A0">Iterator</span> <span class="color2040A0">iterator</span>   <span class="color4444FF">=</span> <span class="color2040A0">workWordCounts</span>.<span class="color2040A0">keySet</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span>.<span class="color2040A0">iterator</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">;</span>
+                <span class="color2040A0">iterator</span>.<span class="color2040A0">hasNext</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">;</span>
+            <span class="color4444FF"><strong>)</strong></span>
+        <span class="color4444FF"><strong>{</strong></span>
+                <span class="color444444">//  Get the next distinct word in this work.</span>
+
+            <span class="color2040A0">word</span>    <span class="color4444FF">=</span> <span class="color2040A0">iterator</span>.<span class="color2040A0">next</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  If the word is a proper name, remove it from</span>
+                <span class="color444444">//  the list of words in this work.  We use the</span>
+                <span class="color444444">//  toString operator to ensure we get the string</span>
+                <span class="color444444">//  part of the Spelling object.</span>
+
+            <strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">isProperName</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">word</span>.<span class="color2040A0">toString</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span>
+            <span class="color4444FF"><strong>{</strong></span>
+                <span class="color2040A0">iterator</span>.<span class="color2040A0">remove</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+            <span class="color4444FF"><strong>}</strong></span>
+        <span class="color4444FF"><strong>}</strong></span>
+    <span class="color4444FF"><strong>}</strong></span>
+                <span class="color444444">//  Add the words and their counts for this work</span>
+                <span class="color444444">//  to the total for the corpus.</span>
+
+    <span class="color2040A0">addCountMap</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpusWordCounts</span> , <span class="color2040A0">workWordCounts</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Save the list of distinct words</span>
+                <span class="color444444">//  and counts for this work.</span>
+
+    <span class="color2040A0">workMap</span><span class="color4444FF"><strong>{</strong></span> <span class="color2040A0">work</span>.<span class="color2040A0">getShortTitle</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>}</strong></span> <span class="color4444FF">=</span> <span class="color2040A0">workWordCounts</span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+                <span class="color444444">//  Accumulates output into a Java String</span>
+                <span class="color444444">//  using a print writer.</span>
+
+<span class="color2040A0">StringWriter</span> <span class="color2040A0">sw</span> <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">StringWriter</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">PrintWriter</span> <span class="color2040A0">pw</span>  <span class="color4444FF">=</span> <strong>new</strong> <span class="color2040A0">PrintWriter</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">sw</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Output count of distinct words</span>
+                <span class="color444444">//  in corpus.</span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span>
+    <span class="color008000">&quot;The '&quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">corpusName</span> <span class="color4444FF">+</span> <span class="color008000">&quot;' corpus contains &quot;</span> <span class="color4444FF">+</span>
+    <span class="color2040A0">Formatters</span>.<span class="color2040A0">formatIntegerWithCommas</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpusWordCounts</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">+</span>
+    <span class="color008000">&quot; distinct &quot;</span> <span class="color4444FF">+</span>
+    <span class="color4444FF"><strong>(</strong></span> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">wordType</span> <span class="color4444FF">=</span><span class="color4444FF">=</span> <span class="colorFF0000">0</span> <span class="color4444FF"><strong>)</strong></span> ? <span class="color008000">&quot;spellings.&quot;</span> <span class="color4444FF">:</span> <span class="color008000">&quot;lemmata.&quot;</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<strong>if</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">ignoreProperNames</span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+    <span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Proper names have been filtered out.&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Unique<span class="color77dd77">\t</span>Distinct<span class="color77dd77">\t</span>% Unique<span class="color77dd77">\t</span>Work Title&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;====<span class="color77dd77">\t</span>====<span class="color77dd77">\t</span>====<span class="color77dd77">\t</span>==================&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Tabulate the sum of the unique words.</span>
+
+<span class="color2040A0">uniqueSum</span>       <span class="color4444FF">=</span> <span class="colorFF0000">0</span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Tabulate the sum of the unique word percents.</span>
+                <span class="color444444">//  We will use this to calculate the average percent.</span>
+
+<span class="color2040A0">sumPercents</span> <span class="color4444FF">=</span> <span class="colorFF0000">0.</span>0D<span class="color4444FF">;</span>
+
+                <span class="color444444">//  For each work, find the</span>
+                <span class="color444444">//  words which are unique to that</span>
+                <span class="color444444">//  work.</span>
+
+<strong>for</strong> <span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">String</span> <span class="color2040A0">workTitle</span> <span class="color4444FF">:</span> <span class="color2040A0">workMap</span>.<span class="color2040A0">keySet</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span>
+<span class="color4444FF"><strong>{</strong></span>
+                <span class="color444444">//  Get the list of distinct words</span>
+                <span class="color444444">//  in this work.</span>
+
+    <span class="color2040A0">workWordCounts</span>  <span class="color4444FF">=</span> <span class="color2040A0">workMap</span><span class="color4444FF"><strong>{</strong></span> <span class="color2040A0">workTitle</span> <span class="color4444FF"><strong>}</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Get a copy of the word count map</span>
+                <span class="color444444">//  for the corpus.</span>
+
+    <span class="color2040A0">corpusWordCountsCopy</span>    <span class="color4444FF">=</span> <span class="color2040A0">copyCountMap</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpusWordCounts</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Subtract the word counts in this work.</span>
+
+    <span class="color2040A0">subtractCountMap</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">corpusWordCountsCopy</span> , <span class="color2040A0">workWordCounts</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Substract the count of words in the reduced</span>
+                <span class="color444444">//  corpus from the count in the full corpus.</span>
+                <span class="color444444">//  This gives the number of words unique to the</span>
+                <span class="color444444">//  current work.</span>
+
+    <span class="color2040A0">uniqueToWorkWordsCount</span>  <span class="color4444FF">=</span>
+        <span class="color2040A0">corpusWordCounts</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">-</span> <span class="color2040A0">corpusWordCountsCopy</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Count of distinct words in this work.</span>
+
+    <strong>int</strong> <span class="color2040A0">distinctWordsInWork</span> <span class="color4444FF">=</span> <span class="color2040A0">workWordCounts</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Get percent of words unique to this work by</span>
+                <span class="color444444">//  dividing count of words unique to this work</span>
+                <span class="color444444">//  by number of distinct words in this work.</span>
+
+    <span class="color2040A0">percent</span> <span class="color4444FF">=</span>
+        <span class="colorFF0000">100.</span>0D <span class="color4444FF">*</span> <span class="color4444FF"><strong>(</strong></span> <span class="color4444FF"><strong>(</strong></span><strong>double</strong><span class="color4444FF"><strong>)</strong></span><span class="color2040A0">uniqueToWorkWordsCount</span> / <span class="color2040A0">distinctWordsInWork</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Add this percent to running total.</span>
+
+    <span class="color2040A0">sumPercents</span> <span class="color4444FF">+</span><span class="color4444FF">=</span> <span class="color2040A0">percent</span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Print the results.</span>
+
+    <span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span>
+        <span class="color2040A0">Formatters</span>.<span class="color2040A0">formatIntegerWithCommas</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">uniqueToWorkWordsCount</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">+</span> <span class="color008000">&quot;<span class="color77dd77">\t</span>&quot;</span> <span class="color4444FF">+</span>
+        <span class="color2040A0">Formatters</span>.<span class="color2040A0">formatIntegerWithCommas</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">distinctWordsInWork</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">+</span> <span class="color008000">&quot;<span class="color77dd77">\t</span>&quot;</span> <span class="color4444FF">+</span>
+        <span class="color2040A0">round</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">percent</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF">+</span> <span class="color008000">&quot;%<span class="color77dd77">\t</span>&quot;</span> <span class="color4444FF">+</span>
+        <span class="color2040A0">workTitle</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Add count of unique words for this work to</span>
+                <span class="color444444">//  the total across all works.</span>
+
+    <span class="color2040A0">uniqueSum</span> <span class="color4444FF">+</span><span class="color4444FF">=</span> <span class="color2040A0">uniqueToWorkWordsCount</span><span class="color4444FF">;</span>
+<span class="color4444FF"><strong>}</strong></span>
+                <span class="color444444">//  Calculate percent of unique words across all</span>
+                <span class="color444444">//  works and average percent of unique words in</span>
+                <span class="color444444">//  each work.</span>
+
+<span class="color2040A0">acrossWorksPercent</span>  <span class="color4444FF">=</span>
+    <span class="color2040A0">round</span><span class="color4444FF"><strong>(</strong></span> <span class="colorFF0000">100.</span>0D <span class="color4444FF">*</span> <span class="color4444FF"><strong>(</strong></span><strong>double</strong><span class="color4444FF"><strong>)</strong></span><span class="color2040A0">uniqueSum</span> / <span class="color2040A0">corpusWordCounts</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">averageWorkPercent</span>  <span class="color4444FF">=</span>
+    <span class="color2040A0">round</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">sumPercents</span> / <span class="color2040A0">workMap</span>.<span class="color2040A0">size</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Output percentages to results.</span>
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Unique words across all works: &quot;</span> <span class="color4444FF">+</span>
+    <span class="color2040A0">Formatters</span>.<span class="color2040A0">formatIntegerWithCommas</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">uniqueSum</span> <span class="color4444FF"><strong>)</strong></span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span>
+    <span class="color008000">&quot;% of unique words across all works: &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">acrossWorksPercent</span> <span class="color4444FF">+</span> <span class="color008000">&quot;%&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span>
+    <span class="color008000">&quot;Average % of unique words in a work: &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">averageWorkPercent</span> <span class="color4444FF">+</span> <span class="color008000">&quot;%&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+<span class="color2040A0">pw</span>.<span class="color2040A0">println</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+<span class="color2040A0">pw</span>.<span class="color2040A0">flush</span><span class="color4444FF"><strong>(</strong></span><span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+                <span class="color444444">//  Display output in a new WordHoard window.</span>
+
+<span class="color2040A0">String</span> <span class="color2040A0">title</span>    <span class="color4444FF">=</span> <span class="color008000">&quot;Unique words for works in &quot;</span> <span class="color4444FF">+</span> <span class="color2040A0">corpusName</span> <span class="color4444FF">+</span> <span class="color008000">&quot; corpus.&quot;</span><span class="color4444FF">;</span>
+
+<span class="color2040A0">addResults</span><span class="color4444FF"><strong>(</strong></span> <span class="color2040A0">title</span> , <span class="color2040A0">title</span> , <span class="color2040A0">sw</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+
+                <span class="color444444">//  Display something to show analysis complete.</span>
+
+<span class="color2040A0">print</span><span class="color4444FF"><strong>(</strong></span> <span class="color008000">&quot;Analysis done.&quot;</span> <span class="color4444FF"><strong>)</strong></span><span class="color4444FF">;</span>
+</pre>
+</td>
+</tr>
+</table>
+
+<p>
+Running this script on spellings produces the following output.
+Since the output appears in a regular WordHoard window, you can save the
+output to a file, print the output, or copy selected portions to the
+clipboard for import to other programs.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/script-output-11.jpg"
+     alt="Script output" />
+</p>
+<div class="space" />
+
+<p>
+One line appears for each of Shakespeare's works.
+The first column gives the number of distinct words which do not appear
+in any other work of Shakespeare -- that is, they appear uniquely in
+this work.  The second column tells the number of
+distinct words in the work.  The third column tells the percent of
+unique words in the work.  The fourth column is the short work title.
+</p>
+
+<p>
+There are 27,352 distinct spellings in Shakespeare ignoring proper names.
+Of these, 12,343 or 45% appear in just one work.
+Almost half the words Shakespeare uses appear in only a single work.
+The average percent of words unique to an individual work
+is 8%.  This means that on average,  8% of the words in any given work of
+Shakespeare do not recur in any work.
+</p>
+
+<p>
+So the answer to our original question -- does Shakespeare use mostly
+the same vocabulary in all his works? -- is no.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="scripting-utility.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Utility Functions</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="dev-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction for Developers</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

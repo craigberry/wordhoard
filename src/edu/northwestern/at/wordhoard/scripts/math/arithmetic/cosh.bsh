@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.ArithUtils;
+
+double cosh( double x )
+{
+	return ArithUtils.cosh( x );
+}
+

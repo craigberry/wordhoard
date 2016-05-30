@@ -1,0 +1,12 @@
+import org.hibernate.*;
+import edu.northwestern.at.wordhoard.model.Word;
+
+int getWordPartCount( Word word )
+{
+	Integer size	=
+		(Integer)PMUtils.getPM().getSession().createFilter(
+			word.getWordParts() , "select count(*)" ).uniqueResult();
+
+	return size.intValue();
+}
+

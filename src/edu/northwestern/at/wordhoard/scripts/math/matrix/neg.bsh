@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix neg( Matrix m )
+{
+	return Matrices.neg( m );
+}
+

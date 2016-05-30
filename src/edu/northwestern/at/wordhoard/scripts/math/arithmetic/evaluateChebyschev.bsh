@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.Polynomial;
+
+double evaluateChebyschev( double coeffs[] , double x )
+{
+	return Polynomial.evaluateChebyschev( coeffs , x );
+}
+

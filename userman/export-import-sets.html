@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>WordHoard - Exporting and Importing Sets</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+
+<div class="space" />
+<p class="center">
+<img src="images/wordhoard.gif" alt="" />
+</p>
+
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="word-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Word Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Analysis Methods</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<h2>Exporting and Importing Sets</h2>
+
+<div class="space"></div>
+
+<h3>Table of Contents</h3>
+
+<ul>
+   <li><a href="#introduction">Introduction</a>
+       </li>
+   <li><a href="#exporting">
+       Exporting Sets
+       </a>
+       </li>
+   <li><a href="#importing">
+        Importing Sets
+        </a>
+        </li>
+</ul>
+
+<h3><a name="introduction" id="introduction">Introduction</a></h3>
+
+<p>
+WordHoard provides for exporting word sets and work sets to
+local files in XML format.  You may also import sets from a
+saved XML file created by WordHoard. This allows you to backup
+and restore your sets.
+These facilities are still under development.
+</p>
+
+<h3><a name="exporting" id="exporting">Exporting Sets</a></h3>
+
+<p>
+To begin the export process select "Export" from the "File" menu.
+A dialog appears listing the word sets and work sets you can export.
+These include public sets as well as your private sets if you are
+logged in.  The dialog also lists public and your private query
+definitions.  Check the boxes next to the items you wish to export.
+Check the box next to "Word sets" to select all word sets for export.
+Check the box next to "Work sets" to select all work sets for export.
+As an example we select just two word sets for export.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/export.jpg" alt="Export dialog" />
+</p>
+<div class="space" />
+
+<p>
+Press the OK button to begin the export process.  WordHoard displays
+a standard "save file" dialog allowing you to set the name of the
+output file.  Enter a file name and press the "Save" button to begin
+the export process.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/exportsaveas.jpg" alt="Export progress" />
+</p>
+<div class="space" />
+
+<p>
+WordHoard displays a progress report of the export process in a new
+tab in the Calculator window.  You may cancel the export
+by pressing the Cancel button.
+Please be patient if you press the Cancel button.  It may take
+a while for the cancel operation to take effect.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/exportprogress.jpg" alt="Export progress" />
+</p>
+<div class="space" />
+
+<p>
+When the export process finishes, the cancel button becomes a close
+button which you can press to close the progress display.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/exportok.jpg" alt="Export done" />
+</p>
+<div class="space" />
+
+<p>
+Should the export process fail, an error message appears in red.
+Press the "Close" button to close the progress display.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/exportbad.jpg" alt="Export done" />
+</p>
+<div class="space" />
+
+<h3><a name="importing" id="importing">Importing Sets</a></h3>
+
+<p>
+You may import sets you saved using WordHoard's export facility
+by selecting "Import" from the "File" menu.  WordHoard displays
+an open file dialog allowing you to select the file containing
+the saved sets.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/importopen.jpg" alt="Import open" />
+</p>
+<div class="space" />
+
+<p>
+One you select a file from which to import sets, WordHoard reads
+the file contents.  This may take a while.  Once the file has
+been completely read and the XML parsed, WordHoard displays a dialog
+allowing you to select which items you wish to import.  Check the
+boxes next to the the items you wish to import.
+If you check "Rename duplicate import entries",
+WordHoard automatically renames imported sets with the same
+names as existing sets, otherwise sets with duplicate names will not
+be imported.  The new name will appear in  the
+final import report.  You can edit the automatically generated set names
+later using the edit items under the "Sets" menu.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/import.jpg" alt="Import dialog" />
+</p>
+<div class="space" />
+
+<p>
+WordHoard displays a progress report of the import process in a new
+tab in the Calculator window.  You may cancel the import
+by pressing the Cancel button.
+Please be patient if you press the Cancel button.  It may take
+a while for the cancel operation to take effect.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/importprogress.jpg" alt="Import progress" />
+</p>
+<div class="space" />
+
+<p>
+When the Import process finishes, the progress pane displays a
+report describing the results of the import.  The report tells
+how duplicate sets were renamed, which sets were imported
+successfully, and which could not be imported.  The cancel button
+becomes a close button which you can press to close the import report.
+</p>
+
+<div class="space" />
+<p class="center">
+<img src="images/importreport.jpg" alt="Import report" />
+</p>
+<div class="space" />
+
+<p>
+Should the import process fail completely, an error message appears in red.
+Press the "Close" button to close the progress display.
+</p>
+
+<div class="space" />
+<hr />
+<div class="space" />
+
+<table border="0" class="center">
+	<tr>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="word-sets.html">
+						<img src="images/left.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Word Sets</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="index.html">
+						<img src="images/up.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Table of Contents</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="middle" class="middle32pct">
+			<table border="0" class="center">
+				<tr>
+					<td valign="middle">
+						<a href="analysis-intro.html">
+						<img src="images/right.jpg" alt="&lt;&nbsp;" /></a>
+					</td>
+					<td valign="middle" class="leftalign">
+						<p>Introduction to Analysis Methods</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<div class="space" />
+</body>
+</html>
+

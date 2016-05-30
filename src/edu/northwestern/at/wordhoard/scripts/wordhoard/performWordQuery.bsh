@@ -1,0 +1,5 @@
+Word[] performWordQuery( String queryString )
+{
+	return CQLQueryUtils.getWordsViaQuery( queryString );
+}
+

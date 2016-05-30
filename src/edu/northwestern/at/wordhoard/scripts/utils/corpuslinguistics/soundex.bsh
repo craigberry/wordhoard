@@ -1,0 +1,4 @@
+String soundex( String s )
+{
+	return Soundex.soundex( s );
+}

@@ -1,0 +1,7 @@
+import edu.northwestern.at.utils.math.matrix.*;
+
+Matrix[] svd( Matrix m )
+{
+	return Matrices.svd( m );
+}
+
