@@ -9,7 +9,7 @@ setenv MYSQL_ROOT_USERNAME root
 setenv MYSQL_ROOT_PASSWORD my-password
 setenv MYSQL_BIN /usr/local/mysql/bin
 setenv MYSQL_DATA /usr/local/mysql/data
-setenv ANT_HOME /Users/jln/Documents/java/ant
+setenv ANT_HOME /usr/local/ant
 setenv ANT_OPTS -Xmx500m
 setenv CODEBASE http://wordhoard.northwestern.edu/client/
 setenv HOMEPAGE http://wordhoard.northwestern.edu
