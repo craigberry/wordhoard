@@ -84,6 +84,10 @@ Select the items you wish to see when you view the works.
 			<work id="spe-proth"/>
 			<work id="spe-comson"/>
 			<work id="spe-frag"/>
+			<work id="spe-letters"/>
+			<work id="spe-axiochus"/>
+			<work id="spe-view"/>
+			<work id="spe-note"/>
 		</tconview>
 	</corpus>
 	<corpus id="sha" charset="roman" posType="english">
