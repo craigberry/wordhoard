@@ -7,13 +7,37 @@
 		<exclude id="spe-faq-title"/>
 		<exclude id="spe-faq-ded"/>
 	</addChildren>
-	<addCorpus title="Spenser: Shorter Poems" id="spe">
-		<exclude id="spe-faq"/>
-	</addCorpus>
-	<addCorpus title="Spenser: Shorter Poems (excluding SC)" id="spe">
-		<exclude id="spe-faq"/>
-		<exclude id="spe-sc"/>
-	</addCorpus>
+	<addWorkParts title="Spenser: Shorter Poems">
+		<include id="spe-sc"/>
+		<include id="spe-asclor"/>
+		<include id="spe-theatre"/>
+		<include id="spe-comson"/>
+		<include id="spe-colcl"/>
+		<include id="spe-com"/>
+		<include id="spe-fh"/>
+		<include id="spe-amepith"/>
+		<include id="spe-frag"/>
+		<include id="spe-daph"/>
+		<include id="spe-proth"/>
+	</addWorkParts>
+	<addWorkParts title="Spenser: Shorter Poems (excluding SC)">
+		<include id="spe-asclor"/>
+		<include id="spe-theatre"/>
+		<include id="spe-comson"/>
+		<include id="spe-colcl"/>
+		<include id="spe-com"/>
+		<include id="spe-fh"/>
+		<include id="spe-amepith"/>
+		<include id="spe-frag"/>
+		<include id="spe-daph"/>
+		<include id="spe-proth"/>
+	</addWorkParts>
+	<addWorkParts title="Spenser: Prose Works">
+		<include id="spe-letters"/>
+		<include id="spe-axiochus"/>
+		<include id="spe-view"/>
+		<include id="spe-note"/>
+	</addWorkParts>
 	<addTconViewCategories title="Shakespeare %t" id="sha" tconViewTitle="By Genre"/>
 	<addAuthors title="Author: %t"/>
 </WordHoardWorkSets>
