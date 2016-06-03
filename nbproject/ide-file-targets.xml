@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." name="WordHoard-IDE">
+    <target name="debug-nb">
+        <path id="cp">
+            <fileset dir="${basedir}" includes="lib/**/*.jar"/>
+            <pathelement location="bin"/>
+        </path>
+        
+        <nbjpdastart addressproperty="jpda.address" name="WordHoard" transport="dt_socket">
+            <classpath refid="cp"/>
+        </nbjpdastart>
+
+        <java classname="edu/northwestern/at/wordhoard/swing/WordHoard" fork="true">
+            <classpath refid="cp"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=${jpda.address}"/>
+            <arg value="file:misc/localhost.xml"/>
+        </java>
+    </target>
+</project>
