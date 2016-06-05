@@ -1,0 +1,10 @@
+.DS_Store
+lib/
+bin/
+data/works
+data/translations
+misc/full-build.txt
+server/data/log
+userman/*.pdf
+/output/
+/nbproject/private/
