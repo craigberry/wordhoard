@@ -231,7 +231,7 @@ public class WorkPanel extends JPanel {
 			textComponent,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setPreferredSize(new Dimension(500, 600));
+		scrollPane.setPreferredSize(new Dimension(600, 600));
 		scrollPane.getViewport().setBackground(Color.white);
 
 		int growSlop = WordHoardSettings.getGrowSlop();

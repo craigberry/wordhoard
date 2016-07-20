@@ -107,11 +107,11 @@ public class TextParams {
 	/**	The right margin for text which has neither line numbers
 	 *	nor marginalia. */
 	
-	public static final int RIGHT_MARGIN_PLAIN = 440;
+	public static final int RIGHT_MARGIN_PLAIN = 540;
 	
 	/**	The right margin for text which has line numbers. */
 
-	public static final int RIGHT_MARGIN_NUMBERS = 400;
+	public static final int RIGHT_MARGIN_NUMBERS = 500;
 	
 	/**	The right margin for annotation text with marginalia. */
 	
@@ -119,7 +119,7 @@ public class TextParams {
 	
 	/**	The right margin for the line numbers. */
 
-	public static final int LINE_NUMBERS_RIGHT = 440;
+	public static final int LINE_NUMBERS_RIGHT = 540;
 	
 	/**	The left margin for annotation marginalia. */
 	
