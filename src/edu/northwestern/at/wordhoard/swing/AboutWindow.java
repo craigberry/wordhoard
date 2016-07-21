@@ -128,7 +128,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutsubtitle1" ,
-					"A joint project of the Northwestern University"
+					"A project developed by the Northwestern University"
 				)
 			);
 
@@ -141,7 +141,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutsubtitle2" ,
-					"Departments of English and Classics"
+					"Departments of English and Classics and NU-IT Academic"
 				)
 			);
 
@@ -154,7 +154,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutsubtitle3" ,
-					"and NU-IT Academic Technologies   "
+					"Technologies and currently maintained by Craig A. Berry   "
 				)
 			);
 
@@ -189,7 +189,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutfacultysponsor" ,
-					"Faculty Sponsor"
+					"Principal Investigator"
 				)
 			);
 
@@ -203,7 +203,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutmartin" ,
-					"Martin Mueller, Professor of English and Classics"
+					"Martin Mueller, Professor Emeritus of English and Classics"
 				)
 			);
 
@@ -289,11 +289,23 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutcopyright" ,
-					"Copyright © 2004, 2006 Northwestern University"
+					"Copyright \u00A9\uFE0F 2016, Martin Mueller and Craig A. Berry"
 				)
 			);
 
 		copyright.setFont(subTitleFont);
+
+		JLabel copyright2 =
+			new JLabel
+			(
+				WordHoardSettings.getString
+				(
+					"aboutcopyright2" ,
+					"Copyright \u00A9\uFE0F 2004, 2006 Northwestern University"
+				)
+			);
+
+		copyright2.setFont(subTitleFont);
 
 		JLabel moreInfoLabel1 =
 			new JLabel(WordHoardSettings.getString(
@@ -348,6 +360,7 @@ public class AboutWindow extends AbstractWindow {
 		box2.add(craig);
 		box2.add(Box.createVerticalStrut(25));
 		box2.add(copyright);
+		box2.add(copyright2);
 		box2.add(Box.createVerticalStrut(2));
 		box2.add(moreInfo);
 		box2.setAlignmentY(Component.TOP_ALIGNMENT);
