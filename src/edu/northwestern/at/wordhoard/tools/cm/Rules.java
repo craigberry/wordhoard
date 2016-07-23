@@ -360,7 +360,7 @@ public class Rules {
 			title = "Untitled";
 		} else {
 			title = title.replace('_', ' ');
-			title = title.replaceAll("¶", "");
+			title = title.replaceAll("\u2202", "");
 		}
 		return title;
 	}
