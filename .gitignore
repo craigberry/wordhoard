@@ -1,9 +1,11 @@
 .DS_Store
+wordhoardserver.jar
 lib/
 bin/
 data/works
 data/translations
 misc/full-build.txt
+misc/manifest-server
 server/data/log
 userman/*.pdf
 /output/
