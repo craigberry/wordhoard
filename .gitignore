@@ -1,5 +1,7 @@
 .DS_Store
 wordhoardserver.jar
+client/
+javadoc/
 lib/
 bin/
 data/works
