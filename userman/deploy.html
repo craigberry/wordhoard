@@ -380,7 +380,7 @@ rmi-port 0
 
 <p>There are two port numbers for RMI.</p>
 
-<p><code>rmiregistry-port</code> is the port number used by the RMI registry. The WordHoard server creates and exports an RMI registry on the local host that accepts requests on this port number. The WordHoard client connects to this port number to get the server bootstrap object. Note that the WordHoard server creates its own private instance of an RMI registry running within its own process. It does not use a separate <code>rmiregistry</code> process that is shared with other applications. If you have other applications on your server host that use RMI, you may have to change the default port number 1100 to some unused port number for use by the WordHoard server to avoid conflicts with other applications that are using port 1100.</p>
+<p><code>rmiregistry-port</code> is the port number used by the RMI registry. The WordHoard server creates and exports an RMI registry on the local host that accepts requests on this port number. The WordHoard client connects to this port number to get the server bootstrap object. Note that the WordHoard server creates its own private instance of an RMI registry running within its own process. It does not use a separate <code>rmiregistry</code> process that is shared with other applications. If you have other applications on your server host that use RMI, you may have to change the default port number 1100 to some unused port number for use by the WordHoard server to avoid conflicts with other applications that are using port 1100. N.B. Whatever port you use, it must match the port specified for the client in <code><a href="#sites">sites.xml</a></code> or the client and server will be unable to communicate.</p>
 
 <p><code>rmi-port</code> is the port number used by the WordHoard server remote objects. A value of 0 for <code>rmi-port</code> tells the system to select an unused port number. If your server has a firewall which blocks ports, you will need to specify a fixed port number (e.g., 1101), and configure your firewall to permit traffic on that port number.</p>
 
@@ -513,7 +513,7 @@ WordHoard server started
 
 <p>For obvious reasons, we do not distribute our NU certificate in the public distribution of WordHoard for you to use to sign your modified versions of the program. You will have to use your own certificate.</p>
 
-<p>If you are not familiar with Java's security tools, we recommend that you read Sun's descriptions of the Java <a href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/keytool.html"><code>keytool</code></a> and <a href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/jarsigner.html"><code>jarsigner</code></a> tools.</p>
+<p>If you are not familiar with Java's security tools, we recommend that you read Oracle's descriptions of the Java <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html"><code>keytool</code></a> and <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jarsigner.html"><code>jarsigner</code></a> tools.</p>
 
 <p>For developing and testing, you can use a self-signed certificate. Use <code>keytool</code> to create one. This tool manages a keystore (database) of private keys and their associated certificates. For example:</p>
 
