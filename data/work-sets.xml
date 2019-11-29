@@ -32,6 +32,20 @@
 		<include id="spe-daph"/>
 		<include id="spe-proth"/>
 	</addWorkParts>
+	<addWorkParts title="Spenser: Poetry">
+		<include id="spe-faq"/>
+		<include id="spe-sc"/>
+		<include id="spe-asclor"/>
+		<include id="spe-theatre"/>
+		<include id="spe-comson"/>
+		<include id="spe-colcl"/>
+		<include id="spe-com"/>
+		<include id="spe-fh"/>
+		<include id="spe-amepith"/>
+		<include id="spe-frag"/>
+		<include id="spe-daph"/>
+		<include id="spe-proth"/>
+	</addWorkParts>
 	<addWorkParts title="Spenser: Prose Works">
 		<include id="spe-letters"/>
 		<include id="spe-axiochus"/>
