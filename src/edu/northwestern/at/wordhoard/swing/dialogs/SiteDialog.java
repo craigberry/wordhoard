@@ -133,7 +133,7 @@ public class SiteDialog extends ModalDialog {
 		} else {
 			sitesURL = WordHoardSettings.getString(
 				"SitesURL",
-				"http://wordhoard.northwestern.edu/sites.xml");
+				"https://wordhoard.northwestern.edu/sites.xml");
 		}
 		URL url = new URL(sitesURL);
 		InputStream stream = url.openStream();

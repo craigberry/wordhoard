@@ -36,7 +36,7 @@ import edu.northwestern.at.wordhoard.swing.dialogs.*;
  *	<p><code>WordHoard [sitesURL]</code>
  *
  *	<p>sites = URL of sites XML config file. The default is
- *	http://wordhoard.northwestern.edu/sites.xml.
+ *	https://wordhoard.northwestern.edu/sites.xml.
  */
 
 public class WordHoard {

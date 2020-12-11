@@ -11,8 +11,8 @@ setenv MYSQL_BIN /usr/local/mysql/bin
 setenv MYSQL_DATA /usr/local/mysql/data
 setenv ANT_HOME /usr/local/ant
 setenv ANT_OPTS -Xmx500m
-setenv CODEBASE http://wordhoard.northwestern.edu/client/
-setenv HOMEPAGE http://wordhoard.northwestern.edu
+setenv CODEBASE https://wordhoard.eumnestes.org/client/
+setenv HOMEPAGE https://wordhoard.eumnestes.org
 
 #	Define the Java classpath.
 
