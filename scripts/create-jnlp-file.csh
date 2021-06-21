@@ -30,7 +30,7 @@ cat >client/wordhoard.jnlp <<eof
         </shortcut>
     </information>
     <resources>
-        <j2se version="1.4+" initial-heap-size="100m" max-heap-size="640m" />
+        <j2se version="1.8*" initial-heap-size="100m" max-heap-size="640m" />
         <jar href="wordhoard.jar" />
 eof
 
