@@ -6,8 +6,7 @@ import java.util.*;
 import java.io.*;
 import javax.jnlp.*;
 import java.net.*;
-
-import com.apple.eio.*;
+import java.awt.Desktop;
 
 import edu.northwestern.at.utils.*;
 
@@ -114,21 +113,20 @@ public class WebStart {
 
 	/**	Directs a browser to show a URL.
 	 *
-	 *	<p>If we are not running in a JNLP environment, we use alternate
-	 *	techniques on Mac OS X and on Windows.
+	 *	<p>If we are not running in a JNLP environment, we use the
+	 * Desktop browse method if available.
 	 *
 	 *	@param	url		The URL.
 	 */
 
 	public static void showDocument (URL url) {
 		if (bs == null) {
-			if (Env.MACOSX) {
+			if (Desktop.isDesktopSupported()) {
 				try {
-					FileManager.openURL(url.toString());
-				} catch (IOException e) {
+					Desktop.getDesktop().browse(new URI(url.toString()));
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
 				}
-			} else if (Env.WINDOWSOS) {
-				BrowserControl.openURL(url.toString());
 			}
 		} else {
 			bs.showDocument(url);
