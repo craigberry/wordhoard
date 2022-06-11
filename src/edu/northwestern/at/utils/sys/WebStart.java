@@ -7,7 +7,6 @@ import java.io.*;
 import javax.jnlp.*;
 import java.net.*;
 
-import com.apple.mrj.*;
 import com.apple.eio.*;
 
 import edu.northwestern.at.utils.*;

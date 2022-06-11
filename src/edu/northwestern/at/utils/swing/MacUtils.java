@@ -68,33 +68,31 @@ public class MacUtils
 		
 		if (havePrefs) application.setEnabledPreferencesMenu(true);
 
-		application.addApplicationListener
-		(
-			new ApplicationAdapter()
+		application.setAboutHandler(new AboutHandler() {
+			public void handleAbout( AppEvent.AboutEvent ev )
 			{
-				public void handleAbout( ApplicationEvent ev )
+				try
 				{
-					try
-					{
-						mainFrame.about();
-						ev.setHandled( true );
-					}
-					catch(Exception e) { }
+					mainFrame.about();
 				}
-
-				public void handlePreferences( ApplicationEvent ev )
-				{
-					mainFrame.prefs();
-					ev.setHandled( true );
-				}
-
-				public void handleQuit( ApplicationEvent ev )
-				{
-					mainFrame.quit();
-					ev.setHandled( true );
-				}
+				catch(Exception e) { }
 			}
-		);
+		});
+
+		application.setPreferencesHandler(new PreferencesHandler() {
+			public void handlePreferences( AppEvent.PreferencesEvent ev )
+			{
+				mainFrame.prefs();
+			}
+		});
+
+		application.setQuitHandler(new QuitHandler() {
+			public void handleQuitRequestWith( AppEvent.QuitEvent ev, QuitResponse response )
+			{
+				mainFrame.quit();
+				response.performQuit();
+			}
+		});
 	}
 
 	/** Don't allow instantiation but do allow overrides. */

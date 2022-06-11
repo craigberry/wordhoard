@@ -65,7 +65,7 @@ auxiliary.show.customizer=false property there. Adding auxiliary.show.customizer
                 <package-root>src</package-root>
                 <built-to>output</built-to>
                 <javadoc-built-to>javadoc</javadoc-built-to>
-                <source-level>1.4</source-level>
+                <source-level>1.8</source-level>
             </compilation-unit>
         </java-data>
     </configuration>
