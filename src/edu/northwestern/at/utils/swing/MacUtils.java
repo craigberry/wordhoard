@@ -5,8 +5,8 @@ package edu.northwestern.at.utils.swing;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
-
-import com.apple.eawt.*;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 import edu.northwestern.at.utils.Env;
 
@@ -46,6 +46,27 @@ public class MacUtils
 			useScreenMenuBar ? "true" : "false" );
 	}
 
+	/** Private utility method for initMac
+	 * 
+	 * @param mainFrame
+	 * @param methodName
+	 */
+	private static void _invokeHandler
+	(
+		final XFrame mainFrame, final String methodName
+	)
+	{
+		if (methodName.equals("handleAbout")) {
+			mainFrame.about();
+		}
+		else if (methodName.equals("handlePreferences")) {
+			mainFrame.prefs();
+		}
+		else if (methodName.equals("handleQuitRequestWith")) {
+			mainFrame.quit();
+		}
+	}
+
 	/**	Initializes the Mac OS X environment application handlers.
 	 *
 	 *	@param	mainFrame			The main program frame.
@@ -63,36 +84,84 @@ public class MacUtils
 	)
 	{
 		if ( !Env.MACOSX ) return;
-		
-		Application application = new Application();
-		
-		if (havePrefs) application.setEnabledPreferencesMenu(true);
 
-		application.setAboutHandler(new AboutHandler() {
-			public void handleAbout( AppEvent.AboutEvent ev )
-			{
-				try
-				{
-					mainFrame.about();
-				}
-				catch(Exception e) { }
-			}
-		});
+		// The following mess brought to you by the fact that in Java 8, these methods are only available in
+		// com.apple.eawt.Application, but in Java 9+, they are only available in java.awt.Desktop and all of
+		// com.apple.eawt has been removed. So use reflection with proxy to acquire at run-time the methods
+		// that will work with either Java 8 or Java 9+.
+		// Inspired by the solution in:
+		//     https://github.com/pgdurand/jGAF/blob/master/src/com/plealog/genericapp/ui/apple/EZAppleConfigurator.java
 
-		application.setPreferencesHandler(new PreferencesHandler() {
-			public void handlePreferences( AppEvent.PreferencesEvent ev )
-			{
-				mainFrame.prefs();
-			}
-		});
+		try {
+			// Conveniently, the 1 in 1.8 is less than 9, so we can always use the first element.
+			Integer javaVersion = Integer.parseInt(System.getProperty("java.specification.version").split("\\.")[0]);
 
-		application.setQuitHandler(new QuitHandler() {
-			public void handleQuitRequestWith( AppEvent.QuitEvent ev, QuitResponse response )
-			{
-				mainFrame.quit();
-				response.performQuit();
+			if (javaVersion < 9) {  // methods in com.apple.eawt.Application but not java.awt.desktop
+				Object applicationHandler = java.lang.reflect.Proxy.newProxyInstance(
+				Proxy.class.getClassLoader(),
+				new java.lang.Class[] {
+					Class.forName("com.apple.eawt.AboutHandler"),
+					Class.forName("com.apple.eawt.PreferencesHandler"),
+					Class.forName("com.apple.eawt.QuitHandler") },
+				new java.lang.reflect.InvocationHandler() {
+					@Override
+					public Object invoke(Object proxy,
+							java.lang.reflect.Method method,
+							Object[] args) throws java.lang.Throwable {
+						String methodName = method.getName();
+						_invokeHandler(mainFrame, methodName);
+						return null;
+					}
+				});
+				// Use the created proxy class as handler for Application.
+				Class<?> applicationClass = Class.forName("com.apple.eawt.Application");
+				Method method = applicationClass.getMethod("getApplication", (Class[]) null);
+				Object application = method.invoke(null);
+				method = applicationClass.getMethod("setAboutHandler",
+					new Class<?>[] { Class.forName("com.apple.eawt.AboutHandler") });
+				method.invoke(application, applicationHandler);
+				method = applicationClass.getMethod("setPreferencesHandler",
+					new Class<?>[] { Class.forName("com.apple.eawt.PreferencesHandler") });
+				method.invoke(application, applicationHandler);
+				method = applicationClass.getMethod("setQuitHandler",
+					new Class<?>[] { Class.forName("com.apple.eawt.QuitHandler") });
+				method.invoke(application, applicationHandler);
+
+			} else { // Java 9+ --  methods in java.awt.Desktop
+
+				Object desktopHandler = java.lang.reflect.Proxy.newProxyInstance(
+				Proxy.class.getClassLoader(),
+				new java.lang.Class[] {
+					Class.forName("java.awt.desktop.AboutHandler"),
+					Class.forName("java.awt.desktop.PreferencesHandler"),
+					Class.forName("java.awt.desktop.QuitHandler") },
+				new java.lang.reflect.InvocationHandler() {
+					@Override
+					public Object invoke(Object proxy,
+						java.lang.reflect.Method method,
+						Object[] args) throws java.lang.Throwable {
+						String methodName = method.getName();
+						_invokeHandler(mainFrame, methodName);
+						return null;
+					}
+				});
+				// Use the created proxy class as handler for Desktop.
+				Class<?> desktopClass = Class.forName("java.awt.Desktop");
+				Method method = desktopClass.getMethod("getDesktop", (Class[]) null);
+				Object deskTop = method.invoke(null);
+				method = desktopClass.getMethod("setAboutHandler",
+					new Class<?>[] { Class.forName("java.awt.desktop.AboutHandler") });
+				method.invoke(deskTop, desktopHandler);
+				method = desktopClass.getMethod("setPreferencesHandler",
+					new Class<?>[] { Class.forName("java.awt.desktop.PreferencesHandler") });
+				method.invoke(deskTop, desktopHandler);
+				method = desktopClass.getMethod("setQuitHandler",
+					new Class<?>[] { Class.forName("java.awt.desktop.QuitHandler") });
+				method.invoke(deskTop, desktopHandler);
 			}
-		});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/** Don't allow instantiation but do allow overrides. */
