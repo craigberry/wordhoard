@@ -276,8 +276,8 @@ public class SortedTableModel extends AbstractTableModel {
 				if (column == -1) return;
 				if (sortableColumns != null && !sortableColumns[column]) return;
 				if (event.getClickCount() == 1) {
-					boolean ascending = (event.getModifiers() &
-						InputEvent.SHIFT_MASK) == 0;
+					boolean ascending = (event.getModifiersEx() &
+						InputEvent.SHIFT_DOWN_MASK) == 0;
 					sort(column, ascending);
 					tableHeader.repaint();
 				}

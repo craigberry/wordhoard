@@ -222,12 +222,8 @@ public class XTable extends JTable
 			{
 				Component source	= event.getComponent();
 				long when			= event.getWhen();
-				int modifiers		= event.getModifiers() |
-					InputEvent.BUTTON1_MASK;
-
-				if ( Env.IS_JAVA_14_OR_LATER && Env.MACOSX )
-                	modifiers = modifiers | event.getModifiersEx() | 0x400;
-
+				int modifiers		= event.getModifiersEx() |
+					InputEvent.BUTTON1_DOWN_MASK;
 				int x					= event.getX();
 				int y					= event.getY();
 				int clickCount			= event.getClickCount();
