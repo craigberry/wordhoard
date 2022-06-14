@@ -4,13 +4,7 @@ package edu.northwestern.at.utils.swing;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
-import java.util.*;
-import java.awt.print.*;
-
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
 
 /** Displays list box with ok and cancel buttons.
  */
@@ -164,7 +158,7 @@ public class DisplayListBox extends ModalDialog
 
 	protected void handleOKPressed( ActionEvent event )
 	{
-		selectedValues		= listBox.getSelectedValues();
+		selectedValues		= listBox.getSelectedValuesList().toArray();
 		minSelectionIndex	= listBox.getMinSelectionIndex();
 		maxSelectionIndex	= listBox.getMaxSelectionIndex();
 
