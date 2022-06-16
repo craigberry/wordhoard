@@ -92,29 +92,14 @@
 
 <h3><a name="sys" />System Requirements</h3>
 
-<p>WordHoard runs on Microsoft Windows systems, on Macintosh OS X systems,
-and on most UNIX systems.</p>
+<p>WordHoard is a <a href="https://en.wikipedia.org/wiki/Java_Web_Start">Java Web Start</a>
+application that runs on Microsoft Windows, macOS, and Linux. It may work on some less common
+systems that support its dependencies. See <a href="getting-started.html#java">Java Requirements</a>
+for more on those dependencies.</p>
 
-<p>If you use Windows and the Early Greek Epic corpus, we recommend Windows
-XP or later. While Windows 2000 and other older versions of Windows work
-with WordHoard, some of the Greek characters do not display properly in all
-contexts in the program on these older systems, due to errors in the
-Windows "Palatino Linotype" font that were corrected in XP and later
-systems.</p>
-
-<p>On the Macintosh, WordHoard requires Mac OS X version 10.2 or later. It
-does not work on Classic Mac OS (Mac OS 9 systems and earlier) or on Mac OS
-X 10.0.x or 10.1.x.</p>
-
-<p>WordHoard  requires a minimum screen size of 1024 by 768 pixels. The
-bigger your screen the better.</p>
-
-<p>WordHoard should run on any reasonably modern Mac or PC. Its disk space
-requirements are modest. It likes lots of memory, the more the better. One
-gigabyte is our recommended minimum.</p>
-
-<p>WordHoard requires a fast Internet connection. DSL and cable modem
-connections are fine, but a dialup modem connection is inadequate.</p>
+<p>WordHoard requires a minimum screen size of 1024 by 768 pixels. The
+bigger your screen the better.  A broadband Internet connection is also
+essential.</p>
 
 <div class="space" />
 <hr />
@@ -123,71 +108,22 @@ connections are fine, but a dialup modem connection is inadequate.</p>
 <h3><a name="java" id="java"/>Java Requirements</h3>
 
 <p>WordHoard is a Java application, so you need to have Java installed on
-your computer. We require Java version 1.4 or later.</p>
-
-<p>For Mac OS X version 10.3 and above, Java 1.4 is built-in and you don't
-need to do anything.</p>
-
-<p>For Mac OS X version 10.2.x, if you don't already have Java 1.4
-installed, you should run Software Update to upgrade your Java package to
-version 1.4.</p>
-
-<p>For Windows systems, we recommend Sun Microsystem's standard Java
-distribution. If you don't know if you have this on your computer, use the
-"Run" command in the "Start" menu, type "<code>cmd</code>", and press
-the OK button.  A command prompt window appears. Type the following command:</p>
-
-<blockquote><pre><code>
-java -version
-</code></pre></blockquote>
-
-<p>If you have Java installed on your computer, you will see the version
-(build) number. Our sample system in the screen shot below has Java 1.5
-release 6.</p>
-
-<div class="space" />
-<p class="center">
-<img src="images/winjavaversion.jpg" alt="" />
-</p>
-<div class="space" />
-
-<p>
-If you do not have Java installed, or it is installed incorrectly, you will
-see an error message telling you that <code>java</code> is an unrecognized
-command.
+your computer. We currently require Java version 1.8 (also confusingly called
+Java 8).  Java is still available via commercial license from 
+<a href="https://www.oracle.com/java/technologies/">Oracle</a>, but there
+is no advantage to using that instead of the free and open source OpenJDK.
+There are various OpenJDK distributors that offer free downloads, including
+<a href="https://adoptium.net">Adoptium</a>, <a href="https://www.openlogic.com">OpenLogic</a>,
+or your operating system package installer.
 </p>
 
-<div class="space" />
-<p class="center">
-<img src="images/winjavanotfound.jpg" alt="" />
+<p>The Web Start technology upon which WordHoard is based is no longer included with any
+Java or OpenJDK distribution.  Luckily there is an excellent free replacement available
+from <a href="https://openwebstart.com/download/">OpenWebStart</a>; you should install
+Java or OpenJDK first, and then install OpenWebStart.  If OpenWebStart is unavailable for
+your platform, you may be able to get WordHoard working with
+<a href="https://www.azul.com/products/components/icedtea-web/">IcedTea-Web</a>.
 </p>
-<div class="space" />
-
-<p>
-<a name="installjava" id="installjava"></a>
-If you don't have Java installed at all, or if your
-version of Java is earlier than 1.4, or if you have problems when you try
-to run WordHoard, go to <a
-href="http://www.java.com/en/download/manual.jsp">Sun's web site</a> and
-download and install Sun's latest version of Java for Windows. The latest
-version as of this writing is Version 6 Update 17 (aka Java 1.6 update 17).
-</p>
-
-<p>
-For best results, if you already have an old version of Java on your
-Windows computer, remove the old version before you install the new
-version. Run the "Add or Remove Programs" control panel and remove both
-"Java 2 Runtime Environment" and "Java Web Start".
-</p>
-
-<p>UNIX users should check <a
-href="http://www.java.com/en/download/manual.jsp">Sun's web site</a> for
-the proper version of Java for their version of UNIX.</p>
-
-<p>For Linux users, we recommend Sun's <a
-href="http://java.sun.com/javase/6/download.jsp">JRE 6</a> version of
-Java. This version fixes a bug in earlier Linux releases which sometimes
-caused unexpected internal errors in WordHoard.</p>
 
 <div class="space" />
 <hr />
@@ -197,8 +133,8 @@ caused unexpected internal errors in WordHoard.</p>
 
 <p>WordHoard selects appropriate fonts on your system to display works in
 the Roman alphabet (used by the English language corpora) and in the
-Polytonic Greek alphabet (used by the Early Greek Epic corpus). Both Mac OS
-X and Windows have built-in system fonts that contain all the characters
+Polytonic Greek alphabet (used by the Early Greek Epic corpus). Both macOS
+and Windows have built-in system fonts that contain all the characters
 WordHoard needs.</p>
 
 <p>You might like to try the Gentium font, available at the <a
@@ -221,12 +157,11 @@ WordHoard, especially the many Polytonic Greek accented letters.</p>
 <h3><a name="run" />How to Run the Program</h3>
 
 <p>We use a Java technology named "Web Start" to distribute and run
-WordHoard. To run the program for the first time, click the following
-link:</p>
-
-<div class="space" />
-<p class="center"><a href="../client/wordhoard.jnlp">Download and Run WordHoard</a></p>
-<div class="space" />
+WordHoard. The <a href="../client/wordhoard.jnlp">Download and Run WordHoard</a> link on our
+front page will very likely not actually run the program once it's downloded; this is
+a security feature of modern browsers.  You will need to locate the downloaded file
+called wordhoard.jnlp, right click on it, and choose to open it with OpenWebStart
+or IcedTea-Web.</p>
 
 <p>When Web Start downloads WordHoard to your computer, it saves a copy in
 a special system "cache" directory on your hard drive. The next time you
@@ -266,7 +201,7 @@ labelled differently, and you may need to click a button named "Start" or
 
 <p>On some systems, you won't see the warning again after the first time
 you run the program. On other systems, you may need to take some kind of
-explicit action to get rid of the warning. For example, on Mac systems
+explicit action to get rid of the warning. For example, on macOS systems
 which present the security warning pictured above, to get rid of the
 security warning on future runs of the program, click the "Show
 Certificate" button and turn on the "Always trust these certificates"
@@ -283,7 +218,7 @@ program digitally signed authoritatively by Northwestern University.</p>
 A similar dialog appears on Windows systems.  If you select the
 check box "Always trust content from  this publisher," the security
 dialog will not appear again for this or any other program digitally
-signed authoritatively by Northwestern University.
+signed with the same certificate.
 </p>
 
 <p>
@@ -315,70 +250,6 @@ They don't make sense for a regular desktop application like WordHoard.
 </p>
 <div class="space" />
 
-<p>
-If you receive an error message on a Windows system like
-"Missing signed entry in resource", e.g,
-"Missing signed entry in resource: http://wordhoard.northwestern.edu/client/mysql-connector-java-3.1.12-bin.jar",
-your version of Java Web Start is not handling WordHoard updates correctly.
-This problem seems to happen most often on systems running a version of Java
-older than 1.4.2, or one of the test releases of Java 1.6 .
-</p>
-
-<p>
-Try to uninstall WordHoard.  Press the "Start" button, choose
-"Settings", then "Control Panel", then "Add or Remove Programs."  Scroll
-down the list of programs and check if WordHoard appears
-in the list.  If so, highlight WordHoard and press the "Change/Remove"
-button.  After a few moments, WordHoard should disappear from the list.
-Close the "Add or Remove Programs" and "Control Panel" windows.
-You may now <a href="../client/wordhoard.jnlp">Download and Run WordHoard</a>.
-You should no longer see the "Missing signed entry" error.
-</p>
-
-<p>
-If WordHoard does not appear in the "Add or Remove Programs" window,
-you can uninstall WordHoard using the Java Application Cache Manager.
-Select the "Run" command in the "Start" menu and type the following command:</p>
-
-<blockquote><pre><code>
-javaws -viewer
-</code></pre></blockquote>
-
-<p>Press the OK button. This should open the
-Java Application Cache Manager program.  If it does not,
-your version of Java is too old.
-Please <a href="#installjava">install a newer version of Java</a>
-and download WordHoard again.
-</p>
-
-<p>
-The Java Application Cache Manager displays a tabbed panel with
-entries "User" and "System."  Select "User."   WordHoard should appear in
-the list of programs.  Highlight WordHoard in the list and press
-the "Remove Selected Application" button.
-This uninstalls WordHoard.  Close the Java Application Cache Manager and
-<a href="../client/wordhoard.jnlp">Download and Run WordHoard</a> again.
-</p>
-
-<div class="space" />
-<p class="center">
-<img src="images/winjavaws.jpg" alt="" />
-</p>
-<div class="space" />
-
-<p>
-If these approaches fail, please uninstall your current version of
-Java and
-<a href="#installjava">install a newer version of Java</a>.
-You may then
-<a href="../client/wordhoard.jnlp">Download and Run WordHoard</a>
-again.  You will also need to reinstall any other Web Start applications.
-</p>
-
-<div class="space" />
-<hr />
-<div class="space" />
-
 <h3><a name="desktop" />Saving a Desktop Version</h3>
 
 <p>The first or second time you run WordHoard, Web Start asks if you want to save a desktop version of the program. We recommend that you do this. In the future, you can use the desktop icon to run the program without having to come back to this web page. Indeed, you won't even need to have your web browser running! On Microsoft Windows systems, Web Start also adds a "WordHoard" command to your "Start" menu.</p>
@@ -390,52 +261,11 @@ again.  You will also need to reinstall any other Web Start applications.
 <div class="space" />
 
 <p>
-Older Windows versions of Web Start may "forget" to offer
-you the opportunity to create a desktop version.  You may run the
-Java Application Cache Manager to create the shortcuts.  Select the
-"Run" command in the "Start" menu, and then type:</p>
-
-<blockquote><pre><code>
-javaws -viewer
-</code></pre></blockquote>
-
-<p>Press the OK button. This
-should open the Java Application Cache Manager program.  If it does not,
-your version of Java is too old.
-Please <a href="#installjava">install a newer version of Java</a>
-and download WordHoard again.
-</p>
-
-<p>
-The Java Application Cache Manager displays a tabbed panel with
-entries "User" and "System."  Select "User."   WordHoard should appear in
-the list of programs.  Highlight WordHoard in the list.
-</p>
-
-<div class="space" />
-<p class="center">
-<img src="images/winjavaws.jpg" alt="" />
-</p>
-<div class="space" />
-
-<p>
-Select "Install shortcuts" from the Application menu item
-(the text may differ a bit depending which release of Java you have
-installed).   The WordHoard icon should now appear on the desktop.
-If this doesn't work, please <a href="#installjava">update Java</a>
-and try again.
-</p>
-
-<div class="space" />
-<p class="center">
-<img src="images/winjavaws-create-shortcuts.jpg" alt="" />
-</p>
-<div class="space" />
-
-<p>
-Web Start on Unix systems may not allow you to save a desktop version.
+Web Start on Linux or Unix systems may not allow you to save a desktop version.
 You can always start WordHoard from the
-<a href="../client/wordhoard.jnlp">Download and Run WordHoard</a> link.
+<a href="../client/wordhoard.jnlp">Download and Run WordHoard</a> link
+or by locating the wordhoard.jnlp file and explicitly opening it with your
+web start program.
 </p>
 
 <div class="space" />
@@ -444,7 +274,8 @@ You can always start WordHoard from the
 
 <h3><a name="site" />The Site Selection Dialog</h3>
 
-<p>The following dialog appears when you run WordHoard (any time, not just the first time):</p>
+<p>If the WordHoard server to which you are connecting offers more than one collection
+of texts, the following dialog may appear when you run WordHoard (any time, not just the first time):</p>
 
 <div class="space" />
 <p class="center">
