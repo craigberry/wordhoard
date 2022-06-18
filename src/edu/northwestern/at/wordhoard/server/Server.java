@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.server;
 
 /*	Please see the license information at the end of this file. */
 
-import java.net.InetAddress;
 import java.rmi.*;
 import java.rmi.registry.*;
 
@@ -21,7 +20,7 @@ import edu.northwestern.at.wordhoard.swing.WordHoardSettings;
  *	<p>The second argument is required and specifies
  *	the path to the server directory. This directory contains the server
  *	configuration file "wordhoard.config" and the log configuration file
- *	"log.config". The server log file is also written to this directory.
+ *	"log4j2.xml". The server log file is also written to this directory.
  *
  *	<p>On startup the server creates a {@link Bootstrap} object and
  *	registers it in the RMI registry using the bind name "WordHoard". On

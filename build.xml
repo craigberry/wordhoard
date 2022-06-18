@@ -29,7 +29,7 @@
 	<target name="init">
 		<mkdir dir="bin"/>
 		<mkdir dir="javadoc"/>
-  		<copy file="misc/log4j.properties" todir="bin"/>
+		<copy file="misc/log4j2.xml" todir="bin"/>
   		<copy file="misc/ehcache.xml" todir="bin"/>
   		<copy file="misc/hibernate.properties" todir="bin"/>
 		<copy todir="bin/${scripts}/">
@@ -66,7 +66,7 @@
 
 	<target name="compile" depends="init">
 		<javac srcdir="src" destdir="bin" classpathref="classpath"
-			source="1.8" target="1.8" debug="on" deprecation="on">
+			source="1.8" target="1.8" debug="on" deprecation="on" includeantruntime="true">
 			<compilerarg value="-XDignore.symbol.file"/>
 		</javac>
 	</target>

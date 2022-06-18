@@ -355,7 +355,7 @@ mysql> quit
 
 <ul>
 <li><code>wordhoard.config</code>. The WordHoard server configuration file.</li>
-<li class="space"><code>log.config</code>. The server log configuration file.</li>
+<li class="space"><code>log4j2.xml</code>. The server log configuration file.</li>
 <li class="space">Log files produced by the server.</li>
 </ul>
 
@@ -384,9 +384,9 @@ rmi-port 0
 
 <p><code>rmi-port</code> is the port number used by the WordHoard server remote objects. A value of 0 for <code>rmi-port</code> tells the system to select an unused port number. If your server has a firewall which blocks ports, you will need to specify a fixed port number (e.g., 1101), and configure your firewall to permit traffic on that port number.</p>
 
-<p>We use <a href="http://logging.apache.org/log4j/docs/">Log4J</a> for server logging. The <code>log.config</code> file configures Log4J. We provide a default configuration in <code>misc/server-log.config</code> which rolls the log file every night at midnight. Copy this file from your development host into the <code>data</code> directory on your server host, and rename it <code>log.config</code>. You can use this sample as is, or make whatever changes you wish. See the Log4J documentation for details.</p>
+<p>We use <a href="https://logging.apache.org/log4j/2.x/index.html">Log4J 2</a> for server logging. The <code>log4j2.xml</code> file configures Log4J. We provide a default configuration in <code>misc/server-log.xml</code> which rolls the log file every night at midnight. Copy this file from your development host into the <code>data</code> directory on your server host, and rename it <code>log4j2.xml</code>. You can use this sample as is, or make whatever changes you wish. See the Log4J documentation for details.</p>
 
-<p>The WordHoard server writes its log files in the <code>data</code> directory. A message is written to the log every time someone runs the client, quits the client, logs in, or logs out. Any unexpected errors that happen in the client are also logged, with full stack traces. This is an indispensable debugging aid, since you do not have to rely on the users to send you accurate bug reports. We recommend checking the logs on a regular basis. On Russell we do this daily.</p>
+<p>The WordHoard server writes its log files in the <code>data</code> directory. A message is written to the log every time someone runs the client, quits the client, logs in, or logs out. Any unexpected errors that happen in the client are also logged, with full stack traces. This is an indispensable debugging aid, since you do not have to rely on the users to send you accurate bug reports. We recommend checking the logs on a regular basis.</p>
 
 <p><b>Step 4. Populate the <code>bin</code> directory.</b></p>
 
@@ -397,7 +397,7 @@ rmi-port 0
 <blockquote><pre><code>
 #!/bin/csh
 cd /Users/wordhoard/server
-java -Xmx200m -jar lib/wordhoardserver.jar start data &amp;
+java -Dlog4j2.configurationFile=file:data/log4j2.xml -Xmx200m -jar lib/wordhoardserver.jar start data &amp;
 </code></pre></blockquote>
 
 <p>The <code>server-stop</code> script stops the server:</p>

@@ -3,11 +3,8 @@ package edu.northwestern.at.wordhoard.server;
 /*	Please see the license information at the end of this file. */
 
 import java.io.*;
-import java.util.*;
+import org.apache.logging.log4j.*;
 
-import org.apache.log4j.*;
-
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.swing.WordHoardSettings;
 
 /**	Server log manager.
@@ -43,54 +40,25 @@ public class Logger {
 
 	/**	Server logger. */
 
-	static private org.apache.log4j.Logger logger =
-		org.apache.log4j.Logger.getLogger(
+	static private org.apache.logging.log4j.Logger logger =
+		org.apache.logging.log4j.LogManager.getLogger(
 			"edu.northwestern.at.wordhoard.server");
 
 	/**	Initializes the logger.
 	 *
 	 *	@param	message	Initial log message.
 	 *
-	 *	<p>Reads the "log.config" configuraton file and configures
-	 *	the server logger.
-	 *
-	 *	<p>The configuration file is preprocessed to force the log
-	 *	file to be located in the server directory. The server directory
-	 *	path is prepended to the log file name.
-	 *
 	 *	@throws	Exception
 	 */
 
 	static void initialize (String message)
-		throws FileNotFoundException, IOException
 	{
-		String logConfigFilePath = Config.getLogConfigFilePath();
-		Properties properties = new Properties();
-		properties.load(new FileInputStream(logConfigFilePath));
-		for (Enumeration enumeration = properties.propertyNames();
-			enumeration.hasMoreElements(); )
-		{
-			String key = (String)enumeration.nextElement();
-			if (key.startsWith("log4j.appender") &&
-				key.endsWith(".File"))
-			{
-				String val = properties.getProperty(key);
-				val = Config.getPath() + File.separatorChar + val;
-				properties.setProperty(key, val);
-			}
-		}
-		PropertyConfigurator.configure(properties);
 		logger.info(message);
 	}
 
 	/**	Initializes the logger.
 	 *
-	 *	<p>Reads the "log.config" configuraton file and configures
-	 *	the server logger.
-	 *
-	 *	<p>The configuration file is preprocessed to force the log
-	 *	file to be located in the server directory. The server directory
-	 *	path is prepended to the log file name.
+	 *	<p>Configures the server logger.
 	 *
 	 *	@throws	Exception
 	 */
@@ -118,7 +86,7 @@ public class Logger {
 	 *	@return		log4j level.
 	 */
 
-	static Priority mapLevel (int level) {
+	static Level mapLevel (int level) {
 		switch (level) {
 			case FATAL:
 				return Level.FATAL;
