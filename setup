@@ -97,13 +97,6 @@ alias put-scripts "scp -r scripts scribe.at.northwestern.edu:wordhoard"
 alias put-bin "scp -r bin scribe.at.northwestern.edu:wordhoard"
 alias put-data "scp -r data scribe.at.northwestern.edu:wordhoard"
 
-#	Aliases for working with EMD.
-
-alias cm-emd "java -Xmx2g edu.northwestern.at.wordhoard.tools.cm.ConvertMorph MorphAdorner/emd MorphAdorner/emd-rules.xml MorphAdorner/data >MorphAdorner/cm-report.txt"
-alias build-emd "scripts/full-build.csh MorphAdorner/data emdtest >MorphAdorner/report.txt"
-alias r-emdtest "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
-   file:misc/emdtest.xml"
-
 #	Aliases for other scripts.
 
 alias csdb "scripts/create-server-database.csh"
