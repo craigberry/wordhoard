@@ -10,7 +10,7 @@
 			server - you can't log in.
 		</description>
 		<database>
-			<url>jdbc:mysql://scribe.at.northwestern.edu/wordhoard_mainnew?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://scribe.at.northwestern.edu/wordhoard_mainnew?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -25,7 +25,7 @@
 			Northwestern University. There is no server - you can't log in.
 		</description>
 		<database>
-			<url>jdbc:mysql://scribe.at.northwestern.edu/wordhoard_emdnew?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://scribe.at.northwestern.edu/wordhoard_emdnew?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -33,4 +33,3 @@
 	</site>
 	
 </WordHoardSites>
-

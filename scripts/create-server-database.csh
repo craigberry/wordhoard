@@ -15,7 +15,7 @@ create database $db character set utf8;
 eof
 
 java \
--Dhibernate.connection.url="jdbc:mysql://localhost/$db?characterEncoding=UTF-8" \
+-Dhibernate.connection.url="jdbc:mysql://localhost/$db?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
 -Dhibernate.connection.username="$MYSQL_ROOT_USERNAME" \
 -Dhibernate.connection.password="$MYSQL_ROOT_PASSWORD" \
 org.hibernate.tool.hbm2ddl.SchemaExport \

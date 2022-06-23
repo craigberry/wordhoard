@@ -321,7 +321,7 @@ mysql> quit
 
 <h3><a name="server" />Deploying the Server</h3>
 
-<p>The host you use to deploy the WordHoard server must be running the <a href="http://java.sun.com/j2se/index.jsp">Java</a> runtime environment 1.4 or later.</p>
+<p>The host you use to deploy the WordHoard server must be running the <a href="http://java.sun.com/j2se/index.jsp">Java</a> runtime environment 8 or later.</p>
 
 <p>Before you use the following steps to deploy the server, you probably want to do a full build of the source code to make certain everything has been compiled correctly into your <code>bin</code> directory:</p>
 
@@ -363,11 +363,11 @@ mysql> quit
 
 <blockquote><pre><code>
 database-url jdbc:mysql://localhost/wordhoardserver?
-   characterEncoding=UTF-8
+   characterEncoding=UTF-8&amp;useSSL=true&amp;verifyServerCertificate=false
 database-username wordhoardserver
 database-password wordhoardserver
 userdata-database-url jdbc:mysql://localhost/wordhoard?
-   characterEncoding=UTF-8
+   characterEncoding=UTF-8&amp;useSSL=true&amp;verifyServerCertificate=false
 userdata-database-username wordhoardserver
 userdata-database-password wordhoardserver
 rmiregistry-port 1100
@@ -479,7 +479,7 @@ WordHoard server started
             Shakespeare, Spenser and Chaucer. It is open to the world.
         &lt;/description&gt;
         &lt;database&gt;
-            &lt;url&gt;jdbc:mysql://russell.at.northwestern.edu/wordhoard?characterEncoding=UTF-8&amp;amp;useCompression=true&lt;/url&gt;
+            &lt;url&gt;jdbc:mysql://russell.at.northwestern.edu/wordhoard?characterEncoding=UTF-8&amp;amp;useCompression=true&amp;amp;useSSL=false&lt;/url&gt;
             &lt;username&gt;wordhoard&lt;/username&gt;
             &lt;password&gt;wordhoard&lt;/password&gt;
         &lt;/database&gt;

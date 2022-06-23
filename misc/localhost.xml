@@ -4,7 +4,7 @@
 	
 	<site id="localhost">
 		<database>
-			<url>jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -12,4 +12,3 @@
 	</site>
 	
 </WordHoardSites>
-

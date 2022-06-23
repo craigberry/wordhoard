@@ -67,7 +67,7 @@ public class BuildUtils {
 		Class.forName("com.mysql.jdbc.Driver");
 		ClassLoader loader = BuildUtils.class.getClassLoader();
 		String url = "jdbc:mysql://localhost/" + dbname +
-			"?characterEncoding=UTF-8&useCompression=true";
+			"?characterEncoding=UTF-8&useCompression=true&useSSL=true&verifyServerCertificate=false";
 		return DriverManager.getConnection(url, username, password);
 	}
 	
@@ -94,7 +94,7 @@ public class BuildUtils {
 			hostAndName = dbname;
 		}
 		String url = "jdbc:mysql://" + hostAndName +
-			"?characterEncoding=UTF-8&useCompression=true";
+			"?characterEncoding=UTF-8&useCompression=true&useSSL=true&verifyServerCertificate=false";
 		PersistenceManager.init(
 			url,
 			username,

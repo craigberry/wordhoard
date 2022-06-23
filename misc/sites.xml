@@ -9,7 +9,7 @@
 			Spenser and Chaucer. It is open to the world.
 		</description>
 		<database>
-			<url>jdbc:mysql://welles.library.northwestern.edu:3307/wordhoard?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://welles.library.northwestern.edu:3307/wordhoard?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -23,7 +23,7 @@
 			Shakespeare, Spenser and Chaucer. It is accessible only at Northwestern University.
 		</description>
 		<database>
-			<url>jdbc:mysql://noir.at.northwestern.edu/ncf?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://noir.at.northwestern.edu/ncf?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -39,7 +39,7 @@
 			the Text Creation Partnership (TCP).
 		</description>
 		<database>
-			<url>jdbc:mysql://noir.at.northwestern.edu/emd?characterEncoding=UTF-8&amp;useCompression=true</url>
+			<url>jdbc:mysql://noir.at.northwestern.edu/emd?characterEncoding=UTF-8&amp;useCompression=true&amp;useSSL=true&amp;verifyServerCertificate=false</url>
 			<username>wordhoard</username>
 			<password>wordhoard</password>
 		</database>
@@ -47,4 +47,3 @@
 	</site>
 	
 </WordHoardSites>
-
