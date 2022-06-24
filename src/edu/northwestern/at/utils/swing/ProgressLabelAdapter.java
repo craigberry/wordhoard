@@ -3,15 +3,12 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.print.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 
 import javax.swing.*;
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.sys.*;
 
 /** Wraps a JLabel with a progress reporter.
  */

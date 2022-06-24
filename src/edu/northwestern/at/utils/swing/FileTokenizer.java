@@ -2,19 +2,9 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
 import javax.swing.text.*;
-import javax.swing.event.*;
-import javax.swing.filechooser.*;
-import javax.swing.undo.*;
-import javax.swing.plaf.basic.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.print.*;
 import java.io.*;
 import java.util.*;
-import java.net.*;
 
 import edu.northwestern.at.utils.FileUtils;
 

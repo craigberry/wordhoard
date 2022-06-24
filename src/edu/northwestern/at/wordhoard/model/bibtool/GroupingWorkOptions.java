@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.model.bibtool;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;

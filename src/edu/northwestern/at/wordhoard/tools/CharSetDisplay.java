@@ -3,21 +3,15 @@ package edu.northwestern.at.wordhoard.tools;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
-import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.text.*;
 import java.awt.event.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.wordhoard.swing.dialogs.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 
 /**	Character set table display.

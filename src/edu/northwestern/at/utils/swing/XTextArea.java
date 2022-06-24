@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.datatransfer.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.awt.print.*;

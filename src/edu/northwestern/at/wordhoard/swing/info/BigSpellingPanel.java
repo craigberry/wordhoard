@@ -5,9 +5,7 @@ package edu.northwestern.at.wordhoard.swing.info;
 import javax.swing.*;
 import java.awt.*;
 
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 
 /**	Big spelling panel.

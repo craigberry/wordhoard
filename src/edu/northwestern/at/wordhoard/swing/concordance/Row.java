@@ -2,16 +2,10 @@ package edu.northwestern.at.wordhoard.swing.concordance;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
-import java.net.*;
-import java.text.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.model.*;
@@ -20,7 +14,6 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.speakers.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
 

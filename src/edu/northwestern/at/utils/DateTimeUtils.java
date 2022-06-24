@@ -3,11 +3,7 @@ package edu.northwestern.at.utils;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 import java.text.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 
 /** Utilities for formatting dates and times.
  */

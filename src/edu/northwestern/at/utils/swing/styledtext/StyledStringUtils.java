@@ -2,19 +2,14 @@ package edu.northwestern.at.utils.swing.styledtext;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.util.*;
 import java.io.*;
-import javax.swing.*;
 import javax.swing.text.*;
-import javax.swing.event.*;
-import javax.swing.text.StyledEditorKit.*;
 import javax.swing.text.rtf.*;
 import javax.swing.text.html.*;
 import java.awt.datatransfer.*;
 
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /**	Styled text utilities.
  *

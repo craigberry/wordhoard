@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 

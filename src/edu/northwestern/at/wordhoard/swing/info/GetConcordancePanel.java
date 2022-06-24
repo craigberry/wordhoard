@@ -2,14 +2,10 @@ package edu.northwestern.at.wordhoard.swing.info;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
 import java.text.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import java.awt.datatransfer.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.concordance.*;
@@ -17,11 +13,7 @@ import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.counts.*;
-import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.swing.*;
 
 /**	Get concordance panel.
  */

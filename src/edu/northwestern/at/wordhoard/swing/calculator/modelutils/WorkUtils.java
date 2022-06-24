@@ -2,15 +2,10 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
-import javax.swing.*;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 
-import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
 

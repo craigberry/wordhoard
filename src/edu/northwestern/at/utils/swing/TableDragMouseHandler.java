@@ -2,9 +2,7 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.awt.datatransfer.*;
 import javax.swing.*;
 
 /**	Handles mouse events for drag and drop operations on JTable.

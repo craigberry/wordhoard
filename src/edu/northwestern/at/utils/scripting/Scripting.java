@@ -3,8 +3,6 @@ package edu.northwestern.at.utils.scripting;
 /*	Please see the license information at the end of this file. */
 
 import java.io.*;
-import java.util.*;
-import java.text.*;
 import bsh.*;
 
 public class Scripting

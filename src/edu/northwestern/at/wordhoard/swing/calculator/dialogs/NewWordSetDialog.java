@@ -2,22 +2,16 @@ package edu.northwestern.at.wordhoard.swing.calculator.dialogs;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.tree.*;
 
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.swing.calculator.cql.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 
 /**	Displays create new word set dialog.
  */

@@ -2,13 +2,8 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-
-import edu.northwestern.at.utils.*;
 
 /**	Displays a progress dialog for a task running in a SwingWorker thread. */
 

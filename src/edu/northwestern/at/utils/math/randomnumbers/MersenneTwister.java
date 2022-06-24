@@ -3,7 +3,6 @@ package edu.northwestern.at.utils.math.randomnumbers;
 /*	Please see the license information in the header below. */
 
 import java.io.*;
-import java.util.*;
 
 /**	MersenneTwister and MersenneTwisterFast.
  *
@@ -171,7 +170,7 @@ import java.util.*;
  *	@version 8
  */
 
-public class MersenneTwister extends java.util.Random implements Serializable
+public class MersenneTwister extends java.util.Random
 {
 	// Period parameters
 	private static final int N = 624;

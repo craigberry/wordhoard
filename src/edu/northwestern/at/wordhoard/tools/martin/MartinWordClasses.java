@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.tools.martin;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.io.*;
 import java.sql.*;
 

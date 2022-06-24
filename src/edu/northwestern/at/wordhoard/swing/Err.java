@@ -2,15 +2,8 @@ package edu.northwestern.at.wordhoard.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
-import java.sql.*;
-import javax.swing.*;
-import java.rmi.*;
-
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.sys.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.server.*;
 
 /**	Error handling.

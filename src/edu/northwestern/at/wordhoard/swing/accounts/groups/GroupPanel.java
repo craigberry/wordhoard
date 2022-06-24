@@ -6,16 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-import javax.swing.border.*;
 
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.utils.swing.*;
-
-import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.server.*;
-import edu.northwestern.at.wordhoard.server.model.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.UserGroupUtils;
-
 
 /**	The group panel of the manage groups window.
  */

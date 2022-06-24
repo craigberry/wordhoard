@@ -3,25 +3,17 @@ package edu.northwestern.at.wordhoard.swing.lexicon;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.datatransfer.*;
 import java.awt.event.*;
-import java.awt.print.*;
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.find.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.counts.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.swing.printing.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.wordhoard.swing.annotations.*;
 
 /**	A lexicon window.
  */

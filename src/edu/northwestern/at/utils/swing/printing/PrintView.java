@@ -2,21 +2,11 @@ package edu.northwestern.at.utils.swing.printing;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.text.*;
 
 import java.awt.*;
-import java.awt.image.*;
-import java.awt.event.*;
-import java.io.*;
-import java.awt.geom.*;
-import java.text.*;
 
 import java.util.*;
-
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /** Arranges Swing text component page images within a rectangular area for printing.
  *

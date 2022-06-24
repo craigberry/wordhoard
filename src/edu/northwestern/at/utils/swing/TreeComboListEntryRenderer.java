@@ -4,12 +4,7 @@ package edu.northwestern.at.utils.swing;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.event.*;
-import javax.swing.plaf.basic.*;
-import java.util.Vector;
 import java.awt.*;
-import javax.swing.plaf.*;
-import javax.swing.tree.*;
 
 /*	Custom rendered for a tree combo box.
  *

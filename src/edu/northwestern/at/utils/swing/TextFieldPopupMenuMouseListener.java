@@ -2,11 +2,9 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.datatransfer.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.text.*;
 import javax.swing.undo.*;
 

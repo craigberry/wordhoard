@@ -2,11 +2,7 @@ package edu.northwestern.at.wordhoard.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 import edu.northwestern.at.wordhoard.swing.annotations.*;
 import edu.northwestern.at.wordhoard.swing.info.*;
@@ -16,12 +12,8 @@ import edu.northwestern.at.wordhoard.swing.find.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.annotations.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
 
 /**	An abstract base class for windows which contain a work panel.
  */

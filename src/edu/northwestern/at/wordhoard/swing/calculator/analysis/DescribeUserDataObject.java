@@ -2,18 +2,11 @@ package edu.northwestern.at.wordhoard.swing.calculator.analysis;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.table.*;
-
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.swing.labeledsettingstable.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
 /**	Describes the contents of a word set, work set, or phrase set.

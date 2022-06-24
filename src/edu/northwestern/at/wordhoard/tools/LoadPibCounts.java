@@ -3,18 +3,10 @@ package edu.northwestern.at.wordhoard.tools;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 import java.sql.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.text.TextParams;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import org.hibernate.*;
-import org.hibernate.cfg.*;
 
 /**	Persist word occurrences related counts for WordHoard Calculator.
  *

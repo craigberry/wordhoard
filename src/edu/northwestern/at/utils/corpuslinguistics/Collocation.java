@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.corpuslinguistics;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import edu.northwestern.at.utils.math.*;
 
 /**	Computes bigram collocation measures.

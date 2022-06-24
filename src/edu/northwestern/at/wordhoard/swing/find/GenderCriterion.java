@@ -2,20 +2,14 @@ package edu.northwestern.at.wordhoard.swing.find;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
 
-import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
 
 /**	Speaker gender criterion component.
  */
@@ -28,7 +22,7 @@ class GenderCriterion extends CriterionComponent {
 
 	/**	The combo box component. */
 
-	private JComboBox comboBox = new JComboBox();
+	private JComboBox<Gender> comboBox = new JComboBox<Gender>();
 
 	/**	True to ignore combo box action events. */
 

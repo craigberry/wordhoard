@@ -9,17 +9,11 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.swing.html.*;
-
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
-
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 
 /**	Displays edit work set dialog.
  */

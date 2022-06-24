@@ -2,8 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 /**	Sorting.
  *
  *	<p>Sorting provides methods for sorting values.</p>

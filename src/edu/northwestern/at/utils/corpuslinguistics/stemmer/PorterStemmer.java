@@ -36,8 +36,6 @@ package edu.northwestern.at.utils.corpuslinguistics.stemmer;
 
  */
 
-import java.io.*;
-
 
 /**
  * Stemmer, implementing the Porter Stemming Algorithm

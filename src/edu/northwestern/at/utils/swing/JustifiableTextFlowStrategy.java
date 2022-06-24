@@ -3,8 +3,6 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.text.*;
-import java.awt.*;
-import javax.swing.*;
 
 public class JustifiableTextFlowStrategy extends ParagraphView.FlowStrategy
 {

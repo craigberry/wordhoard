@@ -2,10 +2,7 @@ package edu.northwestern.at.wordhoard.model.querytool;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.io.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.*;
 
 /**	.
  *

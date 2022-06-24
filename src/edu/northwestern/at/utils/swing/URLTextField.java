@@ -2,12 +2,8 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.awt.dnd.*;
 import java.awt.datatransfer.*;
-import java.net.URL;
 
 /**	An XTextField which understands drag/drop of URLs.
  */

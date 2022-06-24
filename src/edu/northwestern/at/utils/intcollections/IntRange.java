@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.intcollections;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.io.*;
 
 /**	A range of integers.

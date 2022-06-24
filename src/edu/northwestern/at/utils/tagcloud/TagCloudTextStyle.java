@@ -2,9 +2,6 @@ package edu.northwestern.at.utils.tagcloud;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import edu.northwestern.at.utils.*;
-
 /**	Text styles for tag cloud.
  *
  *	<p>

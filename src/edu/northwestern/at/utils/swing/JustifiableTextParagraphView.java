@@ -3,8 +3,6 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.text.*;
-import java.awt.*;
-import javax.swing.*;
 
 /**	A paragraph view for styled text which can contain fully justified
  *	lines of text.

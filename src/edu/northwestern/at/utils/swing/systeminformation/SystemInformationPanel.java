@@ -3,16 +3,11 @@ package edu.northwestern.at.utils.swing.systeminformation;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.rmi.*;
-import java.util.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.swing.labeledsettingstable.*;
-import edu.northwestern.at.utils.sys.*;
 
 /** System information panel.
  *

@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing.find;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +13,6 @@ import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.speakers.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 
 /**	One row of the search criteria panel.

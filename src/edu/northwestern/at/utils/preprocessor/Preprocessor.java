@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.preprocessor;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 

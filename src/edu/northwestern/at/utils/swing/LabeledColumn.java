@@ -4,7 +4,6 @@ package edu.northwestern.at.utils.swing;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 
 /**	A labeled column of Swing components.
  *

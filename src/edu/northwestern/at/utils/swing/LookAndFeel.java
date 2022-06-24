@@ -3,19 +3,11 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
-import java.rmi.*;
 import javax.swing.*;
-import javax.swing.plaf.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.lang.reflect.Field;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.swing.plaf.smoothwindows.*;
 
 /**	Swing Look and Feel.
  *

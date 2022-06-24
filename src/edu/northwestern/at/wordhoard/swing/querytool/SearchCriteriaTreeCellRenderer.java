@@ -2,24 +2,13 @@ package edu.northwestern.at.wordhoard.swing.querytool;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
 import javax.swing.tree.*;
 
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.querytool.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.db.*;
-
 
 /**	The search results tree cell renderer.
  */

@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.model.search;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.text.*;
 
 import org.hibernate.*;
 

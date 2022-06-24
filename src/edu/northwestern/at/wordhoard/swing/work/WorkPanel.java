@@ -2,25 +2,18 @@ package edu.northwestern.at.wordhoard.swing.work;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
-import edu.northwestern.at.wordhoard.swing.annotations.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.annotations.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
 
 /**	A word-aware work display and navigation panel.
  */

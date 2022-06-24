@@ -4,7 +4,6 @@ package edu.northwestern.at.utils.plots;
 
 import java.awt.*;
 import java.io.*;
-import java.util.*;
 import javax.swing.*;
 
 import org.krysalis.jcharts.*;

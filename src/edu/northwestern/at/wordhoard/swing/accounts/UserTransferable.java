@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing.accounts;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.awt.datatransfer.*;
 
 public class UserTransferable implements Transferable {

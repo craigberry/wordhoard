@@ -2,18 +2,9 @@ package edu.northwestern.at.wordhoard.swing.querytool;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
-import java.awt.datatransfer.*;
-import java.awt.dnd.*;    
-
-import	edu.northwestern.at.wordhoard.model.querytool.*;
-import	edu.northwestern.at.wordhoard.model.grouping.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 
 public class SearchCriteriaTransferable implements Transferable {
 		SearchCriteriaTransferData data;

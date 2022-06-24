@@ -2,9 +2,6 @@ package edu.northwestern.at.utils.net.mime;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 /**	Thrown if a base64 string being decoded is invalid.
  */
 

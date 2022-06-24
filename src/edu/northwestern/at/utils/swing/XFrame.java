@@ -2,20 +2,11 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-import java.text.*;
-
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.*;
-import java.awt.print.*;
 
 import javax.swing.*;
 
-import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.swing.printing.*;
-import edu.northwestern.at.utils.*;
 
 /**	An extended version of a JFrame.
  *

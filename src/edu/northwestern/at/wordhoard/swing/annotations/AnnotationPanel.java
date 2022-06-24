@@ -3,18 +3,13 @@ package edu.northwestern.at.wordhoard.swing.annotations;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import java.io.*;
-import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
 
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.net.http.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;

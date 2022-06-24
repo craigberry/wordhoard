@@ -2,26 +2,16 @@ package edu.northwestern.at.wordhoard.swing.calculator.menus;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.lang.reflect.*;
-import java.util.*;
-
-import javax.help.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.sys.*;
-
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-import edu.northwestern.at.wordhoard.swing.dialogs.*;
 import edu.northwestern.at.wordhoard.swing.lexicon.*;
 import edu.northwestern.at.wordhoard.swing.tables.*;
 import edu.northwestern.at.wordhoard.swing.tcon.*;

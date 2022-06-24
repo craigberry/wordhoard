@@ -211,8 +211,6 @@ public class BlowfishECB
 	{
 		nLen -= nLen % BLOCKSIZE;
 
-		long lTemp;
-
 		int nC = nInPos + nLen;
 
 		// preload the pboxes into local variables, this should especially

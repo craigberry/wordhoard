@@ -2,14 +2,12 @@ package edu.northwestern.at.wordhoard.swing.accounts.groups;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
 import javax.swing.table.*;
 import java.util.*;
 
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.server.*;
-import edu.northwestern.at.wordhoard.server.model.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.UserGroupUtils;
 

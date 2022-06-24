@@ -2,8 +2,6 @@ package edu.northwestern.at.wordhoard.model.counts;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 import edu.northwestern.at.wordhoard.model.*;
 
 /**	Total counts of word forms in a work part.

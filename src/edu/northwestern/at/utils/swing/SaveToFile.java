@@ -3,7 +3,6 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.util.*;
 
 /**	SaveToFile -- interface for objects which know how to save
  *	their contents to a file.

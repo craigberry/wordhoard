@@ -3,12 +3,6 @@ package edu.northwestern.at.utils.net.mime;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
-import javax.swing.*;
-import javax.swing.text.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
 
 import edu.northwestern.at.utils.*;
 

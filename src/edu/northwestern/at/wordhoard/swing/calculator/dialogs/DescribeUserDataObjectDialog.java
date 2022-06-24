@@ -2,20 +2,13 @@ package edu.northwestern.at.wordhoard.swing.calculator.dialogs;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.lang.reflect.*;
-import java.util.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
 
 /**	Displays describe user data object dialog.

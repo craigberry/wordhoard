@@ -3,37 +3,23 @@ package edu.northwestern.at.wordhoard.swing.calculator.analysis;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.datatransfer.*;
 import java.awt.event.*;
 import java.util.*;
-import java.io.*;
-import java.net.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.table.*;
-import javax.swing.text.*;
 import javax.swing.text.html.*;
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.corpuslinguistics.*;
 import edu.northwestern.at.utils.math.*;
-import edu.northwestern.at.utils.math.matrix.*;
-import edu.northwestern.at.utils.math.distributions.*;
-import edu.northwestern.at.utils.math.statistics.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.swing.html.*;
 import edu.northwestern.at.utils.tagcloud.*;
 
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
-import edu.northwestern.at.wordhoard.swing.querytool.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
 
 /**	Base class for frequency analyses.

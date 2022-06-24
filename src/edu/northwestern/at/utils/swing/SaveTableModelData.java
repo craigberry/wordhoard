@@ -5,7 +5,6 @@ package edu.northwestern.at.utils.swing;
 import java.awt.*;
 import java.io.*;
 
-import javax.swing.*;
 import javax.swing.table.*;
 
 import edu.northwestern.at.utils.*;

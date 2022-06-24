@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.math.rootfinders;
 
 /*	Please see the license information at the end of this file. */
 
-import edu.northwestern.at.utils.math.*;
-
 /**	Interface for testing for convergence in root finders.
  */
 

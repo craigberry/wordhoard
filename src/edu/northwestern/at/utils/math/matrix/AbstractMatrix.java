@@ -2,10 +2,6 @@ package edu.northwestern.at.utils.math.matrix;
 
 /*	Please see the license information at the end of this file. */
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-
 /**	Abstract class which implements Matrix interface.
  *
  *	<p>

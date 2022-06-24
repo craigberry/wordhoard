@@ -2,8 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
-import java.awt.Component;
 import java.io.*;
 import java.util.*;
 

@@ -4,26 +4,16 @@ package edu.northwestern.at.wordhoard.swing.annotations;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.datatransfer.*;
-import java.beans.*;
-import java.io.*;
-import java.net.URL;
 import java.util.*;
 
 import javax.swing.text.*;
-import javax.swing.undo.*;
-import javax.swing.event.*;
 import javax.swing.border.*;
 import javax.swing.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.net.http.*;
 import edu.northwestern.at.utils.swing.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.annotations.*;
-import edu.northwestern.at.wordhoard.swing.work.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;

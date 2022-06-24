@@ -2,9 +2,6 @@ package edu.northwestern.at.wordhoard.model.counts;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 

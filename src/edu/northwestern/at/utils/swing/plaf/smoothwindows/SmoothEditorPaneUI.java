@@ -3,7 +3,6 @@ package edu.northwestern.at.utils.swing.plaf.smoothwindows;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
 import com.sun.java.swing.plaf.windows.*;
 import java.awt.*;
 import javax.swing.*;

@@ -4,7 +4,6 @@ package edu.northwestern.at.wordhoard.model.search;
 
 import org.hibernate.*;
 
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.speakers.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;

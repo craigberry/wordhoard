@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 
 /*	Please see the license information at the end of this file. */
 
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.*;
 
 /**	Login/logout utilities to support scripts.

@@ -2,9 +2,6 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-import javax.swing.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 

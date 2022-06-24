@@ -3,8 +3,6 @@ package edu.northwestern.at.utils;
 /*	Please see the license information at the end of this file. */
 
 import java.io.Serializable;
-import java.util.*;
-import edu.northwestern.at.utils.*;
 
 /**	Associates a string with a score.
  */

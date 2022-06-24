@@ -2,17 +2,7 @@ package edu.northwestern.at.utils.math.matrix;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.text.*;
-import java.util.*;
-import java.io.*;
-
-import javax.swing.*;
-import javax.swing.table.*;
-
-import edu.northwestern.at.utils.math.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /**	Displays matrix entries in a GUI table.
  */

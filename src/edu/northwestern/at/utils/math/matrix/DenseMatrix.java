@@ -5,7 +5,7 @@ package edu.northwestern.at.utils.math.matrix;
 /**	Implements a matrix as a dense two-dimensional array of doubles.
  */
 
-public class DenseMatrix extends AbstractMatrix implements Matrix
+public class DenseMatrix extends AbstractMatrix
 {
 	/** The matrix contents as a two-dimensional array of doubles. */
 

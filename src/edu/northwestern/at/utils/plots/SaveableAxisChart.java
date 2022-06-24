@@ -3,16 +3,10 @@ package edu.northwestern.at.utils.plots;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.util.*;
-import javax.swing.*;
 
-import org.krysalis.jcharts.*;
-import org.krysalis.jcharts.chartData.*;
 import org.krysalis.jcharts.chartData.interfaces.*;
 import org.krysalis.jcharts.axisChart.*;
-import org.krysalis.jcharts.types.*;
 import org.krysalis.jcharts.properties.*;
-import org.krysalis.jcharts.properties.util.*;
 
 import edu.northwestern.at.utils.swing.*;
 

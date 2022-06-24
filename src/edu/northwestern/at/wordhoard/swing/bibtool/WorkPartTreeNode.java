@@ -2,15 +2,7 @@ package edu.northwestern.at.wordhoard.swing.bibtool;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
-import javax.swing.text.*;
 import javax.swing.tree.*;
-import javax.swing.event.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /** Defines a node for a WorkPartTreeNode. This class indicates whether node is not a full workpart, but just structure wrapper for some children. */
 

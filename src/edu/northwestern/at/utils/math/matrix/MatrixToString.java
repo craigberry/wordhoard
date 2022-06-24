@@ -2,11 +2,8 @@ package edu.northwestern.at.utils.math.matrix;
 
 /*	Please see the license information at the end of this file. */
 
-import java.text.*;
 import java.util.*;
-import java.io.*;
 
-import edu.northwestern.at.utils.math.ArithUtils;
 import edu.northwestern.at.utils.PrintfFormat;
 import edu.northwestern.at.utils.StringUtils;
 

@@ -2,12 +2,7 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.text.*;
 
 /** Listens for changes to document being edited. */
 

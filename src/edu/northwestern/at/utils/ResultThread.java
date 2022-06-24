@@ -2,8 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.lang.*;
-
 /**	Thread class that provides an object for storing results.
  *
  *	<p>

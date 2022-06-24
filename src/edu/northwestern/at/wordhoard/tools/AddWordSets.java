@@ -2,23 +2,11 @@ package edu.northwestern.at.wordhoard.tools;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.awt.event.*;
-import java.lang.reflect.*;
-import java.io.*;
 import java.util.*;
 
-import javax.swing.text.*;
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.border.*;
-import javax.swing.tree.*;
 
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 

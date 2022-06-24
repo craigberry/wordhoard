@@ -2,8 +2,6 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 

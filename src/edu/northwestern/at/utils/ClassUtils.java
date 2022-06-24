@@ -2,9 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.text.*;
-
 /**	Class utilities.
  *
  *	<p>

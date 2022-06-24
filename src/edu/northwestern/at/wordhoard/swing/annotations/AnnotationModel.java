@@ -6,7 +6,6 @@ import java.util.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
 
 /**	An annotation model.

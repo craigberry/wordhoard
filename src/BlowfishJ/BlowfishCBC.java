@@ -168,8 +168,6 @@ public class BlowfishCBC extends BlowfishECB
 
 		nLen -= nLen % BLOCKSIZE;
 
-		long lTemp;
-
 		int nC = nInPos + nLen;
 
 		int[] pbox = m_pbox;

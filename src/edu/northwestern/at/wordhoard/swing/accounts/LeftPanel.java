@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.utils.swing.*;
 
 /**	The left panel of the manage accounts window.

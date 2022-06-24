@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.net.ldap;
 
 /*	Please see the license information at the end of this file. */
 
-import java.net.*;
-import java.io.*;
 import java.util.*;
 
 /**	The LDAP directory.

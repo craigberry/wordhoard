@@ -4,14 +4,8 @@ package edu.northwestern.at.wordhoard.swing.calculator.analysis;
 
 import java.util.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.math.*;
-import edu.northwestern.at.utils.math.matrix.*;
-import edu.northwestern.at.utils.math.distributions.*;
-import edu.northwestern.at.utils.math.statistics.*;
 import edu.northwestern.at.utils.corpuslinguistics.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
 
 /**	Multiword unit data.
  *

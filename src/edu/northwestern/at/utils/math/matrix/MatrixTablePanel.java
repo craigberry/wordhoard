@@ -8,8 +8,6 @@ import java.awt.datatransfer.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
-import edu.northwestern.at.utils.math.matrix.*;
-
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
 

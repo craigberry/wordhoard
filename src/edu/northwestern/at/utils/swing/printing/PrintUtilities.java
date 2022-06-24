@@ -3,15 +3,11 @@ package edu.northwestern.at.utils.swing.printing;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.*;
 import java.util.*;
 import java.awt.print.*;
-import java.awt.image.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;

@@ -2,21 +2,15 @@ package edu.northwestern.at.wordhoard.swing.tables;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
 import javax.swing.table.*;
 import java.awt.datatransfer.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.find.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.db.*;
 

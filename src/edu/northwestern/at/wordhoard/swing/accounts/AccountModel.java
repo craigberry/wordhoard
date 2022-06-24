@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing.accounts;
 
 /*	Please see the license information at the end of this file. */
 
-import javax.swing.*;
 import javax.swing.table.*;
 import java.util.*;
 

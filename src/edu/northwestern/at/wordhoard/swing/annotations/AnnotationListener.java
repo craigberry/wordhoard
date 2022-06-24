@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.swing.annotations;
 /*	Please see the license information at the end of this file. */
 
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
 
 /**	An annotation listener.

@@ -3,10 +3,8 @@ package edu.northwestern.at.wordhoard.tools;
 /*	Please see the license information at the end of this file. */
 
 import java.io.*;
-import java.lang.reflect.*;
 import java.util.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;

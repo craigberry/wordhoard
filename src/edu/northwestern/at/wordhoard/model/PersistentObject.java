@@ -2,9 +2,6 @@ package edu.northwestern.at.wordhoard.model;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 /**	A persistent object.
  *
  *	<p>All persistent objects have unique primary key fields named "id" of

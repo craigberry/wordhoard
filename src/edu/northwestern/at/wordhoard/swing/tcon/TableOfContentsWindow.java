@@ -2,23 +2,15 @@ package edu.northwestern.at.wordhoard.swing.tcon;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
-import javax.swing.tree.*;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.event.*;
-import java.text.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.info.*;
 import edu.northwestern.at.wordhoard.swing.find.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.sys.*;
 
 /**	The table of contents window.
  */

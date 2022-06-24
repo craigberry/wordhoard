@@ -2,9 +2,7 @@ package edu.northwestern.at.utils.corpuslinguistics;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import edu.northwestern.at.utils.math.*;
-import edu.northwestern.at.utils.math.statistics.*;
 import edu.northwestern.at.utils.math.distributions.*;
 
 /**	Computes frequency-based statistics for comparing corpora.

@@ -5,16 +5,9 @@ package edu.northwestern.at.wordhoard.swing.text;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
 import java.awt.event.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-import java.awt.datatransfer.*;
-import java.rmi.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.dialogs.*;
 import edu.northwestern.at.wordhoard.swing.annotations.*;
@@ -22,8 +15,7 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
-import edu.northwestern.at.wordhoard.server.*;
-import edu.northwestern.at.wordhoard.server.model.*;
+
 
 /**	A work part text component.
  */

@@ -8,7 +8,6 @@ import javax.swing.event.*;
 import edu.northwestern.at.utils.swing.LabeledColumn;
 import edu.northwestern.at.utils.swing.ProgressReporter;
 import edu.northwestern.at.utils.swing.ResultsPanel;
-import edu.northwestern.at.wordhoard.swing.*;
 
 /**	Interface implemented by WordHoard analysis classes.
  */

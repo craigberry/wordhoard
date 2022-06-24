@@ -2,9 +2,6 @@ package edu.northwestern.at.wordhoard.model;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 /**	An object which has a persistent tag.
  */
 

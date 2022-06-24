@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-import edu.northwestern.at.wordhoard.swing.dialogs.*;
-import edu.northwestern.at.utils.swing.*;
-
 public class Test {
 
 	private static class MainWindow extends JFrame {

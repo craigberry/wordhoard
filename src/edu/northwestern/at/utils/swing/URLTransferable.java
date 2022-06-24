@@ -7,10 +7,6 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 
 import java.io.IOException;
-import java.io.File;
-
-import java.util.Vector;
-import javax.swing.tree.*;
 
 /** Implements a transferable class for URLs. */
 

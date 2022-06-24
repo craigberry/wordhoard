@@ -2,11 +2,9 @@ package edu.northwestern.at.utils.swing.printing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.print.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /** Repagination progress dialog.
  *

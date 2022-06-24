@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.db.mysql;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
 
 /**	A MySQL insert statement generator.
  *

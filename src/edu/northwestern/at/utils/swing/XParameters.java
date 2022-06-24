@@ -3,7 +3,6 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 
 /**	Parameters for the X classes.

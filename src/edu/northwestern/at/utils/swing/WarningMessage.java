@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.styledtext.*;
 
 /**	A warning message alert.

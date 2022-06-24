@@ -16,7 +16,6 @@ import java.awt.dnd.*;
 import edu.northwestern.at.wordhoard.model.userdata.UserGroup;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.UserGroupUtils;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.wordhoard.server.model.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.accounts.*;
 import edu.northwestern.at.utils.*;

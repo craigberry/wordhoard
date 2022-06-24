@@ -2,12 +2,9 @@ package edu.northwestern.at.wordhoard.swing.calculator.menus;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.lang.reflect.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;

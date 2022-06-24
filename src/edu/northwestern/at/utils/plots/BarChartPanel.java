@@ -11,7 +11,6 @@ import javax.swing.*;
 
 import org.krysalis.jcharts.*;
 import org.krysalis.jcharts.chartData.*;
-import org.krysalis.jcharts.axisChart.*;
 import org.krysalis.jcharts.axisChart.customRenderers.axisValue.renderers.*;
 import org.krysalis.jcharts.types.*;
 import org.krysalis.jcharts.properties.*;
@@ -26,7 +25,7 @@ import edu.northwestern.at.utils.swing.printing.*;
 
 public class BarChartPanel
 	extends ResultsPanel
-	implements PrintableContents, SaveToFile
+	implements PrintableContents
 {
 	/**	The bar chart.
 	 */

@@ -2,19 +2,10 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
-import java.net.*;
-import java.text.*;
-
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /**	A small combo box.
  *

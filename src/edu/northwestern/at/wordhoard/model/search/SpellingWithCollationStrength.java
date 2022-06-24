@@ -7,7 +7,6 @@ import java.text.*;
 import org.hibernate.*;
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 

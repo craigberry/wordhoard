@@ -5,10 +5,8 @@ package edu.northwestern.at.utils.net.ldap;
 import java.util.*;
 import javax.naming.*;
 import javax.naming.directory.*;
-import javax.naming.ldap.*;
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.net.ssl.*;
 
 /** Returns LDAP attributes for a search query involving one or more attributes.
  */

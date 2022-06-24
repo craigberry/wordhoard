@@ -3,7 +3,6 @@ package edu.northwestern.at.utils.math.matrix;
 /*	Please see the license information at the end of this file. */
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**	Transform all matrix entries element-by-element.
  */

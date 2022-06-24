@@ -3,14 +3,9 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.lang.reflect.*;
 
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.cql.*;
 
 /**	CQL Query utilities.

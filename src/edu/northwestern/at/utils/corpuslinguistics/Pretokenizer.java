@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.corpuslinguistics;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.StringTokenizer;
-
 /**	Prepares a string for tokenization.
  */
 

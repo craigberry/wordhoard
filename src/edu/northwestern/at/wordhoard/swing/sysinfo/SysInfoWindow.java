@@ -2,13 +2,8 @@ package edu.northwestern.at.wordhoard.swing.sysinfo;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.text.*;
 
 import edu.northwestern.at.utils.db.*;
 import edu.northwestern.at.utils.swing.*;

@@ -41,7 +41,6 @@ import edu.northwestern.at.wordhoard.model.querytool.*;
 import edu.northwestern.at.wordhoard.model.bibtool.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.work.*;
-import edu.northwestern.at.wordhoard.swing.querytool.*;
 import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
 import edu.northwestern.at.wordhoard.swing.concordance.*;

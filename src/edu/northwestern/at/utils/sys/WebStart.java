@@ -2,13 +2,10 @@ package edu.northwestern.at.utils.sys;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.io.*;
 import javax.jnlp.*;
 import java.net.*;
 import java.awt.Desktop;
-
-import edu.northwestern.at.utils.*;
 
 /**	Web Start Manager.
  *

@@ -4,8 +4,6 @@ package edu.northwestern.at.utils.swing;
 
 import javax.swing.*;
 import javax.swing.text.*;
-import java.awt.*;
-import java.awt.event.*;
 
 /**	A JTextField with different defaults and behavior.
  *

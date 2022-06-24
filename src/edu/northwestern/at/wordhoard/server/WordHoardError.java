@@ -2,9 +2,6 @@ package edu.northwestern.at.wordhoard.server;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 /**	A WordHoard error.
  */
 

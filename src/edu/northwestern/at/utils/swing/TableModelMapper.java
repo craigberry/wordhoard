@@ -2,14 +2,10 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.io.*;
 import java.util.*;
 
 import javax.swing.*;
 import javax.swing.table.*;
-
-import edu.northwestern.at.utils.*;
 
 /**	Table model that eliminates hidden (zero width) columns.
  */

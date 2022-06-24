@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import edu.northwestern.at.utils.*;
-
 /**	An error message alert.
  *
  *	<p>The alert includes the PLAF error icon, an error message, and

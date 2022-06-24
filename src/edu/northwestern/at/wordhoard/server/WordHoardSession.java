@@ -2,16 +2,11 @@ package edu.northwestern.at.wordhoard.server;
 
 /*	Please see the license information at the end of this file. */
 
-import java.lang.*;
-import java.lang.reflect.*;
 import java.rmi.*;
 import java.util.*;
 
-import org.hibernate.*;
-import org.hibernate.exception.*;
 
 import edu.northwestern.at.utils.db.PersistenceException;
-import edu.northwestern.at.utils.swing.ProgressReporter;
 import edu.northwestern.at.wordhoard.model.userdata.UserDataObject;
 import edu.northwestern.at.wordhoard.model.userdata.WordSet;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.BadOwnerException;

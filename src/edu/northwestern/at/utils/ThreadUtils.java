@@ -2,13 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.io.*;
-import java.text.*;
-import java.util.*;
-
-import edu.northwestern.at.utils.swing.SwingUtils;
-
 /**	Thread utilities.
  *
  *	<p>

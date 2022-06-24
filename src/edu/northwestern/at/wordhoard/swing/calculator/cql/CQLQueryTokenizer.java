@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.cql;
 /*	Please see the license information at the end of this file. */
 
 import java.io.*;
-import java.util.*;
 
 /**	A tokenizer for parsing a WordHoard Corpus Query Language query. */
 

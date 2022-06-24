@@ -3,16 +3,12 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.Component;
-import java.awt.Insets;
 import javax.swing.ListCellRenderer;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.BorderFactory;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import javax.swing.plaf.BorderUIResource;
 
 public class RowHeaderRenderer
     extends DefaultTableCellRenderer

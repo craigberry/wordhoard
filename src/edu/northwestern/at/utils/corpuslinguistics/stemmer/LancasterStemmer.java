@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.corpuslinguistics.stemmer;
 
 /*	Please see the license information in the header below. */
 
-import java.io.*;
-import java.lang.*;
 import java.util.*;
 
 /**	LancasterStemmer: Implements the Lancaster (Paice/Husk) word stemmer.

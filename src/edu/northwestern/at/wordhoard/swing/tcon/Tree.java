@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing.tcon;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.tree.*;

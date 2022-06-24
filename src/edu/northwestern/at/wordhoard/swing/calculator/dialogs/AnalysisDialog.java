@@ -9,15 +9,12 @@ import javax.swing.*;
 
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
 
 /**	Common base for frequency and collocation dialogs.

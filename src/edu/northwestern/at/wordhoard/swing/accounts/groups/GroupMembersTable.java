@@ -4,7 +4,6 @@ package edu.northwestern.at.wordhoard.swing.accounts.groups;
 
 import javax.swing.*;
 import javax.swing.table.*;
-import javax.swing.event.*;
 import java.awt.*;
 
 /**	Group table component.

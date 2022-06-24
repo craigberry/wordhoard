@@ -4,11 +4,8 @@ package edu.northwestern.at.wordhoard.swing.text;
 
 import java.util.*;
 import java.awt.*;
-import javax.swing.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.dialogs.*;
 
 /**	Font manager.

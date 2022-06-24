@@ -3,22 +3,12 @@ package edu.northwestern.at.utils.swing.printing;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.text.StyledEditorKit.*;
-import javax.swing.event.*;
-import javax.swing.plaf.basic.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.datatransfer.*;
 import java.awt.print.*;
-import java.awt.geom.*;
-import java.awt.image.*;
 
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /**	Prints a JTable. */
 

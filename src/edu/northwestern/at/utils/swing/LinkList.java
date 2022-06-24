@@ -3,13 +3,8 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.event.*;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /** LinkList:  a list containing clickable linked items.
  */

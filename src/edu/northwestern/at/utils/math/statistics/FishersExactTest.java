@@ -3,8 +3,6 @@ package edu.northwestern.at.utils.math.statistics;
 /*	Please see the license information at the end of this file. */
 
 import edu.northwestern.at.utils.math.Factorial;
-import edu.northwestern.at.utils.math.matrix.*;
-import edu.northwestern.at.utils.math.distributions.Gamma;
 
 /** Calculate Fisher's exact test for a 2x2 frequency table.
  */

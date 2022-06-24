@@ -4,9 +4,6 @@ package edu.northwestern.at.utils.swing.styledtext;
 
 import java.io.*;
 import java.awt.datatransfer.*;
-import javax.swing.text.*;
-import javax.swing.text.StyledEditorKit.*;
-import javax.swing.text.rtf.*;
 
 import edu.northwestern.at.utils.*;
 

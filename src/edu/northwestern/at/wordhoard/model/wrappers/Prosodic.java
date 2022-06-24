@@ -4,10 +4,8 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 
 import org.hibernate.*;
 
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;
 
 /**	A prosodic attribute wrapper.

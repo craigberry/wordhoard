@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.net.ssl;
 
 /*	Please see the license information at the end of this file. */
 
-import java.security.cert.X509Certificate;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;

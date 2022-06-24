@@ -4,7 +4,6 @@ package edu.northwestern.at.wordhoard.model.search;
 
 import org.hibernate.*;
 
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 
 /**	A word search criterion.

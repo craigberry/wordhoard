@@ -4,11 +4,7 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import java.util.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
 /**	A phrase.
  *

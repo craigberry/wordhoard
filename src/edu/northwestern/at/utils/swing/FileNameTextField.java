@@ -3,15 +3,10 @@ package edu.northwestern.at.utils.swing;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.awt.dnd.*;
 import java.awt.datatransfer.*;
 import java.util.*;
 import java.io.*;
-import java.net.URL;
-
-import edu.northwestern.at.utils.*;
 
 /**	An XTextField which understands dragging of file names from the
  *	system file browser.

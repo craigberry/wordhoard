@@ -2,15 +2,12 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import java.awt.*;
 import java.awt.dnd.*;
-import java.awt.datatransfer.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.awt.geom.*;
 import javax.swing.*;
-import javax.swing.tree.*;
 
 /**	An abstract base class for drop targets.
  *

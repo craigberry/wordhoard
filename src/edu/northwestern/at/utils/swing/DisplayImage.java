@@ -5,12 +5,8 @@ package edu.northwestern.at.utils.swing;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-import java.util.*;
-import java.awt.print.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.*;
 
 /** Displays a titled image in a dialog box with a close button.
  *

@@ -1,24 +1,19 @@
 package edu.northwestern.at.wordhoard.swing.calculator;
 
 /*	Please see the license information at the end of this file. */
+import java.awt.Dimension;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.lang.reflect.*;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JTabbedPane;
+import javax.swing.border.Border;
 
-import javax.help.*;
-import javax.swing.*;
-import javax.swing.border.*;
-
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
-
-import edu.northwestern.at.wordhoard.*;
-import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.menus.*;
-import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
+import edu.northwestern.at.utils.swing.ResultsPanel;
+import edu.northwestern.at.wordhoard.swing.AbstractWindow;
+import edu.northwestern.at.wordhoard.swing.calculator.menus.BaseMenu;
+import edu.northwestern.at.wordhoard.swing.calculator.widgets.TabbedPaneData;
 
 /**	WordHoard tabbed pane.
  *

@@ -13,8 +13,6 @@ import java.awt.datatransfer.*;
 import java.awt.image.*;
 import java.awt.print.*;
 import javax.swing.undo.*;
-import javax.swing.text.StyledEditorKit.*;
-import javax.swing.text.rtf.*;
 import javax.swing.text.html.HTMLEditorKit;
 
 import edu.northwestern.at.utils.swing.icons.*;

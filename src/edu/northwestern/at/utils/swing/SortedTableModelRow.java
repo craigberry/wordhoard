@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 /** Simple concrete implementation of sorted table model row.
  *
  *	<p>

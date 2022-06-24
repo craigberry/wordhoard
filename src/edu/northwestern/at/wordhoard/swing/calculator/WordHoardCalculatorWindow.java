@@ -6,29 +6,23 @@ import bsh.*;
 import bsh.util.*;
 
 import java.awt.*;
-import java.awt.datatransfer.*;
 import java.awt.event.*;
 
 import java.io.*;
 import java.lang.reflect.*;
 
-import javax.help.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.swing.notepad.*;
 import edu.northwestern.at.utils.swing.printing.*;
 
-import edu.northwestern.at.wordhoard.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.server.model.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.menus.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
-import edu.northwestern.at.wordhoard.swing.dialogs.*;
 import edu.northwestern.at.wordhoard.swing.tcon.*;
 
 /**	Main WordHoard calculator window.

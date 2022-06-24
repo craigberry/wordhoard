@@ -4,7 +4,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.*;
 import java.lang.reflect.*;
 import java.util.*;
 import javax.swing.*;

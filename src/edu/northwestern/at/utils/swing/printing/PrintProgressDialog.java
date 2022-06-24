@@ -6,7 +6,6 @@ import java.awt.print.*;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
 
 /** Print progress dialog.
  *

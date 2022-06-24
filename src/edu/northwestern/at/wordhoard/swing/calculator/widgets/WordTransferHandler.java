@@ -6,8 +6,6 @@ import java.awt.datatransfer.*;
 import java.text.*;
 import javax.swing.*;
 
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.*;

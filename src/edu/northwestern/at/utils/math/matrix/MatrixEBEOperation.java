@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.math.matrix;
 
 /*	Please see the license information at the end of this file. */
 
-import edu.northwestern.at.utils.math.matrix.*;
-
 /**	Perform element-by-element operation on a matrix.
  *
  *	<p>

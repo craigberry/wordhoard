@@ -3,16 +3,11 @@ package edu.northwestern.at.wordhoard.swing.accounts;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
 import java.awt.datatransfer.*;
-import javax.swing.border.*;
 
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.accounts.*;
-import edu.northwestern.at.utils.swing.*;
 
 /**	The user panel of the manage groups window.
  */

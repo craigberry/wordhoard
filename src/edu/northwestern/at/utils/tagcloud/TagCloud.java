@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.tagcloud;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
 import edu.northwestern.at.utils.*;
 
 /**	Generates HTML for a tag cloud.

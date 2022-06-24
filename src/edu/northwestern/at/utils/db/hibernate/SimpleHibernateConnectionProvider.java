@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.db.hibernate;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.sql.*;
 import java.util.*;
 

@@ -5,7 +5,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.cql;
 import java.io.*;
 import java.util.*;
 
-import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;

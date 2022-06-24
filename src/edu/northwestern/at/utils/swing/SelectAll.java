@@ -2,8 +2,6 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 /**	SelectAll -- interface for objects implementing "select all" and
 *	"unselect" actions.
  */

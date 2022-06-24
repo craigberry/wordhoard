@@ -2,8 +2,6 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-
 /**	ArgumentList.
  *
  *	<p>ArgumentList provides methods for building an argument list for use

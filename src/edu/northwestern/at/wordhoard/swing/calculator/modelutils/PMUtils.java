@@ -2,10 +2,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import javax.swing.*;
 
 import edu.northwestern.at.wordhoard.model.PersistenceManager;
 import edu.northwestern.at.wordhoard.model.PersistentObject;

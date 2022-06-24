@@ -3,9 +3,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 /*	Please see the license information at the end of this file. */
 
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.*;
 

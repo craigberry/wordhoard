@@ -3,16 +3,12 @@ package edu.northwestern.at.wordhoard.swing.calculator.widgets;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import java.io.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
 import edu.northwestern.at.utils.math.distributions.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.swing.*;
 
 /**	A table cell renderer which formats cell entries using PrintFFormat.
  */

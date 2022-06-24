@@ -2,13 +2,8 @@ package edu.northwestern.at.utils;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
 import java.awt.*;
 import java.awt.datatransfer.*;
-
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.swing.styledtext.*;
 
 /**	The system clipboard.
  *

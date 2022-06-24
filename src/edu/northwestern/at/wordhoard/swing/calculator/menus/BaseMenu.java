@@ -10,10 +10,8 @@ import java.awt.event.*;
 import java.lang.reflect.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.text.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.*;
 
 import edu.northwestern.at.wordhoard.swing.*;

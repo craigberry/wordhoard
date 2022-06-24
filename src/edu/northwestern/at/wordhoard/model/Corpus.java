@@ -8,7 +8,6 @@ import java.io.*;
 import org.hibernate.*;
 
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;

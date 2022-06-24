@@ -4,10 +4,7 @@ package edu.northwestern.at.utils.math.matrix;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.List;
 import java.util.ArrayList;
-import java.io.StringReader;
-import java.io.BufferedReader;
 
 /**	MatrixFromString provides methods for parsing a string containing a matrix.
  *

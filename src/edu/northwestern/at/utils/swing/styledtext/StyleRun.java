@@ -2,12 +2,6 @@ package edu.northwestern.at.utils.swing.styledtext;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
-import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
-
 /**	A style run.
  *
  *	<p>This lightweight class records style information for a run of

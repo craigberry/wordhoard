@@ -3,12 +3,7 @@ package edu.northwestern.at.wordhoard.swing.querytool;
 /*	Please see the license information at the end of this file. */
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import javax.swing.tree.*;
-import java.awt.datatransfer.*;
-import java.awt.dnd.*;
 
 public class SearchCriteriaDragMouseHandler implements MouseListener, MouseMotionListener {
 	int mouseButtonDown = MouseEvent.NOBUTTON;

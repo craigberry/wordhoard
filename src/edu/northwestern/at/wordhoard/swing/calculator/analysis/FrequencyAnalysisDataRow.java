@@ -2,9 +2,6 @@ package edu.northwestern.at.wordhoard.swing.calculator.analysis;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.swing.SortedTableModel;
 

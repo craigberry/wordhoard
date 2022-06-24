@@ -10,8 +10,6 @@ import java.awt.event.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
 
 /**	Author criterion component.

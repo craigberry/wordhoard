@@ -35,10 +35,8 @@ package edu.northwestern.at.utils.swing;
  */
 
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.event.*;
 import java.util.Vector;
-import java.awt.*;
 import javax.swing.tree.*;
 
 public class TreeToListModel

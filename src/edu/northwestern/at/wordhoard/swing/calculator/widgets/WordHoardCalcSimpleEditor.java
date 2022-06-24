@@ -2,16 +2,9 @@ package edu.northwestern.at.wordhoard.swing.calculator.widgets;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
-import java.io.StringReader;
-
-import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.*;
 
 import bsh.*;
-import bsh.util.*;
 
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.swing.notepad.*;

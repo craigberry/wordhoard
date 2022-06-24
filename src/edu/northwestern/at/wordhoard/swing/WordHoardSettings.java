@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.InputStream;
 import java.util.*;
 import javax.swing.*;
 

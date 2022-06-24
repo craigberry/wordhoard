@@ -2,13 +2,9 @@ package edu.northwestern.at.utils.swing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
-import java.rmi.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.*;
 
 /**	Table cell renderer class for text with support for underlined link.
  *

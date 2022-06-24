@@ -2,7 +2,6 @@ package edu.northwestern.at.utils.swing.printing;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.print.*;
 
 /** PrintableContainer -- interface for window or panel components that handle
  *	printing.
