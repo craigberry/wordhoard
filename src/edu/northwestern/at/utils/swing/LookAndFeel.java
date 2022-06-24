@@ -5,7 +5,6 @@ package edu.northwestern.at.utils.swing;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
 
 import edu.northwestern.at.utils.*;
 
@@ -19,10 +18,6 @@ import edu.northwestern.at.utils.*;
 
 public class LookAndFeel
 {
-	/* Relative subdirectory in which look and feel files are stored. */
-
-    protected static String lookAndFeelDirectory = "skins/";
-
 	/* Information about a supported look and feel class. */
 
 	public static class ExtendedLookAndFeelInfo
@@ -297,30 +292,7 @@ public class LookAndFeel
 						continue;
 					}
 				}
-
-									//	Pick up the look and feel theme
-									//	name, if any.
-
-				String themeName = lookAndFeels[ i ].themeName;
-
-									// For a theme, check that the theme
-									// name file actually exists.
-
-				if (	( themeName.length() > 0 ) &&
-						( lookAndFeels[ i ].isThemeFile ) )
-				{
-					java.io.File f =
-						new java.io.File( lookAndFeelDirectory + themeName );
-
-					if ( f.exists() )
-					{
-						looks.add( lookAndFeels[ i ] );
-					}
-				}
-				else
-				{
-					looks.add( lookAndFeels[ i ] );
-				}
+				looks.add( lookAndFeels[ i ] );
 			}
 			catch ( ClassNotFoundException e )
 			{
@@ -350,8 +322,6 @@ public class LookAndFeel
 	{
 		boolean	result	= false;
 
-		javax.swing.LookAndFeel currentLookAndFeel = UIManager.getLookAndFeel();
-
 		try
 		{
 			result	=
@@ -369,8 +339,7 @@ public class LookAndFeel
      *
      *	@param	lookAndFeelName		The name of the new look and feel.
      *								This is converted to appropriate
-     *								class name and/or file name
-     *								references to load the selected
+     *								class name to load the selected
      *								look and feel.  If the selected
      *								look and feel is not available,
      *								the default system look and feel
@@ -378,13 +347,6 @@ public class LookAndFeel
      *
      *	@return						true if selected look and feel set.
      *
-     *	<p>
-     *	Reflection is used to invoke the alternative look and feel classes
-     *	so no errors will occur if the libraries implementing the new
-     *	interfaces are missing from the client system.  Some interfaces
-     *	(e.g., "windows") only work on certain systems because of
-     *	licensing issues.
-     *	</p>
      */
 
 	public static boolean setLookAndFeel( String lookAndFeelName )
@@ -397,40 +359,6 @@ public class LookAndFeel
 			{
 				try
 				{
-					String themeName = lookAndFeels[ i ].themeName;
-
-									// Right now only the skinLF-based guys
-									// use theme packs.  These are all files
-									// in the lookAndFeelDirectory.
-
-					if ( themeName.length() > 0 )
-					{
-						Class Skin =
-							Class.forName( "com.l2fprod.gui.plaf.skin.Skin" );
-
-						ArgumentList argList = new ArgumentList( 1 );
-
-						argList.setArgument(
-							0 , lookAndFeelDirectory + themeName );
-
-						Object skin =
-							DynamicCall.dynamicCall(
-								"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-								"loadThemePack",
-								argList );
-
-						ArgumentList argList2 = new ArgumentList( 1 );
-
-						Skin =
-							Class.forName( "com.l2fprod.gui.plaf.skin.Skin" );
-
-						argList2.setArgument( 0 , skin, Skin );
-
-						DynamicCall.dynamicCall(
-								"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-								"setSkin",
-								argList2 );
-					}
 									// Set new look and feel.
 
 					setLookAndFeelByClassName( lookAndFeels[ i ].className );
@@ -440,22 +368,6 @@ public class LookAndFeel
 					updateLookAndFeel();
 
 					result	= true;
-				}
-
-				catch ( ClassNotFoundException ignored )
-				{
-				}
-				catch ( InstantiationException ignored )
-				{
-				}
-				catch ( IllegalAccessException ignored )
-				{
-				}
-				catch ( InvocationTargetException ignored )
-				{
-				}
-				catch ( NoSuchMethodException ignored )
-				{
 				}
 				finally
 				{
