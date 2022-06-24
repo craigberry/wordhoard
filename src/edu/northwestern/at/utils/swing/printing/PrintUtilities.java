@@ -329,23 +329,11 @@ public class PrintUtilities
 		try
 		{
 								// Set up a printer job.
-								// Note: On Mac OS X we always get a fresh
-								// PrinterJob object. If we don't, for some
-								// reason we get tons of "invalid context"
-								// core graphics error messages and
-								// blank pages printed.
 
 			if	( printerJob == null )
 			{
-				if ( Env.MACOSX && !Env.IS_JAVA_14_OR_LATER )
-				{
-					printerJob = PrinterJob.getPrinterJob();
-				}
-				else
-				{
-					printerJob	= PrinterSettings.printerJob;
-					pageFormat	= PrinterSettings.pageFormat;
-				}
+				printerJob	= PrinterSettings.printerJob;
+				pageFormat	= PrinterSettings.pageFormat;
 			}
 								// If no page setup yet performed, get default
 								// page setup for the current printer.

@@ -60,20 +60,6 @@ public class Fonts
 
 	public static void enableSystemFontSettings( boolean doEnable )
 	{
-/*
-		if ( Env.WINDOWSOS && Env.IS_JAVA_14_OR_LATER )
-		{
-			javax.swing.LookAndFeel currentLookAndFeel =
-				UIManager.getLookAndFeel();
-
-			if (	( currentLookAndFeel != null ) &&
-					currentLookAndFeel.isNativeLookAndFeel() )
-			{
-				UIManager.put(
-					"Application.useSystemFontSettings" , new Boolean( doEnable ) );
-			}
-		}
-*/
 		UIManager.put(
 			"Application.useSystemFontSettings" , new Boolean( doEnable ) );
 	}

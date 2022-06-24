@@ -144,13 +144,10 @@ abstract public class XDragSource
 			new Point(bounds.x-mouseLocation.x, bounds.y-mouseLocation.y);
 		if (!dragImageSupported)
 		{
-			if (Env.IS_JAVA_142_OR_LATER)
-			{
-				ImageUtils.makeGhost(image);
-				XDropTarget.setGhost(image, offset);
-			}
+			ImageUtils.makeGhost(image);
+			XDropTarget.setGhost(image, offset);
 		} else
-		if (Env.MACOSX && Env.IS_JAVA_14_OR_LATER)
+		if (Env.MACOSX)
 			ImageUtils.makeGhost(image);
 		currentDragSource = component;
 		currentDragData = transferable;

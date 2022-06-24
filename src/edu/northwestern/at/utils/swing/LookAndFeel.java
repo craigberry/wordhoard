@@ -507,46 +507,21 @@ public class LookAndFeel
 	{
 								//	For windows, enable global font
 								//	smoothing using the SmoothWindows
-								//	look and feel for Java v1.4 or later.
+								//	look and feel.
 		if ( Env.WINDOWSOS )
 		{
 			Fonts.enableSystemFontSettings( true );
 
-			if ( Env.IS_JAVA_14_OR_LATER )
-			{
-				XParameters.tableFont	= null;
-				XParameters.treeFont	= null;
-				XParameters.listFont	= null;
-			}
+			XParameters.tableFont	= null;
+			XParameters.treeFont	= null;
+			XParameters.listFont	= null;
 
-			if ( !Env.IS_JAVA_16_OR_LATER )
-			{
-				try
-				{
-					UIManager.installLookAndFeel
-					(
-						"SmoothWindows",
-						"edu.northwestern.at.utils.swing.plaf.smoothwindows.SmoothWindowsLookAndFeel"
-					);
+			setLookAndFeelByClassName
+			(
+				UIManager.getSystemLookAndFeelClassName() ,
+				true
+			);
 
-					setLookAndFeelByClassName
-					(
-						"edu.northwestern.at.utils.swing.plaf.smoothwindows.SmoothWindowsLookAndFeel" ,
-						true
-					);
-				}
-				catch ( Exception e )
-				{
-				}
-    		}
-    		else
-    		{
-				setLookAndFeelByClassName
-				(
-					UIManager.getSystemLookAndFeelClassName() ,
-					true
-				);
-			}
 		}
 								//	Do nothing for Mac OS X.
 
@@ -720,18 +695,15 @@ public class LookAndFeel
 
 	public static void enableAntialiasedFontRendering()
 	{
-								//	If java 5 or later, set antialiased
-								//	font rendering.
+		// set antialiased font rendering.
 
-		if ( Env.IS_JAVA_15_OR_LATER )
+		String antialiasing	= "swing.aatext";
+
+		if ( System.getProperty( antialiasing ) == null )
 		{
-			String antialiasing	= "swing.aatext";
-
-			if ( System.getProperty( antialiasing ) == null )
-			{
-				System.setProperty( antialiasing , "true" );
-			}
+			System.setProperty( antialiasing , "true" );
 		}
+
 	}
 }
 

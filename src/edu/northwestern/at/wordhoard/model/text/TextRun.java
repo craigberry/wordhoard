@@ -616,7 +616,7 @@ public class TextRun implements Cloneable {
 	 */
 	 
 	private int getGlyphCharIndex (int glyphIndex) {
-		if (Env.MACOSX && Env.IS_JAVA_15_OR_LATER) {
+		if (Env.MACOSX) {
 			return glyphIndex;
 		} else {
 			return gv.getGlyphCharIndex(glyphIndex);

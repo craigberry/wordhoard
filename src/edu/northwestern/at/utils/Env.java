@@ -25,31 +25,6 @@ public class Env {
 	public static final boolean WINDOWSOS =
 		System.getProperty("os.name").toLowerCase().startsWith("windows");
 
-	/** True if running Java 2 level 1.3 or later. */
-
-	public static final boolean IS_JAVA_13_OR_LATER =
-		System.getProperty("java.version").compareTo("1.3") >= 0;
-
-	/** True if running Java 2 level 1.4 or later. */
-
-	public static final boolean IS_JAVA_14_OR_LATER =
-		System.getProperty("java.version").compareTo("1.4") >= 0;
-
-	/** True if running Java 2 level 1.4.2 or later. */
-
-	public static final boolean IS_JAVA_142_OR_LATER =
-		System.getProperty("java.version").compareTo("1.4.2") >= 0;
-
-	/** True if running Java 2 level 1.5 or later. */
-
-	public static final boolean IS_JAVA_15_OR_LATER =
-		System.getProperty("java.version").compareTo("1.5") >= 0;
-
-	/** True if running Java 2 level 1.6 or later. */
-
-	public static final boolean IS_JAVA_16_OR_LATER =
-		System.getProperty("java.version").compareTo("1.6") >= 0;
-
 	/**	Menu shortcut key mask. */
 
 	public static final int MENU_SHORTCUT_KEY_MASK =

@@ -92,43 +92,7 @@ public class XTextPane extends JTextPane
 
 		this.alignment = alignment;
 
-		if (!Env.IS_JAVA_14_OR_LATER) {
-
-			//	This hack fixes a bug in Java 1.3, where character attributes
-			//	are erroneously reset to default values when a break is
-			//	inserted at the end of the document to start a new paragraph.
-			//
-			//	We fix this by overriding createInputAttributes. In the case
-			//	that needs fixing (at the end of the doucment), we back up
-			//	one position to get the right element to use to reset the
-			//	input attributes.
-
-			setEditorKit(
-				new XStyledEditorKit () {
-//				new StyledEditorKit () {
-					protected void createInputAttributes (Element element,
-						MutableAttributeSet set)
-					{
-						DefaultStyledDocument doc =
-							(DefaultStyledDocument)element.getDocument();
-						int docLength = doc.getLength();
-						int startOffset = element.getStartOffset();
-						int endOffset = element.getEndOffset();
-						if (docLength > 0 &&
-							startOffset == docLength &&
-							endOffset == startOffset+1)
-								element = doc.getCharacterElement(docLength-1);
-						super.createInputAttributes(element, set);
-					}
-				}
-			);
-		}
-		else
-		{
-			setEditorKit(
-				new XStyledEditorKit() );
-//				new StyledEditorKit() );
-		}
+		setEditorKit( new XStyledEditorKit() );
 
 		//	Get the styled document.
 

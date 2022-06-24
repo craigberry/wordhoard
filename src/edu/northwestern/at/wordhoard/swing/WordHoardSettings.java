@@ -220,9 +220,7 @@ public class WordHoardSettings
 								//	program title.
 			if ( Env.MACOSX )
 			{
-				String javaVersion = System.getProperty("java.version");
-				useScreenMenuBar =
-					javaVersion.compareTo("1.5.0_06") >= 0;
+				useScreenMenuBar = true;
 				MacUtils.initMac( programTitle , useScreenMenuBar );
 			}
 								//	Set small program icon as default
