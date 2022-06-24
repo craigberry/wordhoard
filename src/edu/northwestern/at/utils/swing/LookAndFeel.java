@@ -175,134 +175,20 @@ public class LookAndFeel
      *	Currently the following look and feel types are supported.
      *	</p>
      *	<ul>
-     *		<li>3d				-- 3D look and feel.</li>
-     *		<li>aqua			-- Mac OS X look and feel.</li>
-     *		<li>beos			-- BEOS look and feel.</li>
-     *		<li>compiere		-- Compiere look and feel.</li>
      *		<li>extwindows		-- JGoodies extended Windows look and feel.</li>
-     *		<li>kunststoff		-- Kunststoff look and feel.</li>
-     *		<li>mac				-- Sun's built-in Mac OS look and feel
-     *								(only on Macs).</li>
-     *		<li>macos			-- Old Mac OS look and feel.</li>
-     *		<li>metal			-- Sun's metal look and feel.</li>
-     *		<li>metouia			-- Metouia look and feel.</li>
-     *		<li>modern			-- Mozilla modern look and feel.</li>
-     *		<li>motif			-- Sun's motif look and feel.</li>
-     *		<li>oyoaha			-- Oyoaha look and feel.</li>
-     *		<li>nextstep		-- NextStep look and feel (subset).</li>
      *		<li>plastic			-- JGoodies plastic look and feel (subset).</li>
      *		<li>plastic3d		-- JGoodies plastic3d look and feel.</li>
      *		<li>plasticxp		-- JGoodies plasticxp look and feel.</li>
-     *		<li>smoothwindows	-- Smooth windows look and feel.</li>
-     *		<li>teknolust		-- Teknolust look and feel.</li>
-     *		<li>whistler		-- Whistler minimalist look and feel.</li>
-     *		<li>windows			-- Sun's Windows look and feel
-     *								(only on Windows platforms).</li>
-     *		<li>xpluna			-- Luna version of the Windows XP
-     *								look and feel.</li>
      *	</ul>
      */
 
     public static ExtendedLookAndFeelInfo[] lookAndFeels =
    	{
-/*
-		new ExtendedLookAndFeelInfo(
-			"3d",
-			"swing.addon.plaf.threeD.ThreeDLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"aqualike",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"aquathemepack.zip",
-			true ),
-
-		new ExtendedLookAndFeelInfo(
-			"beos",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"beosthemepack.zip",
-			true ),
-
-		new ExtendedLookAndFeelInfo(
-			"cde/motif",
-			"com.sun.java.swing.plaf.motif.MotifLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"compiere",
-			"org.compiere.plaf.CompiereLookAndFeel",
-			"",
-			false ),
-*/
 		new ExtendedLookAndFeelInfo(
 			"Windows JGoodies",
 			"com.jgoodies.looks.windows.WindowsLookAndFeel",
 			"",
 			false ),
-/*
-		new ExtendedLookAndFeelInfo(
-			"GTK+",
-			"com.sun.java.swing.plaf.gtk.GTKLookAndFeel",
-			"",
-			false ),
-*/
-/*
-		new ExtendedLookAndFeelInfo(
-			"kunststoff",
-			"com.incors.plaf.kunststoff.KunststoffLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"mac",
-			"com.sun.java.swing.plaf.mac.MacLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"macos",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"macosthemepack.zip",
-			true ),
-
-		new ExtendedLookAndFeelInfo(
-			"metal",
-			"javax.swing.plaf.metal.MetalLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"metouia",
-			"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"modern",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"modernthemepack.zip",
-			true ),
-
-		new ExtendedLookAndFeelInfo(
-			"mac os x",
-			"apple.laf.AquaLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"nextstep",
-			"nextlf.plaf.NextLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"oyoaha",
-			"com.oyoaha.swing.plaf.oyoaha.OyoahaLookAndFeel",
-			"",
-			false ),
-*/
 		new ExtendedLookAndFeelInfo(
 			"Plastic JGoodies",
 			"com.jgoodies.looks.plastic.PlasticLookAndFeel",
@@ -320,37 +206,6 @@ public class LookAndFeel
 			"com.jgoodies.looks.plastic.PlasticXPLookAndFeel",
 			"",
 			false ),
-/*
-		new ExtendedLookAndFeelInfo(
-			"smoothwindows",
-			"edu.northwestern.at.utils.swing.plaf.smoothwindows.SmoothWindowsLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"teknolust",
-			"com.teknolust.plaf.teknolust.TeknolustLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"whistler",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"whistlerthemepack.zip",
-			true ),
-
-		new ExtendedLookAndFeelInfo(
-			"windows",
-			"com.sun.java.swing.plaf.windows.WindowsLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"xpluna",
-			"com.l2fprod.gui.plaf.skin.SkinLookAndFeel",
-			"xplunathemepack.zip",
-			true )
-*/
    	};
 
 	/**	Get the class of the currently active look and feel.
