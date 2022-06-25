@@ -238,6 +238,8 @@ public class SimpleConnectionPool extends Observable {
 				}
 				return connection;
 			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(e);
 			}
 			numTries++;
 			try {
