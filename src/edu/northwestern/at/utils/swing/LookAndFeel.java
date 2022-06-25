@@ -167,41 +167,24 @@ public class LookAndFeel
 	/* List of supported look and feel names.
 	 *
      *	<p>
-     *	Currently the following look and feel types are supported.
+     *	WordHoard by default provides no additional look and feel types
+	 *	over and above what comes with Java, which usually includes at
+	 *	least Metal and Nimbus.
      *	</p>
-     *	<ul>
-     *		<li>extwindows		-- JGoodies extended Windows look and feel.</li>
-     *		<li>plastic			-- JGoodies plastic look and feel (subset).</li>
-     *		<li>plastic3d		-- JGoodies plastic3d look and feel.</li>
-     *		<li>plasticxp		-- JGoodies plasticxp look and feel.</li>
-     *	</ul>
+	 *	<p>
+	 * 	To provide an additional look and feel option, add the relevant
+	 *	library to the top-leve lib/ directory, and add an element to the
+	 *	lookAndFeels array below in the following format:
+	 *
+	 *	new ExtendedLookAndFeelInfo(
+	 *		"MyLookAndFeel Name",
+	 *		"class.path.to.MyLookAndFeel",
+	 *		"",
+	 *		false )
+	 *	</p>
      */
 
-    public static ExtendedLookAndFeelInfo[] lookAndFeels =
-   	{
-		new ExtendedLookAndFeelInfo(
-			"Windows JGoodies",
-			"com.jgoodies.looks.windows.WindowsLookAndFeel",
-			"",
-			false ),
-		new ExtendedLookAndFeelInfo(
-			"Plastic JGoodies",
-			"com.jgoodies.looks.plastic.PlasticLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"Plastic3D JGoodies",
-			"com.jgoodies.looks.plastic.Plastic3DLookAndFeel",
-			"",
-			false ),
-
-		new ExtendedLookAndFeelInfo(
-			"PlasticXP JGoodies",
-			"com.jgoodies.looks.plastic.PlasticXPLookAndFeel",
-			"",
-			false ),
-   	};
+    public static ExtendedLookAndFeelInfo[] lookAndFeels = {};
 
 	/**	Get the class of the currently active look and feel.
 	 *
@@ -443,16 +426,11 @@ public class LookAndFeel
 		else
 		{
 								//	For other systems, use the
-								//	JGoodies look and feel when the
+								//	Nimbus look and feel when the
 								//	metal look and feel is in place.
 			if ( isMetal() )
 			{
-				setLookAndFeel( "Plastic3D JGoodies" );
-
-								//	Enable window decorations if
-								//	provided by current look and feel.
-
-//				JFrame.setDefaultLookAndFeelDecorated( true );
+				setLookAndFeel( "Nimbus" );
 			}
  		}
 	}
