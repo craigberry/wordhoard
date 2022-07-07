@@ -101,9 +101,9 @@ public class SortedTableModelRow implements SortedTableModel.Row
 	 *	@param	other			The other row.
 	 *	@param	columnIndex		The index of the column to compare.
 	 *
-	 *	@return			        < 0: this row's value < other row's value
+	 *	@return			        &lt; 0: this row's value &lt; other row's value
 	 *	        		        = 0: this row's value == other row's value
-	 *	         		        > 0: this row's value > other row's value
+	 *	         		        &gt; 0: this row's value &gt; other row's value
 	 */
 
 	public int compareTo( SortedTableModel.Row other , int columnIndex )

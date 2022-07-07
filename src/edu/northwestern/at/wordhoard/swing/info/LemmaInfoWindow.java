@@ -47,7 +47,7 @@ public class LemmaInfoWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public LemmaInfoWindow (Lemma lemma, Corpus corpus,
@@ -88,7 +88,7 @@ public class LemmaInfoWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

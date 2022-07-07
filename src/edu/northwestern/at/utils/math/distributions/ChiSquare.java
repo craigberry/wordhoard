@@ -48,7 +48,7 @@ public class ChiSquare
 	 *				chi-square distribution.
 	 *
 	 *	@throws		IllegalArgumentException
-	 *					If df <= 0 or p very near zero or
+	 *					If df &lt;= 0 or p very near zero or
 	 *					p very near one.  A tolerance of
 	 *					1.0e-15 is used for testing the
 	 *					value of p.

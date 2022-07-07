@@ -33,7 +33,7 @@ class WordSummaryTab extends JPanel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws PersistenceExecption
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	WordSummaryTab (final WordPart wordPart, final Corpus corpus,

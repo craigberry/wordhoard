@@ -125,7 +125,7 @@ public abstract class AbstractWindow extends XFrame
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public AbstractWindow (String title, AbstractWindow parentWindow)
@@ -146,7 +146,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Create the actual window data.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	protected void createWindowData()
@@ -949,7 +949,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "About" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleAboutCmd ()
@@ -974,7 +974,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Font Preferences" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFontPrefsCmd ()
@@ -984,8 +984,6 @@ public abstract class AbstractWindow extends XFrame
 	}
 
 	/**	Route "prefs" to hamdleFontPrefs command.
-	 *
-	 *	@throws	Exception
 	 */
 
 	public void prefs() {
@@ -996,7 +994,7 @@ public abstract class AbstractWindow extends XFrame
 	 *
 	 *	@param	word		Word, or null if none.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void sendErrorReport (Word word)
@@ -1011,7 +1009,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Send Error Report" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleErrorCmd ()
@@ -1028,7 +1026,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses may override this method to handle the "Get Info"
 	 *	command. The default action is to do nothing.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGetInfoCmd ()
@@ -1041,7 +1039,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses may override this method to handle the "Annotate"
 	 *	command. The default action is to do nothing.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleAnnotateCmd ()
@@ -1051,7 +1049,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Table of Contents" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleTConCmd ()
@@ -1062,7 +1060,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Word Classes" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleWordClassesCmd ()
@@ -1073,7 +1071,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "WordHoard Calculator" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleWhCalcCmd ()
@@ -1084,7 +1082,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Parts of Speech" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handlePosCmd ()
@@ -1137,7 +1135,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Manage Accounts" command.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void handleManageAccountsCmd ()
@@ -1213,7 +1211,7 @@ public abstract class AbstractWindow extends XFrame
 	/**	Handles file menu selected.
 	 *
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFileMenuSelected ()
@@ -1416,7 +1414,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which handle transfereable data other than text in
 	 *	text components should override this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleEditMenuSelected ()
@@ -1474,7 +1472,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which can cut transfereable data other than text in
 	 *	text components should override this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCutCmd ()
@@ -1501,7 +1499,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which can copy transfereable data other than text in
 	 *	text components should override this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCopyCmd ()
@@ -1528,7 +1526,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which can paste transfereable data other than text into
 	 *	text components should override this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handlePasteCmd ()
@@ -1555,7 +1553,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which select data other than text should override
 	 *	this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleSelectAllCmd ()
@@ -1582,7 +1580,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses which select data other than text should override
 	 *	this method.</p>
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleUnselectCmd ()
@@ -1608,7 +1606,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>The default is to do nothing.  A window may choose to clear its
 	 * 	display in response to this command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleClearCmd ()
@@ -1621,7 +1619,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	@param	str		Initial word tag string for dialog field, or null if
 	 *					none.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGoToWordCmd (String str)
@@ -1642,7 +1640,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Find Words" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()
@@ -1653,7 +1651,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Find Works" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWorksCmd ()
@@ -1664,7 +1662,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Query Tool" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleQueryToolCmd ()
@@ -1681,7 +1679,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	@param	n		0 for no line numbers, 1 to number every line,
 	 *					or 5 to number every fifth line.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleLineNumberCmd (int n)
@@ -1694,7 +1692,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses may override this method to handle the "Translations"
 	 *	command. The default action is to do nothing.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleTranslationsCmd ()
@@ -1707,7 +1705,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses may override this method to handle the "Show/Hide
 	 *	Annotation Markers" command. The default action is to do nothing.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleShowHideAnnotationMarkersCmd ()
@@ -1720,7 +1718,7 @@ public abstract class AbstractWindow extends XFrame
 	 *	<p>Subclasses may override this method to handle the "Show/Hide
 	 *	Annotation Panel" command. The default action is to do nothing.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleShowHideAnnotationPanelCmd ()
@@ -1732,7 +1730,7 @@ public abstract class AbstractWindow extends XFrame
 	 *
 	 *	@param	corpus		The corpus.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void handleLexiconCmd (Corpus corpus)
@@ -1743,7 +1741,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Close" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCloseCmd ()
@@ -1755,7 +1753,7 @@ public abstract class AbstractWindow extends XFrame
 
 	/**	Handles the "Close All" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCloseAllCmd ()

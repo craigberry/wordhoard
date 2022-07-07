@@ -594,6 +594,8 @@ public class BaseMenu extends JMenu
 	}
 
 	/**	Extract results panel from body of a dialog panel.
+	 * @param	component	The component from which the results panel will be extracted.
+	 * @return	The results panel.
 	 */
 
 	public static ResultsPanel getResultsPanel( Component component )
@@ -649,6 +651,8 @@ public class BaseMenu extends JMenu
 	}
 
 	/**	Get Reader's table of contents window.
+	 * @return	The table of contents window.
+	 * @throws	Exception	general error.
 	 */
 
 	protected TableOfContentsWindow getTableOfContentsWindow()
@@ -908,6 +912,7 @@ public class BaseMenu extends JMenu
      *
      *	@param	panel		Dialog panel to which to add close button.
      *	@param	outputTitle	Title of tabbed panel holding dialog panel.
+	 *	@return	The close button.
      */
 
 	protected JButton addACloseButton
@@ -923,6 +928,7 @@ public class BaseMenu extends JMenu
      *
      *	@param	panel			Dialog panel to which to add close button.
      *	@param	progressPanel	Progress panel to which to tie cancel action.
+	 *	@return	The cancel button.
      */
 
 	public JButton addACancelButton

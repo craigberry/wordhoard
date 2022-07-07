@@ -44,7 +44,7 @@ class PubYearCriterion extends CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	JComponent init (SearchCriterion val) 
@@ -174,7 +174,7 @@ class PubYearCriterion extends CriterionComponent {
 	 *
 	 *	@param	newVal		New value.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	void handleValueChanged (Class cls, SearchCriterion oldVal, 

@@ -69,6 +69,11 @@ public class WordSetWordCount
 	}
 
 	/**	Create a populated word form count object.
+	 * @param	word		The word text.
+	 * @param	wordForm	The word form.
+	 * @param	wordSet		The word set in which this word appears.
+	 * @param	workPartTag	The tag of the work part in which this word appears.
+	 * @param	wordCount	The word count in the specified work in the word set.
 	 */
 
 	public WordSetWordCount

@@ -522,6 +522,10 @@ public class AuthoredTextAnnotation
 	/**	Generates a string of text.
 	 *
 	 *	@param	str		String of text.
+	 *	@param	text	A list of TextLine objects and attributes.
+	 *	@param	line	The line to which the string is appended.
+	 *	@param	context	Text generation context.
+	 *	@return	The resulting TextLine object.
 	 */
 	 
 	protected TextLine genText (String str, Text text, TextLine line, Context context) {
@@ -708,7 +712,7 @@ public class AuthoredTextAnnotation
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal( ObjectOutput out )
@@ -735,9 +739,9 @@ public class AuthoredTextAnnotation
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal( ObjectInput in )

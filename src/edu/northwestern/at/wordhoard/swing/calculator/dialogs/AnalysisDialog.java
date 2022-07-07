@@ -2724,6 +2724,8 @@ public class AnalysisDialog extends SkeletonDialog
 
 	/**	Get word form string.
 	 *
+	 *	@param	wordForm	The word form type.
+	 *
 	 *	@return		The word form string.
 	 */
 
@@ -2786,6 +2788,8 @@ public class AnalysisDialog extends SkeletonDialog
 	}
 
 	/**	Get plural word form string.
+	 *
+	 *	@param	wordForm	The word form type.
 	 *
 	 *	@return		The plural word form string.
 	 */
@@ -3522,6 +3526,7 @@ public class AnalysisDialog extends SkeletonDialog
 	}
 
 	/**	Get dialog preferences.
+	 * @return	The preferences.
 	 */
 
 	public static Properties savePreferences()
@@ -3879,6 +3884,7 @@ public class AnalysisDialog extends SkeletonDialog
 	}
 
 	/**	Load dialog preferences.
+	 * @param	preferences	The preference properties to be loaded.
 	 */
 
 	public static void loadPreferences( Properties preferences )

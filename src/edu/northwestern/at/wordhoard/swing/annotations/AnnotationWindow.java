@@ -49,7 +49,7 @@ public abstract class AnnotationWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public AnnotationWindow (String title, AbstractWindow parentWindow)
@@ -85,7 +85,7 @@ public abstract class AnnotationWindow extends AbstractWindow {
 
 	/**	Handles the "Show/Hide Annotation Markers" command.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void handleShowHideAnnotationMarkersCmd ()

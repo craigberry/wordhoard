@@ -32,7 +32,7 @@ public class DisplayListBox extends ModalDialog
 	protected boolean cancelled;
 
 	/** Displays a list box.
-	 *
+	 *	@param	parentWindow		Parent window of list box.
 	 *	@param	title				List box title.
 	 *	@param	label				List box label text.  May be null.
 	 *	@param	entries				Objects to display in list box.

@@ -115,9 +115,9 @@ public class ScoredString implements Comparable, Serializable
  	 *
  	 *	@param	other	The other scored string
  	 *
-	 *	@return			< 0 if this scored string is less than the other,
+	 *	@return			&lt; 0 if this scored string is less than the other,
 	 *					= 0 if the two scored strings are equal,
-	 *					> 0 if this scored string is greater than the other.
+	 *					&gt; 0 if this scored string is greater than the other.
  	 */
 
 	public int compareTo( Object other )

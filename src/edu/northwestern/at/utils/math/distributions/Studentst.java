@@ -19,7 +19,7 @@ public class Studentst
 	 *				Student t distribution.
 	 *
 	 *	@throws		IllegalArgumentException
-	 *                  if df <= 0
+	 *                  if df &lt;= 0
 	 *
 	 *	<p>
 	 *	The probability is computed using the following
@@ -69,7 +69,7 @@ public class Studentst
 	 *				the Student t distribution.
 	 *
 	 *	@throws		IllegalArgumentException
-	 *					p < 0 or p > 1 or df <= 0
+	 *					p &lt; 0 or p &gt; 1 or df &lt;= 0
      *
 	 *	@throws		ArithmeticException
 	 *					if incomplete beta evaluation fails

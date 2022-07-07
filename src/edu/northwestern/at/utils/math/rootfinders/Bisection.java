@@ -17,8 +17,8 @@ import edu.northwestern.at.utils.math.*;
  *	using the midpoint of the two previous values.  Depending
  *	upon the sign of the function at the interval midpoint,
  *	the midpoint replaces either the lower interval value
- *	(if f(midpoint) < 0) or the upper interval value
- *	(if f(midpoint) > 0).  This bisection process halves the
+ *	(if f(midpoint) &lt; 0) or the upper interval value
+ *	(if f(midpoint) &gt; 0).  This bisection process halves the
  *	search interval on each iteration
  *	</p>
  *

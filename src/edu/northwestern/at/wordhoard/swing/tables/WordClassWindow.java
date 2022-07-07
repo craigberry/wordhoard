@@ -29,7 +29,7 @@ public class WordClassWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public static void open (AbstractWindow parentWindow)
@@ -116,7 +116,7 @@ public class WordClassWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public WordClassWindow (AbstractWindow parentWindow)
@@ -210,7 +210,7 @@ public class WordClassWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

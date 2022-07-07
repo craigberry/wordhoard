@@ -50,7 +50,7 @@ class NarrativeCriterion extends CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	JComponent init (SearchCriterion val)
@@ -101,7 +101,7 @@ class NarrativeCriterion extends CriterionComponent {
 
 	/**	Rebuilds the component.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	private void rebuild ()
@@ -136,7 +136,7 @@ class NarrativeCriterion extends CriterionComponent {
 	 *
 	 *	@param	newVal		New value.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	void handleValueChanged (Class cls, SearchCriterion oldVal,

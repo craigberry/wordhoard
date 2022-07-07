@@ -18,6 +18,7 @@ public class JPEGConverters
 	/** Convert BufferedImage to byte array.
 	 *
 	 *	@param	image	The buffered image to convert to a byte array.
+	 *	@return	JPEG byte array.
 	 */
 
 	public static byte[] toJPEG( BufferedImage image )
@@ -30,10 +31,11 @@ public class JPEGConverters
 	 *	@param	image		The buffered image to convert to a byte array.
 	 *	@param	quality		The JPEG encoding quality.
 	 *					    Quality must lie in the interval [0.0,1.0].
+	 *	@return	JPEG byte array.
 	 *
 	 *	<p>
 	 *	The quality determines the degree of JPEG compression.
-	 *	<p>
+	 *	</p>
 	 *
 	 *	<p>
 	 *	Some guidelines:
@@ -132,6 +134,7 @@ e.printStackTrace();
 	/** Convert JPEG stored in byte array to BufferedImage.
 	 *
 	 *	@param	jpegBytes	The image as a byte array.
+	 *	@return	Buffered image.
 	 */
 
 	public static BufferedImage fromJPEG( byte[] jpegBytes )

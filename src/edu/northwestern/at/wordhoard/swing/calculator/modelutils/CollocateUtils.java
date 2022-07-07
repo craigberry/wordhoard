@@ -21,8 +21,6 @@ public class CollocateUtils
 	 *
 	 *	@param	distance	Max distance.
 	 *
-	 *	@throws	PersistenceException
-	 *
 	 *	@return		A collection of all the
 	 *				{@link edu.northwestern.at.wordhoard.model.Word
 	 *				word occurrences} which are within "distance" words

@@ -257,7 +257,7 @@ public class PartTextComponent extends WrappedTextComponent {
 	 *	@return				Array of annotations for the work part, sorted
 	 *						into increasing order by starting target location.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private TextAttachment[] getAnnotations (final WorkPart part)
@@ -338,7 +338,7 @@ public class PartTextComponent extends WrappedTextComponent {
 
 	/**	Changes the translations.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void changeTranslations ()
@@ -430,7 +430,7 @@ public class PartTextComponent extends WrappedTextComponent {
 	 *
 	 *	@param	show		True to show markers, false to hide them.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void showAnnotationMarkers (boolean show)
@@ -488,7 +488,7 @@ public class PartTextComponent extends WrappedTextComponent {
 	 *	@param	range	Text range of line containing marker clicked,
 	 *					in base coordinates.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public void handleMarkerClick (TextRange range)

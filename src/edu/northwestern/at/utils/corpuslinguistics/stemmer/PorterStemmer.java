@@ -66,6 +66,7 @@ public class PorterStemmer implements Stemmer
 	/**
 	 * Add a character to the word being stemmed.  When you are finished
 	 * adding characters, you can call stem(void) to stem the word.
+	 * @param	ch	Character to be added.
 	 */
 
 	public void add(char ch)
@@ -83,6 +84,8 @@ public class PorterStemmer implements Stemmer
 	/** Adds wLen characters to the word being stemmed contained in a portion
 	 * of a char[] array. This is like repeated calls of add(char ch), but
 	 * faster.
+	 * @param	w	Input character array.
+	 * @param	wLen	Length of w.
 	 */
 
 	public void add(char[] w, int wLen)
@@ -109,6 +112,7 @@ public class PorterStemmer implements Stemmer
 
 	/**
 	 * Returns the length of the word resulting from the stemming process.
+	 * @return	Length of the word resulting from the stemming process.
 	 */
 	public int getResultLength()
 	{
@@ -119,6 +123,8 @@ public class PorterStemmer implements Stemmer
 	 * Returns a reference to a character buffer containing the results of
 	 * the stemming process.  You also need to consult getResultLength()
 	 * to determine the length of the result.
+	 * @return	Reference to a character buffer containing the results of
+	 * the stemming process.
 	 */
 	public char[] getResultBuffer()
 	{

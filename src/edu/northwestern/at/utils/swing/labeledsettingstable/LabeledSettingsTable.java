@@ -53,7 +53,9 @@ public class LabeledSettingsTable extends XTable
 
 	protected int maxWidthValueCol	= 0;
 
-	/** Create labeled settings table. */
+	/** Create labeled settings table.
+	 * @param	columnNames	Array of column names.
+	*/
 
 	public LabeledSettingsTable( String[] columnNames )
 	{

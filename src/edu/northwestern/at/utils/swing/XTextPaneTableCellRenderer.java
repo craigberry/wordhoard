@@ -43,6 +43,7 @@ public class XTextPaneTableCellRenderer extends XTextPane
 	/** Create the renderer.
 	 *
 	 *	@param	view	The JTable to which this renderer is attached.
+	 *	@param	font	The font used for rendering.
 	 */
 
 	public XTextPaneTableCellRenderer( JTable view , Font font )

@@ -91,6 +91,7 @@ public class AnnotationEditor
 	/**	Create annotation editor.
 	 *
 	 *	@param	remoteAnnotation	The annotation to edit.
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 
@@ -159,7 +160,9 @@ public class AnnotationEditor
 
 	}
 
-	/**	Return true if editing canceled. */
+	/**	Return true if editing canceled.
+	 * @return	True or false.
+	*/
 
 	public boolean isCanceled()
 	{
@@ -167,6 +170,7 @@ public class AnnotationEditor
 	}
 
 	/**	Create an XTextArea to hold the document text.
+	 * @return	The created text area.
 	 */
 
 	protected XTextArea createEditor()
@@ -208,6 +212,7 @@ public class AnnotationEditor
 	}
 
 	/**	Return the editor contained in this panel.
+	 *	@return	The editor.
 	 */
 
 	protected JTextArea getEditor()
@@ -216,6 +221,7 @@ public class AnnotationEditor
 	}
 
 	/**	Return the editor text as a string.
+	 *	@return	The editor text.
 	 */
 
 	protected String getEditorText()
@@ -225,6 +231,8 @@ public class AnnotationEditor
 
 	/**	Create the group panel.
 	 *
+	 *	@param	theFont	The font.
+	 *	@param	annotation	The annotation.
 	 *	@return		The group panel.
 	 *
 	 */
@@ -321,6 +329,7 @@ public class AnnotationEditor
 	
 	/**	Create the control panel.
 	 *
+	 *	@param	theFont	The font.
 	 *	@return		The control panel.
 	 *
 	 */
@@ -540,6 +549,7 @@ public class AnnotationEditor
 */
 
 	/**	Performs new action.
+	 * @param	e	The event that triggered the action.
 	 */
 
 	protected void doNew( ActionEvent e )
@@ -649,7 +659,8 @@ public class AnnotationEditor
 	
 	/**	Converts Text to a String.
 	 *
-	 *	@return		The text.
+	 *	@param	text	The wrapped text object.
+	 *	@return		The text as a string.
 	 *
 	 */
 	 

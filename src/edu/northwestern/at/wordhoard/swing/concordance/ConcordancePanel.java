@@ -121,7 +121,7 @@ class ConcordancePanel extends JPanel {
 	 *
 	 *	@param	parentWindow		Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	ConcordancePanel (PersistenceManager pm,
@@ -273,7 +273,7 @@ class ConcordancePanel extends JPanel {
 	 *
 	 *	@param	startTime	System milliseconds start time of search.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void setHits (java.util.List results, java.util.List words,
@@ -296,7 +296,7 @@ class ConcordancePanel extends JPanel {
 
 	/**	Builds or rebuilds the tree of hits.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void buildTree ()
@@ -329,7 +329,7 @@ class ConcordancePanel extends JPanel {
 	 *
 	 *	@return				Number of rows in subtree.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	private int buildSubTree (DefaultMutableTreeNode root,
@@ -392,7 +392,7 @@ class ConcordancePanel extends JPanel {
 	 *
 	 *	@param	groupBy		Group by option class.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void preload (Class groupBy)
@@ -436,7 +436,7 @@ class ConcordancePanel extends JPanel {
 	 *
 	 *	@param	options		New grouping options.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void handleNewGroupingOptions (GroupingOptions[] options)
@@ -446,7 +446,9 @@ class ConcordancePanel extends JPanel {
 		if (words != null) buildTree();
 	}
 
-	/**	Gets the work panel. */
+	/**	Gets the work panel.
+	 * @return	The work panel.
+	*/
 
 	WorkPanel getWorkPanel () {
 		return workPanel;

@@ -332,6 +332,7 @@ public class WorkSetUtils
 
 	/**	Get count of work sets for specified user.
 	 *
+	 *	@param	owner	The username.
 	 *	@return				Count of work sets owned by "owner".
 	 */
 
@@ -528,6 +529,7 @@ public class WorkSetUtils
 	 *	@param	workSet		The work set to update.
 	 *	@param	title		Title for the work set.
 	 *	@param	description	Description for the work set.
+	 *	@param	webPageURL	Web page URL for the work set.
 	 *	@param	isPublic	True if work set is public.
 	 *	@param	workParts	Array of WorkPart entries for work set.
 	 *
@@ -600,6 +602,7 @@ public class WorkSetUtils
 	 *	@param	workSet		The work set to update.
 	 *	@param	title		Title for the work set.
 	 *	@param	description	Description for the work set.
+	 *	@param	webPageURL	Web page URL for the work set.
 	 *	@param	isPublic	True if work set is public.
 	 *	@param	workParts	Collection of WorkPart entries for work set.
 	 *

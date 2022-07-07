@@ -468,7 +468,8 @@ public class UserDataObjectUtils
 	/**	Get all available public user data objects as an array.
 	 *
 	 *	@param	udoClass	The name of the user data object type.
-	 *
+	 *	@param	qNames		Extra query names.
+	 *	@param	qValues		Extra query values.
 	 *	@return				All available public user data objects as array.
 	 *
 	 *	<p>

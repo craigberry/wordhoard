@@ -14,8 +14,8 @@ public interface WordGetter
 	/**	Get list of words.
 	 *
 	 *	@param	progressReporter	Displays progress.  May be null.
-	 *
-	 *	@throws		Exception.
+	 *	@return The list of words.
+	 *	@throws		Exception	general error.
 	 */
 
 	public List getWords( ProgressReporter progressReporter )

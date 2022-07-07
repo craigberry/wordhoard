@@ -34,7 +34,7 @@ import edu.northwestern.at.wordhoard.swing.*;
  *		</li>
  *	<li>The combined speaker mortality for the word.
  *		See {@link edu.northwestern.at.wordhoard.model.speakers.Speech}.
- *		</li>.
+ *		</li>
  *	<li>A prosody value indicating if the word appears in poetry or prose.
  *		</li>
  *	<li>The persistence ID of the work in which this word appears.
@@ -420,6 +420,7 @@ public class CountableWordData implements Comparable
 	 *
 	 *	@param	wordId			The word ID.
 	 *	@param	wordPartIndex	The word part index.
+	 *	@return	The word part ordinal.
 	 */
 
 	public static Long generateWordPartOrdinal

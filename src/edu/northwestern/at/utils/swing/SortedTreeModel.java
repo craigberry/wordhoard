@@ -60,7 +60,7 @@ public class SortedTreeModel extends DefaultTreeModel {
 
 	/**	Prohibits attempts to add children at specific locations.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void insertNodeInto (MutableTreeNode newChild,
@@ -71,7 +71,7 @@ public class SortedTreeModel extends DefaultTreeModel {
 
 	/**	Prohibits attempts to set a new node value.
 	 *
-	 *	@throws UnsupportedOperationException
+	 *	@throws UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void valueForPathChanged (TreePath path, Object newValue) {

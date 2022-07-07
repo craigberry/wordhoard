@@ -93,6 +93,7 @@ public class RemoteAnnotation implements TextAttachment {
 	}
 
 	/**	Creates a new annotation from DOM.
+	 * @param	el	DOM element.
 	 */
 	
 	public RemoteAnnotation (Element el) {
@@ -531,6 +532,10 @@ public class RemoteAnnotation implements TextAttachment {
 	/**	Processes the children of an element.
 	 *
 	 *	@param	el		The element.
+	 *	@param	text	List of TextLine objects.
+	 *	@param	line	Line  which will be processed.
+	 *	@param	context	Text generation context.
+	 *	@return	Resulting TextLine object.
 	 */
 	 
 	protected TextLine processChildren (Element el, Text text, TextLine line, Context context) {
@@ -563,7 +568,11 @@ public class RemoteAnnotation implements TextAttachment {
 
 	/**	Processes a text node.
 	 *
-	 *	@param	node		Text node.
+	 *	@param	node	Text node.
+	 *	@param	text	List of TextLine objects.
+	 *	@param	line	Line to which node will be appended.
+	 *	@param	context	Text generation context.
+	 *	@return	Resulting TextLine object.
 	 */
 	 
 	protected TextLine processTextNode (Node node, Text text, TextLine line, Context context) {
@@ -574,6 +583,10 @@ public class RemoteAnnotation implements TextAttachment {
 	/**	Generates a string of text.
 	 *
 	 *	@param	str		String of text.
+	 *	@param	text	List of TextLine objects.
+	 *	@param	line	Line to which string will be appended.
+	 *	@param	context	Text generation context.
+	 *	@return	Resulting TextLine object.
 	 */
 	 
 	protected TextLine genText (String str, Text text, TextLine line, Context context) {
@@ -610,6 +623,10 @@ public class RemoteAnnotation implements TextAttachment {
 	/**	Processes an "i" element.
 	 *
 	 *	@param	el		italics element.
+	 *	@param	text	List of TextLine objects.
+	 *	@param	line	Line into which element will be processed.
+	 *	@param	context	Text generation context.
+	 *	@return	Resulting TextLine object.
 	 */
 	 
 	protected TextLine processItalicEl (Element el, Text text, TextLine line, Context context) {
@@ -619,9 +636,13 @@ public class RemoteAnnotation implements TextAttachment {
 		return processChildren(el,text,line,newContext);
 	}
 
-	/**	Processes an "b" element.
+	/**	Processes a "b" element.
 	 *
 	 *	@param	el		bold element.
+	 *	@param	text	List of TextLine objects.
+	 *	@param	line	Line into which element will be processed.
+	 *	@param	context	Text generation context.
+	 *	@return	Resulting TextLine object.
 	 */
 	 
 	protected TextLine processBoldEl (Element el, Text text, TextLine line, Context context) {

@@ -62,7 +62,10 @@ public class PrintView extends BoxView
 
 		public int lastOnPageLength;
 
-		/** Create page state object. */
+		/** Create page state object.
+		 * @param lastOnPage Index of last view to be rendered on current page.
+		 * @param lastOnPageLength Length into last view to be rendered on current page.
+		*/
 
 		public PageState
 		(
@@ -74,7 +77,9 @@ public class PrintView extends BoxView
 			this.lastOnPageLength	= lastOnPageLength;
 		}
 
-		/** Create page state object from another page state object. */
+		/** Create page state object from another page state object.
+		 * @param otherPageState Page stae object to use as a template.
+		*/
 
 		public PageState
 		(

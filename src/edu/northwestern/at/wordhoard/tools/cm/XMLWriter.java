@@ -42,7 +42,7 @@ public class XMLWriter {
 	 *
 	 *	@param	file	XML output file.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public XMLWriter (File file)
@@ -57,7 +57,7 @@ public class XMLWriter {
 
 	/**	Closes the XMLWriter.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void close ()
@@ -370,9 +370,13 @@ public class XMLWriter {
 	 *
 	 *	@param	v2		Second attribute value.
 	 *
-	 *	@param	a3		Second attribute name.
+	 *	@param	a3		Third attribute name.
 	 *
-	 *	@param	v3		Second attribute value.
+	 *	@param	v3		Third attribute value.
+	 *
+	 *	@param	a4		Fourth attribute name.
+	 *
+	 *	@param	v4		Fourth attribute value.
 	 *
 	 *	@param	str		Text contents of element.
 	 */

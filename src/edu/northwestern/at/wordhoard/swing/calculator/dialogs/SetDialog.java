@@ -370,6 +370,7 @@ public abstract class SetDialog extends SkeletonDialog
 
 	/**	Check if any word sets selected.
 	 *
+	 *	@param	listBox	The checkbox list.
 	 *	@return		true if any set selected.
 	 */
 

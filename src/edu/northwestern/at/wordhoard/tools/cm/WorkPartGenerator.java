@@ -92,6 +92,8 @@ public class WorkPartGenerator {
 	 *	@param	rules		Rules.
 	 *
 	 *	@param	posMap		Map from English pos tags to word class tags.
+	 *
+	 *	@param	fullWorkTag	Full work tag.
 	 */
 
 	public WorkPartGenerator (XMLWriter out, Rules rules, HashMap posMap,

@@ -424,6 +424,8 @@ public class FindMultiwordUnits
 	/**	Perform query and get spellings for selected work(s).
 	 *
 	 *	@param	work	Work from which to retrieve words.
+	 *
+	 *	@return	List of spellings.
 	 */
 
 	protected java.util.List retrieveSpellings( Work work )
@@ -470,6 +472,8 @@ public class FindMultiwordUnits
 	/**	Perform query and get lemmata for selected work(s).
 	 *
 	 *	@param	work	Work from which to retrieve words.
+	 *
+	 *	@return	The list of lemmata.
 	 */
 
 	protected java.util.List retrieveLemmata( Work work )
@@ -612,7 +616,9 @@ public class FindMultiwordUnits
 
 	/**	Create raw (unfiltered) multiword unit strings.
 	 *
-	 *	@param	extractors	The NGramExtractors to receive the raw
+	 *	@param	wordExtractor	The WordCountExtractor object.
+	 *
+	 * 	@param	extractors	The NGramExtractors to receive the raw
 	 *						multiword unit strings.
 	 *
 	 *	@return				List of all raw multiword units to analyze.
@@ -1203,6 +1209,7 @@ public class FindMultiwordUnits
 	/**	Filter bigrams by word class.
 	 *
 	 *	@param	wordClasses		Major word classes for each word in bigram.
+	 *	@return	True if word classes pass bigram filter, false otherwise.
 	 *
 	 *	<p>
 	 *	The bigram filters are those suggested by
@@ -1214,10 +1221,10 @@ public class FindMultiwordUnits
 	 *		<li>N N</li>
 	 *	</ul>
 	 *
-	 *	<p>
-	 *	A = adjective<br />
-	 *	N = noun<br />
-	 *	</p>
+	 *	<pre>
+	 *	A = adjective
+	 *	N = noun
+	 *	</pre>
 	 */
 
 	protected boolean passesBigramFilter( String[] wordClasses )
@@ -1239,7 +1246,8 @@ public class FindMultiwordUnits
 	 *
 	 *	@param	wordClasses		Major word classes for words comprising
 	 *							trigram.
-	 *
+	 *	@return	True if word classes pass trigram filter, false otherwise.
+	 * 
 	 *	<p>
 	 *	The trigram filters are those suggested by
 	 *	Justeson and Katz.
@@ -1261,12 +1269,12 @@ public class FindMultiwordUnits
 	 *		<li>N C N</li>
 	 *  </ul>
 	 *
-	 *	<p>
-	 *	A = adjective<br />
-	 *	N = noun<br />
-	 *	P = preposition<br />
-	 *	C = conjunction<br />
-	 *	</p>
+	 *	<pre>
+	 *	A = adjective
+	 *	N = noun
+	 *	P = preposition
+	 *	C = conjunction
+	 *	</pre>
 	 */
 
 	protected boolean passesTrigramFilter( String[] wordClasses )
@@ -1300,9 +1308,9 @@ public class FindMultiwordUnits
 	/**	Filter ngrams containing verbs.
 	 *
 	 *	@param	wordClasses		Major word classes for each word in ngram.
-	 *
+	 *	@return	True if any constituent word is a verb, false if not.
 	 *	<p>
-	 *	The ngram is filtered if any of the constiuent words is a verb.
+	 *	The ngram is filtered if any of the constituent words is a verb.
 	 *	</p>
 	 */
 

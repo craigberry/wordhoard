@@ -25,7 +25,7 @@ import org.hibernate.ScrollableResults;
  *	<code>
  *
  *	PersistenceManager pm = new PersistenceManager();
- *	ScrollableResults r = pm.scrollableQuery( ... );<br />
+ *	ScrollableResults r = pm.scrollableQuery( ... );
  *
  *	HibernateScrollIterator iterator = new HibernateScrollIterator( r );
  *
@@ -150,6 +150,7 @@ public class HibernateScrollIterator implements Iterator
 	}
 
 	/**	Check if scrollable results closed.
+	 * @return	Boolean indicating whether scrollable results are closed.
 	 */
 
 	public boolean isClosed()

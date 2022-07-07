@@ -141,7 +141,7 @@ public class JustifiedTextRowView extends BoxView
 	/**	Get end of portion of the model for which this view is
      *	responsible.
      *
-     *	@return		The ending offset into the model >= 0 .
+     *	@return		The ending offset into the model &gt;= 0 .
      */
 
 	public int getEndOffset()
@@ -377,7 +377,7 @@ public class JustifiedTextRowView extends BoxView
 	/**	Get start of portion of the model for which this view is
      *	responsible.
      *
-     *	@return		The starting offset into the model >= 0 .
+     *	@return		The starting offset into the model &gt;= 0 .
      */
 
 	public int getStartOffset()
@@ -406,7 +406,7 @@ public class JustifiedTextRowView extends BoxView
     /**	Get child view index representing the given position in
      *	the model.
      *
-     *	@param	pos		The position >= 0 .
+     *	@param	pos		The position &gt;= 0 .
      *
      *	@return			Index of the view at the given position, or
      *					-1 if no view is at that position.
@@ -775,7 +775,7 @@ public class JustifiedTextRowView extends BoxView
     /**	Map from document model coordinate space
      *	to coordinate space of the view mapped to it.
      *
-     *	@param	pos		The position to convert >= 0.
+     *	@param	pos		The position to convert &gt;= 0.
      *
      *	@param	a		The allocated region to render into.
      *

@@ -28,7 +28,7 @@ public interface GroupingObject {
 	 *
 	 *	@param	numHits		Number of hits. The method may use this 
 	 *						parameter if it needs to return a singular
-	 *						(numHits = 1) versus a plural (numHit > 1) form.
+	 *						(numHits = 1) versus a plural (numHit &gt; 1) form.
 	 *
 	 *	@return		The spelling of the grouping object.
 	 */

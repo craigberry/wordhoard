@@ -250,7 +250,7 @@ public class PrettyPrint {
 	 *
 	 *	@param	provider			Tagging data provider, or null if none.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public static void prettyPrint (Document document, File file,

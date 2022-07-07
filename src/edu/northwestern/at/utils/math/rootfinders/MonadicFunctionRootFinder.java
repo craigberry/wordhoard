@@ -36,6 +36,7 @@ public interface MonadicFunctionRootFinder
 	 *									in the root-finding process.
 	 *									Can be set to null if you don't want
 	 *									to get that information.
+	 *	@return The root of the monadic function.
 	 */
 
 	public double findRoot

@@ -18,8 +18,6 @@ public class MartinUtils {
 	/**	Issues an error message. 
 	 *
 	 *	@param	msg		Error message.
-	 *
-	 *	@throws Err
 	 */
 	 
 	public static void emsg (String msg) {
@@ -30,7 +28,7 @@ public class MartinUtils {
 	 *
 	 *	@return		Connection to Martin's database.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception general error
 	 */
 	 
 	public static Connection getConnection ()
@@ -55,7 +53,7 @@ public class MartinUtils {
 	 *
 	 *	@return				File opened for writing.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception general error
 	 */
 	 
 	public static PrintWriter openOutputFile (String outPath)

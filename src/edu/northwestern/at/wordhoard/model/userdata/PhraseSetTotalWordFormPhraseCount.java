@@ -63,6 +63,10 @@ public class PhraseSetTotalWordFormPhraseCount
 	}
 
 	/**	Create a populated total word form count object.
+	 *	@param	wordForm	The word form.
+	 *	@param	phraseSet	The phrase set.
+	 *	@param	workPartTag	The tag of the work part to which this work part belongs.
+	 *	@param	wordFormCount	The total number of phrase entries.
 	 */
 
 	public PhraseSetTotalWordFormPhraseCount

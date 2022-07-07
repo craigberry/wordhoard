@@ -13,7 +13,9 @@ public class RedBulletIcon implements Icon {
 
 	private int size;
 
-	/**	Constructs a new icon. */
+	/**	Constructs a new icon.
+	 * @param	size	The size of the icon.
+	*/
 
 	public RedBulletIcon (int size) {
 		this.size = size;

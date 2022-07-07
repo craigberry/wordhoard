@@ -12,7 +12,9 @@ import edu.northwestern.at.utils.swing.*;
 
 public class LabeledSettingsTableModel extends DefaultTableModel
 {
-	/** Create settings table model. */
+	/** Create settings table model.
+	 * @param	columnNames	Array of column names.
+	*/
 
 	public LabeledSettingsTableModel( String[] columnNames )
 	{

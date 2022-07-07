@@ -2,8 +2,6 @@ package edu.northwestern.at.wordhoard.tools.fixers;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
 import org.w3c.dom.*;
 
 /**	XML fixer abstract base class.
@@ -23,7 +21,7 @@ public abstract class Fixer {
 	 *
 	 *	@param	document	XML DOM tree.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public abstract void fix (String corpusTag, String workTag, 

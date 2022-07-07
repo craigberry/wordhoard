@@ -161,6 +161,7 @@ public class FindMenu extends BaseMenu
 	}
 
 	/**	Go to a word.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void goToWord()
@@ -170,6 +171,7 @@ public class FindMenu extends BaseMenu
 	}
 
 	/**	Find words.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void findWords()
@@ -179,6 +181,7 @@ public class FindMenu extends BaseMenu
 	}
 
 	/**	Find works.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void findWorks()
@@ -188,6 +191,7 @@ public class FindMenu extends BaseMenu
 	}
 
 	/**	Query tool.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void queryTool()

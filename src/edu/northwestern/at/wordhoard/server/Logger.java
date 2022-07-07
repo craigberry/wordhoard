@@ -47,8 +47,6 @@ public class Logger {
 	/**	Initializes the logger.
 	 *
 	 *	@param	message	Initial log message.
-	 *
-	 *	@throws	Exception
 	 */
 
 	static void initialize (String message)
@@ -60,7 +58,8 @@ public class Logger {
 	 *
 	 *	<p>Configures the server logger.
 	 *
-	 *	@throws	Exception
+	 *	@throws	FileNotFoundException	file not found.
+	 *	@throws	IOException	I/O error initializing logger.
 	 */
 
 	static void initialize ()

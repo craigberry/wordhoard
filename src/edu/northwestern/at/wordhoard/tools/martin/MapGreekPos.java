@@ -201,7 +201,7 @@ public class MapGreekPos {
 	 *
 	 *	@param	newList		List of new Greek "pos" elements.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error
 	 */
 	 
 	private static void mapOnePos (Element oldEl, ArrayList newList)
@@ -279,7 +279,7 @@ public class MapGreekPos {
 	 *
 	 *	@return		Digit for attribute value.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	public static int getDig (Element el, String attr, String[] vals)
@@ -300,7 +300,7 @@ public class MapGreekPos {
 	 *
 	 *	@param	list	New Greek parts of speech list.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error
 	 */
 	 
 	public static void checkIds (ArrayList list)

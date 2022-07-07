@@ -464,6 +464,8 @@ public class TextRun implements Cloneable {
 	 *	@param	start		Start index of substring.
 	 *
 	 *	@param	end			End index of substring.
+	 *
+	 *	@return	The width of the substring.
 	 */
 	 
 	public int getSubstringWidth (int start, int end) {
@@ -545,7 +547,7 @@ public class TextRun implements Cloneable {
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal (ObjectOutput out)
@@ -561,9 +563,9 @@ public class TextRun implements Cloneable {
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal (ObjectInput in)

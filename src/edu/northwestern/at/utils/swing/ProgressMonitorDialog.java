@@ -97,7 +97,9 @@ public abstract class ProgressMonitorDialog extends ProgressDialog
 		timer.setInitialDelay( 0 );
 	}
 
-	/**	Progress update. */
+	/**	Progress update.
+	 * @param event The event triggering the update.
+	*/
 
 	protected void progressUpdate( ActionEvent event )
 	{
@@ -158,7 +160,8 @@ public abstract class ProgressMonitorDialog extends ProgressDialog
 		return result;
 	}
 
-	/**	This method will be executed withing separate worker thread.
+	/**	This method will be executed within separate worker thread.
+	 * @return The constructed Object.
 	 */
 
 	public abstract Object construct();

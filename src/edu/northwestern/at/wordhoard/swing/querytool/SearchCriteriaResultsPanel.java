@@ -197,7 +197,7 @@ public class SearchCriteriaResultsPanel extends JPanel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PesistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public SearchCriteriaResultsPanel (AbstractWindow parentWindow) throws PersistenceException  {
@@ -321,6 +321,7 @@ public class SearchCriteriaResultsPanel extends JPanel {
 	/**	Sets the search results.
 	 *
 	 *	@param	searchResults		The search results.
+	 *	@param	criteriaPanel		The search criteria panel.
 	 */
 
 	public void setContents(java.util.List searchResults, SearchCriteriaPanel criteriaPanel) {
@@ -482,7 +483,7 @@ public class SearchCriteriaResultsPanel extends JPanel {
 
 	/**	Opens a lemma info window for the selected lemma.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void openGetInfoWindow ()

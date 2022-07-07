@@ -31,7 +31,7 @@ public class TranslationsDialog extends ModalDialog {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public TranslationsDialog (final Corpus corpus,

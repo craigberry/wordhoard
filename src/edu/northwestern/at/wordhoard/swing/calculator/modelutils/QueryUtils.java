@@ -388,6 +388,8 @@ public class QueryUtils
 	 *
 	 *	@param		owner	The owner.
 	 *
+	 *	@param		queryType	Query type to count.
+	 *
 	 *	@return				Count of queries owned by "owner".
 	 */
 
@@ -493,6 +495,8 @@ public class QueryUtils
 	 *
 	 *	@param	importDocument	The DOM document containing the queries
 	 *							to import.
+	 *
+	 *	@param	queryType		The type of the queries.
 	 *
 	 *	@return					The imported queries.  May be empty.
 	 *

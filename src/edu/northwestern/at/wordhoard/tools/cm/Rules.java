@@ -65,7 +65,7 @@ public class Rules {
 	 *
 	 *	@param	path	Path to XML parameters file.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public Rules (String path)

@@ -35,7 +35,7 @@ public class WordInfoWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void open (Word word, AbstractWindow parentWindow)
@@ -135,7 +135,7 @@ public class WordInfoWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private WordInfoWindow (final WordPart wordPart, String title,
@@ -219,7 +219,7 @@ public class WordInfoWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()
@@ -238,7 +238,7 @@ public class WordInfoWindow extends AbstractWindow {
 	 *
 	 *	@param	str		Ignored.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void handleGoToWordCmd (String str)
@@ -249,7 +249,7 @@ public class WordInfoWindow extends AbstractWindow {
 
 	/**	Handles the "Send Error Report" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleErrorCmd ()

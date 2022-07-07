@@ -78,7 +78,7 @@ class Renderer extends DefaultTreeCellRenderer {
 	 *
 	 *	@param	colocatePreloader	Colocate preloader.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	Renderer (int fontSize, Corpus corpus,

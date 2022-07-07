@@ -44,6 +44,7 @@ public class DebugUtils
 	/**	Gets a stack trace for an exception.
 	 *
 	 *	@param e	The exception
+	 *	@return	Stack trace as String
 	 */
 
 	public static String getStackTrace( Throwable e )
@@ -64,6 +65,8 @@ public class DebugUtils
 	/** Prints child components of a component.
 	 *
 	 *	@param	parent	The parent component.
+	 *	@param	indent	Number of spaces to indent the child.
+	 *	@return	null
 	 */
 
 	public static Component printChildComponents
@@ -237,7 +240,9 @@ public class DebugUtils
 		}
 	}
 
-	/** Print current memory status. */
+	/** Print current memory status.
+	 * @param title Title.
+	*/
 
 	public static void printMemoryStatus( String title )
 	{

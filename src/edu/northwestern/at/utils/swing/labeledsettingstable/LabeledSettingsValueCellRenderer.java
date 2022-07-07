@@ -37,6 +37,7 @@ public class LabeledSettingsValueCellRenderer
 	/**	Create settings value renderer.
 	 *
 	 *	@param	view				The table for this renderer.
+	 *	@param	font				Font for rendered view.
 	 *	@param	savedPaneSettings	Map of saved text pane settings.
 	 */
 

@@ -68,9 +68,9 @@ public class SortedTableModel extends AbstractTableModel {
 		 *
 		 *	@param	columnIndex		Column index.
 		 *
-		 *	@return					< 0 if this row < other row,
+		 *	@return					&lt; 0 if this row &lt; other row,
 		 *							0 if this row = other row,
-		 *							> 0 if this row > other row.
+		 *							&gt; 0 if this row &gt; other row.
 		 */
 
 		public int compareTo (Row other, int columnIndex);

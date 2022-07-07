@@ -1862,7 +1862,7 @@ public class BuildWorks {
 	 *	@param	numWords	Number of words in work part proper (not including
 	 *						descendants).
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public static void setPartCounters (WorkPart part, int numLines, int numWords)
@@ -1881,7 +1881,7 @@ public class BuildWorks {
 
 	/**	Sets the corpus counters.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public static void setCorpusCounters ()

@@ -384,6 +384,7 @@ public class Notepad
 	}
 
 	/**	Create an XTextArea to hold the document text.
+	 *	@return	The created XTextArea.
 	 */
 
 	protected JTextArea createEditor()
@@ -424,6 +425,7 @@ public class Notepad
 	}
 
 	/**	Return the editor contained in this panel.
+	 * @return	The editor.
 	 */
 
 	protected JTextArea getEditor()
@@ -432,6 +434,7 @@ public class Notepad
 	}
 
 	/**	Return the editor text as a string.
+	 * @return	The editor text.
 	 */
 
 	protected String getEditorText()
@@ -440,6 +443,7 @@ public class Notepad
 	}
 
 	/**	Find the parent frame for displaying a file-chooser dialog.
+	 *	@return	The parent frame.
 	 */
 
 	protected Frame getFrame()
@@ -450,6 +454,7 @@ public class Notepad
 	/**	Create a menu item.
 	 *
 	 *	@param	cmd		The name of the menu command.
+	 *	@return	Resulting menu item.
 	 *
 	 *	<p>
 	 *	This is the hook through which all menu items are
@@ -816,6 +821,7 @@ public class Notepad
 
 	/**	Create an editor menu.
 	 *
+	 *	@param	key	The key to the menu definition in the resource file.
 	 *	@return		The menu.
 	 *
 	 *	<p>
@@ -1014,6 +1020,7 @@ public class Notepad
 	}
 
 	/**	Handle Copy action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doCopy( ActionEvent e )
@@ -1038,6 +1045,7 @@ public class Notepad
 	}
 
 	/**	Handle Cut action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doCut( ActionEvent e )
@@ -1062,6 +1070,7 @@ public class Notepad
 	}
 
 	/**	Handle Paste action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doPaste( ActionEvent e )
@@ -1178,6 +1187,7 @@ public class Notepad
 	}
 
 	/**	Performs "select all" action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doSelectAll( ActionEvent e )
@@ -1225,7 +1235,7 @@ public class Notepad
 	}
 
 	/** Performs open file action.
-	 *
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doOpen( ActionEvent e )
@@ -1309,6 +1319,7 @@ public class Notepad
 	}
 
 	/**	Performs new action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doNew( ActionEvent e )
@@ -1372,6 +1383,7 @@ public class Notepad
 	}
 
 	/**	Performs save file action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doSave( ActionEvent e )
@@ -1413,6 +1425,7 @@ public class Notepad
 	}
 
 	/**	Performs save as action.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doSaveAs( ActionEvent e )
@@ -1460,6 +1473,7 @@ public class Notepad
 	 *	Override this to implement script execution, etc.
 	 *	Default here is to do nothing.
 	 *	</p>
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doRunAction( ActionEvent e )
@@ -1487,6 +1501,7 @@ public class Notepad
 	 *	<p>
 	 *	Override this to add extra end-of-editing checks.
 	 *	</p>
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doExit( ActionEvent e )
@@ -1515,7 +1530,10 @@ public class Notepad
 		}
 	}
 
-	/** Confirm closing with unsaved changes. */
+	/** Confirm closing with unsaved changes.
+	 * @param title Title of confirmation dialog.
+	 * @return Dialog confirmation choice.
+	*/
 
 	protected int showNotSavedDialog( String title )
 	{
@@ -1530,6 +1548,7 @@ public class Notepad
 	 *	Override this to change end-of-editing behavior.
 	 *	Called at the end of doExit() .
 	 *	</p>
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void reallyExit( ActionEvent e )
@@ -1559,6 +1578,7 @@ public class Notepad
 	}
 
 	/**	Do find.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doFind( ActionEvent e )
@@ -1594,6 +1614,7 @@ public class Notepad
 	};
 
 	/**	Do replace.
+	 * @param	e	The ActionEvent that triggered invocation.
 	 */
 
 	protected void doReplace( ActionEvent e )
@@ -1628,7 +1649,9 @@ public class Notepad
 		}
 	};
 
-	/**	Printer page setup. */
+	/**	Printer page setup.
+	 * @param	e	The ActionEvent that triggered invocation.
+	*/
 
 	protected void doPageSetup( ActionEvent e )
 	{
@@ -1657,7 +1680,9 @@ public class Notepad
 		}
 	};
 
-	/**	Print the text. */
+	/**	Print the text.
+	 * @param	e	The ActionEvent that triggered invocation.
+	*/
 
 	protected void doPrint( ActionEvent e )
 	{

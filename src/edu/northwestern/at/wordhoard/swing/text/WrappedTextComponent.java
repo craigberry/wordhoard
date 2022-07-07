@@ -252,8 +252,6 @@ public class WrappedTextComponent extends JComponent implements
 	}
 
 	/**	Selects all the text.
-	 *
-	 *	@throws	Exception
 	 */
 
 	public void selectAll () {
@@ -546,7 +544,7 @@ public class WrappedTextComponent extends JComponent implements
 	 *
 	 *	@param	event	Mouse event.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private void handleMouseReleased (MouseEvent event)
@@ -579,7 +577,7 @@ public class WrappedTextComponent extends JComponent implements
 	 *	@param	range	Text range of line containing marker clicked,
 	 *					in base coordinates.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleMarkerClick (TextRange range)

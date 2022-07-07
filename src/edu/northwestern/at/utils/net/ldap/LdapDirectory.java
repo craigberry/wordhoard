@@ -44,7 +44,7 @@ public class LdapDirectory
 	 *	@return					A mapping from LDAP field names
 	 *							to LDAP field values.
 	 *
-	 *	@throws	LdapException
+	 *	@throws	LdapException	error in LDAP query.
 	 */
 
 	public static Map getInfoForNetid

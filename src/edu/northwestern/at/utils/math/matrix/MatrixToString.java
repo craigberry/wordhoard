@@ -80,6 +80,7 @@ public class MatrixToString
 	 *	@param	title			Title for matrix.
 	 *	@param	columnNames		Column names.
 	 *	@param	formatString	PrintFformat format string for all entries.
+	 *	@return matrix converted to a string with columns in specified format.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of constant width in which
@@ -128,6 +129,7 @@ public class MatrixToString
 	 *	@param	matrix		The matrix to convert to XHTML string.
 	 *	@param	title		Title for matrix.
 	 *	@param	columnNames	Column names.
+	 *	@return matrix converted to a string with constant width columns.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of constant width in which
@@ -176,6 +178,7 @@ public class MatrixToString
 	/** Convert matrix entries to a string.
 	 *
 	 *	@param	matrix		The matrix to convert to a string.
+	 *	@return matrix converted to a string in constant width columns.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of constant width in which
@@ -220,6 +223,7 @@ public class MatrixToString
 	 *
 	 *	@param	matrix		The matrix to convert to a string.
 	 *	@param	decimals	Decimal places for each entry.
+	 *	@return matrix converted to a string in fixed-width column format.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of constant width in which
@@ -264,6 +268,7 @@ public class MatrixToString
 	/** Convert matrix entries to a string in Matlab/Scilab format.
 	 *
 	 *	@param	matrix		The matrix to convert to a string.
+	 *	@return matrix converted to a string in Matlab/Scilab format.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of variable width in which
@@ -308,6 +313,7 @@ public class MatrixToString
 	/** Convert matrix entries to a string in Gauss format.
 	 *
 	 *	@param	matrix		The matrix to convert to a string.
+	 *	@return	matrix converted to a string in Gauss format.
 	 *
 	 *	<p>
 	 *	This produces a matrix with columns of variable width in which
@@ -352,6 +358,7 @@ public class MatrixToString
 	/** Convert matrix entries to a string in MathML format.
 	 *
 	 *	@param	matrix		The matrix to convert to a string.
+	 *	@return	matrix converted to a string in XHTML table format.
 	 *
 	 *	<p>
 	 *	This produces a MathML version of the matrix.
@@ -409,6 +416,7 @@ public class MatrixToString
 	/** Convert matrix entries to a string in XHTML table format.
 	 *
 	 *	@param	matrix		The matrix to convert to XHTML string.
+	 *	@return	matrix converted to a string in XHTML table format.
 	 *
 	 *	<p>
 	 *	This produces an XHTML version of the matrix.
@@ -466,6 +474,7 @@ public class MatrixToString
 	 *	@param	matrix		The matrix to convert to XHTML string.
 	 *	@param	title		Title for matrix.
 	 *	@param	columnNames	Column names.
+	 *	@return	matrix converted to a string in XHTML table format.
 	 *
 	 *	<p>
 	 *	This produces an XHTML version of the matrix with a title and
@@ -531,6 +540,7 @@ public class MatrixToString
 	 *	@param	columnNames		Column names.
 	 *	@param	border			Border value for table (0=no border).
 	 *	@param	formatString	Format string for matrix entries.
+	 *	@return	matrix converted to a string in XHTML table format.
 	 *
 	 *	<p>
 	 *	This produces an XHTML version of the matrix with a title and
@@ -609,7 +619,7 @@ public class MatrixToString
 	 *										column names row.
 	 *	@param	endColumnNamesString		String to output at end of
 	 *										column names row.
-	 *	Wparam	startColumnNameString		String to output before column name.
+	 *	@param	startColumnNameString		String to output before column name.
 	 *	@param	endColumnNameString			String to output after column name.
 	 *	@param	startMatrixString			String to output before the first
 	 *										matrix entry.
@@ -632,7 +642,7 @@ public class MatrixToString
 	 *	@param	widthOption					Output width option.
 	 *										"Matrix entry output width options"
 	 *										above for possible values.
-	 *
+	 *	@return	matrix converted to a string.
 	 *	<p>
 	 *	If the number of column names specified is less than the number
 	 *	of columns in the matrix, blank column names are used for the remainder.

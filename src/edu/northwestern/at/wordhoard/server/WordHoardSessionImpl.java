@@ -81,7 +81,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 	/**	Creates a new session.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	WordHoardSessionImpl ()
@@ -106,7 +106,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 	/**	Ends the session.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public void endSession ()
@@ -126,7 +126,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	which go untickled for 2 hours are considered to be dead and are
 	 *	timed out and terminated.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void tickle ()
@@ -141,7 +141,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@param	msg			Log message.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void logMessage (int level, String msg)
@@ -167,7 +167,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	@return				Account record with password set to null
 	 *						if login successful. Null if login unsuccessful.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public Account login (String username, String password)
@@ -211,7 +211,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 	/**	Logs out.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void logout ()
@@ -227,9 +227,9 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	@return			List of all accounts in increasing order by username,
 	 *					without the special "system" account.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public List getAccounts ()
@@ -255,9 +255,9 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@return				Id of the account.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public Long createOrUpdateAccount (Account account)
@@ -303,9 +303,9 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@param	id		Account id.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public void deleteAccount (Long id)
@@ -349,7 +349,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	Sessions which have not been tickled by their client for the last
 	 *	two hours are terminated.
 	 *
-	 *	@throws	InterruptedException
+	 *	@throws	InterruptedException	thread was interrupted.
 	 */
 
 	private static void timeOutIdleSessions ()
@@ -377,7 +377,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 	/**	Initializes the class.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	static void initialize ()
@@ -477,7 +477,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	to create the default user data objects.
 	 *	</p>
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	private static void createInitialAccount ()
@@ -505,7 +505,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	
 	/**	Creates the special "system" account, if necessary.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	private static void createSystemAccount ()
@@ -536,9 +536,9 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@return					Id of the object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public Long createUserDataObject (UserDataObject userDataObject)
@@ -590,7 +590,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *									logged in or is not the owner of the
 	 *									user data object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public Long updateUserDataObject (UserDataObject userDataObject,
@@ -641,11 +641,11 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *	@param	udoClass				Class of user data object to delete.
 	 *	@param	id						ID of user data object to delete.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public void deleteUserDataObject (Class udoClass, Long id)
@@ -689,11 +689,11 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@param	wordSet		The word set to delete.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public void deleteWordSet (WordSet wordSet)
@@ -746,7 +746,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@return					Count of objects inserted.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
 	 *	<p>
 	 *	This method provides for executing a MySQL batch insert query.
@@ -780,11 +780,11 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@return	count of inserts performed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public int performBatchInserts (String[] insertStatements)

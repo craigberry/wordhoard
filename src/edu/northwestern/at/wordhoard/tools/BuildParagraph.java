@@ -123,7 +123,7 @@ public class BuildParagraph extends TextLine {
 	 *
 	 *	@param	size		Font size.
 	 *
-	 *	@throws Error
+	 *	@throws Error	general error.
 	 */
 	 
 	public BuildParagraph (Element el, byte charset, byte size) 

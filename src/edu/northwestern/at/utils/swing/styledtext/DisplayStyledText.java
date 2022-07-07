@@ -132,6 +132,7 @@ public class DisplayStyledText extends ModalDialog
 	 *	@param	title		Title.
 	 *	@param	styledText	Styled text to display.
 	 *	@param	pageFormat	Page format for printing styled text.
+	 *	@param	printerJob	Printer job for printing styled text.
 	 */
 
 	public DisplayStyledText

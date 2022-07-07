@@ -34,7 +34,7 @@ abstract class CriterionComponent {
 	 *
 	 *	@return					The Swing component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	JComponent init (FindWindow window, Row row, SearchCriterion val) 
@@ -54,7 +54,7 @@ abstract class CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	abstract JComponent init (SearchCriterion val)
@@ -125,7 +125,7 @@ abstract class CriterionComponent {
 	 *	@param	newVal		New value. Null if the row has just been
 	 *						deleted. 
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	void handleValueChanged (Class cls, SearchCriterion oldVal, 

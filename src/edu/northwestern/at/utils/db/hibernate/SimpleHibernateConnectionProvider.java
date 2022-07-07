@@ -21,12 +21,12 @@ import edu.northwestern.at.utils.db.jdbc.*;
  *	SimpleConnectionPool properties as follows:
  *
  *	<ul>
- *	<li>hibernate.connection.driver_class -> driverClassName
- *	<li>hibernate.connection.url -> url
- *	<li>hibernate.connection.username -> username
- *	<li>hibernate.connection.password -> password
- *	<li>hibernate.connection.pool_size -> maxPoolSize
- *	<li>hibernate.connection.autocommit -> autocommit
+ *	<li>hibernate.connection.driver_class -&gt; driverClassName
+ *	<li>hibernate.connection.url -&gt; url
+ *	<li>hibernate.connection.username -&gt; username
+ *	<li>hibernate.connection.password -&gt; password
+ *	<li>hibernate.connection.pool_size -&gt; maxPoolSize
+ *	<li>hibernate.connection.autocommit -&gt; autocommit
  *	</ul>
  *
  *	<p>The remaining SimpleConnectionPool properties use their
@@ -49,7 +49,7 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider {
 	 *
 	 *	@param	properties	The Hibernate configuration properties.
 	 *
-	 *	@throws	HibernateException
+	 *	@throws	HibernateException	Error creating Hibernate connection pool.
 	 */
 
 	public void configure (Properties properties)
@@ -90,7 +90,7 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider {
 	 *
 	 *	@return		A connection.
 	 *
-	 *	@throws	SQLException
+	 *	@throws	SQLException	error from SQL connection
 	 */
 
 	public Connection getConnection ()
@@ -103,7 +103,7 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider {
 	 *
 	 *	@param	connection	The connection to return to the pool.
 	 *
-	 *	@throws	SQLException
+	 *	@throws	SQLException	error from SQL connection
 	 */
 
 	public void closeConnection (Connection connection)

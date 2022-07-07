@@ -121,7 +121,7 @@ public class SiteDialog extends ModalDialog {
 	 *
 	 *	@param	args		Command line arguments.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	public static void getSiteInfo (String[] args) 

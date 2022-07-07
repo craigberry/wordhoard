@@ -54,7 +54,7 @@ class GroupMembersModel extends AbstractTableModel {
 	 *
 	 *	@param	userGroup		UserGroup.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	GroupMembersModel (UserGroup userGroup)

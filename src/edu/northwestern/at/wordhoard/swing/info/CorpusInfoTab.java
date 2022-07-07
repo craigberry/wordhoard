@@ -27,7 +27,7 @@ class CorpusInfoTab extends JPanel {
 	 *
 	 *	@param	maxValueWidth	Max value width for labeled columns.
 	 *
-	 *	@throws PersistenceExecption
+	 *	@throws PersistenceException	Error in persistence layer.
 	 */
 
 	CorpusInfoTab (final Corpus corpus,

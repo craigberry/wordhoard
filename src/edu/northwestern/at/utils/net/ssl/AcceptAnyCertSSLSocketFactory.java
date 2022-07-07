@@ -55,6 +55,7 @@ public class AcceptAnyCertSSLSocketFactory extends SSLSocketFactory
 
 	/** The remaining methods are simple overrides of the standard
 	 *	socket factory methods.
+	 *	@return socket factory.
 	 */
 
 	public static SocketFactory getDefault()

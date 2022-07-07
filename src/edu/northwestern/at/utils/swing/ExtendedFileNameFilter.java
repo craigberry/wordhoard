@@ -10,6 +10,7 @@ import java.io.FilenameFilter;
 public interface ExtendedFileNameFilter extends FilenameFilter
 {
     /**	Get description for this file name filter.
+     * @return the description.
      */
 
     public String getDescription();

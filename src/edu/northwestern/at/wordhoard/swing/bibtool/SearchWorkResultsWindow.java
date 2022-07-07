@@ -54,7 +54,7 @@ public class SearchWorkResultsWindow extends AbstractWorkPanelWindow {
 	 *
 	 *	@param	parentWindow		Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public SearchWorkResultsWindow (final SearchWorkCriteria sq,
@@ -158,6 +158,8 @@ public class SearchWorkResultsWindow extends AbstractWorkPanelWindow {
 	 *
 	 *	@param	works		The list of works
 	 *
+	 *	@throws	PersistenceException	error in persistence layer.
+	 *
 	 */
 
 	public void setWorks (java.util.List works)
@@ -176,6 +178,8 @@ public class SearchWorkResultsWindow extends AbstractWorkPanelWindow {
 	}
 
 	/**	Handles "Copy" command.
+	 *
+	 * @throws	Exception	general error.
 	 */
 
 	public void handleCOpyCmd ()
@@ -222,7 +226,7 @@ public class SearchWorkResultsWindow extends AbstractWorkPanelWindow {
 	/**	Handles file menu selected.
 	 *
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFileMenuSelected ()

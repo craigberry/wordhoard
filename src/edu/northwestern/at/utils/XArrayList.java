@@ -22,6 +22,7 @@ public class XArrayList extends ArrayList
 	}
 
 	/**	Create empty array list with specified initial capacity.
+	 *	@param	initialCapacity	The initial capacity of the array.
 	 */
 
 	public XArrayList( int initialCapacity )

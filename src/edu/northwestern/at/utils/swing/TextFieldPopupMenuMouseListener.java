@@ -281,7 +281,9 @@ public class TextFieldPopupMenuMouseListener extends MouseAdapter
 		checkPopup( event );
 	}
 
-	/** Set status of popup menu items. */
+	/** Set status of popup menu items.
+	 * @param textComponent JTextComponent that will have its status set.
+	*/
 
 	protected void setPopupItemStatus( JTextComponent textComponent )
 	{

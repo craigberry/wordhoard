@@ -23,7 +23,7 @@ public class IntRange implements Serializable, Cloneable {
 	 *
 	 *	@param	last		The last integer in the range + 1.
 	 *
-	 *	@throws	IllegalArgumentException	If first >= last.
+	 *	@throws	IllegalArgumentException	If first &gt;= last.
 	 */
 	 
 	public IntRange (int first, int last) {
@@ -63,7 +63,7 @@ public class IntRange implements Serializable, Cloneable {
 	 *
 	 *	<p>If last = first+1: "first".
 	 *
-	 *	<p>If last > first+1: "first-xxx" where "xxx"is last-1.
+	 *	<p>If last &gt; first+1: "first-xxx" where "xxx"is last-1.
 	 *
 	 *	@return		The integer range as a string.
 	 */

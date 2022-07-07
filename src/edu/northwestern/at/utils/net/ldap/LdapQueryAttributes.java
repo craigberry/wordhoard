@@ -326,6 +326,7 @@ public class LdapQueryAttributes
 	 *	@param	password		The user password.
 	 *	@param	ldapURL			The LDAP service URL.
 	 *	@param	ldapPrincipal	The LDAP principal string.
+	 *	@param	ldapSearchAttributes	The LDAP search attributes.
 	 *	@param	keystore		The path to the SSL keystore if a non-standard
 	 *							certificate is used.  Set to the empty
 	 *							string if not needed.

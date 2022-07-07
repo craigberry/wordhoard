@@ -27,7 +27,7 @@ class WorkInfoTab extends JPanel {
 	 *
 	 *	@param	maxValueWidth	Max value width for labeled columns.
 	 *
-	 *	@throws PersistenceExecption
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	WorkInfoTab (final Work work,

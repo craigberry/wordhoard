@@ -1225,6 +1225,7 @@ public class FileMenu extends BaseMenu
 	}
 
 	/**	Manage accounts.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void manageAccounts()
@@ -1234,6 +1235,7 @@ public class FileMenu extends BaseMenu
 	}
 
 	/**	Annotate.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void annotate()

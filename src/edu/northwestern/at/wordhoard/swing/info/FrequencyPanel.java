@@ -33,7 +33,7 @@ class FrequencyPanel extends JPanel {
 	 *
 	 *	@param	width				Width.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	FrequencyPanel (Lemma lemma, Corpus corpus, Work work,

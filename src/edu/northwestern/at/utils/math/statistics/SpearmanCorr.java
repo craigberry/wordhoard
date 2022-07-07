@@ -67,13 +67,13 @@ public class SpearmanCorr
 	 *	The approximate significance of Spearman's correlation r is computing
 	 *	using Student's t distribution with ( n - 2 ) degrees of freedom,
 	 *	as follows:
-	 *	<p>
-	 *
-	 *	<p>
-	 *	df = n - 2<br />
-	 *	t = r * sqrt( df / ( 1 - r^2 ) )<br />
-	 *	sig(r) = sigt( t , df )<br />
 	 *	</p>
+	 *
+	 *	<pre>
+	 *	df = n - 2
+	 *	t = r * sqrt( df / ( 1 - r^2 ) )
+	 *	sig(r) = sigt( t , df )
+	 *	</pre>
 	 *
 	 *	<p>
 	 *	If r is exactly one, the significance is returned as zero.

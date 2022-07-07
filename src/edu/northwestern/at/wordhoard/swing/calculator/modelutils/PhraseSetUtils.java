@@ -49,6 +49,7 @@ public class PhraseSetUtils
 	 *	@param	owner				The phrase set owner.
 	 *	@param	isPublic			True if phrase set to be public.
 	 *	@param	query				The query string generating the phrases.
+	 *	@param	words				Words to add to phrase set.
 	 *	@param	phrases				Phrases to add to phrase set.
 	 *	@param	progressReporter	Progress display to update.  May be null.
 	 *
@@ -752,6 +753,7 @@ public class PhraseSetUtils
 	/**	Preload phrase data.
 	 *
 	 *	@param	phraseSet	The phrase set.
+	 *	@return	The phrase list collection.
 	 *
 	 *	<p>
 	 *	Returns null if phrase set is null.

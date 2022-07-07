@@ -22,7 +22,7 @@ public class FileTokenizer
 	 *	@param	pretokenizer	The pretokenizer for each input line.
 	 *							DefaultPretokenizer is used if null.
 	 *
-	 *	@throws IOException
+	 *	@throws IOException	I/O error.
 	 *						if input file can't be read.
 	 */
 
@@ -68,7 +68,7 @@ public class FileTokenizer
 	 *
 	 *	@param	file		Input file.
 	 *
-	 *	@throws IOException
+	 *	@throws IOException	I/O error.
 	 *						if input file can't be read.
 	 */
 
@@ -83,7 +83,7 @@ public class FileTokenizer
 	 *	@param	fileName	Name of the input file.
 	 *	@param	encoding	Encoding (e.g., "utf-8").
 	 *
-	 *	@throws IOException
+	 *	@throws IOException	I/O error.
 	 *						if input file can't be read.
 	 */
 
@@ -97,7 +97,7 @@ public class FileTokenizer
 	 *
 	 *	@param	fileName	Name of the input file.
 	 *
-	 *	@throws IOException
+	 *	@throws IOException	I/O error.
 	 *						if input file can't be read.
 	 */
 
@@ -173,6 +173,7 @@ public class FileTokenizer
 	}
 
 	/**	Close input file once tokenization is complete.
+	 * @throws	IOException	if something goes wrong
 	 */
 
 	public void close()

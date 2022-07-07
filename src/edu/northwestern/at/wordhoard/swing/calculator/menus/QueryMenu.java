@@ -284,9 +284,10 @@ public class QueryMenu extends BaseMenu
 		setQueryMenuItemsAvailability();
 	}
 
-	/**	Helper for create new query.
+	/**	Helper for creating new query.
 	 *
 	 *	@param	dialog	The query dialog.
+	 *	@return	The new query.
 	 */
 
 	protected WHQuery doCreateQuery( NewQueryDialog dialog )

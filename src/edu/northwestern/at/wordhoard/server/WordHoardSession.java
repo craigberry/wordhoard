@@ -20,7 +20,7 @@ public interface WordHoardSession extends Remote {
 
 	/**	Ends the session.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public void endSession ()
@@ -32,7 +32,7 @@ public interface WordHoardSession extends Remote {
 	 *	which go untickled for 2 hours are considered to be dead and are
 	 *	timed out and terminated.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void tickle ()
@@ -44,7 +44,7 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@param	msg			Log message.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void logMessage (int level, String msg)
@@ -59,7 +59,7 @@ public interface WordHoardSession extends Remote {
 	 *	@return				Account record with password set to null
 	 *						if login successful. Null if login unsuccessful.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public Account login (String username, String password)
@@ -67,7 +67,7 @@ public interface WordHoardSession extends Remote {
 
 	/**	Logs out.
 	 *
-	 *	@throws RemoteException
+	 *	@throws RemoteException	error in remote connection.
 	 */
 
 	public void logout ()
@@ -77,9 +77,9 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@return			List of all accounts in increasing order by username.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public List getAccounts ()
@@ -91,9 +91,9 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@return				Id of the account.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public Long createOrUpdateAccount (Account account)
@@ -103,9 +103,9 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@param	id		Account id.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public void deleteAccount (Long id)
@@ -117,9 +117,15 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@return							Id of the object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws							BadOwnerException if user is not
+	 *									logged in or is not the owner of the
+	 *									user data object.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	RemoteException	error in remote connection.
+	 *
+	 *	@throws	WordHoardError	WordHoard-specific error.
+	 *
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Long createUserDataObject (UserDataObject userDataObject)
@@ -139,7 +145,11 @@ public interface WordHoardSession extends Remote {
 	 *									logged in or is not the owner of the
 	 *									user data object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
+	 *
+	 *	@throws	WordHoardError	WordHoard-specific error.
+	 *
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Long updateUserDataObject (UserDataObject userDataObject,
@@ -152,9 +162,11 @@ public interface WordHoardSession extends Remote {
 	 *	@param	udoClass	Class of user data object to delete.
 	 *	@param	id			ID of user data object to delete.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
+	 *
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void deleteUserDataObject (Class udoClass, Long id)
@@ -164,9 +176,11 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@param	wordSet		Word set to delete.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
+	 *
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void deleteWordSet(WordSet wordSet)
@@ -178,11 +192,11 @@ public interface WordHoardSession extends Remote {
 	 *
 	 *	@return	count of inserts performed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 *
-	 *	@throws	WordHoardError
+	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
 
 	public int performBatchInserts (String[] insertStatements )

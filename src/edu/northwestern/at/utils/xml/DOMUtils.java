@@ -23,7 +23,9 @@ public class DOMUtils {
 	 *
 	 *	@return				DOM document.
 	 *
-	 *	@throws	Exception
+	 *	@throws	IOException	I/O error.
+	 *	@throws	ParserConfigurationException	Parser configuration error.
+	 *	@throws	SAXException	SAX processing error.
 	 */
 
 	public static Document parse (File file)
@@ -40,7 +42,9 @@ public class DOMUtils {
 	 *
 	 *	@return				DOM document.
 	 *
-	 *	@throws	Exception
+	 *	@throws	IOException	I/O error.
+	 *	@throws	ParserConfigurationException	Parser configuration error.
+	 *	@throws	SAXException	SAX processing error.
 	 */
 
 	public static Document parse (String path)
@@ -55,7 +59,9 @@ public class DOMUtils {
 	 *
 	 *	@return				DOM document.
 	 *
-	 *	@throws	Exception
+	 *	@throws	IOException	I/O error.
+	 *	@throws	ParserConfigurationException	Parser configuration error.
+	 *	@throws	SAXException	SAX processing error.
 	 */
 
 	public static Document parse (URL url)
@@ -299,7 +305,7 @@ public class DOMUtils {
 	 *
 	 *	@return		New empty DOM document.
 	 *
-	 *	@throws	ParserConfigurationException
+	 *	@throws	ParserConfigurationException	Parser configuration error.
 	 */
 
 	public static Document newDocument ()
@@ -315,7 +321,8 @@ public class DOMUtils {
 	 *	@param	document	DOM document.
 	 *	@param	path		Output file path.
 	 *
-	 *	@throws	TransformerException, IOException
+	 *	@throws	TransformerException	XML Transformer error.
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public static void save (Document document, String path)

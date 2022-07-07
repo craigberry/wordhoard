@@ -119,7 +119,7 @@ public class SortedListModel extends DefaultListModel {
 
 	/**	Prohibits attempts to add elements at the end of the list.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void addElement (Object element) {
@@ -128,7 +128,7 @@ public class SortedListModel extends DefaultListModel {
 
 	/**	Prohibits attempts to add elements at specific locations.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void add (int index, Object element) {
@@ -137,7 +137,7 @@ public class SortedListModel extends DefaultListModel {
 
 	/**	Prohibits attempts to add elements at specific locations.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void insertElementAt (Object obj, int index) {
@@ -146,7 +146,7 @@ public class SortedListModel extends DefaultListModel {
 
 	/**	Prohibits attempts to set an element.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public Object set (int index, Object element) {
@@ -155,7 +155,7 @@ public class SortedListModel extends DefaultListModel {
 
 	/**	Prohibits attempts to set an element.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void setElementAt (Object obj, int index) {

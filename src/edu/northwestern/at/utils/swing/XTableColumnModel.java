@@ -16,7 +16,7 @@ import java.util.Enumeration;
  *	<p>
  *	Hiding a column fires a columnRemoved event and unhiding a column
  *	fires a columnAdded event, and possibly a columnMoved event as well.
- *	<p>
+ *	</p>
  *
  *	<p>
  *	The following methods still deal with visible columns only:

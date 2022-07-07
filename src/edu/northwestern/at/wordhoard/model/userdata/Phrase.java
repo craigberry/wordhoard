@@ -66,6 +66,7 @@ public class Phrase
 	/**	Create a phrase with specified word tags.
 	 *
 	 *	@param	wordTags	The word tags of the words in the phrase.
+	 *	@param	workTag		The work tag for the words.
 	 */
 
 	public Phrase( String[] wordTags , String workTag )

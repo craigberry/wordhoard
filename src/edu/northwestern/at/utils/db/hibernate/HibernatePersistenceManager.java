@@ -164,7 +164,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	cache2				true to use second level cache.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public static void init
@@ -264,7 +264,7 @@ public class HibernatePersistenceManager
 	 *	@param	persistentClasses	Array of persistent classes.  Should not be
 	 *								null.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public static void init
@@ -284,7 +284,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	cache2				true to use second level cache.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public static void init( Class[] persistentClasses , boolean cache2 )
@@ -298,7 +298,7 @@ public class HibernatePersistenceManager
 	 *	@param	persistentClasses	Array of persistent classes.  Should not be
 	 *								null.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public static void init( Class[] persistentClasses )
@@ -309,7 +309,7 @@ public class HibernatePersistenceManager
 
 	/**	Creates a new persistence manager.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public HibernatePersistenceManager()
@@ -369,7 +369,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return 	The JDBC connection.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public Connection getConnection()
@@ -468,7 +468,7 @@ public class HibernatePersistenceManager
 	 *	@param	evictionClass	The persistent class whose cached objects
 	 *							should be evicted.
 	 *
-	 *	@throws					PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void evict( Class evictionClass )
@@ -513,7 +513,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	obj		The object to evict.
 	 *
-	 *	@throws			PersistenceException
+	 *	@throws			PersistenceException	for persistence layer error
 	 */
 
 	public void evict( Object obj )
@@ -532,8 +532,6 @@ public class HibernatePersistenceManager
 	/**	Evict an object from the session cache.
 	 *
 	 *	@param	obj		The object to evict.
-	 *
-	 *	@throws			PersistenceException
 	 */
 
 	public static void doEvict( Object obj )
@@ -561,7 +559,7 @@ public class HibernatePersistenceManager
 	 *	them. Persistence managers may not be reused after they have been
 	 *	closed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void close()
@@ -605,7 +603,7 @@ public class HibernatePersistenceManager
 
 	/**	Begins a transaction if one is not already in progress.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void begin()
@@ -625,7 +623,7 @@ public class HibernatePersistenceManager
 
 	/**	Commits a transaction if one is in progress.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void commit()
@@ -647,7 +645,7 @@ public class HibernatePersistenceManager
 
 	/**	Flushes current transaction state.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void flush()
@@ -665,7 +663,7 @@ public class HibernatePersistenceManager
 
 	/**	Rolls back a transaction if one is in progress.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void rollback()
@@ -692,7 +690,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	obj		The object.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void save( Object obj )
@@ -723,7 +721,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	collection	Collection of objects.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void save( Collection collection )
@@ -835,7 +833,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	obj		The object.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void delete( Object obj )
@@ -867,7 +865,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	collection	Collection of objects.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void delete( Collection collection )
@@ -978,6 +976,7 @@ public class HibernatePersistenceManager
 	 *	A new persistence manager for the current thread is created if
 	 *	it does not yet exist.
 	 *	</p>
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public static HibernatePersistenceManager getHPM()
@@ -1017,7 +1016,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return			The loaded object.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public Object get( Class type , Long id )
@@ -1084,7 +1083,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return			The loaded object.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public Object load( Class type , Long id )
@@ -1142,7 +1141,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@param	obj		The persistent object to update on the database.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void update( Object obj )
@@ -1177,7 +1176,7 @@ public class HibernatePersistenceManager
 	 *	@param	collection		The collection containing persistence objects
 	 *							to update on the database.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public void update( Collection collection )
@@ -1291,7 +1290,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return					Count of objects deleted.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public int deleteViaQuery
@@ -1389,7 +1388,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return					Count of objects deleted.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public int deleteViaQuery( String queryString )
@@ -1421,7 +1420,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return					Count of objects deleted.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	This method provides for executing a standard SQL "delete from" query.
@@ -1563,7 +1562,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, Long, Boolean,
@@ -1621,7 +1620,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, Long, Boolean,
@@ -1651,7 +1650,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, or Long
@@ -1776,7 +1775,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public List query( String queryString , boolean cacheQuery )
@@ -1813,7 +1812,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public List query( String queryString )
@@ -1901,7 +1900,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return					Count returned by query.  0 if the query fails.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public int countQuery
@@ -1997,7 +1996,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return					Count of objects inserted.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	This method provides for executing a standard SQL "insert" query.
@@ -2074,7 +2073,7 @@ public class HibernatePersistenceManager
 	 *	@return					Scrollable query result, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, Long, Boolean,
@@ -2132,7 +2131,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, Long, Boolean,
@@ -2162,7 +2161,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 *
 	 *	<p>
 	 *	Any parameter that is not of type String, Integer, or Long
@@ -2289,7 +2288,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public ScrollableResults scrollableQuery
@@ -2329,7 +2328,7 @@ public class HibernatePersistenceManager
 	 *	@return					List of objects resulting from query, or
 	 *							null if query failed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public ScrollableResults scrollableQuery( String queryString )
@@ -2429,9 +2428,7 @@ public class HibernatePersistenceManager
 	 *
 	 *	@return	count of inserts performed.
 	 *
-	 *	@throws	PersistenceException
-	 *
-	 *	@throws	WordHoardError
+	 *	@throws	PersistenceException	error in persistence call
 	 */
 
 	public int performBatchInserts( String[] insertStatements )

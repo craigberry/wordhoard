@@ -252,7 +252,9 @@ public class TagCloud
 		}
 	}
 
-	/**	Return tag cloud HTML. */
+	/**	Return tag cloud HTML.
+	 *	@return	Tag cloud HTML.
+	*/
 
 	public String getHTML()
 	{
@@ -366,7 +368,9 @@ public class TagCloud
 			Math.min( maxFontSize , Math.max( minFontSize , 1.0D ) );
 	}
 
-	/**	Add HTML line to cloud. */
+	/**	Add HTML line to cloud.
+	 * @param	html	The HTML string.
+	*/
 
 	protected void addHTML( String html )
 	{

@@ -36,7 +36,8 @@ public class CustomFileFilter
 
 	/** Create HTML file filter.
 	 *
-	 *	@param	extensions 		Accepted HTML file extentions.
+	 *	@param	extensions 		Accepted HTML file extensions.
+	 *	@param description		Description of acceptable extensions.
 	 */
 
 	public CustomFileFilter( String[] extensions , String description )

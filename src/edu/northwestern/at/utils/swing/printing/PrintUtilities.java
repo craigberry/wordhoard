@@ -50,6 +50,8 @@ public class PrintUtilities
 	 *
 	 *	@param	showProgress		true to display print progress dialog.
 	 *
+	 *	@return	The number of pages required to print the printable object.
+	 *
 	 *	<p>
 	 *	The printable's "print" method is called to "print" each page
 	 *	into a buffered image which is the same size as the specified
@@ -182,6 +184,8 @@ public class PrintUtilities
 	 *
 	 *	@param	pageFormat			The page format to use when laying
 	 *								out the pages.
+	 *
+	 *	@return	The number of pages required to print the printable object.
 	 */
 
 	public static int getPageCount
@@ -236,7 +240,7 @@ public class PrintUtilities
 	 *
 	 *	@return						The scaling factor.
 	 *								= 1.0 if no scaling required.
-	 *								< 1.0 if scaling required.
+	 *								&lt; 1.0 if scaling required.
 	 *
 	 *	<p>
 	 *	The scaling factor is the value to by which multiply the view size
@@ -248,7 +252,7 @@ public class PrintUtilities
 	 *	</p>
 	 *
 	 *	<p>
-	 *	A scaling factor > 1.0 is never return since such a scale
+	 *	A scaling factor &gt; 1.0 is never return since such a scale
 	 *	factor means no scaling is needed.
 	 *	</p>
 	 */
@@ -600,7 +604,11 @@ public class PrintUtilities
 		doPrintPreview( printableObject, pageFormat, title );
 	}
 
-	/** Helper for printPreview. */
+	/** Helper for printPreview.
+	 * @param printableObject The printable object.
+	 * @param pageFormat The page format.
+	 * @param title The title.
+	*/
 
 	protected static void doPrintPreview
 	(

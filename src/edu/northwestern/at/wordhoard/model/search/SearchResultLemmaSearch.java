@@ -31,6 +31,8 @@ public class SearchResultLemmaSearch {
 	 *	@param	lemma		The lemma.
 	 *
 	 *	@param	count	The count.
+	 *
+	 *	@param	docCount	The count of documents.
 	 */
 
 	public SearchResultLemmaSearch (Lemma lemma, int count, int docCount) {

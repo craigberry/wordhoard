@@ -475,6 +475,8 @@ public class WordCounterTreeCombo
 	}
 
 	/**	Clone a node.
+	 *	@param	parentOfClonedNode	Parent of the node to clone.
+	 *	@param	nodeToClone			The node to clone.
 	 */
 
 	protected void cloneNode

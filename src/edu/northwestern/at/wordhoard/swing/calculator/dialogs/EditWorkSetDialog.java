@@ -209,6 +209,7 @@ public class EditWorkSetDialog
 	 *	@param	tree		The tree.
 	 *	@param	node		Tree node.
 	 *	@param	workParts	The work parts.
+	 *	@return	The row in the tree for this node if this is a work/work part. MAXINT if not a work/work part.
 	 */
 
 	public int visitAllTreeNodes
@@ -375,6 +376,8 @@ public class EditWorkSetDialog
 		}
 
 		/**	Enable or disable the work parts tree.
+		 *
+		 *	@param	enable	True to enable work parts tree, false to disable.
 		 */
 
 		protected void enableWorkPartsTree( boolean enable )

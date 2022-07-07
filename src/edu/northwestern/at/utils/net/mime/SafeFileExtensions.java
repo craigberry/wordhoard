@@ -70,6 +70,7 @@ public class SafeFileExtensions
 
 	/** Is extension safe?
 	 *
+	 *	@param extension	File extension to check.
 	 *	@return		True if extension on safe list, false otherwise.
 	 */
 

@@ -54,9 +54,9 @@ public class Compare {
 	 *
 	 *	@param	s2		String 2.
 	 *
-	 *	@return			< 0 if s1 < s2,
+	 *	@return			&lt; 0 if s1 &lt; s2,
 	 *					0 if s1 = s2,
-	 *					> 0 if s1 > s2.
+	 *					&gt; 0 if s1 &gt; s2.
 	 */
 
 	public static int compare (String s1, String s2) {
@@ -75,9 +75,9 @@ public class Compare {
 	 *
 	 *	@param	s2		String 2.
 	 *
-	 *	@return			< 0 if s1 < s2,
+	 *	@return			&lt; 0 if s1 &lt; s2,
 	 *					0 if s1 = s2,
-	 *					> 0 if s1 > s2.
+	 *					&gt; 0 if s1 &gt; s2.
 	 */
 
 	public static int compareIgnoreCase (String s1, String s2) {
@@ -96,9 +96,9 @@ public class Compare {
 	 *
 	 *	@param	d2		Date 2.
 	 *
-	 *	@return			< 0 if d1 < d2,
+	 *	@return			&lt; 0 if d1 &lt; d2,
 	 *					0 if d1 = d2,
-	 *					> 0 if d1 > d2.
+	 *					&gt; 0 if d1 &gt; d2.
 	 */
 
 	public static int compare (Date d1, Date d2) {
@@ -115,9 +115,9 @@ public class Compare {
 	 *
 	 *	@param	n2		Int 2.
 	 *
-	 *	@return			-1 if n1 < n2,
+	 *	@return			-1 if n1 &lt; n2,
 	 *					0 if n1 = n2,
-	 *					+1 if n1 > n2.
+	 *					+1 if n1 &gt; n2.
 	 */
 
 	public static int compare (int n1, int n2) {
@@ -136,9 +136,9 @@ public class Compare {
 	 *
 	 *	@param	n2		Long 2.
 	 *
-	 *	@return			-1 if n1 < n2,
+	 *	@return			-1 if n1 &lt; n2,
 	 *					0 if n1 = n2,
-	 *					+1 if n1 > n2.
+	 *					+1 if n1 &gt; n2.
 	 */
 
 	public static int compare (long n1, long n2) {
@@ -157,9 +157,9 @@ public class Compare {
 	 *
 	 *	@param	d2		double 2.
 	 *
-	 *	@return			-1 if d1 < d2,
+	 *	@return			-1 if d1 &lt; d2,
 	 *					0 if d1 = d2,
-	 *					+1 if d1 > d2.
+	 *					+1 if d1 &gt; d2.
 	 */
 
 	public static int compare( double d1 , double d2 )
@@ -186,9 +186,9 @@ public class Compare {
 	 *
 	 *	@param	n2		Integer 2.
 	 *
-	 *	@return			-1 if n1 < n2,
+	 *	@return			-1 if n1 &lt; n2,
 	 *					0 if n1 = n2,
-	 *					+1 if n1 > n2.
+	 *					+1 if n1 &gt; n2.
 	 */
 
 	public static int compare (Integer n1, Integer n2) {
@@ -207,9 +207,9 @@ public class Compare {
 	 *
 	 *	@param	n2		Long 2.
 	 *
-	 *	@return			-1 if n1 < n2,
+	 *	@return			-1 if n1 &lt; n2,
 	 *					0 if n1 = n2,
-	 *					+1 if n1 > n2.
+	 *					+1 if n1 &gt; n2.
 	 */
 
 	public static int compare (Long n1, Long n2) {
@@ -228,9 +228,9 @@ public class Compare {
 	 *
 	 *	@param	d2		Double 2.
 	 *
-	 *	@return			-1 if d1 < d2,
+	 *	@return			-1 if d1 &lt; d2,
 	 *					0 if d1 = d2,
-	 *					+1 if d1 > d2.
+	 *					+1 if d1 &gt; d2.
 	 */
 
 	public static int compare( Double d1 , Double d2 )
@@ -254,9 +254,9 @@ public class Compare {
 	 *
 	 *	@param	b2		byte 2.
 	 *
-	 *	@return			-1 if b1 < b2,
+	 *	@return			-1 if b1 &lt; b2,
 	 *					0 if b1 = b2,
-	 *					+1 if b1 > b2.
+	 *					+1 if b1 &gt; b2.
 	 */
 
 	public static int compare( byte b1 , byte b2 )

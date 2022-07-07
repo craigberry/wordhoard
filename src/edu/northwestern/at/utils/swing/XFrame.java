@@ -96,7 +96,9 @@ public class XFrame extends WindowsMenuManager
 		}
 	}
 
-	/** Perform print preview.   Override this if necessary in subclasses. */
+	/** Perform print preview.   Override this if necessary in subclasses.
+	 * @param	component	Component to print.
+	*/
 
 	public void doPrintPreview( Component component )
 	{
@@ -115,7 +117,10 @@ public class XFrame extends WindowsMenuManager
 		}
 	}
 
-	/** Perform print preview.   Override this if necessary in subclasses. */
+	/** Perform print preview.   Override this if necessary in subclasses.
+	 * @param	component	Component to print.
+	 * @param	title	Title to print.
+	*/
 
 	public void doPrintPreview( Component component , String title )
 	{
@@ -154,14 +159,19 @@ public class XFrame extends WindowsMenuManager
 		}
 	}
 
-	/** Do printing.  Override this if necessary in subclasses. */
+	/** Do printing.  Override this if necessary in subclasses.
+	 * @param	component	Component to print.
+	*/
 
 	public void doPrint( Component component )
 	{
 		doPrint( component , "" );
 	}
 
-	/** Do printing.  Override this if necessary in subclasses. */
+	/** Do printing.  Override this if necessary in subclasses.
+	 * @param	component	Component to print.
+	 * @param	title	Title to print.
+	*/
 
 	public void doPrint( Component component , String title )
 	{

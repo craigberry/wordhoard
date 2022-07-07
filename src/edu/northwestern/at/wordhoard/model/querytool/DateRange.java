@@ -35,6 +35,8 @@ public class DateRange implements Serializable
 
 
 	/**	Creates a new entry.
+	 * @param	startYear	Start year of date range.
+	 * @param	endYear		End year of date range.
 	 */
 
 	public DateRange(Integer startYear, Integer endYear)

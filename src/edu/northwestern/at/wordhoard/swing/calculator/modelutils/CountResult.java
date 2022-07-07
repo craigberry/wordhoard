@@ -152,6 +152,7 @@ public class CountResult
 	/**	Create count result object.
 	 *
 	 *	@param	word	The word string.
+	 *	@param	charset	The character set of the word string.
 	 *	@param	count	The count of the word.
 	 */
 
@@ -168,6 +169,7 @@ public class CountResult
 	/**	Create count result object.
 	 *
 	 *	@param	word	The word string.
+	 *	@param	charset	The character set of the word string.
 	 *	@param	count	The count of the word.
 	 */
 

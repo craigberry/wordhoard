@@ -7,7 +7,7 @@ import edu.northwestern.at.utils.math.ArithUtils;
 /**	QR Decomposition of a matrix using Householder reflections.
  *
  * <p>
- * For an m-by-n matrix A with m >= n, the QR decomposition is an m-by-n
+ * For an m-by-n matrix A with m &gt;= n, the QR decomposition is an m-by-n
  * orthogonal matrix Q and an n-by-n upper triangular matrix R so that
  * A = Q*R.
  * </p>

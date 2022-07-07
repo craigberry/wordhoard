@@ -29,7 +29,7 @@ class PhraseSetCriterion extends CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	JComponent init (SearchCriterion val)

@@ -62,6 +62,7 @@ public class LocationRectangle
 	/** Check if another LocationRectangle is equal to this.
 	 *
 	 *	@param	locationRectangle	The other location rectangle.
+	 *	@return True if equal, false if not.
 	 */
 
 	public boolean equals( LocationRectangle locationRectangle )

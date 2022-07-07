@@ -212,6 +212,7 @@ public class LookAndFeel
 	 *	The complete list of possible look and feels is pruned to those for
 	 *	which the implementing class actually exists.
 	 *	</p>
+	 *	@return	List of available look and feel options.
 	 */
 
 	public static ExtendedLookAndFeelInfo[] getExtendedLookAndFeelInfo()
@@ -436,6 +437,7 @@ public class LookAndFeel
 	}
 
     /**	Checks if current Look and Feel is system default.
+	 * @return	True if look and feel is native, false if not.
      */
 
 	public static boolean isNativeLookAndFeel()

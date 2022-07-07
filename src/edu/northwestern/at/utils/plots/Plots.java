@@ -164,6 +164,7 @@ public class Plots
      *	@param	title			plot title.
      *	@param	xTitle			x-axis title.
      *	@param	yTitle			y-axis title.
+	 *	@param	legendLabel		label for legend.
      *	@param	horizontal		true to display horizontal bar chart.
      *	@param	showBarValues	true to display bar values in bar.
      *
@@ -208,6 +209,7 @@ public class Plots
      *	@param	title			plot title.
      *	@param	xTitle			x-axis title.
      *	@param	yTitle			y-axis title.
+	 *	@param	legendLabel		label for legend.
      *	@param	horizontal		true to display horizontal bar chart.
      *	@param	showBarValues	true to display bar values in bar.
 	 *
@@ -255,6 +257,7 @@ public class Plots
 	/**	Generate default line plot strokes and shapes.
 	 *
 	 *	@param	numberOfDataSets	Number of data sets in plot.
+	 *	@return	Line chart properties.
 	 */
 
 	public static ChartTypeProperties getChartTypeProperties
@@ -432,7 +435,7 @@ public class Plots
 	 *
 	 *	<p>
 	 *	The filename extension determines the type of output.
-	 *	.jpg -> jpeg, .png -> png, .svg -> svg.  If the filename
+	 *	.jpg -&gt; jpeg, .png -&gt; png, .svg -&gt; svg.  If the filename
 	 *	does not end in one of these, no file is written.
 	 *	</p>
 	 */

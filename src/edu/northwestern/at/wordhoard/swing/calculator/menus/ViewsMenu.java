@@ -234,6 +234,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Don't show any line numbers.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void noLineNumbers()
@@ -243,6 +244,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Number every line.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void allLinesNumbered()
@@ -252,6 +254,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Number every fifth line.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void numberEveryFifthLine()
@@ -261,6 +264,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Translation and transliterations.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void translations()
@@ -270,6 +274,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Hide annotation markers.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void hideAnnotationMarkers()
@@ -279,6 +284,7 @@ public class ViewsMenu extends BaseMenu
 	}
 
 	/**	Show annotation panel.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void showAnnotationPanel()

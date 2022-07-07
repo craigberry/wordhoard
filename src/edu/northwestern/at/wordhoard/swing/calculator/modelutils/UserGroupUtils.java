@@ -63,6 +63,7 @@ public class UserGroupUtils
 
 	/**	Update UserGroup.
 	 *
+	 *	@param	userGroup	The UserGroup to update.
 	 *	@return				UserGroup object
 	 *
 	 *	@throws				BadOwnerException if the owner is null or empty or not admin.

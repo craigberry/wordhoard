@@ -114,6 +114,11 @@ public class WordCount
 	}
 
 	/**	Create a populated word form count object.
+	 * @param	word		The word spelling.
+	 * @param	wordForm	The word form type.
+	 * @param	workPart	The work part in which the word form appears.
+	 * @param	work		The work to which the work part belongs.
+	 * @param	wordCount	The word count.
 	 */
 
 	public WordCount

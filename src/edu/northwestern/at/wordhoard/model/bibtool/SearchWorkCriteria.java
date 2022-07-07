@@ -53,6 +53,10 @@ public class SearchWorkCriteria {
 	 *
 	 *	@param	title			The title, or null.
 	 *
+	 *	@param	yearStart		The start year, or null.
+	 *
+	 *	@param	yearEnd			The end year, or null.
+	 *
 	 *	@param	caseSensitive	True if case sensitive.
 	 */
 	

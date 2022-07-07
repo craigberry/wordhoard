@@ -107,7 +107,7 @@ public class MatrixProperty
 	 *	@return				True if all elements other than those on the
 	 *						main diagonal are zero to within the specified
 	 *						tolerance, e.g., an element is considered zero
-	 *						if |matrix(i,j)| <= tolerance.
+	 *						if |matrix(i,j)| &lt;= tolerance.
 	 */
 
 	public static boolean isDiagonal( Matrix matrix , double tolerance )
@@ -375,7 +375,7 @@ public class MatrixProperty
 	 *
 	 *	<p>
 	 *	A matrix is semi-positive definition if all of its eigenvalues
-	 *	are >= 0.
+	 *	are &gt;= 0.
 	 *	</p>
 	 */
 

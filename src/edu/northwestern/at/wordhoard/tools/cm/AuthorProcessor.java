@@ -7,7 +7,6 @@ import java.io.*;
 
 import org.w3c.dom.*;
 
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.xml.*;
 
 import edu.northwestern.at.wordhoard.tools.*;
@@ -36,7 +35,7 @@ public class AuthorProcessor {
 
 	/**	Reads the authors.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void read ()
@@ -71,7 +70,7 @@ public class AuthorProcessor {
 
 	/**	Writes the authors.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void write ()

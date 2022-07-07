@@ -42,7 +42,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 
 	/**	Creates a new persistence manager.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public PersistenceManager ()
@@ -55,7 +55,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@param	cache2			True to enable second-level cache.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void init (boolean cache2)
@@ -78,7 +78,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@param	cache2			True to enable second-level cache.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void init (String url, String username, String password,
@@ -93,7 +93,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return		The current persistence manager.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static PersistenceManager getPM()
@@ -151,7 +151,9 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@param	obj		Persistent object.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
+	 *
+	 *	@return	Clone of persistent object.
 	 */
 
 	public Object clone (PersistentObject obj)
@@ -167,7 +169,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the corpora.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllCorpora ()
@@ -184,7 +186,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the work parts.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllWorkParts ()
@@ -198,6 +200,8 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@param	work	Work.
 	 *
 	 *	@return			A collection of all the work parts for the work.
+	 *
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 	 
 	public Collection getWorkParts (Work work)
@@ -215,7 +219,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the works.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllWorks ()
@@ -228,7 +232,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the authors.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllAuthors ()
@@ -246,7 +250,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *						If the corpus argument is not null, the collection
 	 *						is limited to authors in the spcecified corpus.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllAuthors (Corpus corpus)
@@ -274,7 +278,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the parts of speech.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllPos ()
@@ -287,7 +291,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the word classes.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllWordClasses ()
@@ -300,7 +304,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the lemmas.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllLemmas ()
@@ -313,7 +317,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			A collection of all the LemPos objects.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllLemPos ()
@@ -327,7 +331,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return			A collection of all the major word class strings,
 	 *					in increasing alphabetical order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllMajorWordClasses ()
@@ -344,7 +348,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return			A collection of all the metrical shapes,
 	 *					in increasing alphabetical order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getAllMetricalShapes ()
@@ -359,7 +363,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return			The corpus, or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Corpus getCorpusByTag (String tag)
@@ -380,7 +384,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The word with the specified tag,
 	 *						or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Word getWordByTag (String tag)
@@ -403,7 +407,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The work part with the specified tag,
 	 *						or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public WorkPart getWorkPartByTag (String tag)
@@ -426,7 +430,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				Array of work parts with the specified tags.
 	 *						Empty if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public WorkPart[] getWorkPartsByTag (Collection tags)
@@ -452,7 +456,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The lemma with the specified tag,
 	 *						or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Lemma getLemmaByTag (String tag)
@@ -476,7 +480,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The line with the specified tag,
 	 *						or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Line getLineByTag (String tag)
@@ -498,7 +502,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The author with the specified name, or null
 	 *						if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Author getAuthorByName (String name)
@@ -520,7 +524,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return				The annotation category with the specified
 	 *						name, or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public AnnotationCategory getAnnotationCategoryByName (String name)
@@ -543,7 +547,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *					edu.northwestern.at.wordhoard.model.Word
 	 *					words} for this work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getWordsInWorkPart (WorkPart workPart)
@@ -565,7 +569,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *					edu.northwestern.at.wordhoard.model.Word
 	 *					words} for this work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getWordsInWorkPartWithPreloading (WorkPart workPart)
@@ -594,7 +598,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *					edu.northwestern.at.wordhoard.model.Line
 	 *					lines} in the work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getLinesInWorkPart (WorkPart workPart)
@@ -614,7 +618,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *					edu.northwestern.at.wordhoard.model.Line
 	 *					lines} in the work.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getLinesInWork (Work work)
@@ -634,7 +638,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *					edu.northwestern.at.wordhoard.model.Word
 	 *					words} in the work.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getWordsInWork (Work work)
@@ -654,7 +658,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				edu.northwestern.at.wordhoard.model.annotations.TextAnnotation
 	 *				text annotations} for the work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public Collection getAnnotationsForWorkPart (WorkPart workPart)
@@ -725,7 +729,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return		Lemma/work counts, or null if there are no counts
 	 *				for this lemma and work.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public LemmaWorkCounts getLemmaWorkCounts (Lemma lemma, Work work)
@@ -750,7 +754,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return		Lemma/corpus counts, or null if there are no counts
 	 *				for this lemma and corpus.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public LemmaCorpusCounts getLemmaCorpusCounts (Lemma lemma, Corpus corpus)
@@ -774,7 +778,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *						counts objects for the corpus, in no particular
 	 *						order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getLexicon (Corpus corpus)
@@ -796,7 +800,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@return		A collection of all the lemma/pos/spelling counts for this lemma
 	 *				and corpus.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getLemmaPosSpellingCounts (Lemma lemma, Corpus corpus)
@@ -823,7 +827,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@return		The word, or null if none found.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Word findWord (WorkPart workPart, int lineIndex, int startOffset,
@@ -857,7 +861,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				If the corpus argument is not null, the collection is
 	 *				limited to lemmas in the specified corpus.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection findLemmasByTagPrefix (String prefix, Corpus corpus)
@@ -901,7 +905,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				corpus argument is not null, the collection is limited
 	 *				to speakers in the specified corpus.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection findSpeakerNamesbyPrefix (String prefix, Corpus corpus)
@@ -942,7 +946,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				authors} which have name that start with the prefix string,
 	 *				ordered by name.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection findAuthorsByNamePrefix (String prefix)
@@ -969,7 +973,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				words} which are within "distance" words
 	 *				of one of the specified words.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public Collection getColocates (Collection words, int distance)
@@ -993,7 +997,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *
 	 *	@param	words		Collection of words.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public void preloadConcordanceInfo (Collection words)
@@ -1036,7 +1040,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@param	preceding	True to preload objects for adjacent words,
 	 *						false for following words.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public void preloadAdjacentInfo (Collection words, boolean preceding)
@@ -1070,7 +1074,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				{@link edu.northwestern.at.wordhoard.model.search.SearchResult
 	 *				search results} which match the search criteria,
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List searchLemmata (SearchCriteriaLemmaSearch sq)
@@ -1093,7 +1097,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				ordered by location (by work tag, then by ordinal
 	 *				within work).
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List searchWords (SearchCriteria sq)
@@ -1115,7 +1119,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *				works} which match the search criteria,
 	 *				ordered by full title.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List searchWorks (SearchWorkCriteria sq)

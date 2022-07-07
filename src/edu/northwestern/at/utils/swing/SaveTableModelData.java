@@ -444,8 +444,8 @@ public class SaveTableModelData
 	 *
 	 *	<p>
 	 *	The filename extension determines the type of output.
-	 *	.csv -> comma separated values, .tab -> tab separated values,
-	 *	and .htm or .html -> xhtml.  If the filename
+	 *	.csv -&gt; comma separated values, .tab -&gt; tab separated values,
+	 *	and .htm or .html -&gt; xhtml.  If the filename
 	 *	does not end in one of these, a comma separated file format
 	 *	is used.
 	 *	</p>

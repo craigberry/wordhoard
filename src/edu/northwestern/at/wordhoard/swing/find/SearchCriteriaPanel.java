@@ -233,6 +233,7 @@ public class SearchCriteriaPanel extends JPanel implements ActionListener, Prope
 
 
 	/**	set the relationship inspector
+	 * @param	relationshipCombo	The combo box for selecting the relationship of one search criterion to another.
 	 *
 	 */
 
@@ -250,6 +251,7 @@ public class SearchCriteriaPanel extends JPanel implements ActionListener, Prope
 
 
 	/**	set the relationship inspector
+	 * @param	relationship	The relationship of one search criterion to another.
 	 *
 	 */
 
@@ -536,7 +538,7 @@ public class SearchCriteriaPanel extends JPanel implements ActionListener, Prope
 	 *
 	 *	@param	criteria		The list of criteria
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void setCriteria (SearchCriteria criteria) throws PersistenceException
@@ -548,7 +550,7 @@ public class SearchCriteriaPanel extends JPanel implements ActionListener, Prope
 
 	/**	Builds or rebuilds the tree of constraints.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void buildTree (DefaultMutableTreeNode root) throws PersistenceException
@@ -750,7 +752,7 @@ private String testDropTarget(TreePath destination, TreePath dropper) {  /** Dro
 
 	/**	Shows the selected works from the hit list.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
 	 */
 

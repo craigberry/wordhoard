@@ -116,6 +116,7 @@ public class SystemInformationWindow extends XFrame
 	}
 
 	/**	Perform refresh action.
+	 * @param	e	The ActionEvent that triggered the invocation.
 	 */
 
 	protected void performRefreshAction( ActionEvent e )
@@ -124,6 +125,7 @@ public class SystemInformationWindow extends XFrame
 	}
 
 	/**	Perform close action.
+	 * @param	e	The ActionEvent that triggered the invocation.
 	 */
 
 	protected void performCloseAction( ActionEvent e )

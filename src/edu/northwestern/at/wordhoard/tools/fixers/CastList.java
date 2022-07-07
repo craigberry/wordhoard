@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.tools.fixers;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 import org.w3c.dom.*;
 
 import edu.northwestern.at.utils.xml.*;
@@ -17,7 +16,7 @@ import edu.northwestern.at.utils.xml.*;
  *	<p>We do what we can here to clean up the most egregious messes.
  *
  *	<ul>
- *	<li>A number of basic typos are fixed. E.g., "Groomsetc." ->"Grooms etc."
+ *	<li>A number of basic typos are fixed. E.g., "Groomsetc." -&gt;"Grooms etc."
  *	<li>If there is more than one "castList" child element of 
  *		"TEI.2/text/front/div/", we issue a warning message that only the
  *		first one is used.
@@ -88,7 +87,7 @@ public class CastList extends Fixer {
 	 *
 	 *	@param	document	XML DOM tree.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void fix (String corpusTag, String workTag, Document document) 

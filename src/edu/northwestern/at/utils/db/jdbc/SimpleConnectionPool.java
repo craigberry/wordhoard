@@ -158,7 +158,7 @@ public class SimpleConnectionPool extends Observable {
 	 *
 	 *	@param	poolProperties	Properties for pool.
 	 *
-	 *	@throws	SQLException
+	 *	@throws	SQLException	JDBC driver not found.
 	 */
 
 	public SimpleConnectionPool (Properties poolProperties)
@@ -318,14 +318,14 @@ public class SimpleConnectionPool extends Observable {
 	 *
 	 *	@return		A connection.
 	 *
-	 *	@throws	SQLException
+	 *	@throws	SQLException	Maximum SQL connections exceeded.
 	 */
 
 	public synchronized Connection getConnection ()
 		throws SQLException
 	{
 		if (numCheckedOut >= maxPoolSize)
-			throw new SQLException("Max connections alread checked out." +
+			throw new SQLException("Max connections already checked out." +
 				" (max = " + maxPoolSize + ")");
 		Connection connection = null;
 		if (connections.size() == 0) {

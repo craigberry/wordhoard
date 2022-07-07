@@ -237,7 +237,7 @@ public class StringUtils
 	 *	@return			String containing "n" copies of "ch".
 	 *
 	 *	<p>
-	 *	if n <= 0, the empty string "" is returned.
+	 *	if n &lt;= 0, the empty string "" is returned.
 	 *	</p>
 	 */
 
@@ -268,7 +268,7 @@ public class StringUtils
 	 *	@return			String containing "n" copies of "s".
 	 *
 	 *	<p>
-	 *	if n <= 0, the empty string "" is returned.
+	 *	if n &lt;= 0, the empty string "" is returned.
 	 *	</p>
 	 */
 
@@ -345,8 +345,8 @@ public class StringUtils
 	 *
 	 *	@param	s2		String 2.
 	 *
-	 *	@return			< 0 if string 1 < string 2, 0 if
-	 *					string 1 = string 2, > 0 if string 1 > string 2.
+	 *	@return			&lt; 0 if string 1 &lt; string 2, 0 if
+	 *					string 1 = string 2, &gt; 0 if string 1 &gt; string 2.
 	 */
 
 	public static int compare( String s1 , String s2 )
@@ -369,8 +369,8 @@ public class StringUtils
 	 *
 	 *	@param	s2		String 2.
 	 *
-	 *	@return			< 0 if string 1 < string 2, 0 if
-	 *					string 1 = string 2, > 0 if string 1 > string 2.
+	 *	@return			&lt; 0 if string 1 &lt; string 2, 0 if
+	 *					string 1 = string 2, &gt; 0 if string 1 &gt; string 2.
 	 */
 
 	public static int compareIgnoreCase( String s1 , String s2 )
@@ -393,8 +393,8 @@ public class StringUtils
 	 *
 	 *	@param	d2		Date 2.
 	 *
-	 *	@return			< 0 if date 1 < date 2, 0 if
-	 *					date 1 = date 2, > 0 if date 1 > date 2.
+	 *	@return			&lt; 0 if date 1 &lt; date 2, 0 if
+	 *					date 1 = date 2, &gt; 0 if date 1 &gt; date 2.
 	 */
 
 	public static int compare( Date d1 , Date d2 )
@@ -415,7 +415,7 @@ public class StringUtils
 	 *
 	 *	@param	n2		Int 2.
 	 *
-	 *	@return			-1 if n1 < n2, 0 if n1 = n2, +1 if n1 > n2.
+	 *	@return			-1 if n1 &lt; n2, 0 if n1 = n2, +1 if n1 &gt; n2.
 	 */
 
 	public static int compare( int n1 , int n2 )
@@ -440,7 +440,7 @@ public class StringUtils
 	 *
 	 *	@param	n2		Long 2.
 	 *
-	 *	@return			-1 if n1 < n2, 0 if n1 = n2, +1 if n1 > n2.
+	 *	@return			-1 if n1 &lt; n2, 0 if n1 = n2, +1 if n1 &gt; n2.
 	 */
 
 	public static int compare( long n1 , long n2 )
@@ -953,7 +953,7 @@ public class StringUtils
 	 *	@return			The string representation.  This looks like [a, b, c ... ]
 	 *					for an array.  If the object is not an array, its
 	 *					toString() method is used instead.  Null objects are
-	 *					returned as "<null>".
+	 *					returned as "&lt;null&gt;".
 	 *
 	 *	<p>
 	 *	The regular java toString() routine for arrays is brain-dead:  it returns
@@ -1137,8 +1137,6 @@ public class StringUtils
 	 *	@param	strValue	The string to convert.
 	 *
 	 *	@return				The string converted to an integer.
-	 *
-	 *	@throws				NumberFormatException
 	 */
 
 	public static int stringToInt( String strValue )
@@ -1161,8 +1159,6 @@ public class StringUtils
 	 *	@param	strValue	The string to convert.
 	 *
 	 *	@return				The string converted to a long.
-	 *
-	 *	@throws				NumberFormatException
 	 */
 
 	public static long stringToLong( String strValue )
@@ -1421,7 +1417,7 @@ public class StringUtils
 	 *
 	 *	<p>
 	 *	Example:
-	 *	<p>
+	 *	</p>
 	 *
 	 *	<p>
 	 *	deleteParenthesizedText( "aaaa (bb) ccc (ddd) e" )
@@ -1473,7 +1469,7 @@ public class StringUtils
 	 *
 	 *	<p>
 	 *	Example:
-	 *	<p>
+	 *	</p>
 	 *
 	 *	<p>
 	 *	deleteUnparenthesizedText( "aaaa (bb) ccc (ddd) e" )
@@ -1525,7 +1521,7 @@ public class StringUtils
 	 *
 	 *	<p>
 	 *	Example:
-	 *	<p>
+	 *	</p>
 	 *
 	 *	<p>
 	 *	compressMultipleOccurrences( "a     b   c" )
@@ -1566,7 +1562,7 @@ public class StringUtils
 	 *	</p>
 	 *
 	 *	<pre>
-	 *	* + - [ ] . ^ & \ $ ? { } ? =
+	 *	* + - [ ] . ^ &amp; \ $ ? { } ? =
 	 *	</pre>
 	 */
 
@@ -1658,10 +1654,10 @@ public class StringUtils
 	 *	</p>
 	 *
 	 *	<ul>
-	 *		<li>[s] -> s</li>
-	 *		<li>[s  -> [s</li>
-	 *		<li>s]	-> s]</li>
-	 *		<li>[[s]]	-> [s]</li>
+	 *		<li>[s] -&gt; s</li>
+	 *		<li>[s  -&gt; [s</li>
+	 *		<li>s]	-&gt; s]</li>
+	 *		<li>[[s]]	-&gt; [s]</li>
 	 *	</ul>
 	 */
 

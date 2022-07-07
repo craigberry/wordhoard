@@ -69,6 +69,11 @@ public class PhraseSetPhraseCount
 	}
 
 	/**	Create a populated phrase count object.
+	 * @param	phraseText	The text of the phrase.
+	 * @param	wordForm	The word form.
+	 * @param	phraseSet	The phrase set in which the word appears.
+	 * @param	workPartTag	The tag of the work part in which the word appears.
+	 * @param	phraseCount	The phrase count in the specified work in the phrase set.
 	 */
 
 	public PhraseSetPhraseCount

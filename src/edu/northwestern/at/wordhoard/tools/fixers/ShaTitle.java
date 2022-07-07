@@ -37,7 +37,7 @@ public class ShaTitle extends Fixer {
 	 *
 	 *	@param	document	XML DOM tree.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void fix (String corpusTag, String workTag, Document document) 

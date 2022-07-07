@@ -571,6 +571,7 @@ public class ClassHelpers
 	 *
 	 *	@return					True if class implements interface.
 	 *
+	 *	@throws	ClassNotFoundException	when className is not found
 	 */
 
 	public static boolean classImplements( String className , String interfaceName )

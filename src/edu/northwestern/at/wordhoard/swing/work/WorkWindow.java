@@ -33,7 +33,7 @@ public class WorkWindow extends AbstractWorkPanelWindow
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public WorkWindow (Corpus corpus, WorkPart workPart,
@@ -109,7 +109,7 @@ public class WorkWindow extends AbstractWorkPanelWindow
 
 	/**	Handles the "attach annotation" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleAnnotateCmd ()

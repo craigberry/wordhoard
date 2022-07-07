@@ -5,7 +5,7 @@ package edu.northwestern.at.utils.math.matrix;
 /**	ColumnTransformer -- operations that can be carried out on columns of a matrix.
  *
  * <p>
- * Given a matrix of dimension mxn M -yields-> R,
+ * Given a matrix of dimension mxn M -yields-&gt; R,
  *	where R is a row vector of dimension 1xn.
  * </p>
  */

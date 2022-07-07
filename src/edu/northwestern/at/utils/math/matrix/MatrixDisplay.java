@@ -21,6 +21,7 @@ public class MatrixDisplay
 	 *	@param	rowNames		Row names.
 	 *	@param	columnNames		Column names.
 	 *	@param	formatString	PrintFformat format string for all entries.
+	 *	@return XFrame containing the matrix.
 	 */
 
 	public static XFrame displayMatrix
@@ -58,6 +59,7 @@ public class MatrixDisplay
 	 *	@param	title			Title for matrix.
 	 *	@param	rowNames		Row names.
 	 *	@param	columnNames		Column names.
+	 *	@return XFrame containing the matrix.
 	 */
 
 	public static XFrame displayMatrix
@@ -82,6 +84,7 @@ public class MatrixDisplay
 	 *	@param	matrix			The matrix to display.
 	 *	@param	title			Title for matrix.
 	 *	@param	formatString	PrintFformat format string for all entries.
+	 *	@return XFrame containing the matrix.
 	 */
 
 	public static XFrame displayMatrix
@@ -104,6 +107,7 @@ public class MatrixDisplay
 	 *
 	 *	@param	matrix			The matrix to display.
 	 *	@param	title			Title for matrix.
+	 *	@return XFrame containing the matrix.
 	 */
 
 	public static XFrame displayMatrix
@@ -124,6 +128,7 @@ public class MatrixDisplay
 	/** Displays matrix entries in a GUI table.
 	 *
 	 *	@param	matrix			The matrix to display.
+	 *	@return XFrame containing the matrix.
 	 */
 
 	public static XFrame displayMatrix

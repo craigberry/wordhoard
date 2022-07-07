@@ -372,7 +372,7 @@ public class Tree extends XTree {
 
 	/**	Opens the selected work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void openSelected ()

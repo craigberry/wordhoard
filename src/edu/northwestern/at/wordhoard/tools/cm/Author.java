@@ -3,14 +3,11 @@ package edu.northwestern.at.wordhoard.tools.cm;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 
 import org.w3c.dom.*;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.xml.*;
-
-import edu.northwestern.at.wordhoard.tools.*;
 
 /**	An author.
  */
@@ -53,7 +50,7 @@ public class Author {
 
 	/**	Creates a new author from an element.
 	 *
-	 *	#param	el			WordHoard author element.
+	 *	@param	el			WordHoard author element.
 	 */
 
 	public Author (Element el) {

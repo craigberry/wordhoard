@@ -275,7 +275,7 @@ public class StyledStringUtils
  	 *	consecutive entries.
  	 *	</p>
  	 *
- 	 *	<table>
+ 	 *	<table summary="Table describing writeFile method">
  	 *		<tr>
  	 *			<td>Header marker</td>
  	 *			<td>Four bytes containing "s", "t", "x", "t".</td>
@@ -366,12 +366,13 @@ public class StyledStringUtils
 
 	/** Writes styled text to a file.
 	 *
-	 *	@param	fileName	The file to which to write the styled text.
-	 *						The styled string is written as an object stream
-	 *						to the specified file.
+	 *	@param	fileName		The file to which to write the styled text.
 	 *
-	 *	@return				True if the file was written successfully,
-	 *						false otherwise.
+	 *	@param	styledString	The styled string is written as an object stream
+	 *							to the specified file.
+	 *
+	 *	@return					True if the file was written successfully,
+	 *							false otherwise.
 	 */
 
 	 public static boolean writeFile

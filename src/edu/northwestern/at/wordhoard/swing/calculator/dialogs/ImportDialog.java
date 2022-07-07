@@ -29,6 +29,7 @@ public class ImportDialog extends ImportExportDialog
 	 *
 	 *	@param	title		Title for dialog.
 	 *	@param	parent		Parent window for dialog.
+	 *	@param	importDocument	The document to import.
 	 */
 
 	public ImportDialog

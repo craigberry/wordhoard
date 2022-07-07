@@ -99,10 +99,6 @@ public abstract class AbstractMatrix implements Matrix
 	/**	Set all elements from another matrix.
 	 *
 	 *	@param matrix	Matrix whose value to copy to this matrix.
-	 *
-	 *	@throws			MatrixMismatchedSizeException
-	 *						If the source matrix and this one don't have
-	 *						the same number of rows and columns.
 	 */
 
 	public void set( Matrix matrix )
@@ -472,9 +468,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return		Matrix containing rows firstRow through lastRow and
 	 *				columns firstColumn through lastColumn .
-	 *
-	 *	@throws MatrixMismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getSubMatrix
@@ -526,9 +519,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return				Matrix containing rows and columns
 	 *							defined by indices.
-	 *
-	 *	@throws MatrixMismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getSubMatrix( int[] rows , int[] columns )
@@ -560,10 +550,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *	@param columns		Array of column indices.
 	 *
 	 *	@return				Matrix defined by specified row and column indices.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
-	 *
 	 */
 
 	public Matrix getSubMatrix( int firstRow , int lastRow , int[] columns )
@@ -607,9 +593,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *	@param	lastColumn		Last column index.
 	 *
 	 *	@return					Submatrix defined by row and column indices.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getSubMatrix( int[] rows , int firstColumn , int lastColumn )
@@ -653,9 +636,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return					Matrix containing all rows for specified
 	 *							column range.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getColumns( int firstColumn , int lastColumn )
@@ -669,9 +649,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return					Matrix containing all rows for specified
 	 *							column indices.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getColumns( int[] columns )
@@ -686,9 +663,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return					Matrix containing all columns for specified
 	 *							row range.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getRows( int firstRow , int lastRow )
@@ -702,9 +676,6 @@ public abstract class AbstractMatrix implements Matrix
 	 *
 	 *	@return					Matrix containing all columns for specified
 	 *							row indices.
-	 *
-	 *	@throws MismatchedSizeException
-	 *		If requested matrix indices are bad.
 	 */
 
 	public Matrix getRows( int[] rows )

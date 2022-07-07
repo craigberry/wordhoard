@@ -30,6 +30,7 @@ public class WorkUtils
 	protected static boolean workPartMapsAvailable	= false;
 
 	/**	Create work part Id to work part tag maps.
+	 *	@param	workParts Collection of work parts for which to create the maps.
 	 */
 
 	public static void createWorkPartMaps( Collection workParts )
@@ -749,6 +750,7 @@ public class WorkUtils
 
 	/**	Get ancestor work parts.
 	 *
+	 *	@param	workPart	Work part whose ancestors will be retrieved.
 	 *	@return			Collection of ancestor work parts.
 	 *					Empty (not null) if work part is a work.
 	 */

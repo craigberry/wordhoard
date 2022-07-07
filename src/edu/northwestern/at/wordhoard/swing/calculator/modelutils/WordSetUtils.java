@@ -1786,6 +1786,7 @@ public class WordSetUtils implements Serializable
 	 *
 	 *	@param	wordSetList		The word set list which may also
 	 *							include phrase sets.
+	 *	@return	The word set list with the phrase sets removed.
 	 */
 
 	public static java.util.List removePhraseSets
@@ -2944,6 +2945,7 @@ public class WordSetUtils implements Serializable
 	/**	Load a word set if it isn't already loaded.
 	 *
 	 *	@param	wordSet		The word set to load.
+	 *	@return	The loaded word set.
 	 */
 
 	public static WordSet loadWordSet( WordSet wordSet )

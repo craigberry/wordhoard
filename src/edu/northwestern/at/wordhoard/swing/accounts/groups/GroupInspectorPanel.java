@@ -225,7 +225,7 @@ public class GroupInspectorPanel extends JPanel implements DropTargetListener {
 	
 	/**	Saves an group. 
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	private void save () 

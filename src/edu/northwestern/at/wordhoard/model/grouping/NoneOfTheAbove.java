@@ -46,7 +46,7 @@ public class NoneOfTheAbove implements GroupingObject {
 	
 	/**	Gets a none of the above grouping object.
 	 *
-	 *	<p>The grouping spelling is "<none>".
+	 *	<p>The grouping spelling is "&lt;none&gt;".
 	 *
 	 *	@param	groupBy		Group by class.
 	 *

@@ -424,6 +424,7 @@ public class SearchAndReplaceDialog extends ModalDialog
 	 *
 	 *	@param	doReplace		True to replace text, false to find text.
 	 *	@param	showWarnings	True to display "not found" messages.
+	 *	@return	-1 for error, 0 for no match found, 1 for success.
 	 */
 
 	public int searchNext( boolean doReplace , boolean showWarnings )

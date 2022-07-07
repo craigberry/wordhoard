@@ -87,6 +87,8 @@ class AnnotationPanel extends JPanel {
 	 *
 	 *	@param	model			Annotation model.
 	 *
+	 *	@param	parentWindow	The parent window.
+	 *
 	 *	@param	fontManager		FontManager.
 	 */
 

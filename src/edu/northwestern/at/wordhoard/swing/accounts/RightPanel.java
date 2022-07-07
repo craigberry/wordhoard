@@ -125,7 +125,7 @@ class RightPanel extends JPanel {
 	
 	/**	Saves an account. 
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	private void save () 

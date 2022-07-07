@@ -198,6 +198,7 @@ public class DrawingContext {
 	}
 	
 	/**	Returns true if this text has line numbers.
+	 * @return	True or false.
 	 */
 	 
 	public boolean hasLineNumbers () {
@@ -250,6 +251,7 @@ public class DrawingContext {
 	}
 	
 	/**	Returns true if this text has marginalia.
+	 * @return	True or false.
 	 */
 	 
 	public boolean hasMarginalia () {

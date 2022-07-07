@@ -61,6 +61,7 @@ public class Preprocessor
 	}
 
 	/**	Create preprocessor with specified directive lead-in string.
+	 * @param leadIn lead-in string.
 	 */
 
 	public Preprocessor( String leadIn )

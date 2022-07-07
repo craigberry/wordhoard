@@ -310,6 +310,7 @@ public class ExportUtils
 	}
 
 	/** Create new empty DOM document.
+	 * @return	The new document.
 	 */
 
 	public static org.w3c.dom.Document newExportDocument()

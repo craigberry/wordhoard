@@ -10,6 +10,10 @@ import edu.northwestern.at.utils.math.*;
 public class BigramLogLikelihood
 {
 	/**	Compute one part of log likelihood value.
+	 * @param	k	k operand
+	 * @param	n	n operand
+	 * @param	x	x operand
+	 * @return	Partial log-likelihood value.
 	 */
 
 	protected static double logLike( double k , double n , double x )

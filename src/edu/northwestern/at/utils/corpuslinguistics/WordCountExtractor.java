@@ -11,10 +11,10 @@ public class WordCountExtractor
 {
 	/**	The list of words and word counts in the text.
 	 *
-	 *	<p>
-	 *	Key=word<br />
+	 *	<pre>
+	 *	Key=word
 	 *	Value=Integer(count)
-	 *	</p>
+	 *	</pre>
 	 */
 
 	protected TreeMap wordCounts	= new TreeMap();

@@ -36,6 +36,7 @@ public class CollocateFrequencies
 	 *
 	 *	@param	wordCounter		The texts in which to find collocates.
 	 *	@param	wordToAnalyze		The words for which to find collocates.
+	 *	@param	progressReporter	The progress reporter dialog.
 	 *	@param	progressReporterText	Progress dialog text.
 	 *
 	 *	@return						Two element array of TreeMap
@@ -502,6 +503,7 @@ public class CollocateFrequencies
 	 *	@param	model		Table model holding data to display.
 	 *	@param	maxLabel	Maximum width value for label column.
 	 *	@param	maxLabel2	Maximum width value for word class column.
+	 *	@return	The results panel.
 	 */
 
 	protected ResultsPanel generateResults

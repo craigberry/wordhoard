@@ -40,6 +40,11 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the auto-correlation of a data sequence.
+	 * @param data input data sequence.
+	 * @param lag upper bound of data sequence.
+	 * @param mean mean of data sequence.
+	 * @param variance variance of data sequence.
+	 * @return the auto-correlation of the data sequence.
 	 */
 
 	public static double autoCorrelation(double[] data, int lag, double mean, double variance)
@@ -58,6 +63,9 @@ public class Descriptive extends Object
 
 	/**
 	 * Checks if the given range is within the contained array's bounds.
+	 * @param from lower bound of range.
+	 * @param to upper boudn of range.
+	 * @param theSize size of array.
 	 * @throws IndexOutOfBoundsException if <tt>to!=from-1 || from&lt;0 || from&gt;to || to&gt;=size()</tt>.
 	 */
 
@@ -71,6 +79,11 @@ public class Descriptive extends Object
 	/**
 	 * Returns the correlation of two data sequences.
 	 * That is <tt>covariance(data1,data2)/(standardDev1*standardDev2)</tt>.
+	 * @param data1 first data sequence.
+	 * @param standardDev1 standard deviation of first data sequence.
+	 * @param data2 second data sequence.
+	 * @param standardDev2 standard deviation of second data sequence.
+	 * @return the correlation of the two data sequences.
 	 */
 
 	public static double correlation(double[] data1, double standardDev1, double[] data2, double standardDev2)
@@ -82,6 +95,9 @@ public class Descriptive extends Object
 	 * Returns the covariance of two data sequences, which is
 	 * <tt>cov(x,y) = (1/(size()-1)) * Sum((x[i]-mean(x)) * (y[i]-mean(y)))</tt>.
 	 * See the <A HREF="http://www.cquest.utoronto.ca/geog/ggr270y/notes/not05efg.html"> math definition</A>.
+	 * @param data1 first data sequence.
+	 * @param data2 second data sequence.
+	 * @return the covariance of the two data sequences.
 	 */
 
 	public static double covariance(double[] data1, double[] data2)
@@ -129,6 +145,8 @@ public class Descriptive extends Object
 
 	/**
 	 * Durbin-Watson computation.
+	 * @param data input data sequence.
+	 * @return Durbin-Watson computation on data sequence.
 	 */
 
 	public static double durbinWatson(double[] data)
@@ -162,7 +180,7 @@ public class Descriptive extends Object
 	 *
 	 * <b>Example:</b>
 	 * <br>
-	 * <tt>elements = (5,6,6,7,8,8) --> distinctValues = (5,6,7,8), frequencies = (1,2,1,2)</tt>
+	 * <tt>elements = (5,6,6,7,8,8) --&gt; distinctValues = (5,6,7,8), frequencies = (1,2,1,2)</tt>
 	 *
 	 * @param sortedData the data; must be sorted ascending.
 	 * @param distinctValues a list to be filled with the distinct values; can have any size.
@@ -203,6 +221,9 @@ public class Descriptive extends Object
 	 * <br>
 	 * The geometric mean is given by <tt>pow( Product( data[i] ), 1/size)</tt>
 	 * which is equivalent to <tt>Math.exp( Sum( Log(data[i]) ) / size)</tt>.
+	 * @param size the number of elements in the data sequence.
+	 * @param sumOfLogarithms sum of logarithms of the data sequence.
+	 * @return geometric mean of the data sequence.
 	 */
 
 	public static double geometricMean(int size, double sumOfLogarithms)
@@ -220,6 +241,8 @@ public class Descriptive extends Object
 	 * The geometric mean is given by <tt>pow( Product( data[i] ), 1/data.length)</tt>.
 	 * This method tries to avoid overflows at the expense of an equivalent but somewhat slow definition:
 	 * <tt>geo = Math.exp( Sum( Log(data[i]) ) / data.length)</tt>.
+	 * @param data input data sequence.
+	 * @return the geometric mean of the data sequence.
 	 */
 
 	public static double geometricMean(double[] data)
@@ -232,6 +255,7 @@ public class Descriptive extends Object
 	 *
 	 * @param size the number of elements in the data sequence.
 	 * @param sumOfInversions <tt>Sum( 1.0 / data[i])</tt>.
+	 * @return the harmonic mean of a data sequence.
 	 */
 
 	public static double harmonicMean(int size, double sumOfInversions)
@@ -352,6 +376,10 @@ public class Descriptive extends Object
 	 * @param data the additional elements to be incorporated into min, max, etc.
 	 * @param from the index of the first element within <tt>data</tt> to consider.
 	 * @param to the index of the last element within <tt>data</tt> to consider.
+	 * @param fromSumIndex the old from index.
+	 * @param toSumIndex the old to index.
+	 * @param sumOfPowers existing sum of powers on input and updated sum of powers
+	 * on output.
 	 * The method incorporates elements <tt>data[from], ..., data[to]</tt>.
 	 *
 	 * <ul>
@@ -561,6 +589,7 @@ public class Descriptive extends Object
 	 * Returns the kurtosis (aka excess) of a data sequence.
 	 * @param moment4 the fourth central moment, which is <tt>moment(data,4,mean)</tt>.
 	 * @param standardDeviation the standardDeviation.
+	 * @return kurtosis of data sequence.
 	 */
 
 	public static double kurtosis(double moment4, double standardDeviation)
@@ -570,6 +599,10 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the kurtosis (aka excess) of a data sequence, which is <tt>-3 + moment(data,4,mean) / standardDeviation<sup>4</sup></tt>.
+	 * @param data input data sequence.
+	 * @param mean mean of data sequence.
+	 * @param standardDeviation standard deviation of data sequence.
+	 * @return kurtosis of data sequence.
 	 */
 
 	public static double kurtosis(double[] data, double mean, double standardDeviation)
@@ -580,6 +613,9 @@ public class Descriptive extends Object
 	/**
 	 * Returns the lag-1 autocorrelation of a dataset;
 	 * Note that this method has semantics different from <tt>autoCorrelation(..., 1)</tt>;
+	 * @param data input dataset.
+	 * @param mean mean value of dataset.
+	 * @return lag-1 autocorrelation of dataset.
 	 */
 
 	public static double lag1(double[] data, double mean)
@@ -604,6 +640,8 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the largest member of a data sequence.
+	 * @param data input data sequence.
+	 * @return largest member of data sequence.
 	 */
 
 	public static double max(double[] data)
@@ -625,6 +663,8 @@ public class Descriptive extends Object
 	/**
 	 * Returns the arithmetic mean of a data sequence;
 	 * That is <tt>Sum( data[i] ) / data.length</tt>.
+	 * @param data input data sequence.
+	 * @return mean of data sequence.
 	 */
 
 	public static double mean( double[] data )
@@ -635,6 +675,9 @@ public class Descriptive extends Object
 	/**
 	 * Returns the mean deviation of a dataset.
 	 * That is <tt>Sum (Math.abs(data[i]-mean)) / data.length)</tt>.
+	 * @param data input data set.
+	 * @param mean mean of data set.
+	 * @return mean deviation.
 	 */
 
 	public static double meanDeviation( double[] data , double mean )
@@ -650,6 +693,7 @@ public class Descriptive extends Object
 	 * Returns the median of a sorted data sequence.
 	 *
 	 * @param sortedData the data sequence; <b>must be sorted ascending</b>.
+	 * @return median of sortedData.
 	 */
 
 	public static double median( double[] sortedData )
@@ -674,6 +718,8 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the smallest member of a data sequence.
+	 * @param data input data sequence.
+	 * @return minimum value of data sequence.
 	 */
 
 	public static double min( double[] data )
@@ -696,9 +742,13 @@ public class Descriptive extends Object
 	 * Returns the moment of <tt>k</tt>-th order with constant <tt>c</tt> of a data sequence,
 	 * which is <tt>Sum( (data[i]-c)<sup>k</sup> ) / data.length</tt>.
 	 *
+	 * @param k order parameter
+	 * @param c constant parameter
+	 * @param size the number of elements of the data sequence.
 	 * @param sumOfPowers <tt>sumOfPowers[m] == Sum( data[i]<sup>m</sup>) )</tt> for <tt>m = 0,1,..,k</tt> as returned by method {@link #incrementalUpdateSumsOfPowers(double[],int,int,int,int,double[])}.
 	 *			In particular there must hold <tt>sumOfPowers.length == k+1</tt>.
-	 * @param size the number of elements of the data sequence.
+
+	 * @return result of the moment calculation
 	 */
 
 	public static double moment( int k, double c, int size, double[] sumOfPowers )
@@ -732,6 +782,10 @@ public class Descriptive extends Object
 	/**
 	 * Returns the moment of <tt>k</tt>-th order with constant <tt>c</tt> of a data sequence,
 	 * which is <tt>Sum( (data[i]-c)<sup>k</sup> ) / data.length</tt>.
+	 * @param data data sequence parameter
+	 * @param k order parameter
+	 * @param c constant parameter
+	 * @return result of the moment calculation
 	 */
 
 	public static double moment( double[] data, int k, double c )
@@ -747,6 +801,7 @@ public class Descriptive extends Object
 	 * @param mean1 the mean of data sequence 1.
 	 * @param size2 the number of elements in data sequence 2.
 	 * @param mean2 the mean of data sequence 2.
+	 * @return the pooled mean of the two data sequences.
 	 */
 
 	public static double pooledMean(int size1, double mean1, int size2, double mean2)
@@ -762,6 +817,7 @@ public class Descriptive extends Object
 	 * @param variance1 the variance of data sequence 1.
 	 * @param size2 the number of elements in data sequence 2.
 	 * @param variance2 the variance of data sequence 2.
+	 * @return the pooled variance of the two data sequences.
 	 */
 
 	public static double pooledVariance(int size1, double variance1, int size2, double variance2)
@@ -774,6 +830,9 @@ public class Descriptive extends Object
 	 * In other words: <tt>data[0]*data[1]*...*data[data.length-1]</tt>.
 	 * This method uses the equivalent definition:
 	 * <tt>prod = pow( exp( Sum( Log(x[i]) ) / size(), size())</tt>.
+	 * @param size of sequence.
+	 * @param sumOfLogarithms the product calculated by summing logarithms.
+	 * @return the product of the data sequence.
 	 */
 
 	public static double product(int size, double sumOfLogarithms)
@@ -785,6 +844,8 @@ public class Descriptive extends Object
 	 * Returns the product of a data sequence, which is <tt>Prod( data[i] )</tt>.
 	 * In other words: <tt>data[0]*data[1]*...*data[data.length-1]</tt>.
 	 * Note that you may easily get numeric overflows.
+	 * @param data input data sequence.
+	 * @return product of data sequence.
 	 */
 
 	public static double product(double[] data)
@@ -803,6 +864,7 @@ public class Descriptive extends Object
 	 * The quantile need not necessarily be contained in the data sequence, it can be a linear interpolation.
 	 * @param sortedData the data sequence; <b>must be sorted ascending</b>.
 	 * @param phi the percentage; must satisfy <tt>0 &lt;= phi &lt;= 1</tt>.
+	 * @return the <tt>phi-</tt> quantile of sortedData.
 	 */
 
 	public static double quantile(double[] sortedData, double phi)
@@ -867,9 +929,9 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the linearly interpolated number of elements in a list less or equal to a given element.
-	 * The rank is the number of elements <= element.
+	 * The rank is the number of elements &lt;= element.
 	 * Ranks are of the form <tt>{0, 1, 2,..., sortedList.size()}</tt>.
-	 * If no element is <= element, then the rank is zero.
+	 * If no element is &lt;= element, then the rank is zero.
 	 * If the element lies in between two contained elements, then linear interpolation is used and a non integer value is returned.
 	 *
 	 * @param sortedList the list to be searched (must be sorted ascending).
@@ -911,6 +973,7 @@ public class Descriptive extends Object
 	 *
 	 * @param sumOfSquares <tt>sumOfSquares(data) == Sum( data[i]*data[i] )</tt> of the data sequence.
 	 * @param size the number of elements in the data sequence.
+	 * @return Root-Mean-Square of data sequence.
 	 */
 
 	public static double rms(int size, double sumOfSquares)
@@ -928,6 +991,7 @@ public class Descriptive extends Object
 	 * @param size the number of elements of the data sequence.
 	 * @param moment4 the fourth central moment, which is <tt>moment(data,4,mean)</tt>.
 	 * @param sampleVariance the <b>sample variance</b>.
+	 * @return sample kurtosis.
 	 */
 
 	public static double sampleKurtosis(int size, double moment4, double sampleVariance)
@@ -942,6 +1006,10 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the sample kurtosis (aka excess) of a data sequence.
+	 * @param data Input data
+	 * @param mean used to calculate moment of input data
+	 * @param sampleVariance sample variance of input data
+	 * @return sample kurtosis.
 	 */
 
 	public static double sampleKurtosis(double[] data, double mean, double sampleVariance)
@@ -957,6 +1025,7 @@ public class Descriptive extends Object
 	 * p. 138.
 	 *
 	 * @param size the number of elements of the data sequence.
+	 * @return standard error of the sample kurtosis.
 	 */
 
 	public static double sampleKurtosisStandardError(int size)
@@ -976,6 +1045,7 @@ public class Descriptive extends Object
 	 * @param size the number of elements of the data sequence.
 	 * @param moment3 the third central moment, which is <tt>moment(data,3,mean)</tt>.
 	 * @param sampleVariance the <b>sample variance</b>.
+	 * @return sample skew.
 	 */
 
 	public static double sampleSkew(int size, double moment3, double sampleVariance)
@@ -989,6 +1059,10 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the sample skew of a data sequence.
+	 * @param data the input data sequence.
+	 * @param mean the mean of the data sequence.
+	 * @param sampleVariance the sample variance of the data sequence.
+	 * @return the sample skew of the data sequence.
 	 */
 
 	public static double sampleSkew(double[] data, double mean, double sampleVariance)
@@ -1004,6 +1078,7 @@ public class Descriptive extends Object
 	 * p. 138.
 	 *
 	 * @param size the number of elements of the data sequence.
+	 * @return the standard error of the sample skew.
 	 */
 
 	public static double sampleSkewStandardError(int size)
@@ -1022,6 +1097,7 @@ public class Descriptive extends Object
 	 *
 	 * @param size the number of elements of the data sequence.
 	 * @param sampleVariance the <b>sample variance</b>.
+	 * @return the sample standard deviation.
 	 */
 
 	public static double sampleStandardDeviation(int size, double sampleVariance)
@@ -1051,6 +1127,7 @@ public class Descriptive extends Object
 	 * @param size the number of elements of the data sequence.
 	 * @param sum <tt>== Sum( data[i] )</tt>.
 	 * @param sumOfSquares <tt>== Sum( data[i]*data[i] )</tt>.
+	 * @return the sample variance of the data sequence.
 	 */
 
 	public static double sampleVariance(int size, double sum, double sumOfSquares)
@@ -1063,6 +1140,9 @@ public class Descriptive extends Object
 	/**
 	 * Returns the sample variance of a data sequence.
 	 * That is <tt>Sum ( (data[i]-mean)^2 ) / (data.length-1)</tt>.
+	 * @param data the input data sequence.
+	 * @param mean the mean of the data sequence.
+	 * @return the sample variance of the data sequence.
 	 */
 
 	public static double sampleVariance(double[] data, double mean)
@@ -1088,6 +1168,7 @@ public class Descriptive extends Object
 	 * @param sumOfWeights <tt>== Sum( weights[i] )</tt>.
 	 * @param sumOfProducts <tt>== Sum( data[i] * weights[i] )</tt>.
 	 * @param sumOfSquaredProducts <tt>== Sum( data[i] * data[i] * weights[i] )</tt>.
+	 * @return the sample weighted variance of the data sequence.
 	 */
 
 	public static double sampleWeightedVariance(double sumOfWeights, double sumOfProducts, double sumOfSquaredProducts)
@@ -1099,6 +1180,7 @@ public class Descriptive extends Object
 	 * Returns the skew of a data sequence.
 	 * @param moment3 the third central moment, which is <tt>moment(data,3,mean)</tt>.
 	 * @param standardDeviation the standardDeviation.
+	 * @return the skew of the data sequence.
 	 */
 
 	public static double skew(double moment3, double standardDeviation)
@@ -1108,6 +1190,10 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the skew of a data sequence, which is <tt>moment(data,3,mean) / standardDeviation<sup>3</sup></tt>.
+	 * @param data the input data sequence.
+	 * @param mean the mean of the data sequence.
+	 * @param standardDeviation the standard deviation of the data sequence.
+	 * @return the skew of the data sequence.
 	 */
 
 	public static double skew(double[] data, double mean, double standardDeviation)
@@ -1120,11 +1206,11 @@ public class Descriptive extends Object
 	 * <tt>splitters=(a,b,c,...,y,z)</tt> defines the ranges <tt>[-inf,a), [a,b), [b,c), ..., [y,z), [z,inf]</tt>.
 	 * <p><b>Examples:</b><br>
 	 * <ul>
-	 * <tt>data = (1,2,3,4,5,8,8,8,10,11)</tt>.
-	 * <br><tt>splitters=(2,8)</tt> yields 3 bins: <tt>(1), (2,3,4,5) (8,8,8,10,11)</tt>.
-	 * <br><tt>splitters=()</tt> yields 1 bin: <tt>(1,2,3,4,5,8,8,8,10,11)</tt>.
-	 * <br><tt>splitters=(-5)</tt> yields 2 bins: <tt>(), (1,2,3,4,5,8,8,8,10,11)</tt>.
-	 * <br><tt>splitters=(100)</tt> yields 2 bins: <tt>(1,2,3,4,5,8,8,8,10,11), ()</tt>.
+	 * <li>data = (1,2,3,4,5,8,8,8,10,11)</li>
+	 * <li>splitters=(2,8) yields 3 bins: (1), (2,3,4,5) (8,8,8,10,11)</li>
+	 * <li>splitters=() yields 1 bin: (1,2,3,4,5,8,8,8,10,11)</li>
+	 * <li>splitters=(-5) yields 2 bins: (), (1,2,3,4,5,8,8,8,10,11)</li>
+	 * <li>splitters=(100) yields 2 bins: (1,2,3,4,5,8,8,8,10,11), ()</li>
 	 * </ul>
 	 * @param sortedList the list to be partitioned (must be sorted ascending).
 	 * @param splitters the points at which the list shall be partitioned (must be sorted ascending).
@@ -1206,6 +1292,8 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the standard deviation from a variance.
+	 * @param variance variance.
+	 * @return the standard deviation.
 	 */
 
 	public static double standardDeviation( double variance )
@@ -1219,6 +1307,7 @@ public class Descriptive extends Object
 	 *
 	 * @param size the number of elements in the data sequence.
 	 * @param variance the variance of the data sequence.
+	 * @return the standard error of the data sequence.
 	 */
 
 	public static double standardError( int size , double variance )
@@ -1229,6 +1318,9 @@ public class Descriptive extends Object
 	/**
 	 * Modifies a data sequence to be standardized.
 	 * Changes each element <tt>data[i]</tt> as follows: <tt>data[i] = (data[i]-mean)/standardDeviation</tt>.
+	 * @param data the data sequence to be standardized.
+	 * @param mean the mean of the data sequence.
+	 * @param standardDeviation the standard deviation of the data sequence.
 	 */
 
 	public static void standardize
@@ -1247,6 +1339,8 @@ public class Descriptive extends Object
 	/**
 	 * Returns the sum of a data sequence.
 	 * That is <tt>Sum( data[i] )</tt>.
+	 * @param data the input data sequence.
+	 * @return the sum of the data sequence.
 	 */
 
 	public static double sum( double[] data )
@@ -1260,6 +1354,7 @@ public class Descriptive extends Object
 	 * @param data the data sequence.
 	 * @param from the index of the first data element (inclusive).
 	 * @param to the index of the last data element (inclusive).
+	 * @return the sum of inversions of the data sequence.
 	 */
 
 	public static double sumOfInversions( double[] data, int from, int to )
@@ -1272,6 +1367,7 @@ public class Descriptive extends Object
 	 * @param data the data sequence.
 	 * @param from the index of the first data element (inclusive).
 	 * @param to the index of the last data element (inclusive).
+	 * @return the sum of logarithms of the data sequence.
 	 */
 
 	public static double sumOfLogarithms( double[] data, int from, int to )
@@ -1288,6 +1384,7 @@ public class Descriptive extends Object
 	 *	@param	data	The data as a double vector.
 	 *	@param	k		The exponent.
 	 *	@param	c		The central value.
+	 *	@return	sum of power deviations.
 	 */
 
 	public static double sumOfPowerDeviations( double[] data, int k, double c )
@@ -1302,6 +1399,7 @@ public class Descriptive extends Object
 	 *	@param	c		The central value.
 	 *	@param	from	Starting data value index.
 	 *	@param	to		Ending data value index.
+	 *	@return	sum of power deviations.
 	 */
 
 	public static double sumOfPowerDeviations
@@ -1408,6 +1506,9 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the sum of powers of a data sequence, which is <tt>Sum ( data[i]<sup>k</sup> )</tt>.
+	 * @param data the input data sequence.
+	 * @param k the power to which each data element will be raised.
+	 * @return the sum of powers of the data sequence.
 	 */
 
 	public static double sumOfPowers( double[] data , int k )
@@ -1416,11 +1517,12 @@ public class Descriptive extends Object
 	}
 
 	/**
-	 * Returns the sum of squared mean deviation of of a data sequence.
+	 * Returns the sum of squared mean deviation of a data sequence.
 	 * That is <tt>variance * (size-1) == Sum( (data[i] - mean)^2 )</tt>.
 	 *
 	 * @param size the number of elements of the data sequence.
 	 * @param variance the variance of the data sequence.
+	 * @return the sum of squared mean deviation of the data sequence.
 	 */
 
 	public static double sumOfSquaredDeviations( int size , double variance )
@@ -1431,6 +1533,8 @@ public class Descriptive extends Object
 	/**
 	 * Returns the sum of squares of a data sequence.
 	 * That is <tt>Sum ( data[i]*data[i] )</tt>.
+	 * @param data the input data sequence.
+	 * @return the sum of squares of the data sequence.
 	 */
 
 	public static double sumOfSquares( double[] data )
@@ -1443,8 +1547,9 @@ public class Descriptive extends Object
 	 *
 	 * @param sortedData the data sequence; <b>must be sorted ascending</b>.
 	 * @param mean the mean of the (full) sorted data sequence.
-	 * @param	left the number of leading elements to trim.
-	 * @param	right the number of trailing elements to trim.
+	 * @param left the number of leading elements to trim.
+	 * @param right the number of trailing elements to trim.
+	 * @return the trimmed mean of the sorted data sequence.
 	 */
 
 	public static double trimmedMean
@@ -1471,6 +1576,8 @@ public class Descriptive extends Object
 
 	/**
 	 * Returns the variance from a standard deviation.
+	 * @param standardDeviation the input standard deviation.
+	 * @return the variance of the standard deviation.
 	 */
 
 	public static double variance( double standardDeviation )
@@ -1485,6 +1592,7 @@ public class Descriptive extends Object
 	 * @param size the number of elements of the data sequence.
 	 * @param sum <tt>== Sum( data[i] )</tt>.
 	 * @param sumOfSquares <tt>== Sum( data[i]*data[i] )</tt>.
+	 * @return the variance of the data sequence.
 	 */
 
 	public static double variance( int size, double sum, double sumOfSquares )
@@ -1497,6 +1605,9 @@ public class Descriptive extends Object
 	/**
 	 * Returns the weighted mean of a data sequence.
 	 * That is <tt> Sum (data[i] * weights[i]) / Sum ( weights[i] )</tt>.
+	 * @param data the input data sequence.
+	 * @param weights the array of weights to apply to the mean calculation.
+	 * @return the weighted mean of the data sequence.
 	 */
 
 	public static double weightedMean( double[] data , double[] weights )
@@ -1527,6 +1638,7 @@ public class Descriptive extends Object
 	 *
 	 * @param sumOfProducts <tt>== Sum( data[i] * weights[i] )</tt>.
 	 * @param sumOfSquaredProducts <tt>== Sum( data[i] * data[i] * weights[i] )</tt>.
+	 * @return the weighted RMS (Root-Mean-Square) of a data sequence.
 	 */
 
 	public static double weightedRMS
@@ -1543,8 +1655,9 @@ public class Descriptive extends Object
 	 *
 	 * @param sortedData the data sequence; <b>must be sorted ascending</b>.
 	 * @param mean the mean of the (full) sorted data sequence.
-	 * @param	left the number of leading elements to trim.
-	 * @param	right the number of trailing elements to trim.
+	 * @param left the number of leading elements to trim.
+	 * @param right the number of trailing elements to trim.
+	 * @return the winsorized mean of the sorted data sequence.
 	 */
 
 	public static double winsorizedMean

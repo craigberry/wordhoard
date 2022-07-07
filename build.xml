@@ -120,6 +120,10 @@
 				excludepackagenames="edu.northwestern.at.utils.taglets.*"
 				package="true"
 				maxmemory="500m">
+			<arg value="-Xmaxwarns"/>
+			<arg value="1000"/>
+			<arg value="-Xmaxerrs"/>
+			<arg value="1000"/>
 			<doctitle><![CDATA[<h2>WordHoard</h2>]]></doctitle>
 			<tag name="hibernate.class" description="hibernate.class" enabled="false"/>
 			<tag name="hibernate.subclass" description="hibernate.subclass" enabled="false"/>
@@ -132,7 +136,7 @@
 			<tag name="hibernate.list" description="hibernate.list" enabled="false"/>
 			<tag name="hibernate.map" description="hibernate.map" enabled="false"/>
 			<tag name="hibernate.bag" description="hibernate.bag" enabled="false"/>
-			<tag name="hibernate.set" description="hibernate.bag" enabled="false"/>
+			<tag name="hibernate.set" description="hibernate.set" enabled="false"/>
 			<tag name="hibernate.collection-key" description="hibernate.collection-key"
 				enabled="false"/>
 			<tag name="hibernate.collection-element" description="hibernate.collection-element"

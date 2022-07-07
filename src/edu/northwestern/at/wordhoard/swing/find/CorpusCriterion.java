@@ -29,7 +29,7 @@ class CorpusCriterion extends CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	JComponent init (SearchCriterion val) 

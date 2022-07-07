@@ -60,7 +60,7 @@ class LemmaCriterion extends CriterionComponent {
 	 *
 	 *	@return 		The component.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	JComponent init (SearchCriterion val)
@@ -220,7 +220,7 @@ class LemmaCriterion extends CriterionComponent {
 
 	/**	Completes the lemma.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private void completeLemma ()
@@ -282,7 +282,7 @@ class LemmaCriterion extends CriterionComponent {
 	 *	@param	newVal		New value. Null if the row has just been
 	 *						deleted.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	void handleValueChanged (Class cls, SearchCriterion oldVal,

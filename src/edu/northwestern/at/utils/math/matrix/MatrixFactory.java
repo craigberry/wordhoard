@@ -19,8 +19,8 @@ public class MatrixFactory
 
 	/**	Create matrix of specified dimensions and implementation class.
 	 *
-	 *	@param	rows			Number of rows in the matrix (> 1).
-	 *	@param	columns			Number of columns in the matrix (> 1).
+	 *	@param	rows			Number of rows in the matrix (&gt; 1).
+	 *	@param	columns			Number of columns in the matrix (&gt; 1).
 	 *	@param	matrixClass		Implementation class for the matrix.
 	 *
 	 *	@return 		Matrix of the given dimensions and matrix class
@@ -69,8 +69,8 @@ public class MatrixFactory
 
 	/**	Create matrix with specified dimensions.
 	 *
-	 *	@param	rows		Number of rows in the matrix (> 1).
-	 *	@param	columns 	Number of columns in the matrix (> 1).
+	 *	@param	rows		Number of rows in the matrix (&gt; 1).
+	 *	@param	columns 	Number of columns in the matrix (&gt; 1).
 	 *
 	 *	@return 			Matrix of the given dimensions with all entries
 	 *						set to zero.
@@ -83,8 +83,8 @@ public class MatrixFactory
 
 	/**	Create matrix with specified dimensions and a specified value.
 	 *
-	 *	@param	rows			Number of rows in the matrix (> 1).
-	 *	@param	columns			Number of columns in the matrix (> 1).
+	 *	@param	rows			Number of rows in the matrix (&gt; 1).
+	 *	@param	columns			Number of columns in the matrix (&gt; 1).
 	 *	@param	scalar			Initial value for each matrix element.
 	 *	@param	matrixClass		Implementation class for the matrix.
 	 *
@@ -116,8 +116,8 @@ public class MatrixFactory
 
 	/**	Create matrix with specified dimensions and a specified value.
 	 *
-	 *	@param	rows		Number of rows in the matrix (> 1).
-	 *	@param	columns		Number of columns in the matrix (> 1).
+	 *	@param	rows		Number of rows in the matrix (&gt; 1).
+	 *	@param	columns		Number of columns in the matrix (&gt; 1).
 	 *	@param	scalar		Initial value for each matrix element.
 	 *
 	 *	@return				Matrix of the given dimensions and value.
@@ -139,8 +139,8 @@ public class MatrixFactory
 	 *	All elements are set to values in the passed array.
 	 *	</p>
 	 *
-	 *	@param	rows   			Number of rows in the matrix (> 1).
-	 *	@param	columns			Number of columns in the matrix (> 1).
+	 *	@param	rows   			Number of rows in the matrix (&gt; 1).
+	 *	@param	columns			Number of columns in the matrix (&gt; 1).
 	 *	@param	values 			Initial values of the matrix elements.
 	 *	@param	matrixClass		Implementation class for the matrix.
 	 *
@@ -171,8 +171,8 @@ public class MatrixFactory
 	 *	All elements are set to values in the passed array.
 	 *	</p>
 	 *
-	 *	@param rows   		Number of rows in the matrix (> 1).
-	 *	@param columns   	Number of columns in the matrix (> 1).
+	 *	@param rows   		Number of rows in the matrix (&gt; 1).
+	 *	@param columns   	Number of columns in the matrix (&gt; 1).
 	 *	@param values 		Initial values of the matrix elements.
 	 *
 	 *	@return				Matrix of given dimensions and values.
@@ -447,8 +447,8 @@ public class MatrixFactory
 
 	/**	Create matrix with specified dimensions filled with random values.
 	 *
-	 *	@param	rows			Number of rows in the matrix (> 1).
-	 *	@param	columns 		Number of columns in the matrix (> 1).
+	 *	@param	rows			Number of rows in the matrix (&gt; 1).
+	 *	@param	columns 		Number of columns in the matrix (&gt; 1).
 	 *	@param	matrixClass		Implementation class for the matrix.
 	 *
 	 *	@return 				Matrix of the given dimensions with all entries
@@ -477,8 +477,8 @@ public class MatrixFactory
 
 	/**	Create matrix with specified dimensions filled with random values.
 	 *
-	 *	@param	rows		Number of rows in the matrix (> 1).
-	 *	@param	columns 	Number of columns in the matrix (> 1).
+	 *	@param	rows		Number of rows in the matrix (&gt; 1).
+	 *	@param	columns 	Number of columns in the matrix (&gt; 1).
 	 *
 	 *	@return 			Matrix of the given dimensions with all entries
 	 *						set to uniform random numbers from [0,1].

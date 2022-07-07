@@ -210,7 +210,7 @@ class LexiconPanel extends JPanel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PesistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	LexiconPanel (Corpus corpus, PersistenceManager pm,
@@ -477,7 +477,7 @@ class LexiconPanel extends JPanel {
 
 	/**	Opens a lemma info window for the selected lemma.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void openGetInfoWindow ()

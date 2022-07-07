@@ -26,10 +26,10 @@ public class NGramExtractor
 
 	/**	The list of ngrams and associated counts.
 	 *
-	 *	<p>
-	 *	Key=ngram string<br />
+	 *	<pre>
+	 *	Key=ngram string
 	 *	Value=Integer(count)
-	 *	</p>
+	 *	</pre>
 	 *
 	 *	<p>
 	 *	The ngram string is two or more words with

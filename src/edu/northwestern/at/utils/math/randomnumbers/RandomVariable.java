@@ -298,7 +298,7 @@ public class RandomVariable
 
 	/** Generate a random value from a negative binomial variable.
 	 *
-	 *	@param	s
+	 *	@param	s	upper bound.
 	 *	@param	p	Probability for negative binomial random variable.
 	 *
 	 *	@return		Random value from negative binomial distribution.

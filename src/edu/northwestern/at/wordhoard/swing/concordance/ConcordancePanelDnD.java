@@ -39,6 +39,8 @@ public class ConcordancePanelDnD extends ConcordancePanel implements ClipboardOw
 	 *	@param	sq					Search criteria.
 	 *
 	 *	@param	parentWindow		Parent window.
+	 *
+	 *	@throws	PersistenceException	Error in persistence layer.
 	 */
 
 

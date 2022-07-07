@@ -16,9 +16,6 @@ public interface IntIterator {
 	/**	Returns the next element in the iterator.
 	 *
 	 *	@return		The next element.
-	 *
-	 *	@throws		NoSuchElementException	The iteration has no
-	 *										more elements.
 	 */
 	
 	public int next ();

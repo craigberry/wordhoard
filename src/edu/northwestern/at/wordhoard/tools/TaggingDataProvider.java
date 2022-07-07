@@ -21,7 +21,7 @@ public interface TaggingDataProvider {
 	 *						reported. The entire array may be null, or any
 	 *						element of it may be null.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public String[] getMorph (Element el, String wordTag)

@@ -86,28 +86,36 @@ public class CutCopyPasteAdapter
 		textComponent.paste();
 	}
 
-	/**	Is cut enabled? */
+	/**	Is cut enabled?
+	 * @return	boolean indicating whether cut is enabled.
+	*/
 
 	public boolean isCutEnabled()
 	{
 		return textComponent.isEditable() && isTextSelected();
 	}
 
-	/**	Is copy enabled? */
+	/**	Is copy enabled?
+	 * @return	boolean indicating whether copy is enabled.
+	*/
 
 	public boolean isCopyEnabled()
 	{
 		return isTextSelected();
 	}
 
-	/**	Is paste enabled? */
+	/**	Is paste enabled?
+	 * @return	boolean indicating whether paste is enabled.
+	*/
 
 	public boolean isPasteEnabled()
 	{
 		return textComponent.isEditable();
 	}
 
-	/**	Is anything selected which can be cut/copied? */
+	/**	Is anything selected which can be cut/copied?
+	 * @return	boolean indicating whether any text is selected.
+	*/
 
 	public boolean isTextSelected()
 	{

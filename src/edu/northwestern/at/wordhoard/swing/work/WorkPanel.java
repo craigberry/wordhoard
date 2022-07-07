@@ -456,7 +456,7 @@ public class WorkPanel extends JPanel {
 
 	/**	Changes the translations.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void changeTranslations ()
@@ -481,7 +481,7 @@ public class WorkPanel extends JPanel {
 
 	/**	Handles the "Copy" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCopyCmd ()
@@ -492,7 +492,7 @@ public class WorkPanel extends JPanel {
 
 	/**	Handles the "Select All" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleSelectAllCmd ()

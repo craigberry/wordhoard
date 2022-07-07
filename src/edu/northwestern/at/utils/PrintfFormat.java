@@ -35,41 +35,47 @@ import java.util.Locale;
 import java.text.DecimalFormatSymbols;
 
 /**
+ * <p>
  * PrintfFormat allows the formatting of an array of
  * objects embedded within a string.  Primitive types
  * must be passed using wrapper types.  The formatting
  * is controlled by a control string.
- *<p>
+ * </p>
+ * <p>
  * A control string is a Java string that contains a
  * control specification.  The control specification
  * starts at the first percent sign (%) in the string,
- * provided that this percent sign
- *<ol>
- *<li>is not escaped protected by a matching % or is
- * not an escape % character,
- *<li>is not at the end of the format string, and
- *<li>precedes a sequence of characters that parses as
- * a valid control specification.
- *</ol>
- *</p><p>
+ * provided that this percent sign:
+ * </p>
+ * <ol>
+ * <li>is not escaped protected by a matching % or is
+ * not an escape % character,</li>
+ * <li>is not at the end of the format string, and</li>
+ * <li>precedes a sequence of characters that parses as
+ * a valid control specification.</li>
+ * </ol>
+ * <p>
  * A control specification usually takes the form:
- *<pre> % ['-+ #0]* [0..9]* { . [0..9]* }+
+ * </p>
+ * <pre> % ['-+ #0]* [0..9]* { . [0..9]* }+
  *                { [hlL] }+ [idfgGoxXeEcs]
- *</pre>
+ * </pre>
+ * <p>
  * There are variants of this basic form that are
  * discussed below.</p>
- *<p>
+ * <p>
  * The format is composed of zero or more directives
  * defined as follows:
- *<ul>
- *<li>ordinary characters, which are simply copied to
+ * </p>
+ * <ul>
+ * <li>ordinary characters, which are simply copied to
  * the output stream;
- *<li>escape sequences, which represent non-graphic
- * characters; and
- *<li>conversion specifications,  each of which
- * results in the fetching of zero or more arguments.
- *</ul></p>
- *<p>
+ * <li>escape sequences, which represent non-graphic
+ * characters; and</li>
+ * <li>conversion specifications,  each of which
+ * results in the fetching of zero or more arguments.</li>
+ * </ul>
+ * <p>
  * The results are undefined if there are insufficient
  * arguments for the format.  Usually an unchecked
  * exception will be thrown.  If the format is
@@ -91,12 +97,13 @@ import java.text.DecimalFormatSymbols;
  * form of conversion specifications, each argument
  * in the argument list is used exactly once.</p>
  *
- *<h4>Escape Sequences</h4>
+ *<p>Escape Sequences</p>
  *<p>
  * The following table lists escape sequences and
  * associated actions on display devices capable of
  * the action.
- *<table>
+ *</p>
+ *<table summary="escape sequences and actions">
  *<tr><th align=left>Sequence</th>
  *    <th align=left>Name</th>
  *    <th align=left>Description</th></tr>
@@ -133,8 +140,8 @@ import java.text.DecimalFormatSymbols;
  *          next implementation-defined vertical
  *          tab position.
  *</td></tr>
- *</table></p>
- *<h4>Conversion Specifications</h4>
+ *</table>
+ *<p>Conversion Specifications</p>
  *<p>
  * Each conversion specification is introduced by
  * the percent sign character (%).  After the character
@@ -207,7 +214,7 @@ import java.text.DecimalFormatSymbols;
  * results of mixing numbered and unnumbered argument
  * specifications in a format string are undefined.</p>
  *
- *<h4>Flag Characters</h4>
+ *<p>Flag Characters</p>
  *<p>
  * The flags and their meanings are:</p>
  *<dl>
@@ -219,7 +226,7 @@ import java.text.DecimalFormatSymbols;
  *      character is used.
  * <dt>-<dd> result of the conversion is left-justified
  *      within the field.  (It will be right-justified
- *      if this flag is not specified).</td></tr>
+ *      if this flag is not specified).
  * <dt>+<dd> result of a signed conversion always
  *      begins with a sign (+ or -).  (It will begin
  *      with a sign only when a negative value is
@@ -255,7 +262,7 @@ import java.text.DecimalFormatSymbols;
  *      the flag is ignored.
  *</dl>
  *
- *<h4>Conversion Characters</h4>
+ *<p>Conversion Characters</p>
  *<p>
  * Each conversion character results in fetching zero
  * or more arguments.  The results are undefined if
@@ -486,6 +493,7 @@ public class PrintfFormat
 	 * percent signs designates a single percent sign in
 	 * the format.
 	 * @param fmtArg  Control string.
+	 * @param locale  Locale context for conversion.
 	 * @exception IllegalArgumentException if the control
 	 * string is null, zero length, or otherwise
 	 * malformed.

@@ -30,7 +30,7 @@ public class LexiconWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException.
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void open (Corpus corpus, AbstractWindow parentWindow)
@@ -159,7 +159,7 @@ public class LexiconWindow extends AbstractWindow {
 
 	/**	Handles the "Get Info" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGetInfoCmd ()
@@ -170,7 +170,7 @@ public class LexiconWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

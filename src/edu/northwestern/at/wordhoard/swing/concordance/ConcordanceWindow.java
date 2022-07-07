@@ -36,7 +36,7 @@ public class ConcordanceWindow extends AbstractWorkPanelWindow {
 	 *
 	 *	@param	parentWindow		Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public ConcordanceWindow (final SearchCriteria sq,
@@ -134,7 +134,7 @@ public class ConcordanceWindow extends AbstractWorkPanelWindow {
 	/**	Handles file menu selected.
 	 *
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFileMenuSelected ()

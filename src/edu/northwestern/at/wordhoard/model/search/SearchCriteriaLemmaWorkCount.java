@@ -147,7 +147,7 @@ public class SearchCriteriaLemmaWorkCount extends SearchCriteria {
 	 *				ordered by location (by work tag, then by ordinal
 	 *				within work).
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List search (Session session)

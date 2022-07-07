@@ -20,7 +20,7 @@ public abstract class AnnotationAdapter implements AnnotationListener {
 	 *
 	 *	@param	shown		True if markers shown, false if hidden.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void markersShownOrHidden (boolean shown)

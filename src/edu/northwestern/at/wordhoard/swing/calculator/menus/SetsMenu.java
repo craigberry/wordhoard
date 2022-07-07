@@ -259,7 +259,10 @@ public class SetsMenu extends BaseMenu
 		if ( menuBar != null ) menuBar.add( this );
 	}
 
-	/**	Add work submenu. */
+	/**	Add work submenu.
+	 * @param	menuBar	The menu bar to which the submenu will be added.
+	 * @return	The work submenu.
+	*/
 
 	protected JMenu makeWorkMenu( JMenuItem menuBar )
 	{
@@ -407,7 +410,10 @@ public class SetsMenu extends BaseMenu
 		return workMenu;
 	}
 
-	/**	Add word submenu. */
+	/**	Add word submenu.
+	 * @param	menuBar	The menu bar to which the submenu will be added.
+	 * @return	The word submenu.
+	*/
 
 	protected JMenu makeWordMenu( JMenuItem menuBar )
 	{
@@ -486,7 +492,10 @@ public class SetsMenu extends BaseMenu
 		return wordMenu;
 	}
 
-	/**	Add phrase submenu. */
+	/**	Add phrase submenu.
+	 * @param	menuBar	The menu bar to which the submenu will be added.
+	 * @return	The phrase submenu.
+	*/
 
 	protected JMenu makePhraseMenu( JMenuItem menuBar )
 	{
@@ -593,7 +602,9 @@ public class SetsMenu extends BaseMenu
 		phraseMenu.setEnabled( false );
 	}
 
-	/**	Create a new work set. */
+	/**	Create a new work set.
+	 * @param newWorkSetDialogType	The type of the work set.
+	*/
 
 	protected void newWorkSet( int newWorkSetDialogType )
 	{
@@ -652,7 +663,9 @@ public class SetsMenu extends BaseMenu
 		}
 	}
 
-	/**	Create a new work set panel for drag and drop. */
+	/**	Create a new work set panel for drag and drop.
+	 * @throws	Exception	general error.
+	*/
 
 	protected void newWorkSetUsingWorkSetPanel() throws Exception
 	{
@@ -1064,6 +1077,7 @@ public class SetsMenu extends BaseMenu
 	 *
 	 *	@param	dialog				New word set dialog.
 	 *	@param	outputResults	Progress reporter and close button.
+	 *	@return	The new word set.
 	 */
 
 	protected WordSet doNewWordSet
@@ -1590,6 +1604,7 @@ public class SetsMenu extends BaseMenu
 	/**	Helper for creating a phrase set.
 	 *
 	 *	@param	dialog	New phrase set dialog.
+	 *	@return	The new phrase set.
 	 */
 
 	protected PhraseSet doNewPhraseSet( NewPhraseSetDialog dialog )

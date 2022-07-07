@@ -19,8 +19,8 @@ abstract public class SortedTreeNode extends DefaultMutableTreeNode {
 	 *
 	 *	@param	otherNode		The other node.
 	 *
-	 *	@return					< 0 if this < other, 0 if this = other,
-	 *							> 0 if this > other.
+	 *	@return					&lt; 0 if this &lt; other, 0 if this = other,
+	 *							&gt; 0 if this &gt; other.
 	 */
 
 	abstract public int compareTo (SortedTreeNode otherNode);
@@ -93,7 +93,7 @@ abstract public class SortedTreeNode extends DefaultMutableTreeNode {
 
 	/**	Prohibits attempts to add nodes that aren't sortable.
 	 *
-	 *	@throws	UnsupportedOperationException.
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void add (MutableTreeNode newChild) {
@@ -102,7 +102,7 @@ abstract public class SortedTreeNode extends DefaultMutableTreeNode {
 
 	/**	Prohibits attempts to remove nodes that aren't sortable.
 	 *
-	 *	@throws	UnsupportedOperationException.
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void remove (MutableTreeNode aChild) {
@@ -111,7 +111,7 @@ abstract public class SortedTreeNode extends DefaultMutableTreeNode {
 
 	/**	Prohibits attempts to add children at specific locations.
 	 *
-	 *	@throws	UnsupportedOperationException
+	 *	@throws	UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void insert (MutableTreeNode newChild, int childIndex) {
@@ -120,7 +120,7 @@ abstract public class SortedTreeNode extends DefaultMutableTreeNode {
 
 	/**	Prohibits attempts to set a new user object.
 	 *
-	 *	@throws UnsupportedOperationException
+	 *	@throws UnsupportedOperationException	unsupported operation.
 	 */
 
 	public void setUserObject (Object userObject) {

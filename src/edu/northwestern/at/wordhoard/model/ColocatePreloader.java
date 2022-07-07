@@ -74,7 +74,7 @@ public class ColocatePreloader {
 	 *	@param	lookahead	This many additional words following the word
 	 *						in its list also have their colocates preloaded.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void load (Word word, int distance, int lookahead)

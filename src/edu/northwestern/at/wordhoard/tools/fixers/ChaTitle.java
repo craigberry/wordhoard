@@ -2,8 +2,6 @@ package edu.northwestern.at.wordhoard.tools.fixers;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
 import org.w3c.dom.*;
 
 import edu.northwestern.at.utils.xml.*;
@@ -46,7 +44,7 @@ public class ChaTitle extends Fixer {
 	 *
 	 *	@param	document	XML DOM tree.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 
 	public void fix (String corpusTag, String workTag, Document document) 

@@ -133,14 +133,18 @@ public class ThreeStateCheckBox extends JCheckBox
 
 		private Boolean selectionState;
 
-		/** Get selected state. */
+		/** Get selected state.
+		 * @return	The current selection state.
+		*/
 
 		public Boolean getSelected()
 		{
 			return selectionState;
 		}
 
-		/** Set selected state. */
+		/** Set selected state.
+		 * @param	selected	True to set the selected state to on, false to set it to off.
+		*/
 
 		public void setSelected( Boolean selected )
 		{

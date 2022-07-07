@@ -386,7 +386,7 @@ public class UserGroup
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal( ObjectOutput out )
@@ -409,9 +409,9 @@ public class UserGroup
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal( ObjectInput in )
@@ -477,6 +477,7 @@ public class UserGroup
 	}
 
 	/**	Removes members passed as collection.
+	 * @param	memberCollection	The collection of members.
 	 */
 
 	public void removeMembers( Collection memberCollection )
@@ -556,6 +557,8 @@ public class UserGroup
 	}
 
 	/**	Removes admins passed as collection.
+	 * 
+	 *	@param	adminCollection		The admins to remove passed as a collection.
 	 */
 
 	public void removeAdmins( Collection adminCollection )

@@ -51,7 +51,7 @@ class SearchCriteriaResultsOptionsPanel extends JPanel {
 	 *
 	 *	@param	orderBy			Initially selected order by option.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	SearchCriteriaResultsOptionsPanel (Font font, SearchCriteriaResultsPanel parentPanel,

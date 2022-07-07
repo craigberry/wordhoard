@@ -136,6 +136,8 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 
 	/**	Creates a new search results panel.
 	 *
+	 *	@param	pm	The persistence manager.
+	 *
 	 *	@param	parentWindow		Parent window.
 	 */
 
@@ -554,7 +556,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 	 *
 	 *	@param	startTime	System milliseconds start time of search.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void setHits (HashSet workparts, long startTime)
@@ -575,7 +577,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 	 *
 	 *	@param	workparts	Hash set of work parts.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void setWorks (HashSet workparts)
@@ -589,7 +591,9 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 		buildTree();
 	}
 
-	/**	Gets the corpus associated with the work  in this window.
+	/**	Gets the corpus associated with the work* in this window.
+	 *
+	 *	@param	work	The work.
 	 *
 	 *	@return		The corpus associated with this window.
 	 */
@@ -597,6 +601,8 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 	public Corpus getCorpus (Work work) { return work.getCorpus();}
 
 	/**	Adds nodes to the tree for this panel.
+	 *
+	 * @param	c	collection of nodes to add to the tree.
 	 *
 	 */
 
@@ -739,7 +745,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 
 	/**	Builds or rebuilds the tree of hits.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void buildTree ()
@@ -856,7 +862,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 	 *
 	 *	@param	options		New grouping options.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void handleNewGroupingOptions (GroupingWorkOptions options)
@@ -867,7 +873,10 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 		if (workparts != null) buildTree();
 	}
 
-	/**	Gets the work panel. */
+	/**	Gets the work panel.
+	 *
+	 * @return	The work panel.
+	*/
 
 	public WorkPanel getWorkPanel () {
 		return workPanel;
@@ -875,7 +884,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 
 	/**	Shows the selected works from the hit list.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
 	 */
 
@@ -1087,7 +1096,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 
 	/**	Opens the selected work part.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void openSelected ()

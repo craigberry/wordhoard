@@ -42,7 +42,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 	 *	@param	show	true to show table of contents, false to leave display
 	 *					status as is.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public static void open (boolean show)
@@ -65,7 +65,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 
 	/**	Opens or brings to the front the table of contents window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public static void open ()
@@ -76,7 +76,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 
 	/**	Creates a new table of contents window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	problem with persistence layer.
 	 */
 
 	public TableOfContentsWindow ()
@@ -163,7 +163,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 
 	/**	Handles the "Get Info" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGetInfoCmd ()
@@ -196,7 +196,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()
@@ -210,6 +210,8 @@ public class TableOfContentsWindow extends AbstractWindow {
 	}
 
 	/**	Get table of contents window.
+	 * @return table of contents window.
+	 * @throws PersistenceException problem with persistence layer.
 	 */
 
 	public static TableOfContentsWindow getTableOfContentsWindow()

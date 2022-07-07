@@ -6,14 +6,7 @@ import java.io.*;
 import java.util.*;
 
 import org.w3c.dom.*;
-import org.hibernate.*;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.xml.*;
 
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
@@ -995,7 +988,7 @@ public class WordSet
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal( ObjectOutput out )
@@ -1020,9 +1013,9 @@ public class WordSet
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal( ObjectInput in )

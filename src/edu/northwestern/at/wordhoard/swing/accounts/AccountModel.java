@@ -63,7 +63,7 @@ class AccountModel extends AbstractTableModel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	AccountModel (WordHoardSession session, AbstractWindow parentWindow)
@@ -199,7 +199,7 @@ class AccountModel extends AbstractTableModel {
 	 *	@param	canManageAccounts	True if user is permitted to manage
 	 *								accounts.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	void save (String username, String name, String password,
@@ -302,7 +302,7 @@ class AccountModel extends AbstractTableModel {
 	
 	/**	Deletes the selected accounts.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	void deleteAccounts () 

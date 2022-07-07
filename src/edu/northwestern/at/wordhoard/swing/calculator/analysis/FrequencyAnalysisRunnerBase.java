@@ -433,6 +433,7 @@ public class FrequencyAnalysisRunnerBase
 	 *								If number of entries "k" is less than
 	 *								the number of the table columns, only
 	 *								the first "k" column widths are set.
+	 *	@return	The results panel.
 	 */
 
 	protected ResultsPanel generateResults
@@ -1096,6 +1097,7 @@ public class FrequencyAnalysisRunnerBase
 	/**	Get format for double value in table.
 	 *
 	 *	@param	decimalPlaces	Number of decimal places.
+	 *	@return	The format to use for a double value in a table.
 	 */
 
 	public String getDoubleFormat( int decimalPlaces )
@@ -1130,6 +1132,7 @@ public class FrequencyAnalysisRunnerBase
 	/**	Check if cancelled flag set in a progress reporter.
 	 *
 	 *	@param	progressReporter	Progress reporter to check for cancel.
+	 *	@return	True if progress reporter has been canceled, false otherwise.
 	 */
 
 	public boolean isCancelled( ProgressReporter progressReporter )
@@ -1166,6 +1169,7 @@ public class FrequencyAnalysisRunnerBase
 	 *							-1 if none.
 	 *	@param	wordClassCol	Word class column in table.
 	 *							-1 if none.
+	 *	@return	The results panel containing the cloud.
 	 */
 
 	public ResultsPanel getCloud

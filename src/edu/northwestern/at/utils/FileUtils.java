@@ -21,7 +21,7 @@ public class FileUtils
 	 *
 	 *	@return				Contents of file as a string.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *						if file cannot be read.
 	 */
 
@@ -84,7 +84,7 @@ public class FileUtils
 	 *
 	 *	@return				Contents of file as a string.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *						if file cannot be read.
 	 */
 
@@ -101,7 +101,7 @@ public class FileUtils
 	 *
 	 *	@return				Contents of file as a string.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *						if file cannot be read.
 	 */
 
@@ -117,7 +117,7 @@ public class FileUtils
 	 *
 	 *	@return				Contents of file as a string.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *						if file cannot be read.
 	 */
 
@@ -134,7 +134,7 @@ public class FileUtils
 	 *	@param	append		True to append contents to existing file.
 	 *	@param	encoding	Text file encoding, e.g., "utf-8".
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *		in case of I/O exception.
 	 */
 
@@ -184,7 +184,7 @@ public class FileUtils
 	 *	@param	contents	String to write to file.
 	 *	@param	append		True to append contents to existing file.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *		in case of I/O exception.
 	 */
 
@@ -204,8 +204,9 @@ public class FileUtils
 	 *	@param	fileName	Text file name to write to.
 	 *	@param	contents	String to write to file.
 	 *	@param	append		True to append contents to existing file.
+	 *	@param	encoding	Text file encoding, e.g., "utf-8".
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *		in case of I/O exception.
 	 */
 
@@ -228,7 +229,7 @@ public class FileUtils
 	 *	@param	contents	String to write to file.
 	 *	@param	append		True to append contents to existing file.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *		in case of I/O exception.
 	 */
 

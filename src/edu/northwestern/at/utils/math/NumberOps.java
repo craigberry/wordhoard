@@ -20,9 +20,9 @@ public class NumberOps
 	 *	@param	number1		First number.
 	 *	@param	number2		Second number.
 	 *
-	 *	@return				-1 if number1 < number2
+	 *	@return				-1 if number1 &lt; number2
 	 *						0 if number1 == number2
-	 *						1 if number1 > number2
+	 *						1 if number1 &gt; number2
 	 */
 
 	public static int compareNumbers( Number number1 , Number number2 )
@@ -69,9 +69,9 @@ public class NumberOps
 	 *
 	 *	@param	number		Number to compare to zero.
 	 *
-	 *	@return				-1 if number < 0
+	 *	@return				-1 if number &lt; 0
 	 *						0 if number1 == 0
-	 *						1 if number1 > 0
+	 *						1 if number1 &gt; 0
 	 */
 
 	public static int compareToZero( Number number )

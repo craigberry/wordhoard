@@ -51,7 +51,7 @@ class LexiconOptionsPanel extends JPanel {
 	 *
 	 *	@param	orderBy			Initially selected order by option.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	LexiconOptionsPanel (Font font, LexiconPanel parentPanel,

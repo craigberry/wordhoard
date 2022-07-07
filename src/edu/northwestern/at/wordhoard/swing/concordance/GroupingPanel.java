@@ -39,7 +39,7 @@ class GroupingPanel extends JPanel {
 	 *
 	 *	@param	parentPanel				Parent concordance panel.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	GroupingPanel (Font font, SearchCriteria sq,
@@ -115,7 +115,7 @@ class GroupingPanel extends JPanel {
 
 	/**	Handles new grouping options.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void handleNewGroupingOptions ()
@@ -136,7 +136,7 @@ class GroupingPanel extends JPanel {
 	 *	@param	row		Row after which to add new row, or null
 	 *					to add the new row at the end.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void addRow (Row row)
@@ -153,7 +153,7 @@ class GroupingPanel extends JPanel {
 	 *
 	 *	@param	row		Row to be removed.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	void removeRow (Row row)

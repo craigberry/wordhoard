@@ -76,7 +76,7 @@ public class FindWorkWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public FindWorkWindow (final Corpus corpus,
@@ -181,7 +181,7 @@ public class FindWorkWindow extends AbstractWindow {
 
 	/**	Executes the search.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void find ()

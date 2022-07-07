@@ -171,6 +171,7 @@ public class ProgressDialog extends ModalDialog implements ProgressReporter
 	 * @param	minBar			Minimum value for progress bar.
 	 * @param	maxBar			Maximum value for progress bar.
 	 * @param	allowCancel		Display a cancel button.
+	 * @param	startupDelay	Startup time for dialog in milliseconds.
 	 */
 
 	public ProgressDialog

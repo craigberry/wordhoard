@@ -39,7 +39,11 @@ public class PrintableComponent extends Component
 
 		public int pageLength;
 
-		/** Create page state object. */
+		/** Create page state object.
+		 * @param	pageIndex	Index of page.
+		 * @param	pageOffset	Starting offset of slice for the page.
+		 * @param	pageLength	Length of the page.
+		*/
 
 		public PageState
 		(
@@ -53,7 +57,9 @@ public class PrintableComponent extends Component
 			this.pageLength		= pageLength;
 		}
 
-		/** Create page state object from another page state object. */
+		/** Create page state object from another page state object.
+		 * @param	otherPageState	Page state to use as a template.
+		*/
 
 		public PageState
 		(
@@ -594,7 +600,7 @@ public class PrintableComponent extends Component
 	 *
 	 *	<p>
 	 *	A break check value of 0.20 (20%) work well and is the default.
-	 *	A new break check value must be >= 0.0 and < 1.0 .
+	 *	A new break check value must be &gt;= 0.0 and &lt; 1.0 .
 	 */
 
 	public void setBreakCheckPercentage( double breakCheckPercentage )
@@ -610,6 +616,8 @@ public class PrintableComponent extends Component
 	 *						of printer page height.
 	 *
 	 *	@param	scaleFactor	If we're scaling the output.
+	 *
+	 *	@return	The slice length.
 	 *
 	 *	<p>
 	 *	We apply the following heuristics to find a "nice" place to split

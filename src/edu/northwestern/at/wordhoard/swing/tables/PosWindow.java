@@ -33,7 +33,7 @@ public class PosWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void open (AbstractWindow parentWindow)
@@ -218,7 +218,7 @@ public class PosWindow extends AbstractWindow {
 	
 	/**	Gets and orders the parts of speech to be displayed. 
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 	
 	private void getAndOrderPartsOfSpeech () 
@@ -302,7 +302,7 @@ public class PosWindow extends AbstractWindow {
 	 *
 	 *	@return		Options panel.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 	
 	private JPanel createOptionsPanel () 
@@ -375,7 +375,7 @@ public class PosWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public PosWindow (AbstractWindow parentWindow)
@@ -478,7 +478,7 @@ public class PosWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

@@ -180,7 +180,7 @@ class WordFormsPanel extends JPanel {
 	 *
 	 *	@param	parentWindow		Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	WordFormsPanel (final Lemma lemma, final Corpus corpus,

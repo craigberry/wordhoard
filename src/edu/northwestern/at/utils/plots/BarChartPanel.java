@@ -86,6 +86,7 @@ public class BarChartPanel
      *	@param	title			plot title.
      *	@param	xTitle			x-axis title.
      *	@param	yTitle			y-axis title.
+	 *	@param	legendLabel		label for legend.
      *	@param	horizontal		true to display chart horizontally.
      *	@param	showBarValues	true to display values within each bar.
      */

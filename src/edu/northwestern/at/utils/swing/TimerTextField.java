@@ -16,7 +16,8 @@ import edu.northwestern.at.utils.*;
  *		<li>120</li>
  *	</ul>
  *
- *	<p><strong>Just hours, minutes, seconds.</strong><br />
+ *	<p><strong>Just hours, minutes, seconds.</strong></p>
+ *	<p>
  *	Hours, minutes, and seconds must be entered as "0" or "00"
  *	if needed to distinguish, for example, 5 hours from 5 minutes
  *	from 5 seconds.

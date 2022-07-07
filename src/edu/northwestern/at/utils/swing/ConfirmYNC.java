@@ -64,6 +64,7 @@ public class ConfirmYNC
 	 *						is positioned centered over its parent window
 	 *						horizontally and positioned with its top
 	 *						25 pixels below the top of its parent.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYNC( String msg , Window parent )
@@ -80,6 +81,7 @@ public class ConfirmYNC
 	/**	Constructs and displays a confirmation dialog with no parent window.
 	 *
 	 *	@param	msg			The confirmation prompt.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYNC( String msg )
@@ -101,6 +103,7 @@ public class ConfirmYNC
 	 *						is positioned centered over its parent window
 	 *						horizontally and positioned with its top
 	 *						25 pixels below the top of its parent.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYN( String msg , Window parent )
@@ -118,6 +121,7 @@ public class ConfirmYNC
 	/**	Constructs and displays a confirmation dialog with no parent window.
 	 *
 	 *	@param	msg			The confirmation prompt.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYN( String msg )
@@ -139,6 +143,7 @@ public class ConfirmYNC
 	 *						is positioned centered over its parent window
 	 *						horizontally and positioned with its top
 	 *						25 pixels below the top of its parent.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYNC( StyledString msg , Window parent )
@@ -155,6 +160,7 @@ public class ConfirmYNC
 	/**	Constructs and displays a styled text confirmation dialog with no parent window.
 	 *
 	 *	@param	msg			The confirmation prompt.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYNC( StyledString msg )
@@ -176,6 +182,7 @@ public class ConfirmYNC
 	 *						is positioned centered over its parent window
 	 *						horizontally and positioned with its top
 	 *						25 pixels below the top of its parent.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYN( StyledString msg , Window parent )
@@ -193,6 +200,7 @@ public class ConfirmYNC
 	/**	Constructs and displays a styled text confirmation dialog with no parent window.
 	 *
 	 *	@param	msg			The confirmation prompt.
+	 *	@return	The confirmation value.
 	 */
 
 	public static int confirmYN( StyledString msg )

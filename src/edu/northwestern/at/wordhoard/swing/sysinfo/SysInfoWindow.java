@@ -28,7 +28,7 @@ public class SysInfoWindow extends AbstractWindow
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static void open( AbstractWindow parentWindow )
@@ -49,7 +49,7 @@ public class SysInfoWindow extends AbstractWindow
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public SysInfoWindow( AbstractWindow parentWindow )

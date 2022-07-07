@@ -14,7 +14,7 @@ public class BootstrapImpl extends UnicastRemoteObject
 {
 	/**	Creates a new BootstrapImpl object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	BootstrapImpl ()
@@ -27,7 +27,7 @@ public class BootstrapImpl extends UnicastRemoteObject
 	 *
 	 *	@return			A session object.
 	 *
-	 *	@throws	RemoteException
+	 *	@throws	RemoteException	error in remote connection.
 	 */
 
 	public WordHoardSession startSession ()
@@ -43,7 +43,7 @@ public class BootstrapImpl extends UnicastRemoteObject
 	 *	<p>Shutdown requests must originate from the local host, or
 	 *	they are ignored.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void shutdown ( String uri )

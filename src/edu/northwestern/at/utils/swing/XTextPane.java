@@ -149,6 +149,7 @@ public class XTextPane extends JTextPane
 	}
 
 	/**	Constructs a new XTextPane with plain string as initial text.
+	 * @param s Initial text of XTextPane.
 	 */
 
 	public XTextPane ( String s ) {

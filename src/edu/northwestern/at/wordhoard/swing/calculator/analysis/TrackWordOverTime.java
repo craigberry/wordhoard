@@ -418,6 +418,8 @@ public class TrackWordOverTime
 	/**	Displays results of frequency analysis in a sorted table.
 	 *
 	 *	@param	model	Table model containing results.
+	 *
+	 *	@return	The results panel.
 	 */
 
 	protected ResultsPanel generateResults
@@ -597,6 +599,12 @@ public class TrackWordOverTime
 	}
 
 	/**	Generate results when publication dates available.
+	 *
+	 *	@param	title	The title.
+	 *
+	 *	@param	shortTitle	The short title.
+	 *
+	 *	@param	extraText	Extra text after the title.
 	 *
 	 *	@return		results panel.
 	 */

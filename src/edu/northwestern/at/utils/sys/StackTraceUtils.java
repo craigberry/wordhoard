@@ -12,6 +12,7 @@ public class StackTraceUtils
 	/**	Gets a stack trace for an exception.
 	 *
 	 *	@param e	The exception
+	 *	@return	String containing the stack trace.
 	 */
 
 	public static String getStackTrace( Throwable e )
@@ -30,6 +31,7 @@ public class StackTraceUtils
 	}
 
 	/**	Gets a stack trace.
+	 *	@return	String containing the stack trace.
 	 */
 
 	public static String getStackTrace()

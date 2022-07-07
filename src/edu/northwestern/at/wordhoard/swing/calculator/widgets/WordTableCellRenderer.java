@@ -33,6 +33,7 @@ public class WordTableCellRenderer
 	/**	Create word table cell entry renderer.
 	 *
 	 *	@param	wordTextPosition		Position of word text within table cell.
+	 *	@param	stripSpellings			True to strip spellings.
 	 *	@param	stripWordClasses		True to strip word class tags.
 	 */
 
@@ -50,6 +51,7 @@ public class WordTableCellRenderer
 
 	/**	Create word table cell entry renderer.
 	 *
+	 *	@param	stripSpellings			True to strip spellings.
 	 *	@param	stripWordClasses		True to strip word class tags.
 	 */
 

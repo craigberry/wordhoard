@@ -47,6 +47,10 @@ public class DateGroup implements GroupingObject
 	private static HashMap dateGroups = new HashMap();	//
 
 	/**	Creates a new entry.
+	 * @param groupBy	Grouping option.
+	 * @param startYear	Lower bound of date range.
+	 * @param endYear	Upper bound of date range
+	 * @return List of works in date range.
 	 */
 
 	public static DateGroup getDateGroup(int groupBy, Integer startYear, Integer endYear)
@@ -160,6 +164,7 @@ public class DateGroup implements GroupingObject
 	}
 
 	/**	Return author's full information for display.
+	 * @return	Author detailed information.
 	 */
 
 	public String toStringDetailed()

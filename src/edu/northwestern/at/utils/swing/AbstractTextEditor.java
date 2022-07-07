@@ -14,7 +14,9 @@ import java.awt.event.*;
 
 public abstract class AbstractTextEditor
 {
-	/**	Files. */
+	/**	Files.
+	 * @param e action event.
+	*/
 
 	protected void doNew( ActionEvent e ){};
 	protected void doOpen( ActionEvent e ){};
@@ -22,20 +24,26 @@ public abstract class AbstractTextEditor
 	protected void doSaveAs( ActionEvent e ){};
 	protected void doExit( ActionEvent e ){};
 
-	/**	Printing. */
+	/**	Printing.
+	 * @param e action event.
+	*/
 
 	protected void doPageSetup( ActionEvent e ){};
 	protected void doPrintPreview( ActionEvent e ){};
 	protected void doPrint( ActionEvent e ){};
 
-	/**	Cut/copy/paste/select. */
+	/**	Cut/copy/paste/select.
+	 * @param e action event.
+	*/
 
 	protected void doCopy( ActionEvent e ){};
 	protected void doCut( ActionEvent e ){};
 	protected void doPaste( ActionEvent e ){};
 	protected void doSelectAll( ActionEvent e ){};
 
-	/**	Search/replace. */
+	/**	Search/replace.
+	 * @param e action event.
+	*/
 
 	protected void doFind( ActionEvent e ){};
 	protected void doReplace( ActionEvent e ){};

@@ -314,6 +314,8 @@ public class SearchWorkResultsPanel extends JSplitPane
 	}
 
 	/**	Save selected works in a work set.
+	 * 
+	 * @throws	Exception	general error.
 	 */
 
 	public void saveWorkSet()
@@ -458,7 +460,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 	 *
 	 *	@param	startTime	System milliseconds start time of search.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void setHits (java.util.List works, long startTime)
@@ -481,7 +483,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 	 *
 	 *	@param	works		The list of works
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void setWorks (java.util.List works)
@@ -512,8 +514,9 @@ public class SearchWorkResultsPanel extends JSplitPane
 		buildTree();
 	}
 
-	/**	Gets the corpus associated with the work  in this window.
+	/**	Gets the corpus associated with the work in this window.
 	 *
+	 *	@param	work	The work in this window.
 	 *	@return		The corpus associated with this window.
 	 */
 
@@ -627,7 +630,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 
 	/**	Builds or rebuilds the tree of hits.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	private void buildTree ()
@@ -731,7 +734,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 	 *
 	 *	@param	options		New grouping options.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public void handleNewGroupingOptions (GroupingWorkOptions options)
@@ -742,7 +745,9 @@ public class SearchWorkResultsPanel extends JSplitPane
 		if (works != null) buildTree();
 	}
 
-	/**	Gets the work panel. */
+	/**	Gets the work panel.
+	 * @return	The work panel.
+	*/
 
 	public WorkPanel getWorkPanel () {
 		return workPanel;
@@ -750,7 +755,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 
 	/**	Shows the selected works from the hit list.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 *
 	 */
 

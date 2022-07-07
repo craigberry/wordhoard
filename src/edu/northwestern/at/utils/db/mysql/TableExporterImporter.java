@@ -51,9 +51,9 @@ public class TableExporterImporter {
 	 *	@param	append			True to append to data file, false to
 	 *							overwrite any existing data file.
 	 *
-	 *	@throws	FileNotFoundException
-	 *	@throws	UnsupportedEncodingException
-	 *	@throws	IOException
+	 *	@throws	FileNotFoundException	File not found.
+	 *	@throws	UnsupportedEncodingException	Unsupported encoding.
+	 *	@throws	IOException	I/O Exception.
 	 */
 
 	public TableExporterImporter (String tableName, String columnNames,
@@ -195,7 +195,7 @@ public class TableExporterImporter {
 	 *
 	 *	@return			Number of rows imported.
 	 *
-	 *	@throws	SQLException
+	 *	@throws	SQLException	Error executing update.
 	 */
 
 	public int importData (Connection c)

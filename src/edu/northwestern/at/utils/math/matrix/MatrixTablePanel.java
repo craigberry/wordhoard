@@ -369,6 +369,7 @@ public class MatrixTablePanel extends DataPanel
 		 *
 		 *	@param	formatString	The PrintfFormat string for formatting
 		 *							each matrix entry.
+		 *	@param	debug	boolean to enable debugging.
 		 */
 
 		public MatrixEntryRenderer( String formatString , boolean debug )

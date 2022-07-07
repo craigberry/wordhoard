@@ -50,7 +50,7 @@ import edu.northwestern.at.utils.db.mysql.*;
  *		quickly find word colocates. It satisfies the following property:
  *		Word1 is n words to the left of word2 and in the same work part as
  *		word2 iff word1.colocationOrdinal + n = word2.colocationOrdinal, for
- *		all n < 2^31.
+ *		all n &lt; 2^31.
  *	<li>The {@link edu.northwestern.at.wordhoard.model.speakers.Speech
  *		speech} in which the word occurs, or null if none.
  *	<li>The {@link edu.northwestern.at.wordhoard.model.wrappers.Prosodic
@@ -560,7 +560,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 
 	/**	Initializes derived values.
 	 *
-	 *	<p>Sets the colocation ordinal to partId << 32 | workOrdinal,
+	 *	<p>Sets the colocation ordinal to partId &lt;&lt; 32 | workOrdinal,
 	 *	where partId = the persistence id of the work part.
 	 *	The work part and work ordinal must be set, and
 	 *	the work part must have a persistence id.

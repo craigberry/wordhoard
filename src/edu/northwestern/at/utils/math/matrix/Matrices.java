@@ -22,6 +22,8 @@ public class Matrices
 
 	/**
 	 * Creation
+	 * @param	src	Input for matrix creation.
+	 * @return	Resulting matrix.
 	 */
 
 	public static Matrix create( String src )
@@ -73,6 +75,8 @@ public class Matrices
 
 	/**
 	 * Operators
+	 * @param	a	Input matrix
+	 * @return	Transform.
 	 */
 
 	public static Matrix neg(Matrix a)
@@ -379,6 +383,8 @@ public class Matrices
 
 	/**
 	 * Methods
+	 * @param	m	Input matrix
+	 * @return	Matrix measurement.
 	 */
 
 	public static int rank(Matrix m)
@@ -523,6 +529,8 @@ public class Matrices
 
 	/**
 	 * Decompositions
+	 * @param	m	Input matrix
+	 * @return	Result matrix.
 	 */
 
 	public static Matrix[] lu(Matrix m)

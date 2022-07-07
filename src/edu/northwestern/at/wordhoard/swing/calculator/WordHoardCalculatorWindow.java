@@ -154,6 +154,10 @@ public class WordHoardCalculatorWindow extends AbstractWindow
 	}
 
 	/**	Create WordHoard Calculator window.
+	 * 
+	 * @param	parentWindow	The parent window.
+	 *
+	 * @throws	PersistenceException	error in persistence layer.
 	 */
 
 	protected WordHoardCalculatorWindow( AbstractWindow parentWindow )
@@ -173,7 +177,7 @@ public class WordHoardCalculatorWindow extends AbstractWindow
 
 	/**	Create the actual window data.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	protected void createWindowData()
@@ -312,6 +316,7 @@ public class WordHoardCalculatorWindow extends AbstractWindow
      *
      *	@param	panel			Dialog panel to which to add close button.
      *	@param	progressPanel	Progress panel to which to tie cancel action.
+	 *	@return	The button.
      */
 
 	public JButton addACancelButton
@@ -333,6 +338,7 @@ public class WordHoardCalculatorWindow extends AbstractWindow
      *
      *	@param	panel		Dialog panel to which to add close button.
      *	@param	outputTitle	Title of tabbed panel holding dialog panel.
+	 *	@return	The button.
      */
 
 	public JButton addACloseButton
@@ -756,7 +762,9 @@ public class WordHoardCalculatorWindow extends AbstractWindow
 		}
 	}
 
-	/** Create menu bar and menu items. */
+	/** Create menu bar and menu items.
+	 * @return	The menu bar.
+	*/
 
 	protected JMenuBar createMenuBar()
 	{

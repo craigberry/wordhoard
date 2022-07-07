@@ -86,12 +86,6 @@ public class Brent implements MonadicFunctionRootFinder
 	 *
 	 *	@return							Root of function in interval [x0,x1] .
 	 *
-	 *	@throws							InvalidArgumentException
-	 *										when [x0,x1] does not contain
-	 *										root and the attempt to expand
-	 * 										the interval to contain a root
-	 *										fails.
-	 *
 	 *	<p>
 	 *	Function must have an odd # of roots in the interval [x0,x1] .
 	 *	</p>
@@ -302,12 +296,6 @@ public class Brent implements MonadicFunctionRootFinder
 	 *
 	 *	@return							Root of function in interval [x0,x1] .
 	 *
-	 *	@throws							InvalidArgumentException
-	 *										when [x0,x1] does not contain
-	 *										root and the attempt to expand
-	 * 										the interval to contain a root
-	 *										fails.
-	 *
 	 *	<p>
 	 *	Function must have an odd # of roots in the interval [x0,x1] .
 	 *	</p>
@@ -340,12 +328,6 @@ public class Brent implements MonadicFunctionRootFinder
 	 *	@param function					The function whose root to find.
 	 *
 	 *	@return							Root of function in interval [x0,x1] .
-	 *
-	 *	@throws							InvalidArgumentException
-	 *										when [x0,x1] does not contain
-	 *										root and the attempt to expand
-	 * 										the interval to contain a root
-	 *										fails.
 	 *
 	 *	<p>
 	 *	Function must have an odd # of roots in the interval [x0,x1] .

@@ -25,14 +25,14 @@ public class Frequency
 	 *	<p>
 	 *	The contents of the result array are as follows.
 	 *	</p>
-	 *	<p>
-	 *	(0)	Count of word/lemma appearance in sample.<br />
-	 *  (1)	Percent of word/lemma appearance in sample.<br />
-	 *	(2)	Count of word/lemma appearance in reference.<br />
-	 *	(3) Percent of word/lemma appearance in reference.<br />
-	 *	(4)	Log-likelihood measure.<br />
-	 *	(5) Significance of log-likelihood.<br />
-	 *	</p>
+	 *	<pre>
+	 *	(0)	Count of word/lemma appearance in sample.
+	 *  (1)	Percent of word/lemma appearance in sample.
+	 *	(2)	Count of word/lemma appearance in reference.
+	 *	(3) Percent of word/lemma appearance in reference.
+	 *	(4)	Log-likelihood measure.
+	 *	(5) Significance of log-likelihood.
+	 *	</pre>
 	 *
 	 *	<p>
 	 *	The results of any zero divides are set to zero.
@@ -120,14 +120,14 @@ public class Frequency
 	 *	<p>
 	 *	The contents of the result array are as follows.
 	 *	</p>
-	 *	<p>
-	 *	(0)	Count of word/lemma appearance in sample.<br />
-	 *  (1)	Percent of word/lemma appearance in sample.<br />
-	 *	(2)	Count of word/lemma appearance in reference.<br />
-	 *	(3) Percent of word/lemma appearance in reference.<br />
-	 *	(4)	Log-likelihood measure.<br />
-	 *	(5) Significance of log-likelihood.<br />
-	 *	</p>
+	 *	<pre>
+	 *	(0)	Count of word/lemma appearance in sample.
+	 *  (1)	Percent of word/lemma appearance in sample.
+	 *	(2)	Count of word/lemma appearance in reference.
+	 *	(3) Percent of word/lemma appearance in reference.
+	 *	(4)	Log-likelihood measure.
+	 *	(5) Significance of log-likelihood.
+	 *	</pre>
 	 */
 
 	public static double[] logLikelihoodFrequencyComparison

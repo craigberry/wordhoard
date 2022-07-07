@@ -52,7 +52,7 @@ public class TConInfoWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent table of contents window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public TConInfoWindow (Corpus corpus, WorkPart workPart,
@@ -99,7 +99,7 @@ public class TConInfoWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

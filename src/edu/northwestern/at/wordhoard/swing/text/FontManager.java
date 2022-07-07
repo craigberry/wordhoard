@@ -168,6 +168,7 @@ public class FontManager {
 	/**	Gets plain Roman "other" font info.
 	 *
 	 *	@param	size		Size.
+	 *	@return plain Roman font.
 	 */
 	 
 	public FontInfo getFontInfo (int size) {
@@ -258,6 +259,7 @@ public class FontManager {
 	/**	Gets a plain Roman "other" font.
 	 *
 	 *	@param	size	Size.
+	 *	@return	plain Roman font.
 	 */
 	 
 	public Font getFont (int size) {

@@ -61,6 +61,11 @@ public class WordSetTotalWordFormCount
 	}
 
 	/**	Create a populated total word form count object.
+	 * 
+	 * @param	wordForm	The word form.
+	 * @param	wordSet		The word set.
+	 * @param	workPartTag	The tag of the work part to which this work part belongs.
+	 * @param	wordFormCount	The total number of word form entries in the word set.
 	 */
 
 	public WordSetTotalWordFormCount

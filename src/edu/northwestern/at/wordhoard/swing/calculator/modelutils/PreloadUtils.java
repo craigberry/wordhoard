@@ -85,6 +85,7 @@ public class PreloadUtils
 	/**	Preload reduced word part information for a set of words.
 	 *
 	 *	@param	words	The words.
+	 *	@return	Collection of word part information.
 	 */
 
 	public static Collection preloadReducedWordParts( Collection words )
@@ -127,6 +128,7 @@ public class PreloadUtils
 	/**	Preload reduced word part information and speeches for a set of words.
 	 *
 	 *	@param	words	The words.
+	 *	@return	Collection of word part and speech information.
 	 */
 
 	public static Collection preloadReducedWordPartsAndSpeeches

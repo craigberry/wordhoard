@@ -58,7 +58,7 @@ public class CachedCollections {
 	 *
 	 *	@return			All the corpora, in increasing order by ordinal.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static Corpus[] getCorpora ()
@@ -87,7 +87,7 @@ public class CachedCollections {
 	 *	@return			All the authors, in increasing case-insensitive
 	 *					alphabetical order by name.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static Author[] getAuthors ()
@@ -109,7 +109,7 @@ public class CachedCollections {
 	 *	@return				All the authors for the corpus, in increasing
 	 *						case-insensitive alphabetical order by name.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	 public static Author[] getAuthors (Corpus corpus)
@@ -131,7 +131,7 @@ public class CachedCollections {
 	 *	@return			All the parts of speech, in increasing case-insensitive
 	 *					alphabetical order by tag.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 	 
 	public static Pos[] getPos ()
@@ -151,7 +151,7 @@ public class CachedCollections {
 	 *	@return			All the word classes, in increasing
 	 *					case-insensitive order by tag.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static WordClass[] getWordClasses ()
@@ -172,7 +172,7 @@ public class CachedCollections {
 	 *	@return		All the major word classes, in increasing
 	 *				case-insensitive alphabetical order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static MajorWordClass[] getMajorWordClasses ()
@@ -192,7 +192,7 @@ public class CachedCollections {
 	 *	@return			All the metrical shapes, in increasing
 	 *					case-insensitive alphabetical order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static MetricalShape[] getMetricalShapes ()
@@ -215,7 +215,7 @@ public class CachedCollections {
 	 *						counts objects for the corpus, in no particular
 	 *						order.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static LemmaCorpusCounts[] getLexicon (Corpus corpus)
@@ -236,7 +236,7 @@ public class CachedCollections {
 	 *
 	 *	@return			All the works.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public static Work[] getWorks ()

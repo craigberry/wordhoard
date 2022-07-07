@@ -64,6 +64,8 @@ public class UserGroupPermissionUtils
 
 	/**	Update UserGroupPermission.
 	 *
+	 *	@param	userGroupPermission	The UserGroupPermission object to update.
+	 *	@param	permission	The permission to set.
 	 *	@return				UserGroupPermission object
 	 *
 	 *	@throws				BadOwnerException if the owner is null or empty or not admin.

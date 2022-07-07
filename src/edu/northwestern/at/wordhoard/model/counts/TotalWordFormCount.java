@@ -65,6 +65,10 @@ public class TotalWordFormCount
 	}
 
 	/**	Create a populated total word form count object.
+	 * @param	wordForm	The word form.
+	 * @param	workPart	The work part.
+	 * @param	work		The work to which the work part belongs.
+	 * @param	wordFormCount	The word form count.
 	 */
 
 	public TotalWordFormCount

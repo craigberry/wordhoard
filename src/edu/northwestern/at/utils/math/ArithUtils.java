@@ -306,7 +306,7 @@ public class ArithUtils
 	 *	@return		 The arc hyperbolic tangent of x.
 	 *
 	 *	<p>
-	 *	If x is NaN or |x|>1, the result is NaN.
+	 *	If x is NaN or |x|&gt;1, the result is NaN.
 	 *	</p>
 	 *
 	 *	<p>
@@ -362,12 +362,14 @@ public class ArithUtils
 	 *	</p>
 	 *
 	 *	<ul>
-	 *	<li>k<0<tt>: <tt>0</tt>.</li>
-	 *	<li>k==0<tt>: <tt>1</tt>.</li>
-	 *	<li>k==1<tt>: <tt>n</tt>.</li>
+	 *	<li>k&gt;0<tt>: 0</tt>.</li>
+	 *	<li>k==0<tt>: 1</tt>.</li>
+	 *	<li>k==1<tt>: n</tt>.</li>
 	 *	<li>else: <tt>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</tt>.</li>
 	 *	</ul>
 	 *
+	 *	@param	n		n operand
+	 *	@param	k		k operand
 	 *	@return		The binomial coefficient.
 	 */
 
@@ -398,12 +400,14 @@ public class ArithUtils
 	 *	The binomial coefficient is defined as
 	 *	</p>
 	 *	<ul>
-	 *	<li>k<0<tt>: <tt>0</tt>.</li>
-	 *	<li>k==0 || k==n<tt>: <tt>1</tt>.</li>
-	 *	<li>k==1 || k==n-1<tt>: <tt>n</tt>.</li>
+	 *	<li>k&lt;0<tt>: 0</tt>.</li>
+	 *	<li>k==0 || k==n<tt>: 1</tt>.</li>
+	 *	<li>k==1 || k==n-1<tt>: n</tt>.</li>
 	 *	<li>else: <tt>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</tt>.</li>
 	 *	</ul>
 	 *
+	 *	@param	n		n operand
+	 *	@param	k		k operand
 	 *	@return 		The binomial coefficient.
 	 */
 
@@ -593,9 +597,9 @@ public class ArithUtils
 	 *	@param	b			Second double.
 	 *	@param	tolerance	Tolerance value.
 	 *
-	 *	@return				1 if a > b.
+	 *	@return				1 if a &gt; b.
 	 *						0 if a ~= b.
-	 *						-1 if a < b.
+	 *						-1 if a &lt; b.
 	 *
 	 *	<p>
 	 *	This is an implementation of an algorithm suggested by
@@ -666,7 +670,7 @@ public class ArithUtils
 	 *	The hypotenuse value is given mathematically as
 	 *	the sqrt( a^2 + b^2 ).  The method implemented
 	 *	here reduces the chances of cancellation and
-	 *	roundoff error.  If the |a| > |b|, we compute
+	 *	roundoff error.  If the |a| &gt; |b|, we compute
 	 *	the hypotenuse as:
 	 *	</p>
 	 *
@@ -726,7 +730,7 @@ public class ArithUtils
 	 *	@param	x	The number whose log base 2 value is desired.
 	 *
 	 *	@return		The log base 2 of x.
-	 *				If x is <= 0, 0 is returned.
+	 *				If x is &lt;= 0, 0 is returned.
 	 *
 	 *	<p>
 	 *	Example:	log2( 32 ) is 5.0D .
@@ -750,7 +754,7 @@ public class ArithUtils
 	 *	@param	x	The number whose log base 10 value is desired.
 	 *
 	 *	@return		The log base 10 of x.
-	 *				If x is <= 0, 0 is returned.
+	 *				If x is &lt;= 0, 0 is returned.
 	 *
 	 *	<p>
 	 *	Example:	log10( 100.0D ) is 2.0D .
@@ -808,7 +812,7 @@ public class ArithUtils
 	 *
 	 *	@param	n	Number whose sign is desired.
 	 *
-	 *	@return		-1 if n < 0, 0 if n isn 0, 1 if n > 0.
+	 *	@return		-1 if n &lt; 0, 0 if n isn 0, 1 if n &gt; 0.
 	 */
 
 	public static int sign( int n )
@@ -829,7 +833,7 @@ public class ArithUtils
 	 *
 	 *	@param	d	double whose sign is desired.
 	 *
-	 *	@return		-1 if d < 0, 0 if d is 0, 1 if d > 0.
+	 *	@return		-1 if d &lt; 0, 0 if d is 0, 1 if d &gt; 0.
 	 */
 
 	public static int sign( double d )

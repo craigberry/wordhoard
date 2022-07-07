@@ -15,8 +15,7 @@ public class CQLSyntaxError
 	 *	@param	errorSource		Source of error.
 	 *	@param	badText			Text at which error occurs.
 	 *
-	 *	@throws
-	 *		InvalidCQLQueryException
+	 *	@throws	InvalidCQLQueryException	error in CQL query.
 	 */
 
 	public static void badElement
@@ -77,8 +76,7 @@ public class CQLSyntaxError
 	 *	@param	errorSource		Source of error.
 	 *	@param	badText			Text at which error occurs.
 	 *
-	 *	@throws
-	 *		InvalidCQLQueryException
+	 *	@throws	InvalidCQLQueryException	error in CQL query.
 	 */
 
 	public static void termEndsTooSoon
@@ -114,8 +112,7 @@ public class CQLSyntaxError
 	 *	@param	errorSource		Source of error.
 	 *	@param	badText			Text at which error occurs.
 	 *
-	 *	@throws
-	 *		InvalidCQLQueryException
+	 *	@throws	InvalidCQLQueryException	error in CQL query.
 	 */
 
 	public static void badTermType

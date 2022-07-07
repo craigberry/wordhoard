@@ -353,8 +353,8 @@ public class MatrixTransformer
 	 *
 	 *	@param	matrix	The matrix (must be square).
 	 *
-	 *	@param	power	If power > 1 performs the operation.
-	 *					If power <= 0 returns a matrix composed of ones.
+	 *	@param	power	If power &gt; 1 performs the operation.
+	 *					If power &lt;= 0 returns a matrix composed of ones.
 	 *
 	 *	@return			The resulting matrix.
 	 */
@@ -417,7 +417,7 @@ public class MatrixTransformer
 	 *	@param	tolerance	Tolerance for zero checking.
 	 *
 	 *	@return 			Matrix with elements whose absolute values is
-	 *						<= tolerance set to zero.
+	 *						&lt;= tolerance set to zero.
 	 */
 
 	public static Matrix zeroize( Matrix matrix , double tolerance )
@@ -447,7 +447,7 @@ public class MatrixTransformer
 	 *	@param	tolerance	Tolerance for zero checking.
 	 *
 	 *	@return 			Matrix with elements whose absolute values is
-	 *						<= tolerance set to zero.
+	 *						&lt;= tolerance set to zero.
 	 *
 	 *	<p>
 	 *	Alternate spelling to keep Brits happy.

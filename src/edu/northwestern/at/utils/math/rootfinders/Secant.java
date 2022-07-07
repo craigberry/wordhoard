@@ -26,10 +26,10 @@ import edu.northwestern.at.utils.math.*;
  *	this update formula as follows:
  *	</p>
  *
- *	<p>
- *	r[i+1] = f(x[i+1]) / f(x[i]) )<br />
+ *	<pre>
+ *	r[i+1] = f(x[i+1]) / f(x[i]) )
  *	x[i+1] = x[i] + ( r[i+1] / ( 1 - r[i+1] ) ) * ( x[i] - x[i-1] )
- *	</p>
+ *	</pre>
  *
  *	<p>
  *	and only perform the division when the divisor ( 1 - s[i+1] ) is
@@ -56,11 +56,11 @@ import edu.northwestern.at.utils.math.*;
  *
  *	<ul>
  *  <li>
- *	If ( f(x[i+1] * f(x[i])) < 0, ( x[i-1] , f(x[i-1]) ) is
+ *	If ( f(x[i+1] * f(x[i])) &lt; 0, ( x[i-1] , f(x[i-1]) ) is
  *	replaced by ( x[i] , f(x[i] ) as above.
  *	</li>
  *	<li>
- *	If ( f(x[i+1] * f(x[i])) > 0, ( x[i-1] , F(x[i-1]) )is
+ *	If ( f(x[i+1] * f(x[i])) &gt; 0, ( x[i-1] , F(x[i-1]) )is
  *	replaced by ( x[i-1] , f(x[i-1])/2 ).
  *	</li>
  *	</ul>
@@ -72,11 +72,11 @@ import edu.northwestern.at.utils.math.*;
  *
  *	<ul>
  *  <li>
- *	If ( f(x[i+1] * f(x[i])) < 0, ( x[i-1] , f(x[i-1]) ) is
+ *	If ( f(x[i+1] * f(x[i])) &lt; 0, ( x[i-1] , f(x[i-1]) ) is
  *	replaced by ( x[i] , f(x[i] ) as above.
  *	</li>
  *	<li>
- *	If ( f(x[i+1] * f(x[i])) > 0, ( x[i-1] , F(x[i-1]) )is
+ *	If ( f(x[i+1] * f(x[i])) &gt; 0, ( x[i-1] , F(x[i-1]) )is
  *	replaced by ( x[i-1] , f(x[i-1])/2 ).
  *	</li>
  *	</ul>

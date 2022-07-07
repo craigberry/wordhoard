@@ -35,11 +35,11 @@ import java.util.ArrayList;
  *	<p>
  *	Example:
  *	</p>
- *	<p>
- *	2 -3.5 6<br />
- *	7 -8 9.0<br />
- *	10 11 12<br />
- *	</p>
+ *	<pre>
+ *	2 -3.5 6
+ *	7 -8 9.0
+ *	10 11 12
+ *	</pre>
  *	</li>
  *	<li>
  *	<p>
@@ -149,11 +149,11 @@ public class MatrixFromString
 	 *	<p>
 	 *	Sample matrix definition:
 	 *	</p>
-	 *	<p>
-	 *	2 -3.5 6<br />
-	 *	7 -8 9.0<br />
+	 *	<pre>
+	 *	2 -3.5 6
+	 *	7 -8 9.0
 	 *	10 11 12
-	 *	</p>
+	 *	</pre>
 	 */
 
 	public static Matrix fromPlainTextString( String src )

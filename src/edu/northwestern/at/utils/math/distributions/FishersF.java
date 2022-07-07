@@ -19,7 +19,7 @@ public class FishersF
 	 *					Fisher's F distribution.
 	 *
 	 *	@throws		    IllegalArgumentException
-	 *                  	if dfn <= 0 or dfd <= 0 .
+	 *                  	if dfn &lt;= 0 or dfd &lt;= 0 .
 	 *
 	 *	<p>
 	 *	fprob(f) = incompleteBeta( dfd/(dfd*f*dfn), df/2, dfn/2 )
@@ -64,7 +64,7 @@ public class FishersF
 	 *					distribution.
 	 *
 	 *	@throws			IllegalArgumentException
-	 *                  	if p < 0 or p > 1 or dfn <= 0 or dfd <= 0 .
+	 *                  	if p &lt; 0 or p &gt; 1 or dfn &lt;= 0 or dfd &lt;= 0 .
 	 *
 	 *	@throws			ArithmeticException
 	 *						if incomplete beta evaluation fails

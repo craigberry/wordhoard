@@ -65,6 +65,10 @@ public class AnnotationUtils
 
 	/**	Update annotation.
 	 *
+	 *	@param	annot		The annotation.
+
+	 *	@param	text		The string to which annotation contents will be updated.
+
 	 *	@return				Annotation object
 	 *
 	 *	@throws				BadOwnerException if the owner is null or empty or not admin.

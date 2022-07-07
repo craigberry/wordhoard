@@ -4,16 +4,6 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import java.util.*;
 
-import org.w3c.dom.*;
-import org.hibernate.*;
-
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import edu.northwestern.at.utils.*;
-
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.text.*;
@@ -30,7 +20,7 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *
  *	<p>
  *	Each phrase set has the following attributes in addition to those defined
- *	for {@link edu.northwestern.at.wordhoard.model.userdata.WordSet word sets}.</p>
+ *	for {@link edu.northwestern.at.wordhoard.model.userdata.WordSet word sets}.
  *	</p>
  *
  *	<ul>

@@ -30,7 +30,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public AbstractWorkPanelWindow (String title, AbstractWindow parentWindow)
@@ -73,7 +73,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles the "Get Info" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGetInfoCmd ()
@@ -106,7 +106,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles edit menu selected.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleEditMenuSelected ()
@@ -134,7 +134,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles the "Copy" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleCopyCmd ()
@@ -150,7 +150,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles the "Select All" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleSelectAllCmd ()
@@ -166,7 +166,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles the "Find Words" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()
@@ -182,7 +182,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 	 *
 	 *	@param	str		Ignored.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGoToWordCmd (String str)
@@ -200,7 +200,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 	 *					5 to number every fifth line, or -1 to number
 	 *					stanzas.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleLineNumberCmd (int n)
@@ -212,7 +212,7 @@ public abstract class AbstractWorkPanelWindow extends AnnotationWindow {
 
 	/**	Handles the "Translations" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleTranslationsCmd ()

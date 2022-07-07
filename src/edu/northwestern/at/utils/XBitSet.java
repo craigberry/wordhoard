@@ -88,6 +88,7 @@ public class XBitSet extends BitSet {
 
 	/**	Or another XBitSet with this one.
 	 *
+	 *	@param	bitSet	Input XBitSet.
 	 *	@return		This bitset ORed with the specified bitset.
 	 */
 

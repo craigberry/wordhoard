@@ -391,6 +391,9 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/** Add a chart button to a panel.
+	 * @param	panel	The dialog panel.
+	 * @param	finalAnalysis	The analysis runner.
+	 * @return	The chart button.
 	 */
 
 	protected JButton addAChartButton
@@ -441,6 +444,8 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/** Add result options to a panel.
+	 * @param	panel	The dialog panel.
+	 * @param	finalAnalysis	The analysis runner.
 	 */
 
 	protected void addResultOptions
@@ -458,6 +463,9 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/** Add a cloud button to a panel.
+	 * @param	panel	The dialog panel.
+	 * @param	finalAnalysis	The analysis runner.
+	 * @return	The cloud button.
 	 */
 
 	protected JButton addACloudButton
@@ -521,6 +529,9 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/** Add a filter button to a panel.
+	 * @param	panel	The dialog panel.
+	 * @param	finalAnalysis	The analysis runner.
+	 * @return	The filter button.
 	 */
 
 	protected JButton addAFilterButton
@@ -551,6 +562,7 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/**	Display context.
+	 * @param	analysis	The analysis runner.
 	 */
 
 	protected void displayContext
@@ -643,6 +655,9 @@ public class AnalysisMenu extends BaseMenu
 	}
 
 	/** Add a context button to a panel.
+	 * @param	panel	The panel.
+	 * @param	analysis	The analysis runner.
+	 * @return	The context button.
 	 */
 
 	protected JButton addAContextButton

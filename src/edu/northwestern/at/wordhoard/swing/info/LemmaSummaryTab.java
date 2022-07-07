@@ -28,7 +28,7 @@ class LemmaSummaryTab extends JPanel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws PersistenceExecption
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	LemmaSummaryTab (final Lemma lemma, final Corpus corpus,

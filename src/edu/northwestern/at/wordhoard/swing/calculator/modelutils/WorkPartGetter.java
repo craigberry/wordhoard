@@ -10,6 +10,7 @@ import java.util.*;
 public interface WorkPartGetter
 {
 	/**	Get list of work parts.
+	 * @return	list of work parts.
 	 */
 
 	public List getWorkParts();

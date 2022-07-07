@@ -289,7 +289,7 @@ public class WindowsMenu extends BaseMenu
 	 *
 	 *	@param	corpus		The corpus.
 	 *
-	 *	@throws Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	protected void showLexicon( Corpus corpus )

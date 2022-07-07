@@ -52,7 +52,7 @@ class Config {
 	 *
 	 *	@param	path		Path to the server directory.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	static void read (String path)

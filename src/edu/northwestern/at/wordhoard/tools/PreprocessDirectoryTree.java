@@ -21,9 +21,7 @@ import edu.northwestern.at.utils.preprocessor.*;
  *
  *	<p>
  *	<code>
- *	<blockquote>
  *	java edu.northwestern.at.wordhoard.tools.PreprocessDirectoryTree sourcedirectory destinationdirectory includedirectory
- *	</blockquote>
  *	</code>
  *	</p>
  *
@@ -39,9 +37,7 @@ import edu.northwestern.at.utils.preprocessor.*;
  *
  *	<p>
  *	<code>
- *	<blockquote>
  *	java edu.northwestern.at.wordhoard.tools.PreprocessDirectoryTree /wordhoard/src /secret-src/ /wordhoard/licensetexts/
- *	</blockquote>
  *	</code>
  *	</p>
  *
@@ -250,7 +246,9 @@ public class PreprocessDirectoryTree
 			"the root of the include files directory tree" );
 	}
 
-	/**	Main program for PreProcessDirectoryTree. */
+	/**	Main program for PreProcessDirectoryTree.
+	 * @param args	command line arguments.
+	 */
 
 	public static void main( String[] args )
 	{

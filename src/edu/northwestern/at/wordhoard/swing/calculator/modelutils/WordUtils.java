@@ -69,8 +69,6 @@ public class WordUtils
 	 *
 	 *	@return				The word occurrences with the specified tags,
 	 *						or null if none found.
-	 *
-	 *	@throws	PersistenceException
 	 */
 
 	public static Word[] getWordsByTags( Collection tags )
@@ -367,6 +365,7 @@ public class WordUtils
 	 *
 	 *	@param	spelling 	Spelling to look up.
 	 *	@param	workParts	The work/work parts to search.
+	 *	@return	Word array containing query result.
 	 */
 
 	public static Word[] getSpellingOccurrences
@@ -430,6 +429,7 @@ public class WordUtils
 	 *
 	 *	@param	lemma	 	Lemma to look up.
 	 *	@param	workParts	The work/work parts to search.
+	 *	@return	Word array containing query result.
 	 */
 
 	public static Word[] getLemmaOccurrences

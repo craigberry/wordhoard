@@ -39,6 +39,7 @@ public class SortedArrayList extends ArrayList
 	}
 
 	/**	Create empty sorted array list with specified initial capacity.
+	 * @param	initialCapacity	Initial capacity of array.
 	 */
 
 	public SortedArrayList( int initialCapacity )
@@ -73,6 +74,7 @@ public class SortedArrayList extends ArrayList
 	}
 
 	/**	Create empty sorted array list with specified Comparator.
+	 * @param comparator	Comparator function.
 	 */
 
 	public SortedArrayList( Comparator comparator )
@@ -121,6 +123,8 @@ public class SortedArrayList extends ArrayList
 
 	/**	Create empty sorted array list with specified initial capacity
 	 *	and comparator.
+	 *	@param	initialCapacity	Initial capacity of array.
+	 *	@param	comparator	The comparator function.
 	 */
 
 	public SortedArrayList( int initialCapacity , Comparator comparator )

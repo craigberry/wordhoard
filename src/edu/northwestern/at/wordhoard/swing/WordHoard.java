@@ -75,6 +75,8 @@ public class WordHoard {
 	 *	@param	str		Label.
 	 *
 	 *	@param	font	Font.
+	 *
+	 *	@return	The new label.
 	 */
 
 	public static JLabel getSmallComboBoxLabel( String str , Font font) {
@@ -264,7 +266,7 @@ public class WordHoard {
 	 *
 	 *	@param	args		Command line arguments.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private static void init1 (String[] args)
@@ -306,7 +308,7 @@ public class WordHoard {
 	 *
 	 *	<p>Runs on a non-Swing thread.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private static void init2 ()
@@ -347,7 +349,7 @@ public class WordHoard {
 	 *
 	 *	<p>Runs on the Swing thread.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private static void init3 ()

@@ -20,19 +20,27 @@ public interface CutCopyPaste
 
 	public void paste();
 
-	/**	Is cut enabled? */
+	/**	Is cut enabled?
+	 * @return boolean indicating whether cut is enabled.
+	*/
 
 	public boolean isCutEnabled();
 
-	/**	Is copy enabled? */
+	/**	Is copy enabled?
+	 * @return boolean indicating whether copy is enabled.
+	*/
 
 	public boolean isCopyEnabled();
 
-	/**	Is paste enabled? */
+	/**	Is paste enabled?
+	 * @return boolean indicating whether paste is enabled.
+	*/
 
 	public boolean isPasteEnabled();
 
-	/**	Is anything selected which can be cut/copied? */
+	/**	Is anything selected which can be cut/copied?
+	 * @return boolean indicating whether text is selected.
+	*/
 
 	public boolean isTextSelected();
 }

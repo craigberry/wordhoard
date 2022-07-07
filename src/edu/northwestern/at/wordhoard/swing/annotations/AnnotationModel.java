@@ -82,7 +82,7 @@ public class AnnotationModel {
 	 *
 	 *	@param	show		True to show markers, false to hide them.
 	 *
-	 *	@throws PersistenceException
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	public void showMarkers (boolean show)

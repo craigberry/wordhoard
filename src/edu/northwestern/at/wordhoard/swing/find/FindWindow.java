@@ -40,7 +40,7 @@ public class FindWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public FindWindow (Corpus corpus, SearchDefaults defaults,
@@ -127,7 +127,7 @@ public class FindWindow extends AbstractWindow {
 
 	/**	Executes the search.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private void find ()
@@ -288,8 +288,6 @@ public class FindWindow extends AbstractWindow {
 	 *	@param	oldVal		The old value.
 	 *
 	 *	@param	newVal		The new value.
-	 *
-	 *	@throws	Exception
 	 */
 
 	void handleValueChanged (Class cls, SearchCriterion oldVal,
@@ -371,7 +369,7 @@ public class FindWindow extends AbstractWindow {
 
 	/**	Handles the "Find" command.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFindWordsCmd ()

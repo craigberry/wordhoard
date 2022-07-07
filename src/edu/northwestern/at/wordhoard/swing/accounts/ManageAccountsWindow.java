@@ -24,7 +24,7 @@ public class ManageAccountsWindow extends AbstractWindow {
 	 *
 	 *	@param	parentWindow	The parent window, or null if none.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public static void open (AbstractWindow parentWindow)
@@ -50,8 +50,6 @@ public class ManageAccountsWindow extends AbstractWindow {
 	}
 
 	/**	Close the manage accounts window.
-	 *
-	 *	@throws	Exception
 	 */
 
 	public static void close () {
@@ -66,7 +64,7 @@ public class ManageAccountsWindow extends AbstractWindow {
 	 *
 	 *	@param	session			Server session.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public ManageAccountsWindow (AbstractWindow parentWindow,

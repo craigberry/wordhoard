@@ -275,6 +275,7 @@ abstract public class XDropTarget implements DropTargetListener {
 	/**	Gets the scroll increment.
 	 *
 	 *	@param	up			True if scrolling up, false if down.
+	 *	@return	the scroll increment.
 	 */
 
 	abstract public int getScrollIncrement (boolean up);

@@ -29,8 +29,6 @@ public class BuildUtils {
 	/**	Issues an error message. 
 	 *
 	 *	@param	msg		Error message.
-	 *
-	 *	@throws Err
 	 */
 	 
 	public static void emsg (String msg) {
@@ -57,7 +55,7 @@ public class BuildUtils {
 	 *
 	 *	@return		Connection to database.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	public static Connection getConnection (String dbname, String username, String password) 
@@ -80,7 +78,7 @@ public class BuildUtils {
 	 *
 	 *	@param	password	MySQL password.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	public static void initHibernate (String dbname, String username, String password) 
@@ -152,7 +150,7 @@ public class BuildUtils {
 	 *
 	 *	@return		A map from word class tags to Hibernate ids.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	public static Map getWordClassMap (Connection c) 
@@ -236,7 +234,7 @@ public class BuildUtils {
 	 *
 	 *	@return		Path to temp dir.
 	 *
-	 *	@throws		Exception
+	 *	@throws		Exception	general error.
 	 */
 	 
 	public static String createTempDir () 
@@ -249,7 +247,7 @@ public class BuildUtils {
 	
 	/**	Deletes the temp dir.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	public static void deleteTempDir ()

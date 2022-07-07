@@ -25,6 +25,7 @@ public class WordHoardTabbedPaneWindow extends AbstractWindow
 	 *	@param	title			Window title.
 	 *	@param	parentWindow	The parent window.
 	 *	@param	tabbedPaneData	Tabbed pane data for this window.
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public WordHoardTabbedPaneWindow

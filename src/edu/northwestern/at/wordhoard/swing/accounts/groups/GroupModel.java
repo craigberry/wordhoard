@@ -64,7 +64,7 @@ public class GroupModel extends AbstractTableModel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	
 	public GroupModel (WordHoardSession session, AbstractWindow parentWindow)
@@ -186,7 +186,7 @@ public class GroupModel extends AbstractTableModel {
 	 *
 	 *	@param	owner				User name for owner 
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	void save (String name, String owner)
@@ -278,7 +278,7 @@ public class GroupModel extends AbstractTableModel {
 	
 	/**	Deletes the selected groups.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 	 
 	void deleteGroups () 

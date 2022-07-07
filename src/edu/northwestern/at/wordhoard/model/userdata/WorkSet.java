@@ -849,7 +849,7 @@ public class WorkSet
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal( ObjectOutput out )
@@ -872,9 +872,9 @@ public class WorkSet
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal( ObjectInput in )

@@ -12,17 +12,17 @@ public class Beta
 {
 	/**	Log of the Beta distribution.
 	 *
-	 *	@param	a
-	 *	@param	b
+	 *	@param	a	First log beta parameter
+	 *	@param	b	Second log beta parameter
 	 *
-	 *	@return		Log of the Beta distribution for specofied parameters.
+	 *	@return		Log of the Beta distribution for specified parameters.
 	 *
 	 *	<p>
 	 *	The log of the beta distribution is calculated from the
 	 *	log of the gamma distribution using the following relationship:
 	 *	</p>
 	 *
-	 *	</p>
+	 *	<p>
 	 *	logBeta(a,b) = logGamma(a) + logGamma(b) - logGamma( a + b )
 	 *	</p>
 	 */
@@ -37,8 +37,8 @@ public class Beta
 
 	/**	Beta function.
 	 *
-	 *	@param	a
-	 *	@param	b
+	 *	@param	a	First beta parameter
+	 *	@param	b	Second beta parameter
 	 *
 	 *	@return		Beta distribution for specified arguments.
 	 *
@@ -47,7 +47,7 @@ public class Beta
 	 *	gamma distribution using the following relationship:
 	 *	</p>
 	 *
-	 *	</p>
+	 *	<p>
 	 *	Beta(a,b) = ( Gamma(a) * Gamma(b) ) / Gamma( a + b )
 	 *	</p>
 	 */
@@ -87,12 +87,12 @@ public class Beta
 	 *					probability density function
 	 *	@param	alpha	First shape parameter
 	 *	@param	beta	Second shape parameter
-	 *	@param	dPrec	Digits of precision desired (1 < dPrec < Constants.MAXPREC)
+	 *	@param	dPrec	Digits of precision desired (1 &lt; dPrec &lt; Constants.MAXPREC)
 	 *
 	 *	@return			Cumulative probability density function value.
 	 *
 	 *	@throws			IllegalArgumentException
-	 *						if x <= 0 or a <= 0 or b <= 0 .
+	 *						if x &lt;= 0 or a &lt;= 0 or b &lt;= 0 .
 	 *
 	 *	<p>
 	 *  The continued fraction expansion as given by
@@ -297,7 +297,7 @@ public class Beta
 	 *	@return			Cumulative probability density function value.
 	 *
 	 *	@throws			IllegalArgumentException
-	 *						if x <= 0 or a <= 0 or b <= 0 .
+	 *						if x &lt;= 0 or a &lt;= 0 or b &lt;= 0 .
 	 *
 	 *	<p>
 	 *  The continued fraction expansion as given by
@@ -328,7 +328,7 @@ public class Beta
 	 *	@return			Percentage point of inverse beta distribution.
 	 *
 	 *	@throws			IllegalArgumentException
-	 *						if alpha <= 0 or beta <= 0 or p <= 0 or p >= 1 .
+	 *						if alpha &lt;= 0 or beta &lt;= 0 or p &lt;= 0 or p &gt;= 1 .
 	 */
 
 	public static double incompleteBetaInverse

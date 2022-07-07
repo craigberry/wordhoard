@@ -86,8 +86,7 @@ import java.io.*;
  *
  *	<p>
  *	<strong>Changes Since V4:</strong> New initialization algorithms.  See
- *	(see <a href="http://www.math.keio.ac.jp/matumoto/MT2002/emt19937ar.html"</a>
- *	http://www.math.keio.ac.jp/matumoto/MT2002/emt19937ar.html</a>)
+ *	(see <a href="http://www.math.keio.ac.jp/matumoto/MT2002/emt19937ar.html">MT2002</a>)
  *	</p>
  *
  *	<p>
@@ -209,6 +208,7 @@ public class MersenneTwister extends java.util.Random
 	/**
 	 * Constructor using a given seed.  Though you pass this seed in
 	 * as a long, it's best to make sure it's actually an integer.
+	 * @param seed seed for initialization.
 	 */
 
 	public MersenneTwister(final long seed)
@@ -219,6 +219,7 @@ public class MersenneTwister extends java.util.Random
 
 	/**
 	 * Constructor using an array.
+	 * @param array input array.
 	 */
 
 	public MersenneTwister(final int[] array)
@@ -272,6 +273,7 @@ public class MersenneTwister extends java.util.Random
 	 * pseudo random number generator.  array must be an
 	 * array of 624 ints, and they can be any value as long as
 	 * they're not *all* zero.
+	 * @param array the input seed array.
 	 */
 
 	synchronized public void setSeed(final int[] array)
@@ -366,7 +368,9 @@ public class MersenneTwister extends java.util.Random
 	}
 
 	/** This method is missing from jdk 1.0.x and below.  JDK 1.1
-	 includes this for us, but what the heck.*/
+	 includes this for us, but what the heck.
+	 * @return next cast as a boolean.
+	 */
 
 	public boolean nextBoolean()
 	{
@@ -377,7 +381,10 @@ public class MersenneTwister extends java.util.Random
 	 of returning true, else returning false. <tt>probability</tt> must
 	 be between 0.0 and 1.0, inclusive.  Not as precise a random real
 	 event as nextBoolean(double), but twice as fast. To explicitly
-	 use this, remember you may need to cast to float first. */
+	 use this, remember you may need to cast to float first.
+	 * @param probability the input probability.
+	 * @return boolean result of coin flip.
+	 */
 
 	public boolean nextBoolean(final float probability)
 	{
@@ -390,7 +397,10 @@ public class MersenneTwister extends java.util.Random
 
 	/** This generates a coin flip with a probability <tt>probability</tt>
 	 of returning true, else returning false. <tt>probability</tt> must
-	 be between 0.0 and 1.0, inclusive. */
+	 be between 0.0 and 1.0, inclusive.
+	 * @param probability the input probability.
+	 * @return boolean result of coin flip.
+	 */
 
 	public boolean nextBoolean(final double probability)
 	{
@@ -402,7 +412,9 @@ public class MersenneTwister extends java.util.Random
 	}
 
 	/** This method is missing from JDK 1.1 and below.  JDK 1.2
-	 includes this for us, but what the heck. */
+	 includes this for us, but what the heck.
+	 * @return the next int.
+	 */
 
 	public int nextInt(final int n)
 	{
@@ -424,7 +436,10 @@ public class MersenneTwister extends java.util.Random
 
 	/** This method is for completness' sake.
 	 Returns a long drawn uniformly from 0 to n-1.  Suffice it to say,
-	 n must be > 0, or an IllegalArgumentException is raised. */
+	 n must be &gt; 0, or an IllegalArgumentException is raised.
+	 * @param n	input long.
+	 * @return a long drawn uniformly from 0 to n-1.
+	 */
 
 	public long nextLong(final long n)
 	{
@@ -442,7 +457,9 @@ public class MersenneTwister extends java.util.Random
 	}
 
 	/** A bug fix for versions of JDK 1.1 and below.  JDK 1.2 fixes
-	 this for us, but what the heck. */
+	 this for us, but what the heck.
+	 * @return the next double.
+	 */
 
 	public double nextDouble()
 	{
@@ -451,7 +468,9 @@ public class MersenneTwister extends java.util.Random
 	}
 
 	/** A bug fix for versions of JDK 1.1 and below.  JDK 1.2 fixes
-	 this for us, but what the heck. */
+	 this for us, but what the heck.
+	 * @return the next float.
+	 */
 
 	public float nextFloat()
 	{
@@ -460,14 +479,18 @@ public class MersenneTwister extends java.util.Random
 
 	/** A bug fix for all versions of the JDK.  The JDK appears to
 	 use all four bytes in an integer as independent byte values!
-	 Totally wrong. I've submitted a bug report. */
+	 Totally wrong. I've submitted a bug report.
+	 * @param bytes the byte array.
+	 */
 
 	public void nextBytes(final byte[] bytes)
 	{
 		for (int x = 0; x < bytes.length; x++) bytes[x] = (byte) next(8);
 	}
 
-	/** For completeness' sake, though it's not in java.util.Random.  */
+	/** For completeness' sake, though it's not in java.util.Random.
+	 * @return the next character.
+	*/
 
 	public char nextChar()
 	{
@@ -475,14 +498,18 @@ public class MersenneTwister extends java.util.Random
 		return (char) (next(16));
 	}
 
-	/** For completeness' sake, though it's not in java.util.Random. */
+	/** For completeness' sake, though it's not in java.util.Random.
+	 * @return the next short.
+	*/
 
 	public short nextShort()
 	{
 		return (short) (next(16));
 	}
 
-	/** For completeness' sake, though it's not in java.util.Random.  */
+	/** For completeness' sake, though it's not in java.util.Random.
+	 * @return the next byte.
+	 */
 
 	public byte nextByte()
 	{

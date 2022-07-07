@@ -11,7 +11,7 @@ public class ErrorFunction
 {
 	/** Calculate value of Gaussian error function.
 	 *
-	 *	@param		x
+	 *	@param		x		Input parameter.
 	 *	@param		jint	Selects type of error function evaluation.
 	 *						= 0: error function
 	 *						= 1: complement of error function.
@@ -20,9 +20,9 @@ public class ErrorFunction
 	 *	@return		Error function value.
 	 *
 	 *	<p>
-	 *	The program returns erfc=0 for x > XBIG (see below);
-	 *	erfcx = XINF for x < XNEG;
-	 *	and erfcx = 0 for x >= XMAX.
+	 *	The program returns erfc=0 for x &gt; XBIG (see below);
+	 *	erfcx = XINF for x &lt; XNEG;
+	 *	and erfcx = 0 for x &gt;= XMAX.
 	 *  </p>
 	 *
 	 *	<p>

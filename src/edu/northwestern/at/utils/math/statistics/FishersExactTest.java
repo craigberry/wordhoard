@@ -120,11 +120,11 @@ public class FishersExactTest
 
 	/**	Compute hypergeometric probability.
 	 *
-	 *	@param	x
-	 *	@param	n1d
-	 *	@param	n2d
-	 *	@param	nd1
-	 *	@param	nd2
+	 *	@param	x	x parameter
+	 *	@param	n1d	n1d parameter
+	 *	@param	n2d	n2d parameter
+	 *	@param	nd1	nd1 parameter
+	 *	@param	nd2	nd2 parameter
 	 *
 	 *	@return		The hypergeometric probability.
 	 */

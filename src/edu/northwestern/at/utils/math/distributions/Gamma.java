@@ -239,7 +239,7 @@ public class Gamma
 	 *
 	 *	@return			Log gamma for specified parameter.
 	 *					The value Double.POSITIVE_INFINITY is returned for
-	 *					y <= 0.0 or when overflow would occur.
+	 *					y &lt;= 0.0 or when overflow would occur.
 	 *
 	 *	<p>
 	 *	Minimax polynomial approximations are used over the
@@ -256,7 +256,7 @@ public class Gamma
 	 *	</p>
 	 *
 	 *	<p>
-	 *	The minimax coefficients for y > 12 come from Hart et al.
+	 *	The minimax coefficients for y &gt; 12 come from Hart et al.
 	 *	The other coefficients come from unpublished work by
 	 *	W. J. Cody and L. Stoltz at Argonne National Laboratory.
 	 *	This java code is a fairly straightforward translation of
@@ -519,13 +519,13 @@ public class Gamma
 	 *
 	 *	@param	x		Gamma distribution value
 	 *	@param	alpha	Shape parameter
-	 *	@param	dPrec	Digits of precision desired (1 < dPrec < Constants.MAXPREC)
+	 *	@param	dPrec	Digits of precision desired (1 &lt; dPrec &lt; Constants.MAXPREC)
 	 *	@param	maxIter	Maximum number of iterations allowed
 	 *
 	 *	@return			Cumulative probability density function value
 	 *
 	 *	@throws			IllegalArgumentException
-	 *						if x < 0 or alpha <= 0
+	 *						if x &lt; 0 or alpha &lt;= 0
 	 *
 	 *	<p>
 	 *	Either an infinite series summation or a continued fraction
@@ -682,7 +682,7 @@ public class Gamma
 	 *	@return			Cumulative probability density function value
 	 *
 	 *	@throws			IllegalArgumentException
-	 *						if x < 0 or alpha <= 0
+	 *						if x &lt; 0 or alpha &lt;= 0
 	 *
 	 *	<p>
 	 *	Either an infinite series summation or a continued fraction

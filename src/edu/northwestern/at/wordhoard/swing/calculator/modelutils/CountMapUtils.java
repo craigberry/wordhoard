@@ -337,6 +337,8 @@ public class CountMapUtils
 	/**	Get the word counts from a reader.
 	 *
 	 *	@param	reader	The reader.
+	 *	@throws	IOException	I/O error.
+	 *	@return	Map containing word counts.
 	 */
 
 	public static Map getCountsFromReader( Reader reader )
@@ -370,6 +372,8 @@ public class CountMapUtils
 	/**	Get the word counts from a file.
 	 *
 	 *	@param	file	The input file.
+	 *	@throws	IOException	I/O error.
+	 *	@return	Map containing word counts.
 	 */
 
 	public static Map getCountsFromFile( File file )
@@ -381,6 +385,8 @@ public class CountMapUtils
 	/**	Get the word counts from a string.
 	 *
 	 *	@param	countsString	The input string.
+	 *	@throws	IOException	I/O error.
+	 *	@return	Map containing word counts.
 	 */
 
 	public static Map getCountsFromString( String countsString )
@@ -392,6 +398,8 @@ public class CountMapUtils
 	/**	Get the word counts from a file.
 	 *
 	 *	@param	fileName		The input file name.
+	 *	@throws	IOException	I/O error.
+	 *	@return	Map containing word counts.
 	 */
 
 	public static Map getCountsFromFile( String fileName )
@@ -404,6 +412,7 @@ public class CountMapUtils
 	 *
 	 *	@param	countsMap		The map containing keyed counts.
 	 *	@param	printWriter		The printWriter specifying the output file.
+	 *	@throws	IOException	I/O error.
 	 *
 	 *	<p>
 	 *	Each key is output on a separate line followed by a tab and
@@ -414,11 +423,11 @@ public class CountMapUtils
 	 *	Example:
 	 *	</p>
 	 *
-	 *	<p>
-	 *	aardvark\t25<br />
-	 *	abacus\t10<br />
+	 *	<pre>
+	 *	aardvark\t25
+	 *	abacus\t10
 	 *	 ...
-	 *	</p>
+	 *	</pre>
 	 */
 
 	public static void saveCountsToWriter
@@ -443,6 +452,7 @@ public class CountMapUtils
 	 *
 	 *	@param	countsMap		The map containing keyed counts.
 	 *	@param	file		The output file.
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public static void saveCountsToFile( Map countsMap , File file )
@@ -460,6 +470,7 @@ public class CountMapUtils
 	 *
 	 *	@param	countsMap		The map containing keyed counts.
 	 *	@param	fileName		The output file name.
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public static void saveCountsToFile( Map countsMap , String fileName )
@@ -471,6 +482,8 @@ public class CountMapUtils
 	/**	Save the word counts to a string.
 	 *
 	 *	@param	countsMap		The map containing keyed counts.
+	 *	@return	Word counts as String.
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public static String saveCountsToString( Map countsMap )

@@ -67,6 +67,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 	/**	Adds a criterion.
 	 *
 	 *	@param	criterion		Search criterion.
+	 *	@throws	SearchCriteriaClassMismatchException	The criterion is not of the correct type.
 	 */
 
 	public void add (SearchCriterion criterion) throws SearchCriteriaClassMismatchException {
@@ -79,7 +80,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 	/**	Checks for criterion.
 	 *
 	 *	@param	criterion		Search criterion.
-	 *	@return	true of false.
+	 *	@return	true or false.
 	 */
 
 	public boolean contains (SearchCriterion criterion) { return criteriaList.contains(criterion);}
@@ -94,6 +95,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 	/**	Removes a criterion.
 	 *
 	 *	@param	criterion		Search criterion.
+	 *	@return	True or false indicating whether the criterion was removed.
 	 */
 
 	public boolean remove (SearchCriterion criterion) {
@@ -101,7 +103,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 	}
 
 	/**	Get criterion set.
-	 *
+	 * @return	The criteria list collection.
 	 */
 
 	public Collection getCriteria () {
@@ -110,13 +112,14 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 
 
 	/**	Get item .
-	 *
+	 * @param index	The index of the criterion to get.
+	 * @return	The criteria item.
 	 */
 
 	public Object get(int index) { return criteriaList.get(index); }
 
 	/**	Get SearchCriterion Class .
-	 *
+	 * @return	Search criterion class.
 	 */
 
 	public String getSearchCriterionClassname() { return typeClass; }

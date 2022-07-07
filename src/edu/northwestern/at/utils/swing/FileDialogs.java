@@ -91,7 +91,7 @@ import edu.northwestern.at.utils.*;
  *  </p>
  *
  *	<p>
- *	<code>FileDialogs.clearFileFilters();
+ *	<code>FileDialogs.clearFileFilters();</code>
  *	</p>
  *
  *	<p>
@@ -660,7 +660,7 @@ public class FileDialogs
 	 *	@param	fileExtensionFilter		The file filter.
 	 *
 	 *	<p>
-	 *	Note>:  File filters DO NOT WORK with the AWT dialogs under Windows!
+	 *	Note:  File filters DO NOT WORK with the AWT dialogs under Windows!
 	 *	</p>
 	 */
 

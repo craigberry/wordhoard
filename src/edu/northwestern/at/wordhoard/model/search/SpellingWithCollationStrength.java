@@ -167,6 +167,7 @@ public class SpellingWithCollationStrength implements SearchCriterion {
 	/**	Implement Comparable interface.
 	 *
 	 *	@param	obj		Other spelling object to which to compare this object.
+	 *	@return	Result of comparison.
 	 */
 
 	public int compareTo (Object obj) {

@@ -5,10 +5,10 @@ package edu.northwestern.at.utils.math.matrix;
 /**	LUDecomposition of a matrix using Crout/Dolittle algorithm.
  *
  *	<p>
- *	For an m-by-n matrix A with m >= n, the LU decomposition is an m-by-n
+ *	For an m-by-n matrix A with m &gt;= n, the LU decomposition is an m-by-n
  *	unit lower triangular matrix L, an n-by-n upper triangular matrix U,
  *	and a permutation vector piv of length m so that A(piv,:) = L*U.
- *	If m < n, then L is m-by-m and U is m-by-n.
+ *	If m &lt; n, then L is m-by-m and U is m-by-n.
  *	</p>
  *
  *	<p>

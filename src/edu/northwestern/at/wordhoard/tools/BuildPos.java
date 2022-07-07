@@ -3,7 +3,6 @@ package edu.northwestern.at.wordhoard.tools;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
-import java.io.*;
 import java.sql.*;
 
 import org.w3c.dom.Document;
@@ -11,10 +10,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.xml.*;
 import edu.northwestern.at.utils.db.mysql.*;
@@ -139,7 +134,7 @@ public class BuildPos {
 	 *
 	 *	@return		Digit for attribute value.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	public static int getDig (Element el, String attr, String[] vals)
@@ -164,7 +159,7 @@ public class BuildPos {
 	 *
 	 *	@param	list	Greek parts of speech list.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error.
 	 */
 	 
 	public static void checkIds (ArrayList list)

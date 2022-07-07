@@ -44,7 +44,7 @@ public class SearchCriteriaLemmaSearch extends SearchCriteria {
 	/**	Creates a new set of search criteria from collection of constraints.
 	 *
 	 *
-	 *	@param	constraints
+	 *	@param	constraints	The contraints collection.
 	 *
 	 */
 
@@ -74,7 +74,7 @@ public class SearchCriteriaLemmaSearch extends SearchCriteria {
 	 *				ordered by location (by work tag, then by ordinal
 	 *				within work).
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List search (Session session)

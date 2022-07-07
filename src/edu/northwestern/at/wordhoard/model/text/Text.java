@@ -318,8 +318,9 @@ public class Text implements Externalizable, Cloneable {
 		return lines;
 	}
 	
-	/**	Gets a spcific line.
+	/**	Gets a specific line.
 	 *
+	 *	@param	lineIndex	The index of the requested line.
 	 *	@return		The requested line, or null if the text has not yet been finalized.
 	 */
 	 
@@ -618,7 +619,7 @@ public class Text implements Externalizable, Cloneable {
 	 *
 	 *	@param	out		Object output stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 */
 
 	public void writeExternal (ObjectOutput out)
@@ -633,13 +634,13 @@ public class Text implements Externalizable, Cloneable {
 
 	/**	Reads the text from an object input stream (deserializes the object).
 	 *
-	 *	<pThe desrialized text is finalized.
+	 *	<p>The deserialized text is finalized.</p>
 	 *
 	 *	@param	in		Object input stream.
 	 *
-	 *	@throws	IOException
+	 *	@throws	IOException	I/O error.
 	 *
-	 *	@throws	ClassNotFoundException
+	 *	@throws	ClassNotFoundException	class not found.
 	 */
 
 	public void readExternal (ObjectInput in)

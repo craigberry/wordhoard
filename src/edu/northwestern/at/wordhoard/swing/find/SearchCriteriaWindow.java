@@ -98,7 +98,7 @@ public class SearchCriteriaWindow extends FindWindow
 	 *
 	 *	@param	parentWindow		Parent window.
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public SearchCriteriaWindow( AbstractWindow parentWindow )
@@ -407,7 +407,7 @@ public class SearchCriteriaWindow extends FindWindow
 	 *
 	 *	@param	str		Ignored.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleGoToWordCmd (String str)
@@ -422,7 +422,7 @@ public class SearchCriteriaWindow extends FindWindow
 
 	/**	Executes the search.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	private void find ()
@@ -611,7 +611,7 @@ public class SearchCriteriaWindow extends FindWindow
 	 *
 	 *	@return		List of words matched by search criteria.
 	 *
-	 *	@throws		Exception
+	 *	@throws		Exception	general error.
 	 */
 
 	private java.util.List doSearch
@@ -934,7 +934,7 @@ public class SearchCriteriaWindow extends FindWindow
 	/**	Handles file menu selected.
 	 *
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error.
 	 */
 
 	public void handleFileMenuSelected ()

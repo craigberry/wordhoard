@@ -303,6 +303,7 @@ public class WordFrequencies
 	 *	@param	totalWords			Total count of word forms.
 	 *	@param	showWordClass		True to display word class.
 	 *	@param	showMajorWordClass	True to display major word class.
+	 *	@return	The results panel.
 	 */
 
 	protected ResultsPanel generateResults

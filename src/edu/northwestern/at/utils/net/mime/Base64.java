@@ -206,6 +206,7 @@ public class Base64
 	 * <code>encodeBytes( source, 0, source.length )</code>.
 	 *
 	 * @param source The data to convert
+	 * @return Base64-encoded string.
 	 */
 
 	public static String encodeBytes( byte[] source )
@@ -219,7 +220,8 @@ public class Base64
 	 * <code>encodeBytes( source, 0, source.length )</code>
 	 *
 	 * @param source The data to convert
-	 * @param breakLines Break lines at 80 characters or less.
+	 * @param breakLines Break lines at 80 characters or fewer.
+	 * @return Base64-encoded string.
 	 */
 
 	public static String encodeBytes( byte[] source , boolean breakLines )
@@ -233,6 +235,7 @@ public class Base64
 	 * @param source The data to convert
 	 * @param off Offset in array where conversion should begin
 	 * @param len Length of data to convert
+	 * @return Base64-encoded string.
 	 */
 
 	public static String encodeBytes( byte[] source, int off, int len )
@@ -247,7 +250,8 @@ public class Base64
 	 * @param source The data to convert
 	 * @param off Offset in array where conversion should begin
 	 * @param len Length of data to convert
-	 * @param breakLines Break lines at 80 characters or less.
+	 * @param breakLines Break lines at 80 characters or fewer.
+	 * @return Base64-encoded string.
 	 */
 
 	public static String encodeBytes
@@ -443,6 +447,7 @@ public class Base64
 	 *
 	 * @param s the string to decode
 	 * @return the decoded data
+	 * @throws InvalidBase64Encoding The Base64 encoding is invalid.
 	 */
 
 	public static byte[] decode( String s )
@@ -461,6 +466,7 @@ public class Base64
 	 *
 	 * @param s the strind to decode
 	 * @return The data as a string
+	 * @throws InvalidBase64Encoding The Base64 encoding is invalid.
 	 */
 
 	public static String decodeToString( String s )
@@ -477,6 +483,7 @@ public class Base64
 	 * @param off    The offset of where to begin decoding
 	 * @param len    The length of characters to decode
 	 * @return decoded data
+	 * @throws InvalidBase64Encoding The Base64 encoding is invalid.
 	 */
 
 	public static byte[] decode( byte[] source, int off, int len )

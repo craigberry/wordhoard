@@ -12,7 +12,9 @@ public interface SelectAll
 
 	public void selectAll();
 
-	/**	Is select all enabled? */
+	/**	Is select all enabled?
+	 * @return true if select all is enabled, false otherwise.
+	*/
 
 	public boolean isSelectAllEnabled();
 
@@ -20,7 +22,9 @@ public interface SelectAll
 
 	public void unselect();
 
-	/**	Is unselect enabled? */
+	/**	Is unselect enabled?
+	 * @return true if unselect is enabled, false otherwise.
+	*/
 
 	public boolean isUnselectEnabled();
 }

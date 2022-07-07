@@ -30,6 +30,7 @@ public class SwingUtils
 	 *	scroll bar and the JScrollPane is returned.
 	 *
 	 *	@param	str		The string.
+	 *	@return	The text area as a JComponent.
 	 */
 
 	public static JComponent buildLabelOrScrollingTextArea( String str )
@@ -55,6 +56,7 @@ public class SwingUtils
 	/**	Builds a scrolling styled text area containing a string.
 	 *
 	 *	@param	str		The styled string.
+	 *	@return	The text area as a JComponent.
 	 */
 
 	public static JComponent buildScrollingStyledTextArea( StyledString str )
@@ -194,6 +196,7 @@ public class SwingUtils
 
 	/** Get parent window for Swing component.
 	 *
+	 *	@param	c	The component.
 	 *	@return		Parent window, or null if none.
 	 */
 
@@ -215,7 +218,7 @@ public class SwingUtils
 		return result;
 	}
 
-	/** Opens a container (JPanel, etc.) in an  Swing frame.
+	/** Opens a container (JPanel, etc.) in a Swing frame.
 	 *
 	 *	@param	frame				The frame to hold the content.
 	 *								If null, a new XFrame is allocated.
@@ -225,6 +228,7 @@ public class SwingUtils
 	 *	@param	height				Height of JFrame.
 	 *	@param	title				Title for JFrame.
 	 *	@param	backgroundColor		Background color for JFrame and content.
+	 *	@param	exitListener		Listener for frame exit.
 	 *
 	 *	@return						The frame as an Object.
 	 */
@@ -293,6 +297,8 @@ public class SwingUtils
 	 *	@param	height				Height of JFrame.
 	 *	@param	title				Title for JFrame.
 	 *	@param	backgroundColor		Background color for JFrame and content.
+	 *	@param	exitListener		Listener for frame exit.
+	 *	@return	The JFrame.
 	 */
 
 	public static JFrame openInJFrame
@@ -329,6 +335,7 @@ public class SwingUtils
 	 *	@param	height				Height of JFrame.
 	 *	@param	title				Title for JFrame.
 	 *	@param	backgroundColor		Background color for JFrame and content.
+	 *	@param	exitListener		Listener for frame exit.
 	 *
 	 *	@return						The frame.
 	 */

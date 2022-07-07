@@ -264,11 +264,12 @@ public class MatrixOperator
 	/**
 	 * Concatenates <code>a</code> and <code>b</code> horizontally with
 	 * <code>b</code>'s columns attached to the end of <code>a</code>
-	 * <p/>
+	 * <p>
 	 * rows of <code>a</code> must be equal to rows of <code>b</code>
-	 * <br/>
+	 * </p>
+	 * <p>
 	 * <strong>Note:</strong> Matrix <code>a</code>'s underlying implementation is propogated in the resulting matrix
-	 * <br/>
+	 * </p>
 	 *
 	 * @param a Matrix
 	 * @param b Matrix
@@ -305,11 +306,12 @@ public class MatrixOperator
 	/**
 	 * Concatenates <code>a</code> and <code>b</code> vertically with
 	 * <code>b</code>'s rows following the <code>a</code>'s rows
-	 * <p/>
+	 * <p>
 	 * cols of <code>a</code> must be equal to colss of <code>b</code>
-	 * <br/>
+	 * </p>
+	 * <p>
 	 * <strong>Note:</strong> Matrix <code>a</code>'s underlying implementation is propogated in the resulting matrix
-	 * <br/>
+	 * </p>
 	 *
 	 * @param a Matrix
 	 * @param b Matrix

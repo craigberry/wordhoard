@@ -950,7 +950,7 @@ public class Complex implements java.io.Serializable, Cloneable
 	 *	@param	x	A Complex object.
 	 *	@param	y	A Complex object.
 	 *	@return A newly constructed Complex initialized
-	 *			to x<SUP><FONT SIZE="1">y</FONT></SUP><FONT SIZE="3">.
+	 *			to x<SUP>y</SUP>.
 	 */
 
 	public static Complex pow(Complex x, Complex y)

@@ -143,6 +143,7 @@ public class PrintHeaderFooter
 
 	/** Get header font size from specified graphics context.
 	 *
+	 *	@param	graphics	The graphics context.
 	 *	@return		Font size of header font in graphics context.
 	 *
 	 *	<p>
@@ -179,6 +180,7 @@ public class PrintHeaderFooter
 
 	/** Get footer font size from specified graphics context.
 	 *
+	 *	@param	graphics	The graphics context.
 	 *	@return		Font size of footer font in graphics context.
 	 *
 	 *	<p>

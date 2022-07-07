@@ -10,7 +10,7 @@ public interface DyadicFunction
 	/** Evaluates a dyadic scalar function.
 	 *
 	 *	@param	x1	Values at which function is to be evaluated.
-	 *	@param	x2
+	 *	@param	x2	Second argument of dyad.
 	 *
 	 *	@return		Result of evaluating function using x1, x2.
 	 */

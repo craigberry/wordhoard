@@ -34,6 +34,7 @@ public class DescribeUserDataObjectDialog extends SkeletonDialog
 	 *
 	 *	@param	dialogTitle	Title for dialog.
 	 *	@param	parent		Parent window for dialog.
+	 *	@param	userDataObjectClass	The class of user data objects to display.
 	 */
 
 	public DescribeUserDataObjectDialog

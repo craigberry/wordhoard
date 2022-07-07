@@ -151,7 +151,7 @@ public class MartinProvider implements TaggingDataProvider {
 	 *
 	 *	@param	martinConnection		Connection to Martin's database.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error
 	 */
 
 	public MartinProvider (Connection martinConnection)
@@ -164,7 +164,7 @@ public class MartinProvider implements TaggingDataProvider {
 	 *
 	 *	@param	prefix		Word tag prefix.
 	 *
-	 *	@throws	Exception
+	 *	@throws	Exception	general error
 	 */
 
 	private void getWordInfoMap (String prefix)
@@ -214,7 +214,7 @@ public class MartinProvider implements TaggingDataProvider {
 	 *
 	 *	@return				True if no error, false if error.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error
 	 */
 
 	public boolean setWork (String corpusTag, String workTag)
@@ -295,7 +295,7 @@ public class MartinProvider implements TaggingDataProvider {
 	 *						if no data is available or an error was
 	 *						reported.
 	 *
-	 *	@throws Exception
+	 *	@throws Exception	general error
 	 */
 
 	public String[] getMorph (Element el, String wordTag)

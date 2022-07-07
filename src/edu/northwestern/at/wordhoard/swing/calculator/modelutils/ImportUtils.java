@@ -182,6 +182,7 @@ public class ImportUtils
 	/**	Persist an imported object.
 	 *
 	 *	@param	object	The imported object to persist.
+	 *	@return	True if successful, false if not.
 	 *
 	 *	<p>
 	 *	Handles any special persistence needs for different types of

@@ -225,6 +225,7 @@ public class EditMenu extends BaseMenu
 	/**	Handle a menu selected event.
 	 *
 	 *	@param	menuEvent	Menu event.
+	 *	@throws	Exception	general error.
 	 *
 	 *	<p>
 	 *	Enable or disable the edit menu items depending upon
@@ -278,6 +279,7 @@ public class EditMenu extends BaseMenu
 	}
 
 	/**	Clear text.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void clear()
@@ -287,6 +289,8 @@ public class EditMenu extends BaseMenu
     }
 
 	/**	Do edit menu copy.
+	 * @param	event	The ActionEvent that triggered the invocation.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void copy( ActionEvent event )
@@ -296,6 +300,8 @@ public class EditMenu extends BaseMenu
 	}
 
 	/**	Do edit menu cut.
+	 * @param	event	The ActionEvent that triggered the invocation.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void cut( ActionEvent event )
@@ -305,6 +311,8 @@ public class EditMenu extends BaseMenu
 	}
 
 	/**	Do edit menu paste.
+	 * @param	event	The ActionEvent that triggered the invocation.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void paste( ActionEvent event )
@@ -314,6 +322,8 @@ public class EditMenu extends BaseMenu
 	}
 
 	/**	Do edit menu select all.
+	 * @param	event	The ActionEvent that triggered the invocation.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void selectAll( ActionEvent event )
@@ -323,6 +333,8 @@ public class EditMenu extends BaseMenu
 	}
 
 	/**	Do edit menu unselect.
+	 * @param	event	The ActionEvent that triggered the invocation.
+	 * @throws	Exception	general error.
 	 */
 
 	protected void unselect( ActionEvent event )

@@ -19,11 +19,11 @@ import java.util.Vector;
  *	</p>
  *
  *	<p>
- *	For example, when creating a button, instead of writing<br />
+ *	For example, when creating a button, instead of writing
  *	<code>
  *	JButton button = new JButton( "bogus" );
  *	</code>
- *	write<br />
+ *	write
  *	<code>
  *	JButton button = new JButton( Resources.get( "bogus" , "bogus" ) );
  *	</code>

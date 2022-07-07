@@ -50,7 +50,7 @@ public class MatricesMeasure
 	 *
 	 *	<p>
 	 *	Two matrix elements are deemed equal if
-	 *		|a(i,j) - b(i,j)| <= tolerance.
+	 *		|a(i,j) - b(i,j)| &lt;= tolerance.
 	 *	</p>
 	 */
 

@@ -106,6 +106,8 @@ public class FileTokenizer
 	/** Create document tokenizer.
 	 *
 	 *	@param	textFileName	Name of text file to tokenize.
+	 *	@throws	IOException	I/O error.
+	 *	@throws	BadLocationException	Invalid location in document.
 	 */
 
 	public FileTokenizer( String textFileName )

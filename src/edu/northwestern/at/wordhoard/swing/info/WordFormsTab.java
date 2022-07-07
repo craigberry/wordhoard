@@ -36,7 +36,7 @@ class WordFormsTab extends JPanel {
 	 *
 	 *	@param	parentWindow	Parent window.
 	 *
-	 *	@throws PersistenceExecption
+	 *	@throws PersistenceException	error in persistence layer.
 	 */
 
 	WordFormsTab (Lemma lemma, final Corpus corpus,

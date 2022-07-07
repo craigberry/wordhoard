@@ -20,6 +20,10 @@ public class DynamicCall
 	 *	@param	classToCall		The class containing the method to call.
 	 *	@param	methodName		The method name to call.
 	 *	@param	argumentList	The argument list.
+	 *	@return	result			The object that results from invoking methodName.
+	 *  @throws	NoSuchMethodException	no such method
+	 *  @throws	InvocationTargetException	problem with invocation target
+	 *  @throws	IllegalAccessException	illegal access
 	 */
 
 	public static Object dynamicCall(
@@ -41,6 +45,12 @@ public class DynamicCall
 	 *	@param	className		The class name containing the method to call.
 	 *	@param	methodName		The method name to call.
 	 *	@param	argumentList	The argument list.
+	 *	@return	result			The object that results from invoking methodName.
+	 *  @throws	NoSuchMethodException	no such method
+	 *  @throws	InvocationTargetException	problem with invocation target
+	 *  @throws	IllegalAccessException	illegal access
+	 *  @throws	ClassNotFoundException	class not found
+	 *  @throws	InstantiationException	problem with instantiation
 	 */
 
 	public static Object dynamicCall(

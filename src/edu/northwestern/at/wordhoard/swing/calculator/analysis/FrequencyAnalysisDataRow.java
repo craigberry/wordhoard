@@ -124,9 +124,9 @@ public class FrequencyAnalysisDataRow implements SortedTableModel.Row
 	 *
 	 *	@param	columnIndex		Column index.
 	 *
-	 *	@return					< 0 if this row < other row,
+	 *	@return					&lt; 0 if this row &lt; other row,
 	 *							0 if this row = other row,
-	 *							> 0 if this row > other row.
+	 *							&gt; 0 if this row &gt; other row.
 	 *
 	 */
 

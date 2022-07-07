@@ -132,7 +132,7 @@ public class SearchCriteria {
 	 *				ordered by location (by work tag, then by ordinal
 	 *				within work).
 	 *
-	 *	@throws	PersistenceException
+	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
 	public List search (Session session)
@@ -344,6 +344,8 @@ public class SearchCriteria {
 	 *	<p>A set of search criteria is "suspicious" if it contains neither a
 	 *	lemma criterion nor a spelling criterion. Such a search is likely to
 	 *	take a long time and produce a large number of results.
+	 *
+	 *	@return	true if the criteria are "suspicious".
 	 */
 
 	public boolean suspicious () {
