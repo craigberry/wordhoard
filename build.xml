@@ -50,9 +50,6 @@
 		<copy todir="bin/${utils}/swing/notepad/resources">
     		<fileset dir="src/${utils}/swing/notepad/resources"/>
   		</copy>
-		<copy todir="bin/${smoothwindows}/icons/">
-    		<fileset dir="src/${smoothwindows}/icons/"/>
-  		</copy>
 		<copy todir="bin/${utils}/swing/resources">
     		<fileset dir="src/${utils}/swing/resources"/>
   		</copy>
@@ -67,7 +64,6 @@
 	<target name="compile" depends="init">
 		<javac srcdir="src" destdir="bin" classpathref="classpath"
 			source="1.8" target="1.8" debug="on" deprecation="on" includeantruntime="true">
-			<compilerarg value="-XDignore.symbol.file"/>
 		</javac>
 	</target>
 

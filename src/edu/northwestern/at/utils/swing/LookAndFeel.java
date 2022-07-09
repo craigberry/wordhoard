@@ -384,25 +384,25 @@ public class LookAndFeel
      *	</p>
      *
      *	<p>
-	 *	For Windows, a custom look and feel is used which adds
-     *	font smoothing to the standard native look and feel.
+	 *	For Windows,the native look and feel is used but with
+     *	font smoothing added.
      *	</p>
      *
      *	<p>
-     *	For Mac OS X, the standard native look and feel is always used.
+     *	For macOS, the standard native look and feel is always used.
      *	</p>
      *
      *	<p>
      *	For other systems, we get the currently defined look and feel
-     *	and see if it is the native look and feel.  If so, we
-     *	substitute the JGoodies Plastic 3D look and feel instead.
+     *	and see if it is "Metal."  If so, we substitute "Nimbus," but
+	 *	otherwise leave the default.
      *	</p>
      */
 
 	public static void setNiceLookAndFeel()
 	{
 								//	For windows, enable global font
-								//	smoothing using the SmoothWindows
+								//	smoothing but with the system
 								//	look and feel.
 		if ( Env.WINDOWSOS )
 		{
@@ -428,7 +428,7 @@ public class LookAndFeel
 		{
 								//	For other systems, use the
 								//	Nimbus look and feel when the
-								//	metal look and feel is in place.
+								//	Metal look and feel is in place.
 			if ( isMetal() )
 			{
 				setLookAndFeel( "Nimbus" );
