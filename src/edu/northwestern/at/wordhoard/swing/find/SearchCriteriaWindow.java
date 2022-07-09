@@ -2,43 +2,25 @@ package edu.northwestern.at.wordhoard.swing.find;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
 import javax.swing.border.*;
-import java.awt.datatransfer.*;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.concordance.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-import edu.northwestern.at.wordhoard.swing.find.*;
 import edu.northwestern.at.wordhoard.swing.querytool.*;
-import edu.northwestern.at.wordhoard.model.querytool.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
 
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.text.*;
-
-import org.xml.sax.XMLReader;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.helpers.XMLReaderFactory;
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.SAXParseException;
 
 /**	A search results window.
  */

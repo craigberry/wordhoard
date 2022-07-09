@@ -2,38 +2,17 @@ package edu.northwestern.at.wordhoard.swing.bibtool;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.event.*;
-import java.awt.datatransfer.*;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.bibtool.*;
-
-import edu.northwestern.at.wordhoard.model.querytool.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
-
-import edu.northwestern.at.wordhoard.swing.querytool.*;
 import edu.northwestern.at.wordhoard.swing.work.*;
 import edu.northwestern.at.wordhoard.swing.*;
-
-import edu.northwestern.at.wordhoard.swing.calculator.*;
-import edu.northwestern.at.wordhoard.swing.concordance.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
 import edu.northwestern.at.utils.swing.*;
-
-import org.xml.sax.XMLReader;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.helpers.XMLReaderFactory;
-import org.xml.sax.helpers.DefaultHandler;
-import org.xml.sax.SAXParseException;
 
 /**	A search results window.
  */

@@ -5,29 +5,16 @@ package edu.northwestern.at.wordhoard.swing.bibtool;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
-import java.net.*;
-import java.text.*;
-import javax.swing.filechooser.*;
-
-import java.beans.*;
 
 import java.awt.datatransfer.*;
 import java.awt.dnd.*;
 
-import org.xml.sax.XMLReader;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.helpers.XMLReaderFactory;
-import org.xml.sax.helpers.DefaultHandler;
-
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
 
 import edu.northwestern.at.wordhoard.model.userdata.*;
 
@@ -37,13 +24,10 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.wordhoard.model.querytool.*;
 import edu.northwestern.at.wordhoard.model.bibtool.*;
 import edu.northwestern.at.wordhoard.swing.*;
 import edu.northwestern.at.wordhoard.swing.work.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
-import edu.northwestern.at.wordhoard.swing.concordance.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
 
