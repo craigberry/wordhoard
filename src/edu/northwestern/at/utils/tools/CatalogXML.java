@@ -1,14 +1,21 @@
 package edu.northwestern.at.utils.tools;
 
 /*	Please see the license information at the end of this file. */
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
 
-import java.io.*;
-import java.util.*;
-import java.net.*;
-import javax.xml.transform.*;
-import javax.xml.transform.stream.*;
-import org.xml.sax.*;
-import org.xml.sax.helpers.*;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**	Catalogs XML files.
  *
@@ -147,8 +154,10 @@ public class CatalogXML {
 	{
 		File dir = new File(path);
 		String fullPath = dir.getAbsolutePath() + "/";
-		XMLReader reader = XMLReaderFactory.createXMLReader(
-			"org.apache.xerces.parsers.SAXParser");
+		SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+		parserFactory.setNamespaceAware(true);
+		SAXParser parser = parserFactory.newSAXParser();
+		XMLReader reader = parser.getXMLReader();
 		Handler handler = new Handler();
 		reader.setContentHandler(handler);
 		reader.setErrorHandler(handler);

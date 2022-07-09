@@ -1,39 +1,41 @@
 package edu.northwestern.at.wordhoard.swing.bibtool;
 
-/*	Please see the license information at the end of this file. */
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
-import java.io.*;
-import java.util.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
-import java.awt.datatransfer.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.bibtool.*;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
-import edu.northwestern.at.wordhoard.model.querytool.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
-
-import edu.northwestern.at.wordhoard.swing.querytool.*;
-import edu.northwestern.at.wordhoard.swing.work.*;
-import edu.northwestern.at.wordhoard.swing.*;
-
-import edu.northwestern.at.wordhoard.swing.calculator.*;
-import edu.northwestern.at.wordhoard.swing.concordance.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.swing.*;
-
-import org.xml.sax.XMLReader;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.helpers.XMLReaderFactory;
-import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.SAXParseException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+
+import edu.northwestern.at.utils.db.PersistenceException;
+import edu.northwestern.at.utils.swing.ErrorMessage;
+import edu.northwestern.at.utils.swing.FileDialogs;
+import edu.northwestern.at.wordhoard.model.PersistenceManager;
+import edu.northwestern.at.wordhoard.model.Work;
+import edu.northwestern.at.wordhoard.swing.AbstractWindow;
+import edu.northwestern.at.wordhoard.swing.AbstractWorkPanelWindow;
+import edu.northwestern.at.wordhoard.swing.Err;
+import edu.northwestern.at.wordhoard.swing.WordHoardSettings;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.DuplicateWorkSetException;
+
+/*	Please see the license information at the end of this file. */
 
 /**	A search results window.
  */
@@ -134,8 +136,10 @@ public class WorkSetWindow extends AbstractWorkPanelWindow
 		if ( fileToOpen != null ) {
 			File file = new File( fileToOpen[ 0 ] , fileToOpen[ 1 ] );
 			try {
-				XMLReader xr = XMLReaderFactory.createXMLReader(
-					"org.apache.xerces.parsers.SAXParser");
+				SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+				parserFactory.setNamespaceAware(true);
+				SAXParser parser = parserFactory.newSAXParser();
+				XMLReader xr = parser.getXMLReader();
 				WorkBagHandler handler = new WorkBagHandler();
 				xr.setContentHandler(handler);
 				xr.setErrorHandler(handler);
@@ -151,9 +155,10 @@ public class WorkSetWindow extends AbstractWorkPanelWindow
 
 	 protected void open(File file) {
 			try {
-
-				XMLReader xr = XMLReaderFactory.createXMLReader(
-					"org.apache.xerces.parsers.SAXParser");
+				SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+				parserFactory.setNamespaceAware(true);
+				SAXParser parser = parserFactory.newSAXParser();
+				XMLReader xr = parser.getXMLReader();
 				WorkBagHandler handler = new WorkBagHandler();
 				xr.setContentHandler(handler);
 				xr.setErrorHandler(handler);
