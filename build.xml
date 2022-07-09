@@ -30,7 +30,6 @@
 		<mkdir dir="bin"/>
 		<mkdir dir="javadoc"/>
 		<copy file="misc/log4j2.xml" todir="bin"/>
-  		<copy file="misc/ehcache.xml" todir="bin"/>
   		<copy file="misc/hibernate.properties" todir="bin"/>
 		<copy todir="bin/${scripts}/">
     		<fileset dir="src/${scripts}" includes="**/*.bsh"/>
