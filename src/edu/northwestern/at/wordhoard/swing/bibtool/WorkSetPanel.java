@@ -552,11 +552,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 		maxTreeHeight = tree.getHeight();
 		this.workparts = workparts;
 		int numHits = workparts.size();
-		String numHitsStr = Formatters.formatIntegerWithCommas(numHits);
-		long endTime = System.currentTimeMillis();
-		float time = (endTime - startTime) / 1000.0f;
-		String timeStr = Formatters.formatFloat(time, 1);
-//		numHitsLabel.setText(numHitsStr + (numHits == 1 ? " work found" : " works found") + " in " + timeStr + " seconds");
+		Formatters.formatIntegerWithCommas(numHits);
 		buildTree();
 	}
 
@@ -721,7 +717,7 @@ public class WorkSetPanel extends JPanel implements ActionListener, PropertyChan
 					treeModel.removeNodeFromParent(node);
 					Map map = groupingOptions.group(workparts);
 					Collection items = (Collection)map.get(o);
-					workparts.removeAll((Collection)map.get(o));
+					workparts.removeAll(items);
 				}
 				paths = tree.getSelectionPaths();
 			}

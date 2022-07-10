@@ -566,10 +566,6 @@ public class SetsMenu extends BaseMenu
 
 								//	Enable menu if UserID defined.
 
-		boolean userIDDefined	=
-			( WordHoardSettings.getUserID() != null );
-
-//		phraseMenu.setEnabled( userIDDefined );
 		phraseMenu.setEnabled( false );
 		phraseMenu.setVisible( false );
 

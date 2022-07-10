@@ -11,8 +11,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.sql.*;
 
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-
 import edu.northwestern.at.utils.xml.*;
 
 /**	Adds speaker gender and mortality tags.
@@ -158,7 +156,6 @@ public class Filter10 {
 		
 		Node parent = el.getParentNode();
 		String parentName = parent == null ? "" : parent.getNodeName();
-		Element parentEl = (parent instanceof Element) ? (Element)parent : null;
 		if (parentName.equals("taggingData")) {
 			print(indentation, "<" + name + "/>");
 			return;

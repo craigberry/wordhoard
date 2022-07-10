@@ -27,12 +27,6 @@ public class SpearmanCorr
 
 	public static Matrix spearmanCorr( Matrix dataMatrix )
 	{
-								//	Get number of rows and columns
-								//	in data matrix.
-
-		int	nCols	= dataMatrix.columns();
-		int	nRows	= dataMatrix.rows();
-
 								//	Get a copy of the data matrix to hold
 								//	the rank order values.
 

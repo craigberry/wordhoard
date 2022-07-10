@@ -431,10 +431,6 @@ public class StyledStringUtils
 
 			if ( astMarkerStr.equals( "ast " ) || astMarkerStr.equals("stxt") )
 			{
-								// Read file format version number.
-
-				int fileFormatVersion = dis.readInt();
-
 //$$$PIB$$$ See comments above in WriteFile concerning UTF.
 //
 //								// Read plain text as UTF string.

@@ -96,8 +96,6 @@ public class ManageAccountsWindow extends AbstractWindow {
 
 		// create groups pane
 
-		JPanel groupsPanel = new JPanel();
-
 		final GroupModel groupModel = new GroupModel(session, this);
 	
 		edu.northwestern.at.wordhoard.swing.accounts.groups.GroupPanel groupPanel = new edu.northwestern.at.wordhoard.swing.accounts.groups.GroupPanel(groupModel);

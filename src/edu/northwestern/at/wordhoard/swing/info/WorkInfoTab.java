@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.swing.text.*;
 import edu.northwestern.at.utils.db.*;
 
 /**	Work info tab.
@@ -36,9 +35,6 @@ class WorkInfoTab extends JPanel {
 	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(Color.white);
-
-		FontManager fontManager = new FontManager();
-		Font romanFont = fontManager.getFont(fontSize);
 
 		WorkSummaryPanel summaryPanel = new WorkSummaryPanel(work,
 			fontSize, insets, minLabelWidth, maxValueWidth);

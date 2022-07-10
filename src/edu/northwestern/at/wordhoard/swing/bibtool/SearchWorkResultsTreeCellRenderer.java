@@ -104,8 +104,7 @@ public class SearchWorkResultsTreeCellRenderer extends DefaultTreeCellRenderer {
 		italicsFont = new Font(font.getName(), Font.ITALIC, font.getSize()+1);
 		italicsFontMetrics = getFontMetrics(italicsFont);
 		baseLine = fontMetrics.getLeading() + fontMetrics.getAscent();
-		int pathCharWidth = pathFontMetrics.stringWidth("x");
-//		pathStringWidth = pathCharWidth * (corpus.getMaxWordPathLength() + 2);
+		pathFontMetrics.stringWidth("x");
 	}
 
 	/**	Sets the render works with dates option.

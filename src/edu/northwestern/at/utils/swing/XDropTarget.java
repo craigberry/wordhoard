@@ -232,7 +232,6 @@ abstract public class XDropTarget implements DropTargetListener {
 		int distanceFromTop = lastY - value;
 		int distanceFromBottom = value + height - lastY;
 		int threshold = Math.min(20, height/2);
-		Rectangle visibleRect = scrollPane.getViewport().getBounds();
 		if (distanceFromTop < threshold) {
 			scrollUp = true;
 			autoScrollTimer.restart();

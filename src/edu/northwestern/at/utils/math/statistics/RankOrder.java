@@ -27,7 +27,6 @@ public class RankOrder
 								// in data matrix.
 
 		int	nCols		= matrix.columns();
-		int	nRows		= matrix.rows();
 
                                 // Loop over columns.
 

@@ -127,7 +127,6 @@ public class BuildTranslations {
 			if (start == null) continue;
 			TextLocation end = location.getEnd();
 			if (end == null) continue;
-			int startIndex = start.getIndex();
 			int endIndex = end.getIndex();
 			String lineTag = line.getTag();
 			if (lineTag == null) continue;

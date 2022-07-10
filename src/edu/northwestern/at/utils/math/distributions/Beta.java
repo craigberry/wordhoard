@@ -130,15 +130,12 @@ public class Beta
 		double	d1  ;
 		double	aev ;
 		double	aod ;
-		double	cPrec;
         double	result;
 
-		int		nTries;
 		int		iter;
         int		maxIter;
 
 		boolean	qSwap;
-		boolean	qDoit;
 		boolean	qConv;
 
 								/* Initialize */
@@ -152,15 +149,12 @@ public class Beta
 			dPrec = 1;
 		}
 
-		cPrec	= dPrec;
-
 		epsz	= Math.pow( 10.0D , -dPrec );
 
 		a		= alpha;
 		b		= beta;
 		qSwap 	= false;
 		result	= -1.0D;
-		qDoit	= true;
 		maxIter	= 200;
                                    /* Check arguments */
                                    /* Error if:       */

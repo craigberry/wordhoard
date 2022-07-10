@@ -253,7 +253,6 @@ public class PosWindow extends AbstractWindow {
 					String lang2 = pos2.getLanguage();
 					int result = lang1.compareTo(lang2);
 					if (result != 0) return result;
-					String lang = lang1;
 					if (orderingColumn != 0) {
 						String val1 = getColValue(pos1, orderingColumn);
 						String val2 = getColValue(pos2, orderingColumn);
@@ -539,19 +538,6 @@ public class PosWindow extends AbstractWindow {
 			public boolean importData(JComponent c, Transferable t) {return true;}
 
 		protected void exportDone(JComponent c, Transferable data, int action) {}
-
-		private boolean haslocalFlavor(DataFlavor[] flavors) {
-			if (xferFlavor == null) {
-				return false;
-			}
-
-			for (int i = 0; i < flavors.length; i++) {
-				if (flavors[i].equals(xferFlavor)) {
-					return true;
-				}
-			}
-			return false;
-		}
 
 		public boolean canImport(JComponent c, DataFlavor[] flavors) { return false;}
 

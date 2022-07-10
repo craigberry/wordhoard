@@ -177,16 +177,12 @@ public class GroupInspectorPanel extends JPanel implements DropTargetListener {
 			};
 			
 		titleField.getDocument().addDocumentListener(docListener);
-//		ownerField.getDocument().addDocumentListener(docListener);
-		
-		ActionListener actionListener =
-			new ActionListener() {
-				public void actionPerformed (ActionEvent event) {
-					adjustSaveButton();
-				}
-			};
 
-		DropTarget dropTarget = new DropTarget(membersTable, this);
+		new ActionListener() {
+			public void actionPerformed (ActionEvent event) {
+				adjustSaveButton();
+			}
+		};
 
 		membersTable.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent e) {}
@@ -435,9 +431,6 @@ public class GroupInspectorPanel extends JPanel implements DropTargetListener {
 			UserGroupUtils.updateUserGroup(group);
 			handleSelectionChanged();
 
-			int action = e.getDropAction();
-			boolean copyAction = (action == DnDConstants.ACTION_COPY);
-
 			e.getDropTargetContext().dropComplete(true);
 		}
 		catch (IOException io) { e.rejectDrop(); }
@@ -454,10 +447,8 @@ public class GroupInspectorPanel extends JPanel implements DropTargetListener {
 
 	  /** DropTaregetListener interface method */
 	  public void dragOver(DropTargetDragEvent e) {
-			/* ********************** CHANGED ********************** */
-		//set cursor location. Needed in setCursor method
-		Point cursorLocationBis = e.getLocation();
-			e.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE ) ;
+		/* ********************** CHANGED ********************** */
+		e.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE ) ;
 	  }
 
 	  public void dropActionChanged(DropTargetDragEvent e) {

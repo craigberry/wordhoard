@@ -162,9 +162,6 @@ public class CalculatorEditMenu extends EditMenu
 	{
 		JTabbedPane mainTabbedPane		= getMainTabbedPane();
 
-		JTextPane inputTextPane			=
-			getCalculatorWindow().getInputTextPane();
-
 		Component component	= mainTabbedPane.getSelectedComponent();
 
 		if ( mainTabbedPane.indexOfComponent( component ) == 0 )

@@ -757,9 +757,6 @@ public class CompareMultipleWordFrequencies
 				)
 			);
 
-		String wordFormStringForDisplay	=
-			wordFormString.toLowerCase();
-
 		String header1	=
 			headerFormat.sprintf
 			(

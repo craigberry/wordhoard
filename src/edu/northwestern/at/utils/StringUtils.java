@@ -1568,32 +1568,12 @@ public class StringUtils
 
 	public static boolean isRegularExpression( String s )
 	{
-		final char[] regExpChars	=
-			new char[]
-			{
-				'*', '+', '-', '[', ']', '.', '^', '&', '\\', '$',
-				'?', '{', '}', '='
-			};
-
 		final String regExpCharsString	= "*+-[].^&\\$?{}=";
 
 		boolean result	= false;
 
 		if ( ( s != null ) && ( s.length() > 0 ) )
 		{
-/*
-			for ( int i = 0 ; i < regExpChars.length ; i++ )
-			{
-				result	= ( s.indexOf( regExpChars[ i ] ) >= 0 );
-
-				if ( result && ( i > 0 ) )
-				{
-					result	= ( s.charAt( i - 1 ) != '\' );
-				}
-
-				if ( result ) break;
-			}
-*/
 			for ( int i = 0 ; i < s.length() ; i++ )
 			{
 				result	=

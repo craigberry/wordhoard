@@ -270,10 +270,9 @@ public class LinkLabel extends JLabel
 	{
 		Rectangle result = new Rectangle();
 
-								// Get size and position of label text.
+								// Get size of label text.
 
 		Dimension size	= getSize();
-		Point location	= getLocation();
 
 								// Get width and height of label text.
 

@@ -87,8 +87,6 @@ public class ImageTransferable extends TransferHandler
 				final Image image =
 					( (ImageIcon)icon ).getImage();
 
-				final JLabel source = label;
-
 				Transferable transferable =
 					new Transferable()
 					{

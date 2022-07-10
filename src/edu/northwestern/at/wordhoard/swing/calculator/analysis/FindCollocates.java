@@ -123,7 +123,6 @@ public class FindCollocates
 								//	are unfiltered.
 
 		TreeMap analysisCounts			= counts[ 0 ];
-		TreeMap rawCollocationCounts	= counts[ 2 ];
 
 		long endTime					=
 			System.currentTimeMillis() - startTime;
@@ -1108,9 +1107,6 @@ public class FindCollocates
 
 	protected void openWorkPartForContext( XTable table , int clickedRow )
 	{
-		String wordPath	=
-			(String)table.getModel().getValueAt( clickedRow , 0 );
-
 		String wordTag	=
 			(String)table.getModel().getValueAt( clickedRow , 2 );
 
@@ -1197,9 +1193,6 @@ public class FindCollocates
 				"Tagclouddisplayofassociationmeasurevalues" ,
 				"Tag cloud display of association measure values."
 			);
-
-		String wordFormStringForDisplay	=
-			wordFormString.toLowerCase();
 
 		PrintfFormat header1Format	=
 			new PrintfFormat

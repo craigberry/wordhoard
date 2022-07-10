@@ -320,7 +320,6 @@ public class PrintableComponent extends Component
 		);
 								// Print header and footer.
 
-		int headerSize		= getHeaderSize( pg2D );
 		int footerFontSize	= headerAndFooter.getFooterFontSize( pg2D );
 
 		headerAndFooter.printHeaderAndFooter

@@ -204,7 +204,6 @@ public class GroupModel extends AbstractTableModel {
 			// Update an existing userGroup.
 			UserGroup userGroup = getSelectedGroup();
 			String oldTitle = userGroup.getTitle();
-			String oldOwner = userGroup.getOwner();
 			userGroup.setTitle(name);
 			userGroup.setOwner(owner);
 			UserGroupUtils.updateUserGroup(userGroup);

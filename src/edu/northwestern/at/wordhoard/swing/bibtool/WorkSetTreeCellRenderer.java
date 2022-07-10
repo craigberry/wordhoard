@@ -102,7 +102,6 @@ public class WorkSetTreeCellRenderer extends DefaultTreeCellRenderer {
 		italicsFont = new Font(font.getName(), Font.ITALIC, font.getSize()+1);
 		italicsFontMetrics = getFontMetrics(italicsFont);
 		baseLine = fontMetrics.getLeading() + fontMetrics.getAscent();
-		int pathCharWidth = pathFontMetrics.stringWidth("x");
 	}
 
 	/**	Sets the render works with dates option.
@@ -173,7 +172,6 @@ public class WorkSetTreeCellRenderer extends DefaultTreeCellRenderer {
 		Color background = selected ? getBackgroundSelectionColor() : Color.white;
 		Color foreground = selected ? getTextSelectionColor() : Color.black;
 		if(node instanceof WorkPartTreeNode && ((WorkPartTreeNode)node).isWrapper() ) {foreground=Color.lightGray;}
-//		foreground = ((WorkPartTreeNode)node).isWrapper() ? Color.lightGray : getTextSelectionColor();}
 		g.setBackground(background);
 		g.clearRect(r.x, r.y, r.width, r.height);
 		g.setColor(foreground);
@@ -264,9 +262,7 @@ public class WorkSetTreeCellRenderer extends DefaultTreeCellRenderer {
 				dateString= "(" + earlyDate + "-" + lateDate + ")";
 		}
 
-		int dateStringWidth = pathFontMetrics.stringWidth(dateString);
 		int dateStringLeft = 2 + titleRight;
-		int dateStringRight = dateStringLeft + dateStringWidth;
 		g.setFont(pathFont);
 		g.drawString(dateString, dateStringLeft, baseLine);
 	}

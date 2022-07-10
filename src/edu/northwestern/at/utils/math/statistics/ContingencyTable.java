@@ -58,7 +58,6 @@ public class ContingencyTable
 	)
 	{
 		double sum		= 0.0D;
-		double logtotal	= Math.log( total );
 
 		for ( int column = 1 ; column <= columns ; column++ )
 		{

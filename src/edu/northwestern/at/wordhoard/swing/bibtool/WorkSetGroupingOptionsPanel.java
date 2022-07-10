@@ -107,16 +107,6 @@ public class WorkSetGroupingOptionsPanel extends JPanel {
 		orderByComboBox.setSelectedIndex(orderBy);
 	}
 
-	/**	Sets the ascending/descending option.
-	 *
-	 *	@param	upDown		New ascending/descending option.
-	 */
-
-	private void setUpDown (int upDown) {
-		groupingOptions.setUpDown(upDown);
-		upDownComboBox.setSelectedIndex(upDown);
-	}
-
 	/**	Adjusts the menus (enables/disables options)
 	 *
 	 *	@param	groupBy				New group by option.
@@ -158,9 +148,7 @@ public class WorkSetGroupingOptionsPanel extends JPanel {
 	private void adjust () {
 		int groupBy = groupingOptions.getGroupBy();
 		int orderBy = groupingOptions.getOrderBy();
-		int upDown = groupingOptions.getUpDown();
-//		boolean allWorksHaveDates = corpus.allWorksHaveDates();
-//BP		adjustMenus(groupBy, allWorksHaveDates);
+
 		adjustMenus(groupBy, true);
 		switch (groupBy) {
 			case GroupingWorkOptions.GROUP_BY_NONE:

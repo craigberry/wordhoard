@@ -71,10 +71,6 @@ public class SearchCriteriaTreeCellRenderer extends DefaultTreeCellRenderer {
 
 	private int baseLine;
 
-	/**	Path string width. */
-
-	private int pathStringWidth;
-
 	/**	Creates a new search results tree cell renderer.
 	 *
 	 *	@param	font				Primary font.
@@ -96,7 +92,6 @@ public class SearchCriteriaTreeCellRenderer extends DefaultTreeCellRenderer {
 		italicsFont = new Font(font.getName(), Font.ITALIC, font.getSize()-1);
 		italicsFontMetrics = getFontMetrics(italicsFont);
 		baseLine = fontMetrics.getLeading() + fontMetrics.getAscent();
-		int pathCharWidth = pathFontMetrics.stringWidth("x");
 	}
 
 	/**	Gets the cell height.
@@ -204,9 +199,7 @@ public class SearchCriteriaTreeCellRenderer extends DefaultTreeCellRenderer {
 			String label = item.getSearchCriterionClassname() + " (" + 
 				item.getBoolRelationship() + ") ";
 			g.drawString(label , itemLeft, baseLine);
-			int w = pathFontMetrics.stringWidth(label);
 			g.setFont(italicsFont);
-//			g.drawString("control-click to change", w, baseLine);
 		} else if(item.getSearchCriterionClassname().equals(
 			"SpellingWithCollationStrength")) {
 			g.drawString("Spelling", itemLeft, baseLine);

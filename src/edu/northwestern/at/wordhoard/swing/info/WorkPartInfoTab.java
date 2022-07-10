@@ -37,9 +37,6 @@ class WorkPartInfoTab extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(Color.white);
 
-		FontManager fontManager = new FontManager();
-		Font romanFont = fontManager.getFont(fontSize);
-
 		WorkPartSummaryPanel summaryPanel = new WorkPartSummaryPanel(workPart,
 			fontSize, insets, minLabelWidth, maxValueWidth);
 		summaryPanel.setAlignmentX(Component.LEFT_ALIGNMENT);

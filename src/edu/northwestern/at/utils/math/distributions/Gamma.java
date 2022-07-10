@@ -546,7 +546,6 @@ public class Gamma
 		throws IllegalArgumentException
 	{
 		final double overflow	= 1.0E+37;
-		final double minExp		= -87.0D;
 
 		double[] pn	= new double[ 6 ];
 		double gin;
@@ -562,12 +561,6 @@ public class Gamma
 		}
 
 		double factor = alpha * Math.log( x ) - x - logGamma( alpha );
-/*
-		if ( factor < minExp )
-		{
-			return 1.0D;
-		}
-*/
 		factor	= Math.exp( factor );
 
                                 // Set desired precision for results.

@@ -3,34 +3,24 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 /*	Please see the license information at the end of this file. */
 
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
 import org.w3c.dom.*;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.db.hibernate.*;
 import edu.northwestern.at.utils.db.mysql.*;
 import edu.northwestern.at.utils.swing.*;
 import edu.northwestern.at.utils.xml.*;
 
-import edu.northwestern.at.wordhoard.*;
 import edu.northwestern.at.wordhoard.swing.calculator.cql.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.dialogs.*;
 
 /**	Word set utilities.
@@ -1266,8 +1256,6 @@ public class WordSetUtils implements Serializable
 	{
 								//	Get words, works, and work parts
 								//	from CountableWordData entries.
-
-		Long wordSetID			= wordSet.getId();
 
 		HashSet works			= new HashSet();
 		HashSet workParts		= new HashSet();

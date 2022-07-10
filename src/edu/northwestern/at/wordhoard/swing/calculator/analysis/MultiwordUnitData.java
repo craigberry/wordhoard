@@ -252,8 +252,6 @@ public class MultiwordUnitData
 								//	Compute count for left-hand portion of
 								//	pseudo-bigram.
 
-		NGramExtractor extractor	= extractors[ words.length - 1 ];
-
 		double avx					= getWordCount( words[ 0 ] );
 
 		StringBuffer sb;;
@@ -290,8 +288,6 @@ public class MultiwordUnitData
 	{
 								//	Compute count for right-hand portion of
 								//	pseudo-bigram.
-
-		NGramExtractor extractor	= extractors[ words.length - 1 ];
 
 		double avy					=
 			getWordCount( words[ words.length - 1 ] );

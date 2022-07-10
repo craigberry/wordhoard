@@ -65,8 +65,8 @@ public class FindWindow extends AbstractWindow {
 		criteriaPanel.setLayout(new BoxLayout(criteriaPanel, BoxLayout.Y_AXIS));
 		criteriaPanel.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
 
-		Row row = addRow(null);
-		row = addRow(null);
+		addRow(null);
+		addRow(null);
 
 		JScrollPane scrollPane = new JScrollPane(criteriaPanel,
 			JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -83,7 +83,7 @@ public class FindWindow extends AbstractWindow {
 		dlogPanel.add(18);
 		dlogPanel.add(scrollPane);
 
-		JButton cancelButton = dlogPanel.addButton("Cancel",
+		dlogPanel.addButton("Cancel",
 			new ActionListener () {
 				public void actionPerformed (ActionEvent event) {
 					try {

@@ -312,10 +312,6 @@ public class CountableWordDataCounter
 
 			Long workId					= wordData.getWorkId();
 
-								//	Work part ID for this word.
-
-			Long workPartId				= wordData.getWorkPartId();
-
 								//	Save word data for this part of the
 								//	current word.	If we've
 								//	already encountered this word/word part

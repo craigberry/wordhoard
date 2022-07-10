@@ -678,9 +678,7 @@ public DefaultMutableTreeNode addObject(DefaultMutableTreeNode parent,
 		data =  (SearchCriteriaTransferData) tr.getTransferData(xferFlavor );
 		addNodes((Collection)data);
 		searchButton.setEnabled(true);
-		int action = e.getDropAction();
-		boolean copyAction = (action == DnDConstants.ACTION_COPY);
-
+		e.getDropAction();
 		e.getDropTargetContext().dropComplete(true);
     }
     catch (IOException io) { e.rejectDrop(); }
@@ -700,16 +698,12 @@ public DefaultMutableTreeNode addObject(DefaultMutableTreeNode parent,
 		/* ********************** CHANGED ********************** */
     //set cursor location. Needed in setCursor method
     Point cursorLocationBis = e.getLocation();
-        TreePath destinationPath = tree.getPathForLocation(cursorLocationBis.x, cursorLocationBis.y);
+        tree.getPathForLocation(cursorLocationBis.x, cursorLocationBis.y);
 
     	e.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE ) ;
   }
 
-private String testDropTarget(TreePath destination, TreePath dropper) {  /** DropTaregetListener interface method */
-	return null;
-}
-
-  public void dropActionChanged(DropTargetDragEvent e) {
+public void dropActionChanged(DropTargetDragEvent e) {
   }
 
 //
@@ -733,43 +727,6 @@ private String testDropTarget(TreePath destination, TreePath dropper) {  /** Dro
 	}
 
 		public Collection getCriteria() {return criteria.values();}
-
-
-	/**	Shows the selected works from the hit list.
-	 *
-	 *	@throws	PersistenceException	error in persistence layer.
-	 *
-	 */
-
-	private void showSelected ()  {
-/*		workPanel.requestFocus();
-		TreePath path = tree.getSelectionPath();
-		if (path == null) return;
-		DefaultMutableTreeNode node =
-			(DefaultMutableTreeNode)path.getLastPathComponent();
-		if (node == null) return;
-		Object obj = node.getUserObject();
-		if (!(obj instanceof Work)) return;
-		Work work = (Work)obj;
-		parentWindow.setCorpus(getCorpus(work));
-		if (work == null || work == curHit) return;
-		curHit = work;
-		new Thread (
-			new Runnable() {
-				public void run () {
-					SwingUtilities.invokeLater(new Runnable() {
-							public void run () {
-								try {
-									workPanel.setPart(pm.getWorkPartById(curHit.getId()));
-								} catch (PersistenceException e) {Err.err(e);}
-							}
-						}
-					);
-				}
-			}
-		).start(); */
-	}
-
 
 		public void lostOwnership(Clipboard clipboard, Transferable contents) {
 //				System.out.println(this.getClass().getName() + ": lostOwnership");

@@ -507,11 +507,10 @@ public class SearchCriteriaWindow extends FindWindow
 					try {
 						final long startTime = System.currentTimeMillis();
 						final java.util.List searchResults = pm.searchWords(s);
-						final ArrayList words = new ArrayList();
 						for (Iterator it = searchResults.iterator();
 							it.hasNext(); )
 						{
-								Map m = (Map)it.next();
+								it.next();
 						}
 						if (Thread.interrupted()) return;
 					} catch (PersistenceException e) {
@@ -524,49 +523,6 @@ public class SearchCriteriaWindow extends FindWindow
 		);
 		searchThread.setPriority(searchThread.getPriority()-1);
 		searchThread.start();
-	}
-
-	private void createWorkSet ()
-		throws Exception
-	{
-		SearchCriteria sq = new SearchCriteria();
-		Collection constraints = panel.getCriteria();
-		for (Iterator it = constraints.iterator(); it.hasNext(); ) {
-			SearchCriterion obj = (SearchCriterion)it.next();
-			sq.add((SearchCriterion)obj);
-		}
-
-		if (sq.suspicious()) {
-			WarningDialog dlog = new WarningDialog();
-			dlog.show(this);
-			if (dlog.canceled) return;
-		}
-		new ConcordanceWindow(sq, getParentWindow());
-	}
-
-	private void loadWorkPartSet ()
-		throws Exception
-	{
-		OpenWorkSetDialog dialog = new OpenWorkSetDialog("Select Work Set", getParentWindow());
-		dialog.show( this );
-
-		if ( !dialog.getCancelled() )
-		{
-
-			WorkSet ws = dialog.getSelectedItem();
-			WorkPart[] workparts = WorkSetUtils.getWorkParts(ws);
-			if(workparts != null) {
-				ArrayList alist = new ArrayList();
-				for ( int i = 0 ; i < workparts.length ; i++ )
-				{
-					alist.add(workparts[i]);
-				}
-				panel.addNodes(alist);
-			} else {
-				System.out.println(getClass().getName() + " loadWorkSet - works is null");
-			}
-		}
-		dialog.dispose();
 	}
 
 	/**	Close a persistence manager.

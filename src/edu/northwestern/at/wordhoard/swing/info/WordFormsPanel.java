@@ -193,7 +193,6 @@ class WordFormsPanel extends JPanel {
 		MajorWordClass majorWordClass = lemma.getWordClass().getMajorWordClass();
 		String corpusTitle = corpus.getTitle();
 		Spelling lemmaSpelling = lemma.getSpelling();
-		byte posType = corpus.getPosType();
 
 		fontManager = new FontManager();
 		FontInfo romanFontInfo = fontManager.getFontInfo(fontSize);

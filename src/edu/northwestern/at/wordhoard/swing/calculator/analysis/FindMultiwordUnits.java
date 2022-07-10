@@ -1317,7 +1317,6 @@ public class FindMultiwordUnits
 	protected boolean passesVerbFilter( String[] wordClasses )
 	{
 		boolean result	= true;
-		int nWords		= wordClasses.length;
 
 		if ( !filterMultiwordUnitsContainingVerbs ) return result;
 
@@ -1343,9 +1342,6 @@ public class FindMultiwordUnits
 
 	public boolean passesWordClassFilters( String[] words )
 	{
-		boolean result	= true;
-		int nWords		= words.length;
-
 								//	Get major word class for each
 								//	word in the multiword unit.
 

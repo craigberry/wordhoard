@@ -193,7 +193,7 @@ public class SearchWorkResultsPanel extends JSplitPane
 //				unable to create data flavor, " + e.getMessage());
 		}
 
-		DropTarget dropTarget = new DropTarget(tree, this);
+		new DropTarget(tree, this);
 
 		JScrollPane scrollPane = new JScrollPane();
 		MyViewport viewport = new MyViewport();
@@ -1039,16 +1039,12 @@ public class SearchWorkResultsPanel extends JSplitPane
 		/* ********************** CHANGED ********************** */
     //set cursor location. Needed in setCursor method
     Point cursorLocationBis = e.getLocation();
-        TreePath destinationPath = tree.getPathForLocation(cursorLocationBis.x, cursorLocationBis.y);
+    tree.getPathForLocation(cursorLocationBis.x, cursorLocationBis.y);
 
-    	e.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE ) ;
+    e.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE ) ;
   }
 
-private String testDropTarget(TreePath destination, TreePath dropper) {  /** DropTaregetListener interface method */
-	return null;
-}
-
-  public void dropActionChanged(DropTargetDragEvent e) {
+public void dropActionChanged(DropTargetDragEvent e) {
   }
 
 //

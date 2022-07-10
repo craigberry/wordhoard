@@ -2,22 +2,14 @@ package edu.northwestern.at.wordhoard.swing.calculator.dialogs;
 
 /*	Please see the license information at the end of this file. */
 
-import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.tree.*;
 
-import org.w3c.dom.*;
-
 import edu.northwestern.at.utils.swing.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.*;
-import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.wordhoard.swing.calculator.*;
 import edu.northwestern.at.wordhoard.swing.calculator.widgets.*;
 
 /**	Base class for import and export dialogs.
@@ -373,9 +365,6 @@ public abstract class ImportExportDialog extends SetDialog
 			{
 				CheckBoxTreeNode node	=
 					(CheckBoxTreeNode)path.getLastPathComponent();
-
-				CheckBoxTreeNode parentNode	=
-					(CheckBoxTreeNode)path.getParentPath().getLastPathComponent();
 
 				if ( ( node != null ) && ( node.isChecked() ) )
 				{

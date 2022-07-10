@@ -658,8 +658,6 @@ public class CompareTexts
 		String maxLabel
 	)
 	{
-		int rowCount	= model.getRowCount();
-
 		String titleFormatString	=
 			WordHoardSettings.getString
 			(

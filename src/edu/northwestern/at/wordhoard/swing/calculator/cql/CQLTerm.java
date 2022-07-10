@@ -214,7 +214,6 @@ public class CQLTerm
 								//	this token is match text.
 
 		String sval	= tokenizer.sval;
-		double nval	= tokenizer.nval;
 
 								//	First look for quoted text.  We have
 								//	match text if so, and the type is

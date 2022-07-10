@@ -308,13 +308,7 @@ public class PhraseSet
 								//	Get all words and phrases
 								//	in the phrase set.
 
-		Word[] allWords		= PhraseSetUtils.getWords( this );
 		Phrase[] phrases	= PhraseSetUtils.getPhrases( this );
-
-//		PhraseSetUtils.preloadPhrases( this );
-
-//		Phrase[] phrases	=
-//			(Phrase[])getPhrases().toArray( new Phrase[]{} );
 
 		try
 		{

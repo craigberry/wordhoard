@@ -140,11 +140,6 @@ public class PrintPreview extends ModalDialog
 
 		this.printableObject = printableObject;
 
-								// Create a printer job with output to
-								// the default printer.
-
-		PrinterJob printerJob = PrinterSettings.printerJob;
-
 								// Get the page size for this printer.
 
 		if ( thePageFormat == null )

@@ -52,8 +52,6 @@ class MorphologyPanel extends JPanel {
 		Pos pos = lemPos == null ? null : lemPos.getPos();
 		Spelling spelling = word.getSpelling();
 		WordClass wordClass = lemma == null ? null : lemma.getWordClass();
-		Spelling standardSpelling = lemPos == null ? null :
-			lemPos.getStandardSpelling();
 	
 		setBackground(Color.white);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -84,14 +82,6 @@ class MorphologyPanel extends JPanel {
 			addPair("Word class", wordClass.getTag());
 		}
 
-/* 	Disabled as requested by Martin on 9/11/06.	
-		if (standardSpelling != null) {
-			String string = standardSpelling.getString();
-			if (string != null && string.length() > 0) 
-				addPair("Standard spelling", standardSpelling);
-		}
-*/
-		
 		if (spelling != null) addPair("Spelling", spelling);
 		
 		morphologyCol.setAlignmentX(Component.LEFT_ALIGNMENT);

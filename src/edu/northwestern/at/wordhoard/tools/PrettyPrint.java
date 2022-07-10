@@ -145,7 +145,6 @@ public class PrettyPrint {
 		
 		Node parent = el.getParentNode();
 		String parentName = parent == null ? "" : parent.getNodeName();
-		Element parentEl = (parent instanceof Element) ? (Element)parent : null;
 		if (parentName.equals("taggingData")) {
 			print(indentation, "<" + name + "/>");
 			return;
@@ -157,7 +156,6 @@ public class PrettyPrint {
 		
 		if (!inText) tab(indentation);
 		out.print("<" + name);
-		NamedNodeMap attributes = el.getAttributes();
 		String[] attrNames = (String[])attributeMap.get(name);
 		if (name.equals("w")) {
 			boolean firstAttr = true;
@@ -208,9 +206,6 @@ public class PrettyPrint {
 				for (int i = 0; i < attrNames.length; i++) {
 					String attrName = attrNames[i];
 					String attrVal = null;
-					if (name.equals("role")) {
-						String speakerId = el.getAttribute("id");
-					}
 					if (attrVal == null) attrVal = el.getAttribute(attrName);
 					if (attrVal.length() > 0)
 						out.print(" " + attrName + "=\"" + attrVal + "\"");

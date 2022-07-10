@@ -336,11 +336,8 @@ public class AnnotationEditor
 
 	protected JPanel createControlPanel(Font theFont )
 	{
-		JButton b = null;
-
 		WorkPart wp = remoteAnnotation.getWorkPart();
 		Work w = wp.getWork();
-		TextRange tr = remoteAnnotation.getTarget();
 
 		String workString = w.toString() + ", " + wp.toString();
 		JLabel workLabel = new JLabel(workString);
@@ -389,56 +386,6 @@ public class AnnotationEditor
 		cPanel.add(Box.createVerticalStrut(3));
 		return cPanel;
 	}
-
-	//	(Defunct)
-/*
-	private void attach() {
-		WorkPart wp = remoteAnnotation.getWorkPart();
-		Work w = wp.getWork();
-		TextRange tr = remoteAnnotation.getTarget();
-
-		try {
-			String urlstring = WordHoardSettings.getAnnotationWriteServerURL();
-			if(urlstring==null) return;
-
-			Document d = editor.getDocument();
-			String body = d.getText(0,d.getLength());
-
-			int startline = tr.getStart().getIndex();
-			int startoffset = tr.getStart().getOffset();
-			int endline = tr.getEnd().getIndex();
-			int endoffset = tr.getEnd().getOffset();
-
-			String context = "<start><line>" + startline + "</line><offset>" + startoffset + "</offset></start><end><line>" + endline + "</line><offset>" + endoffset + "</offset></end>";
-
-			String author = null;
-			if(WordHoardSettings.getUserID()==null) {
-				author="anonymous";
-			} else {
-				author = (WordHoardSettings.getName()!=null) ? WordHoardSettings.getName() : WordHoardSettings.getUserID();
-			}
-
-			ClientHttpRequest cr = new ClientHttpRequest(urlstring);
-			cr.setParameter("type", "user");
-			cr.setParameter("status", "ready");
-			cr.setParameter("author", author);
-			cr.setParameter("annotates", wp.getTag());
-			cr.setParameter("context", context);
-			cr.setParameter("userid", WordHoardSettings.getUserID());
-			cr.setParameter("body", body);
-			InputStream in = cr.post();
-			InputStreamReader inR = new InputStreamReader( in );
-			BufferedReader buf = new BufferedReader( inR );
-			String line;
-			while ( ( line = buf.readLine() ) != null ) {
-				System.out.println( line );
-			}
-			in.close();
-		} catch(Exception ex) {
-			System.out.println(getClass().getName() + " Exception during attach:" + ex.getMessage());
-		}
-	}
-*/
 
 	private void createAnnotation() {
 		try {
@@ -504,49 +451,6 @@ public class AnnotationEditor
 			ex.printStackTrace();
 		}
 	}
-	
-	// (Defunct)
-/*
-	private void save() {
-		WorkPart wp = remoteAnnotation.getWorkPart();
-		Work w = wp.getWork();
-		TextRange tr = remoteAnnotation.getTarget();
-		try {
-			//String urlstring = WordHoardSettings.getAnnotationWriteServerURL();
-			//if(urlstring==null) return;
-
-			Document d = editor.getDocument();
-			String body = d.getText(0,d.getLength());
-			remoteAnnotation.resetText(body);
-//			remoteAnnotation.setText(convertStringToText(body));
-
-			int startline = tr.getStart().getIndex();
-			int startoffset = tr.getStart().getOffset();
-			int endline = tr.getEnd().getIndex();
-			int endoffset = tr.getEnd().getOffset();
-
-			String context = "<start><line>" + startline + "</line><offset>" + startoffset + "</offset></start><end><line>" + endline + "</line><offset>" + endoffset + "</offset></end>";
-
-			ClientHttpRequest cr = new ClientHttpRequest(urlstring);
-			cr.setParameter("id", remoteAnnotation.getId().toString());
-			cr.setParameter("type", "user");
-			cr.setParameter("status", "ready");
-			cr.setParameter("annotates", wp.getTag());
-			cr.setParameter("context", context);
-			cr.setParameter("body", body);
-			InputStream in = cr.post();
-			InputStreamReader inR = new InputStreamReader( in );
-			BufferedReader buf = new BufferedReader( inR );
-			String line;
-			while ( ( line = buf.readLine() ) != null ) {
-				System.out.println( line );
-			}
-			in.close();
-		} catch(Exception ex) {
-			System.out.println(getClass().getName() + " Exception during save:" + ex.getMessage());
-		}
-	}
-*/
 
 	/**	Performs new action.
 	 * @param	e	The event that triggered the action.

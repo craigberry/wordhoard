@@ -154,7 +154,6 @@ public class WordInfoWindow extends AbstractWindow {
 		FontInfo info = fontManager.getFontInfo(FONT_SIZE);
 		int minLabelWidth = info.stringWidth("Syntax (used as)  ") + 20;
 		int maxValueWidth = Math.round(minLabelWidth * 2.5f);
-		Font font = info.getFont();
 
 		Insets insets = new Insets(0, 5, 0, 5);
 
@@ -180,35 +179,6 @@ public class WordInfoWindow extends AbstractWindow {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		panel.add(tabbedPane, BorderLayout.CENTER);
-
-		/*
-		JButton reportErrorButton = new JButton("Report Error");
-		reportErrorButton.setFont(font);
-		reportErrorButton.addActionListener(
-			new ActionListener() {
-				public void actionPerformed (ActionEvent event) {
-					try {
-						handleErrorCmd();
-					} catch (Exception e) {
-						Err.err(e);
-					}
-				}
-			}
-		);
-
-		JPanel reportErrorPanel = new JPanel();
-		reportErrorPanel.setLayout(
-			new BoxLayout(reportErrorPanel, BoxLayout.X_AXIS));
-		reportErrorPanel.add(Box.createHorizontalGlue());
-		reportErrorPanel.add(reportErrorButton);
-		reportErrorPanel.add(Box.createHorizontalGlue());
-		reportErrorPanel.setBorder(
-			BorderFactory.createEmptyBorder(4,0,4,0));
-		reportErrorPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-		panel.add(reportErrorPanel, BorderLayout.SOUTH);
-		*/
-
 		panel.setBorder(BorderFactory.createEmptyBorder(
 			0, 0, WordHoardSettings.getGrowSlop(), 0));
 

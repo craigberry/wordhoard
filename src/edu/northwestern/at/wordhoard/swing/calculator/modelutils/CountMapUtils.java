@@ -583,10 +583,6 @@ public class CountMapUtils
 
 			Object key			=	iterator.next();
 
-								//	Get source map count for this word.
-
-			Number sourceCount	= ((Number)sourceMap.get( key ) );
-
 								//	If the destination map does not contain
 								//	this word, add it with a count of one.
 

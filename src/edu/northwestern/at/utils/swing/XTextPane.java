@@ -1433,7 +1433,6 @@ public class XTextPane extends JTextPane
 				try
 				{
 					Document doc = getDocument();
-					Element rootElement = doc.getDefaultRootElement();
 					String s = doc.getText( 0 , doc.getLength() );
 
 				 	FileUtils.writeTextFile( file , false , s );

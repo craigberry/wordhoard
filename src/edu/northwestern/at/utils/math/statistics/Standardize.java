@@ -33,8 +33,6 @@ public class Standardize
 		int	nCols		= matrix.columns();
 		int	nRows		= matrix.rows();
 
-		double nRowsm1	= nRows - 1.0D;
-
 								// Will hold means for each column.
 
         Matrix columnMeans			= MatrixFactory.createMatrix( 1 , nCols );

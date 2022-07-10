@@ -435,7 +435,6 @@ class Row extends JPanel {
 	private void adjust (boolean groupByChanged, boolean orderByChanged) {
 		Class groupBy = groupingOptions.getGroupBy();
 		int orderBy = groupingOptions.getOrderBy();
-		int upDown = groupingOptions.getUpDown();
 		GroupingInfo info = null;
 		for (int i = 0; i < NUM_GROUPING_OPTIONS; i++) {
 			info = GROUPING_OPTIONS[i];

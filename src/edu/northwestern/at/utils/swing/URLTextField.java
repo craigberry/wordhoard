@@ -190,8 +190,6 @@ public class URLTextField extends XTextField
 
 				Transferable transferable = dtde.getTransferable();
 
-				DataFlavor[] flavors = transferable.getTransferDataFlavors();
-
 								// Plain string URL?
 
 				if ( transferable.isDataFlavorSupported(
