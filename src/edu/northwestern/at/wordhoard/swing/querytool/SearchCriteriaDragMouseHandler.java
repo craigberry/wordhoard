@@ -7,7 +7,6 @@ import java.awt.event.*;
 
 public class SearchCriteriaDragMouseHandler implements MouseListener, MouseMotionListener {
 	int mouseButtonDown = MouseEvent.NOBUTTON;
-	long mouseButtonDownSince = 0;
 	MouseEvent firstMouseEvent = null;
 
 	public void mousePressed(MouseEvent e) {

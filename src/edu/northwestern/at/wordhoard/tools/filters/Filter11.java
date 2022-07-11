@@ -811,16 +811,6 @@ public class Filter11 {
 	 	}
 	}
 	 
-	/**	Copies a non-ege file.
-	 *
-	 *	@throws Exception
-	 */
-	 
-	private static void copyFile ()
-		throws Exception
-	{
-	}
-
 	/**	Creates the text.
 	 *
 	 *	@param	args		Command line arguments.

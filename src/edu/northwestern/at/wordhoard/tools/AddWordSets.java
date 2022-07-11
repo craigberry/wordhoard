@@ -135,27 +135,6 @@ public class AddWordSets
 		makeWordSetForOneGender( title , workSet , "F" );
 	}
 
-	private static void makeOneWordSet()
-	{
-		long startTime	= System.currentTimeMillis();
-
-								//	Get tragedies work set.
-
-		WorkSet tragedies		=
-			WorkSetUtils.getWorkSet( "Shakespeare Tragedies" );
-
-		makeWordSetForOneGender(
-			"Shakespeare Tragedies" ,
-			tragedies ,
-			"F" );
-
-		long endTime	=
-			( ( System.currentTimeMillis() - startTime ) + 999 ) / 1000;
-
-		System.out.println(
-			"*** Time to create word set: " + endTime + " seconds");
-	}
-
 	private static void makeBigWordSets()
 	{
 		long startTime	= System.currentTimeMillis();

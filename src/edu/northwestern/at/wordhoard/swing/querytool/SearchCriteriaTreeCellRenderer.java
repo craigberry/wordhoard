@@ -130,13 +130,7 @@ public class SearchCriteriaTreeCellRenderer extends DefaultTreeCellRenderer {
 		this.selected = selected;
 		node = (DefaultMutableTreeNode)value;
 		obj = node.getUserObject();
-/*
-		if(obj!=null) {
-			System.out.println(getClass().getName() + ":getTreeCellRendererComponent " + obj.getClass().getName());
-		} else {
-			System.out.println(getClass().getName() + ":getTreeCellRendererComponent obj is null!!");
-		}
-		*/
+
 		setPreferredSize(new Dimension(10000, height));
 		return this;
 	}

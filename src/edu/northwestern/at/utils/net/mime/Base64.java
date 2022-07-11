@@ -86,44 +86,8 @@ public class Base64
 		 -9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9         // Decimal 244 - 255 */
 	};
 
-	private final static byte BAD_ENCODING = -9; // Indicates error in encoding
 	private final static byte WHITE_SPACE_ENC = -5; // Indicates white space in encoding
 	private final static byte EQUALS_SIGN_ENC = -1; // Indicates equals sign in encoding
-
-	/**
-	 * Encodes the first three bytes of array <var>threeBytes</var>
-	 * and returns a four-byte array in Base64 notation.
-	 *
-	 * @param threeBytes the array to convert
-	 * @return four byte array in Base64 notation.
-	 */
-
-	private static byte[] encode3to4( byte[] threeBytes )
-	{
-		return encode3to4( threeBytes , 3 );
-	}
-
-	/**
-	 * Encodes up to the first three bytes of array <var>threeBytes</var>
-	 * and returns a four-byte array in Base64 notation.
-	 * The actual number of significant bytes in your array is
-	 * given by <var>numSigBytes</var>.
-	 * The array <var>threeBytes</var> needs only be as big as
-	 * <var>numSigBytes</var>.
-	 *
-	 * @param threeBytes the array to convert
-	 * @param numSigBytes the number of significant bytes in your array
-	 * @return four byte array in Base64 notation.
-	 */
-
-	private static byte[] encode3to4( byte[] threeBytes , int numSigBytes )
-	{
-		byte[] dest = new byte[4];
-
-		encode3to4( threeBytes, 0, numSigBytes, dest, 0 );
-
-		return dest;
-	}
 
 	/**
 	 * Encodes up to three bytes of the array <var>source</var>

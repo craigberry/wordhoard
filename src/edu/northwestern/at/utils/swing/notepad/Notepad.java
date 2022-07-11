@@ -1745,6 +1745,7 @@ public class Notepad
 
 					progress.setValue( progress.getValue() + nch );
 				}
+				in.close();
 								//	Remove progress bar.
 
 				statusBar.remove( progress );

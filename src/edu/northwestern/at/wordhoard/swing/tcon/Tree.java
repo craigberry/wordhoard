@@ -417,25 +417,7 @@ public class Tree extends XTree {
 		expandPath(path);
 	}
 
-	/**	Gets the corpus.
-	 *
-	 *	@return		The corpus.
-	 */
-
-	private Corpus getCorpus () {
-		return corpus;
-	}
-
-	/**	Gets the tree root.
-	 *
-	 *	@return		The tree root.
-	 */
-
-	private TreeNode getRoot () {
-		return root;
-	}
-
-		/**	TransferHandler for drag and drop
+	/**	TransferHandler for drag and drop
 		 *
 		 *
 		 */
@@ -467,19 +449,6 @@ public class Tree extends XTree {
 			public boolean importData(JComponent c, Transferable t) {return true;}
 
 		protected void exportDone(JComponent c, Transferable data, int action) {}
-
-		private boolean haslocalFlavor(DataFlavor[] flavors) {
-			if (xferFlavor == null) {
-				return false;
-			}
-
-			for (int i = 0; i < flavors.length; i++) {
-				if (flavors[i].equals(xferFlavor)) {
-					return true;
-				}
-			}
-			return false;
-		}
 
 		public boolean canImport(JComponent c, DataFlavor[] flavors) { return false;}
 

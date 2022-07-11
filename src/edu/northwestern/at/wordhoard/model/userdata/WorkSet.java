@@ -6,14 +6,7 @@ import java.io.*;
 import java.util.*;
 
 import org.w3c.dom.*;
-import org.hibernate.*;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.xml.*;
 
 import edu.northwestern.at.wordhoard.model.*;
@@ -22,9 +15,6 @@ import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import edu.northwestern.at.wordhoard.swing.Err;
-import edu.northwestern.at.wordhoard.swing.WordHoard;
 
 /**	A work set.
  *

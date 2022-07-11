@@ -337,20 +337,6 @@ public class SearchCriteriaResultsPanel extends JPanel {
 		setData();
 	}
 
-/*
-	void setSearchResults (SearchResultLemmaSearch[] searchResults) {
-		searchResultItems = new SearchResultItem[searchResults.length];
-		for (int i = 0; i < searchResults.length; i++) {
-			SearchResultLemmaSearch searchResult = searchResults[i];
-			SearchResultItem item = new SearchResultItem();
-			item.searchResult = searchResult;
-			item.collationKey =
-				collator.getCollationKey(searchResult.getTag().getString());
-			searchResultItems[i] = item;
-		}
-		setData();
-	}
-*/
 	/**	Get the search results table.
 	 *
 	 *	@return		The search results table.
@@ -436,51 +422,6 @@ public class SearchCriteriaResultsPanel extends JPanel {
 		}
 	}
 
-	/**	Handles a key typed event.
-	 *
-	 *	<p>(Not used.)
-	 *
-	 *	@param	c		Character typed.
-	 *
-	 *	@throws	PesistenceException
-	 */
-
-	private void handleKeyTyped (char c)
-		throws PersistenceException
-	{
-		if (c == '\n') {
-			openGetInfoWindow();
-			return;
-		}
-		int startRow = 0;
-		if (c == '\t') {
-			int row = table.getSelectedRow();
-			if (row >= 0) startRow = row+1;
-		} else {
-			long time = System.currentTimeMillis();
-			if (time > lastKeyTypedTime + KEY_TYPE_THRESHOLD) lemmaPrefix = "";
-			lemmaPrefix = lemmaPrefix + c;
-			lastKeyTypedTime = time;
-		}
-		for (int i = startRow; i < data.length; i++) {
-			String lemmaTag = data[i].searchResult.getTag().getString();
-			String lemmaTagSubstring =
-				lemmaTag.substring(0, lemmaPrefix.length());
-			if (collator.equals(lemmaPrefix, lemmaTagSubstring)) {
-				table.setRowSelectionInterval(i, i);
-				Rectangle rect = table.getCellRect(i, 0, false);
-				JViewport viewport = scrollPane.getViewport();
-				Rectangle viewRect = viewport.getViewRect();
-				if (viewRect.contains(rect)) break;
-				int y = rect.y - viewRect.height/2;
-				y = Math.max(y, 0);
-				Point p = new Point(0, y);
-				viewport.setViewPosition(p);
-				break;
-			}
-		}
-	}
-
 	/**	Opens a lemma info window for the selected lemma.
 	 *
 	 *	@throws	PersistenceException	error in persistence layer.
@@ -489,27 +430,6 @@ public class SearchCriteriaResultsPanel extends JPanel {
 	void openGetInfoWindow ()
 		throws PersistenceException
 	{
-		int row = table.getSelectedRow();
-		if (row < 0) return;
-		SearchResultItem item = data[row];
-		Lemma lemma = item.searchResult.getLemma();
-		//	Bogus: Cannot pass null for corpus to LemmaInfoWindow constructor.
-		new LemmaInfoWindow(lemma, null, parentWindow);
-	}
-
-	/**	Handles a mouse clicked event.
-	 *
-	 *	<p>(Not used.)
-	 *
-	 *	@param	event		Mouse clicked event.
-	 *
-	 *	@throws	PesistenceException
-	 */
-
-	private void handleMouseClicked (MouseEvent event)
-		throws PersistenceException
-	{
-		if (event.getClickCount() <= 1) return;
 		int row = table.getSelectedRow();
 		if (row < 0) return;
 		SearchResultItem item = data[row];
@@ -610,19 +530,6 @@ public class LexiconTransferHandler extends TransferHandler  {
 		public boolean importData(JComponent c, Transferable t) {return true;}
 
 	protected void exportDone(JComponent c, Transferable data, int action) {}
-
-	private boolean haslocalFlavor(DataFlavor[] flavors) {
-		if (xferFlavor == null) {
-			return false;
-		}
-
-		for (int i = 0; i < flavors.length; i++) {
-			if (flavors[i].equals(xferFlavor)) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	public boolean canImport(JComponent c, DataFlavor[] flavors) { return false;}
 
