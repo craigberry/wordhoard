@@ -231,6 +231,7 @@ public class WordHoardCalculatorWindow extends AbstractWindow
 								//	Add panel to tabbed panel.
 
 		mainTabbedPane.add( "Input" , panel );
+		mainTabbedPane.setForeground(Color.BLACK); // avoid white text in tab w/Java 8 on macOS
 
 								//	Extract the JTextEdit field from the
 								//	console using reflection.

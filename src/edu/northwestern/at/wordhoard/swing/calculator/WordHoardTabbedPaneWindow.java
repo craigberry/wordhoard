@@ -1,6 +1,7 @@
 package edu.northwestern.at.wordhoard.swing.calculator;
 
 import javax.swing.JComponent;
+import java.awt.Color;
 
 import edu.northwestern.at.utils.db.PersistenceException;
 import edu.northwestern.at.utils.swing.CutCopyPaste;
@@ -66,6 +67,7 @@ public class WordHoardTabbedPaneWindow extends AbstractWindow
 		tabComponent.setBorder( tabbedPaneData.getBorder() );
 
 		tabbedPaneData.getTabbedPane().setSelectedComponent( tabComponent );
+		tabbedPaneData.getTabbedPane().setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 	}
 
 	/**	Handle a menu selected event.

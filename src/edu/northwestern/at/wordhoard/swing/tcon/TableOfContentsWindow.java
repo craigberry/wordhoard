@@ -99,6 +99,7 @@ public class TableOfContentsWindow extends AbstractWindow {
 				tabbedPane.setSelectedIndex(i);
 			}
 		}
+		tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 
 		tabbedPane.addChangeListener (
 			new ChangeListener() {

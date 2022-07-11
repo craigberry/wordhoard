@@ -86,6 +86,7 @@ public class TConInfoWindow extends AbstractWindow {
 				tabbedPane.setSelectedComponent(workPartTab);
 			}
 			tabbedPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 			setContentPane(tabbedPane);
 		}
 		pack();

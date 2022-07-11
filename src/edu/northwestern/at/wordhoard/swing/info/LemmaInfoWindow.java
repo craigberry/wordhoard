@@ -74,6 +74,7 @@ public class LemmaInfoWindow extends AbstractWindow {
 		tabbedPane.add("Word Forms", forms);
 		tabbedPane.setBorder(BorderFactory.createEmptyBorder(
 			0, 0, WordHoardSettings.getGrowSlop(), 0));
+		tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());

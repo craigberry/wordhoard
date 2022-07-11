@@ -126,6 +126,7 @@ public class ManageAccountsWindow extends AbstractWindow {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Accounts", splitPane);		
 		tabbedPane.addTab("Groups", vertSplitPane);		
+		tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 		setContentPane(tabbedPane);
 		pack();
 		model.init();

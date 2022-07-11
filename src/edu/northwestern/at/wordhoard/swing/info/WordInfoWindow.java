@@ -175,6 +175,7 @@ public class WordInfoWindow extends AbstractWindow {
 		tabbedPane.add("Summary", summary);
 		tabbedPane.add("Word Forms", forms);
 		tabbedPane.add("More", more);
+		tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());

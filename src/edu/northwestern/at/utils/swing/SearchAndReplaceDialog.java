@@ -118,6 +118,7 @@ public class SearchAndReplaceDialog extends ModalDialog
 		tabbedPane.addTab(
 			Resources.get( "Replace" , "Replace" ) , replaceBox );
 
+		tabbedPane.setForeground(Color.BLACK); // avoid white text w/Java 8 on macOS
 		add( tabbedPane );
 								// Create buttons.
 		createButtons();
