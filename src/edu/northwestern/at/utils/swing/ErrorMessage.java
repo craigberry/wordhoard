@@ -27,7 +27,7 @@ public class ErrorMessage extends ModalDialog {
 	 *	@param	parent		The parent window, or null if none. The dialog
 	 *						is positioned centered over its parent window
 	 *						horizontally and positioned with its top
-	 *						25 pixels below the top of its parent.
+	 *						just below the bottom of its parent.
 	 */
 
 	public ErrorMessage (String msg, Window parent) {
@@ -47,7 +47,25 @@ public class ErrorMessage extends ModalDialog {
 				}
 			}
 		);
-		show(parent);
+		// To get the error dialog on top we have to ignore the actual parent
+		// and create a new one, but we do position relative to the actual parent,
+		// if any.
+		JFrame fakeParent = new JFrame();
+		int x, y;
+		if (parent != null) {
+			x = parent.getX() + parent.getWidth() / 2;
+			y = parent.getY() + parent.getHeight() - 5;
+		}
+		else {
+			// No parent, so relative to screen.
+			GraphicsConfiguration config = fakeParent.getGraphicsConfiguration();
+			Rectangle bounds = config.getBounds();
+			Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(config);
+			x = bounds.x + bounds.width / 2 - insets.right - fakeParent.getWidth();
+			y = bounds.y + insets.top + 25;
+		}
+		fakeParent.setLocation(x, y);
+		show(fakeParent);
 	}
 
 	/**	Constructs and displays an error message alert with no parent window.
