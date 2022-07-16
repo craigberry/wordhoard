@@ -247,7 +247,6 @@ public class WordHoardSettings
 			if ( Env.MACOSX )
 			{
 				topSlop		= 24;
-				botSlop		= 2;
 				growSlop	= 14;
 			}
 		}
