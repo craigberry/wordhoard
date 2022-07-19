@@ -12,3 +12,4 @@ server/data/log
 userman/*.pdf
 /output/
 /nbproject/private/
+private/
