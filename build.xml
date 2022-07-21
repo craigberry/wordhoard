@@ -96,13 +96,7 @@
 		</hibernatedoclet>
 	</target>
 
-	<target name="rmic" depends="compile">
-		<rmic base="bin" stubversion="1.2">
-			<include name="${server}/*Impl.class"/>
-		</rmic>
-	</target>
-
-	<target name="bin" depends="hibernate,rmic"/>
+	<target name="bin" depends="hibernate,compile"/>
 
 	<target name="full" depends="clean,bin"/>
 
