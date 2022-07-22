@@ -281,11 +281,12 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutcopyright" ,
-					"Copyright \u00A9\uFE0F 2016, Martin Mueller and Craig A. Berry"
+					"Copyright \u00A9 2016-2022, Martin Mueller and Craig A. Berry"
 				)
 			);
 
 		copyright.setFont(subTitleFont);
+
 
 		JLabel copyright2 =
 			new JLabel
@@ -293,7 +294,7 @@ public class AboutWindow extends AbstractWindow {
 				WordHoardSettings.getString
 				(
 					"aboutcopyright2" ,
-					"Copyright \u00A9\uFE0F 2004, 2006 Northwestern University"
+					"Copyright \u00A9 2004, 2006 Northwestern University"
 				)
 			);
 
