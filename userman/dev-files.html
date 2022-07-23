@@ -68,21 +68,18 @@
 
 <h2>Files and Setup</h2>
 
-<p>Create a new directory for your WordHoard development work.
-Download the following files and place them in the new
-development directory.</p>
+<p>First, clone the <a href="https://github.com/craigberry/wordhoard">
+WordHoard git repository</a> containing all of the Java source
+code and a number of auxiliary files for the project to any
+convenient location on your local machine.  Then proceed with
+downloading and unpacking the files in the following list.
+</p>
 
 <ul>
 
-<li><a href="other-files/src.zip">Java source code</a>. This zip
-archive contains all of the Java source code files for
-WordHoard. Expand the archive and place the resulting
-<code>src</code> directory inside your development
-directory.</li>
-
 <li class="space"><a href="data-files/data.zip">Raw data
 files</a>. This large zip archive contains all of the raw data
-files for the four corpora on the main public WordHoard site.
+files for the corpora on the main public WordHoard site.
 This includes the text and tagging data for all of the works.
 Expand the archive and place the resulting <code>data</code>
 directory inside your development directory. These files are
@@ -110,48 +107,17 @@ libraries (jar files) used by WordHoard. Expand the archive and
 place the resulting <code>lib</code> directory inside your
 development directory.</li>
 
-<li class="space"><a href="other-files/morelib.zip">Third party
-libraries for non-MAC OS X systems</a>. This zip archive contains
-libraries (jar files and zip files) needed to recompile the WordHoard
-source on systems other than MAC OS X.  These extra libraries should
-be placed with the other third party libraries in the <code>lib</code>
-directory inside inside your development directory.</li>
-
-<li class="space"><a href="other-files/server.zip">Server
-files</a>. This zip archive contains the files needed for
-running and testing the WordHoard server during development.
-Expand the archive and place the resulting <code>server</code>
-directory inside your development directory.</li>
-
-<li class="space"><a href="other-files/scripts.zip">Shell
-scripts</a>. This zip archive contains various useful UNIX shell
-scripts. Expand the archive and place the resulting
-<code>scripts</code> directory inside your development
-directory.</li>
-
-<li class="space"><a href="other-files/misc.zip">Miscellaneous
-files</a>. Expand this zip archive and place the resulting
-<code>misc</code> directory inside your development
-directory.</li>
-
 <li class="space"><a href="other-files/userman.zip">HTML source
 for this manual</a>. Expand this zip archive and place the
 resulting <code>userman</code> directory inside your development
-directory.</li>
-
-<li class="space"><a href="other-files/build.xml">Ant build
-script</a>. Save this file as <code>build.xml</code> in your
-development directory.</li>
-
-<li class="space"><a href="other-files/setup">UNIX setup
-script</a>. Save this file as <code>setup</code> in your
-development directory.</li>
+directory. Or simply regenerate your own with <code>b doc</code>
+after you have built the Java source code.</li>
 
 </ul>
 
-<p>After you have downloaded all of these files, open the
-<code>setup</code> file. At the top of the file there are
-several statements which define important environment
+<p>After you have cloned the source repository and downloaded and
+unpacked the other files, open the <code>setup</code> file. At the top
+of the file there are several statements which define important environment
 variables:</p>
 
 <ul>
