@@ -337,15 +337,17 @@ public class LookAndFeel
 	{
 		boolean result	= false;
 
-		for ( int i = 0 ; i < lookAndFeels.length ; i++ )
+		ExtendedLookAndFeelInfo[] looks = getExtendedLookAndFeelInfo();
+
+		for ( int i = 0 ; i < looks.length ; i++ )
 		{
-			if ( lookAndFeelName.equals( lookAndFeels[ i ].name ) )
+			if ( lookAndFeelName.equals( looks[ i ].name ) )
 			{
 				try
 				{
 									// Set new look and feel.
 
-					setLookAndFeelByClassName( lookAndFeels[ i ].className );
+					setLookAndFeelByClassName( looks[ i ].className );
 
                                     // Propagate it to all existing windows.
 
