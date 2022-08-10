@@ -4,7 +4,7 @@ package edu.northwestern.at.wordhoard.swing.calculator.modelutils;
 
 import java.util.*;
 
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.*;

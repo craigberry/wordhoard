@@ -3,6 +3,7 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 /*	Please see the license information at the end of this file. */
 
 import org.hibernate.*;
+import org.hibernate.query.Query;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
@@ -130,8 +131,8 @@ public class CollectionFrequency implements SearchCriterion, GroupingObject {
 
 	public void setArg (Query q, Session session) {
 		if(!(compare.equals("EQ") && colfreq.intValue()==0))
-			q.setInteger("colfreq", colfreq.intValue());
-		q.setEntity("colcorpus", corpus);
+			q.setParameter("colfreq", colfreq.intValue());
+		q.setParameter("colcorpus", corpus);
 	}
 
 	/**	Appends a description to a text line.

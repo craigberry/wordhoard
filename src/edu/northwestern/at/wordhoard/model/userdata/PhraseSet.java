@@ -4,6 +4,9 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import java.util.*;
 
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.text.*;
@@ -450,8 +453,8 @@ public class PhraseSet
 
 	public void setArg
 	(
-		org.hibernate.Query q ,
-		org.hibernate.Session session
+		Query q ,
+		Session session
 	)
 	{
 		q.setParameterList( "phraseSetWordTags" , getWordTags() );

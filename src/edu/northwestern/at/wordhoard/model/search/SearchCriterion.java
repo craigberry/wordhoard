@@ -2,9 +2,11 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.text.*;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
 
 /**	A word search criterion.
  */

@@ -2,11 +2,14 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 
 /*	Please see the license information at the end of this file. */
 
-import org.hibernate.*;
+import org.hibernate.query.Query;
+import org.hibernate.Session;
 
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
 
 /**	A prosodic attribute wrapper.
  */
@@ -84,7 +87,7 @@ public class Prosodic implements SearchCriterion, GroupingObject {
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setByte("prosodic", prosodic);
+		q.setParameter("prosodic", prosodic);
 	}
 
 	/**	Appends a description to a text line.

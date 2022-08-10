@@ -2,18 +2,31 @@ package edu.northwestern.at.wordhoard.model;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.wordhoard.model.bibtool.*;
-import edu.northwestern.at.utils.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.bibtool.DateGroup;
+import edu.northwestern.at.wordhoard.model.bibtool.GroupingWorkOptions;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.grouping.PubDecade;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
+import edu.northwestern.at.wordhoard.model.speakers.Speaker;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.wrappers.PubYearRange;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A work.
  *
@@ -258,7 +271,7 @@ public class Work extends WorkPart implements GroupingObject,
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setEntity("work", this);
+		q.setParameter("work", this);
 	}
 
 	/**	Appends a description to a text line.

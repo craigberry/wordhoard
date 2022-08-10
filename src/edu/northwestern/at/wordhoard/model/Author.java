@@ -1,17 +1,25 @@
 package edu.northwestern.at.wordhoard.model;
 
+import java.io.Serializable;
+
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.utils.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	An author.
  *
@@ -315,7 +323,7 @@ public class Author implements PersistentObject, SearchDefaults,
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setEntity("author", this);
+		q.setParameter("author", this);
 	}
 
 	/**	Appends a description to a text line.

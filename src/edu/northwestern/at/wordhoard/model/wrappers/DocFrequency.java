@@ -3,6 +3,7 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 /*	Please see the license information at the end of this file. */
 
 import org.hibernate.*;
+import org.hibernate.query.Query;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
@@ -124,8 +125,8 @@ public class DocFrequency implements SearchCriterion, GroupingObject {
 
 	public void setArg (Query q, Session session) {
 		if(!(compare.equals("EQ") && docfreq.intValue()==0))
-			q.setInteger("docfreq", docfreq.intValue());
-		q.setEntity("doccorpus", corpus);
+			q.setParameter("docfreq", docfreq.intValue());
+		q.setParameter("doccorpus", corpus);
 	}
 
 	/**	Appends a description to a text line.
@@ -199,7 +200,6 @@ public class DocFrequency implements SearchCriterion, GroupingObject {
 	public int hashCode () {
 		return docfreq.hashCode() + compare.hashCode() + corpus.hashCode();
 	}
-
 }
 
 /*

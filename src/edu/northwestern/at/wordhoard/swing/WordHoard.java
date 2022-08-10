@@ -7,7 +7,7 @@ import java.io.*;
 import java.rmi.*;
 import java.util.*;
 
-import org.hibernate.connection.ConnectionProvider;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import javax.swing.*;
 
 import edu.northwestern.at.utils.*;

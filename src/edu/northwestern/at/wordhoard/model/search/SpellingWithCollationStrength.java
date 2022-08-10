@@ -2,13 +2,16 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import java.text.*;
+import java.text.Collator;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.text.CharsetUtils;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A spelling with a collation strength search criterion.
  */
@@ -102,7 +105,7 @@ public class SpellingWithCollationStrength implements SearchCriterion {
 		String str = spelling.getString();
 		str = CharsetUtils.translateToInsensitive(str);
 		str = str.replace('*', '%');
-		q.setString("spellingInsensitive", str);
+		q.setParameter("spellingInsensitive", str);
 	}
 
 	/**	Appends a description to a text line.

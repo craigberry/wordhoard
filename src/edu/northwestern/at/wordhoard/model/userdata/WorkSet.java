@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.*;
 
 import org.w3c.dom.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import edu.northwestern.at.utils.xml.*;
 
@@ -743,8 +745,8 @@ public class WorkSet
 
 	public void setArg
 	(
-		org.hibernate.Query q ,
-		org.hibernate.Session session
+		Query q ,
+		Session session
 	)
 	{
 								//	Get work parts corresponding to

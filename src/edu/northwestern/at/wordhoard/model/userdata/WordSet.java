@@ -2,19 +2,32 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.*;
-import java.util.*;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 
-import org.w3c.dom.*;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.xml.*;
-
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
+import edu.northwestern.at.utils.xml.DOMUtils;
+import edu.northwestern.at.wordhoard.model.CanCountWords;
+import edu.northwestern.at.wordhoard.model.PersistentObject;
+import edu.northwestern.at.wordhoard.model.Word;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.ExportUtils;
 
 /**	A word set.
  *
@@ -904,11 +917,11 @@ public class WordSet
 
 	public void setArg
 	(
-		org.hibernate.Query q ,
-		org.hibernate.Session session
+		Query q ,
+		Session session
 	)
 	{
-		q.setEntity( "wordSet" , this );
+		q.setParameter( "wordSet" , this );
 	}
 
 	/**	Appends a description to a text line.

@@ -2,17 +2,26 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.lang.reflect.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.counts.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
+import edu.northwestern.at.utils.db.PersistenceException;
+import edu.northwestern.at.wordhoard.model.Author;
+import edu.northwestern.at.wordhoard.model.counts.LemmaCorpusCounts;
+import edu.northwestern.at.wordhoard.model.morphology.Lemma;
+import edu.northwestern.at.wordhoard.model.morphology.WordPart;
+import edu.northwestern.at.wordhoard.model.speakers.Speaker;
+import edu.northwestern.at.wordhoard.model.userdata.PhraseSet;
+import edu.northwestern.at.wordhoard.model.userdata.WordSet;
+import edu.northwestern.at.wordhoard.model.userdata.WorkSet;
 
 /**	A set of word search criteria.
  */

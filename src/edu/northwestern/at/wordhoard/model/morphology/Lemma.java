@@ -2,18 +2,21 @@ package edu.northwestern.at.wordhoard.model.morphology;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
+import java.io.Serializable;
+import java.util.List;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.db.mysql.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.utils.db.mysql.TableExporterImporter;
+import edu.northwestern.at.wordhoard.model.PersistentObject;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A lemma.
  *
@@ -255,7 +258,7 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setEntity("lemma", this);
+		q.setParameter("lemma", this);
 	}
 
 	/**	Appends a description to a text line.

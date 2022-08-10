@@ -5,7 +5,7 @@ package edu.northwestern.at.utils.db.jdbc;
 import java.sql.*;
 import java.util.*;
 
-import org.hibernate.util.*;
+import org.hibernate.internal.util.config.ConfigurationHelper;
 
 /**	A simple JDBC connection pool.
  *
@@ -167,18 +167,18 @@ public class SimpleConnectionPool extends Observable {
 		this.poolProperties	= poolProperties;
 		connections	= new TreeSet();
 		numCheckedOut = 0;
-		maxPoolSize	= PropertiesHelper.getInt("maxPoolSize",
+		maxPoolSize	= ConfigurationHelper.getInt("maxPoolSize",
 				poolProperties, DEFAULT_MAX_POOL_SIZE);
 		if (maxPoolSize <= 0) maxPoolSize = DEFAULT_MAX_POOL_SIZE;
-		idleTimeout	= PropertiesHelper.getInt("idleTimeout",
+		idleTimeout	= ConfigurationHelper.getInt("idleTimeout",
 				poolProperties, DEFAULT_IDLE_TIMEOUT);
 		if (idleTimeout <= 0) idleTimeout = DEFAULT_IDLE_TIMEOUT;
-		connectionRetryCount = PropertiesHelper.getInt("connectionRetryCount",
+		connectionRetryCount = ConfigurationHelper.getInt("connectionRetryCount",
 			poolProperties, DEFAULT_CONNECTION_RETRY_COUNT);
 		if (connectionRetryCount <= 0)
 			connectionRetryCount = DEFAULT_CONNECTION_RETRY_COUNT;
 		connectionRetryInterval =
-			PropertiesHelper.getInt("connectionRetryInterval",
+			ConfigurationHelper.getInt("connectionRetryInterval",
 			poolProperties, DEFAULT_CONNECTION_RETRY_INTERVAL);
 		if (connectionRetryInterval <= 0)
 			connectionRetryInterval = DEFAULT_CONNECTION_RETRY_INTERVAL;
@@ -219,7 +219,7 @@ public class SimpleConnectionPool extends Observable {
 		String url= poolProperties.getProperty("url");
 		String username	= poolProperties.getProperty("username");
 		String password	= poolProperties.getProperty("password");
-		boolean autocommit	= PropertiesHelper.getBoolean(
+		boolean autocommit	= ConfigurationHelper.getBoolean(
 			"autocommit" , poolProperties , false);
 		int numTries = 0;
 		while (numTries < connectionRetryCount) {

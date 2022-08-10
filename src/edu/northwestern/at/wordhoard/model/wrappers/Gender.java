@@ -2,12 +2,15 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 
 /*	Please see the license information at the end of this file. */
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.speakers.Speaker;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
 
 /**	A gender wrapper.
  */
@@ -85,7 +88,7 @@ public class Gender implements SearchCriterion, GroupingObject {
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setByte("gender", gender);
+		q.setParameter("gender", gender);
 	}
 
 	/**	Appends a description to a text line.

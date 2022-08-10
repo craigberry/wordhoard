@@ -2,15 +2,27 @@ package edu.northwestern.at.wordhoard.model;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.utils.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
+import edu.northwestern.at.wordhoard.model.wrappers.TaggingData;
+import edu.northwestern.at.wordhoard.model.wrappers.TextWrapper;
 
 /**	A work part.
  *
@@ -651,7 +663,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setEntity("workPart", this);
+		q.setParameter("workPart", this);
 	}
 
 	/**	Appends a description to a text line.

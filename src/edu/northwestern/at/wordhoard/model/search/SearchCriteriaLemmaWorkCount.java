@@ -2,18 +2,29 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.db.*;
-
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
+import edu.northwestern.at.utils.db.PersistenceException;
+import edu.northwestern.at.wordhoard.model.Author;
+import edu.northwestern.at.wordhoard.model.Corpus;
+import edu.northwestern.at.wordhoard.model.morphology.Lemma;
+import edu.northwestern.at.wordhoard.model.morphology.Pos;
+import edu.northwestern.at.wordhoard.model.morphology.WordPart;
+import edu.northwestern.at.wordhoard.model.speakers.Speaker;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.userdata.PhraseSet;
+import edu.northwestern.at.wordhoard.model.userdata.WordSet;
+import edu.northwestern.at.wordhoard.model.userdata.WorkSet;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A set of word search criteria.
  */

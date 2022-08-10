@@ -2,13 +2,16 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.speakers.Speaker;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A speaker name search criterion.
  */
@@ -68,7 +71,7 @@ public class SpeakerName implements SearchCriterion, GroupingObject {
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setString("speakerName", name);
+		q.setParameter("speakerName", name);
 	}
 
 	/**	Appends a description to a text line.

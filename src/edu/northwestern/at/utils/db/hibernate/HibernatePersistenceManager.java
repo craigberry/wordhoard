@@ -2,15 +2,25 @@ package edu.northwestern.at.utils.db.hibernate;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-import org.hibernate.*;
-import org.hibernate.cfg.*;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.connection.ConnectionProvider;
+import org.hibernate.HibernateException;
+import org.hibernate.MappingException;
+import org.hibernate.ScrollableResults;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.db.*;
+import edu.northwestern.at.utils.db.PersistenceException;
 
 /**	A Hibernate persistence manager.
  *
@@ -377,7 +387,13 @@ public class HibernatePersistenceManager
 	{
 		try
 		{
-			return session.connection();
+			return sessionFactory.getSessionFactoryOptions().getServiceRegistry()
+								 .getService(ConnectionProvider.class)
+								 .getConnection();
+		}
+		catch ( SQLException e )
+		{
+			throw new PersistenceException( e );
 		}
 		catch ( HibernateException e )
 		{
@@ -1315,40 +1331,9 @@ public class HibernatePersistenceManager
 			{
 				Object paramValue	= paramValues[ i ];
 
-								//	Check for String
-
-				if ( paramValue instanceof String )
-				{
-					query.setString(
-						paramNames[ i ] , (String)paramValue );
-				}
-								//	Check for Long
-
-				else if ( paramValue instanceof Long )
-				{
-					query.setLong(
-						paramNames[ i ] ,
-						((Long)paramValue).longValue() );
-				}
-								//	Check for Integer
-
-				else if ( paramValue instanceof Integer )
-				{
-					query.setInteger(
-						paramNames[ i ] ,
-						((Integer)paramValue).intValue() );
-				}
-								//	Check for Boolean
-
-				else if ( paramValue instanceof Boolean )
-				{
-					query.setBoolean(
-						paramNames[ i ] ,
-						((Boolean)paramValue).booleanValue() );
-				}
 								//	Check for Collection
 
-				else if ( paramValue instanceof Collection )
+				if ( paramValue instanceof Collection )
 				{
 					query.setParameterList(
 						paramNames[ i ] ,
@@ -1367,7 +1352,7 @@ public class HibernatePersistenceManager
 								//	Otherwise assume an entity reference.
 				else
 				{
-					query.setEntity( paramNames[ i ] , paramValue );
+					query.setParameter( paramNames[ i ] , paramValue );
 				}
 			}
 								//	Get the count of results.
@@ -1439,7 +1424,7 @@ public class HibernatePersistenceManager
 								//	Get JDBC connection.
 
 			Statement statement	=
-				session.connection().createStatement();
+				getConnection().createStatement();
 
 								//	Perform the update/delete query.
 
@@ -1483,40 +1468,9 @@ public class HibernatePersistenceManager
 			{
 				Object paramValue	= paramValues[ i ];
 
-								//	Check for String
-
-				if ( paramValue instanceof String )
-				{
-					query.setString(
-						paramNames[ i ] , (String)paramValue );
-				}
-								//	Check for Long
-
-				else if ( paramValue instanceof Long )
-				{
-					query.setLong(
-						paramNames[ i ] ,
-						((Long)paramValue).longValue() );
-				}
-								//	Check for Integer
-
-				else if ( paramValue instanceof Integer )
-				{
-					query.setInteger(
-						paramNames[ i ] ,
-						((Integer)paramValue).intValue() );
-				}
-								//	Check for Boolean
-
-				else if ( paramValue instanceof Boolean )
-				{
-					query.setBoolean(
-						paramNames[ i ] ,
-						((Boolean)paramValue).booleanValue() );
-				}
 								//	Check for Collection
 
-				else if ( paramValue instanceof Collection )
+				if ( paramValue instanceof Collection )
 				{
 					query.setParameterList(
 						paramNames[ i ] ,
@@ -1535,7 +1489,7 @@ public class HibernatePersistenceManager
 								//	Otherwise assume an entity reference.
 				else
 				{
-					query.setEntity( paramNames[ i ] , paramValue );
+					query.setParameter( paramNames[ i ] , paramValue );
 				}
 			}
 		}
@@ -1786,7 +1740,6 @@ public class HibernatePersistenceManager
 		try
 		{
 								//	Create query.
-
 			Query query	= session.createQuery( queryString );
 
 								//	Enable cache if requested.
@@ -2015,7 +1968,7 @@ public class HibernatePersistenceManager
 								//	Get JDBC connection.
 
 			Statement statement	=
-				session.connection().createStatement();
+				getConnection().createStatement();
 
 								//	Perform the insert.
 
@@ -2419,7 +2372,7 @@ public class HibernatePersistenceManager
 
 	public ConnectionProvider getConnectionProvider()
 	{
-		return ((SessionFactoryImplementor)sessionFactory).getConnectionProvider();
+		return ((SessionFactoryImplementor)sessionFactory).getServiceRegistry().getService(ConnectionProvider.class);
 	}
 
 	/**	Performs batch inserts using prepared MySQL insert statements.

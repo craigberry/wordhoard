@@ -2,17 +2,27 @@ package edu.northwestern.at.wordhoard.model.speakers;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
 
-import org.hibernate.*;
+import java.io.Serializable;
+import java.util.List;
 
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.grouping.*;
-import edu.northwestern.at.utils.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import edu.northwestern.at.utils.Compare;
+import edu.northwestern.at.wordhoard.model.PersistentObject;
+import edu.northwestern.at.wordhoard.model.Work;
+import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
+import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
+import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
+import edu.northwestern.at.wordhoard.model.search.SpeakerName;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.text.TextParams;
+import edu.northwestern.at.wordhoard.model.wrappers.Gender;
+import edu.northwestern.at.wordhoard.model.wrappers.Mortality;
+import edu.northwestern.at.wordhoard.model.wrappers.Narrative;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
 /**	A speaker.
  *
@@ -305,7 +315,7 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 */
 
 	public void setArg (Query q, Session session) {
-		q.setEntity("speaker", this);
+		q.setParameter("speaker", this);
 	}
 
 	/**	Appends a description to a text line.

@@ -1,15 +1,17 @@
 package edu.northwestern.at.utils.db.hibernate;
 
-/*	Please see the license information at the end of this file. */
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.Observer;
+import java.util.Properties;
 
-import java.sql.*;
-import java.util.*;
-
-import org.hibernate.cfg.*;
-import org.hibernate.connection.*;
 import org.hibernate.HibernateException;
+import org.hibernate.cfg.Environment;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.hibernate.service.spi.Configurable;
 
-import edu.northwestern.at.utils.db.jdbc.*;
+import edu.northwestern.at.utils.db.jdbc.SimpleConnectionPool;
 
 /** A simple Hibernate connection provider.
  *
@@ -39,7 +41,7 @@ import edu.northwestern.at.utils.db.jdbc.*;
  *	</ul>
  */
 
-public class SimpleHibernateConnectionProvider implements ConnectionProvider {
+public class SimpleHibernateConnectionProvider implements ConnectionProvider, Configurable {
 
 	/**	JDBC connection pool. */
 
@@ -47,24 +49,25 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider {
 
 	/**	Configures the connection provider.
 	 *
-	 *	@param	properties	The Hibernate configuration properties.
+	 *	@param	configurationValues	The Hibernate configuration map.
 	 *
 	 *	@throws	HibernateException	Error creating Hibernate connection pool.
 	 */
 
-	public void configure (Properties properties)
+	@Override
+	public void configure(Map configurationValues)
 		throws HibernateException
 	{
 		try {
 			Properties poolProperties = new Properties();
-			String jdbcDriverClass = properties.getProperty(Environment.DRIVER);
-			String jdbcURL = properties.getProperty(Environment.URL);
-			String username = properties.getProperty(Environment.USER);
-			String password = properties.getProperty(Environment.PASS);
+			String jdbcDriverClass = (String) configurationValues.get(Environment.DRIVER);
+			String jdbcURL = (String) configurationValues.get(Environment.URL);
+			String username = (String) configurationValues.get(Environment.USER);
+			String password = (String) configurationValues.get(Environment.PASS);
 			username = username.replaceAll("\\\\","");
 			password = password.replaceAll("\\\\","");
-			String autocommit = properties.getProperty(Environment.AUTOCOMMIT);
-			String poolSize	= properties.getProperty(Environment.POOL_SIZE);
+			String autocommit = (String) configurationValues.get(Environment.AUTOCOMMIT);
+			String poolSize	= (String) configurationValues.get(Environment.POOL_SIZE);
 			poolProperties.put("driverClassName", jdbcDriverClass);
 			poolProperties.put("url", jdbcURL);
 			poolProperties.put("username", username);
@@ -140,6 +143,16 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider {
 
 	public void addObserver (Observer o) {
 		connectionPool.addObserver(o);
+	}
+
+	@Override
+	public boolean isUnwrappableAs(Class unwrapType) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public <T> T unwrap(Class<T> unwrapType) {
+		throw new UnsupportedOperationException();
 	}
 }
 

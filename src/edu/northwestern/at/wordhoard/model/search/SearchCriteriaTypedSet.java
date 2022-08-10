@@ -2,19 +2,34 @@ package edu.northwestern.at.wordhoard.model.search;
 
 /*	Please see the license information at the end of this file. */
 
-import java.util.*;
-import java.io.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.hibernate.type.StandardBasicTypes;
 
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
-
-import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.model.userdata.*;
-import edu.northwestern.at.wordhoard.model.counts.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
+import edu.northwestern.at.wordhoard.model.PersistentObject;
+import edu.northwestern.at.wordhoard.model.WorkPart;
+import edu.northwestern.at.wordhoard.model.counts.LemmaCorpusCounts;
+import edu.northwestern.at.wordhoard.model.text.CharsetUtils;
+import edu.northwestern.at.wordhoard.model.text.FontInfo;
+import edu.northwestern.at.wordhoard.model.text.TextLine;
+import edu.northwestern.at.wordhoard.model.userdata.PhraseSet;
+import edu.northwestern.at.wordhoard.model.userdata.WordSet;
+import edu.northwestern.at.wordhoard.model.userdata.WorkSet;
+import edu.northwestern.at.wordhoard.model.wrappers.CollectionFrequency;
+import edu.northwestern.at.wordhoard.model.wrappers.DocFrequency;
+import edu.northwestern.at.wordhoard.model.wrappers.Gender;
+import edu.northwestern.at.wordhoard.model.wrappers.MajorWordClass;
+import edu.northwestern.at.wordhoard.model.wrappers.Mortality;
+import edu.northwestern.at.wordhoard.model.wrappers.Prosodic;
+import edu.northwestern.at.wordhoard.model.wrappers.PubYearRange;
+import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.PMUtils;
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.WorkUtils;
 
 /**	A set of word search criteria.
  */
@@ -357,7 +372,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 				for (Iterator it = criteriaList.iterator(); it.hasNext(); ) {
 					Object o = it.next();
 					String valname = "var" + i++;
-					q.setEntity(valname,o);
+					q.setParameter(valname, o);
 				}
 //			} else if(booleanRelation.equals("any")) {
 			} else {
@@ -369,8 +384,8 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						String start = "startYear" + i;
 						String end = "endYear" + i;
 						PubYearRange pyr = (PubYearRange)it.next();
-						q.setInteger(start,pyr.getStartYear().intValue());
-						q.setInteger(end,pyr.getEndYear().intValue());
+						q.setParameter(start,pyr.getStartYear().intValue());
+						q.setParameter(end,pyr.getEndYear().intValue());
 						i++;
 					}
 				} else if(typeClass.equals("DocFrequency")) {
@@ -380,9 +395,9 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						String corpus = "doccorpus" + i;
 						DocFrequency df = (DocFrequency)it.next();
 						if(!(((DocFrequency)criteriaList.get(i-1)).getCompare().equals("EQ") && ((DocFrequency)criteriaList.get(i-1)).getFreq().intValue()==0)) {
-							q.setInteger(docfreq,df.getFreq().intValue());
+							q.setParameter(docfreq, df.getFreq().intValue());
 						}
-						q.setEntity(corpus,df.getCorpus());
+						q.setParameter(corpus, df.getCorpus());
 						i++;
 					}
 				} else if(typeClass.equals("CollectionFrequency")) {
@@ -393,10 +408,10 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						CollectionFrequency cf = (CollectionFrequency)it.next();
 
 						if(!(((CollectionFrequency)criteriaList.get(i-1)).getCompare().equals("EQ") && ((CollectionFrequency)criteriaList.get(i-1)).getFreq().intValue()==0)) {
-							q.setInteger(colfreq,cf.getFreq().intValue());
+							q.setParameter(colfreq,cf.getFreq().intValue());
 						}
 
-						q.setEntity(corpus,cf.getCorpus());
+						q.setParameter(corpus,cf.getCorpus());
 						i++;
 					}
 				} else if(typeClass.equals("PubDecade")) {
@@ -411,7 +426,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						str = CharsetUtils.translateToInsensitive(str);
 						cs.add(str);
 					}
-					q.setParameterList("spellingInsensitive", cs, Hibernate.STRING);
+					q.setParameterList("spellingInsensitive", cs, StandardBasicTypes.STRING);
 				} else if(typeClass.equals("MajorWordClass")) {
 				// wordPart.lemPos.lemma.wordClass.majorWordClass.majorWordClass = :majorWordClass
 					ArrayList cs = new ArrayList();
@@ -419,7 +434,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						MajorWordClass mwc = (MajorWordClass)it.next();
 						cs.add(mwc.getMajorWordClass());
 					}
-					q.setParameterList("majorWordClass", cs, Hibernate.STRING);
+					q.setParameterList("majorWordClass", cs, StandardBasicTypes.STRING);
 			//		q.setString("majorWordClass", getMajorWordClass);
 				} else if(typeClass.equals("SpeakerName")) {
 					ArrayList cs = new ArrayList();
@@ -427,14 +442,14 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 						SpeakerName sp = (SpeakerName)it.next();
 						cs.add(sp.getName());
 					}
-					q.setParameterList("speakerName", cs, Hibernate.STRING);
+					q.setParameterList("speakerName", cs, StandardBasicTypes.STRING);
 				} else if(typeClass.equals("Gender")) {
 				//speaker.gender.gender = :gender
 					int i = 1;
 					for (Iterator it = criteriaList.iterator(); it.hasNext(); ) {
 						String item = "gender" + i;
 						Gender g = (Gender)it.next();
-						q.setByte(item, g.getGender());
+						q.setParameter(item, g.getGender());
 						i++;
 					}
 				} else if(typeClass.equals("Mortality")) {
@@ -443,7 +458,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 					for (Iterator it = criteriaList.iterator(); it.hasNext(); ) {
 						String item = "mortality" + i;
 						Mortality g = (Mortality)it.next();
-						q.setByte(item, g.getMortality());
+						q.setParameter(item, g.getMortality());
 						i++;
 					}
 				} else if(typeClass.equals("Prosodic")) {
@@ -452,7 +467,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 					for (Iterator it = criteriaList.iterator(); it.hasNext(); ) {
 						String item = "prosodic" + i;
 						Prosodic p = (Prosodic)it.next();
-						q.setByte(item, p.getProsodic());
+						q.setParameter(item, p.getProsodic());
 						i++;
 					}
 				} else if(typeClass.equals("WorkSet")) {
@@ -486,7 +501,7 @@ public class SearchCriteriaTypedSet implements SearchCriterion, Serializable {
 					for (Iterator it = criteriaList.iterator(); it.hasNext(); ) {
 						String item = "wordSet" + i++;
 						WordSet ws = (WordSet)it.next();
-						q.setEntity( item , ws );
+						q.setParameter( item , ws );
 					}
 				} else if(typeClass.equals("PhraseSet")) {
 					int i = 1;

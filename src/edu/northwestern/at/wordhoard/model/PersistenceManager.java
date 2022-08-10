@@ -1,35 +1,24 @@
 package edu.northwestern.at.wordhoard.model;
 
 /*	Please see the license information at the end of this file. */
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-import java.util.*;
-import java.io.*;
-import java.net.*;
-import java.sql.*;
-import java.text.*;
+import org.hibernate.query.Query;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-
-import edu.northwestern.at.wordhoard.model.annotations.*;
-import edu.northwestern.at.wordhoard.model.bibtool.*;
-import edu.northwestern.at.wordhoard.model.counts.*;
-import edu.northwestern.at.wordhoard.model.morphology.*;
-import edu.northwestern.at.wordhoard.model.querytool.*;
-import edu.northwestern.at.wordhoard.model.search.*;
-import edu.northwestern.at.wordhoard.model.speakers.*;
-import edu.northwestern.at.wordhoard.model.text.*;
-import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
-import edu.northwestern.at.utils.db.*;
-import edu.northwestern.at.utils.db.hibernate.*;
-
-import edu.northwestern.at.wordhoard.swing.text.*;
-import edu.northwestern.at.wordhoard.swing.*;
-import edu.northwestern.at.utils.xml.*;
-import edu.northwestern.at.wordhoard.server.*;
+import edu.northwestern.at.utils.db.PersistenceException;
+import edu.northwestern.at.utils.db.hibernate.HibernatePersistenceManager;
+import edu.northwestern.at.wordhoard.model.annotations.AnnotationCategory;
+import edu.northwestern.at.wordhoard.model.bibtool.SearchWorkCriteria;
+import edu.northwestern.at.wordhoard.model.counts.LemmaCorpusCounts;
+import edu.northwestern.at.wordhoard.model.counts.LemmaWorkCounts;
+import edu.northwestern.at.wordhoard.model.morphology.Lemma;
+import edu.northwestern.at.wordhoard.model.search.SearchCriteria;
+import edu.northwestern.at.wordhoard.model.search.SearchCriteriaLemmaSearch;
+import edu.northwestern.at.wordhoard.model.text.CharsetUtils;
 
 /**	WordHoard persistence manager.
  *
@@ -986,7 +975,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 			"word.colocationOrdinal - :distance and " +
 			"word.colocationOrdinal + :distance",
 			new String[]{"words", "distance"},
-			new Object[]{words, new Integer(distance)});
+			new Object[]{words, new Long(distance)});
 	}
 
 	/**	Preloads concordance information.
@@ -1219,11 +1208,11 @@ public class PersistenceManager extends HibernatePersistenceManager {
 				if(fromClause!=null && whereClause!=null) {
 					String queryString = fromClause + whereClause +
 						" order by work.fullTitle";
-					org.hibernate.Query q = session.createQuery(queryString);
-					if(haveTitle) {q.setString("title", title);}
-					if(haveAuthor) {q.setString("authorname", authorname);}
-					if(haveYearStart) {q.setInteger("earlyDate", earlyDate);}
-					if(haveYearEnd) {q.setInteger("lateDate", lateDate);}
+					Query q = session.createQuery(queryString);
+					if(haveTitle) {q.setParameter("title", title);}
+					if(haveAuthor) {q.setParameter("authorname", authorname);}
+					if(haveYearStart) {q.setParameter("earlyDate", earlyDate);}
+					if(haveYearEnd) {q.setParameter("lateDate", lateDate);}
 					List matches = q.list();
 					if (!caseSensitive) return matches;
 					result = new ArrayList();

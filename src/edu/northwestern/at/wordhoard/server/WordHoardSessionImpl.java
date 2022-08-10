@@ -6,11 +6,15 @@ import java.util.*;
 import java.rmi.*;
 import java.rmi.server.*;
 import java.net.*;
+import java.sql.Connection;
 import java.sql.Statement;
 
 import org.hibernate.*;
 import org.hibernate.exception.*;
+import org.hibernate.jdbc.Work;
 import org.hibernate.cfg.*;
+import org.hibernate.query.Query;
+import org.hibernate.internal.SessionImpl;
 
 import edu.northwestern.at.utils.ClassUtils;
 import edu.northwestern.at.utils.db.PersistenceException;
@@ -180,7 +184,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 			Query q = session.createQuery(
 				"from Account account " +
 				"where account.username = :username");
-			q.setString("username", username);
+			q.setParameter("username", username);
 			loginAccount = (Account)q.uniqueResult();
 			boolean loginValid = loginAccount != null;
 			if (loginValid) {
@@ -761,7 +765,8 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		int result	= 0;
 		Statement statement = null;
 		try {
-			statement = session.connection().createStatement();
+			Connection connection =  ((SessionImpl)session.getSession()).connection();
+			statement = connection.createStatement();
 			result = statement.executeUpdate(insertString);
 			statement.close();
 		} catch (Exception e) {
