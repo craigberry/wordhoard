@@ -1,392 +1,112 @@
 
-    alter table annotation 
-        drop 
-        foreign key workPart_index
-
-    alter table annotation 
-        drop 
-        foreign key category_index
-
-    alter table annotation 
-        drop 
-        foreign key text_index
-
-    alter table authoredtextannotation 
-        drop 
-        foreign key category_index
-
-    alter table authors_works 
-        drop 
-        foreign key author_id_index
-
-    alter table authors_works 
-        drop 
-        foreign key work_id_index
-
-    alter table bensonlempos 
-        drop 
-        foreign key pos_index
-
-    alter table bensonlempos 
-        drop 
-        foreign key lemma_index
-
-    alter table corpus_tconviews 
-        drop 
-        foreign key FK3B1FE2E970181B1E
-
-    alter table corpus_tconviews 
-        drop 
-        foreign key FK3B1FE2E97B5EECB3
-
-    alter table lemma 
-        drop 
-        foreign key wordClass_index
-
-    alter table lemmacorpuscounts 
-        drop 
-        foreign key wordClass_index
-
-    alter table lemmacorpuscounts 
-        drop 
-        foreign key lemma_index
-
-    alter table lemmacorpuscounts 
-        drop 
-        foreign key corpus_index
-
-    alter table lemmaposspellingcounts 
-        drop 
-        foreign key pos_index
-
-    alter table lemmaposspellingcounts 
-        drop 
-        foreign key work_index
-
-    alter table lemmaposspellingcounts 
-        drop 
-        foreign key lemma_index
-
-    alter table lemmaposspellingcounts 
-        drop 
-        foreign key workPart_index
-
-    alter table lemmaposspellingcounts 
-        drop 
-        foreign key corpus_index
-
-    alter table lemmaworkcounts 
-        drop 
-        foreign key work_index
-
-    alter table lemmaworkcounts 
-        drop 
-        foreign key lemma_index
-
-    alter table lempos 
-        drop 
-        foreign key pos_index
-
-    alter table lempos 
-        drop 
-        foreign key lemma_index
-
-    alter table line 
-        drop 
-        foreign key workPart_index
-
-    alter table phrase_wordtags 
-        drop 
-        foreign key phraseid_index
-
-    alter table phraseset_phrases 
-        drop 
-        foreign key phrasesetid_index
-
-    alter table phraseset_phrases 
-        drop 
-        foreign key phraseid_index
-
-    alter table phrasesetphrasecount 
-        drop 
-        foreign key phraseSet_index
-
-    alter table phrasesettotalwordformcount 
-        drop 
-        foreign key phrase_index
-
-    alter table pos 
-        drop 
-        foreign key wordClass_index
-
-    alter table speaker 
-        drop 
-        foreign key work_index
-
-    alter table speech 
-        drop 
-        foreign key workPart_index
-
-    alter table speech_speakers 
-        drop 
-        foreign key FKA9D0A711477943D1
-
-    alter table speech_speakers 
-        drop 
-        foreign key FKA9D0A711E19992E3
-
-    alter table tconcategory_worktags 
-        drop 
-        foreign key FK832AEDFD9A0015D0
-
-    alter table tconview_categories 
-        drop 
-        foreign key FK66790DA870181B1E
-
-    alter table tconview_categories 
-        drop 
-        foreign key FK66790DA8E7D04742
-
-    alter table tconview_worktags 
-        drop 
-        foreign key FK37F8453670181B1E
-
-    alter table totalwordformcount 
-        drop 
-        foreign key work_index
-
-    alter table totalwordformcount 
-        drop 
-        foreign key workPart_index
-
-    alter table usergroup_admins 
-        drop 
-        foreign key usergroup_admins_index
-
-    alter table usergroup_members 
-        drop 
-        foreign key usergroup_members_index
-
-    alter table usergrouppermission 
-        drop 
-        foreign key userdata_index
-
-    alter table usergrouppermission 
-        drop 
-        foreign key usergroup_index
-
-    alter table word 
-        drop 
-        foreign key speech_index
-
-    alter table word 
-        drop 
-        foreign key line_index
+    drop table if exists annotation;
 
-    alter table word 
-        drop 
-        foreign key work_index
+    drop table if exists annotationcategory;
 
-    alter table word 
-        drop 
-        foreign key workPart_index
+    drop table if exists author;
 
-    alter table word 
-        drop 
-        foreign key prev_index
+    drop table if exists authoredtextannotation;
 
-    alter table word 
-        drop 
-        foreign key next_index
+    drop table if exists authors_works;
 
-    alter table wordcount 
-        drop 
-        foreign key work_index
+    drop table if exists bensonlemma;
 
-    alter table wordcount 
-        drop 
-        foreign key workPart_index
+    drop table if exists bensonlempos;
 
-    alter table wordpart 
-        drop 
-        foreign key lemPos_index
+    drop table if exists bensonpos;
 
-    alter table wordpart 
-        drop 
-        foreign key word_index
+    drop table if exists corpus;
 
-    alter table wordpart 
-        drop 
-        foreign key bensonLemPos_index
+    drop table if exists corpus_tconviews;
 
-    alter table wordpart 
-        drop 
-        foreign key workPart_index
+    drop table if exists lemma;
 
-    alter table wordset_wordtags 
-        drop 
-        foreign key wordset_wordTags_index
+    drop table if exists lemmacorpuscounts;
 
-    alter table wordset_workparttags 
-        drop 
-        foreign key wordset_workPartTags_index
+    drop table if exists lemmaposspellingcounts;
 
-    alter table wordset_worktags 
-        drop 
-        foreign key wordset_workTags_index
+    drop table if exists lemmaworkcounts;
 
-    alter table wordsettotalwordformcount 
-        drop 
-        foreign key word_index
+    drop table if exists lempos;
 
-    alter table wordsetwordcount 
-        drop 
-        foreign key wordSet_index
+    drop table if exists line;
 
-    alter table workpart 
-        drop 
-        foreign key work_index
+    drop table if exists metricalshape;
 
-    alter table workpart 
-        drop 
-        foreign key primaryText_index
+    drop table if exists phrase;
 
-    alter table workpart 
-        drop 
-        foreign key parent_index
+    drop table if exists phrase_wordtags;
 
-    alter table workpart 
-        drop 
-        foreign key corpus_index
+    drop table if exists phraseset_phrases;
 
-    alter table workpart_children 
-        drop 
-        foreign key FK63AEE95ABAAEFE25
+    drop table if exists phrasesetphrasecount;
 
-    alter table workpart_children 
-        drop 
-        foreign key FK63AEE95AD32B97D7
+    drop table if exists phrasesettotalwordformcount;
 
-    alter table workpart_translations 
-        drop 
-        foreign key FK617DC9BD723B60CF
+    drop table if exists pos;
 
-    alter table workpart_translations 
-        drop 
-        foreign key FK617DC9BDBC3FDFBD
+    drop table if exists query;
 
-    alter table workset_workparttags 
-        drop 
-        foreign key workset_index
+    drop table if exists speaker;
 
-    drop table if exists annotation
+    drop table if exists speech;
 
-    drop table if exists annotationcategory
+    drop table if exists speech_speakers;
 
-    drop table if exists author
+    drop table if exists tconcategory;
 
-    drop table if exists authoredtextannotation
+    drop table if exists tconcategory_worktags;
 
-    drop table if exists authors_works
+    drop table if exists tconview;
 
-    drop table if exists bensonlemma
+    drop table if exists tconview_categories;
 
-    drop table if exists bensonlempos
+    drop table if exists tconview_worktags;
 
-    drop table if exists bensonpos
+    drop table if exists textwrapper;
 
-    drop table if exists corpus
+    drop table if exists totalwordformcount;
 
-    drop table if exists corpus_tconviews
+    drop table if exists usergroup;
 
-    drop table if exists lemma
+    drop table if exists usergroup_admins;
 
-    drop table if exists lemmacorpuscounts
+    drop table if exists usergroup_members;
 
-    drop table if exists lemmaposspellingcounts
+    drop table if exists usergrouppermission;
 
-    drop table if exists lemmaworkcounts
+    drop table if exists word;
 
-    drop table if exists lempos
+    drop table if exists wordclass;
 
-    drop table if exists line
+    drop table if exists wordcount;
 
-    drop table if exists metricalshape
+    drop table if exists wordpart;
 
-    drop table if exists phrase
+    drop table if exists wordset;
 
-    drop table if exists phrase_wordtags
+    drop table if exists wordset_wordtags;
 
-    drop table if exists phraseset_phrases
+    drop table if exists wordset_workparttags;
 
-    drop table if exists phrasesetphrasecount
+    drop table if exists wordset_worktags;
 
-    drop table if exists phrasesettotalwordformcount
+    drop table if exists wordsettotalwordformcount;
 
-    drop table if exists pos
+    drop table if exists wordsetwordcount;
 
-    drop table if exists query
+    drop table if exists workpart;
 
-    drop table if exists speaker
+    drop table if exists workpart_children;
 
-    drop table if exists speech
+    drop table if exists workpart_translations;
 
-    drop table if exists speech_speakers
+    drop table if exists workset;
 
-    drop table if exists tconcategory
-
-    drop table if exists tconcategory_worktags
-
-    drop table if exists tconview
-
-    drop table if exists tconview_categories
-
-    drop table if exists tconview_worktags
-
-    drop table if exists textwrapper
-
-    drop table if exists totalwordformcount
-
-    drop table if exists usergroup
-
-    drop table if exists usergroup_admins
-
-    drop table if exists usergroup_members
-
-    drop table if exists usergrouppermission
-
-    drop table if exists word
-
-    drop table if exists wordclass
-
-    drop table if exists wordcount
-
-    drop table if exists wordpart
-
-    drop table if exists wordset
-
-    drop table if exists wordset_wordtags
-
-    drop table if exists wordset_workparttags
-
-    drop table if exists wordset_worktags
-
-    drop table if exists wordsettotalwordformcount
-
-    drop table if exists wordsetwordcount
-
-    drop table if exists workpart
-
-    drop table if exists workpart_children
-
-    drop table if exists workpart_translations
-
-    drop table if exists workset
-
-    drop table if exists workset_workparttags
+    drop table if exists workset_workparttags;
 
     create table annotation (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         type varchar(255) not null,
         category bigint,
         text bigint,
@@ -396,16 +116,16 @@
         target_end_index integer,
         target_end_offset integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table annotationcategory (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         name varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table author (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         name_string varchar(255),
         name_charset tinyint,
         originalName_string varchar(255),
@@ -415,10 +135,10 @@
         earliestWorkYear integer,
         latestWorkYear integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table authoredtextannotation (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         body text,
         category bigint,
         target_start_index integer,
@@ -439,16 +159,16 @@
         isActive bit,
         query varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table authors_works (
-        author_id bigint not null,
+       author_id bigint not null,
         work_id bigint not null,
         primary key (author_id, work_id)
-    )
+    ) engine=MyISAM;
 
     create table bensonlemma (
-        id bigint not null,
+       id bigint not null,
         word varchar(255),
         wordClass varchar(255),
         homonym integer,
@@ -456,24 +176,24 @@
         comment varchar(255),
         oedLemma varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table bensonlempos (
-        id bigint not null,
+       id bigint not null,
         lemma bigint,
         pos bigint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table bensonpos (
-        id bigint not null,
+       id bigint not null,
         tag varchar(255),
         description varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table corpus (
-        id bigint not null,
+       id bigint not null,
         tag varchar(255),
         title varchar(255),
         charset tinyint,
@@ -484,20 +204,20 @@
         numWords integer,
         maxWordPathLength integer,
         translations varchar(255),
-        tranDescription text,
+        tranDescription longtext,
         ordinal integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table corpus_tconviews (
-        corpus bigint not null,
-        tconview bigint not null,
+       corpus bigint not null,
         corpus_index integer not null,
+        tconview bigint not null,
         primary key (corpus, corpus_index)
-    )
+    ) engine=MyISAM;
 
     create table lemma (
-        id bigint not null,
+       id bigint not null,
         tag_string varchar(255),
         tag_charset tinyint,
         tagInsensitive_string varchar(255),
@@ -507,10 +227,10 @@
         homonym integer,
         wordClass bigint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table lemmacorpuscounts (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         corpus bigint,
         lemma bigint,
         tag_string varchar(255),
@@ -523,10 +243,10 @@
         rank2 integer,
         numMajorClass integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table lemmaposspellingcounts (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         kind tinyint,
         corpus bigint,
         work bigint,
@@ -538,10 +258,10 @@
         freq integer,
         freqFirstWordPart integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table lemmaworkcounts (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         work bigint,
         lemma bigint,
         termFreq integer,
@@ -549,19 +269,19 @@
         rank2 integer,
         numMajorClass integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table lempos (
-        id bigint not null,
+       id bigint not null,
         standardSpelling_string varchar(255),
         standardSpelling_charset tinyint,
         lemma bigint,
         pos bigint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table line (
-        id bigint not null,
+       id bigint not null,
         tag varchar(255),
         number integer,
         label varchar(255),
@@ -572,36 +292,36 @@
         location_end_index integer,
         location_end_offset integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table metricalshape (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         metricalShape varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table phrase (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         workTag varchar(32),
         tagsHashCode integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table phrase_wordtags (
-        phraseId bigint not null,
-        wordTag varchar(32),
+       phraseId bigint not null,
         word_index integer not null,
+        wordTag varchar(32),
         primary key (phraseId, word_index)
-    )
+    ) engine=MyISAM;
 
     create table phraseset_phrases (
-        phraseSetId bigint not null,
+       phraseSetId bigint not null,
         phraseId bigint not null,
         primary key (phraseSetId, phraseId)
-    )
+    ) engine=MyISAM;
 
     create table phrasesetphrasecount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         phraseText_string varchar(255),
         phraseText_charset tinyint,
         wordForm integer,
@@ -609,19 +329,19 @@
         workPartTag varchar(32),
         phraseCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table phrasesettotalwordformcount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         wordForm integer,
         phraseSet bigint,
         workPartTag varchar(32),
         wordFormCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table pos (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         tag varchar(255),
         description varchar(255),
         wordClass bigint,
@@ -637,10 +357,10 @@
         negative varchar(255),
         language varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table query (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         title varchar(255),
         description text,
         webPageURL varchar(255),
@@ -652,10 +372,10 @@
         queryType integer,
         queryText varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table speaker (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         work bigint,
         tag varchar(255),
         name varchar(255),
@@ -665,73 +385,73 @@
         gender_gender tinyint,
         mortality_mortality tinyint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table speech (
-        id bigint not null,
+       id bigint not null,
         workPart bigint,
         gender_gender tinyint,
         mortality_mortality tinyint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table speech_speakers (
-        speech_id bigint not null,
+       speech_id bigint not null,
         speaker_id bigint not null,
         primary key (speech_id, speaker_id)
-    )
+    ) engine=MyISAM;
 
     create table tconcategory (
-        id bigint not null,
+       id bigint not null,
         title varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table tconcategory_worktags (
-        tconcategory bigint not null,
-        worktag varchar(32),
+       tconcategory bigint not null,
         tconcategory_index integer not null,
+        worktag varchar(32),
         primary key (tconcategory, tconcategory_index)
-    )
+    ) engine=MyISAM;
 
     create table tconview (
-        id bigint not null,
+       id bigint not null,
         viewType integer,
         radioButtonLabel varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table tconview_categories (
-        tconview bigint not null,
-        category bigint not null,
+       tconview bigint not null,
         tconview_index integer not null,
+        category bigint not null,
         primary key (tconview, tconview_index)
-    )
+    ) engine=MyISAM;
 
     create table tconview_worktags (
-        tconview bigint not null,
-        worktag varchar(32),
+       tconview bigint not null,
         tconview_index integer not null,
+        worktag varchar(32),
         primary key (tconview, tconview_index)
-    )
+    ) engine=MyISAM;
 
     create table textwrapper (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         text mediumblob,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table totalwordformcount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         wordForm integer,
         workPart bigint,
         work bigint,
         wordFormCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table usergroup (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         title varchar(255),
         description varchar(255),
         webPageURL varchar(255),
@@ -742,20 +462,20 @@
         isActive bit,
         query varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table usergroup_admins (
-        usergroup bigint not null,
+       usergroup bigint not null,
         admin varchar(32)
-    )
+    ) engine=MyISAM;
 
     create table usergroup_members (
-        usergroup bigint not null,
+       usergroup bigint not null,
         member varchar(32)
-    )
+    ) engine=MyISAM;
 
     create table usergrouppermission (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         title varchar(255),
         description varchar(255),
         webPageURL varchar(255),
@@ -769,10 +489,10 @@
         userGroup bigint,
         authoredTextAnnotation bigint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table word (
-        id bigint not null,
+       id bigint not null,
         spelling_string varchar(255),
         spelling_charset tinyint,
         spellingInsensitive_string varchar(255),
@@ -797,18 +517,18 @@
         prosodic_prosodic tinyint,
         metricalShape_metricalShape varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordclass (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         tag varchar(255),
         description varchar(255),
         majorWordClass_majorWordClass varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordcount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         word_string varchar(255),
         word_charset tinyint,
         wordForm integer,
@@ -816,10 +536,10 @@
         work bigint,
         wordCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordpart (
-        id bigint not null,
+       id bigint not null,
         tag varchar(255),
         partIndex integer,
         word bigint,
@@ -827,10 +547,10 @@
         lemPos bigint,
         bensonLemPos bigint,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordset (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         is_wordset integer not null,
         title varchar(255),
         description text,
@@ -843,34 +563,34 @@
         query varchar(255),
         sumPhraseLengths double precision,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordset_wordtags (
-        wordSet bigint not null,
+       wordSet bigint not null,
         wordTag varchar(32)
-    )
+    ) engine=MyISAM;
 
     create table wordset_workparttags (
-        wordSet bigint not null,
+       wordSet bigint not null,
         tag varchar(32)
-    )
+    ) engine=MyISAM;
 
     create table wordset_worktags (
-        wordSet bigint not null,
+       wordSet bigint not null,
         tag varchar(32)
-    )
+    ) engine=MyISAM;
 
     create table wordsettotalwordformcount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         wordForm integer,
         wordSet bigint,
         workPartTag varchar(32),
         wordFormCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table wordsetwordcount (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         word_string varchar(255),
         word_charset tinyint,
         wordForm integer,
@@ -878,10 +598,10 @@
         workPartTag varchar(32),
         wordCount integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table workpart (
-        id bigint not null,
+       id bigint not null,
         is_work integer not null,
         tag varchar(255),
         pathTag varchar(255),
@@ -900,24 +620,24 @@
         pubDate_startYear integer,
         pubDate_endYear integer,
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table workpart_children (
-        parent_id bigint not null,
-        child_id bigint not null,
+       parent_id bigint not null,
         child_index integer not null,
+        child_id bigint not null,
         primary key (parent_id, child_index)
-    )
+    ) engine=MyISAM;
 
     create table workpart_translations (
-        workPart_id bigint not null,
-        textWrapper_id bigint not null,
+       workPart_id bigint not null,
         translation_name varchar(255) not null,
+        textWrapper_id bigint not null,
         primary key (workPart_id, translation_name)
-    )
+    ) engine=MyISAM;
 
     create table workset (
-        id bigint not null auto_increment,
+       id bigint not null auto_increment,
         title varchar(255),
         description text,
         webPageURL varchar(255),
@@ -928,515 +648,402 @@
         isActive bit,
         query varchar(255),
         primary key (id)
-    )
+    ) engine=MyISAM;
 
     create table workset_workparttags (
-        workSet bigint not null,
+       workSet bigint not null,
         tag varchar(32)
-    )
+    ) engine=MyISAM;
+create index birthYear_index on author (birthYear);
+create index deathYear_index on author (deathYear);
+create index earliestWorkYear_index on author (earliestWorkYear);
+create index latestWorkYear_index on author (latestWorkYear);
+create index wordset_owner_index on authoredtextannotation (owner);
+create index wordset_isPublic_index on authoredtextannotation (isPublic);
+create index isActive_index on authoredtextannotation (isActive);
+create index tag_index on corpus (tag);
+create index tag_index on line (tag);
+create index wordForm_index on phrasesetphrasecount (wordForm);
+create index workPartTag_index on phrasesetphrasecount (workPartTag);
+create index wordForm_index on phrasesettotalwordformcount (wordForm);
+create index workPartTag_index on phrasesettotalwordformcount (workPartTag);
+create index title_index on query (title);
+create index owner_index on query (owner);
+create index isPublic_index on query (isPublic);
+create index isActive_index on query (isActive);
+create index queryType_index on query (queryType);
+create index name_index on speaker (name);
+create index wordForm_index on totalwordformcount (wordForm);
+create index wordset_owner_index on usergroup (owner);
+create index wordset_isPublic_index on usergroup (isPublic);
+create index isActive_index on usergroup (isActive);
+create index wordset_owner_index on usergrouppermission (owner);
+create index wordset_isPublic_index on usergrouppermission (isPublic);
+create index isActive_index on usergrouppermission (isActive);
+create index tag_index on word (tag);
+create index colocationOrdinal_index on word (colocationOrdinal);
+create index wordForm_index on wordcount (wordForm);
+create index tag_index on wordpart (tag);
+create index wordset_title_index on wordset (title);
+create index wordset_owner_index on wordset (owner);
+create index wordset_isPublic_index on wordset (isPublic);
+create index isActive_index on wordset (isActive);
+create index wordForm_index on wordsettotalwordformcount (wordForm);
+create index workPartTag_index on wordsettotalwordformcount (workPartTag);
+create index wordcount_wordForm_index on wordsetwordcount (wordForm);
+create index workPartTag_index on wordsetwordcount (workPartTag);
+create index tag_index on workpart (tag);
+create index title_index on workset (title);
+create index owner_index on workset (owner);
+create index isPublic_index on workset (isPublic);
+create index isActive_index on workset (isActive);
 
     alter table annotation 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
+       add constraint category_index 
+       foreign key (category) 
+       references annotationcategory (id);
 
     alter table annotation 
-        add index category_index (category), 
-        add constraint category_index 
-        foreign key (category) 
-        references annotationcategory (id)
+       add constraint text_index 
+       foreign key (text) 
+       references textwrapper (id);
 
     alter table annotation 
-        add index text_index (text), 
-        add constraint text_index 
-        foreign key (text) 
-        references textwrapper (id)
-
-    create index birthYear_index on author (birthYear)
-
-    create index latestWorkYear_index on author (latestWorkYear)
-
-    create index deathYear_index on author (deathYear)
-
-    create index earliestWorkYear_index on author (earliestWorkYear)
-
-    create index isActive_index on authoredtextannotation (isActive)
-
-    create index wordset_isPublic_index on authoredtextannotation (isPublic)
-
-    create index wordset_owner_index on authoredtextannotation (owner)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table authoredtextannotation 
-        add index category_index (category), 
-        add constraint category_index 
-        foreign key (category) 
-        references annotationcategory (id)
+       add constraint category_index 
+       foreign key (category) 
+       references annotationcategory (id);
 
     alter table authors_works 
-        add index author_id_index (author_id), 
-        add constraint author_id_index 
-        foreign key (author_id) 
-        references author (id)
+       add constraint work_id_index 
+       foreign key (work_id) 
+       references workpart (id);
 
     alter table authors_works 
-        add index work_id_index (work_id), 
-        add constraint work_id_index 
-        foreign key (work_id) 
-        references workpart (id)
+       add constraint author_id_index 
+       foreign key (author_id) 
+       references author (id);
 
     alter table bensonlempos 
-        add index pos_index (pos), 
-        add constraint pos_index 
-        foreign key (pos) 
-        references bensonpos (id)
+       add constraint lemma_index 
+       foreign key (lemma) 
+       references bensonlemma (id);
 
     alter table bensonlempos 
-        add index lemma_index (lemma), 
-        add constraint lemma_index 
-        foreign key (lemma) 
-        references bensonlemma (id)
-
-    create index tag_index on corpus (tag)
+       add constraint pos_index 
+       foreign key (pos) 
+       references bensonpos (id);
 
     alter table corpus_tconviews 
-        add index FK3B1FE2E970181B1E (tconview), 
-        add constraint FK3B1FE2E970181B1E 
-        foreign key (tconview) 
-        references tconview (id)
+       add constraint FK2rn048lib8wsm97ydks3cnxo9 
+       foreign key (tconview) 
+       references tconview (id);
 
     alter table corpus_tconviews 
-        add index FK3B1FE2E97B5EECB3 (corpus), 
-        add constraint FK3B1FE2E97B5EECB3 
-        foreign key (corpus) 
-        references corpus (id)
+       add constraint FK2m0dxguy5fllqitg3pv1wt2ma 
+       foreign key (corpus) 
+       references corpus (id);
 
     alter table lemma 
-        add index wordClass_index (wordClass), 
-        add constraint wordClass_index 
-        foreign key (wordClass) 
-        references wordclass (id)
+       add constraint wordClass_index 
+       foreign key (wordClass) 
+       references wordclass (id);
 
     alter table lemmacorpuscounts 
-        add index wordClass_index (wordClass), 
-        add constraint wordClass_index 
-        foreign key (wordClass) 
-        references wordclass (id)
+       add constraint corpus_index 
+       foreign key (corpus) 
+       references corpus (id);
 
     alter table lemmacorpuscounts 
-        add index lemma_index (lemma), 
-        add constraint lemma_index 
-        foreign key (lemma) 
-        references lemma (id)
+       add constraint lemma_index 
+       foreign key (lemma) 
+       references lemma (id);
 
     alter table lemmacorpuscounts 
-        add index corpus_index (corpus), 
-        add constraint corpus_index 
-        foreign key (corpus) 
-        references corpus (id)
+       add constraint wordClass_index 
+       foreign key (wordClass) 
+       references wordclass (id);
 
     alter table lemmaposspellingcounts 
-        add index pos_index (pos), 
-        add constraint pos_index 
-        foreign key (pos) 
-        references pos (id)
+       add constraint corpus_index 
+       foreign key (corpus) 
+       references corpus (id);
 
     alter table lemmaposspellingcounts 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table lemmaposspellingcounts 
-        add index lemma_index (lemma), 
-        add constraint lemma_index 
-        foreign key (lemma) 
-        references lemma (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table lemmaposspellingcounts 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
+       add constraint lemma_index 
+       foreign key (lemma) 
+       references lemma (id);
 
     alter table lemmaposspellingcounts 
-        add index corpus_index (corpus), 
-        add constraint corpus_index 
-        foreign key (corpus) 
-        references corpus (id)
+       add constraint pos_index 
+       foreign key (pos) 
+       references pos (id);
 
     alter table lemmaworkcounts 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table lemmaworkcounts 
-        add index lemma_index (lemma), 
-        add constraint lemma_index 
-        foreign key (lemma) 
-        references lemma (id)
+       add constraint lemma_index 
+       foreign key (lemma) 
+       references lemma (id);
 
     alter table lempos 
-        add index pos_index (pos), 
-        add constraint pos_index 
-        foreign key (pos) 
-        references pos (id)
+       add constraint lemma_index 
+       foreign key (lemma) 
+       references lemma (id);
 
     alter table lempos 
-        add index lemma_index (lemma), 
-        add constraint lemma_index 
-        foreign key (lemma) 
-        references lemma (id)
-
-    create index tag_index on line (tag)
+       add constraint pos_index 
+       foreign key (pos) 
+       references pos (id);
 
     alter table line 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table phrase_wordtags 
-        add index phraseid_index (phraseId), 
-        add constraint phraseid_index 
-        foreign key (phraseId) 
-        references phrase (id)
+       add constraint phraseid_index 
+       foreign key (phraseId) 
+       references phrase (id);
 
     alter table phraseset_phrases 
-        add index phrasesetid_index (phraseSetId), 
-        add constraint phrasesetid_index 
-        foreign key (phraseSetId) 
-        references wordset (id)
+       add constraint phraseid_index 
+       foreign key (phraseId) 
+       references phrase (id);
 
     alter table phraseset_phrases 
-        add index phraseid_index (phraseId), 
-        add constraint phraseid_index 
-        foreign key (phraseId) 
-        references phrase (id)
-
-    create index wordForm_index on phrasesetphrasecount (wordForm)
-
-    create index workPartTag_index on phrasesetphrasecount (workPartTag)
+       add constraint phrasesetid_index 
+       foreign key (phraseSetId) 
+       references wordset (id);
 
     alter table phrasesetphrasecount 
-        add index phraseSet_index (phraseSet), 
-        add constraint phraseSet_index 
-        foreign key (phraseSet) 
-        references wordset (id)
-
-    create index wordForm_index on phrasesettotalwordformcount (wordForm)
-
-    create index workPartTag_index on phrasesettotalwordformcount (workPartTag)
+       add constraint phraseSet_index 
+       foreign key (phraseSet) 
+       references wordset (id);
 
     alter table phrasesettotalwordformcount 
-        add index phrase_index (phraseSet), 
-        add constraint phrase_index 
-        foreign key (phraseSet) 
-        references wordset (id)
+       add constraint phrase_index 
+       foreign key (phraseSet) 
+       references wordset (id);
 
     alter table pos 
-        add index wordClass_index (wordClass), 
-        add constraint wordClass_index 
-        foreign key (wordClass) 
-        references wordclass (id)
-
-    create index queryType_index on query (queryType)
-
-    create index isActive_index on query (isActive)
-
-    create index title_index on query (title)
-
-    create index owner_index on query (owner)
-
-    create index isPublic_index on query (isPublic)
-
-    create index name_index on speaker (name)
+       add constraint wordClass_index 
+       foreign key (wordClass) 
+       references wordclass (id);
 
     alter table speaker 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table speech 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table speech_speakers 
-        add index FKA9D0A711477943D1 (speech_id), 
-        add constraint FKA9D0A711477943D1 
-        foreign key (speech_id) 
-        references speech (id)
+       add constraint FKf8s21bim9u6ebhs9rog1hy9fv 
+       foreign key (speaker_id) 
+       references speaker (id);
 
     alter table speech_speakers 
-        add index FKA9D0A711E19992E3 (speaker_id), 
-        add constraint FKA9D0A711E19992E3 
-        foreign key (speaker_id) 
-        references speaker (id)
+       add constraint FKm57xn861tj231h8ocey14rjob 
+       foreign key (speech_id) 
+       references speech (id);
 
     alter table tconcategory_worktags 
-        add index FK832AEDFD9A0015D0 (tconcategory), 
-        add constraint FK832AEDFD9A0015D0 
-        foreign key (tconcategory) 
-        references tconcategory (id)
+       add constraint FK88th587ad4v2jpxvs8r1suh77 
+       foreign key (tconcategory) 
+       references tconcategory (id);
 
     alter table tconview_categories 
-        add index FK66790DA870181B1E (tconview), 
-        add constraint FK66790DA870181B1E 
-        foreign key (tconview) 
-        references tconview (id)
+       add constraint FKt1fgucsq0evvselevhbw5yml6 
+       foreign key (category) 
+       references tconcategory (id);
 
     alter table tconview_categories 
-        add index FK66790DA8E7D04742 (category), 
-        add constraint FK66790DA8E7D04742 
-        foreign key (category) 
-        references tconcategory (id)
+       add constraint FK1rqblm78psiubkgyqa0mbjdpb 
+       foreign key (tconview) 
+       references tconview (id);
 
     alter table tconview_worktags 
-        add index FK37F8453670181B1E (tconview), 
-        add constraint FK37F8453670181B1E 
-        foreign key (tconview) 
-        references tconview (id)
-
-    create index wordForm_index on totalwordformcount (wordForm)
+       add constraint FK3xbf309tehd0lu7r6n3w2ucyf 
+       foreign key (tconview) 
+       references tconview (id);
 
     alter table totalwordformcount 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table totalwordformcount 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
-
-    create index isActive_index on usergroup (isActive)
-
-    create index wordset_isPublic_index on usergroup (isPublic)
-
-    create index wordset_owner_index on usergroup (owner)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table usergroup_admins 
-        add index usergroup_admins_index (usergroup), 
-        add constraint usergroup_admins_index 
-        foreign key (usergroup) 
-        references usergroup (id)
+       add constraint usergroup_admins_index 
+       foreign key (usergroup) 
+       references usergroup (id);
 
     alter table usergroup_members 
-        add index usergroup_members_index (usergroup), 
-        add constraint usergroup_members_index 
-        foreign key (usergroup) 
-        references usergroup (id)
-
-    create index isActive_index on usergrouppermission (isActive)
-
-    create index wordset_isPublic_index on usergrouppermission (isPublic)
-
-    create index wordset_owner_index on usergrouppermission (owner)
+       add constraint usergroup_members_index 
+       foreign key (usergroup) 
+       references usergroup (id);
 
     alter table usergrouppermission 
-        add index userdata_index (authoredTextAnnotation), 
-        add constraint userdata_index 
-        foreign key (authoredTextAnnotation) 
-        references authoredtextannotation (id)
+       add constraint usergroup_index 
+       foreign key (userGroup) 
+       references usergroup (id);
 
     alter table usergrouppermission 
-        add index usergroup_index (userGroup), 
-        add constraint usergroup_index 
-        foreign key (userGroup) 
-        references usergroup (id)
-
-    create index colocationOrdinal_index on word (colocationOrdinal)
-
-    create index tag_index on word (tag)
+       add constraint userdata_index 
+       foreign key (authoredTextAnnotation) 
+       references authoredtextannotation (id);
 
     alter table word 
-        add index speech_index (speech), 
-        add constraint speech_index 
-        foreign key (speech) 
-        references speech (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table word 
-        add index line_index (line), 
-        add constraint line_index 
-        foreign key (line) 
-        references line (id)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table word 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint line_index 
+       foreign key (line) 
+       references line (id);
 
     alter table word 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
+       add constraint prev_index 
+       foreign key (prev) 
+       references word (id);
 
     alter table word 
-        add index prev_index (prev), 
-        add constraint prev_index 
-        foreign key (prev) 
-        references word (id)
+       add constraint next_index 
+       foreign key (next) 
+       references word (id);
 
     alter table word 
-        add index next_index (next), 
-        add constraint next_index 
-        foreign key (next) 
-        references word (id)
-
-    create index wordForm_index on wordcount (wordForm)
+       add constraint speech_index 
+       foreign key (speech) 
+       references speech (id);
 
     alter table wordcount 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table wordcount 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
-
-    create index tag_index on wordpart (tag)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table wordpart 
-        add index lemPos_index (lemPos), 
-        add constraint lemPos_index 
-        foreign key (lemPos) 
-        references lempos (id)
+       add constraint word_index 
+       foreign key (word) 
+       references word (id);
 
     alter table wordpart 
-        add index word_index (word), 
-        add constraint word_index 
-        foreign key (word) 
-        references word (id)
+       add constraint workPart_index 
+       foreign key (workPart) 
+       references workpart (id);
 
     alter table wordpart 
-        add index bensonLemPos_index (bensonLemPos), 
-        add constraint bensonLemPos_index 
-        foreign key (bensonLemPos) 
-        references bensonlempos (id)
+       add constraint lemPos_index 
+       foreign key (lemPos) 
+       references lempos (id);
 
     alter table wordpart 
-        add index workPart_index (workPart), 
-        add constraint workPart_index 
-        foreign key (workPart) 
-        references workpart (id)
-
-    create index isActive_index on wordset (isActive)
-
-    create index wordset_isPublic_index on wordset (isPublic)
-
-    create index wordset_title_index on wordset (title)
-
-    create index wordset_owner_index on wordset (owner)
+       add constraint bensonLemPos_index 
+       foreign key (bensonLemPos) 
+       references bensonlempos (id);
 
     alter table wordset_wordtags 
-        add index wordset_wordTags_index (wordSet), 
-        add constraint wordset_wordTags_index 
-        foreign key (wordSet) 
-        references wordset (id)
+       add constraint wordset_wordTags_index 
+       foreign key (wordSet) 
+       references wordset (id);
 
     alter table wordset_workparttags 
-        add index wordset_workPartTags_index (wordSet), 
-        add constraint wordset_workPartTags_index 
-        foreign key (wordSet) 
-        references wordset (id)
+       add constraint wordset_workPartTags_index 
+       foreign key (wordSet) 
+       references wordset (id);
 
     alter table wordset_worktags 
-        add index wordset_workTags_index (wordSet), 
-        add constraint wordset_workTags_index 
-        foreign key (wordSet) 
-        references wordset (id)
-
-    create index wordForm_index on wordsettotalwordformcount (wordForm)
-
-    create index workPartTag_index on wordsettotalwordformcount (workPartTag)
+       add constraint wordset_workTags_index 
+       foreign key (wordSet) 
+       references wordset (id);
 
     alter table wordsettotalwordformcount 
-        add index word_index (wordSet), 
-        add constraint word_index 
-        foreign key (wordSet) 
-        references wordset (id)
-
-    create index wordcount_wordForm_index on wordsetwordcount (wordForm)
-
-    create index workPartTag_index on wordsetwordcount (workPartTag)
+       add constraint word_index 
+       foreign key (wordSet) 
+       references wordset (id);
 
     alter table wordsetwordcount 
-        add index wordSet_index (wordSet), 
-        add constraint wordSet_index 
-        foreign key (wordSet) 
-        references wordset (id)
-
-    create index tag_index on workpart (tag)
+       add constraint wordSet_index 
+       foreign key (wordSet) 
+       references wordset (id);
 
     alter table workpart 
-        add index work_index (work), 
-        add constraint work_index 
-        foreign key (work) 
-        references workpart (id)
+       add constraint parent_index 
+       foreign key (parent) 
+       references workpart (id);
 
     alter table workpart 
-        add index primaryText_index (primaryText), 
-        add constraint primaryText_index 
-        foreign key (primaryText) 
-        references textwrapper (id)
+       add constraint work_index 
+       foreign key (work) 
+       references workpart (id);
 
     alter table workpart 
-        add index parent_index (parent), 
-        add constraint parent_index 
-        foreign key (parent) 
-        references workpart (id)
+       add constraint primaryText_index 
+       foreign key (primaryText) 
+       references textwrapper (id);
 
     alter table workpart 
-        add index corpus_index (corpus), 
-        add constraint corpus_index 
-        foreign key (corpus) 
-        references corpus (id)
+       add constraint corpus_index 
+       foreign key (corpus) 
+       references corpus (id);
 
     alter table workpart_children 
-        add index FK63AEE95ABAAEFE25 (child_id), 
-        add constraint FK63AEE95ABAAEFE25 
-        foreign key (child_id) 
-        references workpart (id)
+       add constraint FK7jfidkif6sad8ht65tbhty6ex 
+       foreign key (child_id) 
+       references workpart (id);
 
     alter table workpart_children 
-        add index FK63AEE95AD32B97D7 (parent_id), 
-        add constraint FK63AEE95AD32B97D7 
-        foreign key (parent_id) 
-        references workpart (id)
+       add constraint FK6nday6ru7a2yu8wlyt84g9boi 
+       foreign key (parent_id) 
+       references workpart (id);
 
     alter table workpart_translations 
-        add index FK617DC9BD723B60CF (textWrapper_id), 
-        add constraint FK617DC9BD723B60CF 
-        foreign key (textWrapper_id) 
-        references textwrapper (id)
+       add constraint FKhgpflk008ns4qie3s31gp1srp 
+       foreign key (textWrapper_id) 
+       references textwrapper (id);
 
     alter table workpart_translations 
-        add index FK617DC9BDBC3FDFBD (workPart_id), 
-        add constraint FK617DC9BDBC3FDFBD 
-        foreign key (workPart_id) 
-        references workpart (id)
-
-    create index isActive_index on workset (isActive)
-
-    create index title_index on workset (title)
-
-    create index owner_index on workset (owner)
-
-    create index isPublic_index on workset (isPublic)
+       add constraint FKpeutxn4po1xf3th5cpmee3aki 
+       foreign key (workPart_id) 
+       references workpart (id);
 
     alter table workset_workparttags 
-        add index workset_index (workSet), 
-        add constraint workset_index 
-        foreign key (workSet) 
-        references workset (id)
+       add constraint workset_index 
+       foreign key (workSet) 
+       references workset (id);

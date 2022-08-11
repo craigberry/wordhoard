@@ -30,7 +30,11 @@ bin/edu/northwestern/at/wordhoard/model/speakers/*.hbm.xml \
 bin/edu/northwestern/at/wordhoard/model/userdata/*.hbm.xml \
 bin/edu/northwestern/at/wordhoard/model/tconview/*.hbm.xml \
 bin/edu/northwestern/at/wordhoard/model/wrappers/*.hbm.xml \
->/dev/null
+>misc/schema.ddl
+
+perl -pi -e 's/type=MyISAM/engine=MyISAM/' misc/schema.ddl
+
+$MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD $db < misc/schema.ddl
 
 $MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD --batch <<eof
 
