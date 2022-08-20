@@ -676,10 +676,6 @@ public class CQLTerm
 	{
 		if ( ( termText == null ) || ( termText.length() == 0 ) ) return "";
 
-		StringBuffer sb	= new StringBuffer();
-
-		sb.append( "(" );
-
 		String hqlName	=
 			(String)elementsToHQLNames.get( new Integer( termType ) );
 
@@ -708,11 +704,20 @@ public class CQLTerm
 				StringUtils.replaceAll( hqlName , "%i" , fieldIndex + "" );
 		}
 
-		sb.append( hqlName );
-
 		boolean allowsOp	=
 			((Boolean)allowsOperators.get(
 				new Integer( termType ) ) ).booleanValue();
+
+		StringBuffer sb	= new StringBuffer();
+
+		if (!allowsOp && isRegExp && termType != POS) {
+			if ( !matchTerm ) sb.append( "(not " );
+			sb.append( "(regexp_like(" );
+		}
+		else {
+			sb.append( "(" );
+		}
+		sb.append( hqlName );
 
 		if ( allowsOp )
 		{
@@ -781,14 +786,8 @@ System.err.println( "filteredCol has " + filteredCol.size() + " entries." );
 				}
 				else
 				{
-					if ( matchTerm )
-					{
-        				sb.append( " rlike " );
-					}
-					else
-					{
-        				sb.append( " not rlike " );
-					}
+					// regexp_like
+					sb.append( ", " );
 				}
 			}
 			else
@@ -812,6 +811,11 @@ System.err.println( "filteredCol has " + filteredCol.size() + " entries." );
 		}
 
 		sb.append( ")" );
+
+		// regexp_like
+		if (!allowsOp && isRegExp && termType != POS) {
+			sb.append( " <> 0)");
+		}
 
 		return sb.toString();
     }

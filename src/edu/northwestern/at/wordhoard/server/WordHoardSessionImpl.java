@@ -11,7 +11,6 @@ import java.sql.Statement;
 
 import org.hibernate.*;
 import org.hibernate.exception.*;
-import org.hibernate.jdbc.Work;
 import org.hibernate.cfg.*;
 import org.hibernate.query.Query;
 import org.hibernate.internal.SessionImpl;
@@ -391,7 +390,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 		Configuration cfg = new Configuration();
 		cfg.setProperty(
-			"hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		cfg.setProperty(
 			"hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		cfg.setProperty(
@@ -414,7 +413,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 
 		Configuration udCfg = new Configuration();
 		udCfg.setProperty(
-			"hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		udCfg.setProperty(
 			"hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		udCfg.setProperty(

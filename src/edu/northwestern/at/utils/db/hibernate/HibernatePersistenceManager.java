@@ -203,7 +203,7 @@ public class HibernatePersistenceManager
 			if ( url != null )
 			{
 				cfg.setProperty(
-					"hibernate.dialect net.sf.hibernate.dialect.MySQLDialect" ,
+					"hibernate.dialect edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect" ,
 					"1" );
 
 				cfg.setProperty(
@@ -328,6 +328,7 @@ public class HibernatePersistenceManager
 		try
 		{
 			session	= sessionFactory.openSession();
+
 		}
 		catch ( HibernateException e )
 		{
