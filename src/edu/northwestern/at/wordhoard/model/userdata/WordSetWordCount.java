@@ -21,7 +21,7 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *		work part.</li>
  *	</ul>
  *
- *	@hibernate.class  table="wordsetwordcount"
+ *	@hibernate.class  table="wordhoard.wordsetwordcount"
  */
 
 public class WordSetWordCount

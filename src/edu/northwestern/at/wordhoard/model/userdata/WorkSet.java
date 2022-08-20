@@ -43,7 +43,7 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *		is fully created, not marked for deletion, and can be used.</li>
  *	</ul>
  *
- *	@hibernate.class table="workset"
+ *	@hibernate.class table="wordhoard.workset"
  */
 
 public class WorkSet

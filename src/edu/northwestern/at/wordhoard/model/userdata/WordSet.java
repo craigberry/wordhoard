@@ -66,7 +66,7 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.ExportUtils;
  *		</li>
  *	</ul>
  *
- *	@hibernate.class  table="wordset"
+ *	@hibernate.class  table="wordhoard.wordset"
  *		discriminator-value="1"
  *	@hibernate.discriminator column="is_wordset" type="int"
  */

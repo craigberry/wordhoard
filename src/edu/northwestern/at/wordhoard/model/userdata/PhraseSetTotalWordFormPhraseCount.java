@@ -19,7 +19,7 @@ import edu.northwestern.at.wordhoard.model.*;
  *		phrase set.</li>
  *	</ul>
  *
- *	@hibernate.class  table="phrasesettotalwordformcount"
+ *	@hibernate.class  table="wordhoard.phrasesettotalwordformcount"
  */
 
 public class PhraseSetTotalWordFormPhraseCount

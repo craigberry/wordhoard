@@ -4,12 +4,11 @@ import java.io.*;
 import java.util.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
 /**	A permission on an object for a UserGroup.
  *
  *
- *	@hibernate.class table="usergrouppermission"
+ *	@hibernate.class table="wordhoard.usergrouppermission"
  */
  
 public class UserGroupPermission

@@ -4,8 +4,6 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import java.util.Date;
 
-import org.w3c.dom.*;
-
 /**	A WordHoard user data object.
  */
 

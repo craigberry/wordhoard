@@ -111,6 +111,7 @@ public class WordSetUtils implements Serializable
 		}
 		catch ( Exception e )
 		{
+			e.printStackTrace();
 			result	= 0;
 		}
 		finally
@@ -159,7 +160,7 @@ public class WordSetUtils implements Serializable
 			new MySQLInsertGenerator
 			(
 				persistingPhrases ?
-					"phrasesetphrasecount" : "wordsetwordcount" ,
+					"wordhoard.phrasesetphrasecount" : "wordhoard.wordsetwordcount" ,
 				new String[]
 				{
 					"word_string" ,
@@ -186,7 +187,7 @@ public class WordSetUtils implements Serializable
 			new MySQLInsertGenerator
 			(
 				persistingPhrases ?
-					"phrasesettotalwordformcount" : "wordsettotalwordformcount" ,
+					"wordhoard.phrasesettotalwordformcount" : "wordhoard.wordsettotalwordformcount" ,
 				new String[]
 				{
 					"wordForm" ,
@@ -845,7 +846,6 @@ public class WordSetUtils implements Serializable
 
 		wordDataCounter.countWordParts( words , true , progressReporter );
 
-		System.gc();
 								//	Create the word set with the
 								//	specified words and counts.
 		return
@@ -1334,7 +1334,7 @@ public class WordSetUtils implements Serializable
 		MySQLInsertGenerator wordTagsGenerator	=
 			new MySQLInsertGenerator
 			(
-				"wordset_wordtags" ,
+				"wordhoard.wordset_wordtags" ,
 				new String[]
 				{
 					"wordSet" ,
@@ -1352,7 +1352,7 @@ public class WordSetUtils implements Serializable
 		MySQLInsertGenerator workTagsGenerator	=
 			new MySQLInsertGenerator
 			(
-				"wordset_worktags" ,
+				"wordhoard.wordset_worktags" ,
 				new String[]
 				{
 					"wordSet" ,
@@ -1370,7 +1370,7 @@ public class WordSetUtils implements Serializable
 		MySQLInsertGenerator workPartTagsGenerator	=
 			new MySQLInsertGenerator
 			(
-				"wordset_workparttags" ,
+				"wordhoard.wordset_workparttags" ,
 				new String[]
 				{
 					"wordSet" ,
@@ -1433,16 +1433,15 @@ public class WordSetUtils implements Serializable
 
 		try
 		{
-			currentProgress	+=
-				performBatchInserts
-				(
-					new String[]
-					{
-						wordTagsGenerator.getInsert() ,
-						workPartTagsGenerator.getInsert() ,
-						workTagsGenerator.getInsert()
-					}
-				);
+			String[] inserts = new String[]
+			{
+				wordTagsGenerator.getInsert() ,
+				workPartTagsGenerator.getInsert() ,
+				workTagsGenerator.getInsert()
+			};
+
+			currentProgress	+= performBatchInserts( inserts );
+
 								//	Update the progress display.
 
 			if ( progressReporter != null )

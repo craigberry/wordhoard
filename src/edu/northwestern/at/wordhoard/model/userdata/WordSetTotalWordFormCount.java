@@ -18,7 +18,7 @@ import edu.northwestern.at.wordhoard.model.*;
  *	<li>The total count of the word form for the work in this word set.</li>
  *	</ul>
  *
- *	@hibernate.class  table="wordsettotalwordformcount"
+ *	@hibernate.class  table="wordhoard.wordsettotalwordformcount"
  */
 
 public class WordSetTotalWordFormCount

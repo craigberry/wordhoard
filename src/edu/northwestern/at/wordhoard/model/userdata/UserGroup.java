@@ -3,12 +3,11 @@ package edu.northwestern.at.wordhoard.model.userdata;
 import java.io.*;
 import java.util.*;
 import edu.northwestern.at.wordhoard.model.*;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
 /**	A group of users.
  *
  *
- *	@hibernate.class table="usergroup"
+ *	@hibernate.class table="wordhoard.usergroup"
  */
  
 public class UserGroup

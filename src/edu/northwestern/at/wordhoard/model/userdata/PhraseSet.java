@@ -34,7 +34,7 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *		</li>
  *	</ul>
  *
- *	@hibernate.subclass table="wordset" discriminator-value="0"
+ *	@hibernate.subclass table="wordhoard.wordset" discriminator-value="0"
  */
 
 public class PhraseSet

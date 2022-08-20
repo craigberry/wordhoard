@@ -12,7 +12,7 @@ import edu.northwestern.at.wordhoard.model.*;
  *	A phrase contains an ordered list of adjacent words.
  *	</p>
  *
- *	@hibernate.class table="phrase"
+ *	@hibernate.class table="wordhoard.phrase"
  *
  */
 
