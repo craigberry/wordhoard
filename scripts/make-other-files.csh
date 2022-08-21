@@ -21,8 +21,6 @@ mkdir other-files
 
 echo "Copying full-build.txt"
 cp misc/full-build.txt other-files
-echo "Creating lib.zip"
-zip -rq other-files/lib.zip lib
 echo "Copying model.pdf"
 cp misc/model.pdf other-files
 echo "Copying XML files"

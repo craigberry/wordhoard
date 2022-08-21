@@ -3,7 +3,6 @@ manifest-attributes.txt
 wordhoardserver.jar
 client/
 javadoc/
-lib/
 bin/
 data/works
 data/translations
