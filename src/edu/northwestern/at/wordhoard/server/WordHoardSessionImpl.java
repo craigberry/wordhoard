@@ -7,13 +7,14 @@ import java.rmi.*;
 import java.rmi.server.*;
 import java.net.*;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.hibernate.*;
 import org.hibernate.exception.*;
 import org.hibernate.cfg.*;
 import org.hibernate.query.Query;
-import org.hibernate.internal.SessionImpl;
+import org.hibernate.jdbc.ReturningWork;
 
 import edu.northwestern.at.utils.ClassUtils;
 import edu.northwestern.at.utils.db.PersistenceException;
@@ -764,7 +765,12 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		int result	= 0;
 		Statement statement = null;
 		try {
-			Connection connection =  ((SessionImpl)session.getSession()).connection();
+			Connection connection = session.doReturningWork(new ReturningWork<Connection>() {
+				@Override
+				public Connection execute(Connection conn) throws SQLException {
+					return conn;
+				}
+			});
 			statement = connection.createStatement();
 			result = statement.executeUpdate(insertString);
 			statement.close();
