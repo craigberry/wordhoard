@@ -503,6 +503,8 @@ public class Tree extends XTree {
 		}
 		public void mouseReleased (MouseEvent event) {
 			try {
+				TreePath path = getClosestPathForLocation(event.getX(), event.getY());
+				if (path != null) setSelectionPath(path);
 				if (event.getClickCount() > 1) openSelected();
 			} catch (Exception e) {
 				Err.err(e);

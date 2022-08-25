@@ -477,6 +477,8 @@ public class XTree extends JTree
 					defaultMouseListeners[i].mouseExited(event);
 			}
 			public void mousePressed (MouseEvent event) {
+				TreePath path = getClosestPathForLocation(event.getX(), event.getY());
+				if (path != null) setSelectionPath(path);
 				pressedEventDeferred = eventIsInBounds(event);
 				if (pressedEventDeferred) return;
 				for (int i = 0; i < defaultMouseListeners.length; i++)
