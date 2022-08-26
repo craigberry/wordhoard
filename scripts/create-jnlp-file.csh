@@ -32,7 +32,7 @@ cat >client/wordhoard.jnlp <<eof
     <resources>
         <property name="apple.awt.application.name" value="WordHoard" />
         <property name="apple.laf.useScreenMenuBar" value="true" />
-        <j2se version="1.8*" initial-heap-size="100m" max-heap-size="640m" />
+        <j2se version="11.0* 1.8*" initial-heap-size="150m" max-heap-size="1024m" />
         <jar href="wordhoard.jar" />
 eof
 
