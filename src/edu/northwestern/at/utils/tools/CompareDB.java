@@ -234,7 +234,7 @@ public class CompareDB {
 			System.exit(1);
 		}
 	
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		DatabaseConnection c1 = getConnection(args[0], args[1], args[2]);
 		DatabaseConnection c2 = getConnection(args[3], args[4], args[5]);
 			

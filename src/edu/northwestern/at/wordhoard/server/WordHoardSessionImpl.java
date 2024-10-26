@@ -393,7 +393,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		cfg.setProperty(
 			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		cfg.setProperty(
-			"hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+			"hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
 		cfg.setProperty(
 			"hibernate.c3p0.max_size", "100");
 		cfg.setProperty(
@@ -416,7 +416,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		udCfg.setProperty(
 			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		udCfg.setProperty(
-			"hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+			"hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
 		udCfg.setProperty(
 			"hibernate.c3p0.max_size", "100");
 		udCfg.setProperty(

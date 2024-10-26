@@ -208,7 +208,7 @@ public class HibernatePersistenceManager
 
 				cfg.setProperty(
 					"hibernate.connection.driver_class" ,
-					"com.mysql.jdbc.Driver" );
+					"com.mysql.cj.jdbc.Driver" );
 
 				cfg.setProperty(
 					"hibernate.connection.url" , url );

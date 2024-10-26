@@ -851,7 +851,7 @@ public class Filter11 {
 		
 		//	Get a connection to Martin's database.
 		
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		ClassLoader loader = Filter10.class.getClassLoader();
 		InputStream in = loader.getResourceAsStream("martin.properties");
 		Properties properties = new Properties();

@@ -260,7 +260,7 @@ public class Filter09 {
 	private static void createShakespeareProsodicMap ()
 		throws Exception
 	{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		ClassLoader loader = Filter09.class.getClassLoader();
 		InputStream in = loader.getResourceAsStream("martin.properties");
 		Properties properties = new Properties();

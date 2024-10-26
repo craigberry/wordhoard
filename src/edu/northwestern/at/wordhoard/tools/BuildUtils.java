@@ -61,7 +61,7 @@ public class BuildUtils {
 	public static Connection getConnection (String dbname, String username, String password) 
 		throws Exception
 	{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		ClassLoader loader = BuildUtils.class.getClassLoader();
 		String url = "jdbc:mysql://localhost/" + dbname +
 			"?characterEncoding=UTF-8&useCompression=true&useSSL=true&verifyServerCertificate=false";

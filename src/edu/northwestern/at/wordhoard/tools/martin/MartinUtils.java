@@ -34,7 +34,7 @@ public class MartinUtils {
 	public static Connection getConnection ()
 		throws Exception
 	{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		InputStream in = new FileInputStream("misc/martin.properties");
 		Properties properties = new Properties();
 		properties.load(in);

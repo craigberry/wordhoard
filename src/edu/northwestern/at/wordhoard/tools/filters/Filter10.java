@@ -251,7 +251,7 @@ public class Filter10 {
 	private static void createShakespeareSpeakerMap ()
 		throws Exception
 	{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		ClassLoader loader = Filter10.class.getClassLoader();
 		InputStream in = loader.getResourceAsStream("martin.properties");
 		Properties properties = new Properties();
