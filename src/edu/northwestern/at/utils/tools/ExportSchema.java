@@ -18,6 +18,8 @@ import org.reflections.Reflections;
 import org.reflections.util.ConfigurationBuilder;
 
 import jakarta.persistence.Entity;
+
+import java.io.File;
 import java.util.EnumSet;
 import java.util.Set;
 
@@ -77,9 +79,10 @@ public class ExportSchema {
         Metadata metadata = metadataSources.buildMetadata();
         SchemaExport schemaExport = new SchemaExport();
         schemaExport.setFormat(true);
-        schemaExport.setOverrideOutputFileContent();
+        File myFile = new File(outputFile);
+        if (myFile != null && myFile.exists()) {myFile.delete();};
         schemaExport.setOutputFile(outputFile);
-        schemaExport.create(EnumSet.of(TargetType.SCRIPT), metadata);
+        schemaExport.execute(EnumSet.of(TargetType.SCRIPT), SchemaExport.Action.BOTH, metadata);
     }
 
     private Set<Class<?>> scanForEntities(String... packages) {
