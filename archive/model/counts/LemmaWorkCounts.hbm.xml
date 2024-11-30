@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.counts.LemmaWorkCounts"
+        table="lemmaworkcounts"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-LemmaWorkCounts.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="work"
+            class="edu.northwestern.at.wordhoard.model.Work"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="work_index"
+            column="work"
+        />
+
+        <many-to-one
+            name="lemma"
+            class="edu.northwestern.at.wordhoard.model.morphology.Lemma"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="lemma_index"
+            column="lemma"
+        />
+
+        <property
+            name="termFreq"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="termFreq"
+        />
+
+        <property
+            name="rank1"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="rank1"
+        />
+
+        <property
+            name="rank2"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="rank2"
+        />
+
+        <property
+            name="numMajorClass"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numMajorClass"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-LemmaWorkCounts.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.userdata.WHQuery"
+        table="query"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-WHQuery.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="title" 
+                index="title_index"
+            />
+        </property>
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="description" 
+                length="65536"
+                sql-type="text"
+            />
+        </property>
+
+        <property
+            name="webPageURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="webPageURL" 
+            />
+        </property>
+
+        <property
+            name="creationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="creationTime" 
+            />
+        </property>
+
+        <property
+            name="modificationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="modificationTime" 
+            />
+        </property>
+
+        <property
+            name="owner"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="owner" 
+                index="owner_index"
+            />
+        </property>
+
+        <property
+            name="isPublic"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isPublic" 
+                index="isPublic_index"
+            />
+        </property>
+
+        <property
+            name="isActive"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isActive" 
+                index="isActive_index"
+            />
+        </property>
+
+        <property
+            name="queryType"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="queryType" 
+                index="queryType_index"
+            />
+        </property>
+
+        <property
+            name="queryText"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="queryText"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-WHQuery.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

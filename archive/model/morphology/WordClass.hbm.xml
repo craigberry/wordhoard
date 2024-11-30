@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.morphology.WordClass"
+        table="wordclass"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-WordClass.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="tag"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="description"
+        />
+
+        <component
+            name="majorWordClass"
+            class="edu.northwestern.at.wordhoard.model.wrappers.MajorWordClass"
+        >
+        <property
+            name="majorWordClass"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="majorWordClass_majorWordClass"
+        />
+
+        </component>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-WordClass.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

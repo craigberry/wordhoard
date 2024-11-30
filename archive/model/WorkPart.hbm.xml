@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.WorkPart"
+        table="workpart"
+        discriminator-value="0"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-WorkPart.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <discriminator
+            column="is_work"
+            type="int"
+        />
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tag" 
+                index="tag_index"
+            />
+        </property>
+
+        <property
+            name="pathTag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="pathTag"
+        />
+
+        <property
+            name="shortTitle"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="shortTitle"
+        />
+
+        <property
+            name="fullTitle"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="fullTitle"
+        />
+
+        <component
+            name="taggingData"
+            class="edu.northwestern.at.wordhoard.model.wrappers.TaggingData"
+        >
+        <property
+            name="flags"
+            type="long"
+            update="true"
+            insert="true"
+            access="field"
+            column="taggingData_flags"
+        />
+
+        </component>
+
+        <many-to-one
+            name="parent"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="parent_index"
+            column="parent"
+        />
+
+        <many-to-one
+            name="work"
+            class="edu.northwestern.at.wordhoard.model.Work"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="work_index"
+            column="work"
+        />
+
+        <list
+            name="children"
+            table="workpart_children"
+            lazy="true"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="parent_id"
+            >
+            </key>
+
+            <index
+                column="child_index"
+            />
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.WorkPart"
+                column="child_id"
+                outer-join="auto"
+             />
+
+        </list>
+
+        <property
+            name="hasChildren"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+            column="hasChildren"
+        />
+
+        <many-to-one
+            name="primaryText"
+            class="edu.northwestern.at.wordhoard.model.wrappers.TextWrapper"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="primaryText_index"
+            column="primaryText"
+        />
+
+        <map
+            name="translations"
+            table="workpart_translations"
+            lazy="true"
+            sort="unsorted"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="workPart_id"
+            >
+            </key>
+
+            <index
+                column="translation_name"
+                type="string"
+            />
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.wrappers.TextWrapper"
+                column="textWrapper_id"
+                outer-join="auto"
+             />
+
+        </map>
+
+        <property
+            name="workOrdinal"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="workOrdinal"
+        />
+
+        <property
+            name="numLines"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numLines"
+        />
+
+        <property
+            name="numWords"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numWords"
+        />
+
+        <property
+            name="hasStanzaNumbers"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+            column="hasStanzaNumbers"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-WorkPart.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="edu.northwestern.at.wordhoard.model.Work"
+            discriminator-value="1"
+        >
+
+        <many-to-one
+            name="corpus"
+            class="edu.northwestern.at.wordhoard.model.Corpus"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="corpus_index"
+            column="corpus"
+        />
+
+        <component
+            name="pubDate"
+            class="edu.northwestern.at.wordhoard.model.wrappers.PubYearRange"
+        >
+        <property
+            name="startYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+            column="pubDate_startYear"
+        />
+
+        <property
+            name="endYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+            column="pubDate_endYear"
+        />
+
+        </component>
+
+        <set
+            name="authors"
+            table="authors_works"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+            access="field"
+        >
+
+            <key
+                column="work_id"
+            >
+            </key>
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.Author"
+                column="author_id"
+                outer-join="auto"
+                foreign-key="author_id_index"
+             />
+
+        </set>
+
+        <set
+            name="speakers"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+            access="field"
+        >
+
+            <key
+                column="work"
+            >
+            </key>
+
+            <one-to-many
+                  class="edu.northwestern.at.wordhoard.model.speakers.Speaker"
+            />
+
+        </set>
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-Work.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

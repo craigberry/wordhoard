@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.userdata.PhraseSetTotalWordFormPhraseCount"
+        table="wordhoard.phrasesettotalwordformcount"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PhraseSetTotalWordFormPhraseCount.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="wordForm"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="wordForm" 
+                index="wordForm_index"
+            />
+        </property>
+
+        <many-to-one
+            name="phraseSet"
+            class="edu.northwestern.at.wordhoard.model.userdata.PhraseSet"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="phrase_index"
+            column="phraseSet"
+        />
+
+        <property
+            name="workPartTag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="workPartTag" 
+                length="32"
+                index="workPartTag_index"
+            />
+        </property>
+
+        <property
+            name="wordFormCount"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="wordFormCount"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PhraseSetTotalWordFormPhraseCount.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

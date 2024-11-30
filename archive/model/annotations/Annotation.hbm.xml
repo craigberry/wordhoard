@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.annotations.Annotation"
+        table="annotation"
+        discriminator-value=""
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Annotation.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <discriminator
+            column="type"
+            type="string"
+        />
+
+        <many-to-one
+            name="category"
+            class="edu.northwestern.at.wordhoard.model.annotations.AnnotationCategory"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="category_index"
+            column="category"
+        />
+
+        <many-to-one
+            name="text"
+            class="edu.northwestern.at.wordhoard.model.wrappers.TextWrapper"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="text_index"
+            column="text"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Annotation.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+        <subclass
+            name="edu.northwestern.at.wordhoard.model.annotations.TextAnnotation"
+            discriminator-value="text"
+        >
+
+        <many-to-one
+            name="workPart"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="workPart_index"
+            column="workPart"
+        />
+
+        <component
+            name="target"
+            class="edu.northwestern.at.wordhoard.model.text.TextRange"
+        >
+
+        <component
+            name="start"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_start_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_start_offset"
+        />
+
+        </component>
+
+        <component
+            name="end"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_end_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_end_offset"
+        />
+
+        </component>
+
+        </component>
+
+	    <!--
+            	To add non XDoclet property mappings, create a file named
+                hibernate-properties-TextAnnotation.xml
+		containing the additional properties and place it in your merge dir.
+	    -->
+
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.morphology.Pos"
+        table="pos"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Pos.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="tag"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="description"
+        />
+
+        <many-to-one
+            name="wordClass"
+            class="edu.northwestern.at.wordhoard.model.morphology.WordClass"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="wordClass_index"
+            column="wordClass"
+        />
+
+        <property
+            name="syntax"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="syntax"
+        />
+
+        <property
+            name="tense"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="tense"
+        />
+
+        <property
+            name="mood"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="mood"
+        />
+
+        <property
+            name="voice"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="voice"
+        />
+
+        <property
+            name="xcase"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="xcase"
+        />
+
+        <property
+            name="gender"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="gender"
+        />
+
+        <property
+            name="person"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="person"
+        />
+
+        <property
+            name="number"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="number"
+        />
+
+        <property
+            name="degree"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="degree"
+        />
+
+        <property
+            name="negative"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="negative"
+        />
+
+        <property
+            name="language"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="language"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Pos.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

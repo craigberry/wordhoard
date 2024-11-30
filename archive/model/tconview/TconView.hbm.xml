@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.tconview.TconView"
+        table="tconview"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TconView.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="viewType"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="viewType"
+        />
+
+        <property
+            name="radioButtonLabel"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="radioButtonLabel"
+        />
+
+        <list
+            name="workTags"
+            table="tconview_worktags"
+            lazy="true"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="tconview"
+            >
+            </key>
+
+            <index
+                column="tconview_index"
+            />
+
+            <element
+                column="worktag"
+                type="java.lang.String"
+                length="32"
+                not-null="false"
+                unique="false"
+            />
+
+        </list>
+
+        <list
+            name="categories"
+            table="tconview_categories"
+            lazy="true"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="tconview"
+            >
+            </key>
+
+            <index
+                column="tconview_index"
+            />
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.tconview.TconCategory"
+                column="category"
+                outer-join="auto"
+             />
+
+        </list>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TconView.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

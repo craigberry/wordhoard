@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.server.model.Account"
+        table="account"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Account.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="username"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="username" 
+                unique="true"
+            />
+        </property>
+
+        <property
+            name="password"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="password"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="name"
+        />
+
+        <property
+            name="nuAccount"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+            column="nuAccount"
+        />
+
+        <property
+            name="canManageAccounts"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+            column="canManageAccounts"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Account.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

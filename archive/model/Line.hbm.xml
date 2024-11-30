@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.Line"
+        table="line"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Line.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tag" 
+                index="tag_index"
+            />
+        </property>
+
+        <property
+            name="number"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="number"
+        />
+
+        <property
+            name="label"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="label"
+        />
+
+        <property
+            name="stanzaLabel"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="stanzaLabel"
+        />
+
+        <many-to-one
+            name="workPart"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="workPart_index"
+            column="workPart"
+        />
+
+        <component
+            name="location"
+            class="edu.northwestern.at.wordhoard.model.text.TextRange"
+        >
+
+        <component
+            name="start"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_start_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_start_offset"
+        />
+
+        </component>
+
+        <component
+            name="end"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_end_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_end_offset"
+        />
+
+        </component>
+
+        </component>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Line.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

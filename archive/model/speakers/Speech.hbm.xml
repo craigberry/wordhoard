@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.speakers.Speech"
+        table="speech"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Speech.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="workPart"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="workPart_index"
+            column="workPart"
+        />
+
+        <set
+            name="speakers"
+            table="speech_speakers"
+            lazy="true"
+            cascade="none"
+            sort="unsorted"
+            access="field"
+        >
+
+            <key
+                column="speech_id"
+            >
+            </key>
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.speakers.Speaker"
+                column="speaker_id"
+                outer-join="auto"
+             />
+
+        </set>
+
+        <component
+            name="gender"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Gender"
+        >
+        <property
+            name="gender"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="gender_gender"
+        />
+
+        </component>
+
+        <component
+            name="mortality"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Mortality"
+        >
+        <property
+            name="mortality"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="mortality_mortality"
+        />
+
+        </component>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Speech.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

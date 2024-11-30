@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.Corpus"
+        table="corpus"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Corpus.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tag" 
+                index="tag_index"
+            />
+        </property>
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="title"
+        />
+
+        <property
+            name="charset"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="charset"
+        />
+
+        <property
+            name="posType"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="posType"
+        />
+
+        <component
+            name="taggingData"
+            class="edu.northwestern.at.wordhoard.model.wrappers.TaggingData"
+        >
+        <property
+            name="flags"
+            type="long"
+            update="true"
+            insert="true"
+            access="field"
+            column="taggingData_flags"
+        />
+
+        </component>
+
+        <set
+            name="works"
+            lazy="true"
+            inverse="true"
+            cascade="none"
+            sort="unsorted"
+            access="field"
+        >
+
+            <key
+                column="corpus"
+            >
+            </key>
+
+            <one-to-many
+                  class="edu.northwestern.at.wordhoard.model.Work"
+            />
+
+        </set>
+
+        <property
+            name="numWorkParts"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numWorkParts"
+        />
+
+        <property
+            name="numLines"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numLines"
+        />
+
+        <property
+            name="numWords"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="numWords"
+        />
+
+        <property
+            name="maxWordPathLength"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="maxWordPathLength"
+        />
+
+        <property
+            name="translations"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="translations"
+        />
+
+        <property
+            name="tranDescription"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="tranDescription"
+            length="10000"
+        />
+
+        <list
+            name="tconViews"
+            table="corpus_tconviews"
+            lazy="true"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="corpus"
+            >
+            </key>
+
+            <index
+                column="corpus_index"
+            />
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.tconview.TconView"
+                column="tconview"
+                outer-join="auto"
+             />
+
+        </list>
+
+        <property
+            name="ordinal"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="ordinal"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Corpus.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

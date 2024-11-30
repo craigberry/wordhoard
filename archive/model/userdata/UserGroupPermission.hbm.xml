@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.userdata.UserGroupPermission"
+        table="wordhoard.usergrouppermission"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-UserGroupPermission.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="title" 
+            />
+        </property>
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="description" 
+            />
+        </property>
+
+        <property
+            name="webPageURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="webPageURL" 
+            />
+        </property>
+
+        <property
+            name="creationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="creationTime" 
+            />
+        </property>
+
+        <property
+            name="modificationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="modificationTime" 
+            />
+        </property>
+
+        <property
+            name="owner"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="owner" 
+                index="wordset_owner_index"
+            />
+        </property>
+
+        <property
+            name="isPublic"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isPublic" 
+                index="wordset_isPublic_index"
+            />
+        </property>
+
+        <property
+            name="isActive"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isActive" 
+                index="isActive_index"
+            />
+        </property>
+
+        <property
+            name="query"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="query" 
+            />
+        </property>
+
+        <property
+            name="permission"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="permission" 
+            />
+        </property>
+
+        <many-to-one
+            name="userGroup"
+            class="edu.northwestern.at.wordhoard.model.userdata.UserGroup"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="usergroup_index"
+            column="userGroup"
+        />
+
+        <many-to-one
+            name="authoredTextAnnotation"
+            class="edu.northwestern.at.wordhoard.model.annotations.AuthoredTextAnnotation"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="userdata_index"
+            column="authoredTextAnnotation"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-UserGroupPermission.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

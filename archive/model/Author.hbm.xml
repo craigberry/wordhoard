@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.Author"
+        table="author"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Author.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <component
+            name="name"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Spelling"
+        >
+        <property
+            name="string"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="name_string"
+        />
+
+        <property
+            name="charset"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="name_charset"
+        />
+
+        </component>
+
+        <component
+            name="originalName"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Spelling"
+        >
+        <property
+            name="string"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="originalName_string"
+        />
+
+        <property
+            name="charset"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="originalName_charset"
+        />
+
+        </component>
+
+        <property
+            name="birthYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="birthYear" 
+                index="birthYear_index"
+            />
+        </property>
+
+        <property
+            name="deathYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="deathYear" 
+                index="deathYear_index"
+            />
+        </property>
+
+        <property
+            name="earliestWorkYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="earliestWorkYear" 
+                index="earliestWorkYear_index"
+            />
+        </property>
+
+        <property
+            name="latestWorkYear"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="latestWorkYear" 
+                index="latestWorkYear_index"
+            />
+        </property>
+
+        <set
+            name="works"
+            table="authors_works"
+            lazy="true"
+            inverse="false"
+            cascade="none"
+            sort="unsorted"
+            access="field"
+        >
+
+            <key
+                column="author_id"
+                  foreign-key="author_id_index"
+            >
+            </key>
+
+            <many-to-many
+                class="edu.northwestern.at.wordhoard.model.Work"
+                column="work_id"
+                outer-join="auto"
+                foreign-key="work_id_index"
+             />
+
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Author.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.userdata.Phrase"
+        table="wordhoard.phrase"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Phrase.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <list
+            name="wordTags"
+            table="phrase_wordtags"
+            lazy="false"
+            inverse="false"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="phraseId"
+                  foreign-key="phraseid_index"
+            >
+            </key>
+
+            <index
+                column="word_index"
+            />
+
+            <element
+                column="wordTag"
+                type="java.lang.String"
+                length="32"
+                not-null="false"
+                unique="false"
+            />
+
+        </list>
+
+        <property
+            name="workTag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="workTag" 
+                length="32"
+            />
+        </property>
+
+        <property
+            name="tagsHashCode"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tagsHashCode" 
+            />
+        </property>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Phrase.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

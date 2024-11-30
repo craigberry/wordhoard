@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.Word"
+        table="word"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-Word.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <component
+            name="spelling"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Spelling"
+        >
+        <property
+            name="string"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="spelling_string"
+        />
+
+        <property
+            name="charset"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="spelling_charset"
+        />
+
+        </component>
+
+        <component
+            name="spellingInsensitive"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Spelling"
+        >
+        <property
+            name="string"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="spellingInsensitive_string"
+        />
+
+        <property
+            name="charset"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="spellingInsensitive_charset"
+        />
+
+        </component>
+
+        <many-to-one
+            name="workPart"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="workPart_index"
+            column="workPart"
+        />
+
+        <many-to-one
+            name="work"
+            class="edu.northwestern.at.wordhoard.model.Work"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="work_index"
+            column="work"
+        />
+
+        <many-to-one
+            name="line"
+            class="edu.northwestern.at.wordhoard.model.Line"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="line_index"
+            column="line"
+        />
+
+        <property
+            name="path"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="path"
+        />
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tag" 
+                index="tag_index"
+            />
+        </property>
+
+        <component
+            name="location"
+            class="edu.northwestern.at.wordhoard.model.text.TextRange"
+        >
+
+        <component
+            name="start"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_start_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_start_offset"
+        />
+
+        </component>
+
+        <component
+            name="end"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_end_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="location_end_offset"
+        />
+
+        </component>
+
+        </component>
+
+        <property
+            name="puncBefore"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="puncBefore"
+        />
+
+        <property
+            name="puncAfter"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="puncAfter"
+        />
+
+        <many-to-one
+            name="prev"
+            class="edu.northwestern.at.wordhoard.model.Word"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="prev_index"
+            column="prev"
+        />
+
+        <many-to-one
+            name="next"
+            class="edu.northwestern.at.wordhoard.model.Word"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="next_index"
+            column="next"
+        />
+
+        <list
+            name="wordParts"
+            lazy="true"
+            cascade="none"
+            access="field"
+        >
+
+            <key
+                column="word"
+            >
+            </key>
+
+            <index
+                column="partIndex"
+            />
+
+            <one-to-many
+                  class="edu.northwestern.at.wordhoard.model.morphology.WordPart"
+            />
+
+        </list>
+
+        <property
+            name="workTag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="workTag"
+        />
+
+        <property
+            name="workOrdinal"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="workOrdinal"
+        />
+
+        <property
+            name="colocationOrdinal"
+            type="long"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="colocationOrdinal" 
+                index="colocationOrdinal_index"
+            />
+        </property>
+
+        <many-to-one
+            name="speech"
+            class="edu.northwestern.at.wordhoard.model.speakers.Speech"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="speech_index"
+            column="speech"
+        />
+
+        <component
+            name="prosodic"
+            class="edu.northwestern.at.wordhoard.model.wrappers.Prosodic"
+        >
+        <property
+            name="prosodic"
+            type="byte"
+            update="true"
+            insert="true"
+            access="field"
+            column="prosodic_prosodic"
+        />
+
+        </component>
+
+        <component
+            name="metricalShape"
+            class="edu.northwestern.at.wordhoard.model.wrappers.MetricalShape"
+        >
+
+        <property
+            name="metricalShape"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="metricalShape_metricalShape"
+        />
+
+        </component>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-Word.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

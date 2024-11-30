@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.morphology.WordPart"
+        table="wordpart"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-WordPart.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="tag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="tag" 
+                index="tag_index"
+            />
+        </property>
+
+        <property
+            name="partIndex"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="partIndex"
+        />
+
+        <many-to-one
+            name="word"
+            class="edu.northwestern.at.wordhoard.model.Word"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="word_index"
+            column="word"
+        />
+
+        <many-to-one
+            name="workPart"
+            class="edu.northwestern.at.wordhoard.model.WorkPart"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="workPart_index"
+            column="workPart"
+        />
+
+        <many-to-one
+            name="lemPos"
+            class="edu.northwestern.at.wordhoard.model.morphology.LemPos"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="lemPos_index"
+            column="lemPos"
+        />
+
+        <many-to-one
+            name="bensonLemPos"
+            class="edu.northwestern.at.wordhoard.model.morphology.BensonLemPos"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="bensonLemPos_index"
+            column="bensonLemPos"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-WordPart.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.morphology.BensonLemma"
+        table="bensonlemma"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="assigned">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-BensonLemma.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="word"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="word"
+        />
+
+        <property
+            name="wordClass"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="wordClass"
+        />
+
+        <property
+            name="homonym"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="homonym"
+        />
+
+        <property
+            name="definition"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="definition"
+        />
+
+        <property
+            name="comment"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="comment"
+        />
+
+        <property
+            name="oedLemma"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+            column="oedLemma"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-BensonLemma.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

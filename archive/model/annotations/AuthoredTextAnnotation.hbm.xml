@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="edu.northwestern.at.wordhoard.model.annotations.AuthoredTextAnnotation"
+        table="authoredtextannotation"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+            access="field"
+        >
+            <generator class="native">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-AuthoredTextAnnotation.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="body"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="body" 
+                length="65536"
+                sql-type="text"
+            />
+        </property>
+
+        <many-to-one
+            name="category"
+            class="edu.northwestern.at.wordhoard.model.annotations.AnnotationCategory"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="field"
+            foreign-key="category_index"
+            column="category"
+        />
+
+        <component
+            name="target"
+            class="edu.northwestern.at.wordhoard.model.text.TextRange"
+        >
+
+        <component
+            name="start"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_start_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_start_offset"
+        />
+
+        </component>
+
+        <component
+            name="end"
+            class="edu.northwestern.at.wordhoard.model.text.TextLocation"
+        >
+        <property
+            name="index"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_end_index"
+        />
+
+        <property
+            name="offset"
+            type="int"
+            update="true"
+            insert="true"
+            access="field"
+            column="target_end_offset"
+        />
+
+        </component>
+
+        </component>
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="title" 
+            />
+        </property>
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="description" 
+            />
+        </property>
+
+        <property
+            name="webPageURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="webPageURL" 
+            />
+        </property>
+
+        <property
+            name="creationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="creationTime" 
+            />
+        </property>
+
+        <property
+            name="modificationTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="modificationTime" 
+            />
+        </property>
+
+        <property
+            name="author"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="author" 
+            />
+        </property>
+
+        <property
+            name="annotates"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="annotates" 
+            />
+        </property>
+
+        <property
+            name="type"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="type" 
+            />
+        </property>
+
+        <property
+            name="status"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="status" 
+            />
+        </property>
+
+        <property
+            name="owner"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="owner" 
+                index="wordset_owner_index"
+            />
+        </property>
+
+        <property
+            name="isPublic"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isPublic" 
+                index="wordset_isPublic_index"
+            />
+        </property>
+
+        <property
+            name="isActive"
+            type="boolean"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="isActive" 
+                index="isActive_index"
+            />
+        </property>
+
+        <property
+            name="query"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="field"
+        >
+            <column
+                name="query" 
+            />
+        </property>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-AuthoredTextAnnotation.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
