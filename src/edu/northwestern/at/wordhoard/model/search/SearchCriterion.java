@@ -8,6 +8,8 @@ import org.hibernate.query.Query;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 
+import jakarta.persistence.Transient;
+
 /**	A word search criterion.
  */
 
@@ -27,7 +29,8 @@ public interface SearchCriterion {
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass ();
+	@Transient
+	public Class<?> getJoinClass ();
 
 	/**	Gets the Hibernate where clause.
 	 *
@@ -50,6 +53,7 @@ public interface SearchCriterion {
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause ();
 
 	/**	Sets the Hibernate query argument.

@@ -14,6 +14,19 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
 
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Transient;
+import jakarta.persistence.UniqueConstraint;
+
 /**	A phrase set.
  *
  *  <p>
@@ -37,6 +50,8 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *	@hibernate.subclass table="wordhoard.wordset" discriminator-value="0"
  */
 
+@Entity
+@DiscriminatorValue("0")
 public class PhraseSet
 	extends WordSet
 	implements
@@ -54,7 +69,7 @@ public class PhraseSet
 	 *	</p>
 	 */
 
-	protected Collection phrases		= new HashSet();
+	protected Collection<Phrase> phrases		= new HashSet<Phrase>();
 
 	/**	Sum of the phrase lengths.  Used to compute average phrase length.
 	 */
@@ -160,18 +175,38 @@ public class PhraseSet
 	 *		column="phraseId" not-null="true" foreign-key="phraseid_index"
 	 */
 
-	public Collection getPhrases()
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "phraseset_phrases",
+		joinColumns = {
+			@JoinColumn(name = "phraseSetId",
+						foreignKey = @ForeignKey(name = "phrasesetid_index")
+			)
+		},
+		inverseJoinColumns = {
+			@JoinColumn(name = "phraseId",
+						foreignKey = @ForeignKey(name = "phraseid_index")
+			)
+		},
+		uniqueConstraints = {
+			@UniqueConstraint(
+				columnNames = {"phraseSetId", "phraseId"}
+			)
+		}
+	)
+	public Collection<Phrase> getPhrases()
 	{
 		return Collections.unmodifiableCollection( phrases );
 	}
 
 	/**	Get sum of the phrase lengths.
 	 *
-	 *	@return		The mean phrase length.
+	 *	@return		The sum of the phrase lengths.
 	 *
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public double getSumPhraseLengths()
 	{
 		return sumPhraseLengths;
@@ -187,6 +222,7 @@ public class PhraseSet
 	 *	</p>
 	 */
 
+	@Transient
 	public double getMeanPhraseLength()
 	{
 		double	result	= 0.0D;
@@ -203,6 +239,7 @@ public class PhraseSet
 	 *	@return		The number of phrases.
 	 */
 
+	@Transient
 	public int getPhraseCount()
 	{
 		return phrases.size();
@@ -413,6 +450,7 @@ public class PhraseSet
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault( Class cls )
 	{
 		if ( cls.equals( PhraseSet.class ) )
@@ -430,6 +468,7 @@ public class PhraseSet
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass()
 	{
 		return null;
@@ -440,6 +479,7 @@ public class PhraseSet
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause()
 	{
 		return "word.tag in (:phraseSetWordTags)";
@@ -498,6 +538,7 @@ public class PhraseSet
 	 *	@return		The report phrase "in".
 	 */
 
+	@Transient
 	public String getReportPhrase()
 	{
 //		return WordHoardProperties.getString( "in" , "in" );
@@ -511,6 +552,7 @@ public class PhraseSet
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling( int numHits )
 	{
 		return new Spelling( getTitle() , TextParams.ROMAN );

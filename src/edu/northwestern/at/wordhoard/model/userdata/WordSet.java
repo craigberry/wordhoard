@@ -2,32 +2,40 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 /*	Please see the license information at the end of this file. */
 
-import java.io.Externalizable;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.io.*;
+import java.util.*;
 
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
+import org.w3c.dom.*;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import edu.northwestern.at.utils.xml.DOMUtils;
-import edu.northwestern.at.wordhoard.model.CanCountWords;
-import edu.northwestern.at.wordhoard.model.PersistentObject;
-import edu.northwestern.at.wordhoard.model.Word;
-import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
-import edu.northwestern.at.wordhoard.model.text.FontInfo;
-import edu.northwestern.at.wordhoard.model.text.TextLine;
-import edu.northwestern.at.wordhoard.model.text.TextParams;
-import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
-import edu.northwestern.at.wordhoard.swing.calculator.modelutils.ExportUtils;
+import edu.northwestern.at.utils.xml.*;
+
+import edu.northwestern.at.wordhoard.model.*;
+import edu.northwestern.at.wordhoard.model.search.*;
+import edu.northwestern.at.wordhoard.model.text.*;
+import edu.northwestern.at.wordhoard.model.wrappers.*;
+
+import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 /**	A word set.
  *
@@ -71,6 +79,17 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.ExportUtils;
  *	@hibernate.discriminator column="is_wordset" type="int"
  */
 
+@Entity
+@Table(name = "wordset",
+	indexes = {
+		@Index(name = "wordset_title_index", columnList = "title"),
+		@Index(name = "wordset_owner_index", columnList =  "owner"),
+		@Index(name = "wordset_isPublic_index", columnList = "isPublic"),
+		@Index(name = "wordset_isActive_index", columnList = "isActive")
+	}
+)
+@DiscriminatorValue("1")
+@DiscriminatorColumn(name = "is_wordset", discriminatorType = DiscriminatorType.INTEGER)
 public class WordSet
 	implements
 		Externalizable,
@@ -114,7 +133,7 @@ public class WordSet
 	 *	</p>
 	 */
 
-	protected Collection wordTags		= new HashSet();
+	protected Collection<String> wordTags		= new HashSet<String>();
 
 	/**	Owner of this word set. */
 
@@ -140,13 +159,13 @@ public class WordSet
 	 *	The elements are the work part reference tags.
 	 */
 
-	protected Collection workTags		= new HashSet();
+	protected Collection<String> workTags		= new HashSet<String>();
 
 	/**	Collection of work parts for words.  Element type is String.
 	 *	The elements are the work part reference tags.
 	 */
 
-	protected Collection workPartTags	= new HashSet();
+	protected Collection<String> workPartTags	= new HashSet<String>();
 
 	/**	Create an empty word set.
 	 */
@@ -230,6 +249,9 @@ public class WordSet
      *	@hibernate.id	generator-class="native" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -243,6 +265,7 @@ public class WordSet
 	 *	@hibernate.column name="title" index="wordset_title_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -256,6 +279,8 @@ public class WordSet
 	 *	@hibernate.column name="description" length="65536" sql-type="text"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(columnDefinition = "text", length = 65536)
 	public String getDescription()
 	{
 		return description;
@@ -269,6 +294,7 @@ public class WordSet
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -282,6 +308,7 @@ public class WordSet
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -295,6 +322,7 @@ public class WordSet
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -308,6 +336,7 @@ public class WordSet
 	 *	@hibernate.column name="owner" index="wordset_owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -321,6 +350,8 @@ public class WordSet
 	 *	@hibernate.column name="isPublic" index="wordset_isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -334,6 +365,8 @@ public class WordSet
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -347,6 +380,7 @@ public class WordSet
 	 *	@hibernate.column name="query"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQuery()
 	{
 		return query;
@@ -365,7 +399,16 @@ public class WordSet
 	 *		length="32"
 	 */
 
-	public Collection getWordTags()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "wordset_wordtags",
+		joinColumns = {
+			@JoinColumn(name = "wordSet",
+						foreignKey = @ForeignKey(name = "wordset_wordTags_index"))
+		}
+	)
+	@Column(name = "wordTag", columnDefinition = "varchar(32)")
+	public Collection<String> getWordTags()
 	{
 		return Collections.unmodifiableCollection( wordTags );
 	}
@@ -383,7 +426,16 @@ public class WordSet
 	 *		length="32"
 	 */
 
-	public Collection getWorkTags()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "wordset_worktags",
+		joinColumns = {
+			@JoinColumn(name = "wordSet",
+						foreignKey = @ForeignKey(name = "wordset_workTags_index"))
+		}
+	)
+	@Column(name = "tag", columnDefinition = "varchar(32)")
+	public Collection<String> getWorkTags()
 	{
 		return Collections.unmodifiableCollection( workTags );
 	}
@@ -401,7 +453,17 @@ public class WordSet
 	 *		length="32"
 	 */
 
-	public Collection getWorkPartTags()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "wordset_workparttags",
+		joinColumns = {
+			@JoinColumn(name = "wordSet",
+						foreignKey = @ForeignKey(name = "wordset_workPartTags_index")
+			)
+		}
+	)
+	@Column(name = "tag", columnDefinition = "varchar(32)")
+	public Collection<String> getWorkPartTags()
 	{
 		return Collections.unmodifiableCollection( workPartTags );
 	}
@@ -555,7 +617,7 @@ public class WordSet
 	 *	</p>
 	 */
 
-	public void addWords( Collection wordCollection )
+	public void addWords( Collection<Word> wordCollection )
 	{
 		if ( wordCollection != null )
 		{
@@ -876,7 +938,8 @@ public class WordSet
 	 *	@return			Default value for search criterion.
 	 */
 
-	public SearchCriterion getSearchDefault( Class cls )
+	@Transient
+	public SearchCriterion getSearchDefault( Class<?> cls )
 	{
 		if ( cls.equals( WordSet.class ) )
 		{
@@ -893,9 +956,9 @@ public class WordSet
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass()
+	@Transient
+	public Class<?> getJoinClass()
 	{
-//		return null;
 		return WordSet.class;
 	}
 
@@ -904,6 +967,7 @@ public class WordSet
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause()
 	{
 		return "wordSet=:wordSet and word.tag in elements(wordSet.wordTags)";
@@ -949,9 +1013,9 @@ public class WordSet
 	 *	@return		The report phrase "in".
 	 */
 
+	@Transient
 	public String getReportPhrase()
 	{
-//		return WordHoardProperties.getString( "in" , "in" );
 		return "in";
 	}
 
@@ -962,6 +1026,7 @@ public class WordSet
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling( int numHits )
 	{
 		return new Spelling( getTitle() , TextParams.ROMAN );

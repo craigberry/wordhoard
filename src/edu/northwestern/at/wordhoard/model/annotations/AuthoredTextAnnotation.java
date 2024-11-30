@@ -2,11 +2,29 @@ package edu.northwestern.at.wordhoard.model.annotations;
 
 import java.io.*;
 import java.util.*;
+
 import edu.northwestern.at.wordhoard.model.userdata.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 /**	A text annotation.
  *
@@ -18,6 +36,14 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *	@hibernate.class table="authoredtextannotation"
  */
  
+@Entity
+@Table(name="authoredtextannotation",
+	indexes = {
+		@Index(name = "authoredtextannotation_IsPublic_index", columnList = "isPublic"),
+		@Index(name = "authoredtextannotation_IsActive_index", columnList = "isActive"),
+		@Index(name = "authoredtextannotation_owner_index", columnList = "owner")
+	}
+)
 public class AuthoredTextAnnotation
 	implements 
 		PersistentObject,
@@ -130,7 +156,10 @@ public class AuthoredTextAnnotation
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -142,7 +171,9 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.property access="field"
 	 *	@hibernate.column name="body" length="65536" sql-type="text"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(length = 65536, columnDefinition = "text")
 	public String getBody () {
 		return body;
 	}
@@ -152,7 +183,8 @@ public class AuthoredTextAnnotation
 	 *	@return		The text.
 	 *
 	 */
-	 
+
+	@Transient
 	public TextWrapped getText () {
 		if(text==null) {
 			if(body==null) body=""; 
@@ -167,7 +199,10 @@ public class AuthoredTextAnnotation
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="category_index"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name="category", foreignKey = @ForeignKey(name = "category_index"))
 	public AnnotationCategory getCategory () {
 		return category;
 	}
@@ -177,7 +212,8 @@ public class AuthoredTextAnnotation
 	 *	@return		The work part.
 	 *
 	 */
-	 
+
+	@Transient
 	public WorkPart getWorkPart () {
 		if(workPart==null && annotates!=null) {workPart = WorkUtils.getWorkPartByTag(annotates);}
 		return workPart;
@@ -190,7 +226,15 @@ public class AuthoredTextAnnotation
 	 *
 	 *	@hibernate.component prefix="target_"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "start.index", column = @Column(name = "target_start_index")),
+		@AttributeOverride(name = "start.offset", column = @Column(name = "target_start_offset")),
+		@AttributeOverride(name = "end.index", column = @Column(name = "target_end_index")),
+		@AttributeOverride(name = "end.offset", column = @Column(name = "target_end_offset"))
+	})
 	public TextRange getTarget () {
 		return target;
 	}
@@ -203,6 +247,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="title"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -216,6 +261,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="description"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription()
 	{
 		return description;
@@ -229,6 +275,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -242,6 +289,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -255,6 +303,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -267,7 +316,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.property access="field"
 	 *	@hibernate.column name="author"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getAuthor () {
 		return author;
 	}
@@ -279,7 +329,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.property access="field"
 	 *	@hibernate.column name="annotates"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getAnnotates () {
 		return annotates;
 	}
@@ -291,7 +342,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.property access="field"
 	 *	@hibernate.column name="type"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getType () {
 		return type;
 	}
@@ -303,7 +355,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.property access="field"
 	 *	@hibernate.column name="status"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getStatus () {
 		return status;
 	}
@@ -316,6 +369,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="owner" index="wordset_owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -329,6 +383,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="isPublic" index="wordset_isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -342,6 +398,8 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -355,6 +413,7 @@ public class AuthoredTextAnnotation
 	 *	@hibernate.column name="query"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQuery()
 	{
 		return query;
@@ -485,7 +544,8 @@ public class AuthoredTextAnnotation
 	 *	@return		The text.
 	 *
 	 */
-	 
+
+	@Transient
 	public String getTextAsString () {
 		String val = null;
 		if(text!=null) {

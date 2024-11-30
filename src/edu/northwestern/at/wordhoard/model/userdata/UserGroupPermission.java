@@ -2,15 +2,37 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import java.io.*;
 import java.util.*;
+
+import org.hibernate.annotations.ListIndexBase;
+
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.annotations.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**	A permission on an object for a UserGroup.
  *
  *
  *	@hibernate.class table="wordhoard.usergrouppermission"
  */
- 
+
+@Entity
+@Table(name = "usergrouppermission",
+	indexes = {
+		@Index(name = "permission_isPublic_index", columnList = "isPublic"),
+		@Index(name = "permission_isActive_index", columnList = "isActive"),
+	}
+)
 public class UserGroupPermission
 	implements 
 		PersistentObject,
@@ -103,7 +125,10 @@ public class UserGroupPermission
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -116,6 +141,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="title"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -129,6 +155,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="description"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription()
 	{
 		return description;
@@ -142,6 +169,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -155,6 +183,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -168,6 +197,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -181,6 +211,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="owner" index="wordset_owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -194,6 +225,8 @@ public class UserGroupPermission
 	 *	@hibernate.column name="isPublic" index="wordset_isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -207,6 +240,8 @@ public class UserGroupPermission
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -220,6 +255,7 @@ public class UserGroupPermission
 	 *	@hibernate.column name="query"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQuery()
 	{
 		return query;
@@ -470,6 +506,9 @@ public class UserGroupPermission
 	 *	@hibernate.many-to-one access="field" foreign-key="usergroup_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userGroup")
 	public UserGroup getUserGroup()
 	{
 		return userGroup;
@@ -493,6 +532,9 @@ public class UserGroupPermission
 	 *	@hibernate.many-to-one access="field" foreign-key="userdata_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "authoredTextAnnotation")
 	public AuthoredTextAnnotation getAuthoredTextAnnotation()
 	{
 		return authoredTextAnnotation;

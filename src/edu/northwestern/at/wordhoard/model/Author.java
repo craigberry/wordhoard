@@ -21,6 +21,25 @@ import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	An author.
  *
  *	<p>Each author has the following attributes:
@@ -40,8 +59,17 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.class table="author"
  */
 
+@Entity
+@Table(name = "author",
+       indexes = {
+		@Index(name = "birthYear_index", columnList = "birthYear"),
+		@Index(name = "deathYear_index", columnList = "deathYear"),
+		@Index(name = "earliestWorkYear_index", columnList = "earliestWorkYear"),
+		@Index(name = "latestWorkYear_index", columnList = "latestWorkYear"),
+       }
+)
 public class Author implements PersistentObject, SearchDefaults,
-	SearchCriterion, GroupingObject, Serializable
+	GroupingObject, SearchCriterion, Serializable
 {
 
 	/**	Unique persistence id (primary key). */
@@ -74,7 +102,7 @@ public class Author implements PersistentObject, SearchDefaults,
 
 	/**	The works. */
 
-	private Set works = new HashSet();
+	private Set<Work> works = new HashSet<Work>();
 
 	/**	Creates a new author.
 	 */
@@ -89,6 +117,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -100,6 +131,12 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.component prefix="name_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "name_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "name_charset"))
+	})
 	public Spelling getName () {
 		return name;
 	}
@@ -120,6 +157,12 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.component prefix="originalName_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		 @AttributeOverride(name = "string", column = @Column(name = "originalName_string")),
+		 @AttributeOverride(name = "charset", column = @Column(name = "originalName_charset"))
+	})
 	public Spelling getOriginalName () {
 		return originalName;
 	}
@@ -141,6 +184,7 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.column name="birthYear" index="birthYear_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getBirthYear () {
 		return birthYear;
 	}
@@ -162,6 +206,7 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.column name="deathYear" index="deathYear_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getDeathYear () {
 		return deathYear;
 	}
@@ -183,6 +228,7 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.column name="earliestWorkYear" index="earliestWorkYear_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getEarliestWorkYear () {
 		return earliestWorkYear;
 	}
@@ -204,6 +250,7 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@hibernate.column name="latestWorkYear" index="latestWorkYear_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getLatestWorkYear () {
 		return latestWorkYear;
 	}
@@ -230,7 +277,18 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *		class="edu.northwestern.at.wordhoard.model.Work"
 	 */
 
-	public Set getWorks () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "authors_works",
+		joinColumns = {
+			@JoinColumn(name = "author_id", referencedColumnName = "id"),
+		},
+		inverseJoinColumns = {
+			@JoinColumn(name = "work_id", referencedColumnName = "id",
+						foreignKey = @ForeignKey(name = "work_id_index"))
+		}
+	)
+	public Set<Work> getWorks () {
 		return Collections.unmodifiableSet(works);
 	}
 
@@ -279,6 +337,8 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return		Number of works.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public int getNumWorks () {
 		return works.size();
 	}
@@ -290,6 +350,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
+	@Override
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Author.class)) {
 			return this;
@@ -303,7 +366,10 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass () {
+	@Access(AccessType.FIELD)
+	@Transient
+	@Override
+	public Class<?> getJoinClass () {
 		return Author.class;
 	}
 
@@ -312,6 +378,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
+	@Override
 	public String getWhereClause () {
 		return "author = :author";
 	}
@@ -347,6 +416,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return		The report phrase "in".
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
+	@Override
 	public String getReportPhrase () {
 		return "with author";
 	}
@@ -358,6 +430,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
+	@Override
 	public Spelling getGroupingSpelling (int numHits) {
 		return name;
 	}

@@ -4,12 +4,35 @@ import java.io.*;
 import java.util.*;
 import edu.northwestern.at.wordhoard.model.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+
 /**	A group of users.
  *
  *
  *	@hibernate.class table="wordhoard.usergroup"
  */
- 
+
+@Entity
+@Table(name="usergroup",
+	indexes = {
+		@Index(name = "usergroup_owner_index", columnList = "owner"),
+		@Index(name = "usergroup_isPublic_index", columnList = "isPublic"),
+		@Index(name = "usergroup_isActive_index", columnList = "isActive")
+	}
+)
 public class UserGroup
 	implements 
 		PersistentObject,
@@ -50,7 +73,7 @@ public class UserGroup
 	 *	</p>
 	 */
 
-	protected Collection members		= new HashSet();
+	protected Collection<String> members		= new HashSet<String>();
 
 	/**	Collection of userids that can manage this group.
 	 *
@@ -59,7 +82,7 @@ public class UserGroup
 	 *	</p>
 	 */
 
-	protected Collection admins		= new HashSet();
+	protected Collection<String> admins		= new HashSet<String>();
 
 	/**	Owner of this group. */
 
@@ -98,6 +121,9 @@ public class UserGroup
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -110,6 +136,7 @@ public class UserGroup
 	 *	@hibernate.column name="title"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -123,6 +150,7 @@ public class UserGroup
 	 *	@hibernate.column name="description"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription()
 	{
 		return description;
@@ -136,6 +164,7 @@ public class UserGroup
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -149,6 +178,7 @@ public class UserGroup
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -162,6 +192,7 @@ public class UserGroup
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -175,6 +206,7 @@ public class UserGroup
 	 *	@hibernate.column name="owner" index="wordset_owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -188,6 +220,8 @@ public class UserGroup
 	 *	@hibernate.column name="isPublic" index="wordset_isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -201,6 +235,8 @@ public class UserGroup
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -214,6 +250,7 @@ public class UserGroup
 	 *	@hibernate.column name="query"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQuery()
 	{
 		return query;
@@ -442,7 +479,15 @@ public class UserGroup
 	 *		length="32"
 	 */
 
-	public Collection getMembers()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name="usergroup_members",
+		joinColumns = {
+			@JoinColumn(name="usergroup", foreignKey = @ForeignKey(name = "usergroup_members_index"))
+		}
+	)
+	@Column(name="member", length = 32)
+	public Collection<String> getMembers()
 	{
 		return Collections.unmodifiableCollection( members );
 	}
@@ -522,7 +567,15 @@ public class UserGroup
 	 *		length="32"
 	 */
 
-	public Collection getAdmins()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "usergroup_admins",
+		joinColumns = {
+			@JoinColumn(name = "usergroup", foreignKey = @ForeignKey(name = "usergroup_admins_index"))
+		}
+	)
+	@Column(name = "admin", columnDefinition = "varchar(32)")
+	public Collection<String> getAdmins()
 	{
 		return Collections.unmodifiableCollection( admins );
 	}
@@ -533,7 +586,7 @@ public class UserGroup
 	 *
 	 */
 
-	public void addAdmins( Collection adminCollection )
+	public void addAdmins( Collection<String> adminCollection )
 	{
 		if ( adminCollection != null )
 		{

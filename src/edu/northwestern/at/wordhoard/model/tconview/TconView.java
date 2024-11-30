@@ -4,6 +4,20 @@ package edu.northwestern.at.wordhoard.model.tconview;
 
 import java.util.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Table;
+
 /**	A corpus table of contents view.
  *
  *	<p>Each corpus has one or more table of contents views. There are five
@@ -30,6 +44,8 @@ import java.util.*;
  *	@hibernate.class table="tconview"
  */
  
+@Entity
+@Table(name="tconview")
 public class TconView {
 
 	/**	Unique persistence id (primary key). */
@@ -67,12 +83,12 @@ public class TconView {
 	/**	List of work tags if the view type is LIST_VIEW_TYPE, else an
 		empty list. */
 	
-	private List workTags = new ArrayList();
+	private List<String> workTags = new ArrayList<String>();
 	
 	/**	List of categories if the view type is CATEGORY_VIEW_TYPE, else an
 		empty list. */
 	
-	private List categories = new ArrayList();
+	private List<TconCategory> categories = new ArrayList<TconCategory>();
 
 	/**	Creates a new table of contents view.
 	 */
@@ -87,6 +103,8 @@ public class TconView {
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -97,7 +115,9 @@ public class TconView {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getViewType () {
 		return viewType;
 	}
@@ -117,7 +137,8 @@ public class TconView {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getRadioButtonLabel () {
 		return radioButtonLabel;
 	}
@@ -144,7 +165,12 @@ public class TconView {
 	 *		column="worktag"
 	 */
 
-	public List getWorkTags () {
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "tconview_worktags", joinColumns = @JoinColumn(name = "tconview"))
+	@OrderColumn(name = "tconview_index")
+	@Column(name = "worktag", columnDefinition = "varchar(32)")
+	public List<String> getWorkTags () {
 		return Collections.unmodifiableList(workTags);
 	}
 	
@@ -173,7 +199,14 @@ public class TconView {
 	 *		class="edu.northwestern.at.wordhoard.model.tconview.TconCategory"
 	 */
 
-	public List getCategories () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "tconview_categories",
+		joinColumns = {@JoinColumn(name = "tconview")},
+		inverseJoinColumns = {@JoinColumn(name = "category")}
+	)
+	@OrderColumn(name = "tconview_index")
+	public List<TconCategory> getCategories () {
 		return Collections.unmodifiableList(categories);
 	}
 	

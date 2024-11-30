@@ -16,21 +16,15 @@ drop database if exists $db;
 create database $db character set utf8;
 eof
 
-java \
--Dhibernate.connection.url="jdbc:mysql://localhost/$db?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
--Dhibernate.connection.username="$MYSQL_ROOT_USERNAME" \
--Dhibernate.connection.password="$MYSQL_ROOT_PASSWORD" \
-org.hibernate.tool.hbm2ddl.SchemaExport \
---format \
-bin/edu/northwestern/at/wordhoard/model/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/annotations/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/counts/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/morphology/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/speakers/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/userdata/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/tconview/*.hbm.xml \
-bin/edu/northwestern/at/wordhoard/model/wrappers/*.hbm.xml \
->misc/schema.ddl
+# We can start running this when the schema export acquires the ability to preserve
+# declaration order for the columns.
+# java edu.northwestern.at.utils.tools.ExportSchema \
+# --dialect=edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect \
+# --entities=edu.northwestern.at.wordhoard.model \
+# --output=misc/schema.ddl \
+# --url="jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
+# --username="$MYSQL_ROOT_USERNAME" \
+# --password="$MYSQL_ROOT_PASSWORD"
 
 perl -pi -e 's/type=MyISAM/engine=MyISAM/' misc/schema.ddl
 

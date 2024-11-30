@@ -4,12 +4,17 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 
 import java.io.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
+
 /**	Tagging data flags.
  *
  *	<p>A set of tagging data flags is a long integer which uses bits to record
  *	which kinds of tagging data are available in a corpus, work, or work part.
  */
  
+@Embeddable
 public class TaggingData implements Serializable {
 
 	/**	Lemma tagging mask. */
@@ -78,6 +83,7 @@ public class TaggingData implements Serializable {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public long getFlags () {
 		return flags;
 	}

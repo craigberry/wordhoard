@@ -11,10 +11,14 @@ import edu.northwestern.at.wordhoard.model.speakers.Speaker;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 /**	A mortality wrapper.
  */
-
+@Embeddable
 public class Mortality implements SearchCriterion, GroupingObject {
 
 	/**	Mortal. */
@@ -59,8 +63,19 @@ public class Mortality implements SearchCriterion, GroupingObject {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+    @Column(name="mortality_mortality")
 	public byte getMortality () {
 		return mortality;
+	}
+
+
+	/** Sets the mortality.
+	 *
+	 *	@param	mortality			mortality.
+	 */
+
+	 public void setMortality (byte mortality) {
 	}
 
 	/**	Gets the join class.
@@ -68,8 +83,16 @@ public class Mortality implements SearchCriterion, GroupingObject {
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass () {
+	public Class<Speaker> getJoinClass () {
 		return Speaker.class;
+	}
+
+	/** Sets the join class.
+	 *
+	 *	@param	class			join class.
+	 */
+
+	public void setJoinClass (Class<Speaker> cls) {
 	}
 
 	/**	Gets the Hibernate where clause.
@@ -79,6 +102,14 @@ public class Mortality implements SearchCriterion, GroupingObject {
 
 	public String getWhereClause () {
 		return "speaker.mortality.mortality = :mortality";
+	}
+
+	/** Sets the Hibernate where clause.
+	 *
+	 * @param whereClause
+	 */
+
+	public void setWhereClause(String whereClause) {
 	}
 
 	/**	Sets the Hibernate query argument.
@@ -114,6 +145,14 @@ public class Mortality implements SearchCriterion, GroupingObject {
 
 	public String getReportPhrase () {
 		return "spoken by";
+	}
+
+	/**	Sets the report phrase.
+	 *
+	 *	@param	phrase	The report phrase.
+	 */
+
+	 public void setReportPhrase (String phrase) {
 	}
 
 	/**	Gets the spelling of the grouping object.

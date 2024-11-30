@@ -8,12 +8,15 @@ import edu.northwestern.at.utils.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.wordhoard.model.grouping.*;
 
+import jakarta.persistence.Embeddable;
+
 /**	A spelling.
  *
  *	<p>A spelling is a unicode string of text plus the character
  *	set used by the string.
  */
 
+@Embeddable
 public class Spelling implements GroupingObject, Serializable, Comparable {
 
 	/**	The string. */
@@ -65,6 +68,14 @@ public class Spelling implements GroupingObject, Serializable, Comparable {
 		return string;
 	}
 
+	/**	Sets the string.
+	 *
+	 *	@param	string	The string.
+	 */
+
+	public void setString (String string) {
+	}
+
 	/**	Gets the character set.
 	 *
 	 *	@return		The character set.
@@ -76,6 +87,14 @@ public class Spelling implements GroupingObject, Serializable, Comparable {
 		return charset;
 	}
 
+	/**	Sets the character set.
+	 *
+	 *	@param	charset	The character set.
+	 */
+
+	public void setCharset (byte charset) {
+	}
+
 	/**	Gets the report phrase.
 	 *
 	 *	@return		The report phrase "with spelling".
@@ -83,6 +102,14 @@ public class Spelling implements GroupingObject, Serializable, Comparable {
 
 	public String getReportPhrase () {
 		return "with spelling";
+	}
+
+	/**	Sets the report phrase.
+	 *
+	 *	@param	phrase	The report phrase.
+	 */
+
+	public void setReportPhrase (String phrase) {
 	}
 
 	/**	Gets the spelling of the grouping object.

@@ -5,6 +5,15 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**	A text wrapper.
  *
  *	<p>This class wraps a {@link
@@ -19,6 +28,8 @@ import edu.northwestern.at.wordhoard.model.text.*;
  *	@hibernate.class table="textwrapper"
  */
  
+@Entity
+@Table(name="textwrapper")
 public class TextWrapper implements TextWrapped, PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -50,7 +61,10 @@ public class TextWrapper implements TextWrapped, PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -63,6 +77,8 @@ public class TextWrapper implements TextWrapped, PersistentObject {
 	 *	@hibernate.column name="text" sql-type="mediumblob"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Column(columnDefinition = "mediumblob")
 	public Text getText () {
 		return text;
 	}

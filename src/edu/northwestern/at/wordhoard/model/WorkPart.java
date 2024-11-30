@@ -24,6 +24,31 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 import edu.northwestern.at.wordhoard.model.wrappers.TaggingData;
 import edu.northwestern.at.wordhoard.model.wrappers.TextWrapper;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.persistence.DiscriminatorType;
+
 /**	A work part.
  *
  *	<p>Works are divided into parts which form a tree.
@@ -86,6 +111,11 @@ import edu.northwestern.at.wordhoard.model.wrappers.TextWrapper;
  *	@hibernate.discriminator column="is_work" type="int"
  */
 
+@Entity
+@Table(name="workpart", indexes =  @Index(name = "tag_index", columnList = "tag"))
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorValue("0")
+@DiscriminatorColumn(name = "is_work", discriminatorType = DiscriminatorType.INTEGER)
 public class WorkPart implements PersistentObject, CanCountWords,
 	GroupingObject, SearchDefaults, SearchCriterion, CanGetRelFreq, HasTag
 {
@@ -124,7 +154,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 
 	/**	List of child parts. */
 
-	private List children = new ArrayList();	// element type is WorkPart
+	private List<WorkPart> children = new ArrayList<WorkPart>();	// element type is WorkPart
 	
 	/**	True if the part has any children. */
 	
@@ -136,7 +166,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 
 	/**	Map from translation names to translations for the work part. */
 
-	private Map translations = new HashMap();
+	private Map<String, TextWrapper> translations = new HashMap<String, TextWrapper>();
 
 	/**	The ordinal of the part within its work. */
 
@@ -171,6 +201,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -192,6 +224,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.column name="tag" index="tag_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -212,6 +245,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getPathTag () {
 		return pathTag;
 	}
@@ -232,6 +266,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getShortTitle () {
 		return shortTitle;
 	}
@@ -252,6 +287,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getFullTitle () {
 		return fullTitle;
 	}
@@ -272,6 +308,11 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.component prefix="taggingData_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "flags", column = @Column(name = "taggingData_flags"))
+	})
 	public TaggingData getTaggingData () {
 		return taggingData;
 	}
@@ -292,6 +333,9 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.many-to-one access="field" foreign-key="parent_index"
 	 */
 
+	@Access(AccessType.FIELD)
+    @ManyToOne
+    @JoinColumn(name = "parent", foreignKey = @ForeignKey(name = "parent_index"))
 	public WorkPart getParent () {
 		return parent;
 	}
@@ -303,6 +347,10 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.many-to-one access="field" foreign-key="work_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	// @Embedded
+	@JoinColumn(name="work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
 	}
@@ -328,7 +376,15 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *		class="edu.northwestern.at.wordhoard.model.WorkPart"
 	 */
 
-	public List getChildren () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+		name = "workpart_children",
+		joinColumns = {@JoinColumn(name = "parent_id")},
+		inverseJoinColumns = {@JoinColumn(name = "child_id")}
+	)
+	@OrderColumn(name = "child_index")
+	public List<WorkPart> getChildren () {
 		return Collections.unmodifiableList(children);
 	}
 
@@ -340,9 +396,10 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *						null if none.
 	 */
 
+	@Transient
 	public WorkPart getChildByShortTitle (String title) {
 		if (children == null) return null;
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			if (title.equals(child.getShortTitle())) return child;
 		}
@@ -356,6 +413,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getHasChildren () {
 		return hasChildren;
 	}
@@ -388,6 +447,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return				The number of children.
 	 */
 
+	@Transient
 	public int getNumChildren () {
 		return children.size();
 	}
@@ -400,6 +460,9 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *		foreign-key="primaryText_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name="primaryText", foreignKey = @ForeignKey(name = "primaryText_index"))
 	public TextWrapper getPrimaryText () {
 		return primaryText;
 	}
@@ -426,7 +489,18 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *		class="edu.northwestern.at.wordhoard.model.wrappers.TextWrapper"
 	 */
 
-	public Map getTranslations () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "workpart_translations",
+		joinColumns = {
+			@JoinColumn(name = "workPart_id")
+		},
+		inverseJoinColumns = {
+			@JoinColumn(name = "textWrapper_id")
+		}
+	)
+	@MapKeyColumn(name="translation_name")
+	public Map<String, TextWrapper> getTranslations () {
 		return translations;
 	}
 
@@ -449,8 +523,9 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *				same order as in the owning corpus.
 	 */
 
-	public List getAvailableTranslations () {
-		ArrayList result = new ArrayList();
+	@Transient
+	public List<String> getAvailableTranslations () {
+		ArrayList<String> result = new ArrayList<String>();
 		if (translations == null) return result;
 		HashSet avail = new HashSet();
 		avail.addAll(translations.keySet());
@@ -458,8 +533,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 			WorkPart child = (WorkPart)it.next();
 			avail.addAll(child.getAvailableTranslations());
 		}
-		List corpusAvail = work.getCorpus().getTranslationsAsList();
-		for (Iterator it = corpusAvail.iterator(); it.hasNext(); ) {
+		List<String> corpusAvail = work.getCorpus().getTranslationsAsList();
+		for (Iterator<String> it = corpusAvail.iterator(); it.hasNext(); ) {
 			String tran = (String)it.next();
 			if (avail.contains(tran)) result.add(tran);
 		}
@@ -471,9 +546,10 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		Number of work parts in subtree.
 	 */
 
+	@Transient
 	public int getNumWorkPartsTree () {
 		int result = 1;
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			result += child.getNumWorkPartsTree();
 		}
@@ -487,6 +563,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWorkOrdinal () {
 		return workOrdinal;
 	}
@@ -507,6 +585,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumLines () {
 		return numLines;
 	}
@@ -527,6 +607,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumWords () {
 		return numWords;
 	}
@@ -547,6 +629,8 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getHasStanzaNumbers () {
 		return hasStanzaNumbers;
 	}
@@ -567,6 +651,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return				10,000 times count / number of words in part.
 	 */
 
+	@Transient
 	public float getRelFreq (int count) {
 		return 10000f*count/numWords;
 	}
@@ -576,14 +661,15 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The first descendant part with text, or null if none.
 	 */
 
+	@Transient
 	public WorkPart getFirstDescendantWithText () {
-		if (primaryText != null) return this;
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		if (primaryText != null) return (WorkPart)this;
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			WorkPart result = child.getFirstDescendantWithText();
 			if (result != null) return result;
 		}
-		return null;
+		return (WorkPart)null;
 	}
 
 	/**	Appends all of the descendants which have text to a list.
@@ -591,9 +677,9 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@param	list		The list.
 	 */
 
-	public void appendDescendantsWithText (List list) {
+	public void appendDescendantsWithText (List<WorkPart> list) {
 		if (primaryText != null) list.add(this);
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			child.appendDescendantsWithText(list);
 		}
@@ -604,9 +690,9 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@param	list		The list.
 	 */
 
-	public void appendDescendants (List list) {
+	public void appendDescendants (List<WorkPart> list) {
 		list.add(this);
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			child.appendDescendants(list);
 		}
@@ -617,6 +703,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The path string.
 	 */
 
+	@Transient
 	public String getPath () {
 		if (parent == null) return pathTag;
 		String parentPath = parent.getPath();
@@ -630,6 +717,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(WorkPart.class)) return this;
 		if (work == null) return null;
@@ -641,6 +729,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return null;
 	}
@@ -650,6 +739,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 		return "(word.workPart = :workPart or " +
 			"word.workPart.parent = :workPart or " +
@@ -687,6 +777,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The report phrase "in".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "in";
 	}
@@ -698,6 +789,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(getFullTitle(), TextParams.ROMAN);
 	}
@@ -742,6 +834,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 	 *	@return		The isActive.
 	 */
 
+	@Transient
 	public boolean isActive () {
 		return isActive;
 	}
@@ -753,7 +846,7 @@ public class WorkPart implements PersistentObject, CanCountWords,
 
 	public void setActive (boolean isActive) {
 		this.isActive = isActive;
-		for (Iterator it = children.iterator(); it.hasNext(); ) {
+		for (Iterator<WorkPart> it = children.iterator(); it.hasNext(); ) {
 			WorkPart child = (WorkPart)it.next();
 			child.setActive(isActive);
 		}

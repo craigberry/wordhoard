@@ -10,7 +10,7 @@ import edu.northwestern.at.wordhoard.model.text.*;
  *	edu.northwestern.at.wordhoard.model.text.Text Text} object.
  *
  */
- 
+
 public interface TextWrapped {
 
 	/**	Gets the unique id.

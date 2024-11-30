@@ -18,6 +18,22 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
 
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A work set.
  *
  *	<p>
@@ -46,6 +62,15 @@ import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
  *	@hibernate.class table="wordhoard.workset"
  */
 
+@Entity
+@Table(name = "workset",
+	indexes = {
+		@Index(name = "title_index", columnList = "title"),
+		@Index(name = "owner_index", columnList = "owner"),
+		@Index(name = "isPublic_index", columnList = "isPublic"),
+		@Index(name = "isActive_index", columnList = "isActive")
+	}
+)
 public class WorkSet
 	implements
 		Externalizable,
@@ -104,7 +129,7 @@ public class WorkSet
 
 	/**	Collection of reference tags of work parts belonging to this work set. */
 
-	protected Collection workPartTags = new HashSet();	// element type is String
+	protected Collection<String> workPartTags = new HashSet<String>();	// element type is String
 
 	/**	Create an empty work set.
 	 */
@@ -242,6 +267,9 @@ public class WorkSet
      *	@hibernate.id	generator-class="native" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -255,6 +283,7 @@ public class WorkSet
 	 *	@hibernate.column name="title" index="title_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -268,6 +297,8 @@ public class WorkSet
 	 *	@hibernate.column name="description" sql-type="text" length="65536"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(columnDefinition = "text", length = 65536)
 	public String getDescription()
 	{
 		return description;
@@ -281,6 +312,7 @@ public class WorkSet
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -294,6 +326,7 @@ public class WorkSet
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -307,6 +340,7 @@ public class WorkSet
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -320,6 +354,7 @@ public class WorkSet
 	 *	@hibernate.column name="owner" index="owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -333,6 +368,8 @@ public class WorkSet
 	 *	@hibernate.column name="isPublic" index="isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -346,6 +383,8 @@ public class WorkSet
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -359,6 +398,7 @@ public class WorkSet
 	 *	@hibernate.column name="query"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQuery()
 	{
 		return query;
@@ -377,7 +417,15 @@ public class WorkSet
 	 *		length="32"
 	 */
 
-	public Collection getWorkPartTags()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "workset_workparttags",
+		joinColumns = {
+			@JoinColumn(name = "workSet", foreignKey = @ForeignKey(name = "workset_index"))
+		}
+	)
+	@Column(name = "tag", columnDefinition = "varchar(32)")
+	public Collection<String> getWorkPartTags()
 	{
 		return Collections.unmodifiableCollection( workPartTags );
 	}
@@ -705,6 +753,8 @@ public class WorkSet
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public SearchCriterion getSearchDefault( Class cls )
 	{
 		if ( cls.equals( WorkSet.class ) )
@@ -722,7 +772,9 @@ public class WorkSet
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass()
+	@Access(AccessType.FIELD)
+	@Transient
+	public Class<?> getJoinClass()
 	{
 		return null;
 	}
@@ -732,6 +784,8 @@ public class WorkSet
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getWhereClause()
 	{
 		return "word.workPart in (:workSetWorkParts)";
@@ -790,6 +844,8 @@ public class WorkSet
 	 *	@return		The report phrase "in".
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getReportPhrase()
 	{
 		return "in";
@@ -802,6 +858,8 @@ public class WorkSet
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Spelling getGroupingSpelling( int numHits )
 	{
 		return new Spelling( getTitle() , TextParams.ROMAN );

@@ -6,6 +6,21 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	Lemma/corpus counts.
  *
  *	<p>These count objects provide summary statistics for lemma/corpus
@@ -33,6 +48,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *	@hibernate.class table="lemmacorpuscounts"
  */
  
+@Entity
+@Table(name="lemmacorpuscounts")
 public class LemmaCorpusCounts implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -99,7 +116,10 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -110,7 +130,10 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="corpus_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "corpus", foreignKey = @ForeignKey(name = "corpus_index"))
 	public Corpus getCorpus () {
 		return corpus;
 	}
@@ -121,7 +144,10 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="lemma_index"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "lemma", foreignKey = @ForeignKey(name = "lemma_index"))
 	public Lemma getLemma () {
 		return lemma;
 	}
@@ -132,7 +158,12 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.component prefix="tag_"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@AttributeOverrides( {
+		@AttributeOverride(name = "string", column = @Column(name = "tag_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "tag_charset"))
+	})
 	public Spelling getTag () {
 		return tag;
 	}
@@ -154,7 +185,10 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="wordClass_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "wordClass", foreignKey = @ForeignKey(name = "wordClass_index"))
 	public WordClass getWordClass () {
 		return wordClass;
 	}
@@ -165,7 +199,8 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
 	public String getMajorClass () {
 		return majorClass;
 	}
@@ -177,7 +212,9 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getColFreq () {
 		return colFreq;
 	}
@@ -189,7 +226,9 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getDocFreq () {
 		return docFreq;
 	}
@@ -201,7 +240,9 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getRank1 () {
 		return rank1;
 	}
@@ -213,7 +254,9 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getRank2 () {
 		return rank2;
 	}
@@ -225,7 +268,9 @@ public class LemmaCorpusCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumMajorClass () {
 		return numMajorClass;
 	}

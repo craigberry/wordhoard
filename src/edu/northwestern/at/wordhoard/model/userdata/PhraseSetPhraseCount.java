@@ -4,6 +4,21 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**	Count of a single phrase in a {@link PhraseSet}.
  *
@@ -24,6 +39,13 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *	@hibernate.class  table="wordhoard.phrasesetphrasecount"
  */
 
+@Entity
+@Table(name = "phrasesetphrasecount",
+	indexes = {
+		@Index(name = "wordForm_index", columnList = "wordForm"),
+		@Index(name = "workPartTag_index", columnList = "workPartTag")
+	}
+)
 public class PhraseSetPhraseCount
 	implements java.io.Serializable, PersistentObject
 {
@@ -97,6 +119,9 @@ public class PhraseSetPhraseCount
       * @hibernate.id	generator-class="native" access="field"
       */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -109,6 +134,11 @@ public class PhraseSetPhraseCount
 	 *	@hibernate.component prefix="phraseText_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides( {
+		@AttributeOverride(name = "string", column = @Column(name = "phraseText_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "phraseText_charset"))
+	 })
 	public Spelling getPhraseText()
 	{
 		return phraseText;
@@ -132,6 +162,8 @@ public class PhraseSetPhraseCount
 	 *	@hibernate.column name="wordForm" index="wordForm_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordForm()
 	{
 		return wordForm;
@@ -145,6 +177,9 @@ public class PhraseSetPhraseCount
 	 *		foreign-key="phraseSet_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "phraseSet", foreignKey = @ForeignKey(name = "phraseSet_index"))
 	public PhraseSet getPhraseSet()
 	{
 		return phraseSet;
@@ -160,6 +195,8 @@ public class PhraseSetPhraseCount
 	 *		length="32"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(name = "workPartTag", length = 32)
 	public String getWorkPartTag()
 	{
 		return workPartTag;
@@ -172,6 +209,8 @@ public class PhraseSetPhraseCount
 	 *	@hibernate.property name="phraseCount" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable =  true)
 	public int getPhraseCount()
 	{
 		return phraseCount;

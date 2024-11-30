@@ -6,6 +6,20 @@ import edu.northwestern.at.wordhoard.model.text.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	A line.
  *
  *	<p>Each line has the following attributes:
@@ -30,7 +44,9 @@ import edu.northwestern.at.utils.db.mysql.*;
  *
  *	@hibernate.class table="line"
  */
- 
+
+@Entity
+@Table(name = "line", indexes =  @Index(name = "tag_index", columnList = "tag"))
 public class Line implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -74,6 +90,8 @@ public class Line implements PersistentObject {
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -95,6 +113,7 @@ public class Line implements PersistentObject {
 	 *	@hibernate.column name="tag" index="tag_index"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -115,6 +134,8 @@ public class Line implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumber () {
 		return number;
 	}
@@ -135,6 +156,7 @@ public class Line implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getLabel () {
 		return label;
 	}
@@ -155,6 +177,7 @@ public class Line implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getStanzaLabel () {
 		return stanzaLabel;
 	}
@@ -175,6 +198,9 @@ public class Line implements PersistentObject {
 	 *	@hibernate.many-to-one access="field" foreign-key="workPart_index"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name="workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
 	}
@@ -195,6 +221,14 @@ public class Line implements PersistentObject {
 	 *	@hibernate.component prefix="location_"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "start.index", column = @Column(name = "location_start_index")),
+		@AttributeOverride(name = "start.offset", column = @Column(name = "location_start_offset")),
+		@AttributeOverride(name = "end.index", column = @Column(name = "location_end_index")),
+		@AttributeOverride(name = "end.offset", column = @Column(name = "location_end_offset"))
+	})
 	public TextRange getLocation () {
 		return location;
 	}

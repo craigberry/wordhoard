@@ -14,6 +14,23 @@ import edu.northwestern.at.wordhoard.model.grouping.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+
 /**	A word occurrence.
  *
  *	<p>A word records an occurrence of a specific word in a
@@ -68,6 +85,13 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="word"
  */
 
+@Entity
+@Table(name="word",
+	indexes = {
+		@Index(name = "tag_index", columnList = "tag"),
+		@Index(name = "colocationOrdinal_index", columnList = "colocationOrdinal")
+	}
+)
 public class Word implements PersistentObject, SearchDefaults, Comparable {
 
 	/**	Unique persistence id (primary key). */
@@ -124,7 +148,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 
 	/**	List of word parts. */
 
-	private List wordParts = new ArrayList();
+	private List<WordPart> wordParts = new ArrayList<WordPart>();
 
 	/**	The work tag. */
 
@@ -163,6 +187,8 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -183,6 +209,11 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.component prefix="spelling_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "spelling_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "spelling_charset"))
+	})
 	public Spelling getSpelling () {
 		return spelling;
 	}
@@ -210,7 +241,11 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *
 	 *	@hibernate.component prefix="spellingInsensitive_"
 	 */
-
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "spellingInsensitive_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "spellingInsensitive_charset"))
+	})
 	public Spelling getSpellingInsensitive () {
 		return spellingInsensitive;
 	}
@@ -233,6 +268,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="workPart_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
 	}
@@ -256,6 +294,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="work_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
 	}
@@ -267,6 +308,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="line_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "line", foreignKey = @ForeignKey(name = "line_index"))
 	public Line getLine () {
 		return line;
 	}
@@ -287,6 +331,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getPath () {
 		return path;
 	}
@@ -299,6 +344,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.column name="tag" index="tag_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -319,6 +365,13 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.component prefix="location_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "start.index", column = @Column(name = "location_start_index")),
+		@AttributeOverride(name = "start.offset", column = @Column(name = "location_start_offset")),
+		@AttributeOverride(name = "end.index", column = @Column(name = "location_end_index")),
+		@AttributeOverride(name = "end.offset", column = @Column(name = "location_end_offset"))
+	})
 	public TextRange getLocation () {
 		return location;
 	}
@@ -339,6 +392,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getPuncBefore () {
 		return puncBefore.substring(0, puncBefore.length()-1);
 	}
@@ -359,6 +413,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getPuncAfter () {
 		return puncAfter.substring(0, puncAfter.length()-1);
 	}
@@ -378,7 +433,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="prev_index"
 	 */
-
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "prev", foreignKey = @ForeignKey(name = "prev_index"))
 	public Word getPrev () {
 		return prev;
 	}
@@ -399,6 +456,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="next_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "next", foreignKey = @ForeignKey(name = "next_index"))
 	public Word getNext () {
 		return next;
 	}
@@ -423,7 +483,10 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *		class="edu.northwestern.at.wordhoard.model.morphology.WordPart"
 	 */
 
-	public List getWordParts () {
+	@Access(AccessType.FIELD)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "word", foreignKey = @ForeignKey(name = "partIndex"))
+	public List<WordPart> getWordParts () {
 		return Collections.unmodifiableList(wordParts);
 	}
 
@@ -434,6 +497,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWorkTag () {
 		return workTag;
 	}
@@ -454,6 +518,8 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWorkOrdinal () {
 		return workOrdinal;
 	}
@@ -476,6 +542,8 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *		index="colocationOrdinal_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public long getColocationOrdinal () {
 		return colocationOrdinal;
 	}
@@ -487,6 +555,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="speech_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "speech", foreignKey = @ForeignKey(name = "speech_index"))
 	public Speech getSpeech () {
 		return speech;
 	}
@@ -507,6 +578,10 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.component prefix="prosodic_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "prosodic", column = @Column(name = "prosodic_prosodic"))
+	})
 	public Prosodic getProsodic () {
 		return prosodic;
 	}
@@ -536,8 +611,10 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.component prefix="metricalShape_"
 	 */
 
-	public MetricalShape getMetricalShape () {
-		return metricalShape;
+	@Access(AccessType.FIELD)
+	@Column(name = "metricalShape_metricalShape")
+	public String getMetricalShape () {
+		return this.metricalShape.getMetricalShape();
 	}
 
 	/**	Sets the metrical shape.
@@ -585,6 +662,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Spelling.class)) {
 			return new SpellingWithCollationStrength(spelling,
@@ -626,6 +704,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@return				List of grouping objects.
 	 */
 
+	@Transient
 	public List getGroupingObjects (Class groupBy, int partIndex) {
 		ArrayList result = new ArrayList();
 		WordPart wordPart = null;
@@ -735,6 +814,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *					available.
 	 */
 
+	@Transient
 	public Spelling getBriefDescription () {
 		if (wordParts == null || wordParts.size() == 0) return null;
 		if (wordParts.size() > 1)
@@ -782,6 +862,9 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 			}
 			return new Spelling(str, TextParams.ROMAN);
 		}
+	}
+
+	public void setBriefDescription (Spelling spelling) {
 	}
 
 	/**	Gets a string representation of the word.

@@ -8,6 +8,17 @@ import java.util.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 import org.w3c.dom.*;
 
 /**	A WordHoard query.
@@ -42,6 +53,16 @@ import org.w3c.dom.*;
  *	@hibernate.class  table="query"
  */
 
+@Entity
+@Table(name = "query",
+	indexes = {
+		@Index(name = "title_index", columnList = "title"),
+		@Index(name = "owner_index", columnList = "owner"),
+		@Index(name = "isPublic_index", columnList = "isPublic"),
+		@Index(name = "isActive_index", columnList = "isActive"),
+		@Index(name = "queryType_index", columnList = "queryType")
+	}
+)
 public class WHQuery
 	implements
 		Externalizable,
@@ -175,6 +196,9 @@ public class WHQuery
      *	@hibernate.id	generator-class="native" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -188,6 +212,7 @@ public class WHQuery
 	 *	@hibernate.column name="title" index="title_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTitle()
 	{
 		return title;
@@ -201,6 +226,8 @@ public class WHQuery
 	 *	@hibernate.column name="description" sql-type="text" length="65536"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(length = 65536, columnDefinition = "text")
 	public String getDescription()
 	{
 		return description;
@@ -214,6 +241,7 @@ public class WHQuery
 	 *	@hibernate.column name="webPageURL"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getWebPageURL()
 	{
 		return webPageURL;
@@ -227,6 +255,7 @@ public class WHQuery
 	 *	@hibernate.column name="creationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getCreationTime()
 	{
 		return creationTime;
@@ -240,6 +269,7 @@ public class WHQuery
 	 *	@hibernate.column name="modificationTime"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Date getModificationTime()
 	{
 		return modificationTime;
@@ -253,6 +283,7 @@ public class WHQuery
 	 *	@hibernate.column name="owner" index="owner_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getOwner()
 	{
 		return owner;
@@ -266,6 +297,8 @@ public class WHQuery
 	 *	@hibernate.column name="isPublic" index="isPublic_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsPublic()
 	{
 		return isPublic;
@@ -279,6 +312,8 @@ public class WHQuery
 	 *	@hibernate.column name="isActive" index="isActive_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public boolean getIsActive()
 	{
 		return isActive;
@@ -292,6 +327,8 @@ public class WHQuery
 	 *	@hibernate.column name="queryType" index="queryType_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getQueryType()
 	{
 		return queryType;
@@ -304,6 +341,7 @@ public class WHQuery
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getQueryText()
 	{
 		return queryText;
@@ -318,6 +356,7 @@ public class WHQuery
 	 *	</p>
 	 */
 
+	@Transient
 	public String getQuery()
 	{
 		return queryText;

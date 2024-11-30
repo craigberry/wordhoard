@@ -1,5 +1,7 @@
 package edu.northwestern.at.wordhoard.model.wrappers;
 
+
+
 /*	Please see the license information at the end of this file. */
 
 import org.hibernate.Session;
@@ -11,10 +13,14 @@ import edu.northwestern.at.wordhoard.model.speakers.Speaker;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
 
 /**	A gender wrapper.
  */
 
+@Embeddable
 public class Gender implements SearchCriterion, GroupingObject {
 
 	/**	Male gender. */
@@ -59,6 +65,7 @@ public class Gender implements SearchCriterion, GroupingObject {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public byte getGender () {
 		return gender;
 	}
@@ -68,8 +75,14 @@ public class Gender implements SearchCriterion, GroupingObject {
 	 *	@return		The join class, or null if none.
 	 */
 
-	public Class getJoinClass () {
+	public Class<Speaker> getJoinClass () {
 		return Speaker.class;
+	}
+
+	/** Sets the join class.
+	 * 
+	 */
+	public void setJoinClass (Class<Speaker> cls) {
 	}
 
 	/**	Gets the Hibernate where clause.
@@ -79,6 +92,14 @@ public class Gender implements SearchCriterion, GroupingObject {
 
 	public String getWhereClause () {
 		return "speaker.gender.gender = :gender";
+	}
+
+	/** Sets the Hibernate where clause.
+	 *
+	 * @param whereClause
+	 */
+
+	public void setWhereClause(String whereClause) {
 	}
 
 	/**	Sets the Hibernate query argument.
@@ -114,6 +135,13 @@ public class Gender implements SearchCriterion, GroupingObject {
 
 	public String getReportPhrase () {
 		return "spoken by";
+	}
+
+	/** Sets the report phrase.
+	 *	@param	phrase			report phrase.
+	 */
+
+	public void setReportPhrase (String phrase) {
 	}
 
 	/**	Gets the spelling of the grouping object.

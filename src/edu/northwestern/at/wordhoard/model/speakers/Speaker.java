@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.model.speakers;
 
 /*	Please see the license information at the end of this file. */
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,6 +22,23 @@ import edu.northwestern.at.wordhoard.model.wrappers.Gender;
 import edu.northwestern.at.wordhoard.model.wrappers.Mortality;
 import edu.northwestern.at.wordhoard.model.wrappers.Narrative;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 /**	A speaker.
  *
@@ -56,6 +72,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.class table="speaker"
  */
 
+@Entity
+@Table(name = "speaker", indexes = {@Index(name = "name_index", columnList = "name")})
 public class Speaker implements PersistentObject, SearchDefaults,
 	SearchCriterion, GroupingObject, Serializable
 {
@@ -105,6 +123,9 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -116,6 +137,9 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.many-to-one access="field" foreign-key="work_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
 	}
@@ -136,6 +160,7 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -157,6 +182,7 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.column name="name" index="name_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getName () {
 		return name;
 	}
@@ -176,7 +202,12 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *
 	 *	@hibernate.component prefix="originalName_"
 	 */
-
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "originalName_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "originalName_charset"))
+	})
 	public Spelling getOriginalName () {
 		return originalName == null || originalName.getString() == null ?
 			null : originalName;
@@ -198,6 +229,7 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription () {
 		return description;
 	}
@@ -218,6 +250,11 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.component prefix="gender_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "gender", column = @Column(name = "gender_gender")),
+	})
 	public Gender getGender () {
 		return gender;
 	}
@@ -247,6 +284,11 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@hibernate.component prefix="mortality_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "mortality", column = @Column(name = "mortality_mortality"))
+	})
 	public Mortality getMortality () {
 		return mortality;
 	}
@@ -276,6 +318,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Speaker.class)) {
 			return this;
@@ -295,6 +339,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Class getJoinClass () {
 		return Speaker.class;
 	}
@@ -304,6 +350,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getWhereClause () {
 		return "speaker = :speaker";
 	}
@@ -339,6 +387,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@return		The report phrase "spoken by".
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getReportPhrase () {
 		return "spoken by";
 	}
@@ -350,6 +400,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		String str;
 		if (work == null) {
@@ -368,6 +420,8 @@ public class Speaker implements PersistentObject, SearchDefaults,
 	 *						to this list.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public void getGroupingObjects (Class groupBy, List list) {
 		if (groupBy.equals(SpeakerName.class)) {
 			if (name != null) list.add(new SpeakerName(name));

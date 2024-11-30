@@ -5,6 +5,19 @@ package edu.northwestern.at.wordhoard.model.counts;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	Lemma/work counts.
  *
  *	<p>These count objects provide summary statistics for lemma/work
@@ -26,7 +39,9 @@ import edu.northwestern.at.wordhoard.model.morphology.*;
  *
  *	@hibernate.class table="lemmaworkcounts"
  */
- 
+
+@Entity
+@Table(name="lemmaworkcounts")
 public class LemmaWorkCounts implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -75,7 +90,10 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -86,7 +104,10 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="work_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
 	}
@@ -97,7 +118,10 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="lemma_index"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "lemma", foreignKey = @ForeignKey(name = "lemma_index"))
 	public Lemma getLemma () {
 		return lemma;
 	}
@@ -109,7 +133,9 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getTermFreq () {
 		return termFreq;
 	}
@@ -121,7 +147,9 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getRank1 () {
 		return rank1;
 	}
@@ -133,7 +161,9 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getRank2 () {
 		return rank2;
 	}
@@ -145,7 +175,9 @@ public class LemmaWorkCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumMajorClass () {
 		return numMajorClass;
 	}

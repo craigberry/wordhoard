@@ -17,6 +17,19 @@ import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A part of speech.
  *
  *	<p>Parts of speech have the following attributes:
@@ -43,6 +56,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.class table="pos"
  */
 
+@Entity
+@Table(name="pos")
 public class Pos implements GroupingObject, PersistentObject,
 	SearchDefaults, SearchCriterion, Serializable
 {
@@ -128,6 +143,9 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -139,6 +157,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -159,6 +178,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription () {
 		return description;
 	}
@@ -179,6 +199,9 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@hibernate.many-to-one access="field" foreign-key="wordClass_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name  ="wordClass", foreignKey = @ForeignKey(name = "wordClass_index"))
 	public WordClass getWordClass () {
 		return wordClass;
 	}
@@ -198,7 +221,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getSyntax () {
 		return syntax;
 	}
@@ -218,7 +242,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getTense () {
 		return tense;
 	}
@@ -238,7 +263,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getMood () {
 		return mood;
 	}
@@ -258,7 +284,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getVoice () {
 		return voice;
 	}
@@ -278,7 +305,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getXcase () {
 		return xcase;
 	}
@@ -298,7 +326,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getGender () {
 		return gender;
 	}
@@ -318,7 +347,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getPerson () {
 		return person;
 	}
@@ -338,7 +368,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getNumber () {
 		return number;
 	}
@@ -358,7 +389,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getDegree () {
 		return degree;
 	}
@@ -378,7 +410,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getNegative () {
 		return negative;
 	}
@@ -398,7 +431,8 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getLanguage () {
 		return language;
 	}
@@ -419,6 +453,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Pos.class)) {
 			return this;
@@ -434,6 +469,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return		Tag (description).
 	 */
 
+	@Transient
 	public String getTagWithDescription () {
 		return (description == null || description.length() == 0) ? tag :
 			(tag + " (" + description + ")");
@@ -444,6 +480,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return		The report phrase "with part of speech".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "with part of speech";
 	}
@@ -455,6 +492,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(tag, TextParams.ROMAN);
 	}
@@ -464,6 +502,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return WordPart.class;
 	}
@@ -473,6 +512,7 @@ public class Pos implements GroupingObject, PersistentObject,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 		return "wordPart.lemPos.pos = :pos";
 	}

@@ -20,6 +20,18 @@ import edu.northwestern.at.wordhoard.model.text.TextParams;
 import edu.northwestern.at.wordhoard.model.wrappers.MajorWordClass;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A word class.
  *
  *	<p>A word class is a category of words. E.g., "noun", "proper noun",
@@ -45,6 +57,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.class table="wordclass"
  */
 
+@Entity
+@Table(name="wordclass")
 public class WordClass implements PersistentObject, SearchDefaults,
 	SearchCriterion, GroupingObject, Serializable
 {
@@ -78,6 +92,9 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -89,6 +106,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -109,6 +127,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getDescription () {
 		return description;
 	}
@@ -129,6 +148,10 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@hibernate.component prefix="majorWordClass_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "majorWordClass", column = @Column(name = "majorWordClass_majorWordClass"))
+	})
 	public MajorWordClass getMajorWordClass () {
 		return majorWordClass;
 	}
@@ -149,6 +172,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(WordClass.class)) {
 			return this;
@@ -164,6 +188,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return WordPart.class;
 	}
@@ -173,6 +198,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 //		return "wordPart.lemPos.lemma.wordClass = :wordClass";
 		return "lemma.wordClass = :wordClass";
@@ -209,6 +235,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@return		The report phrase "with word class".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "with word class";
 	}
@@ -220,6 +247,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(tag, TextParams.ROMAN);
 	}
@@ -232,6 +260,7 @@ public class WordClass implements PersistentObject, SearchDefaults,
 	 *						to this list.
 	 */
 
+	@Transient
 	public void getGroupingObjects (Class groupBy, List list) {
 		if (groupBy.equals(MajorWordClass.class)) {
 			if (majorWordClass != null) list.add(majorWordClass);

@@ -4,6 +4,21 @@ package edu.northwestern.at.wordhoard.model.userdata;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**	Count of a single word in a {@link WordSet}.
  *
@@ -24,6 +39,13 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *	@hibernate.class  table="wordhoard.wordsetwordcount"
  */
 
+@Entity
+@Table(name = "wordsetwordcount",
+	indexes = {
+		@Index(name = "wordcount_wordForm_index", columnList = "wordForm"),
+		@Index(name = "workPartTag_index", columnList = "workPartTag")
+	}
+)
 public class WordSetWordCount
 	implements java.io.Serializable, PersistentObject
 {
@@ -97,6 +119,9 @@ public class WordSetWordCount
       * @hibernate.id	generator-class="native" access="field"
       */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -109,6 +134,11 @@ public class WordSetWordCount
 	 *	@hibernate.component prefix="word_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "word_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "word_charset"))
+	})
 	public Spelling getWord()
 	{
 		return word;
@@ -132,6 +162,8 @@ public class WordSetWordCount
 	 *	@hibernate.column name="wordForm" index="wordcount_wordForm_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordForm()
 	{
 		return wordForm;
@@ -145,6 +177,9 @@ public class WordSetWordCount
 	 *		foreign-key="wordSet_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "wordSet", foreignKey = @ForeignKey(name = "wordSet_index"))
 	public WordSet getWordSet()
 	{
 		return wordSet;
@@ -159,6 +194,8 @@ public class WordSetWordCount
 	 *		length="32"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(length = 32)
 	public String getWorkPartTag()
 	{
 		return workPartTag;
@@ -171,6 +208,8 @@ public class WordSetWordCount
 	 *	@hibernate.property name="wordCount" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordCount()
 	{
 		return wordCount;

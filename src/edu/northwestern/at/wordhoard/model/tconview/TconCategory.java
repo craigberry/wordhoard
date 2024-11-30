@@ -4,6 +4,18 @@ package edu.northwestern.at.wordhoard.model.tconview;
 
 import java.util.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Table;
+
 /**	A corpus table of contents category.
  *
  *	<p>A category is used to group together works in a table of contents
@@ -16,6 +28,8 @@ import java.util.*;
  *	@hibernate.class table="tconcategory"
  */
  
+@Entity
+@Table(name="tconcategory")
 public class TconCategory {
 
 	/**	Unique persistence id (primary key). */
@@ -28,7 +42,7 @@ public class TconCategory {
 	
 	/**	List of work tags for the works in the category. */
 	
-	private List workTags = new ArrayList();
+	private List<String> workTags = new ArrayList<String>();
 
 	/**	Creates a new table of contents category.
 	 */
@@ -43,6 +57,8 @@ public class TconCategory {
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -57,7 +73,8 @@ public class TconCategory {
 	public String getTitle () {
 		return title;
 	}
-	
+
+	@Access(AccessType.FIELD)
 	/**	Sets the category title.
 	 *
 	 *	@param	title	The category title.
@@ -78,7 +95,14 @@ public class TconCategory {
 	 *		column="worktag"
 	 */
 
-	public List getWorkTags () {
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "tconcategory_worktags",
+		joinColumns = @JoinColumn(name = "tconcategory")
+	)
+	@Column(name = "worktag", columnDefinition = "varchar(32)")
+	@OrderColumn(name = "tconcategory_index")
+	public List<String> getWorkTags () {
 		return Collections.unmodifiableList(workTags);
 	}
 	

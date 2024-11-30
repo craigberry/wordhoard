@@ -28,6 +28,23 @@ import edu.northwestern.at.wordhoard.model.text.TextParams;
 import edu.northwestern.at.wordhoard.model.wrappers.PubYearRange;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
+
 /**	A work.
  *
  *	<p>Each work has the following attributes in addition to those defined
@@ -47,6 +64,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.subclass discriminator-value="1"
  */
 
+@Entity
+@DiscriminatorValue("1")
 public class Work extends WorkPart implements GroupingObject,
 	SearchDefaults, SearchCriterion, CanGetRelFreq, Serializable, HasTag
 {
@@ -61,11 +80,11 @@ public class Work extends WorkPart implements GroupingObject,
 
 	/**	Speakers. */
 
-	private Set speakers = new HashSet();
+	private Set<Speaker> speakers = new HashSet<Speaker>();
 
 	/**	Authors. */
 
-	private Set authors = new HashSet();
+	private Set<Author> authors = new HashSet<Author>();
 
 	/**	Creates a new work.
 	 */
@@ -80,6 +99,9 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@hibernate.many-to-one access="field" foreign-key="corpus_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name="corpus", foreignKey = @ForeignKey(name = "corpus_index"))
 	public Corpus getCorpus () {
 		return corpus;
 	}
@@ -100,6 +122,11 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@hibernate.component prefix="pubDate_"
 	 */
 
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "startYear", column = @Column(name = "pubDate_startYear")),
+		@AttributeOverride(name = "endYear", column = @Column(name = "pubDate_endYear"))
+	})
 	public PubYearRange getPubDate () {
 		return pubDate;
 	}
@@ -125,7 +152,9 @@ public class Work extends WorkPart implements GroupingObject,
 	 *		column="author_id" foreign-key="author_id_index"
 	 */
 
-	public Set getAuthors () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY, targetEntity = Author.class, mappedBy = "works")
+	public Set<Author> getAuthors () {
 		return Collections.unmodifiableSet(authors);
 	}
 
@@ -179,7 +208,9 @@ public class Work extends WorkPart implements GroupingObject,
 	 *		class="edu.northwestern.at.wordhoard.model.speakers.Speaker"
 	 */
 
-	public Set getSpeakers () {
+	@Access(AccessType.FIELD)
+	@OneToMany(mappedBy="work", fetch = FetchType.LAZY)
+	public Set<Speaker> getSpeakers () {
 		return Collections.unmodifiableSet(speakers);
 	}
 
@@ -198,8 +229,9 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		A list of all the parts of the work which have text.
 	 */
 
-	public List getPartsWithText () {
-		List list = new ArrayList();
+	@Transient
+	public List<WorkPart> getPartsWithText () {
+		List<WorkPart> list = new ArrayList<WorkPart>();
 		appendDescendantsWithText(list);
 		return list;
 	}
@@ -209,8 +241,9 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		A list of all the parts of the work.
 	 */
 
-	public List getParts () {
-		List list = new ArrayList();
+	@Transient
+	public List<WorkPart> getParts () {
+		List<WorkPart> list = new ArrayList<WorkPart>();
 		appendDescendants(list);
 		return list;
 	}
@@ -222,6 +255,8 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Work.class)) {
 			return this;
@@ -242,10 +277,14 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Class getJoinClass () {
 		return null;
 	}
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Class getLemmaJoinClass () {
 		return null;
 	}
@@ -256,10 +295,14 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getWhereClause () {
 		return "word.work = :work";
 	}
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getLemmaWhereClause () {
 		return "wordPart.lemPos.lemma = lemma and wordPart.word.work = :work";
 	}
@@ -297,6 +340,8 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(getShortTitleWithDate(), TextParams.ROMAN);
 	}
@@ -306,6 +351,8 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		Full title with date.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getFullTitleWithDate () {
 		String fullTitle = getFullTitle();
 		if (pubDate == null) {
@@ -320,6 +367,8 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return		Short title with date.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getShortTitleWithDate () {
 		String shortTitle = getShortTitle();
 		if (pubDate == null) {
@@ -337,12 +386,14 @@ public class Work extends WorkPart implements GroupingObject,
 	 *						to this list.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public void getGroupingObjects (Class groupBy, List list) {
 		if (groupBy.equals(Corpus.class)) {
 			if (corpus != null) list.add(corpus);
 		} else if (groupBy.equals(Author.class)) {
 			if (authors != null) {
-				for (Iterator it = authors.iterator(); it.hasNext(); ) {
+				for (Iterator<Author> it = authors.iterator(); it.hasNext(); ) {
 					Author author = (Author)it.next();
 					list.add(author);
 				}
@@ -378,6 +429,8 @@ public class Work extends WorkPart implements GroupingObject,
 	 *	@return			Grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public GroupingObject getGroupingObject (int groupingOption) {
 		switch (groupingOption) {
 			case GroupingWorkOptions.GROUP_BY_NONE:

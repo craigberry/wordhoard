@@ -17,6 +17,19 @@ import edu.northwestern.at.wordhoard.model.search.SearchDefaults;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 /**	A lemma.
  *
@@ -39,6 +52,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
  *	@hibernate.class table="lemma"
  */
 
+@Entity
+@Table(name="lemma")
 public class Lemma implements GroupingObject, PersistentObject,
 	SearchDefaults, SearchCriterion, Serializable
 {
@@ -80,6 +95,8 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -100,6 +117,11 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.component prefix="tag_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "tag_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "tag_charset"))
+	})
 	public Spelling getTag () {
 		return tag;
 	}
@@ -121,6 +143,11 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.component prefix="tagInsensitive_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "tagInsensitive_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "tagInsensitive_charset"))
+	})
 	public Spelling getTagInsensitive () {
 		return tagInsensitive;
 	}
@@ -141,6 +168,11 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.component prefix="spelling_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "spelling_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "spelling_charset"))
+	})
 	public Spelling getSpelling () {
 		return spelling;
 	}
@@ -161,6 +193,8 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getHomonym () {
 		return homonym;
 	}
@@ -181,6 +215,8 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@hibernate.many-to-one access="field" foreign-key="wordClass_index"
 	 */
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="wordClass", foreignKey = @ForeignKey(name = "wordClass_index"))
 	public WordClass getWordClass () {
 		return wordClass;
 	}
@@ -201,6 +237,7 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Lemma.class)) {
 			return this;
@@ -217,6 +254,7 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@return		The report phrase "with lemma".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "with lemma";
 	}
@@ -237,6 +275,7 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return WordPart.class;
 	}
@@ -246,6 +285,7 @@ public class Lemma implements GroupingObject, PersistentObject,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 //		return "wordPart.lemPos.lemma = :lemma";
 		return "lemma = :lemma";

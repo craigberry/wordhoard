@@ -6,6 +6,21 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.morphology.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	Lemma/Pos/Spelling counts.
  *
  *	<p>These count objects provide summary statistics for lemma, part of speech,
@@ -14,6 +29,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *	@hibernate.class table="lemmaposspellingcounts"
  */
  
+@Entity
+@Table(name="lemmaposspellingcounts")
 public class LemmaPosSpellingCounts implements PersistentObject {
 
 	/**	Corpus count kind. */
@@ -80,7 +97,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -92,6 +112,8 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public byte getKind () {
 		return kind;
 	}
@@ -102,7 +124,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="corpus_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "corpus", foreignKey = @ForeignKey(name = "corpus_index"))
 	public Corpus getCorpus () {
 		return corpus;
 	}
@@ -113,7 +138,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="work_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
 	}
@@ -124,7 +152,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="workPart_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
 	}
@@ -135,7 +166,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="lemma_index"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "lemma", foreignKey = @ForeignKey(name = "lemma_index"))
 	public Lemma getLemma () {
 		return lemma;
 	}
@@ -146,7 +180,10 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="pos_index"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pos", foreignKey = @ForeignKey(name = "pos_index"))
 	public Pos getPos () {
 		return pos;
 	}
@@ -157,7 +194,12 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.component prefix="spelling_"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "spelling_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "spelling_charset"))
+	})
 	public Spelling getSpelling () {
 		return spelling;
 	}
@@ -181,7 +223,9 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getFreq () {
 		return freq;
 	}
@@ -193,7 +237,9 @@ public class LemmaPosSpellingCounts implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getFreqFirstWordPart () {
 		return freqFirstWordPart;
 	}

@@ -3,6 +3,7 @@ package edu.northwestern.at.wordhoard.model.grouping;
 /*	Please see the license information at the end of this file. */
 
 import edu.northwestern.at.wordhoard.model.wrappers.*;
+import jakarta.persistence.Transient;
 
 /**	A grouping object. 
  *
@@ -22,6 +23,7 @@ public interface GroupingObject {
 	 *	@return		The report phrase.
 	 */
 
+	@Transient
 	public String getReportPhrase ();
 	
 	/**	Gets the spelling of the grouping object.
@@ -32,7 +34,8 @@ public interface GroupingObject {
 	 *
 	 *	@return		The spelling of the grouping object.
 	 */
-	 
+
+	@Transient
 	public Spelling getGroupingSpelling (int numHits);
 	
 	/**	Returns true if this object equals some other object.

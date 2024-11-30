@@ -4,9 +4,19 @@ package edu.northwestern.at.wordhoard.model.text;
 
 import java.io.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Transient;
+
 /**	A text range.
  */
  
+@Embeddable
 public class TextRange implements Serializable {
 
 	/**	The start of the range. */
@@ -52,6 +62,8 @@ public class TextRange implements Serializable {
 	 *	@hibernate.component prefix="start_"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Embedded
 	public TextLocation getStart () {
 		return start;
 	}
@@ -72,6 +84,8 @@ public class TextRange implements Serializable {
 	 *	@hibernate.component prefix="end_"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Embedded
 	public TextLocation getEnd () {
 		return end;
 	}

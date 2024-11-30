@@ -6,6 +6,15 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	A Benson word form (lemma and part of speech).
  *
  *	<p>Benson word forms have the following attributes:
@@ -20,6 +29,8 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="bensonlempos"
  */
  
+@Entity
+@Table(name="bensonlempos")
 public class BensonLemPos implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -46,7 +57,9 @@ public class BensonLemPos implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -67,6 +80,9 @@ public class BensonLemPos implements PersistentObject {
 	 *	@hibernate.many-to-one access="field" foreign-key="lemma_index"
 	 */
 	
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "lemma", foreignKey = @ForeignKey(name = "lemma_index"))
 	public BensonLemma getLemma () {
 		return lemma;
 	}
@@ -87,6 +103,9 @@ public class BensonLemPos implements PersistentObject {
 	 *	@hibernate.many-to-one access="field" foreign-key="pos_index"
 	 */
 	
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "pos", foreignKey = @ForeignKey(name = "pos_index"))
 	public BensonPos getPos () {
 		return pos;
 	}

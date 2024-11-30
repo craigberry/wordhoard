@@ -6,6 +6,14 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A Benson lemma.
  *
  *	<p>Benson lemmas have the following attributes:
@@ -22,6 +30,8 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="bensonlemma"
  */
  
+@Entity
+@Table(name="bensonlemma")
 public class BensonLemma implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -64,7 +74,9 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -84,7 +96,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getWord () {
 		return word;
 	}
@@ -104,7 +117,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getWordClass () {
 		return wordClass;
 	}
@@ -125,6 +139,8 @@ public class BensonLemma implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getHomonym () {
 		return homonym;
 	}
@@ -144,7 +160,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getDefinition () {
 		if (definition == null) return null;
 		int len = definition.length();
@@ -171,7 +188,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getComment () {
 		return comment;
 	}
@@ -191,7 +209,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getOedLemma () {
 		return oedLemma;
 	}
@@ -211,7 +230,8 @@ public class BensonLemma implements PersistentObject {
 	 *
 	 *	@return		The tag.
 	 */
-	 
+
+	@Transient
 	public String getTag () {
 		String tag = word;
 		if (wordClass != null) tag = tag + " (" + wordClass + ")";

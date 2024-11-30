@@ -5,6 +5,23 @@ package edu.northwestern.at.wordhoard.model.counts;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	Counts for work parts.
  *
  *	<p>These count objects provide summary statistics at the level of work
@@ -69,6 +86,10 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
  *	@hibernate.class  table="wordcount"
  */
 
+@Entity
+@Table(name = "wordcount",
+	indexes = @Index(name = "wordForm_index", columnList = "wordForm")
+)
 public class WordCount
 	implements java.io.Serializable, PersistentObject
 {
@@ -142,6 +163,9 @@ public class WordCount
       * @hibernate.id	generator-class="native" access="field"
       */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -154,6 +178,12 @@ public class WordCount
 	 *	@hibernate.component prefix="word_"
 	 */
 
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "word_string")),
+		@AttributeOverride(name = "charset", column = @Column(name = "word_charset"))
+	})
+	@Access(AccessType.FIELD)
 	public Spelling getWord()
 	{
 		return word;
@@ -177,6 +207,8 @@ public class WordCount
 	 *	@hibernate.column name="wordForm" index="wordForm_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordForm()
 	{
 		return wordForm;
@@ -190,6 +222,9 @@ public class WordCount
 	 *		foreign-key="workPart_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart()
 	{
 		return workPart;
@@ -203,6 +238,9 @@ public class WordCount
 	 *		foreign-key="work_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork()
 	{
 		return work;
@@ -215,6 +253,8 @@ public class WordCount
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordCount()
 	{
 		return wordCount;

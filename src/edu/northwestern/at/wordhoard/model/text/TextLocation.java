@@ -4,6 +4,11 @@ package edu.northwestern.at.wordhoard.model.text;
 
 import java.io.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
+
 /**	A text location.
  *
  *	<p>A location is a line index plus a character offset within the line.
@@ -25,6 +30,7 @@ import java.io.*;
  *	location following the last character of the line (the end of the line).
  */
  
+@Embeddable
 public class TextLocation implements Comparable, Serializable {
 
 	/**	The line index. */
@@ -60,6 +66,7 @@ public class TextLocation implements Comparable, Serializable {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public int getIndex () {
 		return index;
 	}
@@ -80,6 +87,7 @@ public class TextLocation implements Comparable, Serializable {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public int getOffset () {
 		return offset;
 	}
@@ -101,6 +109,7 @@ public class TextLocation implements Comparable, Serializable {
 	 *	@return 	True if location is within the text.
 	 */
 	 
+	@Transient
 	public boolean isInText () {
 		return index != -1 && index != Integer.MAX_VALUE &&
 			offset != -1 && offset != Integer.MAX_VALUE;

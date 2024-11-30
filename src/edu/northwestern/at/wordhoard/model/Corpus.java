@@ -28,6 +28,25 @@ import edu.northwestern.at.wordhoard.model.text.TextParams;
 import edu.northwestern.at.wordhoard.model.wrappers.Spelling;
 import edu.northwestern.at.wordhoard.model.wrappers.TaggingData;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A corpus.
  *
  *	<p>Each corpus has the following attributes:
@@ -55,6 +74,8 @@ import edu.northwestern.at.wordhoard.model.wrappers.TaggingData;
  *	@hibernate.class table="corpus"
  */
 
+@Entity
+@Table(name = "corpus", indexes =  @Index(name = "tag_index", columnList = "tag"))
 public class Corpus implements PersistentObject, CanCountWords,
 	GroupingObject, SearchDefaults, SearchCriterion,
 	CanGetRelFreq, Serializable, HasTag
@@ -133,6 +154,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -145,6 +168,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.column name="tag" index="tag_index"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTag () {
 		return tag;
 	}
@@ -165,6 +189,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public String getTitle () {
 		return title;
 	}
@@ -185,6 +211,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public byte getCharset () {
 		return charset;
 	}
@@ -205,6 +233,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public byte getPosType () {
 		return posType;
 	}
@@ -225,6 +255,10 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.component prefix="taggingData_"
 	 */
 
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "flags", column = @Column(name = "taggingData_flags"))
+	})
 	public TaggingData getTaggingData () {
 		return taggingData;
 	}
@@ -248,7 +282,10 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *		class="edu.northwestern.at.wordhoard.model.Work"
 	 */
 
-	public Set getWorks () {
+	@Access(AccessType.FIELD)
+	@OneToMany(mappedBy = "corpus", fetch = FetchType.LAZY)
+	@ElementCollection
+	public Set<Work> getWorks () {
 		return Collections.unmodifiableSet(works);
 	}
 
@@ -277,6 +314,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		Number of works.
 	 */
 
+	@Transient
 	public int getNumWorks () {
 		return works.size();
 	}
@@ -288,6 +326,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumWorkParts () {
 		return numWorkParts;
 	}
@@ -308,6 +348,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumLines () {
 		return numLines;
 	}
@@ -328,6 +370,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getNumWords () {
 		return numWords;
 	}
@@ -348,6 +392,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getMaxWordPathLength () {
 		return maxWordPathLength;
 	}
@@ -372,6 +418,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public String getTranslations () {
 		return translations;
 	}
@@ -390,8 +437,9 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		Available translations as a list of strings.
 	 */
 
-	public List getTranslationsAsList () {
-		ArrayList result = new ArrayList();
+	@Transient
+	public List<String> getTranslationsAsList () {
+		ArrayList<String> result = new ArrayList<String>();
 		if (translations == null) return result;
 		StringTokenizer tok = new StringTokenizer(translations, ",");
 		while (tok.hasMoreTokens()) result.add(tok.nextToken());
@@ -415,6 +463,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field" length="10000"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Column(length = 65536) // to trigger longtext
 	public String getTranDescription () {
 		return tranDescription;
 	}
@@ -440,7 +490,17 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *		class="edu.northwestern.at.wordhoard.model.tconview.TconView"
 	 */
 
-	public List getTconViews () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@ElementCollection
+	@JoinTable(name = "corpus_tconviews",
+		joinColumns = {
+			@JoinColumn(name = "corpus"),
+		},
+		inverseJoinColumns = @JoinColumn(name = "tconview")
+	)
+	@OrderColumn(name = "corpus_index")
+	public List<TconView> getTconViews () {
 		return Collections.unmodifiableList(tconViews);
 	}
 	
@@ -463,6 +523,8 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getOrdinal () {
 		return ordinal;
 	}
@@ -472,6 +534,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		A map from work tags to works.
 	 */
 
+	@Transient
 	public Map getWorkMap () {
 		HashMap map = new HashMap();
 		for (Iterator it = works.iterator(); it.hasNext(); ) {
@@ -488,6 +551,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return				10,000 times count / number of words in corpus.
 	 */
 
+	@Transient
 	public float getRelFreq (int count) {
 		return 10000f*count/numWords;
 	}
@@ -499,6 +563,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return			Work, or null if none found.
 	 */
 
+	@Transient
 	public Work getWorkByTag (String tag) {
 		for (Iterator it = works.iterator(); it.hasNext(); ) {
 			Work work = (Work)it.next();
@@ -514,6 +579,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return			Default value for search criterion.
 	 */
 
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Corpus.class)) {
 			return this;
@@ -527,6 +593,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return null;
 	}
@@ -536,6 +603,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 		return "word.work.corpus = :corpus";
 	}
@@ -571,6 +639,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		The report phrase "in".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "in";
 	}
@@ -582,6 +651,7 @@ public class Corpus implements PersistentObject, CanCountWords,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(getTitle(), TextParams.ROMAN);
 	}

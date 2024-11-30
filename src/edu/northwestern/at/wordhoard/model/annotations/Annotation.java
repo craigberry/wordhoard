@@ -4,7 +4,22 @@ package edu.northwestern.at.wordhoard.model.annotations;
 
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.*;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**	An annotation.
  *
@@ -23,6 +38,11 @@ import edu.northwestern.at.utils.*;
  *	@hibernate.discriminator column="type" type="string"
  */
  
+
+@Entity
+@Table(name="annotation")
+@DiscriminatorValue("")
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 255)
 public class Annotation implements Attachment, PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -49,7 +69,10 @@ public class Annotation implements Attachment, PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -61,6 +84,9 @@ public class Annotation implements Attachment, PersistentObject {
 	 *	@hibernate.many-to-one access="field" foreign-key="category_index"
 	 */
 	
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "category", foreignKey = @ForeignKey(name = "category_index"))
 	public AnnotationCategory getCategory () {
 		return category;
 	}
@@ -83,6 +109,10 @@ public class Annotation implements Attachment, PersistentObject {
 	 *		foreign-key="text_index"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@ManyToOne(targetEntity = TextWrapper.class)
+	@JoinColumn(name = "text", foreignKey = @ForeignKey(name = "text_index"))
 	public TextWrapped getText () {
 		return text;
 	}

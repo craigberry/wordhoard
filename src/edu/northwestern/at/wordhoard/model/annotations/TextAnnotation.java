@@ -5,6 +5,18 @@ package edu.northwestern.at.wordhoard.model.annotations;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.text.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 /**	A text annotation.
  *
  *	<p>Each text annotation has the following attributes in addition to 
@@ -23,6 +35,8 @@ import edu.northwestern.at.wordhoard.model.text.*;
  *	@hibernate.subclass discriminator-value="text"
  */
  
+@Entity
+@DiscriminatorValue("text")
 public class TextAnnotation extends Annotation implements TextAttachment {
 	
 	/**	The work part to which this annotation is attached. */
@@ -47,6 +61,9 @@ public class TextAnnotation extends Annotation implements TextAttachment {
 	 *	@hibernate.many-to-one access="field" foreign-key="workPart_index"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@ManyToOne
+	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
 	}
@@ -68,6 +85,14 @@ public class TextAnnotation extends Annotation implements TextAttachment {
 	 *	@hibernate.component prefix="target_"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@Embedded
+	@AttributeOverrides({
+		@AttributeOverride(name = "start.index", column = @Column(name = "target_start_index")),
+		@AttributeOverride(name = "start.offset", column = @Column(name = "target_start_offset")),
+		@AttributeOverride(name = "end.index", column = @Column(name = "target_end_index")),
+		@AttributeOverride(name = "end.offset", column = @Column(name = "target_end_offset"))
+	})
 	public TextRange getTarget () {
 		return target;
 	}

@@ -4,6 +4,20 @@ package edu.northwestern.at.wordhoard.model.counts;
 
 import edu.northwestern.at.wordhoard.model.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 /**	Total counts of word forms in a work part.
  *
  *	<p>A total word form count object contains the following fields:</p>
@@ -25,6 +39,12 @@ import edu.northwestern.at.wordhoard.model.*;
  *	@hibernate.class table="totalwordformcount"
  */
 
+@Entity
+@Table(name = "totalwordformcount",
+	indexes = {
+		@Index(name = "wordForm_index", columnList = "wordForm")
+	}
+)
 public class TotalWordFormCount
 	implements java.io.Serializable, PersistentObject
 {
@@ -90,6 +110,9 @@ public class TotalWordFormCount
       * @hibernate.id	generator-class="native" access="field"
       */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -103,6 +126,8 @@ public class TotalWordFormCount
 	 *	@hibernate.column name="wordForm" index="wordForm_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordForm()
 	{
 		return wordForm;
@@ -116,6 +141,9 @@ public class TotalWordFormCount
 	 *		foreign-key="workPart_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart()
 	{
 		return workPart;
@@ -129,6 +157,9 @@ public class TotalWordFormCount
 	 *		foreign-key="work_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public WorkPart getWork()
 	{
 		return work;
@@ -141,6 +172,8 @@ public class TotalWordFormCount
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordFormCount()
 	{
 		return wordFormCount;

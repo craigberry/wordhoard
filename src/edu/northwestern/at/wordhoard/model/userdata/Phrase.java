@@ -6,6 +6,22 @@ import java.util.*;
 
 import edu.northwestern.at.wordhoard.model.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A phrase.
  *
  *  <p>
@@ -16,6 +32,8 @@ import edu.northwestern.at.wordhoard.model.*;
  *
  */
 
+@Entity
+@Table(name = "phrase")
 public class Phrase
 	implements java.io.Serializable
 {
@@ -25,7 +43,7 @@ public class Phrase
 
 	/**	The words in the phrase, in order. */
 
-	protected List wordTags		= new ArrayList();
+	protected List<String> wordTags		= new ArrayList<String>();
 
 	/**	The tag of the work in which this phrase occurs.
 	 */
@@ -107,6 +125,9 @@ public class Phrase
      *	@hibernate.id	generator-class="native" access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -126,7 +147,16 @@ public class Phrase
 	 *		length="32"
 	 */
 
-	public List getWordTags()
+	@Access(AccessType.FIELD)
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "phrase_wordtags",
+		joinColumns = {
+			@JoinColumn(name = "phraseId", foreignKey = @ForeignKey(name = "phraseid_index"))
+		}
+	)
+	@OrderColumn(name = "word_index")
+	@Column(name = "wordTag", columnDefinition = "varchar(32)")
+	public List<String> getWordTags()
 	{
 		return wordTags;
 	}
@@ -139,6 +169,8 @@ public class Phrase
 	 *	@hibernate.column name="workTag" length="32"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(length = 32)
 	public String getWorkTag()
 	{
 		return workTag;
@@ -152,6 +184,8 @@ public class Phrase
 	 *	@hibernate.column name="tagsHashCode"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	protected int getTagsHashCode()
 	{
 		return tagsHashCode;
@@ -171,6 +205,7 @@ public class Phrase
 	 *	@return		The word tags in the phrase set, in order.
 	 */
 
+	@Transient
 	public String getTag()
 	{
 		StringBuffer sb	= new StringBuffer();

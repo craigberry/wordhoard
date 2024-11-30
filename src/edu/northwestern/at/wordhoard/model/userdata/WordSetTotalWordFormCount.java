@@ -3,6 +3,19 @@ package edu.northwestern.at.wordhoard.model.userdata;
 /*	Please see the license information at the end of this file. */
 
 import edu.northwestern.at.wordhoard.model.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**	Total counts of word forms in a word set.
  *
@@ -21,6 +34,13 @@ import edu.northwestern.at.wordhoard.model.*;
  *	@hibernate.class  table="wordhoard.wordsettotalwordformcount"
  */
 
+@Entity
+@Table(	name = "wordsettotalwordformcount",
+		indexes = {
+			@Index(name = "wordForm_index", columnList = "wordForm"),
+			@Index(name = "workPartTag_index", columnList = "workPartTag")
+		}
+)
 public class WordSetTotalWordFormCount
 	implements java.io.Serializable, PersistentObject
 {
@@ -87,6 +107,9 @@ public class WordSetTotalWordFormCount
       * @hibernate.id	generator-class="native" access="field"
       */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId()
 	{
 		return id;
@@ -100,6 +123,8 @@ public class WordSetTotalWordFormCount
 	 *	@hibernate.column name="wordForm" index="wordForm_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordForm()
 	{
 		return wordForm;
@@ -113,6 +138,9 @@ public class WordSetTotalWordFormCount
 	 *		foreign-key="word_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "wordSet", foreignKey = @ForeignKey(name = "word_index"))
 	public WordSet getWordSet()
 	{
 		return wordSet;
@@ -127,6 +155,8 @@ public class WordSetTotalWordFormCount
 	 *		length="32"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(name = "workPartTag", length = 32)
 	public String getWorkPartTag()
 	{
 		return workPartTag;
@@ -139,6 +169,8 @@ public class WordSetTotalWordFormCount
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(nullable = true)
 	public int getWordFormCount()
 	{
 		return wordFormCount;

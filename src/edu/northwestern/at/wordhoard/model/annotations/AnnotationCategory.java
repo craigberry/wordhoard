@@ -5,6 +5,14 @@ package edu.northwestern.at.wordhoard.model.annotations;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.utils.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 /**	An annotation category.
  *
  *	<p>An annotation category has the following attribute:
@@ -17,6 +25,8 @@ import edu.northwestern.at.utils.*;
  *	@hibernate.class table="annotationcategory"
  */
  
+@Entity
+@Table(name="annotationcategory")
 public class AnnotationCategory implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -40,6 +50,9 @@ public class AnnotationCategory implements PersistentObject {
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 	 
+	@Access(AccessType.FIELD)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -51,6 +64,7 @@ public class AnnotationCategory implements PersistentObject {
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getName () {
 		return name;
 	}

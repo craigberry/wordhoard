@@ -4,10 +4,26 @@ package edu.northwestern.at.wordhoard.model.speakers;
 
 import java.util.*;
 
+import edu.northwestern.at.utils.db.mysql.*;
 import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.wordhoard.model.search.*;
 import edu.northwestern.at.wordhoard.model.wrappers.*;
-import edu.northwestern.at.utils.db.mysql.*;
+
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 /**	A speech.
  *
@@ -39,6 +55,8 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="speech"
  */
 
+@Entity
+@Table(name="speech")
 public class Speech implements PersistentObject, SearchDefaults {
 
 	/**	Unique persistence id (primary key). */
@@ -51,7 +69,7 @@ public class Speech implements PersistentObject, SearchDefaults {
 
 	/**	Set of speakers. */
 
-	private Set speakers = new HashSet();
+	private Set<Speaker> speakers = new HashSet<Speaker>();
 
 	/**	Common gender for speakers. */
 
@@ -74,6 +92,8 @@ public class Speech implements PersistentObject, SearchDefaults {
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -94,6 +114,9 @@ public class Speech implements PersistentObject, SearchDefaults {
 	 *	@hibernate.many-to-one access="field" foreign-key="workPart_index"
 	 */
 
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
 	}
@@ -118,7 +141,13 @@ public class Speech implements PersistentObject, SearchDefaults {
 	 *		class="edu.northwestern.at.wordhoard.model.speakers.Speaker"
 	 */
 
-	public Set getSpeakers () {
+	@Access(AccessType.FIELD)
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="speech_speakers",
+		joinColumns = {@JoinColumn(name="speech_id", nullable=false, updatable=false) },
+		inverseJoinColumns = {@JoinColumn(name="speaker_id", nullable=false, updatable=false) }
+	)
+	public Set<Speaker> getSpeakers () {
 		return Collections.unmodifiableSet(speakers);
 	}
 
@@ -139,6 +168,10 @@ public class Speech implements PersistentObject, SearchDefaults {
 	 *	@hibernate.component prefix="gender_"
 	 */
 
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "gender", column = @Column(name = "gender_gender"))
+	})
 	public Gender getGender () {
 		return gender;
 	}
@@ -160,7 +193,10 @@ public class Speech implements PersistentObject, SearchDefaults {
 	 *
 	 *	@hibernate.component prefix="mortality_"
 	 */
-
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "mortality", column = @Column(name = "mortality_mortality"))
+	})
 	public Mortality getMortality () {
 		return mortality;
 	}

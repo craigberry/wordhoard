@@ -6,6 +6,13 @@ import edu.northwestern.at.wordhoard.model.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A Benson part of speech.
  *
  *	<p>Benson parts of speech have the following attributes:
@@ -18,6 +25,8 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="bensonpos"
  */
  
+@Entity
+@Table(name="bensonpos")
 public class BensonPos implements PersistentObject {
 
 	/**	Unique persistence id (primary key). */
@@ -44,7 +53,9 @@ public class BensonPos implements PersistentObject {
 	 *
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -57,7 +68,8 @@ public class BensonPos implements PersistentObject {
 	public void setId (Long id) {
 		this.id = id;
 	}
-	
+
+	@Access(AccessType.FIELD)
 	/**	Gets the tag.
 	 *
 	 *	@return		The tag.
@@ -77,14 +89,15 @@ public class BensonPos implements PersistentObject {
 	public void setTag (String tag) {
 		this.tag = tag;
 	}
-	
+
 	/**	Gets the description.
 	 *
 	 *	@return		The description.
 	 *
 	 *	@hibernate.property access="field"
 	 */
-	
+
+	@Access(AccessType.FIELD)
 	public String getDescription () {
 		return description;
 	}
@@ -103,6 +116,7 @@ public class BensonPos implements PersistentObject {
 	 *	@return		Tag (description).
 	 */
 	 
+	@Transient
 	public String getTagWithDescription () {
 		return description == null ? tag :
 			(tag + " (" + description + ")");

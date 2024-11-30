@@ -2,7 +2,6 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 
 /*	Please see the license information at the end of this file. */
 
-
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -13,11 +12,23 @@ import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A metrical shape wrapper.
  *
  *	@hibernate.class table="metricalshape"
  */
 
+@Entity
+@Table(name = "metricalshape")
 public class MetricalShape implements PersistentObject, SearchCriterion,
 	GroupingObject
 {
@@ -52,6 +63,9 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -63,8 +77,10 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(name = "metricalShape")
 	public String getMetricalShape () {
-		return metricalShape;
+		return this.metricalShape;
 	}
 
 	/**	Gets the join class.
@@ -72,6 +88,8 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Class getJoinClass () {
 		return null;
 	}
@@ -81,6 +99,8 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getWhereClause () {
 		return "word.metricalShape.metricalShape = :metricalShape";
 	}
@@ -116,6 +136,8 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@return		The report phrase "with metrical shape".
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public String getReportPhrase () {
 		return "with metrical shape";
 	}
@@ -127,6 +149,8 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 	 *	@return		The spelling of the grouping object.
 	 */
 
+	@Access(AccessType.FIELD)
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		return new Spelling(metricalShape, TextParams.ROMAN);
 	}

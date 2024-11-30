@@ -11,6 +11,20 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.utils.*;
 import edu.northwestern.at.utils.db.mysql.*;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
 /**	A word form (lemma and part of speech).
  *
  *	<p>Word forms have the following attributes:
@@ -26,6 +40,8 @@ import edu.northwestern.at.utils.db.mysql.*;
  *	@hibernate.class table="lempos"
  */
  
+@Entity
+@Table(name="lempos")
 public class LemPos implements PersistentObject, SearchDefaults {
 
 	/**	Unique persistence id (primary key). */
@@ -56,7 +72,9 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *
 	 *	@hibernate.id access="field" generator-class="assigned"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
 	public Long getId () {
 		return id;
 	}
@@ -76,7 +94,12 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *
 	 *	@hibernate.component prefix="standardSpelling_"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@AttributeOverrides({
+		@AttributeOverride(name = "string", column = @Column(name = "standardSpelling_string") ),
+		@AttributeOverride(name = "charset", column = @Column(name = "standardSpelling_charset"))
+	})
 	public Spelling getStandardSpelling () {
 		return standardSpelling;
 	}
@@ -97,6 +120,9 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *	@hibernate.many-to-one access="field" foreign-key="lemma_index"
 	 */
 	
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "lemma", foreignKey = @ForeignKey(name = "lemma_index"))
 	public Lemma getLemma () {
 		return lemma;
 	}
@@ -116,7 +142,10 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *
 	 *	@hibernate.many-to-one access="field" foreign-key="pos_index"
 	 */
-	
+
+	@Access(AccessType.FIELD)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pos", foreignKey = @ForeignKey(name = "pos_index"))
 	public Pos getPos () {
 		return pos;
 	}
@@ -137,6 +166,7 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *	@return			Default value for search criterion.
 	 */
 	
+	@Transient
 	public SearchCriterion getSearchDefault (Class cls) {
 		if (cls.equals(Lemma.class)) {
 			return lemma;
@@ -156,6 +186,7 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *						to this list.
 	 */
 	 
+	@Transient
 	public void getGroupingObjects (Class groupBy, List list) {
 		if (groupBy.equals(Lemma.class)) {
 			if (lemma != null) list.add(lemma);
@@ -175,7 +206,8 @@ public class LemPos implements PersistentObject, SearchDefaults {
 	 *
 	 *	@return		The spelling of the LemPos.
 	 */
-	 
+
+	@Transient
 	public Spelling getGroupingSpelling (int numHits) {
 		String str = toString();
 		byte charset = lemma == null ? TextParams.ROMAN :

@@ -1515,7 +1515,7 @@ public class WordUtils
 
 		if ( word != null )
 		{
-			MetricalShape metricalShape	= word.getMetricalShape();
+			MetricalShape metricalShape	= new MetricalShape(word.getMetricalShape());
 
 			if ( metricalShape != null )
 			{

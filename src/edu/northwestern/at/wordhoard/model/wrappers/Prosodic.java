@@ -10,10 +10,15 @@ import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 /**	A prosodic attribute wrapper.
  */
 
+@Embeddable
 public class Prosodic implements SearchCriterion, GroupingObject {
 
 	/**	Prose. */
@@ -58,6 +63,8 @@ public class Prosodic implements SearchCriterion, GroupingObject {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
+	@Column(name="prosodic_prosodic")
 	public byte getProsodic () {
 		return prosodic;
 	}

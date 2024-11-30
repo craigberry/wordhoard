@@ -12,9 +12,15 @@ import edu.northwestern.at.wordhoard.model.text.FontInfo;
 import edu.northwestern.at.wordhoard.model.text.TextLine;
 import edu.northwestern.at.wordhoard.model.text.TextParams;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Transient;
+
 /**	A publication year range wrapper.
  */
 
+@Embeddable
 public class PubYearRange implements SearchCriterion, GroupingObject {
 
 	/**	The start year, or null if none. */
@@ -55,6 +61,7 @@ public class PubYearRange implements SearchCriterion, GroupingObject {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getStartYear () {
 		return startYear;
 	}
@@ -66,6 +73,7 @@ public class PubYearRange implements SearchCriterion, GroupingObject {
 	 *	@hibernate.property access="field"
 	 */
 
+	@Access(AccessType.FIELD)
 	public Integer getEndYear () {
 		return endYear;
 	}
@@ -75,6 +83,7 @@ public class PubYearRange implements SearchCriterion, GroupingObject {
 	 *	@return		The join class, or null if none.
 	 */
 
+	@Transient
 	public Class getJoinClass () {
 		return null;
 	}
@@ -84,6 +93,7 @@ public class PubYearRange implements SearchCriterion, GroupingObject {
 	 *	@return		The Hibernate where clause.
 	 */
 
+	@Transient
 	public String getWhereClause () {
 		return ":startYear <= word.work.pubDate.startYear and " +
 			"word.work.pubDate.endYear <= :endYear";
@@ -121,6 +131,7 @@ public class PubYearRange implements SearchCriterion, GroupingObject {
 	 *	@return		The report phrase "in".
 	 */
 
+	@Transient
 	public String getReportPhrase () {
 		return "in";
 	}
