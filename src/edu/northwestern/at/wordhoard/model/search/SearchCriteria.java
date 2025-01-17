@@ -223,7 +223,6 @@ public class SearchCriteria {
 		}
 
 		//	Execute the query.
-
 		List queryList = q.list();
 
 		//	Build the search result objects. Filter the results for spelling

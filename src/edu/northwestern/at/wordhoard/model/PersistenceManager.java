@@ -12,6 +12,7 @@ import org.hibernate.query.Query;
 import edu.northwestern.at.utils.db.PersistenceException;
 import edu.northwestern.at.utils.db.hibernate.HibernatePersistenceManager;
 import edu.northwestern.at.wordhoard.model.annotations.AnnotationCategory;
+import edu.northwestern.at.wordhoard.model.annotations.TextAnnotation;
 import edu.northwestern.at.wordhoard.model.bibtool.SearchWorkCriteria;
 import edu.northwestern.at.wordhoard.model.counts.LemmaCorpusCounts;
 import edu.northwestern.at.wordhoard.model.counts.LemmaWorkCounts;
@@ -650,7 +651,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 	 *	@throws	PersistenceException	error in persistence layer.
 	 */
 
-	 public Collection getAnnotationsForWorkPart (WorkPart workPart)
+	 public Collection<TextAnnotation> getAnnotationsForWorkPart (WorkPart workPart)
 		throws PersistenceException
 	{
 		return query(

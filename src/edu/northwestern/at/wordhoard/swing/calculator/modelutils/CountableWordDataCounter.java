@@ -842,7 +842,7 @@ public class CountableWordDataCounter
 						word.getWork().getId() ,
 						word.getWorkPart().getId() ,
 						word.getSpellingInsensitive() ,
-						new MetricalShape(word.getMetricalShape()) ,
+						word.getMetricalShape() ,
 						gender ,
 						mortality ,
 						word.getProsodic() ,

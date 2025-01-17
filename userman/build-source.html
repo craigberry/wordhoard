@@ -78,11 +78,9 @@
 
 <li class="space"><code>compile</code> (depends on <code>init</code>). This target compiles all of the new or changed Java source code files in the <code>src</code> directory and places the compiled class files in the <code>bin</code> directory.</li>
 
-<li class="space"><code>hibernate</code> (depends on <code>compile</code>). This target runs the Hibernate XDoclet to extract Hibernate declarations from the persistent object model Java source code files. The declarations are used to create <code>*.hbm.xml</code> files in the <code>bin</code> directory. Hibernate uses these XML files at run-time to define the mapping from our object model to the MySQL database.</li>
+<li class="space"><code>bin</code> (depends on <code>compile</code>). This is the default target. It copies new or changed resource and data files and compiles new or changed source code files.</li>
 
-<li class="space"><code>bin</code> (depends on <code>hibernate</code> and <code>compile</code>). This is the default target. It copies new or changed resource and data files, compiles new or changed source code files, and runs the <code>hibernate</code> target.</li>
-
-<li class="space"><code>full</code> (depends on <code>clean</code> and <code>bin</code>). The full build target. It runs the <code>clean</code> target first, then recopies and recompiles everything and runs the <code>hibernate</code> target.</li>
+<li class="space"><code>full</code> (depends on <code>clean</code> and <code>bin</code>). The full build target. It runs the <code>clean</code> target first, then recopies and recompiles everything.</li>
 
 <li class="space"><code>doc</code> (depends on <code>init</code>). Builds the javadoc. In the WordHoard development team at Northwestern, we have a policy that all classes and methods must have complete and error-free javadoc.</li>
 

@@ -31,8 +31,6 @@
 
     drop table if exists line;
 
-    drop table if exists metricalshape;
-
     drop table if exists phrase;
 
     drop table if exists phrase_wordtags;
@@ -291,12 +289,6 @@
         stanzaLabel varchar(255),
         tag varchar(255),
         workPart bigint,
-        primary key (id)
-    ) engine=MyISAM;
-
-    create table metricalshape (
-       id bigint not null auto_increment,
-        metricalShape varchar(255),
         primary key (id)
     ) engine=MyISAM;
 

@@ -237,7 +237,7 @@ public class HibernatePersistenceManager
 			{
 				for ( int i = 0 ; i < persistentClasses.length ; i++ )
 				{
-					cfg.addClass( persistentClasses[ i ] );
+					cfg.addAnnotatedClass( persistentClasses[ i ] );
 				}
 			}
 								//	Set location of configuration file

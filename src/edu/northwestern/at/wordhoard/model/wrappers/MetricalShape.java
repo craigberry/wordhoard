@@ -5,7 +5,6 @@ package edu.northwestern.at.wordhoard.model.wrappers;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import edu.northwestern.at.wordhoard.model.PersistentObject;
 import edu.northwestern.at.wordhoard.model.grouping.GroupingObject;
 import edu.northwestern.at.wordhoard.model.search.SearchCriterion;
 import edu.northwestern.at.wordhoard.model.text.FontInfo;
@@ -15,11 +14,7 @@ import edu.northwestern.at.wordhoard.model.text.TextParams;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Transient;
 
 /**	A metrical shape wrapper.
@@ -27,16 +22,10 @@ import jakarta.persistence.Transient;
  *	@hibernate.class table="metricalshape"
  */
 
-@Entity
-@Table(name = "metricalshape")
-public class MetricalShape implements PersistentObject, SearchCriterion,
+@Embeddable
+public class MetricalShape implements SearchCriterion,
 	GroupingObject
 {
-
-	/**	Unique persistence id (primary key). */
-
-	private Long id;
-
 	/**	The metrical shape. */
 
 	private String metricalShape;
@@ -54,20 +43,6 @@ public class MetricalShape implements PersistentObject, SearchCriterion,
 
 	public MetricalShape (String metricalShape) {
 		this.metricalShape = metricalShape;
-	}
-
-	/**	Gets the unique id.
-	 *
-	 *	@return		The unique id.
-	 *
-	 *	@hibernate.id access="field" generator-class="native"
-	 */
-
-	@Access(AccessType.FIELD)
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId () {
-		return id;
 	}
 
 	/**	Gets the metrical shape.

@@ -66,37 +66,7 @@
 		</javac>
 	</target>
 
-	<target name="hibernate" depends="compile">
-		<taskdef name="hibernatedoclet"
-			classname="xdoclet.modules.hibernate.HibernateDocletTask">
-				<classpath>
-					<fileset dir="lib/xdoclet">
-						<include name="*.jar"/>
-					</fileset>
-				</classpath>
-		</taskdef>
-		<hibernatedoclet destdir="bin">
-			<fileset dir="src">
-				<include name="**/model/*.java"/>
-				<include name="**/model/annotations/*.java"/>
-				<include name="**/model/bibtool/*.java"/>
-				<include name="**/model/counts/*.java"/>
-				<include name="**/model/grouping/*.java"/>
-				<include name="**/model/morphology/*.java"/>
-				<include name="**/model/querytool/*.java"/>
-				<include name="**/model/search/*.java"/>
-				<include name="**/model/speakers/*.java"/>
-				<include name="**/model/text/*.java"/>
-				<include name="**/model/userdata/*.java"/>
-				<include name="**/model/wrappers/*.java"/>
-				<include name="**/model/tconview/*.java"/>
-				<include name="**/server/model/*.java"/>
-			</fileset>
-			<hibernate version="3.0"/>
-		</hibernatedoclet>
-	</target>
-
-	<target name="bin" depends="hibernate,compile"/>
+	<target name="bin" depends="compile"/>
 
 	<target name="full" depends="clean,bin"/>
 
@@ -139,33 +109,6 @@
 				description="hibernate.collection-one-to-many"
 				enabled="false"/>
 			<tag name="hibernate.component" description="hibernate.component" enabled="false"/>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionCacheTaglet">
-        			<path refid="classpath"/>
-      			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionIndexTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionKeyTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionManyToManyTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionOneToManyTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.CollectionElementTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.ManyToManyTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.ManyToOneTaglet">
-				<path refid="classpath"/>
-			</taglet>
-			<taglet name="edu.northwestern.at.utils.taglets.ComponentTaglet">
-				<path refid="classpath"/>
-			</taglet>
 		</javadoc>
 	</target>
 

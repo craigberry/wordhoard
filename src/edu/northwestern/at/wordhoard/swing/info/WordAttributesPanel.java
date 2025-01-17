@@ -34,7 +34,7 @@ class WordAttributesPanel extends JPanel {
 		Insets insets, int minLabelWidth, int maxValueWidth) 
 	{
 		Prosodic prosodic = word.getProsodic();
-		MetricalShape metricalShape = new MetricalShape(word.getMetricalShape());
+		MetricalShape metricalShape = word.getMetricalShape();
 	
 		setBackground(Color.white);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

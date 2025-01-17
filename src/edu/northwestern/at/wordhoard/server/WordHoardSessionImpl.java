@@ -407,7 +407,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		cfg.setProperty(
 			"hibernate.connection.password",
 			Config.getDatabasePassword());
-		cfg.addClass(Account.class);
+		cfg.addAnnotatedClass(Account.class);
 		sessionFactory = cfg.buildSessionFactory();
 
 		//	Get the Hibernate session factory for user data.
@@ -430,19 +430,19 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		udCfg.setProperty(
 			"hibernate.connection.password",
 			Config.getUserDataDatabasePassword());
-		udCfg.addClass(WHQuery.class);
-		udCfg.addClass(WordSet.class);
-		udCfg.addClass(WordSetTotalWordFormCount.class);
-		udCfg.addClass(WordSetWordCount.class);
-		udCfg.addClass(AuthoredTextAnnotation.class);
-		udCfg.addClass(AnnotationCategory.class);
-		udCfg.addClass(TextWrapper.class);
-		udCfg.addClass(WorkSet.class);
-		udCfg.addClass(UserGroup.class);
-		udCfg.addClass(UserGroupPermission.class);
-		udCfg.addClass(Phrase.class);
-		udCfg.addClass(PhraseSetPhraseCount.class);
-		udCfg.addClass(PhraseSetTotalWordFormPhraseCount.class);
+		udCfg.addAnnotatedClass(WHQuery.class);
+		udCfg.addAnnotatedClass(WordSet.class);
+		udCfg.addAnnotatedClass(WordSetTotalWordFormCount.class);
+		udCfg.addAnnotatedClass(WordSetWordCount.class);
+		udCfg.addAnnotatedClass(AuthoredTextAnnotation.class);
+		udCfg.addAnnotatedClass(AnnotationCategory.class);
+		udCfg.addAnnotatedClass(TextWrapper.class);
+		udCfg.addAnnotatedClass(WorkSet.class);
+		udCfg.addAnnotatedClass(UserGroup.class);
+		udCfg.addAnnotatedClass(UserGroupPermission.class);
+		udCfg.addAnnotatedClass(Phrase.class);
+		udCfg.addAnnotatedClass(PhraseSetPhraseCount.class);
+		udCfg.addAnnotatedClass(PhraseSetTotalWordFormPhraseCount.class);
 		userDataSessionFactory = udCfg.buildSessionFactory();
 
 		//	Start the idle session timeout thread.

@@ -14,7 +14,7 @@ import edu.northwestern.at.wordhoard.model.tconview.*;
  *
  *	<p>
  *	Provides the full list of Java classes which contain
- *	database-resident data.
+ *	database-resident data or extend those classes.
  *	</p>
  */
 
@@ -42,12 +42,14 @@ public class PersistentClasses
 			MetricalShape.class ,
 			Pos.class ,
 			Phrase.class ,
+			PhraseSet.class ,
 			PhraseSetPhraseCount.class ,
 			PhraseSetTotalWordFormPhraseCount.class ,
 			Speaker.class ,
 			Speech.class ,
 			TconView.class ,
 			TconCategory.class ,
+			TextAnnotation.class ,
 			TextWrapper.class ,
 			TotalWordFormCount.class ,
 			UserGroup.class,
@@ -61,6 +63,7 @@ public class PersistentClasses
 			WordSet.class ,
 			WordSetTotalWordFormCount.class ,
 			WordSetWordCount.class ,
+			Work.class ,
 			WorkPart.class ,
 			WorkSet.class
 		};
