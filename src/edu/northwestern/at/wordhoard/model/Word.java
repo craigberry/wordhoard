@@ -269,7 +269,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "workPart", foreignKey = @ForeignKey(name = "workPart_index"))
 	public WorkPart getWorkPart () {
 		return workPart;
@@ -295,7 +295,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
 	public Work getWork () {
 		return work;
@@ -309,7 +309,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "line", foreignKey = @ForeignKey(name = "line_index"))
 	public Line getLine () {
 		return line;
@@ -434,7 +434,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 *	@hibernate.many-to-one access="field" foreign-key="prev_index"
 	 */
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "prev", foreignKey = @ForeignKey(name = "prev_index"))
 	public Word getPrev () {
 		return prev;
@@ -457,7 +457,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "next", foreignKey = @ForeignKey(name = "next_index"))
 	public Word getNext () {
 		return next;
@@ -556,7 +556,7 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "speech", foreignKey = @ForeignKey(name = "speech_index"))
 	public Speech getSpeech () {
 		return speech;
@@ -612,9 +612,11 @@ public class Word implements PersistentObject, SearchDefaults, Comparable {
 	 */
 
 	@Access(AccessType.FIELD)
-	@Column(name = "metricalShape_metricalShape")
-	public String getMetricalShape () {
-		return this.metricalShape.getMetricalShape();
+	@AttributeOverrides({
+		@AttributeOverride(name = "metricalShape", column = @Column(name = "metricalShape_metricalShape"))
+	})
+	public MetricalShape getMetricalShape () {
+		return this.metricalShape;
 	}
 
 	/**	Sets the metrical shape.
