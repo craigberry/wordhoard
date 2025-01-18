@@ -33,7 +33,7 @@ public class Env {
 	/**	Menu shortcut key mask with shift key. */
 
 	public static final int MENU_SHORTCUT_SHIFT_KEY_MASK =
-		MENU_SHORTCUT_KEY_MASK + InputEvent.SHIFT_MASK;
+		MENU_SHORTCUT_KEY_MASK + InputEvent.SHIFT_DOWN_MASK;
 
 	/** Line separator. */
 
