@@ -331,7 +331,6 @@ public class WordHoard {
 		FileDialogs.setSaveDirectory(FileDialogs.getOpenDirectory());
 		setUnexpectedErrorVerbiage();
 		PersistenceManager.enableStackTraces(true);
-		System.setSecurityManager(null);
 		SwingUtilities.invokeLater(
 			new Runnable() {
 				public void run() {
