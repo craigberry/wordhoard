@@ -163,14 +163,14 @@ public class ThreeStateCheckBox extends JCheckBox
 
 			if ( selectionState == null )
 			{
-				selectionState = new Boolean( true );
+				selectionState = Boolean.valueOf( true );
 				super.setSelected( true );
 			}
 								// Currently true?  Make it false. */
 
 			else if ( selectionState.booleanValue() && !selected )
 			{
-				selectionState = new Boolean( false );
+				selectionState = Boolean.valueOf( false );
 				super.setSelected( false );
 			}
 								// Currently false?  Make it null. */

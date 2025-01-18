@@ -256,7 +256,7 @@ public class Preprocessor
 					{
 						String symbolName	= tokenizer.nextToken();
 
-						skipStates.push( new Boolean( skipState ) );
+						skipStates.push( Boolean.valueOf( skipState ) );
 
 						skipState			= !symbolDefined( symbolName );
                 	}
@@ -271,7 +271,7 @@ public class Preprocessor
 					{
 						String symbolName	= tokenizer.nextToken();
 
-						skipStates.push( new Boolean( skipState ) );
+						skipStates.push( Boolean.valueOf( skipState ) );
 
 						skipState			= symbolDefined( symbolName );
                 	}

@@ -204,7 +204,7 @@ public class WordSetUtils implements Serializable
 				}
 			);
 
-		Integer wordFormInt	= new Integer( wordForm );
+		Integer wordFormInt	= Integer.valueOf( wordForm );
 		Long wordSetID		= wordSet.getId();
 
 								//	Iterate over the list of
@@ -240,7 +240,7 @@ public class WordSetUtils implements Serializable
 					new Object[]
 					{
 						word.getString() ,
-						new Byte( word.getCharset() ) ,
+						Byte.valueOf( word.getCharset() ) ,
 						wordFormInt ,
 						wordSetID ,
 						workPartTag ,
@@ -483,7 +483,7 @@ public class WordSetUtils implements Serializable
 			{
 				wordCountMaps ,
 				totalCountMaps ,
-				new Integer( nCounts )
+				Integer.valueOf( nCounts )
 			};
 	}
 
@@ -2067,7 +2067,7 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					wordSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					work.getTag()
 				} ,
 				true
@@ -2120,7 +2120,7 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					wordSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 				} ,
 				true
 			);
@@ -2173,7 +2173,7 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					wordSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 				} ,
 				true
 			);
@@ -2231,7 +2231,7 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					wordSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					word
 				} ,
 				true
@@ -2293,7 +2293,7 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					wordSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					word ,
 					work.getTag()
 				} ,
@@ -2379,7 +2379,7 @@ public class WordSetUtils implements Serializable
 			new Object[]
 			{
 				wordStrings ,
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( wordSets )
 			};
 
@@ -2462,7 +2462,7 @@ public class WordSetUtils implements Serializable
 			(
 				queryString ,
 				new String[]{ "wordSet" , "wordForm" } ,
-				new Object[]{ wordSet , new Integer( wordForm ) } ,
+				new Object[]{ wordSet , Integer.valueOf( wordForm ) } ,
 				true
 			);
 								//	If we got results, put them in the
@@ -2479,7 +2479,7 @@ public class WordSetUtils implements Serializable
 				wordCounts.put
 				(
 					wordCount.word.toInsensitive() ,
-					new Integer( wordCount.count )
+					Integer.valueOf( wordCount.count )
 				);
 			}
 		}
@@ -2540,7 +2540,7 @@ public class WordSetUtils implements Serializable
 		Object[] paramValues	=
 			new Object[]
 			{
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( wordSets )
 			};
 
@@ -2574,12 +2574,12 @@ public class WordSetUtils implements Serializable
 					wordCounts.put
 					(
 						wordText ,
-						new Integer( newCount + count.intValue() )
+						Integer.valueOf( newCount + count.intValue() )
 					);
 				}
 				else
 				{
-					wordCounts.put( wordText , new Integer( newCount ) );
+					wordCounts.put( wordText , Integer.valueOf( newCount ) );
 				}
 								//	Increment work list for this word.
 
@@ -2739,8 +2739,8 @@ public class WordSetUtils implements Serializable
 				new Object[]
 				{
 					word ,
-					new Integer( leftSpan ) ,
-					new Integer( rightSpan)
+					Integer.valueOf( leftSpan ) ,
+					Integer.valueOf( rightSpan)
 				}
 			);
 								//	Eliminate words not in the word set.

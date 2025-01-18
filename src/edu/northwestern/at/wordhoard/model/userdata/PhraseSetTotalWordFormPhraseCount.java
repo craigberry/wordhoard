@@ -185,7 +185,7 @@ public class PhraseSetTotalWordFormPhraseCount
 
 	public String toString()
 	{
-		return new Integer( wordFormCount ).toString();
+		return Integer.valueOf( wordFormCount ).toString();
 	}
 }
 

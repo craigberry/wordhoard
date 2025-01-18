@@ -331,7 +331,7 @@ public class Filter11 {
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			int speakerId = r.getInt(1);
-			Speaker speaker = (Speaker)speakerMap.get(new Integer(speakerId));
+			Speaker speaker = (Speaker)speakerMap.get(Integer.valueOf(speakerId));
 			String name = speaker.getName();
 			Spelling originalNameSpelling = speaker.getOriginalName();
 			String originalName = originalNameSpelling == null ? null :
@@ -558,7 +558,7 @@ public class Filter11 {
 				continue;
 			}
 			String metricalShape = 
-				(String)metricalShapeMap.get(new Integer(metricalShapeId));
+				(String)metricalShapeMap.get(Integer.valueOf(metricalShapeId));
 			if (metricalShape == null) {
 				System.out.println("         ###### " +
 					"Invalid metrical shape id for word " + wordPos +
@@ -586,7 +586,7 @@ public class Filter11 {
 					"Speaker found for non-existant line " + lineNumber);
 				continue;
 			}
-			lineInfo.speakerId = new Integer(speakerId);
+			lineInfo.speakerId = Integer.valueOf(speakerId);
 		}
 				
 		//	Print the lines.
@@ -789,7 +789,7 @@ public class Filter11 {
 					System.out.println("##### " +
 						"Invalid mortality for speaker: " + speakerId);
 			}
-			speakerMap.put(new Integer(speakerId), speaker);
+			speakerMap.put(Integer.valueOf(speakerId), speaker);
 		}
 	}
 
@@ -807,7 +807,7 @@ public class Filter11 {
 	 	while (r.next()) {
 	 		int metricalShapeId = r.getInt(1);
 	 		String metricalShape = r.getString(2);
-	 		metricalShapeMap.put(new Integer(metricalShapeId), metricalShape);
+	 		metricalShapeMap.put(Integer.valueOf(metricalShapeId), metricalShape);
 	 	}
 	}
 	 

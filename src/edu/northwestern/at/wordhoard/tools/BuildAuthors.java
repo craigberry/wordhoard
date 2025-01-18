@@ -65,7 +65,7 @@ public class BuildAuthors {
 		if (birthYearEl != null) {
 			String birthYearString = DOMUtils.getText(birthYearEl);
 			try {
-				birthYear = new Integer(birthYearString);
+				birthYear = Integer.valueOf(birthYearString);
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg(name + ": Illegal birth year");
 				return;
@@ -77,7 +77,7 @@ public class BuildAuthors {
 		if (deathYearEl != null) {
 			String deathYearString = DOMUtils.getText(deathYearEl);
 			try {
-				deathYear = new Integer(deathYearString);
+				deathYear = Integer.valueOf(deathYearString);
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg(name + ": Illegal death year");
 				return;
@@ -89,7 +89,7 @@ public class BuildAuthors {
 		if (earliestWorkYearEl != null) {
 			String earliestWorkYearString = DOMUtils.getText(earliestWorkYearEl);
 			try {
-				earliestWorkYear = new Integer(earliestWorkYearString);
+				earliestWorkYear = Integer.valueOf(earliestWorkYearString);
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg(name + ": Illegal earliest work year");
 				return;
@@ -101,7 +101,7 @@ public class BuildAuthors {
 		if (latestWorkYearEl != null) {
 			String latestWorkYearString = DOMUtils.getText(latestWorkYearEl);
 			try {
-				latestWorkYear = new Integer(latestWorkYearString);
+				latestWorkYear = Integer.valueOf(latestWorkYearString);
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg(name + ": Illegal latest work year");
 				return;

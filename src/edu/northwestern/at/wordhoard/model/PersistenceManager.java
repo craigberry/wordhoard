@@ -832,8 +832,8 @@ public class PersistenceManager extends HibernatePersistenceManager {
 			"and word.location.start.offset <= :startOffset " +
 			"and :endOffset <= word.location.end.offset",
 			new String[]{"part", "lineIndex", "startOffset", "endOffset"},
-			new Object[]{workPart, new Integer(lineIndex),
-				new Integer(startOffset), new Integer(endOffset)});
+			new Object[]{workPart, Integer.valueOf(lineIndex),
+				Integer.valueOf(startOffset), Integer.valueOf(endOffset)});
 		Iterator it = qList.iterator();
 		return it.hasNext() ? (Word)it.next() : null;
 	}
@@ -976,7 +976,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 			"word.colocationOrdinal - :distance and " +
 			"word.colocationOrdinal + :distance",
 			new String[]{"words", "distance"},
-			new Object[]{words, new Long(distance)});
+			new Object[]{words, Long.valueOf(distance)});
 	}
 
 	/**	Preloads concordance information.

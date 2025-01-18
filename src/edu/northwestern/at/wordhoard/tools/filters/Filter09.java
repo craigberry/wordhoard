@@ -289,7 +289,7 @@ public class Filter09 {
 					"Invalid verse (Y or N) for word id " + tag);
 				continue;
 			}
-			shakespeareProsodicMap.put(tag, new Byte(prosodic));
+			shakespeareProsodicMap.put(tag, Byte.valueOf(prosodic));
 		}
 		martinConnection.close();
 	}

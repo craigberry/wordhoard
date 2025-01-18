@@ -112,8 +112,8 @@ public class WordUtils
 				new Object[]
 				{
 					word ,
-					new Integer( leftSpan ) ,
-					new Integer( rightSpan)
+					Integer.valueOf( leftSpan ) ,
+					Integer.valueOf( rightSpan)
 				}
 			);
 	}
@@ -825,7 +825,7 @@ public class WordUtils
 				new Object[]
 				{
 					speakerGenderText ,
-					new Integer( WordForms.SPEAKERGENDER )
+					Integer.valueOf( WordForms.SPEAKERGENDER )
 				}
 			);
 
@@ -860,7 +860,7 @@ public class WordUtils
 				new Object[]
 				{
 					speakerMortalityText ,
-					new Integer( WordForms.SPEAKERMORTALITY )
+					Integer.valueOf( WordForms.SPEAKERMORTALITY )
 				}
 			);
 
@@ -887,7 +887,7 @@ public class WordUtils
 				"select distinct wc.word from WordCount wc " +
 				"where wc.wordForm=:wordForm" ,
 				new String[]{ "wordForm" } ,
-				new Object[]{ new Integer( WordForms.SPEAKERGENDER ) }
+				new Object[]{ Integer.valueOf( WordForms.SPEAKERGENDER ) }
 			);
 
 		SortedArrayList speakerGenderList	= new SortedArrayList();
@@ -918,7 +918,7 @@ public class WordUtils
 				"select distinct wc.word from WordCount wc " +
 				"where wc.wordForm=:wordForm" ,
 				new String[]{ "wordForm" } ,
-				new Object[]{ new Integer( WordForms.SPEAKERMORTALITY ) }
+				new Object[]{ Integer.valueOf( WordForms.SPEAKERMORTALITY ) }
 			);
 
 		SortedArrayList speakerMortalityList	= new SortedArrayList();
@@ -956,7 +956,7 @@ public class WordUtils
 				new Object[]
 				{
 					isVerseText ,
-					new Integer( WordForms.ISVERSE )
+					Integer.valueOf( WordForms.ISVERSE )
 				}
 			);
 
@@ -983,7 +983,7 @@ public class WordUtils
 				"select distinct wc.word from WordCount wc " +
 				"where wc.wordForm=:wordForm" ,
 				new String[]{ "wordForm" } ,
-				new Object[]{ new Integer( WordForms.ISVERSE ) }
+				new Object[]{ Integer.valueOf( WordForms.ISVERSE ) }
 			);
 
 		SortedArrayList isVerseList	= new SortedArrayList();
@@ -1021,7 +1021,7 @@ public class WordUtils
 				new Object[]
 				{
 					metricalShape ,
-					new Integer( WordForms.METRICALSHAPE )
+					Integer.valueOf( WordForms.METRICALSHAPE )
 				}
 			);
 
@@ -1048,7 +1048,7 @@ public class WordUtils
 				"select distinct wc.word from WordCount wc " +
 				"where wc.wordForm=:wordForm" ,
 				new String[]{ "wordForm" } ,
-				new Object[]{ new Integer( WordForms.METRICALSHAPE ) }
+				new Object[]{ Integer.valueOf( WordForms.METRICALSHAPE ) }
 			);
 
 		SortedArrayList metricalShapeList	= new SortedArrayList();
@@ -1124,7 +1124,7 @@ public class WordUtils
 				new Object[]
 				{
 					CharsetUtils.translateToInsensitive( spellingText ) ,
-					new Integer( WordForms.SPELLING )
+					Integer.valueOf( WordForms.SPELLING )
 				}
 			);
 
@@ -1777,7 +1777,7 @@ public class WordUtils
 				Object[] o	= (Object[])iterator.next();
 
 				Long longCount = (Long)o[1];
-				Integer integerCount = new Integer((int)longCount.longValue());
+				Integer integerCount = Integer.valueOf((int)longCount.longValue());
 
 				idToCount.put( o[ 0 ] , integerCount );
 			}

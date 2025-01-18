@@ -807,10 +807,10 @@ public class WordCounter
 			{
 				if ( !yearWordMap.containsKey( year ) )
 				{
-					yearWordMap.put( year , new Integer( wordCount ) );
+					yearWordMap.put( year , Integer.valueOf( wordCount ) );
 
 					yearTotalWordMap.put(
-						year , new Integer( totalWordCount ) );
+						year , Integer.valueOf( totalWordCount ) );
 
 								//	Add this work to the set of works
 								//	for this year.
@@ -833,7 +833,7 @@ public class WordCounter
 					yearWordMap.put
             		(
             			year ,
-            			new Integer( currentCount.intValue() + wordCount )
+            			Integer.valueOf( currentCount.intValue() + wordCount )
             		);
 
 					Integer currentTotalCount	=
@@ -842,7 +842,7 @@ public class WordCounter
 					yearTotalWordMap.put
 	            	(
     	        		year ,
-        	    		new Integer(
+        	    		Integer.valueOf(
         	    			currentTotalCount.intValue() + totalWordCount )
             		);
 								//	Add work to hash set of works for this
@@ -877,7 +877,7 @@ public class WordCounter
 
 			HashSet workHashSet	= (HashSet)yearWorksMap.get( year );
 
-			yearWorksMap.put( year , new Integer( workHashSet.size() ) );
+			yearWorksMap.put( year , Integer.valueOf( workHashSet.size() ) );
 		}
 
 		return new Map[]{ yearWordMap , yearTotalWordMap , yearWorksMap };
@@ -1148,7 +1148,7 @@ public class WordCounter
 
 			if ( !workMap.containsKey( workID ) )
 			{
-				workMap.put( workID , new Long( 1 ) );
+				workMap.put( workID , Long.valueOf( 1 ) );
 			}
 		}
 
@@ -1176,7 +1176,7 @@ public class WordCounter
 
 			if ( !workMap.containsKey( workID ) )
 			{
-				workMap.put( workID , new Long( 1 ) );
+				workMap.put( workID , Long.valueOf( 1 ) );
 			}
 		}
 
@@ -1190,7 +1190,7 @@ public class WordCounter
 
 			if ( !workMap.containsKey( workID ) )
 			{
-				workMap.put( workID , new Long( 1 ) );
+				workMap.put( workID , Long.valueOf( 1 ) );
 			}
 		}
 

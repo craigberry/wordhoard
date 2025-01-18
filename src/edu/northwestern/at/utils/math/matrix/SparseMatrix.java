@@ -63,7 +63,7 @@ public class SparseMatrix extends AbstractMatrix implements Matrix
 
 		if ( value != 0.0D )
 		{
-			matrixData.put( key , new Double( value ) ) ;
+			matrixData.put( key , Double.valueOf( value ) ) ;
 		}
 	}
 

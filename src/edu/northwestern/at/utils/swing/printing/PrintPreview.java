@@ -685,7 +685,7 @@ public class PrintPreview extends ModalDialog
 								// in combo box.
 
 		scaleComboBox.setSelectedItem(
-			new Integer( defaultScale ).toString() + " %" );
+			Integer.valueOf( defaultScale ).toString() + " %" );
 
 								// Listen for changes in the
 								// selected scaled value.
@@ -778,7 +778,7 @@ public class PrintPreview extends ModalDialog
 								// initially selected value.
 
 		scaleComboBox.setSelectedItem(
-			new Integer( defaultScale ).toString() + " %" );
+			Integer.valueOf( defaultScale ).toString() + " %" );
 
         						// Add the listener to the combo box.
 

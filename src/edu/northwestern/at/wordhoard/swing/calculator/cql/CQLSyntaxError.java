@@ -42,7 +42,7 @@ public class CQLSyntaxError
 					new Object[]
 					{
 						StringUtils.safeString( errorSource ) ,
-						new Character( (char)tokenizer.ttype ) ,
+						Character.valueOf( (char)tokenizer.ttype ) ,
 						StringUtils.safeString( badText )
 					}
 				);

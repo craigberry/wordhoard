@@ -2535,8 +2535,8 @@ public class AnalysisDialog extends SkeletonDialog
 					(
 						new Object[]
 						{
-							new Integer( minimumWorkCount ) ,
-							new Integer( workCount )
+							Integer.valueOf( minimumWorkCount ) ,
+							Integer.valueOf( workCount )
 						}
 					)
 				);
@@ -3957,7 +3957,7 @@ public class AnalysisDialog extends SkeletonDialog
 					(
 						StringUtils.stringToInt(
 							analysisTextType , -1 ) ,
-						new Long(
+						Long.valueOf(
 							StringUtils.stringToLong(
 								analysisTextID , 0 ) )
 					);
@@ -3996,7 +3996,7 @@ public class AnalysisDialog extends SkeletonDialog
 					(
 						StringUtils.stringToInt(
 							referenceTextType , -1 ) ,
-						new Long(
+						Long.valueOf(
 							StringUtils.stringToLong(
 								referenceTextID , 0 ) )
 					);

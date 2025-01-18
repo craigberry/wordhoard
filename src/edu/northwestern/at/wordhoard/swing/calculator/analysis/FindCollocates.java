@@ -284,7 +284,7 @@ public class FindCollocates
 			Integer wordCount	=
 				(Integer)analysisCounts.get( spCollocate );
 
-			if ( wordCount	== null ) wordCount	= new Integer( 0 );
+			if ( wordCount	== null ) wordCount	= Integer.valueOf( 0 );
 
 			int collocateLength	= collocate.length();
 
@@ -297,7 +297,7 @@ public class FindCollocates
 			Integer allCount	=
 				(Integer)allAnalysisCounts.get( spCollocate );
 
-			if ( allCount == null ) allCount = new Integer( 0 );
+			if ( allCount == null ) allCount = Integer.valueOf( 0 );
 
 			doFreq
 			(

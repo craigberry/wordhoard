@@ -65,9 +65,9 @@ public class AuthorUtils
 				} ,
 				new Object[]
 				{
-					new Integer(
+					Integer.valueOf(
 						author.getBirthYear().intValue() - yearsBefore ) ,
-					new Integer(
+					Integer.valueOf(
 						author.getDeathYear().intValue() + yearsAfter )
 				}
 			);

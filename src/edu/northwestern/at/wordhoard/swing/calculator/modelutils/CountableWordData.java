@@ -429,7 +429,7 @@ public class CountableWordData implements Comparable
 		int wordPartIndex
 	)
 	{
-		return new Long( ( wordId.longValue() << 32 ) | wordPartIndex );
+		return Long.valueOf( ( wordId.longValue() << 32 ) | wordPartIndex );
 	}
 
 	/**	Return insensitive spelling for display purposes.

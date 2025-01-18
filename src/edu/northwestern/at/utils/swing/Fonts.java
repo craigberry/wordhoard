@@ -61,7 +61,7 @@ public class Fonts
 	public static void enableSystemFontSettings( boolean doEnable )
 	{
 		UIManager.put(
-			"Application.useSystemFontSettings" , new Boolean( doEnable ) );
+			"Application.useSystemFontSettings" , Boolean.valueOf( doEnable ) );
 	}
 
 	/**	Set font for a component and its children.

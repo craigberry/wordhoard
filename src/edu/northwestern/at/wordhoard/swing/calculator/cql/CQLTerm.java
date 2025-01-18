@@ -289,7 +289,7 @@ public class CQLTerm
 				}
 				else if ( tokenizer.ttype == StreamTokenizer.TT_NUMBER )
 				{
-					termText	= new Double( tokenizer.nval ).toString();
+					termText	= Double.valueOf( tokenizer.nval ).toString();
 					tokenizer.nextToken();
 				}
 				else if	(	( tokenizer.ttype == '\'' ) ||
@@ -629,7 +629,7 @@ public class CQLTerm
 	protected String getTermTypeName( int termType )
 	{
 		String result	=
-			(String)elementsToNames.get( new Integer( termType ) );
+			(String)elementsToNames.get( Integer.valueOf( termType ) );
 
 		if ( result == null ) result = "";
 
@@ -677,7 +677,7 @@ public class CQLTerm
 		if ( ( termText == null ) || ( termText.length() == 0 ) ) return "";
 
 		String hqlName	=
-			(String)elementsToHQLNames.get( new Integer( termType ) );
+			(String)elementsToHQLNames.get( Integer.valueOf( termType ) );
 
 		if ( doingWords )
 		{
@@ -706,7 +706,7 @@ public class CQLTerm
 
 		boolean allowsOp	=
 			((Boolean)allowsOperators.get(
-				new Integer( termType ) ) ).booleanValue();
+				Integer.valueOf( termType ) ) ).booleanValue();
 
 		StringBuffer sb	= new StringBuffer();
 
@@ -948,234 +948,234 @@ System.err.println( "filteredCol has " + filteredCol.size() + " entries." );
 		elementsToHQLNames	= new HashMap();
 		allowsOperators		= new HashMap();
 //
-		namesToElements.put( "spe" , new Integer( SPELLING ) );
-		namesToElements.put( "lem" , new Integer( LEMMA ) );
-		namesToElements.put( "pos" , new Integer( POS ) );
-		namesToElements.put( "wc" , new Integer( WORDCLASS ) );
-		namesToElements.put( "mwc" , new Integer( MAJORWORDCLASS ) );
-		namesToElements.put( "spg" , new Integer( SPEAKERGENDER ) );
-		namesToElements.put( "spk" , new Integer( SPEAKER ) );
-		namesToElements.put( "sem" , new Integer( SEMANTICTAGS ) );
-		namesToElements.put( "ver" , new Integer( ISVERSE ) );
-		namesToElements.put( "met" , new Integer( METRICALSHAPE ) );
-		namesToElements.put( "spm" , new Integer( SPEAKERMORTALITY ) );
-		namesToElements.put( "wdpc" , new Integer( WORDPARTCOUNT ) );
-		namesToElements.put( "aun" , new Integer( AUTHORNAME ) );
-		namesToElements.put( "auc" , new Integer( AUTHORCONTEMPORARY ) );
-		namesToElements.put( "cot" , new Integer( CORPUSTITLE ) );
-		namesToElements.put( "cog" , new Integer( CORPUSTAG ) );
-		namesToElements.put( "wkt" , new Integer( WORKFULLTITLE ) );
-		namesToElements.put( "wkst" , new Integer( WORKSHORTTITLE ) );
-		namesToElements.put( "wpt" , new Integer( WORKPARTFULLTITLE ) );
-		namesToElements.put( "wpst" , new Integer( WORKPARTSHORTTITLE ) );
-		namesToElements.put( "wkg" , new Integer( WORKTAG ) );
-		namesToElements.put( "wpg" , new Integer( WORKPARTTAG ) );
-		namesToElements.put( "pye" , new Integer( PUBLICATIONYEAREARLY ) );
-		namesToElements.put( "pyl" , new Integer( PUBLICATIONYEARLATE ) );
-		namesToElements.put( "nar" , new Integer( NARRATIVE ) );
+		namesToElements.put( "spe" , Integer.valueOf( SPELLING ) );
+		namesToElements.put( "lem" , Integer.valueOf( LEMMA ) );
+		namesToElements.put( "pos" , Integer.valueOf( POS ) );
+		namesToElements.put( "wc" , Integer.valueOf( WORDCLASS ) );
+		namesToElements.put( "mwc" , Integer.valueOf( MAJORWORDCLASS ) );
+		namesToElements.put( "spg" , Integer.valueOf( SPEAKERGENDER ) );
+		namesToElements.put( "spk" , Integer.valueOf( SPEAKER ) );
+		namesToElements.put( "sem" , Integer.valueOf( SEMANTICTAGS ) );
+		namesToElements.put( "ver" , Integer.valueOf( ISVERSE ) );
+		namesToElements.put( "met" , Integer.valueOf( METRICALSHAPE ) );
+		namesToElements.put( "spm" , Integer.valueOf( SPEAKERMORTALITY ) );
+		namesToElements.put( "wdpc" , Integer.valueOf( WORDPARTCOUNT ) );
+		namesToElements.put( "aun" , Integer.valueOf( AUTHORNAME ) );
+		namesToElements.put( "auc" , Integer.valueOf( AUTHORCONTEMPORARY ) );
+		namesToElements.put( "cot" , Integer.valueOf( CORPUSTITLE ) );
+		namesToElements.put( "cog" , Integer.valueOf( CORPUSTAG ) );
+		namesToElements.put( "wkt" , Integer.valueOf( WORKFULLTITLE ) );
+		namesToElements.put( "wkst" , Integer.valueOf( WORKSHORTTITLE ) );
+		namesToElements.put( "wpt" , Integer.valueOf( WORKPARTFULLTITLE ) );
+		namesToElements.put( "wpst" , Integer.valueOf( WORKPARTSHORTTITLE ) );
+		namesToElements.put( "wkg" , Integer.valueOf( WORKTAG ) );
+		namesToElements.put( "wpg" , Integer.valueOf( WORKPARTTAG ) );
+		namesToElements.put( "pye" , Integer.valueOf( PUBLICATIONYEAREARLY ) );
+		namesToElements.put( "pyl" , Integer.valueOf( PUBLICATIONYEARLATE ) );
+		namesToElements.put( "nar" , Integer.valueOf( NARRATIVE ) );
 //
-		elementsToNames.put( new Integer( SPELLING ) , "spe" );
-		elementsToNames.put( new Integer( LEMMA ) , "lem" );
-		elementsToNames.put( new Integer( WORDPARTCOUNT ) , "wdpc" );
-		elementsToNames.put( new Integer( POS ) , "pos" );
-		elementsToNames.put( new Integer( WORDCLASS ) , "wc" );
-		elementsToNames.put( new Integer( MAJORWORDCLASS ) , "mwc" );
-		elementsToNames.put( new Integer( SPEAKERGENDER ) , "spg" );
-		elementsToNames.put( new Integer( SPEAKER ) , "spk" );
-		elementsToNames.put( new Integer( SEMANTICTAGS ) , "sem" );
-		elementsToNames.put( new Integer( ISVERSE ) , "ver" );
-		elementsToNames.put( new Integer( METRICALSHAPE ) , "met" );
-		elementsToNames.put( new Integer( SPEAKERMORTALITY ) , "spm" );
-		elementsToNames.put( new Integer( AUTHORNAME ) , "aun" );
-		elementsToNames.put( new Integer( AUTHORCONTEMPORARY ) , "auc" );
-		elementsToNames.put( new Integer( CORPUSTITLE ) , "cot" );
-		elementsToNames.put( new Integer( CORPUSTAG ) , "cog" );
-		elementsToNames.put( new Integer( WORKFULLTITLE ) , "wkt" );
-		elementsToNames.put( new Integer( WORKSHORTTITLE ) , "wkst" );
-		elementsToNames.put( new Integer( WORKPARTFULLTITLE ) , "wpt" );
-		elementsToNames.put( new Integer( WORKPARTSHORTTITLE ) , "wpst" );
-		elementsToNames.put( new Integer( WORKTAG ) , "wkg" );
-		elementsToNames.put( new Integer( WORKPARTTAG ) , "wpg" );
-		elementsToNames.put( new Integer( PUBLICATIONYEAREARLY ) , "pye" );
-		elementsToNames.put( new Integer( PUBLICATIONYEARLATE ) , "pyl" );
-		elementsToNames.put( new Integer( NARRATIVE ) , "nar" );
+		elementsToNames.put( Integer.valueOf( SPELLING ) , "spe" );
+		elementsToNames.put( Integer.valueOf( LEMMA ) , "lem" );
+		elementsToNames.put( Integer.valueOf( WORDPARTCOUNT ) , "wdpc" );
+		elementsToNames.put( Integer.valueOf( POS ) , "pos" );
+		elementsToNames.put( Integer.valueOf( WORDCLASS ) , "wc" );
+		elementsToNames.put( Integer.valueOf( MAJORWORDCLASS ) , "mwc" );
+		elementsToNames.put( Integer.valueOf( SPEAKERGENDER ) , "spg" );
+		elementsToNames.put( Integer.valueOf( SPEAKER ) , "spk" );
+		elementsToNames.put( Integer.valueOf( SEMANTICTAGS ) , "sem" );
+		elementsToNames.put( Integer.valueOf( ISVERSE ) , "ver" );
+		elementsToNames.put( Integer.valueOf( METRICALSHAPE ) , "met" );
+		elementsToNames.put( Integer.valueOf( SPEAKERMORTALITY ) , "spm" );
+		elementsToNames.put( Integer.valueOf( AUTHORNAME ) , "aun" );
+		elementsToNames.put( Integer.valueOf( AUTHORCONTEMPORARY ) , "auc" );
+		elementsToNames.put( Integer.valueOf( CORPUSTITLE ) , "cot" );
+		elementsToNames.put( Integer.valueOf( CORPUSTAG ) , "cog" );
+		elementsToNames.put( Integer.valueOf( WORKFULLTITLE ) , "wkt" );
+		elementsToNames.put( Integer.valueOf( WORKSHORTTITLE ) , "wkst" );
+		elementsToNames.put( Integer.valueOf( WORKPARTFULLTITLE ) , "wpt" );
+		elementsToNames.put( Integer.valueOf( WORKPARTSHORTTITLE ) , "wpst" );
+		elementsToNames.put( Integer.valueOf( WORKTAG ) , "wkg" );
+		elementsToNames.put( Integer.valueOf( WORKPARTTAG ) , "wpg" );
+		elementsToNames.put( Integer.valueOf( PUBLICATIONYEAREARLY ) , "pye" );
+		elementsToNames.put( Integer.valueOf( PUBLICATIONYEARLATE ) , "pyl" );
+		elementsToNames.put( Integer.valueOf( NARRATIVE ) , "nar" );
 //
 		elementsToHQLNames.put(
-			new Integer( SPELLING ) ,
+			Integer.valueOf( SPELLING ) ,
 			"%w.spellingInsensitive.string" );
 
 		elementsToHQLNames.put(
-			new Integer( LEMMA ) ,
+			Integer.valueOf( LEMMA ) ,
 			"wordPart%i.lemPos.lemma.tagInsensitive.string" );
 
 		elementsToHQLNames.put(
-			new Integer( POS ) ,
+			Integer.valueOf( POS ) ,
 			"wordPart%i.lemPos.pos.tag" );
 
 		elementsToHQLNames.put(
-			new Integer( WORDCLASS ) ,
+			Integer.valueOf( WORDCLASS ) ,
 			"wordPart%i.lemPos.lemma.wordClass.tag" );
 
 		elementsToHQLNames.put
 		(
-			new Integer( MAJORWORDCLASS ) ,
+			Integer.valueOf( MAJORWORDCLASS ) ,
 			"wordPart%i.lemPos.lemma.wordClass.majorWordClass.majorWordClass"
 		);
 
 		elementsToHQLNames.put(
-			new Integer( SPEAKER ) ,
+			Integer.valueOf( SPEAKER ) ,
 			"%w.speech.speakers.name" );
 
 		elementsToHQLNames.put(
-			new Integer( SPEAKERGENDER ) ,
+			Integer.valueOf( SPEAKERGENDER ) ,
 			"%w.speech.gender" );
 
 		elementsToHQLNames.put(
-			new Integer( SEMANTICTAGS ) ,
+			Integer.valueOf( SEMANTICTAGS ) ,
 			"wordPart%i.semanticTags" );
 
 		elementsToHQLNames.put(
-			new Integer( ISVERSE ) ,
+			Integer.valueOf( ISVERSE ) ,
 			"%w.prosodic" );
 
 		elementsToHQLNames.put(
-			new Integer( METRICALSHAPE ) ,
+			Integer.valueOf( METRICALSHAPE ) ,
 			"%w.metricalShape" );
 
 		elementsToHQLNames.put(
-			new Integer( SPEAKERMORTALITY ) ,
+			Integer.valueOf( SPEAKERMORTALITY ) ,
 			"%w.speech.mortality" );
 
 		elementsToHQLNames.put(
-			new Integer( NARRATIVE ) ,
+			Integer.valueOf( NARRATIVE ) ,
 			"%w.speech" );
 
 		elementsToHQLNames.put(
-			new Integer( WORDPARTCOUNT ) ,
+			Integer.valueOf( WORDPARTCOUNT ) ,
 			"size(%w.wordParts)" );
 
 		elementsToHQLNames.put(
-			new Integer( AUTHORNAME ) ,
+			Integer.valueOf( AUTHORNAME ) ,
 			"%pwork.authors.name.string" );
 
 //		elementsToHQLNames.put(
-//			new Integer( AUTHORCONTEMPORARY ) ,
+//			Integer.valueOf( AUTHORCONTEMPORARY ) ,
 //			"%pwork.authors.name.string" );
 
 		elementsToHQLNames.put(
-			new Integer( CORPUSTITLE ) ,
+			Integer.valueOf( CORPUSTITLE ) ,
 			"%pwork.corpus.title" );
 
 		elementsToHQLNames.put(
-			new Integer( CORPUSTAG ) ,
+			Integer.valueOf( CORPUSTAG ) ,
 			"%pwork.corpus.tag" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKFULLTITLE ) ,
+			Integer.valueOf( WORKFULLTITLE ) ,
 			"%pwork.fullTitle" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKSHORTTITLE ) ,
+			Integer.valueOf( WORKSHORTTITLE ) ,
 			"%pwork.shortTitle" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKTAG ) ,
+			Integer.valueOf( WORKTAG ) ,
 			"%pwork.tag" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKPARTFULLTITLE ) ,
+			Integer.valueOf( WORKPARTFULLTITLE ) ,
 			"%pworkPart.fullTitle" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKPARTSHORTTITLE ) ,
+			Integer.valueOf( WORKPARTSHORTTITLE ) ,
 			"%pworkPart.shortTitle" );
 
 		elementsToHQLNames.put(
-			new Integer( WORKPARTTAG ) ,
+			Integer.valueOf( WORKPARTTAG ) ,
 			"%pworkPart.tag" );
 
 		elementsToHQLNames.put(
-			new Integer( PUBLICATIONYEAREARLY ) ,
+			Integer.valueOf( PUBLICATIONYEAREARLY ) ,
 			"%pwork.pubDate.startYear >= " );
 
 		elementsToHQLNames.put(
-			new Integer( PUBLICATIONYEARLATE ) ,
+			Integer.valueOf( PUBLICATIONYEARLATE ) ,
 			"%pwork.pubDate.endYear <= " );
 //
 		allowsOperators.put(
-			new Integer( SPELLING ) , new Boolean( false ) );
+			Integer.valueOf( SPELLING ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( LEMMA ) , new Boolean( false ) );
+			Integer.valueOf( LEMMA ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORDPARTCOUNT ) , new Boolean( true ) );
+			Integer.valueOf( WORDPARTCOUNT ) , Boolean.valueOf( true ) );
 
 		allowsOperators.put(
-			new Integer( POS ) , new Boolean( false ) );
+			Integer.valueOf( POS ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORDCLASS ) , new Boolean( false ) );
+			Integer.valueOf( WORDCLASS ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( MAJORWORDCLASS ) , new Boolean( false ) );
+			Integer.valueOf( MAJORWORDCLASS ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( SPEAKERGENDER ) , new Boolean( false ) );
+			Integer.valueOf( SPEAKERGENDER ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( SPEAKER ) , new Boolean( false ) );
+			Integer.valueOf( SPEAKER ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( SEMANTICTAGS ) , new Boolean( false ) );
+			Integer.valueOf( SEMANTICTAGS ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( ISVERSE ) , new Boolean( false ) );
+			Integer.valueOf( ISVERSE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( METRICALSHAPE ) , new Boolean( false ) );
+			Integer.valueOf( METRICALSHAPE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( SPEAKERMORTALITY ) , new Boolean( false ) );
+			Integer.valueOf( SPEAKERMORTALITY ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( AUTHORNAME ) , new Boolean( false ) );
+			Integer.valueOf( AUTHORNAME ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( AUTHORCONTEMPORARY ) , new Boolean( false ) );
+			Integer.valueOf( AUTHORCONTEMPORARY ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( CORPUSTITLE ) , new Boolean( false ) );
+			Integer.valueOf( CORPUSTITLE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( CORPUSTAG ) , new Boolean( false ) );
+			Integer.valueOf( CORPUSTAG ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKFULLTITLE ) , new Boolean( false ) );
+			Integer.valueOf( WORKFULLTITLE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKSHORTTITLE ) , new Boolean( false ) );
+			Integer.valueOf( WORKSHORTTITLE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKPARTFULLTITLE ) , new Boolean( false ) );
+			Integer.valueOf( WORKPARTFULLTITLE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKPARTSHORTTITLE ) , new Boolean( false ) );
+			Integer.valueOf( WORKPARTSHORTTITLE ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKTAG ) , new Boolean( false ) );
+			Integer.valueOf( WORKTAG ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( WORKPARTTAG ) , new Boolean( false ) );
+			Integer.valueOf( WORKPARTTAG ) , Boolean.valueOf( false ) );
 
 		allowsOperators.put(
-			new Integer( PUBLICATIONYEAREARLY ) , new Boolean( true ) );
+			Integer.valueOf( PUBLICATIONYEAREARLY ) , Boolean.valueOf( true ) );
 
 		allowsOperators.put(
-			new Integer( PUBLICATIONYEARLATE ) , new Boolean( true ) );
+			Integer.valueOf( PUBLICATIONYEARLATE ) , Boolean.valueOf( true ) );
 
 		allowsOperators.put(
-			new Integer( NARRATIVE ) , new Boolean( true ) );
+			Integer.valueOf( NARRATIVE ) , Boolean.valueOf( true ) );
 	}
 }
 

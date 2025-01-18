@@ -124,8 +124,8 @@ public class ConcordancePanelDnD extends ConcordancePanel implements ClipboardOw
 					} else if(o instanceof Spelling) {
 						gos.add(new SpellingWithCollationStrength((Spelling)o,Collator.TERTIARY));
 					} else if(o instanceof PubDecade) { // PubDecade is not a SearchCriterion, but PubYearRange is.
-						Integer startYear = new Integer(((PubDecade)o).getStartYear());
-						Integer endYear = new Integer(startYear.intValue() + 10);
+						Integer startYear = Integer.valueOf(((PubDecade)o).getStartYear());
+						Integer endYear = Integer.valueOf(startYear.intValue() + 10);
 						gos.add(new PubYearRange(startYear,endYear));
 					} else {System.out.println("ConcordancePanelDnD createTransferable: " + o.getClass().getName());}
 				}

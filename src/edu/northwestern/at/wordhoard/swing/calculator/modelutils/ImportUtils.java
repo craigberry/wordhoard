@@ -196,7 +196,7 @@ public class ImportUtils
 
 		try
 		{
-			Long id	= new Long( -1 );
+			Long id	= Long.valueOf( -1 );
 
 			if ( WordHoardSettings.getBuildProgramRunning() )
 			{

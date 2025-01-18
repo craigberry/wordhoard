@@ -1034,7 +1034,7 @@ public class StringUtils
 
 	public static String intToString( int intValue )
 	{
-		return new Integer( intValue ).toString();
+		return Integer.valueOf( intValue ).toString();
 	}
 
 	/** Convert integer to string with left zero fill.
@@ -1049,7 +1049,7 @@ public class StringUtils
 
 	public static String intToStringWithZeroFill( int intValue , int width )
 	{
-		String s = new Integer( intValue ).toString();
+		String s = Integer.valueOf( intValue ).toString();
 
 		if ( s.length() < width )
 			s = dupl( '0' , width - s.length() ) + s;
@@ -1067,7 +1067,7 @@ public class StringUtils
 
 	public static String longToString( long longValue )
 	{
-		return new Long( longValue ).toString();
+		return Long.valueOf( longValue ).toString();
 	}
 
 	/** Convert long to string with left zero fill.
@@ -1082,7 +1082,7 @@ public class StringUtils
 
 	public static String longToStringWithZeroFill( long longValue , int width )
 	{
-		String s = new Long( longValue ).toString();
+		String s = Long.valueOf( longValue ).toString();
 
 		if ( s.length() < width )
 			s = dupl( '0' , width - s.length() ) + s;

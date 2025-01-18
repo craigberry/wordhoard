@@ -183,7 +183,7 @@ public class WordSetTotalWordFormCount
 
 	public String toString()
 	{
-		return new Integer( wordFormCount ).toString();
+		return Integer.valueOf( wordFormCount ).toString();
 	}
 }
 

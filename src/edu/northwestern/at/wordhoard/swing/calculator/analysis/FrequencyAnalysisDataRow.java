@@ -30,7 +30,7 @@ public class FrequencyAnalysisDataRow implements SortedTableModel.Row
 
 		for ( int i = 0 ; i < rowData.length ; i++ )
 		{
-			this.rowData[ i ]	= new Double( rowData[ i ] );
+			this.rowData[ i ]	= Double.valueOf( rowData[ i ] );
 		}
 	}
 
@@ -54,7 +54,7 @@ public class FrequencyAnalysisDataRow implements SortedTableModel.Row
 
 		for ( int i = 0 ; i < rowData.length ; i++ )
 		{
-			this.rowData[ i + 1 ]	= new Double( rowData[ i ] );
+			this.rowData[ i + 1 ]	= Double.valueOf( rowData[ i ] );
 		}
 	}
 

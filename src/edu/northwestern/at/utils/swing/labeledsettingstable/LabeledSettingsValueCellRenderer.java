@@ -73,7 +73,7 @@ public class LabeledSettingsValueCellRenderer
 
 		savedPaneSettings.put
 		(
-			new Integer( row ) ,
+			Integer.valueOf( row ) ,
 			new LabeledSettingsValueTextPaneSettings( this , font )
 		);
 	}

@@ -245,16 +245,16 @@ public class BuildWorks {
 	private static HashMap rendMap = new HashMap();
 
 	static {
-		rendMap.put("bold", new Integer(TextRun.BOLD));
-		rendMap.put("italic", new Integer(TextRun.ITALIC));
-		rendMap.put("extended", new Integer(TextRun.EXTENDED));
-		rendMap.put("sperrtext", new Integer(TextRun.EXTENDED));
-		rendMap.put("underline", new Integer(TextRun.UNDERLINE));
-		rendMap.put("overline", new Integer(TextRun.OVERLINE));
-		rendMap.put("macron", new Integer(TextRun.OVERLINE));
-		rendMap.put("superscript", new Integer(TextRun.SUPERSCRIPT));
-		rendMap.put("subscript", new Integer(TextRun.SUBSCRIPT));
-		rendMap.put("monospaced", new Integer(TextRun.MONOSPACED));
+		rendMap.put("bold", Integer.valueOf(TextRun.BOLD));
+		rendMap.put("italic", Integer.valueOf(TextRun.ITALIC));
+		rendMap.put("extended", Integer.valueOf(TextRun.EXTENDED));
+		rendMap.put("sperrtext", Integer.valueOf(TextRun.EXTENDED));
+		rendMap.put("underline", Integer.valueOf(TextRun.UNDERLINE));
+		rendMap.put("overline", Integer.valueOf(TextRun.OVERLINE));
+		rendMap.put("macron", Integer.valueOf(TextRun.OVERLINE));
+		rendMap.put("superscript", Integer.valueOf(TextRun.SUPERSCRIPT));
+		rendMap.put("subscript", Integer.valueOf(TextRun.SUBSCRIPT));
+		rendMap.put("monospaced", Integer.valueOf(TextRun.MONOSPACED));
 	}
 
 	/**	Parses command line arguments.
@@ -445,8 +445,8 @@ public class BuildWorks {
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg("Invalid publication date: " + pubDateStr);
 			}
-			pubDate = new PubYearRange(new Integer(earlyDate),
-				new Integer(lateDate));
+			pubDate = new PubYearRange(Integer.valueOf(earlyDate),
+				Integer.valueOf(lateDate));
 		}
 
 		Element taggingDataEl = DOMUtils.getChild(headerEl, "taggingData");
@@ -463,7 +463,7 @@ public class BuildWorks {
 		if (work != null) deleteOldWork();
 
 		work = new Work();
-		work.setId(new Long(workPartId++));
+		work.setId(Long.valueOf(workPartId++));
 		work.setTag(fullWorkTag);
 		work.setPathTag(workTag);
 		work.setFullTitle(fullTitle);
@@ -566,7 +566,7 @@ public class BuildWorks {
 		TextWrapper textWrapper = context.finalizeText();
 
 		WorkPart titlePart = new WorkPart();
-		titlePart.setId(new Long(workPartId++));
+		titlePart.setId(Long.valueOf(workPartId++));
 		titlePart.setTag(fullWorkTag + "-title");
 		titlePart.setShortTitle("Title");
 		titlePart.setFullTitle("Title");
@@ -821,7 +821,7 @@ public class BuildWorks {
 		String tag = el.getAttribute("id");
 		if (tag.length() == 0) return null;
 		Line line = new Line();
-		line.setId(new Long(lineId++));
+		line.setId(Long.valueOf(lineId++));
 		line.setTag(tag);
 
 		String lineNumberAttrValue = el.getAttribute("n");
@@ -932,7 +932,7 @@ public class BuildWorks {
 			}
 		}
 		Lemma lemma = new Lemma();
-		lemma.setId(new Long(lemmaId++));
+		lemma.setId(Long.valueOf(lemmaId++));
 		lemma.setTag(new Spelling(lemmaTag, charset));
 		String lemmaTagInsensitive =
 			CharsetUtils.translateToInsensitive(lemmaTag);
@@ -998,7 +998,7 @@ public class BuildWorks {
 		LemPos lemPos = (LemPos)lemPosMap.get(pair);
 		if (lemPos == null) {
 			lemPos = new LemPos();
-			lemPos.setId(new Long(lemPosId++));
+			lemPos.setId(Long.valueOf(lemPosId++));
 			lemPos.setLemma(lemma);
 			lemPos.setPos(pos);
 			if (spelling != null)
@@ -1055,7 +1055,7 @@ public class BuildWorks {
 		if (bensonGlossAttrStr.length() > 0) {
 			Long bensonLemPosId = null;
 			try {
-				bensonLemPosId = new Long(bensonGlossAttrStr);
+				bensonLemPosId = Long.valueOf(bensonGlossAttrStr);
 			} catch (NumberFormatException e) {
 				BuildUtils.emsg("Invalid bensonGloss attriubte " +
 					bensonGlossAttrStr + " for word: " + wordTag);
@@ -1071,7 +1071,7 @@ public class BuildWorks {
 				charset, posType, wordTag);
 			if (lemPos == null) continue;
 			WordPart wordPart = new WordPart();
-			wordPart.setId(new Long(wordPartId++));
+			wordPart.setId(Long.valueOf(wordPartId++));
 			wordPart.setTag(wordTag);
 			wordPart.setPartIndex(partIndex);
 			wordPart.setWord(word);
@@ -1103,7 +1103,7 @@ public class BuildWorks {
 
 		Word word = context.appendWord(str);
 
-		word.setId(new Long(wordId++));
+		word.setId(Long.valueOf(wordId++));
 		word.setTag(tag);
 		word.setWorkTag(workTag);
 		word.setWorkOrdinal(wordOrdinalInWork++);
@@ -1591,7 +1591,7 @@ public class BuildWorks {
 		}
 
 		Speech speech = new Speech();
-		speech.setId(new Long(speechId++));
+		speech.setId(Long.valueOf(speechId++));
 		context.setSpeech(speech);
 		if (!rendNone) context.indent(TextParams.SPEECH_INDENTATION);
 		speech.setWorkPart(context.getWorkPart());
@@ -1722,7 +1722,7 @@ public class BuildWorks {
 		context.setLemmaTagging((partTaggingDataFlags & TaggingData.LEMMA) == 1);
 
 		WorkPart part = new WorkPart();
-		part.setId(new Long(workPartId++));
+		part.setId(Long.valueOf(workPartId++));
 		part.setTag(fullWorkTag + "-" + tag);
 		part.setPathTag(pathTag);
 		part.setShortTitle(shortTitle);

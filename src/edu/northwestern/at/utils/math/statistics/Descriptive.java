@@ -210,8 +210,8 @@ public class Descriptive extends Object
 
 			int runLength = i - cursor;
 
-			distinctValues.add( new Double( element ) );
-			if (frequencies != null) frequencies.add( new Integer( runLength ) );
+			distinctValues.add( Double.valueOf( element ) );
+			if (frequencies != null) frequencies.add( Integer.valueOf( runLength ) );
 		}
 	}
 
@@ -1251,7 +1251,7 @@ public class Descriptive extends Object
 
 				for ( int j = nextStart; j < insertionPosition; j++ )
 				{
-					bins[ i ].add( new Double( sortedList[ j ] ) );
+					bins[ i ].add( Double.valueOf( sortedList[ j ] ) );
 				}
 
 				nextStart = insertionPosition;
@@ -1269,7 +1269,7 @@ public class Descriptive extends Object
 
 				for ( int j = nextStart; j <= index; j++ )
 				{
-					bins[ i ].add( new Double( sortedList[ j ] ) );
+					bins[ i ].add( Double.valueOf( sortedList[ j ] ) );
 				}
 
 				nextStart = index + 1;
@@ -1284,7 +1284,7 @@ public class Descriptive extends Object
 
 		for ( int j = nextStart; j < sortedList.length; j++ )
 		{
-			bins[ noOfBins - 1 ].add( new Double( sortedList[ j ] ) );
+			bins[ noOfBins - 1 ].add( Double.valueOf( sortedList[ j ] ) );
 		}
 
 		return bins;

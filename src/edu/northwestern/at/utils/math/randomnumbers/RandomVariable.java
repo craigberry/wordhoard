@@ -47,7 +47,7 @@ public class RandomVariable
 	public static int randInt( int min , int max )
 	{
 		return min +
-			new Double(
+			Double.valueOf(
 				Math.floor( ( max - min + 1 ) * rand() ) ).intValue();
 	}
 

@@ -206,11 +206,11 @@ public class NGramExtractor
 
 				freq++;
 
-				nGramCounts.put( nGramString , new Integer( freq ) );
+				nGramCounts.put( nGramString , Integer.valueOf( freq ) );
 			}
 			else
 			{
-				nGramCounts.put( nGramString , new Integer( 1 ) );
+				nGramCounts.put( nGramString , Integer.valueOf( 1 ) );
 			}
 		}
 								//	Compute total ngram count.
@@ -245,11 +245,11 @@ public class NGramExtractor
 
 				freq++;
 
-				nGramCounts.put( nGramString , new Integer( freq ) );
+				nGramCounts.put( nGramString , Integer.valueOf( freq ) );
 			}
 			else
 			{
-				nGramCounts.put( nGramString , new Integer( 1 ) );
+				nGramCounts.put( nGramString , Integer.valueOf( 1 ) );
 			}
 		}
 								//	Compute total ngram count.

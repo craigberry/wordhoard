@@ -78,7 +78,7 @@ public class WordCountUtils
 			new Object[]
 			{
 				wordStrings ,
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( workParts )
 			};
 
@@ -149,7 +149,7 @@ public class WordCountUtils
 				new Object[]
 				{
 					Arrays.asList( WorkUtils.getUniqueWorkParts( workParts ) ) ,
-					new Integer( wordForm )
+					Integer.valueOf( wordForm )
 				} ,
 				true
 			);
@@ -211,7 +211,7 @@ public class WordCountUtils
 				{
 					Arrays.asList(
 						WorkUtils.getUniqueWorkParts( workParts ) ) ,
-					new Integer( wordForm )
+					Integer.valueOf( wordForm )
 				} ,
 				true
 			);
@@ -336,7 +336,7 @@ public class WordCountUtils
 			(
 				queryString ,
 				new String[]{ "workPart" , "wordForm" } ,
-				new Object[]{ workPart , new Integer( wordForm ) } ,
+				new Object[]{ workPart , Integer.valueOf( wordForm ) } ,
 				true
 			);
 								//	If we got results, put them in the
@@ -353,7 +353,7 @@ public class WordCountUtils
 				wordCounts.put
 				(
 					wordCount.word.toInsensitive() ,
-					new Integer( wordCount.count )
+					Integer.valueOf( wordCount.count )
 				);
 			}
 		}
@@ -414,7 +414,7 @@ public class WordCountUtils
 		Object[] paramValues	=
 			new Object[]
 			{
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( workParts )
 			};
 
@@ -447,12 +447,12 @@ public class WordCountUtils
 					wordCounts.put
 					(
 						wordText ,
-						new Integer( newCount + count.intValue() )
+						Integer.valueOf( newCount + count.intValue() )
 					);
 				}
 				else
 				{
-					wordCounts.put( wordText , new Integer( newCount ) );
+					wordCounts.put( wordText , Integer.valueOf( newCount ) );
 				}
 								//	Add work to hash set of works for
 								//	this word.
@@ -484,7 +484,7 @@ public class WordCountUtils
 
 					HashSet workHashSet	= (HashSet)workCounts.get( wordText );
 
-					workCounts.put( wordText , new Integer( workHashSet.size() ) );
+					workCounts.put( wordText , Integer.valueOf( workHashSet.size() ) );
 				}
 			}
 		}
@@ -615,7 +615,7 @@ public class WordCountUtils
 		Object[] paramValues	=
 			new Object[]
 			{
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( workParts )
 			};
 
@@ -661,12 +661,12 @@ public class WordCountUtils
 						wordCounts1.put
 						(
 							wordText ,
-							new Integer( newCount + count.intValue() )
+							Integer.valueOf( newCount + count.intValue() )
 						);
 					}
 					else
 					{
-						wordCounts1.put( wordText , new Integer( newCount ) );
+						wordCounts1.put( wordText , Integer.valueOf( newCount ) );
 					}
 				}
 								//	Increment word count if this work
@@ -681,12 +681,12 @@ public class WordCountUtils
 						wordCounts2.put
 						(
 							wordText ,
-							new Integer( newCount + count.intValue() )
+							Integer.valueOf( newCount + count.intValue() )
 						);
 					}
 					else
 					{
-						wordCounts2.put( wordText , new Integer( newCount ) );
+						wordCounts2.put( wordText , Integer.valueOf( newCount ) );
 					}
 				}
 								//	Add work to hash set of works for
@@ -717,7 +717,7 @@ public class WordCountUtils
 
 				HashSet workHashSet	= (HashSet)workCounts.get( wordText );
 
-				workCounts.put( wordText , new Integer( workHashSet.size() ) );
+				workCounts.put( wordText , Integer.valueOf( workHashSet.size() ) );
 			}
 		}
 

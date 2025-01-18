@@ -13,7 +13,7 @@ public class NumberOps
 	/**	Integer zero as a Number.  Used for comparisons.
 	 */
 
-	protected final static Number intZero	= new Integer( 0 );
+	protected final static Number intZero	= Integer.valueOf( 0 );
 
 	/**	Compare two numbers.
 	 *
@@ -98,7 +98,7 @@ public class NumberOps
 		if	(	( number1 instanceof Integer ) &&
 				( number2 instanceof Integer ) )
 		{
-			return new Integer
+			return Integer.valueOf
 			(
 				((Integer)number1).intValue() +
 				((Integer)number2).intValue()
@@ -106,7 +106,7 @@ public class NumberOps
 		}
 		else
 		{
-			return new Double
+			return Double.valueOf
 			(
 				number1.doubleValue() + number2.doubleValue()
 			);
@@ -132,7 +132,7 @@ public class NumberOps
 		if	(	( number1 instanceof Integer ) &&
 				( number2 instanceof Integer ) )
 		{
-			return new Integer
+			return Integer.valueOf
 			(
 				((Integer)number1).intValue() -
 				((Integer)number2).intValue()
@@ -140,7 +140,7 @@ public class NumberOps
 		}
 		else
 		{
-			return new Double
+			return Double.valueOf
 			(
 				number1.doubleValue() - number2.doubleValue()
 			);
@@ -166,7 +166,7 @@ public class NumberOps
 		if	(	( number1 instanceof Integer ) &&
 				( number2 instanceof Integer ) )
 		{
-			return new Integer
+			return Integer.valueOf
 			(
 				((Integer)number1).intValue() *
 				((Integer)number2).intValue()
@@ -174,7 +174,7 @@ public class NumberOps
 		}
 		else
 		{
-			return new Double
+			return Double.valueOf
 			(
 				number1.doubleValue() * number2.doubleValue()
 			);
@@ -200,7 +200,7 @@ public class NumberOps
 		if	(	( number1 instanceof Integer ) &&
 				( number2 instanceof Integer ) )
 		{
-			return new Integer
+			return Integer.valueOf
 			(
 				((Integer)number1).intValue() /
 				((Integer)number2).intValue()
@@ -208,7 +208,7 @@ public class NumberOps
 		}
 		else
 		{
-			return new Double
+			return Double.valueOf
 			(
 				number1.doubleValue() / number2.doubleValue()
 			);
@@ -231,7 +231,7 @@ public class NumberOps
 
 	public static Number modulus( Number number1 , Number number2 )
 	{
-		return new Long( number1.longValue() % number2.longValue() );
+		return Long.valueOf( number1.longValue() % number2.longValue() );
 	}
 
 	/**	Convert string to Number.
@@ -259,7 +259,7 @@ public class NumberOps
 								//	Try to convert to integer first.
 		try
 		{
-			result	= new Integer( s );
+			result	= Integer.valueOf( s );
 		}
 		catch ( NumberFormatException e )
 		{
@@ -267,7 +267,7 @@ public class NumberOps
 								//	If this fails, a NumberFormatException
 								//	will be thrown.
 
-			result	= new Double( s );
+			result	= Double.valueOf( s );
 		}
 
 		return result;
@@ -293,27 +293,27 @@ public class NumberOps
 	 	{
 		 	if ( number instanceof Integer )
 		 	{
-		 		result	= new Integer( number.intValue() );
+		 		result	= Integer.valueOf( number.intValue() );
 	 		}
 		 	else if ( number instanceof Double )
 		 	{
-		 		result	= new Double( number.doubleValue() );
+		 		result	= Double.valueOf( number.doubleValue() );
 	 		}
 		 	else if ( number instanceof Long )
 		 	{
-		 		result	= new Long( number.longValue() );
+		 		result	= Long.valueOf( number.longValue() );
 	 		}
 		 	else if ( number instanceof Float )
 		 	{
-		 		result	= new Float( number.floatValue() );
+		 		result	= Float.valueOf( number.floatValue() );
 	 		}
 		 	else if ( number instanceof Byte )
 		 	{
-		 		result	= new Byte( number.byteValue() );
+		 		result	= Byte.valueOf( number.byteValue() );
 	 		}
 		 	else if ( number instanceof Short )
 		 	{
-		 		result	= new Short( number.shortValue() );
+		 		result	= Short.valueOf( number.shortValue() );
 	 		}
 		 	else if ( number instanceof BigDecimal )
 		 	{

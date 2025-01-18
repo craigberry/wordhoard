@@ -262,11 +262,11 @@ public class PrintView extends BoxView
 
 		int prevPage	= pageIndex - 1;
 
-		Integer key = new Integer( prevPage );
+		Integer key = Integer.valueOf( prevPage );
 
 		if ( pageStateMap.containsKey( key ) )
 		{
-			pageState = (PageState)pageStateMap.get( new Integer( prevPage ) );
+			pageState = (PageState)pageStateMap.get( Integer.valueOf( prevPage ) );
 		}
 		else
 		{
@@ -474,7 +474,7 @@ public class PrintView extends BoxView
 
 								// Save the last view and length for this page.
 
-				pageStateMap.put( new Integer( pageIndex ) , pageState );
+				pageStateMap.put( Integer.valueOf( pageIndex ) , pageState );
 
 				return true;
 			}
@@ -725,7 +725,7 @@ public class PrintView extends BoxView
 
 								// Save updated state for this printer page.
 
-		pageStateMap.put( new Integer( pageIndex ) , pageState );
+		pageStateMap.put( Integer.valueOf( pageIndex ) , pageState );
 
 		return true;
 	}

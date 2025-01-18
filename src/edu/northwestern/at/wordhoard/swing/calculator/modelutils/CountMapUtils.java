@@ -171,7 +171,7 @@ public class CountMapUtils
 
 			int binValue	= ( dCount == 0.0D ) ? 0 : 1;
 
-			resultMap.put( key , new Integer( binValue ) );
+			resultMap.put( key , Integer.valueOf( binValue ) );
 		}
 
 		return resultMap;
@@ -204,7 +204,7 @@ public class CountMapUtils
 			double dCount	=
 				((Number)map.get( key ) ).doubleValue();
 
-			resultMap.put( key , new Double( dCount * scaleFactor ) );
+			resultMap.put( key , Double.valueOf( dCount * scaleFactor ) );
 		}
 
 		return resultMap;
@@ -255,7 +255,7 @@ public class CountMapUtils
 			Object key		=	iterator.next();
 			HashSet workIDs	=	(HashSet)map.get( key );
 
-			map.put( key , new Integer( workIDs.size() ) );
+			map.put( key , Integer.valueOf( workIDs.size() ) );
 		}
 	}
 
@@ -359,7 +359,7 @@ public class CountMapUtils
 
 			count		= Integer.parseInt( tokens[ 1 ] );
 
-			map.put( tokens[ 0 ] , new Integer( count ) );
+			map.put( tokens[ 0 ] , Integer.valueOf( count ) );
 
 			countLine	= bufferedReader.readLine();
 		}
@@ -588,7 +588,7 @@ public class CountMapUtils
 
 			if ( !destinationMap.containsKey( key ) )
 			{
-				destinationMap.put( key , new Integer( 1 ) );
+				destinationMap.put( key , Integer.valueOf( 1 ) );
 			}
 			else
 			{
@@ -604,7 +604,7 @@ public class CountMapUtils
 				destinationMap.put
 				(
 					key ,
-					NumberOps.add( destCount , new Integer( 1 ) )
+					NumberOps.add( destCount , Integer.valueOf( 1 ) )
 				);
 			}
 		}
@@ -820,12 +820,12 @@ public class CountMapUtils
 			countMap.put
 			(
 				word ,
-				NumberOps.add( oldCount , new Integer( count ) )
+				NumberOps.add( oldCount , Integer.valueOf( count ) )
 			);
 		}
 		else
 		{
-			countMap.put( word , new Integer( count ) );
+			countMap.put( word , Integer.valueOf( count ) );
 		}
 	}
 
@@ -951,7 +951,7 @@ public class CountMapUtils
 				}
 				else
 				{
-					copyValue	= new Integer( 0 );
+					copyValue	= Integer.valueOf( 0 );
 				}
 			}
 								//	Add cloned entry to result map.

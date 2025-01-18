@@ -63,7 +63,7 @@ public class BuildBensonGloss {
 		}
 		Long id = null;
 		try {
-			id = new Long(idStr);
+			id = Long.valueOf(idStr);
 		} catch (NumberFormatException e) {
 			BuildUtils.emsg("Invalid id attribute: " + idStr);
 			return;
@@ -134,7 +134,7 @@ public class BuildBensonGloss {
 		}
 		Long id = null;
 		try {
-			id = new Long(idStr);
+			id = Long.valueOf(idStr);
 		} catch (NumberFormatException e) {
 			BuildUtils.emsg("Invalid id attribute: " + idStr);
 			return;
@@ -247,7 +247,7 @@ public class BuildBensonGloss {
 		}
 		Long id = null;
 		try {
-			id = new Long(idStr);
+			id = Long.valueOf(idStr);
 		} catch (NumberFormatException e) {
 			BuildUtils.emsg("Invalid id attribute: " + idStr);
 			return;
@@ -260,7 +260,7 @@ public class BuildBensonGloss {
 		}
 		Long lemmaId = null;
 		try {
-			lemmaId = new Long(lemmaIdStr);
+			lemmaId = Long.valueOf(lemmaIdStr);
 		} catch (NumberFormatException e) {
 			BuildUtils.emsg("Invalid lemma attribute " + lemmaIdStr +
 				" for id " + idStr);
@@ -274,7 +274,7 @@ public class BuildBensonGloss {
 		}
 		Long posId = null;
 		try {
-			posId = new Long(posIdStr);
+			posId = Long.valueOf(posIdStr);
 		} catch (NumberFormatException e) {
 			BuildUtils.emsg("Invalid pos attribute " + posIdStr +
 				" for id " + idStr);

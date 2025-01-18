@@ -2392,7 +2392,7 @@ public class PrintfFormat
 			{
 				return printDFormat(
 					Formatters.formatIntegerWithCommas(
-						new Integer( x ).intValue() ) );
+						Integer.valueOf( x ).intValue() ) );
 			}
 			else
 			{

@@ -104,7 +104,7 @@ public class RemoteAnnotation implements TextAttachment {
 		Node child = children.item(0);
 		String str = child.getNodeValue();
 		setIdentifier(str);
-		id=new Long(str);
+		id=Long.valueOf(str);
 		
 		list = el.getElementsByTagName("type");
 		itemEl = (Element)list.item(0);

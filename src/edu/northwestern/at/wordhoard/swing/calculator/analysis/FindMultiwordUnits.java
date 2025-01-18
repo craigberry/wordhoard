@@ -819,7 +819,7 @@ public class FindMultiwordUnits
 					break;
 			}
 
-			glueMap.put( mwuText , new Double( glueMeasure ) );
+			glueMap.put( mwuText , Double.valueOf( glueMeasure ) );
 
 								//	Increment count of mwus processed.
 			mwusDone++;

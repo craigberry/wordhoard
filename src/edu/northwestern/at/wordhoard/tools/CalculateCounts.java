@@ -189,10 +189,10 @@ public class CalculateCounts {
 			if (line == null) return null;
 			StringTokenizer tok = new StringTokenizer(line, "\t");
 			result = new WordData();
-			result.corpusId = new Long(tok.nextToken());
-			result.workId = new Long(tok.nextToken());
-			result.workPartId = new Long(tok.nextToken());
-			result.wordId = new Long(tok.nextToken());
+			result.corpusId = Long.valueOf(tok.nextToken());
+			result.workId = Long.valueOf(tok.nextToken());
+			result.workPartId = Long.valueOf(tok.nextToken());
+			result.wordId = Long.valueOf(tok.nextToken());
 			result.spelling = tok.nextToken().replaceAll("\\\\\\\\", "\\\\");
 			result.spellingInsensitive = tok.nextToken().replaceAll("\\\\\\\\", "\\\\");
 			result.charset = Byte.parseByte(tok.nextToken());
@@ -200,7 +200,7 @@ public class CalculateCounts {
 			String str = tok.nextToken();
 			result.metricalShape = str.equals("\\N") ? null : str;
 			str = tok.nextToken();
-			result.speechId = str.equals("\\N") ? null : new Long(str);
+			result.speechId = str.equals("\\N") ? null : Long.valueOf(str);
 			return result;
 		}
 	}
@@ -225,12 +225,12 @@ public class CalculateCounts {
 			if (line == null) return null;
 			StringTokenizer tok = new StringTokenizer(line, "\t");
 			result = new WordPartData();
-			result.corpusId = new Long(tok.nextToken());
-			result.workId = new Long(tok.nextToken());
-			result.workPartId = new Long(tok.nextToken());
-			result.wordId = new Long(tok.nextToken());
+			result.corpusId = Long.valueOf(tok.nextToken());
+			result.workId = Long.valueOf(tok.nextToken());
+			result.workPartId = Long.valueOf(tok.nextToken());
+			result.wordId = Long.valueOf(tok.nextToken());
 			result.partIndex = Integer.parseInt(tok.nextToken());
-			result.lemPosId = new Long(tok.nextToken());
+			result.lemPosId = Long.valueOf(tok.nextToken());
 			return result;
 		}
 	}
@@ -255,10 +255,10 @@ public class CalculateCounts {
 			if (line == null) return null;
 			StringTokenizer tok = new StringTokenizer(line, "\t");
 			result = new SpeechData();
-			result.corpusId = new Long(tok.nextToken());
-			result.workId = new Long(tok.nextToken());
-			result.workPartId = new Long(tok.nextToken());
-			result.speechId = new Long(tok.nextToken());
+			result.corpusId = Long.valueOf(tok.nextToken());
+			result.workId = Long.valueOf(tok.nextToken());
+			result.workPartId = Long.valueOf(tok.nextToken());
+			result.speechId = Long.valueOf(tok.nextToken());
 			result.gender = Byte.parseByte(tok.nextToken());
 			result.mortality = Byte.parseByte(tok.nextToken());
 			return result;
@@ -931,12 +931,12 @@ public class CalculateCounts {
 		Long lemPosKey = wordPartData.lemPosId;
 		LemPosInfo lemPosInfo = (LemPosInfo)lemPosInfoMap.get(lemPosKey);
 		long lemmaId = lemPosInfo.lemmaId;
-		Long lemmaKey = new Long(lemmaId);
+		Long lemmaKey = Long.valueOf(lemmaId);
 		long posId = lemPosInfo.posId;
 		LemmaInfo lemmaInfo = (LemmaInfo)lemmaInfoMap.get(lemmaKey);
 		long wordClassId = lemmaInfo.wordClassId;
 		WordClassInfo wordClassInfo = (WordClassInfo)wordClassInfoMap.get(
-			new Long(wordClassId));
+			Long.valueOf(wordClassId));
 		
 		//	Increment the lemma/work counter.
 		

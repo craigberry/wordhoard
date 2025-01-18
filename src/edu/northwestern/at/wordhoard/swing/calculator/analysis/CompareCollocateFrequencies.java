@@ -214,7 +214,7 @@ public class CompareCollocateFrequencies
 			Integer wordCount		=
 				(Integer)analysisCounts.get( collocate );
 
-			if ( wordCount	== null ) wordCount	= new Integer( 0 );
+			if ( wordCount	== null ) wordCount	= Integer.valueOf( 0 );
 
 								//	Get count of word form in reference text.
 
@@ -223,7 +223,7 @@ public class CompareCollocateFrequencies
 
 			if ( referenceWordCount	== null )
 			{
-				referenceWordCount	= new Integer( 0 );
+				referenceWordCount	= Integer.valueOf( 0 );
 			}
 
 			if ( collocate.getString().length() > maxLabelWidth )

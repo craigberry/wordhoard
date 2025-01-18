@@ -204,7 +204,7 @@ public class QueryUtils
 				title ,
 				owner ,
 				new String[]{ "queryType" } ,
-				new Object[]{ new Integer( queryType ) }
+				new Object[]{ Integer.valueOf( queryType ) }
 			);
 	}
 
@@ -248,7 +248,7 @@ public class QueryUtils
 				title ,
 				null ,
 				new String[]{ "queryType" } ,
-				new Object[]{ new Integer( queryType ) }
+				new Object[]{ Integer.valueOf( queryType ) }
 			);
 	}
 
@@ -294,7 +294,7 @@ public class QueryUtils
 					"from WHQuery qu where qu.isPublic=1 " +
 					"and queryType=:queryType",
 					new String[]{ "queryType" } ,
-					new Object[]{ new Integer( queryType ) } ,
+					new Object[]{ Integer.valueOf( queryType ) } ,
 					false
 				);
 		}
@@ -309,7 +309,7 @@ public class QueryUtils
 					new Object[]
 					{
 						owner ,
-						new Integer( queryType )
+						Integer.valueOf( queryType )
 					} ,
 					false
 				);
@@ -359,7 +359,7 @@ public class QueryUtils
 			(
 				queryString ,
 				new String[]{ "owner" , "queryType" } ,
-				new Object[]{ owner , new Integer( queryType ) } ,
+				new Object[]{ owner , Integer.valueOf( queryType ) } ,
 				false
 			);
 

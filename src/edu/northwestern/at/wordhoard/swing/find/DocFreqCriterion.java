@@ -117,7 +117,7 @@ public	 class DocFreqCriterion extends CriterionComponent {
 		Integer freq = null;
 		if (freqStr.length() > 0) {
 			try {
-				freq = new Integer(freqStr);
+				freq = Integer.valueOf(freqStr);
 			} catch (NumberFormatException e) {
 				return "Starting doc freq is invalid.";
 			}

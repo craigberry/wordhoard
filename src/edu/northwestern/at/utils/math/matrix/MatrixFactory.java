@@ -49,8 +49,8 @@ public class MatrixFactory
 		Object[] params =
 			new Object[]
 			{
-				new Integer( rows ),
-				new Integer( columns )
+				Integer.valueOf( rows ),
+				Integer.valueOf( columns )
 			};
 								// Allocate constructor and create matrix.
 		try

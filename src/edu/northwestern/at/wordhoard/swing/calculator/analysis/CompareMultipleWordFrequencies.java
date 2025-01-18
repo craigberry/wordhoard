@@ -213,7 +213,7 @@ public class CompareMultipleWordFrequencies
 			Integer wordCount		=
 				(Integer)analysisWordCounts.get( wordToAnalyze );
 
-			if ( wordCount	== null ) wordCount	= new Integer( 0 );
+			if ( wordCount	== null ) wordCount	= Integer.valueOf( 0 );
 
 								//	Get number of works in reference text
 								//	collection in which this word form appears.
@@ -221,7 +221,7 @@ public class CompareMultipleWordFrequencies
 			Integer workCount		=
 				(Integer)workCounts.get( wordToAnalyze );
 
-			if ( workCount	== null ) workCount	= new Integer( 0 );
+			if ( workCount	== null ) workCount	= Integer.valueOf( 0 );
 
 								//	Only compute statistics for word form
 								//	if it appears at least the specified

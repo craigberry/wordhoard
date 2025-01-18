@@ -228,7 +228,7 @@ public class CollocateFrequencies
 
 					if ( !collocationCountMap.containsKey( spKey ) )
 					{
-						collocationCountMap.put( spKey , new Integer( 1 ) );
+						collocationCountMap.put( spKey , Integer.valueOf( 1 ) );
 					}
 					else
 					{
@@ -245,7 +245,7 @@ public class CollocateFrequencies
 						collocationCountMap.put
 						(
 							spKey ,
-							new Integer( count.intValue() + 1 )
+							Integer.valueOf( count.intValue() + 1 )
 						);
 					}
 								//	Add this word occurrence's work

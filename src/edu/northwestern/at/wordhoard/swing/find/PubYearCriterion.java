@@ -72,14 +72,14 @@ class PubYearCriterion extends CriterionComponent {
 			Integer endYear = null;
 			if (startStr.length() > 0) {
 				try {
-					startYear = new Integer(startStr);
+					startYear = Integer.valueOf(startStr);
 				} catch (NumberFormatException e) {
 					return pubYearRange;
 				}
 			}
 			if (endStr.length() > 0) {
 				try {
-					endYear = new Integer(endStr);
+					endYear = Integer.valueOf(endStr);
 				} catch (NumberFormatException e) {
 					return pubYearRange;
 				}
@@ -111,14 +111,14 @@ class PubYearCriterion extends CriterionComponent {
 		Integer endYear = null;
 		if (startStr.length() > 0) {
 			try {
-				startYear = new Integer(startStr);
+				startYear = Integer.valueOf(startStr);
 			} catch (NumberFormatException e) {
 				return "Starting publication year is invalid.";
 			}
 		}
 		if (endStr.length() > 0) {
 			try {
-				endYear = new Integer(endStr);
+				endYear = Integer.valueOf(endStr);
 			} catch (NumberFormatException e) {
 				return "Ending publication year is invalid.";
 			}

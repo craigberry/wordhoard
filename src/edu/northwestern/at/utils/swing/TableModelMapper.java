@@ -44,7 +44,7 @@ public class TableModelMapper extends AbstractTableModel
 			{
 				visibleColumnsList.add
 				(
-					new Integer( i )
+					Integer.valueOf( i )
 				);
 			}
 		}

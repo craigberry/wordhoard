@@ -120,7 +120,7 @@ public class ArgumentList
 
 	public int setArgument( boolean b )
 	{
-		return this.setArgument( argumentCount , new Boolean( b ) , Boolean.TYPE );
+		return this.setArgument( argumentCount , Boolean.valueOf( b ) , Boolean.TYPE );
 	}
 
 	/**	Set specified argument to a boolean value.
@@ -135,7 +135,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , boolean b )
 	{
-		return this.setArgument( argumentNumber, new Boolean( b ), Boolean.TYPE );
+		return this.setArgument( argumentNumber, Boolean.valueOf( b ), Boolean.TYPE );
 	}
 
 	/**	Set the next argument to a byte value.
@@ -148,7 +148,7 @@ public class ArgumentList
 
 	public int setArgument( byte b )
 	{
-		return this.setArgument( argumentCount , new Byte( b ) , Byte.TYPE );
+		return this.setArgument( argumentCount , Byte.valueOf( b ) , Byte.TYPE );
 	}
 
 	/**	Set specified argument to a byte value.
@@ -163,7 +163,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , byte b )
 	{
-		return this.setArgument( argumentNumber, new Byte( b ), Byte.TYPE );
+		return this.setArgument( argumentNumber, Byte.valueOf( b ), Byte.TYPE );
 	}
 
 	/**	Set the next argument to a character value.
@@ -176,7 +176,7 @@ public class ArgumentList
 
 	public int setArgument( char c )
 	{
-		return this.setArgument( argumentCount, new Character( c ), Character.TYPE );
+		return this.setArgument( argumentCount, Character.valueOf( c ), Character.TYPE );
 	}
 
 	/**	Set specified argument to a char value.
@@ -191,7 +191,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , char c )
 	{
-		return this.setArgument( argumentNumber , new Character(c),Character.TYPE );
+		return this.setArgument( argumentNumber , Character.valueOf(c),Character.TYPE );
 	}
 
 	/**	Set the next argument to an integer value.
@@ -204,7 +204,7 @@ public class ArgumentList
 
 	public int setArgument( int i )
 	{
-		return this.setArgument( argumentCount , new Integer( i ) , Integer.TYPE );
+		return this.setArgument( argumentCount , Integer.valueOf( i ) , Integer.TYPE );
 	}
 
 	/**	Set specified argument to an integer value.
@@ -219,7 +219,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , int i )
 	{
-		return this.setArgument( argumentNumber , new Integer( i ) , Integer.TYPE );
+		return this.setArgument( argumentNumber , Integer.valueOf( i ) , Integer.TYPE );
 	}
 
 	/**	Set the next argument to a short value.
@@ -232,7 +232,7 @@ public class ArgumentList
 
 	public int setArgument( short s )
 	{
-		return this.setArgument( argumentCount , new Short( s ) , Short.TYPE );
+		return this.setArgument( argumentCount , Short.valueOf( s ) , Short.TYPE );
 	}
 
 	/**	Set specified argument to a short value.
@@ -247,7 +247,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , short s )
 	{
-		return this.setArgument( argumentNumber , new Short( s ) , Short.TYPE );
+		return this.setArgument( argumentNumber , Short.valueOf( s ) , Short.TYPE );
 	}
 
 	/**	Set the next argument to a long value.
@@ -260,7 +260,7 @@ public class ArgumentList
 
 	public int setArgument( long l )
 	{
-		return this.setArgument( argumentCount , new Long( l ) , Long.TYPE );
+		return this.setArgument( argumentCount , Long.valueOf( l ) , Long.TYPE );
 	}
 
 	/**	Set specified argument to a long value.
@@ -275,7 +275,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , long l )
 	{
-		return this.setArgument( argumentNumber , new Long( l ) , Long.TYPE );
+		return this.setArgument( argumentNumber , Long.valueOf( l ) , Long.TYPE );
 	}
 
 	/**	Set the next argument to a float value.
@@ -288,7 +288,7 @@ public class ArgumentList
 
 	public int setArgument( float f )
 	{
-		return this.setArgument( argumentCount , new Float( f ) , Float.TYPE );
+		return this.setArgument( argumentCount , Float.valueOf( f ) , Float.TYPE );
 	}
 
 	/**	Set specified argument to a float value.
@@ -303,7 +303,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , float f )
 	{
-		return this.setArgument( argumentNumber , new Float( f ) , Float.TYPE );
+		return this.setArgument( argumentNumber , Float.valueOf( f ) , Float.TYPE );
 	}
 
 	/**	Set the next argument to a double value.
@@ -316,7 +316,7 @@ public class ArgumentList
 
 	public int setArgument( double d )
 	{
-		return this.setArgument( argumentCount , new Double( d ) , Double.TYPE );
+		return this.setArgument( argumentCount , Double.valueOf( d ) , Double.TYPE );
 	}
 
 	/**	Set specified argument to a double value.
@@ -331,7 +331,7 @@ public class ArgumentList
 
 	public int setArgument( int argumentNumber , double d )
 	{
-		return this.setArgument( argumentNumber , new Double( d ) , Double.TYPE );
+		return this.setArgument( argumentNumber , Double.valueOf( d ) , Double.TYPE );
 	}
 
 	/**	Set the next argument to an object.

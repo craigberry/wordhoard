@@ -57,40 +57,40 @@ class Row extends JPanel {
 	private static HashSet LOC = new HashSet();
 
 	static {
-		FREQ_COUNT_ALPH.add(new Integer(
+		FREQ_COUNT_ALPH.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_FREQUENCY));
-		FREQ_COUNT_ALPH.add(new Integer(
+		FREQ_COUNT_ALPH.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_COUNT));
-		FREQ_COUNT_ALPH.add(new Integer(
+		FREQ_COUNT_ALPH.add(Integer.valueOf(
 			GroupingOptions.ORDER_ALPHABETICALLY));
 
-		FREQ_COUNT_ALPH_DATE.add(new Integer(
+		FREQ_COUNT_ALPH_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_FREQUENCY));
-		FREQ_COUNT_ALPH_DATE.add(new Integer(
+		FREQ_COUNT_ALPH_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_COUNT));
-		FREQ_COUNT_ALPH_DATE.add(new Integer(
+		FREQ_COUNT_ALPH_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_ALPHABETICALLY));
-		FREQ_COUNT_ALPH_DATE.add(new Integer(
+		FREQ_COUNT_ALPH_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_DATE));
 
-		FREQ_COUNT_LOC.add(new Integer(
+		FREQ_COUNT_LOC.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_FREQUENCY));
-		FREQ_COUNT_LOC.add(new Integer(
+		FREQ_COUNT_LOC.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_COUNT));
-		FREQ_COUNT_LOC.add(new Integer(
+		FREQ_COUNT_LOC.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_LOCATION));
 
-		COUNT_ALPH.add(new Integer(
+		COUNT_ALPH.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_COUNT));
-		COUNT_ALPH.add(new Integer(
+		COUNT_ALPH.add(Integer.valueOf(
 			GroupingOptions.ORDER_ALPHABETICALLY));
 
-		COUNT_DATE.add(new Integer(
+		COUNT_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_COUNT));
-		COUNT_DATE.add(new Integer(
+		COUNT_DATE.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_DATE));
 
-		LOC.add(new Integer(
+		LOC.add(Integer.valueOf(
 			GroupingOptions.ORDER_BY_LOCATION));
 	}
 
@@ -442,10 +442,10 @@ class Row extends JPanel {
 		}
 		HashSet validOrderBy = info.validOrderBy;
 		for (int i = 0; i < GroupingOptions.NUM_ORDER_BY; i++)
-			orderByComboBox.setEnabled(i, validOrderBy.contains(new Integer(i)));
+			orderByComboBox.setEnabled(i, validOrderBy.contains(Integer.valueOf(i)));
 		upDownComboBox.setEnabled(GroupingOptions.DESCENDING,
 			groupBy != null);
-		if (groupByChanged || !validOrderBy.contains(new Integer(orderBy))) {
+		if (groupByChanged || !validOrderBy.contains(Integer.valueOf(orderBy))) {
 			setOrderBy(info.defaultOrderBy);
 			setUpDown(info.defaultUpDown);
 		}

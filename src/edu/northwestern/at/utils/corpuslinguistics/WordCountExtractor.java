@@ -138,11 +138,11 @@ public class WordCountExtractor
 			{
 				int freq	= ((Integer)wordCounts.get( word )).intValue();
 				freq++;
-				wordCounts.put( word , new Integer( freq ) );
+				wordCounts.put( word , Integer.valueOf( freq ) );
 			}
 			else
 			{
-				wordCounts.put( word , new Integer( 1 ) );
+				wordCounts.put( word , Integer.valueOf( 1 ) );
 			}
 		}
 		                        //	Create array of unique words.

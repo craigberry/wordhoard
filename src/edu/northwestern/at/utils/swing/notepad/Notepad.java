@@ -1263,7 +1263,7 @@ public class Notepad
 				getEditor().getDocument().putProperty
 				(
 					PlainDocument.tabSizeAttribute ,
-					new Integer( tabSize )
+					Integer.valueOf( tabSize )
 				);
 
 				title	= f.toString();

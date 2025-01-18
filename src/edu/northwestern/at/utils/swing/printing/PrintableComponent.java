@@ -386,7 +386,7 @@ public class PrintableComponent extends Component
 								// and length of the slice to print for
 								// this page.
 
-		Integer key = new Integer( pageIndex );
+		Integer key = Integer.valueOf( pageIndex );
 
 		if ( pageStateMap.containsKey( key ) )
 		{
@@ -417,14 +417,14 @@ public class PrintableComponent extends Component
 
 								// Store page state for this page.
 
-				pageStateMap.put( new Integer( pageIndex ) , pageState );
+				pageStateMap.put( Integer.valueOf( pageIndex ) , pageState );
 			}
 								// If we're not on the first page, start this
 								// slice where the slice for the previous page
 								// left off.
 			else
 			{
-				Integer prevKey	= new Integer( pageIndex - 1 );
+				Integer prevKey	= Integer.valueOf( pageIndex - 1 );
 
 				PageState prevPageState	=
 					(PageState)pageStateMap.get( prevKey );
@@ -444,7 +444,7 @@ public class PrintableComponent extends Component
 
 								// Store page state for this page.
 
-				pageStateMap.put( new Integer( pageIndex ) , pageState );
+				pageStateMap.put( Integer.valueOf( pageIndex ) , pageState );
 			}
 		}
 								// If starting page offset exceeds height

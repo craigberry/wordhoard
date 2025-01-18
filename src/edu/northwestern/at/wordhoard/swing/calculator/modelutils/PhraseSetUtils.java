@@ -533,7 +533,7 @@ public class PhraseSetUtils
 				"from PhraseSet ps where ps.title = :title and " +
 				"ps.isPublic = :isPublic" ,
 				new String[]{ "title" , "isPublic"  } ,
-				new Object[]{ title , new Boolean( true ) }
+				new Object[]{ title , Boolean.valueOf( true ) }
 			);
 
 		return
@@ -558,7 +558,7 @@ public class PhraseSetUtils
 				(
 					"from PhraseSet ps where ps.isPublic = :isPublic" ,
 					new String[]{ "isPublic"  } ,
-					new Object[]{ new Boolean( true ) } ,
+					new Object[]{ Boolean.valueOf( true ) } ,
 					false
 				);
 		}
@@ -570,7 +570,7 @@ public class PhraseSetUtils
 					"from PhraseSet ps where ps.isPublic = :isPublic" +
 					" or ps.owner=:owner" ,
 					new String[]{ "isPublic" , "owner" } ,
-					new Object[]{ new Boolean( true ) , owner } ,
+					new Object[]{ Boolean.valueOf( true ) , owner } ,
 					false
 				);
 		}
@@ -1077,7 +1077,7 @@ public class PhraseSetUtils
 				new Object[]
 				{
 					phraseSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					work
 				} ,
 				true
@@ -1130,7 +1130,7 @@ public class PhraseSetUtils
 				new Object[]
 				{
 					phraseSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 				} ,
 				true
 			);
@@ -1183,7 +1183,7 @@ public class PhraseSetUtils
 				new Object[]
 				{
 					phraseSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 				} ,
 				true
 			);
@@ -1241,7 +1241,7 @@ public class PhraseSetUtils
 				new Object[]
 				{
 					phraseSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					word
 				} ,
 				true
@@ -1303,7 +1303,7 @@ public class PhraseSetUtils
 				new Object[]
 				{
 					phraseSet ,
-					new Integer( wordForm ) ,
+					Integer.valueOf( wordForm ) ,
 					word ,
 					work
 				} ,
@@ -1370,7 +1370,7 @@ public class PhraseSetUtils
 			new Object[]
 			{
 				Arrays.asList( words ) ,
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				phraseSet
 			};
 
@@ -1444,7 +1444,7 @@ public class PhraseSetUtils
 			new Object[]
 			{
 				Arrays.asList( words ) ,
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( phraseSets )
 			};
 
@@ -1502,7 +1502,7 @@ public class PhraseSetUtils
 			(
 				queryString ,
 				new String[]{ "phraseSet" , "wordForm" } ,
-				new Object[]{ phraseSet , new Integer( wordForm ) } ,
+				new Object[]{ phraseSet , Integer.valueOf( wordForm ) } ,
 				true
 			);
 								//	If we got results, put them in the
@@ -1519,7 +1519,7 @@ public class PhraseSetUtils
 				wordCounts.put
 				(
 					wordCount.word.toInsensitive() ,
-					new Integer( wordCount.count )
+					Integer.valueOf( wordCount.count )
 				);
 			}
 		}
@@ -1594,7 +1594,7 @@ public class PhraseSetUtils
 				phraseCounts.put
 				(
 					phraseCount.word.toInsensitive() ,
-					new Integer( phraseCount.count )
+					Integer.valueOf( phraseCount.count )
 				);
 			}
 		}
@@ -1655,7 +1655,7 @@ public class PhraseSetUtils
 		Object[] paramValues	=
 			new Object[]
 			{
-				new Integer( wordForm ) ,
+				Integer.valueOf( wordForm ) ,
 				Arrays.asList( phraseSets )
 			};
 
@@ -1688,12 +1688,12 @@ public class PhraseSetUtils
 					wordCounts.put
 					(
 						wordText ,
-						new Integer( newCount + count.intValue() )
+						Integer.valueOf( newCount + count.intValue() )
 					);
 				}
 				else
 				{
-					wordCounts.put( wordText , new Integer( newCount ) );
+					wordCounts.put( wordText , Integer.valueOf( newCount ) );
 				}
 								//	Increment work list for this word.
 
@@ -1819,12 +1819,12 @@ public class PhraseSetUtils
 					wordCounts.put
 					(
 						wordText ,
-						new Integer( newCount + count.intValue() )
+						Integer.valueOf( newCount + count.intValue() )
 					);
 				}
 				else
 				{
-					wordCounts.put( wordText , new Integer( newCount ) );
+					wordCounts.put( wordText , Integer.valueOf( newCount ) );
 				}
 								//	Increment work list for this word.
 
@@ -1930,13 +1930,13 @@ public class PhraseSetUtils
 				wordCounts.put
 				(
 					wordText ,
-					new Integer( countResult.count )
+					Integer.valueOf( countResult.count )
 				);
 
 				workCounts.put
 				(
 					wordText ,
-					new Integer( countResult.workCount )
+					Integer.valueOf( countResult.workCount )
 				);
 			}
 		}
@@ -2119,8 +2119,8 @@ public class PhraseSetUtils
 				{
 					phraseSet ,
 					word ,
-					new Integer( leftSpan ) ,
-					new Integer( rightSpan)
+					Integer.valueOf( leftSpan ) ,
+					Integer.valueOf( rightSpan)
 				}
 			);
 	}

@@ -211,7 +211,7 @@ public class MatrixTransformer
 							( ( row + offset ) <= matrix.columns() ) )
 					{
 						list.add(
-							new Double( matrix.get( row , row + offset ) ) );
+							Double.valueOf( matrix.get( row , row + offset ) ) );
 					}
 				}
 			}
@@ -228,7 +228,7 @@ public class MatrixTransformer
 							( row <= matrix.columns() ) )
 					{
 						list.add(
-							new Double(
+							Double.valueOf(
 								matrix.get( row + Math.abs( offset ) , row ) ) );
 					}
 				}

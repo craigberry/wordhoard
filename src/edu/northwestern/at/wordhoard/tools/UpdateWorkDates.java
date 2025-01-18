@@ -115,15 +115,15 @@ public class UpdateWorkDates
 				int earlyDate		= Integer.parseInt( dateData[ 0 ] );
 				int lateDate		= Integer.parseInt( dateData[ 1 ] );
 
-//				work.setEarlyDate( new Integer( earlyDate ) );
-//				work.setLateDate( new Integer( lateDate ) );
+//				work.setEarlyDate( Integer.valueOf( earlyDate ) );
+//				work.setLateDate( Integer.valueOf( lateDate ) );
 
 				work.setPubDate
 				(
 					new PubYearRange
 					(
-						new Integer( earlyDate )  ,
-						new Integer( lateDate )
+						Integer.valueOf( earlyDate )  ,
+						Integer.valueOf( lateDate )
 					)
 				);
 

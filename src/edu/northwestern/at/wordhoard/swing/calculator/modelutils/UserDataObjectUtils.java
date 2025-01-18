@@ -754,7 +754,7 @@ public class UserDataObjectUtils
 	)
 		throws BadOwnerException
 	{
-		Long result	= new Long( -1 );
+		Long result	= Long.valueOf( -1 );
 
 		if ( userDataObject != null )
 		{
@@ -787,7 +787,7 @@ public class UserDataObjectUtils
 			}
 			catch ( Exception e )
 			{
-				result	= new Long( -1 );
+				result	= Long.valueOf( -1 );
 //				e.printStackTrace();
 			}
 		}

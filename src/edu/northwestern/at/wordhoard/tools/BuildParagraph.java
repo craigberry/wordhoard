@@ -30,16 +30,16 @@ public class BuildParagraph extends TextLine {
 	private static HashMap rendMap = new HashMap();
 	
 	static {
-		rendMap.put("bold", new Integer(TextRun.BOLD));
-		rendMap.put("italic", new Integer(TextRun.ITALIC));
-		rendMap.put("extended", new Integer(TextRun.EXTENDED));
-		rendMap.put("sperrtext", new Integer(TextRun.EXTENDED));
-		rendMap.put("underline", new Integer(TextRun.UNDERLINE));
-		rendMap.put("overline", new Integer(TextRun.OVERLINE));
-		rendMap.put("macron", new Integer(TextRun.OVERLINE));
-		rendMap.put("superscript", new Integer(TextRun.SUPERSCRIPT));
-		rendMap.put("subscript", new Integer(TextRun.SUBSCRIPT));
-		rendMap.put("monospaced", new Integer(TextRun.MONOSPACED));
+		rendMap.put("bold", Integer.valueOf(TextRun.BOLD));
+		rendMap.put("italic", Integer.valueOf(TextRun.ITALIC));
+		rendMap.put("extended", Integer.valueOf(TextRun.EXTENDED));
+		rendMap.put("sperrtext", Integer.valueOf(TextRun.EXTENDED));
+		rendMap.put("underline", Integer.valueOf(TextRun.UNDERLINE));
+		rendMap.put("overline", Integer.valueOf(TextRun.OVERLINE));
+		rendMap.put("macron", Integer.valueOf(TextRun.OVERLINE));
+		rendMap.put("superscript", Integer.valueOf(TextRun.SUPERSCRIPT));
+		rendMap.put("subscript", Integer.valueOf(TextRun.SUBSCRIPT));
+		rendMap.put("monospaced", Integer.valueOf(TextRun.MONOSPACED));
 	}
 	
 	/**	Marginalia, or null if none. */

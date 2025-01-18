@@ -105,7 +105,7 @@ public class DateGroup implements GroupingObject
 			return (DateGroup)dateGroups.get(dateKey);
 		} else
 			{
-			DateGroup dg = new DateGroup(dateKey, new Integer(labelStart), new Integer(labelEnd));
+			DateGroup dg = new DateGroup(dateKey, Integer.valueOf(labelStart), Integer.valueOf(labelEnd));
 			dateGroups.put(dateKey,dg);
 			return dg;
 		}

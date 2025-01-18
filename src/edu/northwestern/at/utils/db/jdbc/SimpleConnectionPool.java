@@ -231,8 +231,8 @@ public class SimpleConnectionPool extends Observable {
 					setChanged();
 					notifyObservers(
 						new Object[] {
-							new Integer(2),
-							new Integer(numTries+1)
+							Integer.valueOf(2),
+							Integer.valueOf(numTries+1)
 						}
 					);
 				}
@@ -280,7 +280,7 @@ public class SimpleConnectionPool extends Observable {
 			setChanged();
 			notifyObservers(
 				new Object[] {
-					new Integer(1),
+					Integer.valueOf(1),
 					exception
 				}
 			);

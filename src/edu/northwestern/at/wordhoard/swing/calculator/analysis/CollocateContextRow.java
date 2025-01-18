@@ -129,7 +129,7 @@ public class CollocateContextRow implements SortedTableModel.Row
 
 	public Object getUniqueRowID()
 	{
-		return new Integer( rowID );
+		return Integer.valueOf( rowID );
 	}
 
 	/**	Get word tag for this row.

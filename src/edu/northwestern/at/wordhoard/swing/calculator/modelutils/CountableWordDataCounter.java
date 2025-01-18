@@ -218,12 +218,12 @@ public class CountableWordDataCounter
 
 		if ( count == null )
 		{
-			totalWordCountMap.put( workId , new Integer( 1 ) );
+			totalWordCountMap.put( workId , Integer.valueOf( 1 ) );
 		}
 		else
 		{
 			totalWordCountMap.put(
-				workId , new Integer( count.intValue() + 1 ) );
+				workId , Integer.valueOf( count.intValue() + 1 ) );
 		}
 	}
 
@@ -263,12 +263,12 @@ public class CountableWordDataCounter
 
 			if ( count == null )
 			{
-				totalWordCountMap.put( workId , new Integer( 1 ) );
+				totalWordCountMap.put( workId , Integer.valueOf( 1 ) );
 			}
 			else
 			{
 				totalWordCountMap.put(
-					workId , new Integer( count.intValue() + 1 ) );
+					workId , Integer.valueOf( count.intValue() + 1 ) );
 			}
 		}
 	}
@@ -846,7 +846,7 @@ public class CountableWordDataCounter
 						gender ,
 						mortality ,
 						word.getProsodic() ,
-						new Integer( wordPart.getPartIndex() ) ,
+						Integer.valueOf( wordPart.getPartIndex() ) ,
 						wordPart.getLemPos().getLemma().getTagInsensitive()
 					);
 								//	Add tags to appropriate sets.

@@ -93,7 +93,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	{
 		super(Config.getRmiPort());
 		synchronized(lock) {
-			id = new Long(nextSessionId++);
+			id = Long.valueOf(nextSessionId++);
 			try {
 				host = UnicastRemoteObject.getClientHost();
 				domain = InetAddress.getByName(host).getCanonicalHostName();
@@ -555,7 +555,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 					"Youarenotpermittedtocreatethisobject"));
 		Session session = userDataSessionFactory.openSession();
 		Transaction t = null;
-		Long result	= new Long( -1 );
+		Long result	= Long.valueOf( -1 );
 		try {
 			t = session.beginTransaction();
 			session.save(userDataObject);
@@ -608,7 +608,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 					"Youarenotpermittedtomodifythisobject"));
 		Session session = userDataSessionFactory.openSession();
 		Transaction t = null;
-		Long result	= new Long( -1 );
+		Long result	= Long.valueOf( -1 );
 		try {
 			if (!loginAccount.getUsername().equals(userDataObject.getOwner()) && !loginAccount.getCanManageAccounts())
 				throw new BadOwnerException(

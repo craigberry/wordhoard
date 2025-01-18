@@ -801,7 +801,7 @@ public class SearchAndReplaceDialog extends ModalDialog
                 );
 		}
 
-		info( fmt.sprintf( new Object[]{ new Integer( counter ) } ) );
+		info( fmt.sprintf( new Object[]{ Integer.valueOf( counter ) } ) );
 	}
 
 	/** Set the selected text interval.

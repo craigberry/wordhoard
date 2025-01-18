@@ -163,7 +163,7 @@ public class BuildUtils {
 		while (r.next()) {
 			String tag = r.getString(1);
 			long id = r.getLong(2);
-			map.put(tag, new Long(id));
+			map.put(tag, Long.valueOf(id));
 		}
 		s.close();
 		return map;

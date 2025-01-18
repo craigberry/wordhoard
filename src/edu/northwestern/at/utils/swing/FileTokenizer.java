@@ -139,7 +139,7 @@ public class FileTokenizer
 
 	public static boolean isSeparator( char ch )
 	{
-		return separatorHashMap.containsKey( new Character( ch ) );
+		return separatorHashMap.containsKey( Character.valueOf( ch ) );
 	}
 
 	/** Creates word separator hash map from list of separator characters.
@@ -154,7 +154,7 @@ public class FileTokenizer
 	{
 		for ( int i = 0; i < WORD_SEPARATOR_CHARACTERS.length; i++ )
 		{
-			Character cCh	= new Character( WORD_SEPARATOR_CHARACTERS[ i ] );
+			Character cCh	= Character.valueOf( WORD_SEPARATOR_CHARACTERS[ i ] );
 			separatorHashMap.put( cCh  , cCh );
 		}
 	}

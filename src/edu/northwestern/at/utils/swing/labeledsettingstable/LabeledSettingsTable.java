@@ -345,7 +345,7 @@ public class LabeledSettingsTable extends XTable
 
 				LabeledSettingsValueTextPaneSettings oldSettings =
 					(LabeledSettingsValueTextPaneSettings)savedPaneSettings.get(
-						new Integer( row ) );
+						Integer.valueOf( row ) );
 
 				if ( oldSettings == null ) return;
 

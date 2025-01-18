@@ -158,7 +158,7 @@ public class WordFrequencies
 			Integer wordCount	=
 				(Integer)wordsAndCounts.get( wordToAnalyze );
 
-			if ( wordCount == null ) wordCount	= new Integer( 0 );
+			if ( wordCount == null ) wordCount	= Integer.valueOf( 0 );
 
 			Object[] freqAnal		= new Object[ 3 ];
 			StringBuffer sb			= new StringBuffer();
@@ -204,8 +204,8 @@ public class WordFrequencies
 			}
 
 			freqAnal[ 0 ]	= sb.toString();
-			freqAnal[ 1 ]	= new Double( wordCount.intValue() );
-			freqAnal[ 2 ]	= new Double( 0.0D );
+			freqAnal[ 1 ]	= Double.valueOf( wordCount.intValue() );
+			freqAnal[ 2 ]	= Double.valueOf( 0.0D );
 
 			if ( workCounts.containsKey( wordToAnalyze ) )
 			{

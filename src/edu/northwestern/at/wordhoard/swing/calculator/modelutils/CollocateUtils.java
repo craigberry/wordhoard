@@ -91,8 +91,8 @@ public class CollocateUtils
 						new Object[]
 						{
 							words ,
-							new Integer( leftSpan ) ,
-							new Integer( rightSpan )
+							Integer.valueOf( leftSpan ) ,
+							Integer.valueOf( rightSpan )
 						}
 					);
 			}

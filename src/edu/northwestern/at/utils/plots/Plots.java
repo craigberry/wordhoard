@@ -236,7 +236,7 @@ public class Plots
 
 		for ( int i = 0 ; i < barData.length ; i++ )
 		{
-			barLabels[ i ]	= (new Double( barData[ i ] )).toString();
+			barLabels[ i ]	= (Double.valueOf( barData[ i ] )).toString();
 		}
 
 		return barChart

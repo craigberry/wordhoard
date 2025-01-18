@@ -111,7 +111,7 @@ public class MatrixTablePanel extends DataPanel
 		{
 			for ( int j = 0 ; j < array[ i ].length ; j++ )
 			{
-				array[ i ][ j ]	= new Double( matrix.get( i + 1 , j + 1 ) );
+				array[ i ][ j ]	= Double.valueOf( matrix.get( i + 1 , j + 1 ) );
 			}
 		}
 

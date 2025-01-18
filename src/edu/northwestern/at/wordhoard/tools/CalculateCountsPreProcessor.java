@@ -89,7 +89,7 @@ public class CalculateCountsPreProcessor {
 			lineNum++;
 			int pos = line.indexOf('\t');
 			String partIdStr = line.substring(0, pos);
-			Long partId = new Long(partIdStr);
+			Long partId = Long.valueOf(partIdStr);
 			Long workId = (Long)workMap.get(partId);
 			if (workId == null) {
 				System.out.println("Bad work id at line " + lineNum);

@@ -105,7 +105,7 @@ public class Constants
 			ArithUtils.trunc(
 				Math.log( macheps ) / Math.log( 10.0D ) );
 
-    	return -new Long( Math.round( digits ) ).intValue();
+    	return -Long.valueOf( Math.round( digits ) ).intValue();
     }
 
 	/**	This class is non-instantiable but inheritable.

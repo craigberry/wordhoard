@@ -465,7 +465,7 @@ public class Context implements Cloneable {
 		TextLocation start = new TextLocation(lineIndex, pos);
 		TextLocation end = new TextLocation(lineIndex, pos+len);
 		word.setLocation(new TextRange(start, end));
-		linesWithWords.add(new Integer(lineIndex));
+		linesWithWords.add(Integer.valueOf(lineIndex));
 
 		//	Process punctuation.
 
