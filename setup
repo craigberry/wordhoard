@@ -46,8 +46,6 @@ alias r "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/W
    file:misc/localhost.xml"
 alias rr "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
    file:misc/sites.xml"
-alias rscribe "java -Xmx1g -Xdock:name=WordHoard edu/northwestern/at/wordhoard/swing/WordHoard \\
-   file:misc/scribe.xml"
 
 #	Aliases to run the build scripts.
 
@@ -91,11 +89,6 @@ alias martin-update "scripts/martin-update.csh >martin/report.txt"
 #	Aliases for working with NCF/Stein and Monk.
 
 alias cm "scripts/convert-morph.csh"
-alias scribe "ssh scribe.at.northwestern.edu"
-alias put-MorphAdorner "scp -r MorphAdorner scribe.at.northwestern.edu:wordhoard"
-alias put-scripts "scp -r scripts scribe.at.northwestern.edu:wordhoard"
-alias put-bin "scp -r bin scribe.at.northwestern.edu:wordhoard"
-alias put-data "scp -r data scribe.at.northwestern.edu:wordhoard"
 
 #	Aliases for other scripts.
 
