@@ -28,9 +28,6 @@ alias mysql-start "sudo -b $MYSQL_BIN/safe_mysqld --user=mysql"
 alias mysql-stop "$MYSQL_BIN/mysqladmin -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD shutdown"
 alias mysql "$MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD"
 
-alias mysql-welles /usr/local/mysql/bin/mysql -h welles.library.northwestern.edu \
-   -P 3307 -u root -pmy-password
-
 #	A "b" alias for Ant (for "build").
 
 alias b "$ANT_HOME/bin/ant"
@@ -66,15 +63,8 @@ alias cc "scripts/calculate-counts.csh"
 alias bws "scripts/build-work-sets.csh"
 alias atb "scripts/analyze-tables.csh"
 
-alias bws-welles java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWorkSets \
-   data/work-sets.xml \
-   welles.library.northwestern.edu:3307/wordhoard \
-   root \
-   my-password
-
 #	Deployment aliases.
 
-alias russell-vars "source scripts/russell-vars"
 alias make-other-files "scripts/make-other-files.csh"
 alias tar-raw-data "scripts/tar-raw-data.csh"
 alias create-client-jar "scripts/create-client-jar.csh"
@@ -97,9 +87,6 @@ alias mysql-grants "scripts/mysql-grants.csh"
 
 #	Other aliases, mostly miscellaneous junk.
 
-alias noir-wordhoard "ssh wordhoard@noir.at.northwestern.edu"
-alias welles-whoard "ssh whoard@welles.library.northwestern.edu"
-
 alias cld "java -Xmx500m edu.northwestern.at.wordhoard.tools.CloneData \\
 	data /Volumes/LaCie500/data 2"
 
@@ -115,8 +102,6 @@ alias bwf "java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWork"
 alias r4 "java4 -Xmx500m edu/northwestern/at/wordhoard/swing/WordHoard"
 alias start4 "java4 -Xmx500m edu/northwestern/at/wordhoard/server/Server start server/data &"
 
-alias mysql-russell "$MYSQL_BIN/mysql \\
--h russell.at.northwestern.edu -u wordhoard -pwordhoard"
 
 alias schema-test "java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
 --format bin/edu/northwestern/at/wordhoard/model/*.hbm.xml \\
@@ -138,7 +123,6 @@ alias server-schema-test "java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
 alias dw "java -Xmx200m edu/northwestern/at/wordhoard/tools/DeleteWork \!*"
 
 alias cxml "java edu/northwestern/at/utils/tools/CatalogXML \!*"
-alias probsDemo "java edu/northwestern/at/wordhoard/tools/HibernateProblemsDemo"
 
 alias csd "java edu/northwestern/at/wordhoard/tools/CharSetDisplay"
 
