@@ -13,7 +13,7 @@ setenv ANT_HOME /usr/local/bin
 setenv ANT_OPTS -Xmx500m
 setenv CODEBASE https://wordhoard.eumnestes.org/client/
 setenv HOMEPAGE https://wordhoard.eumnestes.org
-setenv JAVA_HOME `/usr/libexec/java_home -v 1.8`
+setenv JAVA_HOME `/usr/libexec/java_home -v 17.0`
 
 #	Define the Java classpath.
 
