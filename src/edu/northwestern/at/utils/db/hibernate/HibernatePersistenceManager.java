@@ -493,7 +493,7 @@ public class HibernatePersistenceManager
 	{
 		try
 		{
-			session.evict( evictionClass.getName() );
+			sessionFactory.getCache().evict(evictionClass);
 		}
 		catch ( HibernateException e )
 		{
