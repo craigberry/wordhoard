@@ -35,9 +35,9 @@ import java.io.*;
  *	java.util.Random is about 1/3 slower than MersenneTwisterFast.
  *	</p>
  *
- *	<h3>
+ *	<h2>
  *	About the Mersenne Twister
- *	</h3>
+ *	</h2>
  *
  *	<p>
  *	This is a Java version of the C-program for MT19937: Integer version.
@@ -56,9 +56,9 @@ import java.io.*;
  *	Vol. 8, No. 1, January 1998, pp 3--30.
  *	</p>
  *
- *	<h3>
+ *	<h2>
  *	About this Version
- *	</h3>
+ *	</h2>
  *
  *	<p>
  *	<strong>Changes Since V7:</strong> A documentation error in MersenneTwisterFast
@@ -97,9 +97,9 @@ import java.io.*;
  *	January 1999, and the original code is Copyright (c) 1999 by Michael Lecuyer.
  *	</p>
  *
- *	<h3>
+ *	<h2>
  *	Java notes
- *	</h3>
+ *	</h2>
  *
  *	<p>
  *	This implementation implements the bug fixes made
@@ -126,9 +126,9 @@ import java.io.*;
  *	java.util.Random) should be used with them.
  *	</p>
  *
- *	<h3>
+ *	<h2>
  *	License
- *	</h3>
+ *	</h2>
  *
  *	<p>
  *	Copyright (c) 2003 by Sean Luke. <br>
@@ -377,8 +377,8 @@ public class MersenneTwister extends java.util.Random
 		return next(1) != 0;
 	}
 
-	/** This generates a coin flip with a probability <tt>probability</tt>
-	 of returning true, else returning false. <tt>probability</tt> must
+	/** This generates a coin flip with a probability <code>probability</code>
+	 of returning true, else returning false. <code>probability</code> must
 	 be between 0.0 and 1.0, inclusive.  Not as precise a random real
 	 event as nextBoolean(double), but twice as fast. To explicitly
 	 use this, remember you may need to cast to float first.
@@ -395,8 +395,8 @@ public class MersenneTwister extends java.util.Random
 		return nextFloat() < probability;
 	}
 
-	/** This generates a coin flip with a probability <tt>probability</tt>
-	 of returning true, else returning false. <tt>probability</tt> must
+	/** This generates a coin flip with a probability <code>probability</code>
+	 of returning true, else returning false. <code>probability</code> must
 	 be between 0.0 and 1.0, inclusive.
 	 * @param probability the input probability.
 	 * @return boolean result of coin flip.

@@ -275,7 +275,8 @@ public class StyledStringUtils
  	 *	consecutive entries.
  	 *	</p>
  	 *
- 	 *	<table summary="Table describing writeFile method">
+ 	 *	<table>
+	 *	<caption>Table describing writeFile method</caption>
  	 *		<tr>
  	 *			<td>Header marker</td>
  	 *			<td>Four bytes containing "s", "t", "x", "t".</td>

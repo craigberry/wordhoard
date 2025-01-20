@@ -103,10 +103,11 @@ import java.text.DecimalFormatSymbols;
  * associated actions on display devices capable of
  * the action.
  *</p>
- *<table summary="escape sequences and actions">
- *<tr><th align=left>Sequence</th>
- *    <th align=left>Name</th>
- *    <th align=left>Description</th></tr>
+ *<table>
+ *<caption>escape sequences and actions</caption>
+ *<tr><th>Sequence</th>
+ *    <th>Name</th>
+ *    <th>Description</th></tr>
  *<tr><td>\\</td><td>backlash</td><td>None.
  *</td></tr>
  *<tr><td>\a</td><td>alert</td><td>Attempts to alert

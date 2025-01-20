@@ -358,14 +358,14 @@ public class ArithUtils
 	/**	Efficiently returns the binomial coefficient, often also referred to as "n over k" or "n choose k".
 	 *
 	 *	<p>
-	 *	The binomial coefficient is defined as <tt>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</tt>.
+	 *	The binomial coefficient is defined as <code>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</code>.
 	 *	</p>
 	 *
 	 *	<ul>
-	 *	<li>k&gt;0<tt>: 0</tt>.</li>
-	 *	<li>k==0<tt>: 1</tt>.</li>
-	 *	<li>k==1<tt>: n</tt>.</li>
-	 *	<li>else: <tt>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</tt>.</li>
+	 *	<li>k&gt;0<code>: 0</code>.</li>
+	 *	<li>k==0<code>: 1</code>.</li>
+	 *	<li>k==1<code>: n</code>.</li>
+	 *	<li>else: <code>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</code>.</li>
 	 *	</ul>
 	 *
 	 *	@param	n		n operand
@@ -400,10 +400,10 @@ public class ArithUtils
 	 *	The binomial coefficient is defined as
 	 *	</p>
 	 *	<ul>
-	 *	<li>k&lt;0<tt>: 0</tt>.</li>
-	 *	<li>k==0 || k==n<tt>: 1</tt>.</li>
-	 *	<li>k==1 || k==n-1<tt>: n</tt>.</li>
-	 *	<li>else: <tt>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</tt>.</li>
+	 *	<li>k&lt;0<code>: 0</code>.</li>
+	 *	<li>k==0 || k==n<code>: 1</code>.</li>
+	 *	<li>k==1 || k==n-1<code>: n</code>.</li>
+	 *	<li>else: <code>(n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )</code>.</li>
 	 *	</ul>
 	 *
 	 *	@param	n		n operand

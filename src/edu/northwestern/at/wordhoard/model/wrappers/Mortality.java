@@ -89,7 +89,7 @@ public class Mortality implements SearchCriterion, GroupingObject {
 
 	/** Sets the join class.
 	 *
-	 *	@param	class			join class.
+	 *	@param	cls			join class.
 	 */
 
 	public void setJoinClass (Class<Speaker> cls) {
