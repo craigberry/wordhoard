@@ -1,0 +1,356 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "type": "java",
+        "name": "Attach",
+        "request": "attach",
+        "hostName": "localhost",
+    },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Preprocessor",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.utils.preprocessor.Preprocessor",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "CatalogXML",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.utils.tools.CatalogXML",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "CompareDB",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.utils.tools.CompareDB",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "ExportSchema",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.utils.tools.ExportSchema",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "FetchUTF8URL",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.utils.tools.FetchUTF8URL",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.server.Server",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "WordHoard",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.swing.WordHoard",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "AddQueries",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.AddQueries",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "AddWordSets",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.AddWordSets",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "AddWorkSets",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.AddWorkSets",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildAnnotations",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildAnnotations",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildAuthors",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildAuthors",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildBensonGloss",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildBensonGloss",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildCorpora",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildCorpora",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildPos",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildPos",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildTranslations",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildTranslations",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildWordClasses",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildWordClasses",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildWorkSets",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildWorkSets",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "BuildWorks",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.BuildWorks",
+            "projectName": "dev_f83269f2",
+            "args": [
+                "data/works",
+                "wordhoard",
+                "<username>",
+                "<password>",
+                "data/spellings"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "CalculateCounts",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.CalculateCounts",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "CalculateCountsPreProcessor",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.CalculateCountsPreProcessor",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "CharSetDisplay",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.CharSetDisplay",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "CloneData",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.CloneData",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "ExportUserData",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.ExportUserData",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "GetCharsUsed",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.GetCharsUsed",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "LoadPibCounts",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.LoadPibCounts",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "PreprocessDirectoryTree",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.PreprocessDirectoryTree",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "PrettyPrint",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.PrettyPrint",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "UpdateWorkDates",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.UpdateWorkDates",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "ConvertMorph",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.cm.ConvertMorph",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter01",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter01",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter02",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter02",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter03",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter03",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter04",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter04",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter05",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter05",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter06",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter06",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter07",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter07",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter08",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter08",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter09",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter09",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter10",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter10",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter11",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter11",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "Filter12",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.filters.Filter12",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "MapGreekPos",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.martin.MapGreekPos",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "MartinPos",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.martin.MartinPos",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "MartinWordClasses",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.martin.MartinWordClasses",
+            "projectName": "dev_f83269f2"
+        },
+        {
+            "type": "java",
+            "name": "UpdateWorkFiles",
+            "request": "launch",
+            "mainClass": "edu.northwestern.at.wordhoard.tools.martin.UpdateWorkFiles",
+            "projectName": "dev_f83269f2"
+        }
+    ]
+}
