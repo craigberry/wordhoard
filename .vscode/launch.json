@@ -49,7 +49,15 @@
             "name": "ExportSchema",
             "request": "launch",
             "mainClass": "edu.northwestern.at.utils.tools.ExportSchema",
-            "projectName": "dev_f83269f2"
+            "projectName": "dev_f83269f2",
+            "args": [
+                "--dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect",
+                "--entities", "edu.northwestern.at.server.model",
+                "--output", "schema_debug.ddl",
+                "--url", "jdbc:mysql://localhost/wordhoardserver?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false",
+                "--username", "root",
+                "--password", "<password>"
+            ]
         },
         {
             "type": "java",
@@ -63,7 +71,8 @@
             "name": "Server",
             "request": "launch",
             "mainClass": "edu.northwestern.at.wordhoard.server.Server",
-            "projectName": "dev_f83269f2"
+            "projectName": "dev_f83269f2",
+            "args": ["start", "server/data"]
         },
         {
             "type": "java",
