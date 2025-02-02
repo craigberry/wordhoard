@@ -4,8 +4,16 @@ package edu.northwestern.at.wordhoard.server.model;
 
 import java.io.*;
 
-import edu.northwestern.at.utils.*;
+import edu.northwestern.at.utils.Compare;
 import edu.northwestern.at.utils.crypto.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 /**	An account.
  *
@@ -24,6 +32,10 @@ import edu.northwestern.at.utils.crypto.*;
  *	@hibernate.class table="account"
  */
  
+ @Entity
+ @Table(name = "account",
+ 		uniqueConstraints = @UniqueConstraint(columnNames = "username")
+ )
  public class Account implements Serializable, Cloneable {
  
 	/**	Unique persistence id (primary key). */
@@ -62,7 +74,10 @@ import edu.northwestern.at.utils.crypto.*;
 	 *
 	 *	@hibernate.id access="field" generator-class="native"
 	 */
-	 
+
+	@Access(AccessType.FIELD)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId () {
 		return id;
 	}
@@ -84,6 +99,7 @@ import edu.northwestern.at.utils.crypto.*;
 	 *	@hibernate.column name="username" unique="true"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getUsername () {
 		return username;
 	}
@@ -104,6 +120,7 @@ import edu.northwestern.at.utils.crypto.*;
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getPassword () {
 		return password;
 	}
@@ -148,6 +165,7 @@ import edu.northwestern.at.utils.crypto.*;
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public String getName () {
 		return name;
 	}
@@ -168,6 +186,7 @@ import edu.northwestern.at.utils.crypto.*;
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public boolean getNuAccount () {
 		return nuAccount;
 	}
@@ -188,6 +207,7 @@ import edu.northwestern.at.utils.crypto.*;
 	 *	@hibernate.property access="field"
 	 */
 	 
+	@Access(AccessType.FIELD)
 	public boolean getCanManageAccounts () {
 		return canManageAccounts;
 	}

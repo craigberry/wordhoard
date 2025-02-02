@@ -441,6 +441,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		udCfg.addAnnotatedClass(UserGroup.class);
 		udCfg.addAnnotatedClass(UserGroupPermission.class);
 		udCfg.addAnnotatedClass(Phrase.class);
+		udCfg.addAnnotatedClass(PhraseSet.class);
 		udCfg.addAnnotatedClass(PhraseSetPhraseCount.class);
 		udCfg.addAnnotatedClass(PhraseSetTotalWordFormPhraseCount.class);
 		userDataSessionFactory = udCfg.buildSessionFactory();
