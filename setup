@@ -102,24 +102,6 @@ alias bwf="java -Xmx500m edu/northwestern/at/wordhoard/tools/BuildWork"
 alias r4="java4 -Xmx500m edu/northwestern/at/wordhoard/swing/WordHoard"
 alias start4="java4 -Xmx500m edu/northwestern/at/wordhoard/server/Server start server/data &"
 
-
-alias schema-test="java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
---format bin/edu/northwestern/at/wordhoard/model/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/annotations/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/bibtool/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/counts/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/grouping/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/morphology/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/querytool/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/search/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/speakers/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/text/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/userdata/*.hbm.xml \\
-bin/edu/northwestern/at/wordhoard/model/wrappers/*.hbm.xml"
-
-alias server-schema-test="java org.hibernate.tool.hbm2ddl.SchemaExport --text \\
---format bin/edu/northwestern/at/wordhoard/server/model/*.hbm.xml"
-
 alias dw="java -Xmx200m edu/northwestern/at/wordhoard/tools/DeleteWork \!*"
 
 alias cxml="java edu/northwestern/at/utils/tools/CatalogXML \!*"
