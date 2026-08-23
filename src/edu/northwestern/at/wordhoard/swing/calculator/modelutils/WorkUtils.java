@@ -391,7 +391,8 @@ public class WorkUtils
 				(
 					"select workpart " +
 					"from WorkPart workpart " +
-					"where workpart.tag in (:tags)"
+					"where workpart.tag in (:tags)",
+					WorkPart.class
 				);
 
 			query.setParameterList( "tags" , workPartTags );

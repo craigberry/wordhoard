@@ -13,6 +13,8 @@ import java.sql.Statement;
 import org.hibernate.*;
 import org.hibernate.exception.*;
 import org.hibernate.cfg.*;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.event.internal.EntityState;
 import org.hibernate.query.Query;
 import org.hibernate.jdbc.ReturningWork;
 
@@ -26,6 +28,7 @@ import edu.northwestern.at.wordhoard.model.wrappers.*;
 import edu.northwestern.at.wordhoard.server.model.*;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.BadOwnerException;
 import edu.northwestern.at.wordhoard.swing.calculator.modelutils.UserDataObjectUpdater;
+import jakarta.persistence.EntityManager;
 import edu.northwestern.at.wordhoard.swing.WordHoardSettings;
 
 /**	Session remote object implementation.
@@ -183,7 +186,8 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		try {
 			Query q = session.createQuery(
 				"from Account account " +
-				"where account.username = :username");
+				"where account.username = :username",
+				Account.class);
 			q.setParameter("username", username);
 			loginAccount = (Account)q.uniqueResult();
 			boolean loginValid = loginAccount != null;
@@ -246,7 +250,8 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Session session = sessionFactory.openSession();
 		try {
 			Query q = session.createQuery(
-				"from Account where username != 'system' order by username");
+				"from Account where username != 'system' order by username",
+				Account.class);
 			return q.list();
 		} finally {
 			session.close();
@@ -263,6 +268,22 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	 *
 	 *	@throws	WordHoardError	WordHoard-specific error.
 	 */
+
+	// saveOrUpdate deprecated and removed so we have to make our own
+	private void saveOrUpdate(Session session, Object entity) {
+		EntityManager entityManager = session.getEntityManagerFactory().createEntityManager();
+		if (entityManager.contains(entity)) {
+			entityManager.merge(entity);
+		} else {
+			SessionImplementor sessionImplementor = entityManager.unwrap(SessionImplementor.class);
+			EntityState state = EntityState.getEntityState(entity, null, null, sessionImplementor, true);
+			if (state == EntityState.DETACHED) {
+				entityManager.merge(entity);
+			} else {
+				entityManager.persist(entity);
+			}
+		}
+	}
 
 	public Long createOrUpdateAccount (Account account)
 		throws RemoteException, WordHoardError
@@ -282,7 +303,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Session session = sessionFactory.openSession();
 		try {
 			Transaction t = session.beginTransaction();
-			session.saveOrUpdate(account);
+			this.saveOrUpdate(session, account);
 			t.commit();
 			PrintfFormat fmt = new PrintfFormat(
 				WordHoardSettings.getString("Savedaccount"));
@@ -321,11 +342,11 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 					"Youarenotpermittedtomanageaccounts"));
 		Session session = sessionFactory.openSession();
 		try {
-			Account account = (Account)session.load(Account.class, id);
+			Account account = (Account)session.find(Account.class, id);
 			String accountUsername = account.getUsername();
 			String sid = account.getId() + "";
 			Transaction t = session.beginTransaction();
-			session.delete(account);
+			session.remove(account);
 			t.commit();
 			PrintfFormat fmt = new PrintfFormat(
 				WordHoardSettings.getString("Deletedaccount"));
@@ -393,19 +414,19 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		cfg.setProperty(
 			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		cfg.setProperty(
-			"hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
+			"jakarta.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 		cfg.setProperty(
 			"hibernate.c3p0.max_size", "100");
 		cfg.setProperty(
 			"hibernate.c3p0.idle_test_period", "14400");
 		cfg.setProperty(
-			"hibernate.connection.url",
+			"jakarta.persistence.jdbc.url",
 			Config.getDatabaseURL());
 		cfg.setProperty(
-			"hibernate.connection.username",
+			"jakarta.persistence.jdbc.user",
 			Config.getDatabaseUsername());
 		cfg.setProperty(
-			"hibernate.connection.password",
+			"jakarta.persistence.jdbc.password",
 			Config.getDatabasePassword());
 		cfg.addAnnotatedClass(Account.class);
 		sessionFactory = cfg.buildSessionFactory();
@@ -416,19 +437,19 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		udCfg.setProperty(
 			"hibernate.dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect");
 		udCfg.setProperty(
-			"hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
+			"jakarta.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 		udCfg.setProperty(
 			"hibernate.c3p0.max_size", "100");
 		udCfg.setProperty(
 			"hibernate.c3p0.idle_test_period", "14400");
 		udCfg.setProperty(
-			"hibernate.connection.url",
+			"jakarta.persistence.jdbc.url",
 			Config.getUserDataDatabaseURL());
 		udCfg.setProperty(
-			"hibernate.connection.username",
+			"jakarta.persistence.jdbc.user",
 			Config.getUserDataDatabaseUsername());
 		udCfg.setProperty(
-			"hibernate.connection.password",
+			"jakarta.persistence.jdbc.password",
 			Config.getUserDataDatabasePassword());
 		udCfg.addAnnotatedClass(WHQuery.class);
 		udCfg.addAnnotatedClass(WordSet.class);
@@ -490,8 +511,8 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 	{
 		Session session = sessionFactory.openSession();
 		try {
-			Query q = session.createQuery("select count(*) from Account");
-			Long numAccountsLong = (Long)q.uniqueResult();
+			Query<Long> q = session.createQuery("select count(*) from Account", Long.class);
+			Long numAccountsLong = q.uniqueResult();
 			long numAccounts = numAccountsLong.longValue();
 			if (numAccounts > 0) return;
 			Account adminAccount = new Account();
@@ -501,7 +522,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 			adminAccount.setNuAccount(false);
 			adminAccount.setCanManageAccounts(true);
 			Transaction t = session.beginTransaction();
-			session.save(adminAccount);
+			session.persist(adminAccount);
 			t.commit();
 		} finally {
 			session.close();
@@ -519,7 +540,8 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Session session = sessionFactory.openSession();
 		try {
 			Query q = session.createQuery(
-				"from Account where username='system'");
+				"from Account where username='system'",
+				Account.class);
 			if (q.uniqueResult() != null) return;
 			Account systemAccount = new Account();
 			systemAccount.setUsername("system");
@@ -528,7 +550,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 			systemAccount.setNuAccount(false);
 			systemAccount.setCanManageAccounts(false);
 			Transaction t = session.beginTransaction();
-			session.save(systemAccount);
+			session.persist(systemAccount);
 			t.commit();
 		} finally {
 			session.close();
@@ -559,7 +581,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Long result	= Long.valueOf( -1 );
 		try {
 			t = session.beginTransaction();
-			session.save(userDataObject);
+			session.persist(userDataObject);
 			t.commit();
 			result	= userDataObject.getId();
 			PrintfFormat fmt = new PrintfFormat(
@@ -616,7 +638,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 					WordHoardSettings.getString(
 						"Youarenotpermittedtomodifythisobject"));
 			UserDataObject udo =
-				(UserDataObject)session.get(
+				(UserDataObject)session.find(
 					userDataObject.getClass(), userDataObject.getId());
 			t = session.beginTransaction();
 			userDataObjectUpdater.update(udo);
@@ -663,7 +685,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Session session = userDataSessionFactory.openSession();
 		Transaction t = null;
 		try {
-			UserDataObject udo = (UserDataObject)session.get(udoClass, id);
+			UserDataObject udo = (UserDataObject)session.find(udoClass, id);
 
 			if (!loginAccount.getUsername().equals(udo.getOwner()) && !loginAccount.getCanManageAccounts()) 
 				throw new WordHoardError(
@@ -672,7 +694,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 			String title = udo.getTitle();
 			String sid = udo.getId() + "";
 			t = session.beginTransaction();
-			session.delete(udo);
+			session.remove(udo);
 			t.commit();
 			PrintfFormat fmt = new PrintfFormat(
 				WordHoardSettings.getString("Deleteduserobject"));
@@ -712,7 +734,7 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 		Transaction t = null;
 		try {
 			WordSet ws =
-				(WordSet)session.get(WordSet.class, wordSet.getId());
+				(WordSet)session.find(WordSet.class, wordSet.getId());
 			if (!loginAccount.getUsername().equals(ws.getOwner()))
 				throw new WordHoardError(
 					WordHoardSettings.getString(
@@ -721,13 +743,15 @@ public class WordHoardSessionImpl extends UnicastRemoteObject
 			String sid	= ws.getId().toString();
 			String title = ws.getTitle();
 			session.createQuery(
-				"delete WordSetWordCount w where w.wordSet=" + sid
+				"delete WordSetWordCount w where w.wordSet=" + sid,
+				Object.class
 			).executeUpdate();
 			session.createQuery(
 				"delete WordSetTotalWordFormCount w " +
-				"where w.wordSet=" + sid
+				"where w.wordSet=" + sid,
+				Object.class
 			).executeUpdate();
-			session.delete(ws);
+			session.remove(ws);
 			t.commit();
 			PrintfFormat fmt = new PrintfFormat(
 				WordHoardSettings.getString("Deleteduserobject"));

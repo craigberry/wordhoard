@@ -1209,7 +1209,7 @@ public class PersistenceManager extends HibernatePersistenceManager {
 				if(fromClause!=null && whereClause!=null) {
 					String queryString = fromClause + whereClause +
 						" order by work.fullTitle";
-					Query q = session.createQuery(queryString);
+					Query q = session.createQuery(queryString, Work.class);
 					if(haveTitle) {q.setParameter("title", title);}
 					if(haveAuthor) {q.setParameter("authorname", authorname);}
 					if(haveYearStart) {q.setParameter("earlyDate", earlyDate);}

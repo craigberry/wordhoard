@@ -232,7 +232,7 @@ public class UserDataObjectUtils
 
 		String queryString	=
 			"from " + getObjectClassName( udoClass ) +
-			" udo where udo.isActive=1";
+			" udo where udo.isActive=TRUE";
 
 								//	Add title to query string if
 								//	specified.
@@ -275,7 +275,7 @@ public class UserDataObjectUtils
 			{
 								//	Return only public objects.
 
-				queryString	= queryString + " and udo.isPublic=1";
+				queryString	= queryString + " and udo.isPublic=TRUE";
 			}
 			else
 			{
@@ -298,7 +298,7 @@ public class UserDataObjectUtils
 				{
 					queryString	=
 						queryString +
-							" and (udo.isPublic=1 or udo.owner=:owner)";
+							" and (udo.isPublic=TRUE or udo.owner=:owner)";
 				}
 			}
 		}
@@ -328,7 +328,7 @@ public class UserDataObjectUtils
 				{
 					queryString	=
 						queryString +
-							" and (udo.isPublic=1 or udo.owner=:owner)";
+							" and (udo.isPublic=TRUE or udo.owner=:owner)";
 				}
 			}
 			else
@@ -340,7 +340,7 @@ public class UserDataObjectUtils
 
 				queryString	=
 					queryString +
-					" and udo.owner=:owner and udo.isPublic=1";
+					" and udo.owner=:owner and udo.isPublic=TRUE";
 
 								//	We should not get here.
 
@@ -559,7 +559,7 @@ public class UserDataObjectUtils
 
 		String queryString	=
 			"from " + getObjectClassName( udoClass ) +
-			" udo where udo.isActive=1 and owner=:owner";
+			" udo where udo.isActive=TRUE and owner=:owner";
 
 		java.util.List list	=
 			PersistenceManager.doQuery
@@ -605,18 +605,18 @@ public class UserDataObjectUtils
 			queryString	=
 				"from " + getObjectClassName( udoClass )  + " udo " +
 				"where udo.owner=:owner and " +
-				"udo.isPublic=0 and udo.isActive=1";
+				"udo.isPublic=FALSE and udo.isActive=TRUE";
 		}
 		else
 		{
 			queryString	=
 				"from " + getObjectClassName( udoClass )  +
 				" udo where udo.owner=:owner and " +
-				"udo.isActive=1";
+				"udo.isActive=TRUE";
 
 			if ( !WordHoardSettings.isCurrentUser( owner ) )
 			{
-				queryString	= queryString + " and udo.isPublic=1";
+				queryString	= queryString + " and udo.isPublic=TRUE";
 			}
 		}
 
@@ -674,7 +674,7 @@ public class UserDataObjectUtils
 		{
 			queryString	=
 				"from " + getObjectClassName( udoClass ) + " udo " +
-				"where udo.isActive=1 and udo.owner=:owner";
+				"where udo.isActive=TRUE and udo.owner=:owner";
 
 			result	=
 				PersistenceManager.doCountQuery
@@ -688,7 +688,7 @@ public class UserDataObjectUtils
 		{
 			queryString	=
 				"from " + getObjectClassName( udoClass ) + " udo " +
-				" where udo.isActive=1 and udo.isPublic=1";
+				" where udo.isActive=TRUE and udo.isPublic=TRUE";
 
 			result	=
 				PersistenceManager.doCountQuery

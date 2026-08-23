@@ -3,6 +3,9 @@ package edu.northwestern.at.wordhoard.tools;
 /*	Please see the license information at the end of this file. */
 
 import java.util.*;
+
+import com.mysql.cj.Session;
+
 import java.sql.*;
 
 import edu.northwestern.at.utils.*;
@@ -110,7 +113,7 @@ public class LoadPibCounts
 
 								//	Get JDBC connection.
 
-		modelConnection	= pm.getConnection();
+		modelConnection = pm.getConnectionProvider().getConnection();
 	}
 
 	/**	Terminates the program.

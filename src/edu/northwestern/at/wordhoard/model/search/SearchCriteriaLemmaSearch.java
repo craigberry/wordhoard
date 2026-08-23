@@ -139,20 +139,9 @@ public class SearchCriteriaLemmaSearch extends SearchCriteria {
 			buf.appendWhereClause(whereClause);
 		}
 
-//			buf.appendWhereClause(" lem.id=lemma ");
-
-//			buf.append(" GROUP By lemma ");
-
-
-//			buf.appendWhereClause(" exists (FROM Word w WHERE w.wordParts.lemPos.lemma = lemma AND w.work = 429)");
-//			buf.appendWhereClause(" exists (FROM Word w WHERE w.wordParts.lemPos.lemma = lemma AND w.work = 242)");
-//			buf.appendWhereClause(" exists (FROM Word w WHERE w.wordParts.lemPos.lemma = lemma AND w.work = 1021)");
-
-//			System.out.println("Lemma search HQL:" + buf.toString());
-
 		//	Create the query and set the arguments.
 
-		Query q = session.createQuery(buf.toString());
+		Query q = session.createQuery(buf.toString(), Object.class);
 
 		for (int i = 0; i < numCriteria; i++) {
 			SearchCriterion criterion = criteria[i];
@@ -191,7 +180,7 @@ public class SearchCriteriaLemmaSearch extends SearchCriteria {
 		String hql = "select lcc.lemma, sum(lcc.colFreq), sum(lcc.docFreq) " +
 			" from LemmaCorpusCounts lcc where " +
 			" lcc.lemma in (:lemmata) group by lcc.lemma";
-		Query qql = session.createQuery(hql);
+		Query qql = session.createQuery(hql, Object.class);
 		qql.setParameterList("lemmata",al);
 
 		List queryList = qql.list();

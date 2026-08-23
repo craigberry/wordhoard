@@ -282,7 +282,7 @@ public class QueryUtils
 			queryList	=
 				PersistenceManager.doQuery
 				(
-					"from WHQuery qu where qu.isPublic=1 " +
+					"from WHQuery qu where qu.isPublic=TRUE " +
 					"and queryType=:queryType",
 					new String[]{ "queryType" } ,
 					new Object[]{ Integer.valueOf( queryType ) } ,
@@ -295,7 +295,7 @@ public class QueryUtils
 				PersistenceManager.doQuery
 				(
 					"from WHQuery qu where queryType=:queryType " +
-					"and (qu.isPublic=1 or qu.owner=:owner)" ,
+					"and (qu.isPublic=TRUE or qu.owner=:owner)" ,
 					new String[]{ "owner" , "queryType" } ,
 					new Object[]
 					{
@@ -342,7 +342,7 @@ public class QueryUtils
 
 		if ( !WordHoardSettings.isCurrentUser( owner ) )
 		{
-			queryString	= queryString + "and qu.isPublic=1";
+			queryString	= queryString + "and qu.isPublic=TRUE";
 		}
 
 		java.util.List queryList	=

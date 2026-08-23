@@ -211,7 +211,7 @@ public class SearchCriteriaLemmaWorkCount extends SearchCriteria {
 
 		//	Create the query and set the arguments.
 
-		Query q = session.createQuery(buf.toString());
+		Query q = session.createQuery(buf.toString(), Object.class);
 		for (int i = 0; i < numCriteria; i++) {
 			SearchCriterion criterion = criteria[i];
 			if (criterion instanceof WorkSet) {

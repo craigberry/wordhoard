@@ -23,6 +23,7 @@ eof
 # --entities=edu.northwestern.at.wordhoard.model \
 # --output=misc/schema.ddl \
 # --url="jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
+# --jdbc_driver="com.mysql.cj.jdbc.Driver" \
 # --username="$MYSQL_ROOT_USERNAME" \
 # --password="$MYSQL_ROOT_PASSWORD"
 

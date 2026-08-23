@@ -598,7 +598,7 @@ public class PhraseSetUtils
 		if ( onlyPrivate )
 		{
 			queryString	=
-				"from PhraseSet ps where ps.owner = :owner and ps.isPublic=0";
+				"from PhraseSet ps where ps.owner = :owner and ps.isPublic=FALSE";
 		}
 		else
 		{
@@ -650,7 +650,7 @@ public class PhraseSetUtils
 		{
 			queryString	=
 				"from PhraseSet ps " +
-				"where ps.owner = :owner and ps.isPublic=0";
+				"where ps.owner = :owner and ps.isPublic=FALSE";
 		}
 		else
 		{

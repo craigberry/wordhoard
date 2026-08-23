@@ -144,8 +144,8 @@ public class Speech implements PersistentObject, SearchDefaults {
 	@Access(AccessType.FIELD)
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="speech_speakers",
-		joinColumns = {@JoinColumn(name="speech_id", nullable=false, updatable=false) },
-		inverseJoinColumns = {@JoinColumn(name="speaker_id", nullable=false, updatable=false) }
+		joinColumns = {@JoinColumn(name="speech_id", nullable=false, updatable=false, insertable=false) },
+		inverseJoinColumns = {@JoinColumn(name="speaker_id", nullable=false, updatable=false, insertable=false) }
 	)
 	public Set<Speaker> getSpeakers () {
 		return Collections.unmodifiableSet(speakers);

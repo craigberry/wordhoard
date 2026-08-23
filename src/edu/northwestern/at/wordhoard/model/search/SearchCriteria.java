@@ -205,7 +205,7 @@ public class SearchCriteria {
 
 		//System.out.println("SearchCriteria HQL:" + buf.toString());
 
-		Query q = session.createQuery(buf.toString());
+		Query q = session.createQuery(buf.toString(), Object.class);
 
 		for (int i = 0; i < numCriteria; i++) {
 			SearchCriterion criterion = criteria[i];

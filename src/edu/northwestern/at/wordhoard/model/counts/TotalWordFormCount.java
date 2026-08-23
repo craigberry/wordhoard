@@ -160,7 +160,7 @@ public class TotalWordFormCount
 	@Access(AccessType.FIELD)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "work", foreignKey = @ForeignKey(name = "work_index"))
-	public WorkPart getWork()
+	public Work getWork()
 	{
 		return work;
 	}

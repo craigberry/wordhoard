@@ -60,10 +60,10 @@ public class SimpleHibernateConnectionProvider implements ConnectionProvider, Co
 	{
 		try {
 			Properties poolProperties = new Properties();
-			String jdbcDriverClass = (String) configurationValues.get(Environment.DRIVER);
-			String jdbcURL = (String) configurationValues.get(Environment.URL);
-			String username = (String) configurationValues.get(Environment.USER);
-			String password = (String) configurationValues.get(Environment.PASS);
+			String jdbcDriverClass = (String) configurationValues.get(Environment.JAKARTA_JDBC_DRIVER);
+			String jdbcURL = (String) configurationValues.get(Environment.JAKARTA_JDBC_URL);
+			String username = (String) configurationValues.get(Environment.JAKARTA_JDBC_USER);
+			String password = (String) configurationValues.get(Environment.JAKARTA_JDBC_PASSWORD);
 			username = username.replaceAll("\\\\","");
 			password = password.replaceAll("\\\\","");
 			String autocommit = (String) configurationValues.get(Environment.AUTOCOMMIT);

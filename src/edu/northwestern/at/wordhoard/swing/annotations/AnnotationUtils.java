@@ -121,7 +121,7 @@ public class AnnotationUtils
 		java.util.List list;
 		
 		if(!WordHoardSettings.isLoggedIn()) {
-			queryString = "FROM AuthoredTextAnnotation udo WHERE udo.annotates=:annotates AND udo.isPublic=1";
+			queryString = "FROM AuthoredTextAnnotation udo WHERE udo.annotates=:annotates AND udo.isPublic=TRUE";
 			list = PersistenceManager.doQuery(queryString,
 				new String[]{"annotates"},
 				new Object[]{annotates});
@@ -131,7 +131,7 @@ public class AnnotationUtils
 				new String[]{"annotates"},
 				new Object[]{annotates});
 		} else {
-			queryString = "FROM AuthoredTextAnnotation udo WHERE udo.annotates=:annotates AND (udo.isPublic=1 OR udo.owner=:owner OR exists (FROM UserGroupPermission ugp WHERE ugp.authoredTextAnnotation = udo AND :currentUser in elements(ugp.userGroup.members))) ";
+			queryString = "FROM AuthoredTextAnnotation udo WHERE udo.annotates=:annotates AND (udo.isPublic=TRUE OR udo.owner=:owner OR exists (FROM UserGroupPermission ugp WHERE ugp.authoredTextAnnotation = udo AND :currentUser in elements(ugp.userGroup.members))) ";
 			list = PersistenceManager.doQuery(queryString,
 				new String[]{"annotates", "owner", "currentUser"},
 				new Object[]{annotates, WordHoardSettings.getUserID(), WordHoardSettings.getUserID()});
@@ -157,7 +157,7 @@ public class AnnotationUtils
 	{
 		String queryString	= "from AuthoredTextAnnotation udo WHERE udo.annotates=:annotates";
 		if(!WordHoardSettings.isLoggedIn())
-			queryString += " AND udo.isPublic=1";
+			queryString += " AND udo.isPublic=TRUE";
 
 		java.util.List list	= PersistenceManager.doQuery(queryString,
 			new String[]{"annotates"},

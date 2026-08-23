@@ -97,19 +97,19 @@ public class PMUtils
 				if ( obj instanceof WorkSet )
 				{
 					obj	=
-						(PersistentObject)session.load(
+						(PersistentObject)session.find(
 							WorkSet.class , obj.getId() );
             	}
             	else if ( obj instanceof PhraseSet )
             	{
 					obj	=
-						(PersistentObject)session.load(
+						(PersistentObject)session.find(
 							PhraseSet.class , obj.getId() );
             	}
             	else if ( obj instanceof WordSet )
             	{
 					obj	=
-						(PersistentObject)session.load(
+						(PersistentObject)session.find(
 							WordSet.class , obj.getId() );
             	}
 

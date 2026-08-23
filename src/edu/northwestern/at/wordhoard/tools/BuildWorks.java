@@ -371,7 +371,7 @@ public class BuildWorks {
 
 		// Unlink all the word parts for the work.
 
-		Connection c = pm.getConnection();
+		Connection c = pm.getConnectionProvider().getConnection();
 		PreparedStatement p1 = c.prepareStatement(
 			"select id from workpart where work=?");
 		PreparedStatement p2 = c.prepareStatement(
@@ -2146,7 +2146,7 @@ public class BuildWorks {
 		throws Exception
 	{
 		PersistenceManager pm = new PersistenceManager();
-		Connection c = pm.getConnection();
+		Connection c = pm.getConnectionProvider().getConnection();
 
 		wordId = getNextId(c, "word");
 		wordPartId = getNextId(c, "wordpart");
@@ -2363,7 +2363,7 @@ public class BuildWorks {
 		System.out.println();
 		System.out.println("Importing objects into MySQL tables");
 		pm = new PersistenceManager();
-		Connection c = pm.getConnection();
+		Connection c = pm.getConnectionProvider().getConnection();
 		importTable(c, lemmaTableExporterImporter, "lemma");
 		importTable(c, lemPosTableExporterImporter, "lempos");
 		importTable(c, wordTableExporterImporter, "word");

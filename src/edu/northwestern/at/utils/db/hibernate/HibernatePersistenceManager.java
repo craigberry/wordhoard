@@ -2,9 +2,7 @@ package edu.northwestern.at.utils.db.hibernate;
 
 /*	Please see the license information at the end of this file. */
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.query.Query;
@@ -203,21 +202,21 @@ public class HibernatePersistenceManager
 			if ( url != null )
 			{
 				cfg.setProperty(
-					"hibernate.dialect edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect" ,
-					"1" );
+					"hibernate.dialect",
+					"edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect" );
 
 				cfg.setProperty(
-					"hibernate.connection.driver_class" ,
+					Environment.JAKARTA_JDBC_DRIVER ,
 					"com.mysql.cj.jdbc.Driver" );
 
 				cfg.setProperty(
-					"hibernate.connection.url" , url );
+					Environment.JAKARTA_JDBC_URL , url );
 
 				cfg.setProperty(
-					"hibernate.connection.username" , username );
+					Environment.JAKARTA_JDBC_USER , username );
 
 				cfg.setProperty(
-					"hibernate.connection.password" , password );
+					Environment.JAKARTA_JDBC_PASSWORD , password );
 			}
 								//	Set JDBC batch size.
 			cfg.setProperty(
@@ -382,25 +381,6 @@ public class HibernatePersistenceManager
 	 *
 	 *	@throws	PersistenceException	error in persistence call
 	 */
-
-	public Connection getConnection()
-		throws PersistenceException
-	{
-		try
-		{
-			return sessionFactory.getSessionFactoryOptions().getServiceRegistry()
-								 .getService(ConnectionProvider.class)
-								 .getConnection();
-		}
-		catch ( SQLException e )
-		{
-			throw new PersistenceException( e );
-		}
-		catch ( HibernateException e )
-		{
-			throw new PersistenceException( e );
-		}
-	}
 
 	/**	Check if an object is loaded in the current session.
 	 *
@@ -721,7 +701,7 @@ public class HibernatePersistenceManager
 
 			if ( !active ) begin();
 
-			session.save( obj );
+			session.persist( obj );
 
 			if ( !active ) commit();
 		}
@@ -756,7 +736,7 @@ public class HibernatePersistenceManager
 
 			for ( Iterator it = collection.iterator() ; it.hasNext() ; )
 			{
-				session.save( it.next() );
+				session.persist( it.next() );
 			}
 
 			if ( !active ) commit();
@@ -864,7 +844,7 @@ public class HibernatePersistenceManager
 
 			if ( !active ) begin();
 
-			session.delete( obj );
+			session.remove( obj );
 
 			if ( !active ) commit();
 
@@ -898,7 +878,7 @@ public class HibernatePersistenceManager
 
 			for ( Iterator it = collection.iterator() ; it.hasNext(); )
 			{
-				session.delete( it.next() );
+				session.remove( it.next() );
 			}
 
 			if ( !active ) commit();
@@ -1043,7 +1023,7 @@ public class HibernatePersistenceManager
 
 		try
 		{
-			return session.get( type , id );
+			return session.find( type , id );
 		}
 		catch ( HibernateException e )
 		{
@@ -1110,7 +1090,7 @@ public class HibernatePersistenceManager
 
 		try
 		{
-			return session.load( type , id );
+			return session.find( type , id );
 		}
 		catch ( HibernateException e )
 		{
@@ -1176,7 +1156,7 @@ public class HibernatePersistenceManager
 
 								//	Update the object.
 
-			session.update( obj );
+			session.persist( obj );
 
 								//	Finish transaction if we started it.
 
@@ -1214,7 +1194,7 @@ public class HibernatePersistenceManager
 			for	(	Iterator iterator = collection.iterator() ;
 					iterator.hasNext() ; )
 			{
-				session.update( iterator.next() );
+				session.merge( iterator.next() );
 			}
 								//	Finish transaction if we started it.
 
@@ -1324,7 +1304,7 @@ public class HibernatePersistenceManager
 		{
 								//	Create query.
 
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, Object.class );
 
 								//	Add parameter names and values.
 
@@ -1386,7 +1366,7 @@ public class HibernatePersistenceManager
 		{
 								//	Create query.
 
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, Object.class );
 
 								//	Get the list of query results.
 
@@ -1422,15 +1402,10 @@ public class HibernatePersistenceManager
 
 		try
 		{
-								//	Get JDBC connection.
-
-			Statement statement	=
-				getConnection().createStatement();
-
-								//	Perform the update/delete query.
-
-			result	= statement.executeUpdate( queryString );
-			statement.close();
+            session.doWork(connection -> {
+                PreparedStatement statement = connection.prepareStatement(queryString);
+                statement.executeUpdate();
+            });
 		}
 		catch ( Exception e )
 		{
@@ -1539,9 +1514,10 @@ public class HibernatePersistenceManager
 
 		try
 		{
+
 								//	Create query.
 
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, Object.class );
 
 								//	Set query parameters.
 			setQueryParams
@@ -1555,7 +1531,7 @@ public class HibernatePersistenceManager
 			);
 								//	Get the list of query results.
 
-			result	= query.list();
+			result	= query.getResultList();
 		}
 		catch ( HibernateException e )
 		{
@@ -1741,7 +1717,7 @@ public class HibernatePersistenceManager
 		try
 		{
 								//	Create query.
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, Object.class );
 
 								//	Enable cache if requested.
 
@@ -1872,7 +1848,7 @@ public class HibernatePersistenceManager
 								//	Create query.
 
 			Query query	= session.createQuery(
-				"select count(*) " + queryString );
+				"select count(*) " + queryString, Long.class );
 
 								//	Set query parameters.
 			setQueryParams
@@ -1966,15 +1942,10 @@ public class HibernatePersistenceManager
 
 		try
 		{
-								//	Get JDBC connection.
-
-			Statement statement	=
-				getConnection().createStatement();
-
-								//	Perform the insert.
-
-			result	= statement.executeUpdate( insertString );
-			statement.close();
+            session.doWork(connection -> {
+                PreparedStatement statement = connection.prepareStatement(insertString);
+                statement.executeUpdate();
+            });
 		}
 		catch ( Exception e )
 		{
@@ -2051,7 +2022,7 @@ public class HibernatePersistenceManager
 		{
 								//	Create query.
 
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, ScrollableResults.class );
 
 								//	Set query parameters.
 			setQueryParams
@@ -2257,7 +2228,7 @@ public class HibernatePersistenceManager
 		{
 								//	Create query.
 
-			Query query	= session.createQuery( queryString );
+			Query query	= session.createQuery( queryString, ScrollableResults.class );
 
 								//	Enable cache if requested.
 

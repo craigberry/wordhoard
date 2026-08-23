@@ -1,20 +1,31 @@
 package edu.northwestern.at.utils.db.mysql;
 
-import org.hibernate.dialect.MySQL5Dialect;
-import org.hibernate.dialect.function.SQLFunction;
-import org.hibernate.dialect.function.SQLFunctionTemplate;
+import org.hibernate.dialect.MySQLDialect;
+import org.hibernate.boot.model.FunctionContributions;
+import org.hibernate.query.sqm.function.PatternBasedSqmFunctionDescriptor;
+import org.hibernate.query.sqm.produce.function.internal.PatternRenderer;
+import org.hibernate.query.sqm.produce.function.StandardArgumentsValidators;
+import org.hibernate.query.sqm.produce.function.StandardFunctionReturnTypeResolvers;
 import org.hibernate.type.StandardBasicTypes;
+import org.hibernate.type.spi.TypeConfiguration;
 
-public class WordHoardMySQLDialect extends MySQL5Dialect {
+public class WordHoardMySQLDialect extends MySQLDialect {
     /**
      * Register a custom function to provide regular expression matching in HQL.
      */
-    public WordHoardMySQLDialect() {
-        super();
-        registerFunction(
-                            "REGEXP_LIKE",
-                            (SQLFunction) new SQLFunctionTemplate(StandardBasicTypes.BOOLEAN, "?1 RLIKE ?2")
-                        );
+    @Override
+    public void contributeFunctions(FunctionContributions functionContributions) {
+        TypeConfiguration typeConfiguration = functionContributions.getTypeConfiguration();
+
+        PatternRenderer renderer = new PatternRenderer("?1 RLIKE ?2");
+
+        PatternBasedSqmFunctionDescriptor descriptor = new PatternBasedSqmFunctionDescriptor(
+            renderer,
+            StandardArgumentsValidators.exactly(2),
+            StandardFunctionReturnTypeResolvers.invariant(typeConfiguration.getBasicTypeRegistry().resolve(StandardBasicTypes.BOOLEAN)),
+            null, null, null, null
+        );
+        functionContributions.getFunctionRegistry().register("REGEXP_LIKE", descriptor);
     }
 }
 
