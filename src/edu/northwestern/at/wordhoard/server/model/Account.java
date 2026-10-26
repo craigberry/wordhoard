@@ -34,7 +34,7 @@ import jakarta.persistence.UniqueConstraint;
  
  @Entity
  @Table(name = "account",
- 		uniqueConstraints = @UniqueConstraint(columnNames = "username")
+		uniqueConstraints = @UniqueConstraint(name="UK_account_username", columnNames = "username")
  )
  public class Account implements Serializable, Cloneable {
  
