@@ -66,26 +66,6 @@ public class UserGroupPermission
 
 	protected Date modificationTime;
 
-	/**	Group given permission on the object.
-	 *
-	 */
-
-	protected UserGroup userGroup;
-
-
-	/** The object being controlled.
-	 *
-	 */
-
-	protected AuthoredTextAnnotation authoredTextAnnotation;
-
-
-	/**	permission string.
-	 *
-	 */
-
-	protected String permission;
-
 /** These items should be refactored out of UserObject at some point. They don't really belong in this class 
 	*	Owner of this permission. */
 
@@ -106,6 +86,24 @@ public class UserGroupPermission
 	 */
 
 	protected String query;
+
+	/**	permission string.
+	 *
+	 */
+
+	protected String permission;
+
+	/**	Group given permission on the object.
+	 *
+	 */
+
+	protected UserGroup userGroup;
+
+	/** The object being controlled.
+	 *
+	 */
+
+	protected AuthoredTextAnnotation authoredTextAnnotation;
 
 	public UserGroupPermission () {
 		this.isActive=true;

@@ -57,14 +57,14 @@ public class AuthoredTextAnnotation
 	/**	Unique persistence id (primary key). */
 	
 	protected Long id;
-	
-	/**	The annotation category. */
-	
-	protected AnnotationCategory category;
-	
+
 	/**	The text body. */
-	
+
 	protected String body;
+
+	/**	The annotation category. */
+
+	protected AnnotationCategory category;
 
 	/**	The text. */
 	

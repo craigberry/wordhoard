@@ -281,7 +281,9 @@ public class Author implements PersistentObject, SearchDefaults,
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "authors_works",
 		joinColumns = {
-			@JoinColumn(name = "author_id", referencedColumnName = "id"),
+			@JoinColumn(name = "author_id", referencedColumnName = "id",
+						foreignKey = @ForeignKey(name = "author_id_index")
+			),
 		},
 		inverseJoinColumns = {
 			@JoinColumn(name = "work_id", referencedColumnName = "id",

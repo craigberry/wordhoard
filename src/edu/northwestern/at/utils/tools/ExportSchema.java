@@ -21,6 +21,7 @@ import org.reflections.util.ConfigurationBuilder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.SchemaManager;
 
+import java.io.File;
 import java.util.Set;
 
 public class ExportSchema {
@@ -70,6 +71,9 @@ public class ExportSchema {
                                 String hibernateUsername,
                                 String hibernatePassword) {
 
+        File myFile = new File(outputFile);
+        if (myFile != null && myFile.exists()) {myFile.delete();};
+
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .applySetting(Environment.JAKARTA_JDBC_DRIVER, jdbcDriver)
                 .applySetting(AvailableSettings.DIALECT, hibernateDialect)
@@ -80,7 +84,7 @@ public class ExportSchema {
                 .applySetting("jakarta.persistence.schema-generation.scripts.action", "create")
                 .applySetting("jakarta.persistence.schema-generation.scripts.create-target", outputFile)
                 .applySetting(AvailableSettings.FORMAT_SQL, true)
-                //.applySetting(AvailableSettings.COLUMN_ORDERING_STRATEGY, "default") // declaration_order is unavailable
+                .applySetting(AvailableSettings.COLUMN_ORDERING_STRATEGY, "edu.northwestern.at.utils.tools.DeclarationOrderColumnOrderingStrategy")
                 .build();
 
         Set<Class<?>> entities = scanForEntities(packages);
@@ -89,7 +93,6 @@ public class ExportSchema {
         Metadata metadata = metadataSources.buildMetadata();
         try (SessionFactoryImplementor sessionFactory = (SessionFactoryImplementor) metadata.buildSessionFactory()) {
             SchemaManager schemaManager = sessionFactory.getSchemaManager();
-
             // We use validate() rather than create() here since we only want the output file.
             schemaManager.validate();
         }
