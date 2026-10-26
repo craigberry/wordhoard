@@ -17,11 +17,14 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.reflections.Reflections;
 import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.SchemaManager;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class ExportSchema {
@@ -102,11 +105,27 @@ public class ExportSchema {
     }
 
     private Set<Class<?>> scanForEntities(String... packages) {
+        List<String> pkgList = new ArrayList<>();
+        for (String pkg : packages) {
+            for (String p : pkg.split("[,\\s]+")) {
+                if (!p.trim().isEmpty()) {
+                    pkgList.add(p.trim());
+                }
+            }
+        }
+        String[] pkgArray = pkgList.toArray(new String[0]);
+
+        FilterBuilder filter = new FilterBuilder();
+        for (String pkg : pkgArray) {
+            filter.includePackage(pkg);
+        }
+
         Reflections reflections = new Reflections(
             new ConfigurationBuilder()
-                    .forPackages(packages)
+                    .forPackages(pkgArray)
+                    .filterInputsBy(filter)
         );
-       return reflections.getTypesAnnotatedWith(Entity.class);
+        return reflections.getTypesAnnotatedWith(Entity.class);
     }
 
     private static void showUsage (Options options) {
