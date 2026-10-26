@@ -52,9 +52,10 @@
             "projectName": "dev_f83269f2",
             "args": [
                 "--dialect", "edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect",
-                "--entities", "edu.northwestern.at.server.model",
+                "--entities", "edu.northwestern.at.wordhoard.model",
                 "--output", "schema_debug.ddl",
-                "--url", "jdbc:mysql://localhost/wordhoardserver?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false",
+                "--url", "jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false",
+                "--jdbc_driver", "com.mysql.cj.jdbc.Driver",
                 "--username", "root",
                 "--password", "<password>"
             ]
@@ -169,7 +170,8 @@
                 "wordhoard",
                 "<username>",
                 "<password>",
-                "data/spellings"
+                "data/spellings",
+                "debug"
             ]
         },
         {
