@@ -16,18 +16,16 @@ drop database if exists $db;
 create database $db character set utf8;
 eof
 
-# We can start running this when the schema export acquires the ability to preserve
-# declaration order for the columns.
-# java edu.northwestern.at.utils.tools.ExportSchema \
-# --dialect=edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect \
-# --entities=edu.northwestern.at.wordhoard.model \
-# --output=misc/schema.ddl \
-# --url="jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
-# --jdbc_driver="com.mysql.cj.jdbc.Driver" \
-# --username="$MYSQL_ROOT_USERNAME" \
-# --password="$MYSQL_ROOT_PASSWORD"
+java edu.northwestern.at.utils.tools.ExportSchema \
+--dialect=edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect \
+--entities=edu.northwestern.at.wordhoard.model \
+--output=misc/schema.ddl \
+--url="jdbc:mysql://localhost/wordhoard?characterEncoding=UTF-8&useSSL=true&verifyServerCertificate=false" \
+--jdbc_driver="com.mysql.cj.jdbc.Driver" \
+--username="$MYSQL_ROOT_USERNAME" \
+--password="$MYSQL_ROOT_PASSWORD"
 
-perl -pi -e 's/type=MyISAM/engine=MyISAM/' misc/schema.ddl
+perl -pi -e 's/engine=InnoDB/engine=MyISAM/' misc/schema.ddl
 
 $MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD $db < misc/schema.ddl
 
@@ -35,7 +33,7 @@ $MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD --batch <<eof
 
 use $db
 
-alter table annotation drop index text_index;
+#alter table annotation drop index text_index;
 
 create index nameString_index on author (name_string);
 
