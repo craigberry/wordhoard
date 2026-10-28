@@ -6,7 +6,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.help.HelpFormatter;
 
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -23,21 +23,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.SchemaManager;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ExportSchema {
-    public static void main(String... args) {
+    public static void main(String... args) throws IOException {
         Options options = new Options();
-        options.addOption(Option.builder("d").longOpt("dialect").required().hasArg().desc("Hibernate dialect").build());
-        options.addOption(Option.builder("o").longOpt("output").required().hasArg().desc("Output file").build());
-        options.addOption(Option.builder("e").longOpt("entities").required().hasArg().desc("Entities class path").build());
-        options.addOption(Option.builder("p").longOpt("password").required().hasArg().desc("Hibernate connection password").build());
-        options.addOption(Option.builder("hu").longOpt("url").required().hasArg().desc("Hibernate connection URL").build());
-        options.addOption(Option.builder("j").longOpt("jdbc_driver").required().hasArg().desc("Hibernate JDBC driver").build());
-        options.addOption(Option.builder("u").longOpt("username").required().hasArg().desc("Hibernate connection username").build());
-        options.addOption(Option.builder("h").longOpt("help").desc("Print help").build());
+        options.addOption(Option.builder("d").longOpt("dialect").required().hasArg().desc("Hibernate dialect").get());
+        options.addOption(Option.builder("o").longOpt("output").required().hasArg().desc("Output file").get());
+        options.addOption(Option.builder("e").longOpt("entities").required().hasArg().desc("Entities class path").get());
+        options.addOption(Option.builder("p").longOpt("password").required().hasArg().desc("Hibernate connection password").get());
+        options.addOption(Option.builder("hu").longOpt("url").required().hasArg().desc("Hibernate connection URL").get());
+        options.addOption(Option.builder("j").longOpt("jdbc_driver").required().hasArg().desc("Hibernate JDBC driver").get());
+        options.addOption(Option.builder("u").longOpt("username").required().hasArg().desc("Hibernate connection username").get());
+        options.addOption(Option.builder("h").longOpt("help").desc("Print help").get());
 
         CommandLineParser parser = new DefaultParser();
         try {
@@ -128,9 +129,10 @@ public class ExportSchema {
         return reflections.getTypesAnnotatedWith(Entity.class);
     }
 
-    private static void showUsage (Options options) {
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("ExportSchema", options);
+    private static void showUsage (Options options) throws IOException {
+        HelpFormatter.Builder builder = HelpFormatter.builder();
+        HelpFormatter formatter = builder.get();
+        formatter.printHelp("ExportSchema", "", options, "", false);
         System.exit(0);
     }
 }
