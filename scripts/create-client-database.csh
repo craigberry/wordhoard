@@ -11,11 +11,6 @@ if ($db == "") set db = "wordhoard"
 
 echo Create client database
 
-$MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD --batch <<eof
-drop database if exists $db;
-create database $db character set utf8;
-eof
-
 java edu.northwestern.at.utils.tools.ExportSchema \
 --dialect=edu.northwestern.at.utils.db.mysql.WordHoardMySQLDialect \
 --entities=edu.northwestern.at.wordhoard.model \
@@ -26,6 +21,11 @@ java edu.northwestern.at.utils.tools.ExportSchema \
 --password="$MYSQL_ROOT_PASSWORD"
 
 perl -pi -e 's/engine=InnoDB/engine=MyISAM/' misc/schema.ddl
+
+$MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD --batch <<eof
+drop database if exists $db;
+create database $db character set utf8;
+eof
 
 $MYSQL_BIN/mysql -u $MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD $db < misc/schema.ddl
 
