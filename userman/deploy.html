@@ -519,7 +519,7 @@ WordHoard server started
 
 <blockquote><pre><code>
 % mkdir private
-% keytool -genkey -keystore private/test-keystore -alias test -keyalg RSA
+% keytool -genkey -keystore private/wordhoard.store -alias nujarsigner -keyalg RSA -keysize 4096 -validity 3650
 Enter keystore password:  testxx
 What is your first and last name?
   [Unknown]:  Rocket J Squirrel
@@ -537,12 +537,17 @@ Is CN=Rocket J Squirrel, OU=Department of Philosophy,
    O=Wassamatta U, L=Frostbite Falls, ST=Minnesota, C=US correct?
   [no]:  yes
 
-Enter key password for &lt;test&gt;
+Enter key password for &lt;nujarsigner&gt;
         (RETURN if same as keystore password):  
 % 
 </code></pre></blockquote>
 
-<p>In this example, our keystore is located at <code>private/test-keystore</code>. The keystore password is <code>testxx</code>. The keystore contains a single "alias" named <code>test</code> for our test certificate, also with password <code>testxx</code>.</p>
+<p>In this example, our keystore is located at <code>private/wordhoard.store</code>.
+The keystore password is <code>testxx</code>. The keystore contains a single "alias"
+named <code>nujarsigner</code> for our test certificate, also with password <code>testxx</code>.
+Various scripts in the <code>scripts/</code> directory assume these names for the
+keystore file and alias, but you should choose your own (better) passwords.
+</p>
 
 <p>For production use, you will want to obtain an official jar signing certificate from a certificate granting authority.</p>
 
